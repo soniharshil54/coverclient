@@ -883,7 +883,10 @@
     }
         fetch('http://localhost:5600/api/phonecase/addcompany', {
     method: 'post',
-    body: comp_data
+    body: JSON.stringify(comp_data),
+              headers: {
+            "Content-Type": "application/json"
+          }
   }).then(function(response) {
     return response.json();
   }).then(function(data) {

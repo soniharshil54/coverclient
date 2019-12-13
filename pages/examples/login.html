@@ -21,7 +21,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="../../index2.html"><b>Admin</b>LTE</a>
+    <a href="../../index2.html"><b>Admin</b></a>
   </div>
   <!-- /.login-logo -->
   <div class="card">
@@ -30,7 +30,7 @@
 
       <form action="../../index3.html" method="post">
         <div class="input-group mb-3">
-          <input type="email" class="form-control" placeholder="Email">
+          <input type="email" id="logMail" class="form-control" placeholder="Email">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-envelope"></span>
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control" placeholder="Password">
+          <input type="password" id="logPassword" class="form-control" placeholder="Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -46,39 +46,17 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
+          <div class="col-12">
+            <span style="color: red" id="log_error"></span>
           </div>
           <!-- /.col -->
           <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="button" id="log_in" class="btn btn-primary btn-block">Sign In</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <div class="social-auth-links text-center mb-3">
-        <p>- OR -</p>
-        <a href="#" class="btn btn-block btn-primary">
-          <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-        </a>
-        <a href="#" class="btn btn-block btn-danger">
-          <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-        </a>
-      </div>
-      <!-- /.social-auth-links -->
-
-      <p class="mb-1">
-        <a href="forgot-password.html">I forgot my password</a>
-      </p>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Register a new membership</a>
-      </p>
     </div>
     <!-- /.login-card-body -->
   </div>
@@ -91,6 +69,62 @@
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
+<script type="text/javascript">
+
+      function loggedIn(){
+    
+    if (localStorage.getItem("luser") === null) {
+      $('#loggedIn').css("display","none")
+        $('#logintosee').html("login to see the registered users")
+        $('#notloggedbtn').css("display","block")
+        
+    }
+    else{
+      var loguser = JSON.parse(localStorage.getItem('luser'));
+      var username = loguser.name;
+
+      // window.location = "http://www.yoururl.com";
+      var authtokend = localStorage.getItem('authorization')
+      console.log(authtokend)
+      
+      console.log(username)
+      window.location = "file:///home/phoenix/Downloads/archives/admintemp/index2.html";
+    }
+  }
+
+    $(document).ready(function(){
+    $('#log_in').click(function(e){
+      e.preventDefault()
+
+      var lemail = $('#logMail').val()
+      var lpass = $('#logPassword').val()
+
+
+      $.post('http://localhost:5600/api/admin/login',
+      {
+        "email": lemail,
+        "password": lpass
+      },
+      function(data){
+        const loggeduser = data.admin[0]
+        console.log(loggeduser)
+        const token = data.token
+        
+        localStorage.setItem('luser',JSON.stringify(loggeduser))
+        var userlogged = JSON.parse(localStorage.getItem('luser'))
+        localStorage.setItem('authorization',token)
+        $('#log_error').text("")
+         $("#logIn").modal("hide");
+        loggedIn()
+      }
+      ).fail(function(err){
+        var errorjson = err.responseJSON
+        console.log(errorjson)
+        $('#log_error').text(errorjson.message)
+      })
+    })
+  })
+</script>
 
 </body>
 </html>

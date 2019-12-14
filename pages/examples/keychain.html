@@ -14,6 +14,7 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../../dist/css/tagstyle.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style type="text/css">
@@ -851,6 +852,128 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+ <h2>Modal Example</h2>
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button>
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Add Keychain</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+        <div class="col-md-12">
+          <div class="card card-secondary collapsed-card">
+            <div class="card-header">
+              <h3 class="card-title">Add Key chain</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-plus"></i></button>
+              </div>
+            </div>
+            <div class="card-body">
+                
+                                <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>                    <div class="col-sm-6">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">header image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                    </div>
+                    <div class="col-sm-6">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">in image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                     <!--  <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>Description</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                        <label>Size</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                      </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-sm-6">
+                          <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
+                          <label for="customCheckbox1" class="custom-control-label">Available</label>
+                        </div>
+                      </div>
+                    </div>    
+                    <div class="col-sm-6">
+                      <input type="submit" value="add Keychain" class="btn btn-success float-right">
+                    </div>   
+                  </div>
+                                       
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
 
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
@@ -860,27 +983,19 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<script src="../../dist/js/tagscript.js"></script>
 
-    name : 
-    company : 
-    image_2d : 
-    image_3d : 
-    image_4d : 
-    price: 
-    available_status: 
 <script>
 
     function editproduct(test){
-      var row = $(test).closest("tr");
-      test.removeAttribute("class","btn-primary")
-      test.setAttribute("class","btn-success")
-      test.innerHTML = "Save"
-      var rowedit = row[0]
-      rowedit.setAttribute("contenteditable","true")
-      rowedit.focus()
-      console.log(test)
-      console.log(row[0])
+      // var row = $(test).closest("tr");
+      // test.removeAttribute("class","btn-primary")
+      // test.setAttribute("class","btn-success")
+      // test.innerHTML = "Save"
+      // var rowedit = row[0]
+      // rowedit.setAttribute("contenteditable","true")
+      // rowedit.focus()
+      // console.log(test)
+      // console.log(row[0])
     }
 
     function CreateTableFromJSON() {

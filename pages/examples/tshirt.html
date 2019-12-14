@@ -16,6 +16,11 @@
   <link rel="stylesheet" href="../../dist/css/tagstyle.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style type="text/css">
+    #testtr{
+      color: red
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini">
 <!-- Site wrapper -->
@@ -715,22 +720,38 @@
         <div class="col-md-6">
           <div class="card card-primary collapsed-card">
             <div class="card-header">
-              <h3 class="card-title">Add company</h3>
+              <h3 class="card-title">Add Type</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-minus"></i></button>
+                  <i class="fas fa-plus"></i></button>
               </div>
             </div>
             <div class="card-body">
-              <div style="margin-bottom: 20px; height: 30px" class="input-group input-group-sm">
-                  <input id = "company_name" type="text" class="form-control">
-                  <span class="input-group-append">
-                    <button onclick="add_company()" type="button" class="btn btn-info btn-flat">Add Company</button>
-                  </span>
+                            <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                      </div>
                 </div>
+                <div class="col-sm-6">
+                      <div class="form-group">
+                    <label for="exampleInputFile">header image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="form-group">
-                <ul class="list-group" id="company_list"></ul>
+                <ul class="list-group" id="tshirt_type_list"></ul>
               </div>
 
             </div>
@@ -741,40 +762,108 @@
         <div class="col-md-6">
           <div class="card card-secondary collapsed-card">
             <div class="card-header">
-              <h3 class="card-title">Add model</h3>
+              <h3 class="card-title">Add T-Shirt</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-minus"></i></button>
+                  <i class="fas fa-plus"></i></button>
               </div>
             </div>
             <div class="card-body">
-                            <div class="form-group">
-                <label for="inputStatus">Company</label>
-                <select class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option>Samsung</option>
-                  <option>Oppo</option>
-                  <option>Vivo</option>
-                </select>
+              <div class="row">
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputStatus">Tshirt type</label>
+                    <select class="form-control custom-select">
+                      <option selected disabled>Select one</option>
+                      <option>Customized T-shirt</option>
+                      <option>3D T-shirt</option>
+                    </select>
+                </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="form-group">
+                    <label for="inputStatus">Tshirt subtype</label>
+                    <select class="form-control custom-select">
+                      <option selected disabled>Select one</option>
+                      <option>Men T-shirt</option>
+                      <option>Women T-shirt</option>
+                      <option>Boys T-shirt</option>
+                      <option>Girls T-shirt</option>
+                    </select>
+                </div>
+                </div>
               </div>
-              <div class="form-group">
-                  <label for="exist-values">sub categories
-                <input style="width: 490px" type="text" id="exist-values" class="tagged form-control" data-removeBtn="true" name="tag-2" value="PC,Play Station 4,X-BOX One" placeholder="Add Platform">
-                </label>
-        <!-- <button type="submit" name="button">Send</button> -->
-              </div>
-              <button id="destroy">destroy</button>
-<button id="get">get subcategories</button>
+                
+                                <div class="row">
+                    <div class="col-sm-6">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">header image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                    </div>
+                    <div class="col-sm-6">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">in image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                     <!--  <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                    </div>
+                  </div>
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>Sizes available</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                        </div>
+                      </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                          <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
+                          <label for="customCheckbox1" class="custom-control-label">Available</label>
+                        </div>
+                      </div>
+                    </div>    
+                    <div class="col-sm-6">
+                      <input type="submit" value="add T-Shirt" class="btn btn-success float-right">
+                    </div>   
+                  </div>
+                                       
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <input type="submit" value="save subcategories" class="btn btn-success float-right">
         </div>
       </div>
               <!-- /.row -->
@@ -782,61 +871,27 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Models</h3>
+                <h3 class="card-title">T-Shirts</h3>
 
                 <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+                  <div class="input-group input-group-sm" style="width: 450px;">
+                                    <label for="inputStatus">Type</label>
+                <select class="form-control custom-select">
+                  <option selected disabled>All</option>
+                  <option>Customized T-shirt</option>
+                  <option>3D T-shirt</option>
+                </select>
 
-                    <div class="input-group-append">
+                    <!-- <div class="input-group-append">
                       <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0">
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>User</th>
-                      <th>Date</th>
-                      <th>Status</th>
-                      <th>Reason</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-success">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>219</td>
-                      <td>Alexander Pierce</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-warning">Pending</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>657</td>
-                      <td>Bob Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-primary">Approved</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                    <tr>
-                      <td>175</td>
-                      <td>Mike Doe</td>
-                      <td>11-7-2014</td>
-                      <td><span class="tag tag-danger">Denied</span></td>
-                      <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div id="samplejson"></div>
+                
               </div>
               <!-- /.card-body -->
             </div>
@@ -897,8 +952,8 @@
 </script>
 <script type="text/javascript">
   function companylist(){
-      var strs = [ "Samsung", "Oppo", "Vivo" ];
-var list = document.getElementById('company_list');
+      var strs = [ "Customized T-shirt", "3D T-shirt"];
+var list = document.getElementById('tshirt_type_list');
 for (var i in strs) {
   var spanli = document.createElement("span")
   spanli.innerText = strs[i];
@@ -912,6 +967,95 @@ for (var i in strs) {
   }
   companylist()
 
+</script>
+    name : 
+    company : 
+    image_2d : 
+    image_3d : 
+    image_4d : 
+    price: 
+    available_status: 
+<script>
+    function CreateTableFromJSON() {
+        var myBooks = [
+            {
+                "name":"Men Round Neck Full Sleeves",
+                "type":"Customized",
+                "header_image": "path/header_image.jpg",
+                "in_image": "path/in_image.jpg",
+                "sizes_available": "S,M,L,L,XL,XXL",
+                "Price": "299",
+                "available_status":1
+            },
+                        {
+                "name":"Men Round Neck Half Sleeves",
+                "type":"3D",
+                "header_image": "path/header_image.jpg",
+                "in_image": "path/in_image.jpg",
+                "sizes_available": "S,M,L,L,XL,XXL",
+                "Price": "299",
+                "available_status":1
+            },
+                          {
+                "name":"Boys Round Neck Half Sleeves Printed 3D Tiger T-Shirt",
+                "type":"3D",
+                "header_image": "path/header_image.jpg",
+                "in_image": "path/in_image.jpg",
+                "sizes_available": "S,M,L,L,XL,XXL",
+                "Price": "299",
+                "available_status":1
+            },
+                           {
+                "name":"Girls Round Neck Half Sleeves Printed 3D Tiger T-Shirt",
+                 "type":"Customized",
+                "header_image": "path/header_image.jpg",
+                "in_image": "path/in_image.jpg",
+                "sizes_available": "S,M,L,L,XL,XXL",
+                "Price": "299",
+                "available_status":1
+            }        ]
+
+        // EXTRACT VALUE FOR HTML HEADER. 
+        // ('Book ID', 'Book Name', 'Category' and 'Price')
+        var col = [];
+        for (var i = 0; i < myBooks.length; i++) {
+            for (var key in myBooks[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+        table.setAttribute("class", "table");
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);                   // TABLE ROW.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");      // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+        }
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+
+            tr = table.insertRow(-1);
+
+            for (var j = 0; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = myBooks[i][col[j]];
+            }
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("samplejson");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    }
+    CreateTableFromJSON() 
 </script>
 </body>
 </html>

@@ -22,7 +22,7 @@
     }
   </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-collapse">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -873,6 +873,9 @@
 
     function editproduct(test){
       var row = $(test).closest("tr");
+      test.removeAttribute("class","btn-primary")
+      test.setAttribute("class","btn-success")
+      test.innerHTML = "Save"
       var rowedit = row[0]
       rowedit.setAttribute("contenteditable","true")
       rowedit.focus()
@@ -960,8 +963,10 @@
              let delbtn = document.createElement("button")
              delbtn.setAttribute("class", "btn btn-danger");
              delbtn.innerHTML = "Delete"
+             delbtn.style.margin = "5px";
             let editbtn = document.createElement("button")
             editbtn.setAttribute("class", "btn btn-primary");
+            editbtn.style.margin = "5px";
             editbtn.setAttribute("onclick", "editproduct(this)");
             editbtn.innerHTML = "Edit"
             let td = document.createElement("td");

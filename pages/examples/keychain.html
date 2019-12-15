@@ -717,30 +717,7 @@
 
     <!-- Main content -->
     <section class="content">
-      
-              <!-- /.row -->
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Keychains</h3>
-
-                <div class="card-tools">
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <div id="samplejson"></div>
-                
-              </div>
-
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
-        <!-- /.row -->
-        <div class="row">
+      <div class="row">
         <div class="col-md-12">
           <div class="card card-secondary collapsed-card">
             <div class="card-header">
@@ -832,6 +809,30 @@
           <!-- /.card -->
         </div>
       </div>
+      
+              <!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Keychains</h3>
+  <h3 class="card-title" style="float: right"><button class="btn btn-danger">Delete Selected</button></h3>
+                <div class="card-tools">
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <div id="samplejson"></div>
+                
+              </div>
+
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
+        
     </section>
     <!-- /.content -->
   </div>
@@ -851,20 +852,45 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="imageModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <img src="../../images/header1.jpg">
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
 <!-- ./wrapper -->
- <h2>Modal Example</h2>
+ <!-- <h2>Modal Example</h2> -->
   <!-- Button to Open the Modal -->
-  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
     Open modal
-  </button>
+  </button> -->
   <!-- The Modal -->
   <div class="modal" id="myModal">
     <div class="modal-dialog">
       <div class="modal-content">
       
         <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Add Keychain</h4>
+        <div class="modal-header" style="">
+          <h4 class="modal-title">Edit Keychain</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -873,28 +899,28 @@
           <div class="row">
         <div class="col-md-12">
           <div class="card card-secondary collapsed-card">
-            <div class="card-header">
+            <!-- <div class="card-header">
               <h3 class="card-title">Add Key chain</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-plus"></i></button>
               </div>
-            </div>
-            <div class="card-body">
+            </div> -->
+            <div class="card-body" style="display: block">
                 
                                 <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Price</label>
-                        <input type="number" class="form-control" placeholder="Enter ...">
+                        <input type="number" id="modal_price" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>                    <div class="col-sm-6">
                                         <div class="form-group">
@@ -930,29 +956,29 @@
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             <label>Description</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <input id="modal_description" type="textarea" class="form-control" placeholder="Enter ...">
                         </div>
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
                         <label>Size</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <input id="modal_size" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                       </div>
                   </div>
                   
                   <div class="row">
                     <div class="col-sm-6">
-                          <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                          <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-                          <label for="customCheckbox1" class="custom-control-label">Available</label>
-                        </div>
+                           <div class="form-group">
+                          <label class="custom-control custom-checkbox">
+   <input type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
+   <span class="custom-control-label" for="chbxTerms">Custom checkbox</span>
+   </label>
                       </div>
                     </div>    
                     <div class="col-sm-6">
-                      <input type="submit" value="add Keychain" class="btn btn-success float-right">
+                      <input type="submit" value="Edit Keychain" class="btn btn-success float-right">
                     </div>   
                   </div>
                                        
@@ -965,9 +991,9 @@
         </div>
         
         <!-- Modal footer -->
-        <div class="modal-footer">
+        <!-- <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div>
+        </div> -->
         
       </div>
     </div>
@@ -984,9 +1010,26 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 
+<script type="text/javascript">
+  function checkAll()
+ {
+     var tablek = document.getElementById ('keychaintable');
+     var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
+     var val = checkboxes[0].checked;
+     for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
+ }
+</script>
 <script>
 
     function editproduct(test){
+      console.log(test)
+      let arrayn = test.getAttribute("data-key")
+      console.log(arrayn)
+      console.log(myBooks[arrayn].name)
+      document.getElementById("modal_name").value = myBooks[arrayn].name
+      document.getElementById("modal_price").value = myBooks[arrayn].price
+      document.getElementById("modal_description").value = myBooks[arrayn].description
+      document.getElementById("modal_size").value = myBooks[arrayn].size
       // var row = $(test).closest("tr");
       // test.removeAttribute("class","btn-primary")
       // test.setAttribute("class","btn-success")
@@ -999,41 +1042,41 @@
     }
 
     function CreateTableFromJSON() {
-        var myBooks = [
+        myBooks = [
             {
                 "name":"MDF Heart Shape Keychain",
                 "size": "55x50mm",
-                "header_image" : "path/header_image.jpg",
-                "in_image": "path/in_image.jpg",
-                "Description": "Its heart a keychain",
-                "Price": "199",
+                "h_img" : "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "description": "Its heart a keychain",
+                "price": "199",
                 "avail":1
             },
                         {
                 "name":"MDF Double Heart",
                 "size": "55x50mm",
-                "header_image": "path/header_image.jpg",
-                "in_image": "path/in_image.jpg",
-                "Description": "Its doubleheart a keychain",
-                "Price": "299",
+                "h_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "description": "Its doubleheart a keychain",
+                "price": "299",
                 "avail":1
             },
                           {
                 "name":"MDF Pink Double Heart",
                 "size": "55x50mm",
-                "header_image": "path/header_image.jpg",
-                "in_image": "path/in_image.jpg",
-                 "Description": "Its doubleheart a keychain",
-                "Price": "299",
+                "h_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                 "description": "Its doubleheart a keychain",
+                "price": "299",
                 "avail":1
             },
                            {
                 "name":"MDF Red Double Heart",
                  "size": "55x50mm",
-                "header_image": "path/header_image.jpg",
-                "in_image": "path/in_image.jpg",
-                 "Description": "Its doubleheart a keychain",
-                "Price": "299",
+                "h_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                 "description": "Its doubleheart a keychain",
+                "price": "299",
                 "avail":1
             }        ]
 
@@ -1051,6 +1094,7 @@
         // CREATE DYNAMIC TABLE.
         var table = document.createElement("table");
         table.setAttribute("class", "table");
+        table.setAttribute("id","keychaintable")
         // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
         var tr = table.insertRow(-1);  
@@ -1058,13 +1102,17 @@
 
         for (var i = 0; i < col.length; i++) {
             var th = document.createElement("th");  
-            var thn =  document.createElement("th");     // TABLE HEADER.
+                // TABLE HEADER.
             th.innerHTML = col[i];
             tr.appendChild(th);
 
         }
+        var thn =  document.createElement("th"); 
         thn.innerHTML = "Action";
             tr.appendChild(thn);
+        var ths = document.createElement("th")
+        ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
+        tr.appendChild(ths);
 
         // ADD JSON DATA TO THE TABLE AS ROWS.
         for (var i = 0; i < myBooks.length; i++) {
@@ -1075,6 +1123,7 @@
                 var tabCell = tr.insertCell(-1);
                 tabCell.innerHTML = myBooks[i][col[j]];
             }
+            console.log(myBooks[i])
              let delbtn = document.createElement("button")
              delbtn.setAttribute("class", "btn btn-danger");
              delbtn.innerHTML = "Delete"
@@ -1083,11 +1132,18 @@
             editbtn.setAttribute("class", "btn btn-primary");
             editbtn.style.margin = "5px";
             editbtn.setAttribute("onclick", "editproduct(this)");
+            editbtn.setAttribute("data-toggle", "modal");
+            editbtn.setAttribute("data-target", "#myModal");
+            editbtn.setAttribute("data-key",i)
+            delbtn.setAttribute("data-key",i)
             editbtn.innerHTML = "Edit"
             let td = document.createElement("td");
+            let std = document.createElement("td");
+            std.innerHTML = "<input class='' type='checkbox'>"
             td.appendChild(editbtn)
             td.appendChild(delbtn)
             tr.appendChild(td)
+            tr.appendChild(std)
         }
 
         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.

@@ -21,6 +21,13 @@
     #testtr{
       color: red
     }
+
+    @media (min-width: 576px){
+    .modal-dialog {
+      max-width: 550px;
+      margin: 1.75rem auto;
+    }
+    }
   </style>
 </head>
 <!-- <body class="hold-transition sidebar-mini"> -->
@@ -464,7 +471,7 @@
         <!-- Modal body -->
         <div class="modal-body" style="text-align: center;">
           <!-- <h1>ello</h1> -->
-          <img src="../../images/3.jpg">
+          <img style="" src="../../images/3.jpg">
         </div>
         
         <!-- Modal footer -->
@@ -571,7 +578,7 @@
                            <div class="form-group">
                           <label class="custom-control custom-checkbox">
    <input type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
-   <span class="custom-control-label" for="chbxTerms">Custom checkbox</span>
+   <span class="custom-control-label" for="chbxTerms">Available</span>
    </label>
                       </div>
                     </div>    
@@ -734,6 +741,7 @@
             editbtn.setAttribute("data-target", "#myModal");
             editbtn.setAttribute("data-key",i)
             delbtn.setAttribute("data-key",i)
+            delbtn.setAttribute("onclick", "deleteproduct(this)")
             editbtn.style.padding = "1px 5px";
             delbtn.style.padding = "1px 5px";
             editbtn.innerHTML = "Edit"

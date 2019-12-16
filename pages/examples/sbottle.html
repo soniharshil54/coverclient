@@ -14,6 +14,7 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../../dist/css/tagstyle.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style type="text/css">
@@ -22,7 +23,7 @@
     }
   </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-collapse">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -148,11 +149,11 @@
   </nav>
   <!-- /.navbar -->
 
-     <!-- Main Sidebar Container -->
+   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
-      <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">phone case</span>
     </a>
@@ -162,7 +163,7 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="../../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Alexander Pierce</a>
@@ -299,12 +300,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Phone case</h1>
+            <h1>Slipper Bottle</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Add models</li>
+              <li class="breadcrumb-item active">Slipper Bottle</li>
             </ol>
           </div>
         </div>
@@ -314,10 +315,10 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-6">
-          <div class="card card-primary collapsed-card">
+        <div class="col-md-12">
+          <div class="card card-secondary collapsed-card">
             <div class="card-header">
-              <h3 class="card-title">Add Type</h3>
+              <h3 class="card-title">Add Key chain</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -325,15 +326,22 @@
               </div>
             </div>
             <div class="card-body">
-                            <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
+                
+                                <div class="row">
+                    <div class="col-sm-4">
+                      <!-- text input -->
+                      <div class="form-group">
                         <label>Name</label>
                         <input type="text" class="form-control" placeholder="Enter ...">
                       </div>
-                </div>
-                <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm-2">
                       <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>                    <div class="col-sm-3">
+                                        <div class="form-group">
                     <label for="exampleInputFile">header image</label>
                     <div class="input-group">
                       <div class="custom-file">
@@ -345,70 +353,173 @@
                       </div> -->
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <ul class="list-group" id="tshirt_type_list"></ul>
-              </div>
-
+                    </div>
+                    <div class="col-sm-3">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">in image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                     <!--  <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>Description</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                        <label>Size</label>
+                        <input type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                      </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-sm-6">
+                          <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
+                          <label for="customCheckbox1" class="custom-control-label">Available</label>
+                        </div>
+                      </div>
+                    </div>    
+                    <div class="col-sm-6">
+                      <input type="submit" value="add Slipper Bottle" class="btn btn-success float-right">
+                    </div>   
+                  </div>
+                                       
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
         </div>
-        <div class="col-md-6">
+      </div>
+      
+              <!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Slipper Bottles</h3>
+  <h3 class="card-title" style="float: right"><button class="btn btn-danger">Delete Selected</button></h3>
+                <div class="card-tools">
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <div id="samplejson"></div>
+                
+              </div>
+
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
+        
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.0.1
+    </div>
+    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
+    reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+
+  <!-- The Modal -->
+  <div class="modal" id="imageModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <img src="../../images/3.jpg">
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+<!-- ./wrapper -->
+ <!-- <h2>Modal Example</h2> -->
+  <!-- Button to Open the Modal -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button> -->
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header" style="">
+          <h4 class="modal-title">Edit Slipper Bottle</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+        <div class="col-md-12">
           <div class="card card-secondary collapsed-card">
-            <div class="card-header">
-              <h3 class="card-title">Add T-Shirt</h3>
+            <!-- <div class="card-header">
+              <h3 class="card-title">Add Key chain</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-plus"></i></button>
               </div>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="inputStatus">Tshirt type</label>
-                    <select class="form-control custom-select">
-                      <option selected disabled>Select one</option>
-                      <option>Customized T-shirt</option>
-                      <option>3D T-shirt</option>
-                    </select>
-                </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label for="inputStatus">Tshirt subtype</label>
-                    <select class="form-control custom-select">
-                      <option selected disabled>Select one</option>
-                      <option>Men T-shirt</option>
-                      <option>Women T-shirt</option>
-                      <option>Boys T-shirt</option>
-                      <option>Girls T-shirt</option>
-                    </select>
-                </div>
-                </div>
-              </div>
+            </div> -->
+            <div class="card-body" style="display: block">
                 
                                 <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
                         <label>Price</label>
-                        <input type="number" class="form-control" placeholder="Enter ...">
+                        <input type="number" id="modal_price" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-6">
+                    </div>                    <div class="col-sm-6">
                                         <div class="form-group">
                     <label for="exampleInputFile">header image</label>
                     <div class="input-group">
@@ -437,23 +548,34 @@
                   </div>
                     </div>
                   </div>
+                  <div class="row">
+                    <div class="col-sm-8">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Sizes available</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                            <label>Description</label>
+                        <input id="modal_description" type="textarea" class="form-control" placeholder="Enter ...">
+                        </div>
                         </div>
                       </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                        <label>Size</label>
+                        <input id="modal_size" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                      </div>
+                  </div>
+                  
                   <div class="row">
                     <div class="col-sm-6">
-                          <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                          <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-                          <label for="customCheckbox1" class="custom-control-label">Available</label>
-                        </div>
+                           <div class="form-group">
+                          <label class="custom-control custom-checkbox">
+   <input type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
+   <span class="custom-control-label" for="chbxTerms">Custom checkbox</span>
+   </label>
                       </div>
                     </div>    
                     <div class="col-sm-6">
-                      <input type="submit" value="add T-Shirt" class="btn btn-success float-right">
+                      <input type="submit" value="Edit Slipper Bottle" class="btn btn-success float-right">
                     </div>   
                   </div>
                                        
@@ -463,59 +585,18 @@
           <!-- /.card -->
         </div>
       </div>
-              <!-- /.row -->
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">T-Shirts</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 450px;">
-                                    <label for="inputStatus">Type</label>
-                <select class="form-control custom-select">
-                  <option selected disabled>All</option>
-                  <option>Customized T-shirt</option>
-                  <option>3D T-shirt</option>
-                </select>
-
-                    <!-- <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div> -->
-                  </div>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <div id="samplejson"></div>
-                
-              </div>
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
         </div>
-        <!-- /.row -->
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.1
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
     </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer>
-
-  <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
-  <!-- /.control-sidebar -->
+  </div>
+  
 </div>
-<!-- ./wrapper -->
 
 <!-- jQuery -->
 <script src="../../plugins/jquery/jquery.min.js"></script>
@@ -525,91 +606,75 @@
 <script src="../../dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
-<script src="../../dist/js/tagscript.js"></script>
+
 <script type="text/javascript">
-  function add_company(){
-    console.log("func")
-    let companyname = document.getElementById("company_name").value
-    let comp_data = {
-      "company_name" : "moto"
-    }
-        fetch('http://localhost:5600/api/phonecase/addcompany', {
-    method: 'post',
-    body: JSON.stringify(comp_data),
-              headers: {
-            "Content-Type": "application/json"
-          }
-  }).then(function(response) {
-    return response.json();
-  }).then(function(data) {
-    console.log(data)
-  });
-  }
-
+  function checkAll()
+ {
+     var tablek = document.getElementById ('Slipper Bottletable');
+     var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
+     var val = checkboxes[0].checked;
+     for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
+ }
 </script>
-<script type="text/javascript">
-  function companylist(){
-      var strs = [ "Customized T-shirt", "3D T-shirt"];
-var list = document.getElementById('tshirt_type_list');
-for (var i in strs) {
-  var spanli = document.createElement("span")
-  spanli.innerText = strs[i];
-
-  var elem = document.createElement("li");
-  elem.setAttribute("class", "list-group-item");
-  elem.appendChild(spanli);
-  list.appendChild(elem);
-}
-
-  }
-  companylist()
-
-</script>
-    name : 
-    company : 
-    image_2d : 
-    image_3d : 
-    image_4d : 
-    price: 
-    available_status: 
 <script>
+
+    function editproduct(test){
+      console.log(test)
+      let arrayn = test.getAttribute("data-key")
+      console.log(arrayn)
+      console.log(myBooks[arrayn].name)
+      document.getElementById("modal_name").value = myBooks[arrayn].name
+      document.getElementById("modal_price").value = myBooks[arrayn].price
+      document.getElementById("modal_description").value = myBooks[arrayn].description
+      document.getElementById("modal_size").value = myBooks[arrayn].size
+      // var row = $(test).closest("tr");
+      // test.removeAttribute("class","btn-primary")
+      // test.setAttribute("class","btn-success")
+      // test.innerHTML = "Save"
+      // var rowedit = row[0]
+      // rowedit.setAttribute("contenteditable","true")
+      // rowedit.focus()
+      // console.log(test)
+      // console.log(row[0])
+    }
+
     function CreateTableFromJSON() {
-        var myBooks = [
+        myBooks = [
             {
-                "name":"Men Round Neck Full Sleeves",
-                "type":"Customized",
-                "header_image": "path/header_image.jpg",
-                "in_image": "path/in_image.jpg",
-                "sizes_available": "S,M,L,L,XL,XXL",
-                "Price": "299",
-                "available_status":1
+                "name":"MDF Heart Shape Slipper Bottle",
+                "size": "55x50mm",
+                "h_img" : "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "description": "Its heart a Slipper Bottle",
+                "price": "199",
+                "avail":1
             },
                         {
-                "name":"Men Round Neck Half Sleeves",
-                "type":"3D",
-                "header_image": "path/header_image.jpg",
-                "in_image": "path/in_image.jpg",
-                "sizes_available": "S,M,L,L,XL,XXL",
-                "Price": "299",
-                "available_status":1
+                "name":"MDF Double Heart",
+                "size": "55x50mm",
+                "h_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "description": "Its doubleheart a Slipper Bottle",
+                "price": "299",
+                "avail":1
             },
                           {
-                "name":"Boys Round Neck Half Sleeves Printed 3D Tiger T-Shirt",
-                "type":"3D",
-                "header_image": "path/header_image.jpg",
-                "in_image": "path/in_image.jpg",
-                "sizes_available": "S,M,L,L,XL,XXL",
-                "Price": "299",
-                "available_status":1
+                "name":"MDF Pink Double Heart",
+                "size": "55x50mm",
+                "h_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                 "description": "Its doubleheart a Slipper Bottle",
+                "price": "299",
+                "avail":1
             },
                            {
-                "name":"Girls Round Neck Half Sleeves Printed 3D Tiger T-Shirt",
-                 "type":"Customized",
-                "header_image": "path/header_image.jpg",
-                "in_image": "path/in_image.jpg",
-                "sizes_available": "S,M,L,L,XL,XXL",
-                "Price": "299",
-                "available_status":1
+                "name":"MDF Red Double Heart",
+                 "size": "55x50mm",
+                "h_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
+                 "description": "Its doubleheart a Slipper Bottle",
+                "price": "299",
+                "avail":1
             }        ]
 
         // EXTRACT VALUE FOR HTML HEADER. 
@@ -626,25 +691,56 @@ for (var i in strs) {
         // CREATE DYNAMIC TABLE.
         var table = document.createElement("table");
         table.setAttribute("class", "table");
+        table.setAttribute("id","Slipper Bottletable")
         // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
-        var tr = table.insertRow(-1);                   // TABLE ROW.
+        var tr = table.insertRow(-1);  
+        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
 
         for (var i = 0; i < col.length; i++) {
-            var th = document.createElement("th");      // TABLE HEADER.
+            var th = document.createElement("th");  
+                // TABLE HEADER.
             th.innerHTML = col[i];
             tr.appendChild(th);
+
         }
+        var thn =  document.createElement("th"); 
+        thn.innerHTML = "Action";
+            tr.appendChild(thn);
+        var ths = document.createElement("th")
+        ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
+        tr.appendChild(ths);
 
         // ADD JSON DATA TO THE TABLE AS ROWS.
         for (var i = 0; i < myBooks.length; i++) {
 
             tr = table.insertRow(-1);
-
+            //tr.setAttribute("contenteditable", "true"); 
             for (var j = 0; j < col.length; j++) {
                 var tabCell = tr.insertCell(-1);
                 tabCell.innerHTML = myBooks[i][col[j]];
             }
+            console.log(myBooks[i])
+             let delbtn = document.createElement("button")
+             delbtn.setAttribute("class", "btn btn-danger");
+             delbtn.innerHTML = "Delete"
+             delbtn.style.margin = "5px";
+            let editbtn = document.createElement("button")
+            editbtn.setAttribute("class", "btn btn-primary");
+            editbtn.style.margin = "5px";
+            editbtn.setAttribute("onclick", "editproduct(this)");
+            editbtn.setAttribute("data-toggle", "modal");
+            editbtn.setAttribute("data-target", "#myModal");
+            editbtn.setAttribute("data-key",i)
+            delbtn.setAttribute("data-key",i)
+            editbtn.innerHTML = "Edit"
+            let td = document.createElement("td");
+            let std = document.createElement("td");
+            std.innerHTML = "<input class='' type='checkbox'>"
+            td.appendChild(editbtn)
+            td.appendChild(delbtn)
+            tr.appendChild(td)
+            tr.appendChild(std)
         }
 
         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.

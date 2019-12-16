@@ -340,13 +340,13 @@
                       <!-- text input -->
                       <div class="form-group">
                         <label>Name</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <input id="k_name" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
                     <div class="col-sm-2">
                       <div class="form-group">
                         <label>Price</label>
-                        <input type="number" class="form-control" placeholder="Enter ...">
+                        <input id="k_price" type="number" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>                    <div class="col-sm-3">
                                         <div class="form-group">
@@ -382,14 +382,14 @@
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             <label>Description</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <textarea id="k_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                         </div>
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
                         <label>Size</label>
-                        <input type="text" class="form-control" placeholder="Enter ...">
+                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                       </div>
                   </div>
@@ -404,7 +404,7 @@
                       </div>
                     </div>    
                     <div class="col-sm-6">
-                      <input type="submit" value="add Keychain" class="btn btn-success float-right">
+                      <input type="button" id="add_keychain" value="add Keychain" class="btn btn-success float-right">
                     </div>   
                   </div>
                                        
@@ -517,6 +517,7 @@
                                 <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
+                       <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
                         <label>Name</label>
                         <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
@@ -583,7 +584,7 @@
                       </div>
                     </div>    
                     <div class="col-sm-6">
-                      <input type="submit" value="Edit Keychain" class="btn btn-success float-right">
+                      <input onclick="editkeychain()" type="button" value="Edit Keychain" class="btn btn-success float-right">
                     </div>   
                   </div>
                                        
@@ -615,6 +616,51 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../../dist/js/demo.js"></script>
 
+
+
+
+
+<!-- <script type="text/javascript">
+  function getdatafortable(unfiltered){
+    var filters = ["name","size","price"];
+    let filtered = JSON.parse(unfiltered).map(function(currObj) {
+  var temp = {};
+  for identifier in filters:
+    temp[identifier] = currObj[identifier];
+  return temp;
+});
+    return filtered
+  }
+</script> -->
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  $('#add_keychain').click(function(e) {
+    let name = document.getElementById("k_name").value
+    let size = document.getElementById("k_size").value
+    let price = document.getElementById("k_price").value
+    let description = document.getElementById("k_description").value
+    let keydata = {
+      name:name,
+      size:size,
+      price:price,
+      description:description
+    }
+    //console.log(keydata)
+    fetch("http://localhost:5600/api/product/addkeychain",
+{
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify(keydata)
+})
+.then(function(res){ getproducts() })
+.catch(function(res){ console.log(res) })
+        });
+})</script>
+
 <script type="text/javascript">
   function checkAll()
  {
@@ -626,15 +672,30 @@
 </script>
 <script>
 
+  function getkeychains(oldkeychains){
+    let tokeyc = oldkeychains
+    console.log(oldkeychains)
+    let newkeychains = oldkeychains.map(keychain => {
+      delete keychain._id
+      delete keychain.__v
+      delete keychain.available_status
+      return keychain
+    })
+    //console.log(newkeychains)
+    return newkeychains
+  }
+
     function editproduct(test){
-      console.log(test)
+     // console.log(test)
       let arrayn = test.getAttribute("data-key")
-      console.log(arrayn)
-      console.log(myBooks[arrayn].name)
-      document.getElementById("modal_name").value = myBooks[arrayn].name
-      document.getElementById("modal_price").value = myBooks[arrayn].price
-      document.getElementById("modal_description").value = myBooks[arrayn].description
-      document.getElementById("modal_size").value = myBooks[arrayn].size
+      console.log(okchains[arrayn])
+      //console.log(okchains[arrayn].name)
+      document.getElementById("modal_id").value = okchains[arrayn]._id
+      //console.log(document.getElementById("modal_id").value)
+      document.getElementById("modal_name").value = okchains[arrayn].name
+      document.getElementById("modal_price").value = okchains[arrayn].price
+      document.getElementById("modal_description").value = okchains[arrayn].description
+      document.getElementById("modal_size").value = okchains[arrayn].size
       // var row = $(test).closest("tr");
       // test.removeAttribute("class","btn-primary")
       // test.setAttribute("class","btn-success")
@@ -646,47 +707,37 @@
       // console.log(row[0])
     }
 
-    function CreateTableFromJSON() {
-        myBooks = [
-            {
-                "name":"MDF Heart Shape Keychain",
-                "size": "55x50mm",
-                "h_img" : "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
-                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
-                "description": "Its heart a keychain",
-                "price": "199",
-                "avail":1
-            },
-                        {
-                "name":"MDF Double Heart",
-                "size": "55x50mm",
-                "h_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
-                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
-                "description": "Its doubleheart a keychain",
-                "price": "299",
-                "avail":1
-            },
-                          {
-                "name":"MDF Pink Double Heart",
-                "size": "55x50mm",
-                "h_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
-                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
-                 "description": "Its doubleheart a keychain",
-                "price": "299",
-                "avail":1
-            },
-                           {
-                "name":"MDF Red Double Heart",
-                 "size": "55x50mm",
-                "h_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
-                "in_img": "<button style='padding:1px 4px' data-toggle='modal' data-target='#imageModal' class='btn btn-info'>view</button>",
-                 "description": "Its doubleheart a keychain",
-                "price": "299",
-                "avail":1
-            }        ]
+    function editkeychain(){
+      console.log("edit ran")
+        let name = document.getElementById("modal_name").value
+    let size = document.getElementById("modal_size").value
+    let price = document.getElementById("modal_price").value
+    let description = document.getElementById("modal_description").value
+    let keyid = document.getElementById("modal_id").value
+      let keditdata = {
+        name, size, price, description
+      }
+      console.log(keyid)
+      console.log("k edit data")
+      console.log(keditdata)
 
-        // EXTRACT VALUE FOR HTML HEADER. 
-        // ('Book ID', 'Book Name', 'Category' and 'Price')
+          fetch(`http://localhost:5600/api/product/editkeychain/${keyid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(keditdata)
+          })
+          .then(function(res){ getproducts() })
+          .catch(function(res){ console.log(res) })
+    }
+
+    function CreateTableFromJSON(myBookso) {
+      let myBooks = getkeychains(myBookso)
+
+
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
             for (var key in myBooks[i]) {
@@ -728,7 +779,7 @@
                 var tabCell = tr.insertCell(-1);
                 tabCell.innerHTML = myBooks[i][col[j]];
             }
-            console.log(myBooks[i])
+          //  console.log(myBooks[i])
              // let delbtn = document.createElement("button")
              // delbtn.setAttribute("class", "btn btn-danger");
              // delbtn.innerHTML = "Delete"
@@ -760,7 +811,34 @@
         divContainer.innerHTML = "";
         divContainer.appendChild(table);
     }
-    CreateTableFromJSON() 
+      function getproducts(){
+    fetch("http://localhost:5600/api/product/keychains")
+    .then(response => {
+     // console.log(response)
+      return response.json()})
+    .then(data => {
+   okchains = Object.assign({}, data);
+   console.log(okchains)
+      //okchains = data
+      //let newkeychains = getkeychains(data)
+      
+      CreateTableFromJSON(data)
+   })
+    .catch(err => console.log(err))
+}
+      // let filters = ["name", "size", "price"]
+      // let ndata = JSON.parse(unfiltered).map(function(currObj) {
+      // var temp = {};
+      // for identifier in filters:
+      //   temp[identifier] = currObj[identifier];
+      // return temp;
+      // });
+
+    getproducts()
+</script>
+
+<script type="text/javascript">
+
 </script>
 </body>
 </html>

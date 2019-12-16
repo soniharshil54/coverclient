@@ -713,7 +713,7 @@
 
         }
         var thn =  document.createElement("th"); 
-        thn.innerHTML = "Action";
+        thn.innerHTML = "Edit";
             tr.appendChild(thn);
         var ths = document.createElement("th")
         ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
@@ -729,10 +729,10 @@
                 tabCell.innerHTML = myBooks[i][col[j]];
             }
             console.log(myBooks[i])
-             let delbtn = document.createElement("button")
-             delbtn.setAttribute("class", "btn btn-danger");
-             delbtn.innerHTML = "Delete"
-             delbtn.style.margin = "5px";
+             // let delbtn = document.createElement("button")
+             // delbtn.setAttribute("class", "btn btn-danger");
+             // delbtn.innerHTML = "Delete"
+             // delbtn.style.margin = "5px";
             let editbtn = document.createElement("button")
             editbtn.setAttribute("class", "btn btn-primary");
             editbtn.style.marginRight = "2px";
@@ -740,17 +740,17 @@
             editbtn.setAttribute("data-toggle", "modal");
             editbtn.setAttribute("data-target", "#myModal");
             editbtn.setAttribute("data-key",i)
-            delbtn.setAttribute("data-key",i)
-            delbtn.setAttribute("onclick", "deleteproduct(this)")
+            // delbtn.setAttribute("data-key",i)
+            // delbtn.setAttribute("onclick", "deleteproduct(this)")
             editbtn.style.padding = "1px 5px";
-            delbtn.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
             editbtn.innerHTML = "Edit"
             let td = document.createElement("td");
             td.style.padding = "5px";
             let std = document.createElement("td");
             std.innerHTML = "<input class='' type='checkbox'>"
             td.appendChild(editbtn)
-            td.appendChild(delbtn)
+            // td.appendChild(delbtn)
             tr.appendChild(td)
             tr.appendChild(std)
         }

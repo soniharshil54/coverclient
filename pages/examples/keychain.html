@@ -421,7 +421,7 @@
             <div class="card">
               <div class="card-header">
                 <h3 class="card-title">Keychains</h3>
-  <h3 class="card-title" style="float: right"><button class="btn btn-danger">Delete Selected</button></h3>
+  <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3>
                 <div class="card-tools">
                 </div>
               </div>
@@ -669,6 +669,17 @@
      var val = checkboxes[0].checked;
      for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
  }
+
+  function printChecked(){
+    var items=document.getElementsByName('todelete');
+    var selectedItems=[];
+    for(var i=0; i<items.length; i++){
+      if(items[i].type=='checkbox' && items[i].checked==true)
+        selectedItems.push(items[i].value);
+    }
+    console.log(selectedItems);
+    return selectedItems
+  }     
 </script>
 <script>
 
@@ -683,6 +694,26 @@
     })
     //console.log(newkeychains)
     return newkeychains
+  }
+
+  function deletekeychains(){
+    let todeleteids = printChecked()
+    let deleteArray = {
+      todeleteids
+    }
+              fetch(`http://localhost:5600/api/product/deletekeychains`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "DELETE",
+            body: JSON.stringify(deleteArray)
+          })
+          .then(function(res){ 
+            getproducts() 
+          })
+          .catch(function(res){ console.log(res) })
   }
 
     function editproduct(test){
@@ -730,7 +761,10 @@
             method: "PUT",
             body: JSON.stringify(keditdata)
           })
-          .then(function(res){ getproducts() })
+          .then(function(res){ 
+            $("#myModal").modal("hide");
+            getproducts() 
+          })
           .catch(function(res){ console.log(res) })
     }
 
@@ -799,7 +833,13 @@
             let td = document.createElement("td");
             td.style.padding = "5px";
             let std = document.createElement("td");
-            std.innerHTML = "<input class='' type='checkbox'>"
+            let deleteCheck = document.createElement("input")
+            deleteCheck.setAttribute("type","checkbox")
+            deleteCheck.setAttribute("name","todelete")
+            deleteCheck.setAttribute("value",okchains[i]._id)
+
+            console.log(deleteCheck)
+            std.appendChild(deleteCheck)
             td.appendChild(editbtn)
             // td.appendChild(delbtn)
             tr.appendChild(td)
@@ -817,8 +857,12 @@
      // console.log(response)
       return response.json()})
     .then(data => {
-   okchains = Object.assign({}, data);
-   console.log(okchains)
+      okchains = data.map(a => ({...a}));
+      //let okchains = Object.assign({}, data);
+      console.log(okchains)
+  // okchains = Object.assign({}, data);
+   //console.log(okchains)
+   //let testkey = Object.assign({}, data);
       //okchains = data
       //let newkeychains = getkeychains(data)
       

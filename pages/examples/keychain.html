@@ -303,6 +303,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item has-treeview">
+            <button onclick="logOutUser()" style="width: 100%" class="nav-link">              
+              <p>
+                Logout
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </button>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
@@ -671,6 +679,13 @@
 })</script>
 
 <script type="text/javascript">
+
+  function logOutUser(){
+    localStorage.clear();
+    location.href =  "file:///home/phoenix/Downloads/archives/admintemp/pages/examples/login.html";
+  }
+
+
   function checkAll()
  {
      var tablek = document.getElementById ('keychaintable');

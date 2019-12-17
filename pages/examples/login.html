@@ -112,19 +112,28 @@ function loginAdmin(){
     method: "POST",
     body: JSON.stringify(logindata)
 })
-.then(function(res){ 
-    if(res.staus !== 200){
-          console.log(res.status)
-         return res.json()
-    }
-    else {
-      loggedIn()
-    }
+.then(function(res){         
+  return res.json()
+
+      //loggedIn()
+    
 
  })
 .then(function(result){
+  if(result.status !== 200){
+    document.getElementById("log_error").innerHTML = result.message
     console.log(result)
-  document.getElementById("log_error").innerHTML = result.message
+  }
+  else {
+      const loggeduser = result.admin[0]
+        console.log(loggeduser)
+        const token = result.token
+       localStorage.setItem('luser',JSON.stringify(loggeduser))
+        var userlogged = JSON.parse(localStorage.getItem('luser'))
+        localStorage.setItem('authorization',token)
+        loggedIn()
+  }
+  
 }
   )
 .catch(function(res){ 

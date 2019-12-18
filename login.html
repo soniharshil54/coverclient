@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AdminLTE 3 | Log in</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+    <a href="../../index2.html"><b>Admin</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Sign in to start your session</p>
+
+      <form action="index3.html" method="post">
+        <div class="input-group mb-3">
+          <input type="email" id="logMail" class="form-control" placeholder="Email">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-envelope"></span>
+            </div>
+          </div>
+        </div>
+        <div class="input-group mb-3">
+          <input type="password" id="logPassword" class="form-control" placeholder="Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <span style="color: red" id="log_error"></span>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button onclick="loginAdmin()" type="button" id="log_in" class="btn btn-primary btn-block">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<script type="text/javascript">
+
+      function loggedIn(){
+    
+    if (localStorage.getItem("luser") === null) {
+      $('#loggedIn').css("display","none")
+        $('#logintosee').html("login to see the registered users")
+        $('#notloggedbtn').css("display","block")
+        
+    }
+    else{
+      var loguser = JSON.parse(localStorage.getItem('luser'));
+      var username = loguser.name;
+
+      // window.location = "http://www.yoururl.com";
+      var authtokend = localStorage.getItem('authorization')
+      console.log(authtokend)
+      
+      console.log(username)
+      location.href =  "file:///home/phoenix/Downloads/archives/admintemp/index2.html";
+    }
+  }
+
+function loginAdmin(){
+        var lemail = $('#logMail').val()
+      var lpass = $('#logPassword').val()
+
+      let logindata = {
+        email : lemail,
+        password : lpass
+      }
+
+
+
+          fetch("http://localhost:5600/api/admin/login",
+{
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify(logindata)
+})
+.then(function(res){         
+  return res.json()
+
+      //loggedIn()
+    
+
+ })
+.then(function(result){
+  if(result.status !== 200){
+    document.getElementById("log_error").innerHTML = result.message
+    console.log(result)
+  }
+  else {
+      const loggeduser = result.admin[0]
+        console.log(loggeduser)
+        const token = result.token
+       localStorage.setItem('luser',JSON.stringify(loggeduser))
+        var userlogged = JSON.parse(localStorage.getItem('luser'))
+        localStorage.setItem('authorization',token)
+        loggedIn()
+  }
+  
+}
+  )
+.catch(function(res){ 
+         console.log(res)
+
+ })
+}
+
+
+
+
+
+</script>
+<script type="text/javascript">
+        // $.post('http://localhost:5600/api/admin/login',
+      // {
+      //   email: lemail,
+      //   password: lpass
+      // },
+      // function(data){
+      //   const loggeduser = data.admin[0]
+      //   console.log(loggeduser)
+      //   const token = data.token
+        
+      //   localStorage.setItem('luser',JSON.stringify(loggeduser))
+      //   var userlogged = JSON.parse(localStorage.getItem('luser'))
+      //   localStorage.setItem('authorization',token)
+      //   $('#log_error').text("")
+      //    $("#logIn").modal("hide");
+      //   loggedIn()
+      // }
+      // ).fail(function(err){
+      //   var errorjson = err.responseJSON
+      //   console.log(errorjson)
+      //   $('#log_error').text(errorjson.message)
+      // })
+</script>
+
+</body>
+</html>
+

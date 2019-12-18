@@ -140,7 +140,7 @@
   </nav>
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
+   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="index3.html" class="brand-link">
@@ -151,15 +151,6 @@
 
     <!-- Sidebar -->
     <div class="sidebar">
-      <!-- Sidebar user panel (optional) -->
-      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-        <div class="image">
-          <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
-      </div>
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -167,7 +158,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="./index2.html" class="nav-link active">
+            <a href="index2.html" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -175,8 +166,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Products
@@ -186,55 +177,55 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="pages/examples/phonecase.html" class="nav-link">
+                <a href="phonecase.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Phone cases</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/tshirt.html" class="nav-link">
+                <a href="tshirt.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>T-Shirts</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/keychain.html" class="nav-link">
+                <a id="keychain_link" href="product.html#keychain" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Keychains</p>
+                  <p>Keychain</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/mug.html" class="nav-link">
+                <a id="mug_link" href="product.html#mug"  class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mug</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/photoframe.html" class="nav-link">
+                <a id="photoframe_link" href="product.html#photoframe" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Photo Frame</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/popholder.html" class="nav-link">
+                <a id="popholder_link" href="product.html#popholder" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Popholder</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/sbottle.html" class="nav-link">
+                <a id="slipperbottle_link" href="product.html#slipperbottle" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Slipper Bottle</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/wclock.html" class="nav-link">
+                <a id="wallclock_link" href="product.html#wallclock" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Wall Clock</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="pages/examples/watch.html" class="nav-link">
+                <a id="Watch_link" href="product.html#watch" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Watches</p>
                 </a>
@@ -276,6 +267,23 @@
                 <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="cpassword.html" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Change Password
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <button onclick="logOutUser()" style="width: 100%" class="nav-link">              
+              <p>
+                Logout
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </button>
           </li>
         </ul>
       </nav>

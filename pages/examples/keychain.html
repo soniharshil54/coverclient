@@ -344,7 +344,9 @@
                     <label for="exampleInputFile">header image</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <form name="pImages" id="pImages" enctype="multipart/form-data">
+                        <input name="hImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
+                        
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -358,7 +360,8 @@
                     <label for="exampleInputFile">in image</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <input name="inImage" id="inImage" type="file" class="custom-file-input" id="exampleInputFile">
+                        </form>
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                      <!--  <div class="input-group-append">
@@ -524,7 +527,7 @@
                     <label for="exampleInputFile">header image</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                        <input type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -632,6 +635,7 @@
     let size = document.getElementById("k_size").value
     let price = document.getElementById("k_price").value
     let description = document.getElementById("k_description").value
+    let inputfile = document.getElementById("productImage").files[0]
     let keydata = {
       name:name,
       size:size,
@@ -648,7 +652,16 @@
     method: "POST",
     body: JSON.stringify(keydata)
 })
-.then(function(res){ getproducts(globalProduct) })
+.then(function(res){ 
+  return res.json()
+  })
+.then(function(result){
+  console.log(result)
+  let productId = result.product._id
+  console.log(productId)
+  uploadFile(productId)
+  
+})
 .catch(function(res){ console.log(res) })
         });
 })</script>
@@ -686,6 +699,21 @@
 </script>
 <script>
 
+  function uploadFile(productid){
+    //var input = document.querySelector('input[type="file"]')
+    var form = document.getElementById("pImages");
+    var formData = new FormData(form);
+
+fetch(`http://localhost:5600/api/product/keychain/addimage/${productid}`, {
+  method: 'PUT',
+  body: formData
+}).then(res => {
+  console.log(res)
+  getproducts(globalProduct)
+}).catch(err => console.log(err))
+
+  }
+
   function getkeychains(oldkeychains){
     let tokeyc = oldkeychains
     console.log(oldkeychains)
@@ -715,7 +743,7 @@
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
-            getproducts(getproducts) 
+            getproducts(globalProduct) 
           })
           .catch(function(res){ console.log(res) })
   }
@@ -768,7 +796,7 @@
           })
           .then(function(res){ 
             $("#myModal").modal("hide");
-            getproducts(getproducts) 
+            getproducts(globalProduct) 
           })
           .catch(function(res){ console.log(res) })
     }
@@ -843,7 +871,7 @@
             deleteCheck.setAttribute("name","todelete")
             deleteCheck.setAttribute("value",okchains[i]._id)
 
-            console.log(deleteCheck)
+            // console.log(deleteCheck)
             std.appendChild(deleteCheck)
             td.appendChild(editbtn)
             // td.appendChild(delbtn)

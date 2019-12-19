@@ -981,10 +981,12 @@ fetch(`http://localhost:5600/api/product/keychain/addimage/${productid}`, {
         if(window.location.hash) {
       var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
       console.log(hash)
+
       getproducts(hash)
       // hash found
   } else {
       getproducts("keychain")
+      document.getElementById("keychain_link").setAttribute("class","nav-link active")
   }
 
     

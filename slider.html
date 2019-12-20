@@ -298,7 +298,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Phone case</h1>
+            <h1>Sliders</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -315,15 +315,15 @@
       <div class="row">
         <div class="col-md-6">
           <div class="card card-primary collapsed-card">
-            <div class="card-header">
+          <!--   <div class="card-header">
               <h3 class="card-title">Add company</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-plus"></i></button>
               </div>
-            </div>
-            <div class="card-body">
+            </div> -->
+        <!--     <div class="card-body">
               <div style="margin-bottom: 20px; height: 30px" class="input-group input-group-sm">
                   <input id = "company_name" type="text" class="form-control">
                   <span class="input-group-append">
@@ -334,21 +334,21 @@
                 <ul style="list-style-position: inside;" class="list-group list-group-horizontal" id="company_list"></ul>
               </div>
 
-            </div>
+            </div> -->
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
         </div>
         <div class="col-md-6">
           <div class="card card-secondary collapsed-card">
-            <div class="card-header">
+          <!--   <div class="card-header">
               <h3 class="card-title">Add model</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-plus"></i></button>
               </div>
-            </div>
+            </div> -->
             <div class="card-body">
                             <div class="form-group">
                 <label for="inputStatus">Company</label>
@@ -385,8 +385,13 @@
                       <!-- text input -->
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
-                       <label>Size</label>
-                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
+                        <label>Company</label>
+                                        <select onchange="getcompopt()" id="modal_option" class="form-control custom-select">
+                  <option selected disabled>Select one</option>
+                  <option>Samsung</option>
+                  <option>Oppo</option>
+                  <option>Vivo</option>
+                </select>
                       </div>
                     </div>
                     <div class="col-sm-6">
@@ -456,22 +461,19 @@
               <div class="card-header">
                 <h3 class="card-title">Models</h3>
 
-                <div class="card-tools">
+             <!--    <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 470px;">
                                     <label for="inputStatus">Company</label>
-                <select onchange="filterbycompany()" id="sel_comp" class="form-control custom-select">
+                <select id="sel_comp" class="form-control custom-select">
                   <option selected disabled>All</option>
                   <option>Samsung</option>
                   <option>Oppo</option>
                   <option>Vivo</option>
-                </select>
-  <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3>
+                </select> -->
+  <!-- <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3> -->
 
-                    <!-- <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div> -->
-                  </div>
-                </div>
+                 <!--  </div>
+                </div> -->
 
                 <div class="card-tools">
                 </div>
@@ -545,7 +547,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header" style="">
-          <h4 id="productEditHeading" class="modal-title">Edit Keychain</h4>
+          <h4 id="productEditHeading" class="modal-title">Change slider</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -565,70 +567,19 @@
             <div class="card-body" style="display: block">
                 
                                 <div class="row">
+                   
+                          
                     <div class="col-sm-6">
-                      <!-- text input -->
-                       <input type="hidden" id="modal_id" name="modal_id" value="">
-                      <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Price</label>
-                        <input type="number" id="modal_price" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>       
-                                        <div class="col-sm-6">
-                      <!-- text input -->
-                       <input type="hidden" id="modal_id" name="modal_id" value="">
-                      <div class="form-group">
-                        <label>Company</label>
-                                        <select onchange="getcompopt()" id="modal_option" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option>Samsung</option>
-                  <option>Oppo</option>
-                  <option>Vivo</option>
-                </select>
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                          <label for="exampleInputFile">2d image</label>
-                    <div class="input-group">
-                      <img width="38px" height="38px" id="modal_2d_image" src="">
-                      <div class="custom-file">
-                        <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
-                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                    </div>              <div class="col-sm-6">
+                      <input type="hidden" id="modal_id" name="modal_id" value="">
+                      <input type="hidden" id="modal_name" class="form-control" placeholder="Enter ...">
                                         <div class="form-group">
-                    <label for="exampleInputFile">3d image</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="modal_3d_image" src="">
+                      <img width="38px" height="38px" id="modal_slider_image" src="">
                       <div class="custom-file">
-                        
-                        <input name="image_3d" type="file" class="custom-file-input" id="productImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div>
-                    </div>
-                    <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">4d image</label>
-                    <div class="input-group">
-                      <img width="38px" height="38px" id="modal_4d_image" src="">
-                      <div class="custom-file">
-                        <input name="image_4d" type="file" class="custom-file-input" id="exampleInputFile">
+                        <form name="sliderImages" id="slider_images" enctype="multipart/form-data">
+                        <input name="modal_slider_image" type="file" class="custom-file-input" id="exampleInputFile">
                       </form>
+                      
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                      <!--  <div class="input-group-append">
@@ -637,36 +588,16 @@
                     </div>
                   </div>
                     </div>
+                    <div class="col-sm-6">
+                      <label for="exampleInputFile"></label>
+                      <input id="productEditBtn" onclick="editkeychain()" type="button" value="Change slider" class="btn btn-success float-right">
+                    </div> 
                   </div>
                   <div class="row">
-                    <div class="col-sm-8">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Description</label>
-                        <input id="modal_description" type="textarea" class="form-control" placeholder="Enter ...">
-                        </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                        <label>Size</label>
-                        <input id="modal_size" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                      </div>
                   </div>
                   
-                  <div class="row">
-                    <div class="col-sm-6">
-                           <div class="form-group">
-                          <label class="custom-control custom-checkbox">
-   <input id="modal_avail_status" type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
-   <span class="custom-control-label" for="chbxTerms">Available</span>
-   </label>
-                      </div>
-                    </div>    
-                    <div class="col-sm-6">
-                      <input id="productEditBtn" onclick="editkeychain()" type="button" value="Edit Phonecase" class="btn btn-success float-right">
-                    </div>   
+                  <div class="row">   
+                      
                   </div>
                                        
             </div>
@@ -703,7 +634,7 @@
   $('#add_phonecase').click(function(e) {
     let name = document.getElementById("k_name").value
     let company = document.getElementById("comp_option").value
-     let size = document.getElementById("k_size").value
+    // let size = document.getElementById("k_size").value
     let price = document.getElementById("k_price").value
     let description = document.getElementById("k_description").value
     let avail_status = document.getElementById("is_avail").checked
@@ -713,7 +644,6 @@
       name:name,
       company:company,
       price:price,
-      size:size,
       description:description,
       available_status:available_status
     }
@@ -755,17 +685,6 @@
      var val = checkboxes[0].checked;
      for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
  }
-
-function filterbycompany(){
-  console.log("filtering")
-  let filcompany = document.getElementById("sel_comp").value
-  let testcomp = okchains.map(a => ({...a}));
-  let result = testcomp.filter(i => {
-    console.log(i)
-    return i.company === filcompany}) ; 
-  console.log(result)
-  CreateTableFromJSON(result)
-}
 
   function printChecked(){
     var items=document.getElementsByName('todelete');
@@ -847,7 +766,7 @@ for (var i in strs) {
     .catch(err => console.log(err))
   }
 
-  getcompanies()
+ // getcompanies()
 
 
 
@@ -877,19 +796,11 @@ for (var i in strs) {
       let arrayn = test.getAttribute("data-key")
       console.log(okchains[arrayn])
       //console.log(okchains[arrayn].name)
+      document.getElementById("modal_name").value = okchains[arrayn].product_name
       document.getElementById("modal_id").value = okchains[arrayn]._id
       //console.log(document.getElementById("modal_id").value)
-      document.getElementById("modal_name").value = okchains[arrayn].name
-      document.getElementById("modal_option").value = okchains[arrayn].company
-      document.getElementById("modal_price").value = okchains[arrayn].price
-      document.getElementById("modal_description").value = okchains[arrayn].description
-      document.getElementById("modal_size").value = okchains[arrayn].size
-      let image_2d = okchains[arrayn].image_2d
-      let image_3d = okchains[arrayn].image_3d
-      let image_4d = okchains[arrayn].image_4d
-      document.getElementById("modal_2d_image").src = `http://localhost:5600/admin/uploads/${image_2d}`
-      document.getElementById("modal_3d_image").src = `http://localhost:5600/admin/uploads/${image_3d}`
-      document.getElementById("modal_4d_image").src = `http://localhost:5600/admin/uploads/${image_4d}`
+      let slider_image = okchains[arrayn].slider_image
+      document.getElementById("modal_slider_image").src = `http://localhost:5600/admin/uploads/${slider_image}`
       // var row = $(test).closest("tr");
       // test.removeAttribute("class","btn-primary")
       // test.setAttribute("class","btn-success")
@@ -904,37 +815,12 @@ for (var i in strs) {
     function editkeychain(){
       console.log("edit ran")
         let name = document.getElementById("modal_name").value
-        let company = document.getElementById("modal_option").value
-    let size = document.getElementById("modal_size").value
-    let price = document.getElementById("modal_price").value
-    let description = document.getElementById("modal_description").value
     let keyid = document.getElementById("modal_id").value
-    let avail_status = document.getElementById("modal_avail_status").checked
-    //console.log("avail status", avail_status)
-    let available_status = avail_status ? 1 : 0
-      let keditdata = {
-        name, company, size, price, description, available_status
-      }
       console.log(keyid)
       console.log("k edit data")
-      console.log(keditdata)
-
-          fetch(`http://localhost:5600/api/phonecase/editphonecase/${keyid}`,
-          {
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            method: "PUT",
-            body: JSON.stringify(keditdata)
-          })
-          .then(function(res){ 
-            uploadFileEdit(keyid)
-           // getproducts()
-            $("#myModal").modal("hide");
- 
-          })
-          .catch(function(res){ console.log(res) })
+      // console.log(keditdata)
+      uploadFileEdit(keyid)
+      $("#myModal").modal("hide");
     }
 
     function imageModal(imgname){
@@ -964,11 +850,12 @@ fetch(`http://localhost:5600/api/phonecase/addimage/${productid}`, {
   }
 
     function uploadFileEdit(productid){
+      console.log("productId is",productid)
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("edit_images");
+    var form = document.getElementById("slider_images");
     var formData = new FormData(form);
 
-fetch(`http://localhost:5600/api/phonecase/addimage/${productid}`, {
+fetch(`http://localhost:5600/api/product/addslider/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
@@ -991,7 +878,8 @@ fetch(`http://localhost:5600/api/phonecase/addimage/${productid}`, {
     return newkeychains
   }
     function CreateTableFromJSON(myBookso) {
-      let myBooks = getkeychains(myBookso)
+      let myBookson = getkeychains(myBookso)
+      var myBooks = JSON.parse(JSON.stringify( myBookson, ["product_display_name","slider_image"]));
 
 
         var col = [];
@@ -1024,7 +912,7 @@ fetch(`http://localhost:5600/api/phonecase/addimage/${productid}`, {
             tr.appendChild(thn);
         var ths = document.createElement("th")
         ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
-        tr.appendChild(ths);
+        //tr.appendChild(ths);
 
         // ADD JSON DATA TO THE TABLE AS ROWS.
         for (var i = 0; i < myBooks.length; i++) {
@@ -1033,7 +921,7 @@ fetch(`http://localhost:5600/api/phonecase/addimage/${productid}`, {
             //tr.setAttribute("contenteditable", "true"); 
             for (var j = 0; j < col.length; j++) {
               var tabCell = tr.insertCell(-1);
-              if(j===3 || j===4 || j===5){
+              if(j===1){
                 let image = '"'+myBooks[i][col[j]]+'"'
                 tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
                 console.log(myBooks[i][col[j]])
@@ -1075,7 +963,7 @@ fetch(`http://localhost:5600/api/phonecase/addimage/${productid}`, {
             td.appendChild(editbtn)
             // td.appendChild(delbtn)
             tr.appendChild(td)
-            tr.appendChild(std)
+            //tr.appendChild(std)
         }
 
         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
@@ -1086,7 +974,7 @@ fetch(`http://localhost:5600/api/phonecase/addimage/${productid}`, {
     //CreateTableFromJSON() 
 
           function getproducts(){
-    fetch(`http://localhost:5600/api/phonecase/getphonecases`)
+    fetch(`http://localhost:5600/api/product/sliders`)
     .then(response => {
      // console.log(response)
       return response.json()})

@@ -600,25 +600,25 @@
 <!-- PAGE SCRIPTS -->
 <script src="dist/js/pages/dashboard2.js"></script>
 <script type="text/javascript">
-        // function loggedIn(){
+        function loggedIn(){
     
-    // if (localStorage.getItem("luser") === null) {
-      // $('#loggedIn').css("display","none")
-        // $('#logintosee').html("login to see the registered users")
-        // $('#notloggedbtn').css("display","block")
-        // window.location = "file:///home/phoenix/Downloads/archives/admintemp/pages/examples/login.html";
-        // console.log(ran)
-    // }
-    // else{
-      // var loguser = JSON.parse(localStorage.getItem('luser'));
-      // var username = loguser.name;
+    if (localStorage.getItem("luser") === null) {
+      $('#loggedIn').css("display","none")
+        $('#logintosee').html("login to see the registered users")
+        $('#notloggedbtn').css("display","block")
+        window.location = "localhost/login.html";
+        console.log(ran)
+    }
+    else{
+      var loguser = JSON.parse(localStorage.getItem('luser'));
+      var username = loguser.name;
 
-      // var authtokend = localStorage.getItem('authorization')
-      // console.log(authtokend)
+      var authtokend = localStorage.getItem('authorization')
+      console.log(authtokend)
       
-      // console.log(username)    }
-  // }
-  // loggedIn()
+      console.log(username)    }
+  }
+  loggedIn()
   
 </script>
 </body>

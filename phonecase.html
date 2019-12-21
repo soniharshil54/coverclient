@@ -165,6 +165,15 @@
               </p>
             </a>
           </li>
+                    <li class="nav-item has-treeview menu-open">
+            <a href="slider.html" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Sliders
+                <!-- <i class="right fas fa-angle-left"></i> -->
+              </p>
+            </a>
+          </li>
           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-copy"></i>
@@ -313,7 +322,7 @@
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="card card-primary collapsed-card">
             <div class="card-header">
               <h3 class="card-title">Add company</h3>
@@ -339,7 +348,7 @@
           </div>
           <!-- /.card -->
         </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="card card-secondary collapsed-card">
             <div class="card-header">
               <h3 class="card-title">Add model</h3>
@@ -350,6 +359,8 @@
               </div>
             </div>
             <div class="card-body">
+              <div class="row">
+<div class="col-sm-6">
                             <div class="form-group">
                 <label for="inputStatus">Company</label>
                 <select onchange="getcompopt()" id="comp_option" class="form-control custom-select">
@@ -359,42 +370,24 @@
                   <option>Vivo</option>
                 </select>
               </div>
-                                <div class="row">
-                    <div class="col-sm-6">
+            </div>
+                                                    <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Name</label>
                         <input id="k_name" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Price</label>
-                        <input id="k_price" type="number" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Description</label>
-                        <textarea id="k_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
-                        </div>
-                        </div>
-                  <div class="row">
-                                <div class="col-sm-6">
+
                       <!-- text input -->
                        <input type="hidden" id="modal_id" name="modal_id" value="">
-                      <div class="form-group">
-                       <label>Size</label>
-                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                          <label for="exampleInputFile">2d image</label>
+                   
+                    <div class="col-sm-2">
+                          <label for="exampleInputFile">2d image slider</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <form name="putImages" id="put_images" enctype="multipart/form-data">
-                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
+                        <input name="image_2d_slider" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -402,36 +395,133 @@
                       </div> -->
                     </div>
                     </div>  
-                    <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">3d image</label>
+                          <div class="col-sm-2">
+                          <label for="exampleInputFile">2d image inner</label>
                     <div class="input-group">
-                      <!-- <form name="phoneImages" id="edit_images" enctype="multipart/form-data"> -->
                       <div class="custom-file">
-                        <input name="image_3d" type="file" class="custom-file-input" id="exampleInputFile">
+                        <form name="putImages" id="put_images" enctype="multipart/form-data">
+                        <input name="image_2d_inner" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                  </div>
+                    </div> 
+                    <div class="col-sm-2">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>2d-Size</label>
+                        <input id="k_size_2d" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
                     </div>
-                    <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">4d image</label>
+                     <div class="col-sm-2">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>2d-Price</label>
+                        <input id="k_price_2d" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                  <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>2d-Description</label>
+                        <textarea id="k_description_2d" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        </div>
+                        </div></div>
+                       <div class="col-sm-2">
+                          <label for="exampleInputFile">3d image slider</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="image_4d" type="file" class="custom-file-input" id="exampleInputFile">
-                      </form>
+                        <form name="putImages" id="put_images" enctype="multipart/form-data">
+                        <input name="image_3d_slider" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
-                     <!--  <div class="input-group-append">
+                      <!-- <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                  </div>
+                    </div>  
+                          <div class="col-sm-2">
+                          <label for="exampleInputFile">3d image inner</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <form name="putImages" id="put_images" enctype="multipart/form-data">
+                        <input name="image_3d_inner" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
                     </div>
+                    </div> 
+                    <div class="col-sm-2">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>3d-Size</label>
+                        <input id="k_size_3d" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                     <div class="col-sm-2">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>3d-Price</label>
+                        <input id="k_price_3d" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                  <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>3d-Description</label>
+                        <textarea id="k_description_3d" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        </div>
+                        </div></div>
+                       <div class="col-sm-2">
+                          <label for="exampleInputFile">4d image slider</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <form name="putImages" id="put_images" enctype="multipart/form-data">
+                        <input name="image_4d_slider" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                    </div>  
+                          <div class="col-sm-2">
+                          <label for="exampleInputFile">4d image inner</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="image_4d_inner" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                    </div> 
+                    <div class="col-sm-2">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>4d-Size</label>
+                        <input id="k_size_4d" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                     <div class="col-sm-2">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>4d-Price</label>
+                        <input id="k_price_4d" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                  <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>4d-Description</label>
+                        <textarea id="k_description_4d" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        </div>
+                        </div></div>
                   </div>
                   <div class="row">
                     <div class="col-sm-6">
@@ -540,12 +630,12 @@
   </button> -->
   <!-- The Modal -->
   <div class="modal" id="myModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="max-width: 850px">
       <div class="modal-content">
       
         <!-- Modal Header -->
         <div class="modal-header" style="">
-          <h4 id="productEditHeading" class="modal-title">Edit Keychain</h4>
+          <h4 id="productEditHeading" class="modal-title">Edit Phonecase</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -565,21 +655,7 @@
             <div class="card-body" style="display: block">
                 
                                 <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                       <input type="hidden" id="modal_id" name="modal_id" value="">
-                      <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Price</label>
-                        <input type="number" id="modal_price" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>       
-                                        <div class="col-sm-6">
+                        <div class="col-sm-6">
                       <!-- text input -->
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
@@ -591,68 +667,170 @@
                   <option>Vivo</option>
                 </select>
                       </div>
-                    </div>
+                    </div>              
                     <div class="col-sm-6">
-                          <label for="exampleInputFile">2d image</label>
+                      <!-- text input -->
+                       <input type="hidden" id="modal_id" name="modal_id" value="">
+                      <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>     
+                                    
+                    <div class="col-sm-2">
+                          <label for="exampleInputFile">2d image slider</label>
                     <div class="input-group">
                       <img width="38px" height="38px" id="modal_2d_image" src="">
                       <div class="custom-file">
                         <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
                         <input name="image_2d" type="file" class="custom-file-input" id="productImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
                       </div>
                       <!-- <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                    </div>              <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">3d image</label>
+                    </div> 
+                       <div class="col-sm-2">
+                          <label for="exampleInputFile">2d image inner</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="modal_3d_image" src="">
+                      <img width="38px" height="38px" id="modal_2d_image" src="">
                       <div class="custom-file">
-                        
-                        <input name="image_3d" type="file" class="custom-file-input" id="productImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
+                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
                       </div>
                       <!-- <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                  </div>
-                    </div>
-                    <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">4d image</label>
-                    <div class="input-group">
-                      <img width="38px" height="38px" id="modal_4d_image" src="">
-                      <div class="custom-file">
-                        <input name="image_4d" type="file" class="custom-file-input" id="exampleInputFile">
-                      </form>
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                    </div>  
+                     <div class="col-sm-2">
+                      <!-- text input -->
+                       <input type="hidden" id="modal_id" name="modal_id" value="">
+                      <div class="form-group">
+                        <label>2d-size</label>
+                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
                       </div>
-                     <!--  <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
                     </div>
-                  </div>
+                     <div class="col-sm-2">
+                      <!-- text input -->
+                       <input type="hidden" id="modal_id" name="modal_id" value="">
+                      <div class="form-group">
+                        <label>2d-price</label>
+                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                      </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-8">
+                      <div class="col-sm-4">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             <label>Description</label>
-                        <input id="modal_description" type="textarea" class="form-control" placeholder="Enter ...">
+                        <textarea id="modal_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                         </div>
                         </div>
                       </div>
+
+
+                    <div class="col-sm-2">
+                          <label for="exampleInputFile">3d image slider</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_2d_image" src="">
+                      <div class="custom-file">
+                        <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
+                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                    </div> 
+                       <div class="col-sm-2">
+                          <label for="exampleInputFile">3d image inner</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_2d_image" src="">
+                      <div class="custom-file">
+                        <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
+                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                    </div>  
+                     <div class="col-sm-2">
+                      <!-- text input -->
+                       <input type="hidden" id="modal_id" name="modal_id" value="">
+                      <div class="form-group">
+                        <label>3d-size</label>
+                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                     <div class="col-sm-2">
+                      <!-- text input -->
+                       <input type="hidden" id="modal_id" name="modal_id" value="">
+                      <div class="form-group">
+                        <label>3d-price</label>
+                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div> 
                       <div class="col-sm-4">
-                        <div class="form-group">
-                        <label>Size</label>
-                        <input id="modal_size" type="text" class="form-control" placeholder="Enter ...">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>Description</label>
+                        <textarea id="modal_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        </div>
+                        </div>
                       </div>
+                        <div class="col-sm-2">
+                          <label for="exampleInputFile">4d image slider</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_2d_image" src="">
+                      <div class="custom-file">
+                        <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
+                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
                       </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                    </div> 
+                       <div class="col-sm-2">
+                          <label for="exampleInputFile">4d image inner</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_2d_image" src="">
+                      <div class="custom-file">
+                        <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
+                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                      </div>
+                    </div>
+                    </div>  
+                     <div class="col-sm-2">
+                       <input type="hidden" id="modal_id" name="modal_id" value="">
+                      <div class="form-group">
+                        <label>4d-size</label>
+                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                     <div class="col-sm-2">
+                       <input type="hidden" id="modal_id" name="modal_id" value="">
+                      <div class="form-group">
+                        <label>4d-price</label>
+                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                      <div class="col-sm-4">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>4d-Description</label>
+                        <textarea id="modal_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        </div>
+                        </div>
+                      </div>
+
                   </div>
                   
                   <div class="row">
@@ -704,19 +882,21 @@
   $('#add_phonecase').click(function(e) {
     let name = document.getElementById("k_name").value
     let company = document.getElementById("comp_option").value
-     let size = document.getElementById("k_size").value
-    let price = document.getElementById("k_price").value
-    let description = document.getElementById("k_description").value
+     let size_2d = document.getElementById("k_size_2d").value
+     let size_3d = document.getElementById("k_size_3d").value
+     let size_4d = document.getElementById("k_size_4d").value
+    let price_2d = document.getElementById("k_price_2d").value
+    let price_3d = document.getElementById("k_price_3d").value
+    let price_4d = document.getElementById("k_price_4d").value
+    let description_2d = document.getElementById("k_description_2d").value
+    let description_3d = document.getElementById("k_description_3d").value
+    let description_4d = document.getElementById("k_description_4d").value
     let avail_status = document.getElementById("is_avail").checked
     let available_status = avail_status ? 1 : 0
     //let inputfile = document.getElementById("productImage").files[0]
     let keydata = {
-      name:name,
-      company:company,
-      price:price,
-      size:size,
-      description:description,
-      available_status:available_status
+      name, company, size_2d, size_3d, size_4d, price_2d, price_3d, price_4d,description_2d, description_3d, 
+      description_4d, available_status
     }
     //console.log(keydata)
     fetch(`http://${hosturl}:5600/api/phonecase/addphonecase`,
@@ -732,6 +912,17 @@
   return res.json()
   })
 .then(function(result){
+  let name = document.getElementById("k_name").value = ""
+    document.getElementById("comp_option").value = ""
+    document.getElementById("k_size_2d").value = ""
+    document.getElementById("k_size_3d").value = ""
+    document.getElementById("k_size_4d").value = ""
+    document.getElementById("k_price_2d").value = ""
+    document.getElementById("k_price_3d").value = ""
+    document.getElementById("k_price_4d").value = ""
+    document.getElementById("k_description_2d").value = ""
+    document.getElementById("k_description_3d").value = ""
+    document.getElementById("k_description_4d").value = ""
   console.log(result)
   let productId = result.product._id
   console.log(productId)
@@ -1107,7 +1298,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
       //okchains = data
       //let newkeychains = getkeychains(data)
       
-      CreateTableFromJSON(data)
+      //CreateTableFromJSON(data)
    })
     .catch(err => console.log(err))
 }

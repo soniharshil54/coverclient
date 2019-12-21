@@ -728,6 +728,7 @@ tr td:first-child:before
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="hosturl.js"></script>
 <script type="text/javascript">
   function getcheck(){
     let getit = document.getElementById("is_avail").checked
@@ -759,7 +760,7 @@ tr td:first-child:before
       available_status:available_status
     }
     //console.log(keydata)
-    fetch(`http://localhost:5600/api/tshirt/addtshirt`,
+    fetch(`http://${hosturl}:5600/api/tshirt/addtshirt`,
 {
     headers: {
       'Accept': 'application/json',
@@ -830,7 +831,7 @@ $("#modal_type_option").html(optionsd);
     let comp_data = {
       "type_name" : typename
     }
-        fetch('http://localhost:5600/api/tshirt/addtype', {
+        fetch(`http://${hosturl}:5600/api/tshirt/addtype`, {
     method: 'post',
     body: JSON.stringify(comp_data),
               headers: {
@@ -863,7 +864,7 @@ for (var i in strs) {
   
 
   function gettypes(){
-        fetch(`http://localhost:5600/api/tshirt/types`)
+        fetch(`http://${hosturl}:5600/api/tshirt/types`)
     .then(response => {
      // console.log(response)
       return response.json()})
@@ -886,7 +887,7 @@ for (var i in strs) {
     let deleteArray = {
       todeleteids
     }
-              fetch(`http://localhost:5600/api/tshirt/deletetshirt`,
+              fetch(`http://${hosturl}:5600/api/tshirt/deletetshirt`,
           {
             headers: {
               'Accept': 'application/json',
@@ -922,8 +923,8 @@ for (var i in strs) {
       document.getElementById("modal_sizes").value = sizes_f
       let h_image = okchains[arrayn].h_image
       let in_image = okchains[arrayn].in_image
-      document.getElementById("modal_h_image").src = `http://localhost:5600/admin/uploads/${h_image}`
-      document.getElementById("modal_in_image").src = `http://localhost:5600/admin/uploads/${in_image}`
+      document.getElementById("modal_h_image").src = `http://${hosturl}:5600/admin/uploads/${h_image}`
+      document.getElementById("modal_in_image").src = `http://${hosturl}:5600/admin/uploads/${in_image}`
       // var row = $(test).closest("tr");
       // test.removeAttribute("class","btn-primary")
       // test.setAttribute("class","btn-success")
@@ -958,7 +959,7 @@ for (var i in strs) {
       console.log("k edit data")
       console.log(keditdata)
 
-          fetch(`http://localhost:5600/api/tshirt/edittshirt/${keyid}`,
+          fetch(`http://${hosturl}:5600/api/tshirt/edittshirt/${keyid}`,
           {
             headers: {
               'Accept': 'application/json',
@@ -977,7 +978,7 @@ for (var i in strs) {
     }
 
     function imageModal(imgname){
-      let source = "http://localhost:5600/admin/uploads/" + imgname
+      let source = `http://${hosturl}:5600/admin/uploads/${imgname}` 
       document.getElementById("imgModal").src=source;
 setTimeout(function () { 
     $('#imageModal').modal('show');
@@ -992,7 +993,7 @@ setTimeout(function () {
     var form = document.getElementById("put_images");
     var formData = new FormData(form);
 
-fetch(`http://localhost:5600/api/tshirt/addimage/${productid}`, {
+fetch(`http://${hosturl}:5600/api/tshirt/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
@@ -1007,7 +1008,7 @@ fetch(`http://localhost:5600/api/tshirt/addimage/${productid}`, {
     var form = document.getElementById("edit_images");
     var formData = new FormData(form);
 
-fetch(`http://localhost:5600/api/tshirt/addimage/${productid}`, {
+fetch(`http://${hosturl}:5600/api/tshirt/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
@@ -1135,7 +1136,7 @@ fetch(`http://localhost:5600/api/tshirt/addimage/${productid}`, {
     //CreateTableFromJSON() 
 
           function getproducts(){
-    fetch(`http://localhost:5600/api/tshirt/gettshirts`)
+    fetch(`http://${hosturl}:5600/api/tshirt/gettshirts`)
     .then(response => {
      // console.log(response)
       return response.json()})

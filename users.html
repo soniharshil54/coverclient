@@ -389,6 +389,7 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="hosturl.js"></script>
 <!-- page script -->
 <!-- <script>
   $(function () {
@@ -411,7 +412,7 @@
     $('#example1').DataTable({
         "processing" : true,
         "ajax" : {
-            "url" : "http://localhost:5600/api/user/users",
+            "url" : `http://${hosturl}:5600/api/user/users`,
             dataSrc : ''
         },
         "columns" : [ {
@@ -437,7 +438,7 @@
     localStorage.clear();
     window.location  =  "login.html";
   }
-  
+
           function checkLogin(){
     
     if (localStorage.getItem("luser") === null) {

@@ -628,6 +628,7 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="hosturl.js"></script>
 <script type="text/javascript">
 
     $(document).ready(function(){
@@ -648,7 +649,7 @@
       available_status:available_status
     }
     //console.log(keydata)
-    fetch(`http://localhost:5600/api/phonecase/addphonecase`,
+    fetch(`http://${hosturl}:5600/api/phonecase/addphonecase`,
 {
     headers: {
       'Accept': 'application/json',
@@ -674,7 +675,7 @@
 
       function logOutUser(){
     localStorage.clear();
-    location.href =  "file:///home/phoenix/Downloads/archives/admintemp/pages/examples/login.html";
+    location.href =  "login.html";
   }
 
 
@@ -719,7 +720,7 @@ $("#modal_option").html(optionsd);
     let comp_data = {
       "company_name" : companyname
     }
-        fetch('http://localhost:5600/api/phonecase/addcompany', {
+        fetch(`http://${hosturl}:5600/api/phonecase/addcompany`, {
     method: 'post',
     body: JSON.stringify(comp_data),
               headers: {
@@ -752,7 +753,7 @@ for (var i in strs) {
   
 
   function getcompanies(){
-        fetch(`http://localhost:5600/api/phonecase/companies`)
+        fetch(`http://${hosturl}:5600/api/phonecase/companies`)
     .then(response => {
      // console.log(response)
       return response.json()})
@@ -775,7 +776,7 @@ for (var i in strs) {
     let deleteArray = {
       todeleteids
     }
-              fetch(`http://localhost:5600/api/phonecase/deletephonecase`,
+              fetch(`http://${hosturl}:5600/api/phonecase/deletephonecase`,
           {
             headers: {
               'Accept': 'application/json',
@@ -800,7 +801,7 @@ for (var i in strs) {
       document.getElementById("modal_id").value = okchains[arrayn]._id
       //console.log(document.getElementById("modal_id").value)
       let slider_image = okchains[arrayn].slider_image
-      document.getElementById("modal_slider_image").src = `http://localhost:5600/admin/uploads/${slider_image}`
+      document.getElementById("modal_slider_image").src = `http://${hosturl}:5600/admin/uploads/${slider_image}`
       // var row = $(test).closest("tr");
       // test.removeAttribute("class","btn-primary")
       // test.setAttribute("class","btn-success")
@@ -824,7 +825,7 @@ for (var i in strs) {
     }
 
     function imageModal(imgname){
-      let source = "http://localhost:5600/admin/uploads/" + imgname
+      let source = `http://${hosturl}:5600/admin/uploads/${ingname}`
       document.getElementById("imgModal").src=source;
 
       setTimeout(function () { 
@@ -839,7 +840,7 @@ for (var i in strs) {
     var form = document.getElementById("put_images");
     var formData = new FormData(form);
 
-fetch(`http://localhost:5600/api/phonecase/addimage/${productid}`, {
+fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
@@ -855,7 +856,7 @@ fetch(`http://localhost:5600/api/phonecase/addimage/${productid}`, {
     var form = document.getElementById("slider_images");
     var formData = new FormData(form);
 
-fetch(`http://localhost:5600/api/product/addslider/${productid}`, {
+fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
@@ -974,7 +975,7 @@ fetch(`http://localhost:5600/api/product/addslider/${productid}`, {
     //CreateTableFromJSON() 
 
           function getproducts(){
-    fetch(`http://localhost:5600/api/product/sliders`)
+    fetch(`http://${hosturl}:5600/api/product/sliders`)
     .then(response => {
      // console.log(response)
       return response.json()})

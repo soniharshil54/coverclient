@@ -622,6 +622,8 @@
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
+<script src="hosturl.js"></script>
+
 
 
 
@@ -640,6 +642,7 @@
   }
 </script> -->
 
+
 <script type="text/javascript">
   $(document).ready(function(){
   $('#add_keychain').click(function(e) {
@@ -656,7 +659,7 @@
       description:description
     }
     //console.log(keydata)
-    fetch(`http://localhost:5600/api/product/add/${addpropara}`,
+    fetch(`http://${hosturl}:5600/api/product/add/${addpropara}`,
 {
     headers: {
       'Accept': 'application/json',
@@ -719,7 +722,7 @@
     var form = document.getElementById("pImages");
     var formData = new FormData(form);
 
-fetch(`http://localhost:5600/api/product/${globalProduct}/addimage/${productid}`, {
+fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
@@ -734,7 +737,7 @@ fetch(`http://localhost:5600/api/product/${globalProduct}/addimage/${productid}`
     var form = document.getElementById("eImages");
     var formData = new FormData(form);
 
-fetch(`http://localhost:5600/api/product/${globalProduct}/addimage/${productid}`, {
+fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
@@ -763,7 +766,7 @@ fetch(`http://localhost:5600/api/product/${globalProduct}/addimage/${productid}`
     let deleteArray = {
       todeleteids
     }
-              fetch(`http://localhost:5600/api/product/delete/${deleteprotoget}`,
+              fetch(`http://${hosturl}:5600/api/product/delete/${deleteprotoget}`,
           {
             headers: {
               'Accept': 'application/json',
@@ -792,8 +795,8 @@ fetch(`http://localhost:5600/api/product/${globalProduct}/addimage/${productid}`
       document.getElementById("modal_size").value = okchains[arrayn].size
       let headerimage = okchains[arrayn].h_image
       let innerimage = okchains[arrayn].in_image
-      document.getElementById("modal_h_image").src = `http://localhost:5600/admin/uploads/${headerimage}`
-      document.getElementById("modal_in_image").src = `http://localhost:5600/admin/uploads/${innerimage}`
+      document.getElementById("modal_h_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
+      document.getElementById("modal_in_image").src = `http://${hosturl}:5600/admin/uploads/${innerimage}`
       // var row = $(test).closest("tr");
       // test.removeAttribute("class","btn-primary")
       // test.setAttribute("class","btn-success")
@@ -820,7 +823,7 @@ fetch(`http://localhost:5600/api/product/${globalProduct}/addimage/${productid}`
       console.log("k edit data")
       console.log(keditdata)
 
-          fetch(`http://localhost:5600/api/product/edit/${editprotoget}/${keyid}`,
+          fetch(`http://${hosturl}:5600/api/product/edit/${editprotoget}/${keyid}`,
           {
             headers: {
               'Accept': 'application/json',
@@ -838,7 +841,7 @@ fetch(`http://localhost:5600/api/product/${globalProduct}/addimage/${productid}`
     }
 
     function imageModal(imgname){
-      let source = "http://localhost:5600/admin/uploads/" + imgname
+      let source = `http://${hosturl}:5600/admin/uploads/${imgname}`
       document.getElementById("imgModal").src=source;
 
       $('#imageModal').modal('show');
@@ -953,7 +956,7 @@ fetch(`http://localhost:5600/api/product/${globalProduct}/addimage/${productid}`
         document.getElementById("productEditBtn").value = "Add "+globalProduct
         let producttoget = proname
         let getpropara = producttoget + "s"
-    fetch(`http://localhost:5600/api/product/${getpropara}`)
+    fetch(`http://${hosturl}:5600/api/product/${getpropara}`)
     .then(response => {
      // console.log(response)
       return response.json()})
@@ -1010,6 +1013,8 @@ fetch(`http://localhost:5600/api/product/${globalProduct}/addimage/${productid}`
        }
   }
   checkLogin()
+
+  
     
 </script>
 

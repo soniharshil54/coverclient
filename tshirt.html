@@ -173,7 +173,7 @@ tr td:first-child:before
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item has-treeview menu-open">
-            <a href="index2.html" class="nav-link">
+            <a href="index.html" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -1153,7 +1153,29 @@ fetch(`http://localhost:5600/api/tshirt/addimage/${productid}`, {
    })
     .catch(err => console.log(err))
 }
-getproducts()
+//getproducts()
+        function checkLogin(){
+    
+    if (localStorage.getItem("luser") === null) {
+     // $('#loggedIn').css("display","none")
+       // $('#logintosee').html("login to see the registered users")
+       // $('#notloggedbtn').css("display","block")
+        window.location = "login.html";
+      //  console.log(ran)
+    }
+    else{
+      console.log(localStorage.getItem("luser"))
+      //var loguser = JSON.parse(localStorage.getItem('luser'));
+      //var username = loguser.name;
+
+      var authtokend = localStorage.getItem('authorization')
+      getproducts()
+      console.log(authtokend)
+      
+      //console.log(username)   
+       }
+  }
+  checkLogin()
 </script>
 </body>
 </html>

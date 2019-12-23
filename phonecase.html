@@ -473,32 +473,20 @@
                         <textarea id="k_description_3d" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                         </div>
                         </div></div>
-                       <div class="col-sm-2">
+                       <div class="col-sm-3">
                           <label for="exampleInputFile">4d image slider</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input name="image_4d_slider" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                         </form>
                       </div>
                       <!-- <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
                     </div>  
-                          <div class="col-sm-2">
-                          <label for="exampleInputFile">4d image inner</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input name="image_4d_inner" type="file" class="custom-file-input" id="productImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </form>
-                      </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                    </div> 
-                    <div class="col-sm-2">
+                    <div class="col-sm-3">
                       <!-- text input -->
                       <div class="form-group">
                         <label>4d-Size</label>
@@ -569,6 +557,13 @@
                 
               </div>
               <!-- /.card-body -->
+           <!--    <ul class="list-group list-group-horizontal">
+                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
+                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
+                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
+                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
+              </ul> -->
+
             </div>
             <!-- /.card -->
           </div>
@@ -677,10 +672,10 @@
                     <div class="col-sm-2">
                           <label for="exampleInputFile">2d image slider</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="modal_2d_image" src="">
+                      <img width="38px" height="38px" id="modal_2d_h_image" src="">
                       <div class="custom-file">
                         <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
-                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
+                        <input name="image_2d_slider" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -691,10 +686,9 @@
                        <div class="col-sm-2">
                           <label for="exampleInputFile">2d image inner</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="modal_2d_image" src="">
+                      <img width="38px" height="38px" id="modal_2d_i_image" src="">
                       <div class="custom-file">
-                        <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
-                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
+                        <input name="image_2d_inner" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -707,7 +701,7 @@
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
                         <label>2d-size</label>
-                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                        <input type="text" id="modal_2d_size" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
                      <div class="col-sm-2">
@@ -715,14 +709,14 @@
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
                         <label>2d-price</label>
-                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                        <input type="text" id="modal_2d_price" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
                       <div class="col-sm-4">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Description</label>
-                        <textarea id="modal_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                            <label>2d-Description</label>
+                        <textarea id="modal_2d_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                         </div>
                         </div>
                       </div>
@@ -731,10 +725,9 @@
                     <div class="col-sm-2">
                           <label for="exampleInputFile">3d image slider</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="modal_2d_image" src="">
+                      <img width="38px" height="38px" id="modal_3d_h_image" src="">
                       <div class="custom-file">
-                        <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
-                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
+                        <input name="image_3d_slider" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -745,10 +738,9 @@
                        <div class="col-sm-2">
                           <label for="exampleInputFile">3d image inner</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="modal_2d_image" src="">
+                      <img width="38px" height="38px" id="modal_3d_i_image" src="">
                       <div class="custom-file">
-                        <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
-                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
+                        <input name="image_3d_inner" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -761,7 +753,7 @@
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
                         <label>3d-size</label>
-                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                        <input type="text" id="modal_3d_size" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
                      <div class="col-sm-2">
@@ -769,61 +761,50 @@
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
                         <label>3d-price</label>
-                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                        <input type="text" id="modal_3d_price" class="form-control" placeholder="Enter ...">
                       </div>
                     </div> 
                       <div class="col-sm-4">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Description</label>
-                        <textarea id="modal_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                            <label>3d-Description</label>
+                        <textarea id="modal_3d_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                         </div>
                         </div>
                       </div>
                         <div class="col-sm-2">
                           <label for="exampleInputFile">4d image slider</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="modal_2d_image" src="">
+                      <img width="38px" height="38px" id="modal_4d_h_image" src="">
                       <div class="custom-file">
-                        <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
-                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
+                        <input name="image_4d_slider" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                      </form>
                       </div>
                       <!-- <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                    </div> 
-                       <div class="col-sm-2">
-                          <label for="exampleInputFile">4d image inner</label>
-                    <div class="input-group">
-                      <img width="38px" height="38px" id="modal_2d_image" src="">
-                      <div class="custom-file">
-                        <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
-                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
-                      </div>
-                    </div>
-                    </div>  
+                    </div>   
                      <div class="col-sm-2">
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
                         <label>4d-size</label>
-                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                        <input type="text" id="modal_4d_size" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
                      <div class="col-sm-2">
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
                         <label>4d-price</label>
-                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                        <input type="text" id="modal_4d_price" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                      <div class="col-sm-4">
+                      <div class="col-sm-6">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             <label>4d-Description</label>
-                        <textarea id="modal_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        <textarea id="modal_4d_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                         </div>
                         </div>
                       </div>
@@ -1076,15 +1057,25 @@ for (var i in strs) {
       //console.log(document.getElementById("modal_id").value)
       document.getElementById("modal_name").value = okchains[arrayn].name
       document.getElementById("modal_option").value = okchains[arrayn].company
-      document.getElementById("modal_price").value = okchains[arrayn].price
-      document.getElementById("modal_description").value = okchains[arrayn].description
-      document.getElementById("modal_size").value = okchains[arrayn].size
-      let image_2d = okchains[arrayn].image_2d
-      let image_3d = okchains[arrayn].image_3d
-      let image_4d = okchains[arrayn].image_4d
-      document.getElementById("modal_2d_image").src = `http://${hosturl}:5600/admin/uploads/${image_2d}`
-      document.getElementById("modal_3d_image").src = `http://${hosturl}:5600/admin/uploads/${image_3d}`
-      document.getElementById("modal_4d_image").src = `http://${hosturl}:5600/admin/uploads/${image_4d}`
+      document.getElementById("modal_2d_price").value = okchains[arrayn].price_2d
+       document.getElementById("modal_3d_price").value = okchains[arrayn].price_3d
+        document.getElementById("modal_4d_price").value = okchains[arrayn].price_4d
+      document.getElementById("modal_2d_description").value = okchains[arrayn].description_2d
+      document.getElementById("modal_3d_description").value = okchains[arrayn].description_3d
+      document.getElementById("modal_4d_description").value = okchains[arrayn].description_4d
+      document.getElementById("modal_2d_size").value = okchains[arrayn].size_2d
+      document.getElementById("modal_3d_size").value = okchains[arrayn].size_3d
+      document.getElementById("modal_4d_size").value = okchains[arrayn].size_4d
+      let image_i_2d = okchains[arrayn].image_inner_2d
+      let image_i_3d = okchains[arrayn].image_inner_3d
+      let image_h_2d = okchains[arrayn].image_header_2d
+      let image_h_3d = okchains[arrayn].image_header_3d
+      let image_h_4d = okchains[arrayn].image_header_4d
+      document.getElementById("modal_2d_i_image").src = `http://${hosturl}:5600/admin/uploads/${image_i_2d}`
+      document.getElementById("modal_3d_i_image").src = `http://${hosturl}:5600/admin/uploads/${image_i_3d}`
+      document.getElementById("modal_2d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_2d}`
+      document.getElementById("modal_3d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_3d}`
+      document.getElementById("modal_4d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_4d}`
       // var row = $(test).closest("tr");
       // test.removeAttribute("class","btn-primary")
       // test.setAttribute("class","btn-success")
@@ -1098,17 +1089,23 @@ for (var i in strs) {
 
     function editkeychain(){
       console.log("edit ran")
-        let name = document.getElementById("modal_name").value
-        let company = document.getElementById("modal_option").value
-    let size = document.getElementById("modal_size").value
-    let price = document.getElementById("modal_price").value
-    let description = document.getElementById("modal_description").value
+    let name = document.getElementById("modal_name").value
+    let company = document.getElementById("modal_option").value
+    let size_2d = document.getElementById("modal_2d_size").value
+    let size_3d = document.getElementById("modal_3d_size").value
+    let size_4d = document.getElementById("modal_4d_size").value
+    let price_2d = document.getElementById("modal_2d_price").value
+    let price_3d = document.getElementById("modal_3d_price").value
+    let price_4d = document.getElementById("modal_4d_price").value
+    let description_2d = document.getElementById("modal_2d_description").value
+    let description_3d = document.getElementById("modal_3d_description").value
+    let description_4d = document.getElementById("modal_4d_description").value
     let keyid = document.getElementById("modal_id").value
     let avail_status = document.getElementById("modal_avail_status").checked
     //console.log("avail status", avail_status)
     let available_status = avail_status ? 1 : 0
       let keditdata = {
-        name, company, size, price, description, available_status
+        name, company, size_2d, price_2d, description_2d, size_3d, price_3d, description_3d, size_4d, price_4d, description_4d, available_status
       }
       console.log(keyid)
       console.log("k edit data")
@@ -1186,7 +1183,8 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
     return newkeychains
   }
     function CreateTableFromJSON(myBookso) {
-      let myBooks = getkeychains(myBookso)
+      let myBookson = getkeychains(myBookso)
+      var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","size_2d","price_2d","description_2d","image_header_2d","image_inner_2d","size_3d","price_3d","description_3d","image_header_3d","image_inner_3d","available_status"]));
 
 
         var col = [];
@@ -1228,7 +1226,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
             //tr.setAttribute("contenteditable", "true"); 
             for (var j = 0; j < col.length; j++) {
               var tabCell = tr.insertCell(-1);
-              if(j===3 || j===4 || j===5){
+              if(j===5 || j===6 || j===10 || j===11){
                 let image = '"'+myBooks[i][col[j]]+'"'
                 tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
                 console.log(myBooks[i][col[j]])
@@ -1280,6 +1278,199 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
     }
     //CreateTableFromJSON() 
 
+
+        function CreateTableFromJSON(myBookso) {
+      let myBookson = getkeychains(myBookso)
+      var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","size_2d","price_2d","description_2d","image_header_2d","image_inner_2d","size_3d","price_3d","description_3d","image_header_3d","image_inner_3d","available_status"]));
+
+
+        var col = [];
+        for (var i = 0; i < myBooks.length; i++) {
+            for (var key in myBooks[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+        table.setAttribute("class", "table");
+        table.setAttribute("id","keychaintable")
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);  
+        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");  
+                // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+
+        }
+        var thn =  document.createElement("th"); 
+        thn.innerHTML = "Edit";
+            tr.appendChild(thn);
+        var ths = document.createElement("th")
+        ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
+        tr.appendChild(ths);
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+
+            tr = table.insertRow(-1);
+            //tr.setAttribute("contenteditable", "true"); 
+            for (var j = 0; j < col.length; j++) {
+              var tabCell = tr.insertCell(-1);
+              if(j===5 || j===6 || j===10 || j===11){
+                let image = '"'+myBooks[i][col[j]]+'"'
+                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
+                console.log(myBooks[i][col[j]])
+              }
+              else{
+                tabCell.innerHTML = myBooks[i][col[j]];
+              }
+                
+                
+                //console.log(i, j)
+            }
+          //  console.log(myBooks[i])
+             // let delbtn = document.createElement("button")
+             // delbtn.setAttribute("class", "btn btn-danger");
+             // delbtn.innerHTML = "Delete"
+             // delbtn.style.margin = "5px";
+            let editbtn = document.createElement("button")
+            editbtn.setAttribute("class", "btn btn-primary");
+            editbtn.style.marginRight = "2px";
+            editbtn.setAttribute("onclick", "editproduct(this)");
+            editbtn.setAttribute("data-toggle", "modal");
+            editbtn.setAttribute("data-target", "#myModal");
+            editbtn.setAttribute("data-key",i)
+            // delbtn.setAttribute("data-key",i)
+            // delbtn.setAttribute("onclick", "deleteproduct(this)")
+            editbtn.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
+            editbtn.innerHTML = "Edit"
+            let td = document.createElement("td");
+            td.style.padding = "5px";
+            let std = document.createElement("td");
+            let deleteCheck = document.createElement("input")
+            deleteCheck.setAttribute("type","checkbox")
+            deleteCheck.setAttribute("name","todelete")
+            deleteCheck.setAttribute("value",okchains[i]._id)
+
+            // console.log(deleteCheck)
+            std.appendChild(deleteCheck)
+            td.appendChild(editbtn)
+            // td.appendChild(delbtn)
+            tr.appendChild(td)
+            tr.appendChild(std)
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("samplejson");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    }
+
+
+            function CreateTableFromJSON4d(myBookso) {
+      let myBookson = getkeychains(myBookso)
+      var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","size_2d","price_2d","description_2d","image_header_2d","image_inner_2d","size_3d","price_3d","description_3d","image_header_3d","image_inner_3d","available_status"]));
+
+
+        var col = [];
+        for (var i = 0; i < myBooks.length; i++) {
+            for (var key in myBooks[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+        table.setAttribute("class", "table");
+        table.setAttribute("id","keychaintable")
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);  
+        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");  
+                // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+
+        }
+        var thn =  document.createElement("th"); 
+        thn.innerHTML = "Edit";
+            tr.appendChild(thn);
+        var ths = document.createElement("th")
+        ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
+        tr.appendChild(ths);
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+
+            tr = table.insertRow(-1);
+            //tr.setAttribute("contenteditable", "true"); 
+            for (var j = 0; j < col.length; j++) {
+              var tabCell = tr.insertCell(-1);
+              if(j===5 || j===6 || j===10 || j===11){
+                let image = '"'+myBooks[i][col[j]]+'"'
+                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
+                console.log(myBooks[i][col[j]])
+              }
+              else{
+                tabCell.innerHTML = myBooks[i][col[j]];
+              }
+                
+                
+                //console.log(i, j)
+            }
+          //  console.log(myBooks[i])
+             // let delbtn = document.createElement("button")
+             // delbtn.setAttribute("class", "btn btn-danger");
+             // delbtn.innerHTML = "Delete"
+             // delbtn.style.margin = "5px";
+            let editbtn = document.createElement("button")
+            editbtn.setAttribute("class", "btn btn-primary");
+            editbtn.style.marginRight = "2px";
+            editbtn.setAttribute("onclick", "editproduct(this)");
+            editbtn.setAttribute("data-toggle", "modal");
+            editbtn.setAttribute("data-target", "#myModal");
+            editbtn.setAttribute("data-key",i)
+            // delbtn.setAttribute("data-key",i)
+            // delbtn.setAttribute("onclick", "deleteproduct(this)")
+            editbtn.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
+            editbtn.innerHTML = "Edit"
+            let td = document.createElement("td");
+            td.style.padding = "5px";
+            let std = document.createElement("td");
+            let deleteCheck = document.createElement("input")
+            deleteCheck.setAttribute("type","checkbox")
+            deleteCheck.setAttribute("name","todelete")
+            deleteCheck.setAttribute("value",okchains[i]._id)
+
+            // console.log(deleteCheck)
+            std.appendChild(deleteCheck)
+            td.appendChild(editbtn)
+            // td.appendChild(delbtn)
+            tr.appendChild(td)
+            tr.appendChild(std)
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("samplejson4dcovers");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    }
+
+
           function getproducts(){
     fetch(`http://${hosturl}:5600/api/phonecase/getphonecases`)
     .then(response => {
@@ -1295,7 +1486,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
       //okchains = data
       //let newkeychains = getkeychains(data)
       
-      //CreateTableFromJSON(data)
+      CreateTableFromJSON(data)
    })
     .catch(err => console.log(err))
 }

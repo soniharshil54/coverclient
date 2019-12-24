@@ -929,12 +929,18 @@
 function filterbycompany(){
   console.log("filtering")
   let filcompany = document.getElementById("sel_comp").value
-  let testcomp = okchains.map(a => ({...a}));
+  if(filcompany === "all"){
+    CreateTableFromJSON(okchains)
+  }
+  else {
+      let testcomp = okchains.map(a => ({...a}));
   let result = testcomp.filter(i => {
     console.log(i)
     return i.company === filcompany}) ; 
   console.log(result)
   CreateTableFromJSON(result)
+  }
+
 }
 
   function printChecked(){
@@ -955,13 +961,19 @@ function filterbycompany(){
   function populateoption(options){
 
     var optionsd = ""
+    var optionsdx = ""
 
 for (var i = 0; i < options.length; i++) {
    optionsd += '<option value="' + options[i]+ '">' + options[i] + '</option>';
 
 }
+optionsdx += '<option value="all">all</option>';
+for (var i = 0; i < options.length; i++) {
+   optionsdx += '<option value="' + options[i]+ '">' + options[i] + '</option>';
+
+}
 $("#comp_option").html(optionsd);
-$("#sel_comp").html(optionsd);
+$("#sel_comp").html(optionsdx);
 $("#modal_option").html(optionsd);
   }
   function add_company(){

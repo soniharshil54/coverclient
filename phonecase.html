@@ -268,7 +268,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="orders.html" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Orders
@@ -339,9 +339,15 @@
                     <button onclick="add_company()" type="button" class="btn btn-info btn-flat">Add Company</button>
                   </span>
                 </div>
-              <div style="overflow: auto" class="form-group">
-                <ul style="list-style-position: inside;" class="list-group list-group-horizontal" id="company_list"></ul>
+                <div>
+                    <div class="card-body table-responsive p-0">
+                <div id="companyjson"></div>
+                
               </div>
+                </div>
+            <!--   <div style="overflow: auto" class="form-group">
+                <ul style="list-style-position: inside;" class="list-group list-group-horizontal" id="company_list"></ul>
+              </div> -->
 
             </div>
             <!-- /.card-body -->
@@ -1009,11 +1015,13 @@ var list = document.getElementById('company_list');
 list.innerHTML = ""
 for (var i in strs) {
   var spanli = document.createElement("span")
+  var icondel = document.createElement("i")
   spanli.innerText = strs[i];
-
+  icondel.setAttribute("class","fas fa-trash")
   var elem = document.createElement("li");
   elem.setAttribute("class", "list-group-item");
   elem.appendChild(spanli);
+  elem.appendChild(icondel);
   list.appendChild(elem);
 }
 
@@ -1029,8 +1037,9 @@ for (var i in strs) {
       console.log(data)
       const companies = data.map(comp => comp.name);
       console.log(companies)
-      companylist(companies)
+      //companylist(companies)
       populateoption(companies)
+      CreateTableFromJSONcompany(data)
    })
     .catch(err => console.log(err))
   }
@@ -1058,6 +1067,10 @@ for (var i in strs) {
             getproducts() 
           })
           .catch(function(res){ console.log(res) })
+  }
+
+  function editcompany(company){
+
   }
 
     function editproduct(test){
@@ -1290,10 +1303,8 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
     }
     //CreateTableFromJSON() 
 
-
-        function CreateTableFromJSON(myBookso) {
-      let myBookson = getkeychains(myBookso)
-      var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","size_2d","price_2d","description_2d","image_header_2d","image_inner_2d","size_3d","price_3d","description_3d","image_header_3d","image_inner_3d","available_status"]));
+        function CreateTableFromJSONcompany(myBookso) {
+      let myBooks = getkeychains(myBookso)
 
 
         var col = [];
@@ -1334,15 +1345,9 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
             tr = table.insertRow(-1);
             //tr.setAttribute("contenteditable", "true"); 
             for (var j = 0; j < col.length; j++) {
-              var tabCell = tr.insertCell(-1);
-              if(j===5 || j===6 || j===10 || j===11){
-                let image = '"'+myBooks[i][col[j]]+'"'
-                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
-                console.log(myBooks[i][col[j]])
-              }
-              else{
+              var tabCell = tr.insertCell(-1)
                 tabCell.innerHTML = myBooks[i][col[j]];
-              }
+              
                 
                 
                 //console.log(i, j)
@@ -1353,9 +1358,14 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
              // delbtn.innerHTML = "Delete"
              // delbtn.style.margin = "5px";
             let editbtn = document.createElement("button")
+            let activatebtn = document.createElement("button")
+            activatebtn.setAttribute("class", "btn btn-primary");
+            activatebtn.style.marginRight = "2px";
+            // activatebtn.setAttribute("class", "btn btn-primary");
+            activatebtn.innerHTML = "Activate";
             editbtn.setAttribute("class", "btn btn-primary");
             editbtn.style.marginRight = "2px";
-            editbtn.setAttribute("onclick", "editproduct(this)");
+            // editbtn.setAttribute("onclick", "editproduct(this)");
             editbtn.setAttribute("data-toggle", "modal");
             editbtn.setAttribute("data-target", "#myModal");
             editbtn.setAttribute("data-key",i)
@@ -1370,7 +1380,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
             let deleteCheck = document.createElement("input")
             deleteCheck.setAttribute("type","checkbox")
             deleteCheck.setAttribute("name","todelete")
-            deleteCheck.setAttribute("value",okchains[i]._id)
+            // deleteCheck.setAttribute("value",okchains[i]._id)
 
             // console.log(deleteCheck)
             std.appendChild(deleteCheck)
@@ -1381,10 +1391,93 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
         }
 
         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-        var divContainer = document.getElementById("samplejson");
+        var divContainer = document.getElementById("companyjson");
         divContainer.innerHTML = "";
         divContainer.appendChild(table);
     }
+
+
+        // function CreateTableFromJSON(myBookso) {
+      // let myBookson = getkeychains(myBookso)
+      // var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","size_2d","price_2d","description_2d","image_header_2d","image_inner_2d","size_3d","price_3d","description_3d","image_header_3d","image_inner_3d","available_status"]));
+
+
+        // var col = [];
+        // for (var i = 0; i < myBooks.length; i++) {
+        //     for (var key in myBooks[i]) {
+        //         if (col.indexOf(key) === -1) {
+        //             col.push(key);
+        //         }
+        //     }
+        // }
+
+        
+        // var table = document.createElement("table");
+        // table.setAttribute("class", "table");
+        // table.setAttribute("id","keychaintable")
+     
+
+        // var tr = table.insertRow(-1);  
+       
+
+        // for (var i = 0; i < col.length; i++) {
+        //     var th = document.createElement("th");  
+        //         // TABLE HEADER.
+        //     th.innerHTML = col[i];
+        //     tr.appendChild(th);
+
+        // }
+        // var thn =  document.createElement("th"); 
+        // thn.innerHTML = "Edit";
+        //     tr.appendChild(thn);
+        // var ths = document.createElement("th")
+        // ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
+        // tr.appendChild(ths);
+
+     
+        // for (var i = 0; i < myBooks.length; i++) {
+
+        //     tr = table.insertRow(-1);
+            
+        //     for (var j = 0; j < col.length; j++) {
+        //       var tabCell = tr.insertCell(-1);
+        //       if(j===5 || j===6 || j===10 || j===11){
+        //         let image = '"'+myBooks[i][col[j]]+'"'
+        //         tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
+        //         console.log(myBooks[i][col[j]])
+        //       }
+        //       else{
+        //         tabCell.innerHTML = myBooks[i][col[j]];
+        //       }
+                
+        //     }
+        //     let editbtn = document.createElement("button")
+        //     editbtn.setAttribute("class", "btn btn-primary");
+        //     editbtn.style.marginRight = "2px";
+        //     editbtn.setAttribute("onclick", "editproduct(this)");
+        //     editbtn.setAttribute("data-toggle", "modal");
+        //     editbtn.setAttribute("data-target", "#myModal");
+        //     editbtn.setAttribute("data-key",i)
+        //     editbtn.style.padding = "1px 5px";
+        //     editbtn.innerHTML = "Edit"
+        //     let td = document.createElement("td");
+        //     td.style.padding = "5px";
+        //     let std = document.createElement("td");
+        //     let deleteCheck = document.createElement("input")
+        //     deleteCheck.setAttribute("type","checkbox")
+        //     deleteCheck.setAttribute("name","todelete")
+        //     deleteCheck.setAttribute("value",okchains[i]._id)
+
+        //     std.appendChild(deleteCheck)
+        //     td.appendChild(editbtn)
+        //     tr.appendChild(td)
+        //     tr.appendChild(std)
+        // }
+
+    //     var divContainer = document.getElementById("samplejson");
+    //     divContainer.innerHTML = "";
+    //     divContainer.appendChild(table);
+    // }
 
 
             function CreateTableFromJSON4d(myBookso) {
@@ -1502,6 +1595,8 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
    })
     .catch(err => console.log(err))
 }
+
+
 
 
         function checkLogin(){

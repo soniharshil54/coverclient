@@ -274,7 +274,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="orders.html" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Orders
@@ -339,11 +339,8 @@
                 <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Email</th>
-                  <th>DOB</th>
                   <th>Contact</th>
-                  <th>Address</th>
-                  <th>City</th>               
+                  <th>Email</th>              
                 </tr>
                 </thead>
                 <tbody>
@@ -351,11 +348,8 @@
                 <tfoot>
                 <tr>
                   <th>Name</th>
-                  <th>Email</th>
-                  <th>DOB</th>
                   <th>Contact</th>
-                  <th>Address</th>
-                  <th>City</th>
+                  <th>Email</th>
                 </tr>
                 </tfoot>
               </table>
@@ -418,24 +412,28 @@
 
 <script type="text/javascript">
   $(document).ready(function() {
-    $('#example1').DataTable({
+    let userTable = $('#example1').DataTable({
         "processing" : true,
         "ajax" : {
             "url" : `http://${hosturl}:5600/api/user/users`,
             dataSrc : ''
         },
         "columns" : [ {
-            "data" : "name"
-        }, {
-            "data" : "email"
-        }, {
-            "data" : "dob"
+            "data" : "first_name",
+            render :  function ( data, type, row ) {
+            // Combine the first and last names into a single table field
+            console.log("data below")
+            console.log(userTable.ajax.json())
+            let full_name_d = userTable.ajax.json()
+            let fullnamed = full_name_d[0]
+            console.log(fullnamed.first_name)
+            let fullname = fullnamed.first_name + " " + fullnamed.last_name
+            return fullname;
+             }
         }, {
             "data" : "contact"
         }, {
-            "data" : "address"
-        }, {
-            "data" : "city"
+            "data" : "email"
         }]
     });
 });
@@ -463,7 +461,7 @@
       //var username = loguser.name;
 
       var authtokend = localStorage.getItem('authorization')
-      getproducts()
+      //getproducts()
       console.log(authtokend)
       
       //console.log(username)   

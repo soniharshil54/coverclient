@@ -14,13 +14,13 @@
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="dist/css/tagstyle.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style type="text/css">
     #testtr{
       color: red
     }
-
 
     @media (min-width: 576px){
     .modal-dialog {
@@ -34,9 +34,13 @@
       box-shadow: none;
     }
     }
+
+
+
   </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<!-- <body class="hold-transition sidebar-mini"> -->
+  <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -48,13 +52,15 @@
       </li>
     </ul>
 
- 
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-       
+        <!-- <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-comments"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
+        </a> -->
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
@@ -133,8 +139,12 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-      </li>
-    
+      </li><!-- 
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
+          <i class="fas fa-th-large"></i>
+        </a>
+      </li> -->
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -166,7 +176,7 @@
             </a>
           </li>
                     <li class="nav-item has-treeview menu-open">
-            <a href="slider.html" class="nav-link active">
+            <a href="slider.html" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Sliders
@@ -175,7 +185,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Products
@@ -191,49 +201,49 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tshirt.html" href="product.html" class="nav-link">
+                <a href="tshirt.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>T-Shirts</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="keychain_link" href="product.html" class="nav-link">
+                <a id="keychain_link" onclick="getproducts('keychain')" href="javascript:void(0);" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Keychain</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="mug_link" href="product.html#mug" class="nav-link">
+                <a id="mug_link" onclick="getproducts('mug')" href="javascript:void(0);" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mug</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="photoframe_link" href="product.html#photoframe" class="nav-link">
+                <a id="photoframe_link" onclick="getproducts('photoframe')" href="javascript:void(0);" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Photo Frame</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="popholder_link" href="product.html#popholder" class="nav-link">
+                <a id="popholder_link" onclick="getproducts('popholder')" href="javascript:void(0);" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Popholder</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="slipperbottle_link" href="product.html#slipperbottle" class="nav-link">
+                <a id="slipperbottle_link" onclick="getproducts('slipperbottle')" href="javascript:void(0);" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Slipper Bottle</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="wallclock_link" href="product.html#wallclock" class="nav-link">
+                <a id="wallclock_link" onclick="getproducts('wallclock')" href="javascript:void(0);" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Wall Clock</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="Watch_link" href="product.html#watch" class="nav-link">
+                <a id="Watch_link" onclick="getproducts('watch')" href="javascript:void(0);" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Watches</p>
                 </a>
@@ -268,7 +278,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="order.html" class="nav-link">
+            <a href="orders.html" class="nav-link">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Orders
@@ -303,126 +313,65 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+<!--     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Sliders</h1>
+            <h1>Keychain</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Add models</li>
+              <li class="breadcrumb-item active">Keychain</li>
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
+      </div>
+    </section> -->
 
     <!-- Main content -->
-    <section class="content">
+    <section style="margin-top: 120px" class="content">
       <div class="row">
-        <div class="col-md-6">
-          <div class="card card-primary collapsed-card">
-          <!--   <div class="card-header">
-              <h3 class="card-title">Add company</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-plus"></i></button>
-              </div>
-            </div> -->
-        <!--     <div class="card-body">
-              <div style="margin-bottom: 20px; height: 30px" class="input-group input-group-sm">
-                  <input id = "company_name" type="text" class="form-control">
-                  <span class="input-group-append">
-                    <button onclick="add_company()" type="button" class="btn btn-info btn-flat">Add Company</button>
-                  </span>
-                </div>
-              <div style="overflow: auto" class="form-group">
-                <ul style="list-style-position: inside;" class="list-group list-group-horizontal" id="company_list"></ul>
-              </div>
-
-            </div> -->
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="card card-secondary collapsed-card">
-          <!--   <div class="card-header">
-              <h3 class="card-title">Add model</h3>
+            <div class="card-header">
+              <h3 id="productAddHeading" class="card-title">Add Offer</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-plus"></i></button>
               </div>
-            </div> -->
+            </div>
             <div class="card-body">
-                            <div class="form-group">
-                <label for="inputStatus">Company</label>
-                <select onchange="getcompopt()" id="comp_option" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option>Samsung</option>
-                  <option>Oppo</option>
-                  <option>Vivo</option>
-                </select>
-              </div>
+                
                                 <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>Name</label>
-                        <input id="k_name" type="text" class="form-control" placeholder="Enter ...">
+                        <label>Offer Name</label>
+                        <input id="k_offer" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                       <div class="form-group">
-                        <label>Price</label>
-                        <input id="k_price" type="number" class="form-control" placeholder="Enter ...">
+                        <label>Product Name</label>
+                        <input id="k_product" type="text" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Description</label>
-                        <textarea id="k_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
-                        </div>
-                        </div>
-                  <div class="row">
-                                <div class="col-sm-6">
+                    </div> 
+                      <div class="col-sm-3">
                       <!-- text input -->
-                       <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
-                        <label>Company</label>
-                                        <select onchange="getcompopt()" id="modal_option" class="form-control custom-select">
-                  <option selected disabled>Select one</option>
-                  <option>Samsung</option>
-                  <option>Oppo</option>
-                  <option>Vivo</option>
-                </select>
+                        <label>Code</label>
+                        <input id="k_code" type="text" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div>
-                    <div class="col-sm-6">
-                          <label for="exampleInputFile">2d image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <form name="putImages" id="put_images" enctype="multipart/form-data">
-                        <input name="image_2d" type="file" class="custom-file-input" id="productImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                    </div>  
-                    <div class="col-sm-6">
+                    </div>                   <div class="col-sm-3">
                                         <div class="form-group">
-                    <label for="exampleInputFile">3d image</label>
+                    <label for="exampleInputFile">header image</label>
                     <div class="input-group">
-                      <!-- <form name="phoneImages" id="edit_images" enctype="multipart/form-data"> -->
                       <div class="custom-file">
-                        <input name="image_3d" type="file" class="custom-file-input" id="exampleInputFile">
+                        <form name="ohImages" id="pImages" enctype="multipart/form-data">
+                        <input name="hImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile"></form>
+                        
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -431,28 +380,37 @@
                     </div>
                   </div>
                     </div>
+                    <div class="col-sm-3">
+                                    <label>Date</label>
+                        <input id="k_expirydate" type="date" class="form-control" placeholder="Enter ...">
+                    </div>
                     <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">4d image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input name="image_4d" type="file" class="custom-file-input" id="exampleInputFile">
-                      </form>
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>Terms & Conditions</label>
+                        <textarea id="k_terms" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        </div>
+                        </div>
                       </div>
-                     <!--  <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
+                     <!--  <div class="col-sm-4">
+                        <div class="form-group">
+                        <label>Size</label>
+                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
                       </div> -->
-                    </div>
                   </div>
-                    </div>
-                  </div>
+                  
                   <div class="row">
                     <div class="col-sm-6">
-                          <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='is_avail' value='option1'><label for='is_avail' class='custom-control-label'>Available</label></div></div>
+                          <div class="form-group">
+                        <div class="custom-control custom-checkbox">
+                          <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
+                          <label for="customCheckbox1" class="custom-control-label">Activated</label>
+                        </div>
+                      </div>
                     </div>    
                     <div class="col-sm-6">
-                      <input id="add_phonecase" type="button" value="Add Model" class="btn btn-success float-right">
+                      <input type="button" id="add_offer" value="add Offer" class="btn btn-success float-right">
                     </div>   
                   </div>
                                        
@@ -462,28 +420,14 @@
           <!-- /.card -->
         </div>
       </div>
+      
               <!-- /.row -->
         <div class="row">
           <div class="col-12">
-
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Models</h3>
-
-             <!--    <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 470px;">
-                                    <label for="inputStatus">Company</label>
-                <select id="sel_comp" class="form-control custom-select">
-                  <option selected disabled>All</option>
-                  <option>Samsung</option>
-                  <option>Oppo</option>
-                  <option>Vivo</option>
-                </select> -->
-  <!-- <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3> -->
-
-                 <!--  </div>
-                </div> -->
-
+                <h3 id="productShowHeading" class="card-title">Keychains</h3>
+  <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3>
                 <div class="card-tools">
                 </div>
               </div>
@@ -492,24 +436,26 @@
                 <div id="samplejson"></div>
                 
               </div>
+
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
           </div>
         </div>
         <!-- /.row -->
+        
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
+  <!-- <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.1
     </div>
     <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
     reserved.
-  </footer>
+  </footer> -->
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -517,9 +463,8 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
 
- <!-- The Modal -->
+  <!-- The Modal -->
   <div class="modal" id="imageModal">
     <div class="modal-dialog">
       <div class="modal-content" style="background-color: transparent;border: none">
@@ -543,6 +488,32 @@
       </div>
     </div>
   </div>
+
+
+    <!-- The Modal -->
+  <div class="modal" id="cartProductModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+      
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <!-- <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg"> -->
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
 <!-- ./wrapper -->
  <!-- <h2>Modal Example</h2> -->
   <!-- Button to Open the Modal -->
@@ -556,7 +527,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header" style="">
-          <h4 id="productEditHeading" class="modal-title">Change slider</h4>
+          <h4 id="productEditHeading" class="modal-title">Edit Keychain</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -576,19 +547,43 @@
             <div class="card-body" style="display: block">
                 
                                 <div class="row">
-                   
-                          
                     <div class="col-sm-6">
-                      <input type="hidden" id="modal_id" name="modal_id" value="">
-                      <input type="hidden" id="modal_name" class="form-control" placeholder="Enter ...">
+                      <!-- text input -->
+                       <input type="hidden" id="modal_id" name="modal_id" value="">
+                      <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" id="modal_price" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>                    <div class="col-sm-6">
                                         <div class="form-group">
+                    <label for="exampleInputFile">header image</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="modal_slider_image" src="">
+                      <img width="38px" height="38px" id="modal_h_image" src="">
                       <div class="custom-file">
-                        <form name="sliderImages" id="slider_images" enctype="multipart/form-data">
-                        <input name="modal_slider_image" type="file" class="custom-file-input" id="exampleInputFile">
+                        <form name="eImages" id="eImages" enctype="multipart/form-data">
+                        <input name="hImage" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                    </div>
+                    <div class="col-sm-6">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">in image</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_in_image" src="">
+                      <div class="custom-file">
+                        <input name="inImage" type="file" class="custom-file-input" id="exampleInputFile">
                       </form>
-                      
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                      <!--  <div class="input-group-append">
@@ -597,16 +592,36 @@
                     </div>
                   </div>
                     </div>
-                    <div class="col-sm-6">
-                      <label for="exampleInputFile"></label>
-                      <input id="productEditBtn" onclick="editkeychain()" type="button" value="Change slider" class="btn btn-success float-right">
-                    </div> 
                   </div>
                   <div class="row">
+                    <div class="col-sm-8">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>Description</label>
+                        <input id="modal_description" type="textarea" class="form-control" placeholder="Enter ...">
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                        <label>Size</label>
+                        <input id="modal_size" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                      </div>
                   </div>
                   
-                  <div class="row">   
-                      
+                  <div class="row">
+                    <div class="col-sm-6">
+                           <div class="form-group">
+                          <label class="custom-control custom-checkbox">
+   <input type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
+   <span class="custom-control-label" for="chbxTerms">Available</span>
+   </label>
+                      </div>
+                    </div>    
+                    <div class="col-sm-6">
+                      <input id="productEditBtn" onclick="editkeychain()" type="button" value="Edit Keychain" class="btn btn-success float-right">
+                    </div>   
                   </div>
                                        
             </div>
@@ -628,7 +643,6 @@
   
 </div>
 
-
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
@@ -638,27 +652,44 @@
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="hosturl.js"></script>
-<script type="text/javascript">
 
-    $(document).ready(function(){
-  $('#add_phonecase').click(function(e) {
-    let name = document.getElementById("k_name").value
-    let company = document.getElementById("comp_option").value
-    // let size = document.getElementById("k_size").value
-    let price = document.getElementById("k_price").value
-    let description = document.getElementById("k_description").value
-    let avail_status = document.getElementById("is_avail").checked
-    let available_status = avail_status ? 1 : 0
-    //let inputfile = document.getElementById("productImage").files[0]
+
+
+
+
+
+<!-- <script type="text/javascript">
+  function getdatafortable(unfiltered){
+    var filters = ["name","size","price"];
+    let filtered = JSON.parse(unfiltered).map(function(currObj) {
+  var temp = {};
+  for identifier in filters:
+    temp[identifier] = currObj[identifier];
+  return temp;
+});
+    return filtered
+  }
+</script> -->
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  $('#add_offer').click(function(e) {
+    //let addpropara = globalProduct
+    let offer_name = document.getElementById("k_offer").value
+    let product_name = document.getElementById("k_product").value
+    let code = document.getElementById("k_code").value
+    let expiry_date = document.getElementById("k_expirydate").value
+    let termsnconditions = document.getElementById("k_terms").value
     let keydata = {
-      name:name,
-      company:company,
-      price:price,
-      description:description,
-      available_status:available_status
+      offer_name : offer_name,
+      product_name : product_name,
+      code : code,
+      expiry_date : expiry_date,
+      termsnconditions : termsnconditions 
     }
     //console.log(keydata)
-    fetch(`http://${hosturl}:5600/api/phonecase/addphonecase`,
+    fetch(`http://${hosturl}:5600/api/offer/addoffer`,
 {
     headers: {
       'Accept': 'application/json',
@@ -672,19 +703,25 @@
   })
 .then(function(result){
   console.log(result)
-  let productId = result.product._id
-  console.log(productId)
-  uploadFile(productId)
-  //getproducts()
+  // let productId = result.product._id
+  // console.log(productId)
+  // uploadFile(productId)
   
 })
 .catch(function(res){ console.log(res) })
         });
 })
+</script>
 
-      function logOutUser(){
+<script type="text/javascript">
+
+  function getQueryStringValue (key) {  
+  return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+}
+
+  function logOutUser(){
     localStorage.clear();
-    location.href =  "login.html";
+    window.location  =  "login.html";
   }
 
 
@@ -705,151 +742,17 @@
     }
     console.log(selectedItems);
     return selectedItems
-  }  
-
-  function getcompopt(){
-    let res = document.getElementById("comp_option").value
-    console.log(res)
-  }
-  function populateoption(options){
-
-    var optionsd = ""
-
-for (var i = 0; i < options.length; i++) {
-   optionsd += '<option value="' + options[i]+ '">' + options[i] + '</option>';
-
-}
-$("#comp_option").html(optionsd);
-$("#sel_comp").html(optionsd);
-$("#modal_option").html(optionsd);
-  }
-  function add_company(){
-    console.log("func")
-    let companyname = document.getElementById("company_name").value
-    let comp_data = {
-      "company_name" : companyname
-    }
-        fetch(`http://${hosturl}:5600/api/phonecase/addcompany`, {
-    method: 'post',
-    body: JSON.stringify(comp_data),
-              headers: {
-            "Content-Type": "application/json"
-          }
-  }).then(function(response) {
-    return response.json();
-  }).then(function(data) {
-    console.log(data)
-    getcompanies()
-  });
-  }
-
+  }     
 </script>
-<script type="text/javascript">
-  function companylist(strs){
-var list = document.getElementById('company_list');
-list.innerHTML = ""
-for (var i in strs) {
-  var spanli = document.createElement("span")
-  spanli.innerText = strs[i];
-
-  var elem = document.createElement("li");
-  elem.setAttribute("class", "list-group-item");
-  elem.appendChild(spanli);
-  list.appendChild(elem);
-}
-
-  }
-  
-
-  function getcompanies(){
-        fetch(`http://${hosturl}:5600/api/phonecase/companies`)
-    .then(response => {
-     // console.log(response)
-      return response.json()})
-    .then(data => {
-      console.log(data)
-      const companies = data.map(comp => comp.name);
-      console.log(companies)
-      companylist(companies)
-      populateoption(companies)
-   })
-    .catch(err => console.log(err))
-  }
-
- // getcompanies()
+<script>
 
 
-
-      function deletekeychains(){
-    let todeleteids = printChecked()
-    let deleteArray = {
-      todeleteids
-    }
-              fetch(`http://${hosturl}:5600/api/phonecase/deletephonecase`,
-          {
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            method: "DELETE",
-            body: JSON.stringify(deleteArray)
-          })
-          .then(function(res){ 
-
-            getproducts() 
-          })
-          .catch(function(res){ console.log(res) })
-  }
-
-    function editproduct(test){
-     // console.log(test)
-      let arrayn = test.getAttribute("data-key")
-      console.log(okchains[arrayn])
-      //console.log(okchains[arrayn].name)
-      document.getElementById("modal_name").value = okchains[arrayn].product_name
-      document.getElementById("modal_id").value = okchains[arrayn]._id
-      //console.log(document.getElementById("modal_id").value)
-      let slider_image = okchains[arrayn].slider_image
-      document.getElementById("modal_slider_image").src = `http://${hosturl}:5600/admin/uploads/${slider_image}`
-      // var row = $(test).closest("tr");
-      // test.removeAttribute("class","btn-primary")
-      // test.setAttribute("class","btn-success")
-      // test.innerHTML = "Save"
-      // var rowedit = row[0]
-      // rowedit.setAttribute("contenteditable","true")
-      // rowedit.focus()
-      // console.log(test)
-      // console.log(row[0])
-    }
-
-    function editkeychain(){
-      console.log("edit ran")
-        let name = document.getElementById("modal_name").value
-    let keyid = document.getElementById("modal_id").value
-      console.log(keyid)
-      console.log("k edit data")
-      // console.log(keditdata)
-      uploadFileEdit(keyid)
-      $("#myModal").modal("hide");
-    }
-
-    function imageModal(imgname){
-      let source = `http://${hosturl}:5600/admin/uploads/${imgname}`
-      document.getElementById("imgModal").src=source;
-
-      setTimeout(function () { 
-    $('#imageModal').modal('show');
-}, 50);
-      console.log(imgname)
-      
-    }
-
-      function uploadFile(productid){
+  function uploadFile(productid){
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("put_images");
+    var form = document.getElementById("pImages");
     var formData = new FormData(form);
 
-fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
+fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
@@ -860,22 +763,21 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
   }
 
     function uploadFileEdit(productid){
-      console.log("productId is",productid)
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("slider_images");
+    var form = document.getElementById("eImages");
     var formData = new FormData(form);
 
-fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
+fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
   console.log(res)
-  getproducts()
+  getproducts(globalProduct)
 }).catch(err => console.log(err))
 
   }
 
-    function getkeychains(oldkeychains){
+  function getkeychains(oldkeychains){
     let tokeyc = oldkeychains
     console.log(oldkeychains)
     let newkeychains = oldkeychains.map(keychain => {
@@ -887,9 +789,114 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
     //console.log(newkeychains)
     return newkeychains
   }
+
+  function deletekeychains(){
+    let deleteprotoget = globalProduct
+    let todeleteids = printChecked()
+    let deleteArray = {
+      todeleteids
+    }
+              fetch(`http://${hosturl}:5600/api/product/delete/${deleteprotoget}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "DELETE",
+            body: JSON.stringify(deleteArray)
+          })
+          .then(function(res){ 
+
+            getproducts(globalProduct) 
+          })
+          .catch(function(res){ console.log(res) })
+  }
+
+    function editproduct(test){
+     // console.log(test)
+      let arrayn = test.getAttribute("data-key")
+      console.log(okchains[arrayn])
+      //console.log(okchains[arrayn].name)
+      document.getElementById("modal_id").value = okchains[arrayn]._id
+      //console.log(document.getElementById("modal_id").value)
+      document.getElementById("modal_name").value = okchains[arrayn].name
+      document.getElementById("modal_price").value = okchains[arrayn].price
+      document.getElementById("modal_description").value = okchains[arrayn].description
+      document.getElementById("modal_size").value = okchains[arrayn].size
+      let headerimage = okchains[arrayn].h_image
+      let innerimage = okchains[arrayn].in_image
+      document.getElementById("modal_h_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
+      document.getElementById("modal_in_image").src = `http://${hosturl}:5600/admin/uploads/${innerimage}`
+      // var row = $(test).closest("tr");
+      // test.removeAttribute("class","btn-primary")
+      // test.setAttribute("class","btn-success")
+      // test.innerHTML = "Save"
+      // var rowedit = row[0]
+      // rowedit.setAttribute("contenteditable","true")
+      // rowedit.focus()
+      // console.log(test)
+      // console.log(row[0])
+    }
+
+    function productdetailsmodal(probtn){
+      let proid = probtn.getAttribute('data-pid')
+      console.log(proid)
+      fetch(`http://${hosturl}:5600/api/order/getcartproductbyid/${proid}`)
+      .then(response => {
+        //console.log(result)
+        return response.json()
+      })
+      .then(result => {
+        console.log(result)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+
+    function editkeychain(){
+      console.log("edit ran")
+      let editprotoget = globalProduct
+        let name = document.getElementById("modal_name").value
+    let size = document.getElementById("modal_size").value
+    let price = document.getElementById("modal_price").value
+    let description = document.getElementById("modal_description").value
+    let keyid = document.getElementById("modal_id").value
+      let keditdata = {
+        name, size, price, description
+      }
+      console.log(keyid)
+      console.log("k edit data")
+      console.log(keditdata)
+
+          fetch(`http://${hosturl}:5600/api/product/edit/${editprotoget}/${keyid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(keditdata)
+          })
+          .then(function(res){ 
+            uploadFileEdit(keyid)
+            $("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    }
+
+    function imageModal(imgname){
+      let source = `http://${hosturl}:5600/admin/uploads/${imgname}`
+      document.getElementById("imgModal").src=source;
+
+      $('#imageModal').modal('show');
+      console.log(imgname)
+      
+    }
+
     function CreateTableFromJSON(myBookso) {
-      let myBookson = getkeychains(myBookso)
-      var myBooks = JSON.parse(JSON.stringify( myBookson, ["product_display_name","slider_image"]));
+      let myBooks = getkeychains(myBookso)
 
 
         var col = [];
@@ -922,7 +929,7 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
             tr.appendChild(thn);
         var ths = document.createElement("th")
         ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
-        //tr.appendChild(ths);
+        tr.appendChild(ths);
 
         // ADD JSON DATA TO THE TABLE AS ROWS.
         for (var i = 0; i < myBooks.length; i++) {
@@ -931,18 +938,29 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
             //tr.setAttribute("contenteditable", "true"); 
             for (var j = 0; j < col.length; j++) {
               var tabCell = tr.insertCell(-1);
-              if(j===1){
-                let image = '"'+myBooks[i][col[j]]+'"'
-                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
-                console.log(myBooks[i][col[j]])
+              if(j===0){
+                //console.log(myBooks[i][col[j]])
+                let products = myBooks[i][col[j]]
+                console.log(products)
+                let products_name = ''
+                for(let i=0; i < products.length; i++){
+                  console.log()
+                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${products[i]._id}">${products[i].product_name}</button>`
+                  products_name += `${btntag} </br> `
+                }
+                console.log(products_name)
+                tabCell.innerHTML = products_name
+              }
+              else if(j===3){
+                tabCell.innerHTML = myBooks[i][col[j]].name
               }
               else{
                 tabCell.innerHTML = myBooks[i][col[j]];
               }
-                
-                
-                //console.log(i, j)
-            }
+              
+              
+              //console.log(i, j)
+              }
           //  console.log(myBooks[i])
              // let delbtn = document.createElement("button")
              // delbtn.setAttribute("class", "btn btn-danger");
@@ -973,7 +991,7 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
             td.appendChild(editbtn)
             // td.appendChild(delbtn)
             tr.appendChild(td)
-            //tr.appendChild(std)
+            tr.appendChild(std)
         }
 
         // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
@@ -981,10 +999,16 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
         divContainer.innerHTML = "";
         divContainer.appendChild(table);
     }
-    //CreateTableFromJSON() 
-
-          function getproducts(){
-    fetch(`http://${hosturl}:5600/api/product/sliders`)
+      function getproducts(){
+        //globalProduct = proname
+        // document.getElementById("productAddHeading").innerHTML = "Add "+globalProduct
+        // document.getElementById("productEditHeading").innerHTML = "Edit "+globalProduct
+        // document.getElementById("productShowHeading").innerHTML = globalProduct
+        // document.getElementById("add_keychain").value = "Add "+globalProduct
+        // document.getElementById("productEditBtn").value = "Add "+globalProduct
+        // let producttoget = proname
+        // let getpropara = producttoget + "s"
+    fetch(`http://${hosturl}:5600/api/order/getorderswithdata`)
     .then(response => {
      // console.log(response)
       return response.json()})
@@ -1002,7 +1026,52 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
    })
     .catch(err => console.log(err))
 }
-getproducts()
+      // let filters = ["name", "size", "price"]
+      // let ndata = JSON.parse(unfiltered).map(function(currObj) {
+      // var temp = {};
+      // for identifier in filters:
+      //   temp[identifier] = currObj[identifier];
+      // return temp;
+      // });
+        if(window.location.hash) {
+      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+      console.log(hash)
+
+      getproducts(hash)
+      // hash found
+  } else {
+      getproducts("keychain")
+     // document.getElementById("keychain_link").setAttribute("class","nav-link active")
+  }
+
+        function checkLogin(){
+    
+    if (localStorage.getItem("luser") === null) {
+     // $('#loggedIn').css("display","none")
+       // $('#logintosee').html("login to see the registered users")
+       // $('#notloggedbtn').css("display","block")
+        window.location = "login.html";
+      //  console.log(ran)
+    }
+    else{
+      console.log(localStorage.getItem("luser"))
+      //var loguser = JSON.parse(localStorage.getItem('luser'));
+      //var username = loguser.name;
+
+      var authtokend = localStorage.getItem('authorization')
+      console.log(authtokend)
+      
+      //console.log(username)   
+       }
+  }
+  checkLogin()
+
+  
+    
+</script>
+
+<script type="text/javascript">
+
 </script>
 </body>
 </html>

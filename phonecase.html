@@ -333,12 +333,22 @@
               </div>
             </div>
             <div class="card-body">
-              <div style="margin-bottom: 20px; height: 30px" class="input-group input-group-sm">
+              <div class="row">
+                 <div class="col-sm-6">
+                <div style="width: 300px;margin-bottom: 20px; height: 30px" class="input-group input-group-sm">
                   <input id = "company_name" type="text" class="form-control">
                   <span class="input-group-append">
                     <button onclick="add_company()" type="button" class="btn btn-info btn-flat">Add Company</button>
                   </span>
                 </div>
+              </div>
+              <!--  <div class="col-sm-6">
+                  <button style="float: right;" onclick='deletecompanies()' class='btn btn-danger'>Delete Selected</button>
+                </div> -->
+              </div>
+             
+              
+               
                 <div>
                     <div class="card-body table-responsive p-0">
                 <div id="companyjson"></div>
@@ -535,24 +545,29 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Models</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 470px;">
-                                    <label for="inputStatus">Company</label>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <h3 class="card-title">Models</h3>
+                  </div>
+                  <div class="col-sm-5">
+                      <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 270px;">
+                                    <label style="margin-right: 20px" for="inputStatus">Company Name</label>
                 <select onchange="filterbycompany()" id="sel_comp" class="form-control custom-select">
                   <option selected disabled>All</option>
                   <option>Samsung</option>
                   <option>Oppo</option>
                   <option>Vivo</option>
-                </select>
-  <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3>
-
-                    <!-- <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div> -->
+                </select>                 </div>
+                </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>  
                   </div>
                 </div>
+                
+
+              
 
                 <div class="card-tools">
                 </div>
@@ -595,6 +610,47 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+
+ <!-- The Modal -->
+  <div class="modal" id="compModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+      
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div class="col-sm-6">
+              <input id="c_id" type="hidden" class="form-control" placeholder="Enter new name...">
+              <input id="c_old_name" type="hidden" class="form-control" placeholder="Enter new name...">
+              <div class="form-group">
+              <!-- <label>New Company Name</label> -->
+              <input id="c_name" type="text" class="form-control" placeholder="Enter new name...">
+            </div>
+            </div>
+             <div class="col-sm-6">
+              <div class="form-group">
+                 <label>&nbsp;</label>
+                 <input id="productEditBtn" onclick="editcompanyname()" type="button" value="Edit Company Name" class="btn btn-success float-right">
+              </div>
+                     
+                    </div> 
+          </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
 
  <!-- The Modal -->
   <div class="modal" id="imageModal">
@@ -866,9 +922,9 @@
   $('#add_phonecase').click(function(e) {
     let name = document.getElementById("k_name").value
     let company = document.getElementById("comp_option").value
-     let size_2d = document.getElementById("k_size_2d").value
-     let size_3d = document.getElementById("k_size_3d").value
-     let size_4d = document.getElementById("k_size_4d").value
+    let size_2d = document.getElementById("k_size_2d").value
+    let size_3d = document.getElementById("k_size_3d").value
+    let size_4d = document.getElementById("k_size_4d").value
     let price_2d = document.getElementById("k_price_2d").value
     let price_3d = document.getElementById("k_price_3d").value
     let price_4d = document.getElementById("k_price_4d").value
@@ -926,8 +982,16 @@
 
   function checkAll()
  {
-     var tablek = document.getElementById ('keychaintable');
+     var tablek = document.getElementById('keychaintable');
      var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
+     var val = checkboxes[0].checked;
+     for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
+ }
+
+  function checkAllCompanies()
+ {
+     var tablec = document.getElementById('companytable');
+     var checkboxes = tablec.querySelectorAll ('input[type=checkbox]');
      var val = checkboxes[0].checked;
      for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
  }
@@ -951,6 +1015,17 @@ function filterbycompany(){
 
   function printChecked(){
     var items=document.getElementsByName('todelete');
+    var selectedItems=[];
+    for(var i=0; i<items.length; i++){
+      if(items[i].type=='checkbox' && items[i].checked==true)
+        selectedItems.push(items[i].value);
+    }
+    console.log(selectedItems);
+    return selectedItems
+  }  
+
+    function printCheckedCompanies(){
+    var items=document.getElementsByName('todeletecomp');
     var selectedItems=[];
     for(var i=0; i<items.length; i++){
       if(items[i].type=='checkbox' && items[i].checked==true)
@@ -1035,6 +1110,7 @@ for (var i in strs) {
       return response.json()})
     .then(data => {
       console.log(data)
+      globalcompanies = data.map(a => ({...a}));
       const companies = data.map(comp => comp.name);
       console.log(companies)
       //companylist(companies)
@@ -1046,6 +1122,26 @@ for (var i in strs) {
 
   getcompanies()
 
+      function deletecompanies(){
+    let todeleteids = printCheckedCompanies()
+    let deleteArray = {
+      todeleteids
+    }
+              fetch(`http://${hosturl}:5600/api/phonecase/deletecompany`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "DELETE",
+            body: JSON.stringify(deleteArray)
+          })
+          .then(function(res){ 
+
+            getcompanies() 
+          })
+          .catch(function(res){ console.log(res) })
+  }
 
 
       function deletekeychains(){
@@ -1070,7 +1166,14 @@ for (var i in strs) {
   }
 
   function editcompany(company){
-
+    let companyref = company.getAttribute("data-key")
+    let companyrf = globalcompanies[companyref]
+    console.log(globalcompanies[companyref])
+    //console.log()
+    document.getElementById('c_name').value = companyrf.name
+    document.getElementById('c_old_name').value = companyrf.name
+    document.getElementById('c_id').value = companyrf._id
+   
   }
 
     function editproduct(test){
@@ -1154,6 +1257,39 @@ for (var i in strs) {
           .catch(function(res){ console.log(res) })
     }
 
+        function editcompanyname(){
+      console.log("edit ran")
+    let name = document.getElementById("c_name").value
+      let keyid = document.getElementById("c_id").value
+      let oldname = document.getElementById("c_old_name").value
+    //console.log("avail status", avail_status)
+    //let available_status = avail_status ? 1 : 0
+      let keditdata = {
+        name, oldname
+      }
+      console.log(keyid)
+      console.log("k edit data")
+      console.log(keditdata)
+
+          fetch(`http://${hosturl}:5600/api/phonecase/editcompanyname/${keyid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(keditdata)
+          })
+          .then(function(res){ 
+            //uploadFileEdit(keyid)
+            getcompanies()
+            getproducts()
+            $("#compModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    }
+
     function imageModal(imgname){
       let source = `http://${hosturl}:5600/admin/uploads/${imgname}` 
       document.getElementById("imgModal").src=source;
@@ -1194,6 +1330,62 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 }).catch(err => console.log(err))
 
   }
+
+
+  function activeproduct(activebtn){
+    let companyref = activebtn.getAttribute("data-key")
+    let companyid = globalcompanies[companyref]._id
+    let ceditdata = {
+      active_status : 1
+    }
+              fetch(`http://${hosturl}:5600/api/phonecase/editcompany/${companyid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(ceditdata)
+          })
+          .then(function(res){ 
+            console.log(res)
+           // uploadFileEdit(keyid)
+            getcompanies()
+           // $("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    console.log(companyid)
+  }
+
+  function deactiveproduct(activebtn){
+    let companyref = activebtn.getAttribute("data-key")
+    let companyid = globalcompanies[companyref]._id
+     let ceditdata = {
+      active_status : 0
+    }
+              fetch(`http://${hosturl}:5600/api/phonecase/editcompany/${companyid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(ceditdata)
+          })
+          .then(function(res){ 
+             console.log(res)
+            getcompanies()
+           // uploadFileEdit(keyid)
+           // getproducts()
+            //$("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    console.log(companyid)
+  }
+
+
 
     function getkeychains(oldkeychains){
     let tokeyc = oldkeychains
@@ -1304,7 +1496,8 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
     //CreateTableFromJSON() 
 
         function CreateTableFromJSONcompany(myBookso) {
-      let myBooks = getkeychains(myBookso)
+      let myBookson = getkeychains(myBookso)
+        let myBooks = JSON.parse(JSON.stringify( myBookson, ["name"]));
 
 
         var col = [];
@@ -1319,7 +1512,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
         // CREATE DYNAMIC TABLE.
         var table = document.createElement("table");
         table.setAttribute("class", "table");
-        table.setAttribute("id","keychaintable")
+        table.setAttribute("id","companytable")
         // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
         var tr = table.insertRow(-1);  
@@ -1335,9 +1528,15 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
         var thn =  document.createElement("th"); 
         thn.innerHTML = "Edit";
             tr.appendChild(thn);
+            var tha =  document.createElement("th"); 
+        tha.innerHTML = "Action";
+            tr.appendChild(tha);
         var ths = document.createElement("th")
-        ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
+        var thd = document.createElement("th")
+        thd.innerHTML="<button onclick='deletecompanies()' class='btn btn-danger'>Delete Selected</button>"
+        ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAllCompanies() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label><button style='margin-left:10px' onclick='deletecompanies()' class='btn btn-danger'>Delete All</button></div></div> "
         tr.appendChild(ths);
+        //tr.appendChild(thd);
 
         // ADD JSON DATA TO THE TABLE AS ROWS.
         for (var i = 0; i < myBooks.length; i++) {
@@ -1359,34 +1558,54 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
              // delbtn.style.margin = "5px";
             let editbtn = document.createElement("button")
             let activatebtn = document.createElement("button")
-            activatebtn.setAttribute("class", "btn btn-primary");
+           // activatebtn.setAttribute("class", "btn btn-success");
             activatebtn.style.marginRight = "2px";
             // activatebtn.setAttribute("class", "btn btn-primary");
-            activatebtn.innerHTML = "Activate";
+            //activatebtn.innerHTML = "Activate";
             editbtn.setAttribute("class", "btn btn-primary");
             editbtn.style.marginRight = "2px";
-            // editbtn.setAttribute("onclick", "editproduct(this)");
+            editbtn.setAttribute("onclick", "editcompany(this)");
             editbtn.setAttribute("data-toggle", "modal");
-            editbtn.setAttribute("data-target", "#myModal");
+            editbtn.setAttribute("data-target", "#compModal");
             editbtn.setAttribute("data-key",i)
             // delbtn.setAttribute("data-key",i)
             // delbtn.setAttribute("onclick", "deleteproduct(this)")
             editbtn.style.padding = "1px 5px";
+            activatebtn.style.padding = "1px 5px";
             // delbtn.style.padding = "1px 5px";
             editbtn.innerHTML = "Edit"
             let td = document.createElement("td");
             td.style.padding = "5px";
             let std = document.createElement("td");
+            let atd = document.createElement("td");
+            if(globalcompanies[i].active_status === 1){
+                activatebtn.setAttribute("onclick","deactiveproduct(this)")
+                activatebtn.setAttribute("class", "btn btn-success");
+                activatebtn.innerHTML = "Activated";
+            }
+            else{
+                activatebtn.setAttribute("onclick","activeproduct(this)")
+                activatebtn.setAttribute("class", "btn btn-danger");
+                activatebtn.innerHTML = "Deactivated";
+            }
+           // activatebtn.setAttribute("onclick","productstatustoggle(this)")
+            //activatebtn.setAttribute("class", "btn btn-success");
+           // activatebtn.innerHTML = "Activated";
+            activatebtn.setAttribute("data-key",i)
+            //std.style.padding = "5px";
+            atd.style.padding = "5px";
             let deleteCheck = document.createElement("input")
             deleteCheck.setAttribute("type","checkbox")
-            deleteCheck.setAttribute("name","todelete")
-            // deleteCheck.setAttribute("value",okchains[i]._id)
+            deleteCheck.setAttribute("name","todeletecomp")
+             deleteCheck.setAttribute("value",globalcompanies[i]._id)
 
             // console.log(deleteCheck)
             std.appendChild(deleteCheck)
             td.appendChild(editbtn)
+            atd.appendChild(activatebtn)
             // td.appendChild(delbtn)
             tr.appendChild(td)
+            tr.appendChild(atd)
             tr.appendChild(std)
         }
 

@@ -191,7 +191,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="tshirt.html" href="product.html" class="nav-link">
+                <a href="tshirt.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>T-Shirts</p>
                 </a>
@@ -241,7 +241,7 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="offers.html" class="nav-link">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Offers
@@ -1557,23 +1557,21 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
              // delbtn.innerHTML = "Delete"
              // delbtn.style.margin = "5px";
             let editbtn = document.createElement("button")
-            let activatebtn = document.createElement("button")
-           // activatebtn.setAttribute("class", "btn btn-success");
-            activatebtn.style.marginRight = "2px";
-            // activatebtn.setAttribute("class", "btn btn-primary");
-            //activatebtn.innerHTML = "Activate";
-            editbtn.setAttribute("class", "btn btn-primary");
+             editbtn.setAttribute("class", "btn btn-primary");
             editbtn.style.marginRight = "2px";
             editbtn.setAttribute("onclick", "editcompany(this)");
             editbtn.setAttribute("data-toggle", "modal");
             editbtn.setAttribute("data-target", "#compModal");
             editbtn.setAttribute("data-key",i)
+            editbtn.innerHTML = "Edit"
             // delbtn.setAttribute("data-key",i)
             // delbtn.setAttribute("onclick", "deleteproduct(this)")
             editbtn.style.padding = "1px 5px";
+            let activatebtn = document.createElement("button")
+            activatebtn.style.marginRight = "2px"
+           
             activatebtn.style.padding = "1px 5px";
-            // delbtn.style.padding = "1px 5px";
-            editbtn.innerHTML = "Edit"
+            
             let td = document.createElement("td");
             td.style.padding = "5px";
             let std = document.createElement("td");

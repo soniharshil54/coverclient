@@ -251,7 +251,7 @@
             </ul>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="offers.html" class="nav-link active">
               <i class="nav-icon fas fa-chart-pie"></i>
               <p>
                 Offers
@@ -369,8 +369,8 @@
                     <label for="exampleInputFile">header image</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <form name="ohImages" id="pImages" enctype="multipart/form-data">
-                        <input name="hImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile"></form>
+                        <form name="ohImages" id="ohImages" enctype="multipart/form-data">
+                        <input name="offer_image" id="hImage" type="file" class="custom-file-input" id="exampleInputFile"></form>
                         
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
@@ -549,41 +549,39 @@
                                 <div class="row">
                     <div class="col-sm-6">
                       <!-- text input -->
-                       <input type="hidden" id="modal_id" name="modal_id" value="">
+                       <input type="hidden" id="modal_offer_id" name="modal_offer_id" value="">
                       <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                        <label>Offer Name</label>
+                        <input type="text" id="modal_offer_name" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
                     <div class="col-sm-6">
                       <div class="form-group">
-                        <label>Price</label>
-                        <input type="number" id="modal_price" class="form-control" placeholder="Enter ...">
+                        <label>Product Name</label>
+                        <input type="text" id="modal_offer_product" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div>                    <div class="col-sm-6">
+                    </div>    
+                      <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Code</label>
+                        <input type="text" id="modal_offer_code" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>              
+                     <div class="col-sm-6">
+                      <div class="form-group">
+                        <label>Expiry Date</label>
+                        <input type="date" id="modal_offer_date" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div> 
+                         <div class="col-sm-6">
                                         <div class="form-group">
                     <label for="exampleInputFile">header image</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="modal_h_image" src="">
+                      <img width="38px" height="38px" id="modal_h_o_image" src="">
                       <div class="custom-file">
-                        <form name="eImages" id="eImages" enctype="multipart/form-data">
-                        <input name="hImage" type="file" class="custom-file-input" id="productImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div>
-                    </div>
-                    <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">in image</label>
-                    <div class="input-group">
-                      <img width="38px" height="38px" id="modal_in_image" src="">
-                      <div class="custom-file">
-                        <input name="inImage" type="file" class="custom-file-input" id="exampleInputFile">
-                      </form>
+                        <form name="ohEditImages" id="ohEditImages" enctype="multipart/form-data">
+                        <input name="offer_image" type="file" class="custom-file-input" id="exampleInputFile"></form>
+                     
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                      <!--  <div class="input-group-append">
@@ -592,21 +590,13 @@
                     </div>
                   </div>
                     </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-8">
+                    <div class="col-sm-6">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Description</label>
-                        <input id="modal_description" type="textarea" class="form-control" placeholder="Enter ...">
+                            <label>Terms and coditions</label>
+                        <input id="modal_offer_terms" type="textarea" class="form-control" placeholder="Enter ...">
                         </div>
                         </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                        <label>Size</label>
-                        <input id="modal_size" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
                       </div>
                   </div>
                   
@@ -615,12 +605,12 @@
                            <div class="form-group">
                           <label class="custom-control custom-checkbox">
    <input type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
-   <span class="custom-control-label" for="chbxTerms">Available</span>
+   <span class="custom-control-label" for="chbxTerms">Active status</span>
    </label>
                       </div>
                     </div>    
                     <div class="col-sm-6">
-                      <input id="productEditBtn" onclick="editkeychain()" type="button" value="Edit Keychain" class="btn btn-success float-right">
+                      <input id="productEditBtn" onclick="editkeychain()" type="button" value="Edit Offer" class="btn btn-success float-right">
                     </div>   
                   </div>
                                        
@@ -749,10 +739,10 @@
 
   function uploadFile(productid){
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("pImages");
+    var form = document.getElementById("ohImages");
     var formData = new FormData(form);
 
-fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}`, {
+fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
@@ -764,15 +754,15 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
 
     function uploadFileEdit(productid){
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("eImages");
+    var form = document.getElementById("ohEditImages");
     var formData = new FormData(form);
 
-fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}`, {
+fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
   console.log(res)
-  getproducts(globalProduct)
+  getoffers()
 }).catch(err => console.log(err))
 
   }
@@ -791,12 +781,12 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
   }
 
   function deletekeychains(){
-    let deleteprotoget = globalProduct
+   // let deleteprotoget = globalProduct
     let todeleteids = printChecked()
     let deleteArray = {
       todeleteids
     }
-              fetch(`http://${hosturl}:5600/api/product/delete/${deleteprotoget}`,
+              fetch(`http://${hosturl}:5600/api/offer/deleteoffer`,
           {
             headers: {
               'Accept': 'application/json',
@@ -807,7 +797,7 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
           })
           .then(function(res){ 
 
-            getproducts(globalProduct) 
+            getoffers() 
           })
           .catch(function(res){ console.log(res) })
   }
@@ -815,18 +805,17 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
     function editproduct(test){
      // console.log(test)
       let arrayn = test.getAttribute("data-key")
-      console.log(okchains[arrayn])
+      console.log(okoffers[arrayn])
       //console.log(okchains[arrayn].name)
-      document.getElementById("modal_id").value = okchains[arrayn]._id
+      document.getElementById("modal_offer_id").value = okoffers[arrayn]._id
       //console.log(document.getElementById("modal_id").value)
-      document.getElementById("modal_name").value = okchains[arrayn].name
-      document.getElementById("modal_price").value = okchains[arrayn].price
-      document.getElementById("modal_description").value = okchains[arrayn].description
-      document.getElementById("modal_size").value = okchains[arrayn].size
-      let headerimage = okchains[arrayn].h_image
-      let innerimage = okchains[arrayn].in_image
-      document.getElementById("modal_h_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
-      document.getElementById("modal_in_image").src = `http://${hosturl}:5600/admin/uploads/${innerimage}`
+      document.getElementById("modal_offer_name").value = okoffers[arrayn].offer_name
+      document.getElementById("modal_offer_product").value = okoffers[arrayn].product_name
+      document.getElementById("modal_offer_code").value = okoffers[arrayn].code
+      document.getElementById("modal_offer_date").value = okoffers[arrayn].expiry_date
+      document.getElementById("modal_offer_terms").value = okoffers[arrayn].termsnconditions
+      let headerimage = okoffers[arrayn].h_image
+      document.getElementById("modal_h_o_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
       // var row = $(test).closest("tr");
       // test.removeAttribute("class","btn-primary")
       // test.setAttribute("class","btn-success")
@@ -856,20 +845,21 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
 
     function editkeychain(){
       console.log("edit ran")
-      let editprotoget = globalProduct
-        let name = document.getElementById("modal_name").value
-    let size = document.getElementById("modal_size").value
-    let price = document.getElementById("modal_price").value
-    let description = document.getElementById("modal_description").value
-    let keyid = document.getElementById("modal_id").value
+      //let editprotoget = globalProduct
+        let offer_name = document.getElementById("modal_offer_name").value
+    let product_name = document.getElementById("modal_offer_product").value
+    let code = document.getElementById("modal_offer_code").value
+    let expiry_date = document.getElementById("modal_offer_date").value
+    let termsnconditions = document.getElementById("modal_offer_terms").value
+    let keyid = document.getElementById("modal_offer_id").value
       let keditdata = {
-        name, size, price, description
+        offer_name, product_name, code, expiry_date, termsnconditions
       }
       console.log(keyid)
       console.log("k edit data")
       console.log(keditdata)
 
-          fetch(`http://${hosturl}:5600/api/product/edit/${editprotoget}/${keyid}`,
+          fetch(`http://${hosturl}:5600/api/offer/editoffer/${keyid}`,
           {
             headers: {
               'Accept': 'application/json',
@@ -880,6 +870,7 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
           })
           .then(function(res){ 
             uploadFileEdit(keyid)
+            //getoffers()
             $("#myModal").modal("hide");
  
           })
@@ -890,10 +881,64 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
       let source = `http://${hosturl}:5600/admin/uploads/${imgname}`
       document.getElementById("imgModal").src=source;
 
-      $('#imageModal').modal('show');
+        setTimeout(function () { 
+    $('#imageModal').modal('show');
+}, 50);
       console.log(imgname)
       
     }
+      function activeproduct(activebtn){
+    let offerref = activebtn.getAttribute("data-key")
+    let offerid = globalcompanies[offerref]._id
+    let ceditdata = {
+      active_status : 1
+    }
+              fetch(`http://${hosturl}:5600/api/offer/editofferstatus/${offerid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(ceditdata)
+          })
+          .then(function(res){ 
+            console.log(res)
+           // uploadFileEdit(keyid)
+            getcompanies()
+           // $("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    console.log(companyid)
+  }
+
+  function deactiveproduct(activebtn){
+    let offerref = activebtn.getAttribute("data-key")
+    let offerid = okoffers[offerref]._id
+     let ceditdata = {
+      active_status : 0
+    }
+              fetch(`http://${hosturl}:5600/api/offer/editofferstatus/${offerid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(ceditdata)
+          })
+          .then(function(res){ 
+             console.log(res)
+            getcompanies()
+           // uploadFileEdit(keyid)
+           // getproducts()
+            //$("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    console.log(companyid)
+  }
 
     function CreateTableFromJSON(myBookso) {
       let myBooks = getkeychains(myBookso)
@@ -926,7 +971,11 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
         }
         var thn =  document.createElement("th"); 
         thn.innerHTML = "Edit";
-            tr.appendChild(thn);
+                    var tha =  document.createElement("th"); 
+        tha.innerHTML = "Action";
+        tr.appendChild(thn);
+            tr.appendChild(tha);
+            
         var ths = document.createElement("th")
         ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
         tr.appendChild(ths);
@@ -938,26 +987,17 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
             //tr.setAttribute("contenteditable", "true"); 
             for (var j = 0; j < col.length; j++) {
               var tabCell = tr.insertCell(-1);
-              if(j===0){
-                //console.log(myBooks[i][col[j]])
-                let products = myBooks[i][col[j]]
-                console.log(products)
-                let products_name = ''
-                for(let i=0; i < products.length; i++){
-                  console.log()
-                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${products[i]._id}">${products[i].product_name}</button>`
-                  products_name += `${btntag} </br> `
-                }
-                console.log(products_name)
-                tabCell.innerHTML = products_name
-              }
-              else if(j===3){
-                tabCell.innerHTML = myBooks[i][col[j]].name
+              if(j === 5){
+                 let image = '"'+myBooks[i][col[j]]+'"'
+                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
+                console.log(myBooks[i][col[j]])
               }
               else{
-                tabCell.innerHTML = myBooks[i][col[j]];
+
+              tabCell.innerHTML = myBooks[i][col[j]];
+
               }
-              
+                           
               
               //console.log(i, j)
               }
@@ -973,24 +1013,44 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
             editbtn.setAttribute("data-toggle", "modal");
             editbtn.setAttribute("data-target", "#myModal");
             editbtn.setAttribute("data-key",i)
+               let activatebtn = document.createElement("button")
+            activatebtn.style.marginRight = "2px"
+           
+            activatebtn.style.padding = "1px 5px";
+             let atd = document.createElement("td");
+             if(okoffers[i].active_status === 1){
+                activatebtn.setAttribute("onclick","deactiveproduct(this)")
+                activatebtn.setAttribute("class", "btn btn-success");
+                activatebtn.innerHTML = "Activated";
+            }
+            else{
+                activatebtn.setAttribute("onclick","activeproduct(this)")
+                activatebtn.setAttribute("class", "btn btn-danger");
+                activatebtn.innerHTML = "Deactivated";
+            }
+            activatebtn.setAttribute("data-key",i)
+            //std.style.padding = "5px";
+            //atd.style.padding = "5px";
             // delbtn.setAttribute("data-key",i)
             // delbtn.setAttribute("onclick", "deleteproduct(this)")
             editbtn.style.padding = "1px 5px";
             // delbtn.style.padding = "1px 5px";
             editbtn.innerHTML = "Edit"
             let td = document.createElement("td");
-            td.style.padding = "5px";
+            //td.style.padding = "5px";
             let std = document.createElement("td");
             let deleteCheck = document.createElement("input")
             deleteCheck.setAttribute("type","checkbox")
             deleteCheck.setAttribute("name","todelete")
-            deleteCheck.setAttribute("value",okchains[i]._id)
+            deleteCheck.setAttribute("value",okoffers[i]._id)
 
             // console.log(deleteCheck)
             std.appendChild(deleteCheck)
             td.appendChild(editbtn)
+            atd.appendChild(activatebtn)
             // td.appendChild(delbtn)
             tr.appendChild(td)
+            tr.appendChild(atd)
             tr.appendChild(std)
         }
 
@@ -999,7 +1059,7 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
         divContainer.innerHTML = "";
         divContainer.appendChild(table);
     }
-      function getproducts(){
+      function getoffers(){
         //globalProduct = proname
         // document.getElementById("productAddHeading").innerHTML = "Add "+globalProduct
         // document.getElementById("productEditHeading").innerHTML = "Edit "+globalProduct
@@ -1008,14 +1068,14 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
         // document.getElementById("productEditBtn").value = "Add "+globalProduct
         // let producttoget = proname
         // let getpropara = producttoget + "s"
-    fetch(`http://${hosturl}:5600/api/order/getorderswithdata`)
+    fetch(`http://${hosturl}:5600/api/offer/getoffers`)
     .then(response => {
      // console.log(response)
       return response.json()})
     .then(data => {
-      okchains = data.map(a => ({...a}));
+      okoffers = data.map(a => ({...a}));
       //let okchains = Object.assign({}, data);
-      console.log(okchains)
+      console.log(okoffers)
   // okchains = Object.assign({}, data);
    //console.log(okchains)
    //let testkey = Object.assign({}, data);
@@ -1033,16 +1093,7 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
       //   temp[identifier] = currObj[identifier];
       // return temp;
       // });
-        if(window.location.hash) {
-      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
-      console.log(hash)
-
-      getproducts(hash)
-      // hash found
-  } else {
-      getproducts("keychain")
-     // document.getElementById("keychain_link").setAttribute("class","nav-link active")
-  }
+    
 
         function checkLogin(){
     
@@ -1065,6 +1116,7 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
        }
   }
   checkLogin()
+  getoffers()
 
   
     

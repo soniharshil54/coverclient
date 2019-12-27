@@ -208,13 +208,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a id="keychain_link" onclick="getproducts('keychain')" href="javascript:void(0);" class="nav-link">
+                <a id="keychain_link" href="product.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Keychain</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="mug_link" onclick="getproducts('mug')" href="javascript:void(0);" class="nav-link">
+                <a id="mug_link"  href="product.html#mug" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mug</p>
                 </a>
@@ -1157,13 +1157,17 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
                 console.log(products_name)
                 tabCell.innerHTML = products_name
               }
-              else if(j===7){
+              else if(j===8){
                 let userinfo = myBooks[i][col[j]]
                 let user = okchains[i].user_id._id
                 console.log("below user")
                 console.log(user)
                 let btntag2 =  `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${user}">view</button>`
                 tabCell.innerHTML = btntag2
+              }
+                  else if(j===3){
+                let btntag3 =  `<span class="badge badge-success">${myBooks[i][col[j]]}</span>`
+                tabCell.innerHTML = btntag3
               }
               else{
                 tabCell.innerHTML = myBooks[i][col[j]];

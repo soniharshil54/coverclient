@@ -412,10 +412,22 @@
                     </div>
                     </div>  
                           <div class="col-sm-2">
-                          <label for="exampleInputFile">2d image inner</label>
+                          <label for="exampleInputFile">2d image cover</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input name="image_2d_inner" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                    </div> 
+                       <div class="col-sm-2">
+                          <label for="exampleInputFile">2d image mask</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="image_2d_mask" type="file" class="custom-file-input">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -430,14 +442,14 @@
                         <input id="k_size_2d" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                     <div class="col-sm-2">
+                     <div class="col-sm-1">
                       <!-- text input -->
                       <div class="form-group">
                         <label>2d-Price</label>
                         <input id="k_price_2d" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                   <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             <label>2d-Description</label>
@@ -445,7 +457,7 @@
                         </div>
                         </div></div>
                        <div class="col-sm-2">
-                          <label for="exampleInputFile">3d image slider</label>
+                          <label for="exampleInputFile">3d image cover</label>
                     <div class="input-group">
                       <div class="custom-file">
                         <input name="image_3d_slider" type="file" class="custom-file-input" id="productImage">
@@ -455,7 +467,19 @@
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                    </div>  
+                    </div>
+                       <div class="col-sm-2">
+                          <label for="exampleInputFile">3d image mask</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="image_3d_mask" type="file" class="custom-file-input">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                    </div>   
                           <div class="col-sm-2">
                           <label for="exampleInputFile">3d image inner</label>
                     <div class="input-group">
@@ -475,14 +499,14 @@
                         <input id="k_size_3d" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                     <div class="col-sm-2">
+                     <div class="col-sm-1">
                       <!-- text input -->
                       <div class="form-group">
                         <label>3d-Price</label>
                         <input id="k_price_3d" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                   <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             <label>3d-Description</label>
@@ -684,7 +708,7 @@
   </button> -->
   <!-- The Modal -->
   <div class="modal" id="myModal">
-    <div class="modal-dialog" style="max-width: 850px">
+    <div class="modal-dialog" style="max-width: 1050px">
       <div class="modal-content">
       
         <!-- Modal Header -->
@@ -746,7 +770,7 @@
                     </div>
                     </div> 
                        <div class="col-sm-2">
-                          <label for="exampleInputFile">2d image inner</label>
+                          <label for="exampleInputFile">2d image cover</label>
                     <div class="input-group">
                       <img width="38px" height="38px" id="modal_2d_i_image" src="">
                       <div class="custom-file">
@@ -759,6 +783,19 @@
                     </div>
                     </div>  
                      <div class="col-sm-2">
+                          <label for="exampleInputFile">2d image inner</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_2d_m_image" src="">
+                      <div class="custom-file">
+                        <input name="image_2d_mask" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                    </div> 
+                     <div class="col-sm-2">
                       <!-- text input -->
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
@@ -766,7 +803,7 @@
                         <input type="text" id="modal_2d_size" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                     <div class="col-sm-2">
+                     <div class="col-sm-1">
                       <!-- text input -->
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
@@ -774,7 +811,7 @@
                         <input type="text" id="modal_2d_price" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                      <div class="col-sm-4">
+                      <div class="col-sm-3">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             <label>2d-Description</label>
@@ -798,7 +835,7 @@
                     </div>
                     </div> 
                        <div class="col-sm-2">
-                          <label for="exampleInputFile">3d image inner</label>
+                          <label for="exampleInputFile">3d image cover</label>
                     <div class="input-group">
                       <img width="38px" height="38px" id="modal_3d_i_image" src="">
                       <div class="custom-file">
@@ -810,6 +847,19 @@
                       </div> -->
                     </div>
                     </div>  
+                       <div class="col-sm-2">
+                          <label for="exampleInputFile">3d image mask</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_3d_m_image" src="">
+                      <div class="custom-file">
+                        <input name="image_3d_mask" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                    </div> 
                      <div class="col-sm-2">
                       <!-- text input -->
                        <input type="hidden" id="modal_id" name="modal_id" value="">
@@ -818,7 +868,7 @@
                         <input type="text" id="modal_3d_size" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                     <div class="col-sm-2">
+                     <div class="col-sm-1">
                       <!-- text input -->
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
@@ -826,7 +876,7 @@
                         <input type="text" id="modal_3d_price" class="form-control" placeholder="Enter ...">
                       </div>
                     </div> 
-                      <div class="col-sm-4">
+                      <div class="col-sm-3">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             <label>3d-Description</label>
@@ -952,17 +1002,17 @@
   return res.json()
   })
 .then(function(result){
-  let name = document.getElementById("k_name").value = ""
-    document.getElementById("comp_option").value = ""
-    document.getElementById("k_size_2d").value = ""
-    document.getElementById("k_size_3d").value = ""
-    document.getElementById("k_size_4d").value = ""
-    document.getElementById("k_price_2d").value = ""
-    document.getElementById("k_price_3d").value = ""
-    document.getElementById("k_price_4d").value = ""
-    document.getElementById("k_description_2d").value = ""
-    document.getElementById("k_description_3d").value = ""
-    document.getElementById("k_description_4d").value = ""
+  // let name = document.getElementById("k_name").value = ""
+  //   document.getElementById("comp_option").value = ""
+  //   document.getElementById("k_size_2d").value = ""
+  //   document.getElementById("k_size_3d").value = ""
+  //   document.getElementById("k_size_4d").value = ""
+  //   document.getElementById("k_price_2d").value = ""
+  //   document.getElementById("k_price_3d").value = ""
+  //   document.getElementById("k_price_4d").value = ""
+  //   document.getElementById("k_description_2d").value = ""
+  //   document.getElementById("k_description_3d").value = ""
+  //   document.getElementById("k_description_4d").value = ""
   console.log(result)
   let productId = result.product._id
   console.log(productId)
@@ -1195,12 +1245,16 @@ for (var i in strs) {
       document.getElementById("modal_3d_size").value = okchains[arrayn].size_3d
       document.getElementById("modal_4d_size").value = okchains[arrayn].size_4d
       let image_i_2d = okchains[arrayn].image_inner_2d
+      let image_m_2d = okchains[arrayn].image_mask_2d
       let image_i_3d = okchains[arrayn].image_inner_3d
+      let image_m_3d = okchains[arrayn].image_mask_3d
       let image_h_2d = okchains[arrayn].image_header_2d
       let image_h_3d = okchains[arrayn].image_header_3d
       let image_h_4d = okchains[arrayn].image_header_4d
       document.getElementById("modal_2d_i_image").src = `http://${hosturl}:5600/admin/uploads/${image_i_2d}`
+      document.getElementById("modal_2d_m_image").src = `http://${hosturl}:5600/admin/uploads/${image_m_2d}`
       document.getElementById("modal_3d_i_image").src = `http://${hosturl}:5600/admin/uploads/${image_i_3d}`
+      document.getElementById("modal_3d_m_image").src = `http://${hosturl}:5600/admin/uploads/${image_m_3d}`
       document.getElementById("modal_2d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_2d}`
       document.getElementById("modal_3d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_3d}`
       document.getElementById("modal_4d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_4d}`
@@ -1305,6 +1359,7 @@ for (var i in strs) {
     //var input = document.querySelector('input[type="file"]')
     var form = document.getElementById("put_images");
     var formData = new FormData(form);
+    console.log(formData)
 
 fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
   method: 'PUT',
@@ -1399,6 +1454,62 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
     //console.log(newkeychains)
     return newkeychains
   }
+
+      function activephonecase(activebtn){
+    let phonecaseref = activebtn.getAttribute("data-key")
+    let phonecaseid = okchains[phonecaseref]._id
+    let ceditdata = {
+      available_status : 1
+    }
+              fetch(`http://${hosturl}:5600/api/phonecase/editphonecasestatus/${phonecaseid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(ceditdata)
+          })
+          .then(function(res){ 
+            console.log(res)
+           // uploadFileEdit(keyid)
+            getproducts()
+           // $("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    console.log(phonecaseid)
+  }
+
+  function deactivephonecase(activebtn){
+    let phonecaseref = activebtn.getAttribute("data-key")
+    let phonecaseid = okchains[phonecaseref]._id
+     let ceditdata = {
+      available_status : 0
+    }
+              fetch(`http://${hosturl}:5600/api/phonecase/editphonecasestatus/${phonecaseid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(ceditdata)
+          })
+          .then(function(res){ 
+             console.log(res)
+            getproducts()
+           // uploadFileEdit(keyid)
+           // getproducts()
+            //$("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    console.log(phonecaseid)
+  }
+
+
+
     function CreateTableFromJSON(myBookso) {
       let myBookson = getkeychains(myBookso)
       var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","size_2d","price_2d","description_2d","image_header_2d","image_inner_2d","size_3d","price_3d","description_3d","image_header_3d","image_inner_3d","available_status"]));
@@ -1431,9 +1542,12 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
         }
         var thn =  document.createElement("th"); 
         thn.innerHTML = "Edit";
+         var tha =  document.createElement("th"); 
+        tha.innerHTML = "Action";
             tr.appendChild(thn);
+            tr.appendChild(tha)
         var ths = document.createElement("th")
-        ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
+        ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox3' value='option1'><label for='customCheckbox3' class='custom-control-label'>Select All</label></div></div>"
         tr.appendChild(ths);
 
         // ADD JSON DATA TO THE TABLE AS ROWS.
@@ -1472,8 +1586,28 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
             editbtn.style.padding = "1px 5px";
             // delbtn.style.padding = "1px 5px";
             editbtn.innerHTML = "Edit"
+            let activatebtn = document.createElement("button")
+            activatebtn.style.marginRight = "2px"
+           
+            activatebtn.style.padding = "1px 5px";
+             let atd = document.createElement("td");
+             console.log("active status below")
+             console.log(okchains[i].available_status)
+             if(okchains[i].available_status === 1){
+              console.log("its in if")
+                activatebtn.setAttribute("onclick","deactivephonecase(this)")
+                activatebtn.setAttribute("class", "btn btn-success");
+                activatebtn.innerHTML = "Activated";
+            }
+            else{
+              console.log("its in else")
+                activatebtn.setAttribute("onclick","activephonecase(this)")
+                activatebtn.setAttribute("class", "btn btn-danger");
+                activatebtn.innerHTML = "Deactivated";
+            }
+            activatebtn.setAttribute("data-key",i)
             let td = document.createElement("td");
-            td.style.padding = "5px";
+            //td.style.padding = "5px";
             let std = document.createElement("td");
             let deleteCheck = document.createElement("input")
             deleteCheck.setAttribute("type","checkbox")
@@ -1482,9 +1616,11 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
             // console.log(deleteCheck)
             std.appendChild(deleteCheck)
+            atd.appendChild(activatebtn)
             td.appendChild(editbtn)
             // td.appendChild(delbtn)
             tr.appendChild(td)
+            tr.appendChild(atd)
             tr.appendChild(std)
         }
 

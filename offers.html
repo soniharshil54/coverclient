@@ -426,8 +426,8 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 id="productShowHeading" class="card-title">Keychains</h3>
-  <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3>
+                <h3 id="productShowHeading" class="card-title">Offers</h3>
+  <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>
                 <div class="card-tools">
                 </div>
               </div>
@@ -527,7 +527,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header" style="">
-          <h4 id="productEditHeading" class="modal-title">Edit Keychain</h4>
+          <h4 id="productEditHeading" class="modal-title">Edit Offer</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -693,6 +693,11 @@
   })
 .then(function(result){
   console.log(result)
+    document.getElementById("k_offer").value = ""
+    document.getElementById("k_product").value = ""
+    document.getElementById("k_code").value = ""
+    document.getElementById("k_expirydate").value = ""
+    document.getElementById("k_terms").value = ""
   // let productId = result.product._id
   // console.log(productId)
   // uploadFile(productId)
@@ -773,7 +778,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
     let newkeychains = oldkeychains.map(keychain => {
       delete keychain._id
       delete keychain.__v
-      delete keychain.available_status
+      delete keychain.active_status
       return keychain
     })
     //console.log(newkeychains)
@@ -887,9 +892,9 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
       console.log(imgname)
       
     }
-      function activeproduct(activebtn){
+      function activeoffer(activebtn){
     let offerref = activebtn.getAttribute("data-key")
-    let offerid = globalcompanies[offerref]._id
+    let offerid = okoffers[offerref]._id
     let ceditdata = {
       active_status : 1
     }
@@ -905,15 +910,15 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
           .then(function(res){ 
             console.log(res)
            // uploadFileEdit(keyid)
-            getcompanies()
+            getoffers()
            // $("#myModal").modal("hide");
  
           })
           .catch(function(res){ console.log(res) })
-    console.log(companyid)
+    console.log(offerid)
   }
 
-  function deactiveproduct(activebtn){
+  function deactiveoffer(activebtn){
     let offerref = activebtn.getAttribute("data-key")
     let offerid = okoffers[offerref]._id
      let ceditdata = {
@@ -930,14 +935,14 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
           })
           .then(function(res){ 
              console.log(res)
-            getcompanies()
+            getoffers()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");
  
           })
           .catch(function(res){ console.log(res) })
-    console.log(companyid)
+    console.log(offerid)
   }
 
     function CreateTableFromJSON(myBookso) {
@@ -1013,18 +1018,22 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
             editbtn.setAttribute("data-toggle", "modal");
             editbtn.setAttribute("data-target", "#myModal");
             editbtn.setAttribute("data-key",i)
-               let activatebtn = document.createElement("button")
+            let activatebtn = document.createElement("button")
             activatebtn.style.marginRight = "2px"
            
             activatebtn.style.padding = "1px 5px";
              let atd = document.createElement("td");
+             console.log("active status below")
+             console.log(okoffers[i].active_status)
              if(okoffers[i].active_status === 1){
-                activatebtn.setAttribute("onclick","deactiveproduct(this)")
+              console.log("its in if")
+                activatebtn.setAttribute("onclick","deactiveoffer(this)")
                 activatebtn.setAttribute("class", "btn btn-success");
                 activatebtn.innerHTML = "Activated";
             }
             else{
-                activatebtn.setAttribute("onclick","activeproduct(this)")
+              console.log("its in else")
+                activatebtn.setAttribute("onclick","activeoffer(this)")
                 activatebtn.setAttribute("class", "btn btn-danger");
                 activatebtn.innerHTML = "Deactivated";
             }

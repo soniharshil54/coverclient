@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>phone case</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,14 +11,47 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-  <!-- Theme style -->
+  <!-- overlayScrollbars -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/tagstyle.css">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style type="text/css">
+    #testtr{
+      color: red
+    }
+
+    #order_status_ind{
+    padding: 0px;
+    height: 20px;
+    font-size: 14px;
+    text-align: center;
+    -webkit-appearance: none;
+    }
+
+    @media (min-width: 576px){
+    .modal-dialog {
+      max-width: 550px;
+      margin: 1.75rem auto;
+    }
+    }
+
+    @media (min-width: 576px){
+    .modal-content {
+      box-shadow: none;
+    }
+    }
+
+
+
+  </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<!-- <body class="hold-transition sidebar-mini"> -->
+  <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+
+<!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -27,39 +60,22 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+        <!-- <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
-        </a>
+        </a> -->
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -75,7 +91,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -91,7 +107,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -133,18 +149,16 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-      </li>
+      </li><!-- 
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
           <i class="fas fa-th-large"></i>
         </a>
-      </li>
+      </li> -->
     </ul>
   </nav>
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <!-- Main Sidebar Container -->
    <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -203,13 +217,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a id="keychain_link" onclick="getproducts('keychain')" href="javascript:void(0);" class="nav-link">
+                <a id="keychain_link" href="product.html" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Keychain</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a id="mug_link" onclick="getproducts('mug')" href="javascript:void(0);" class="nav-link">
+                <a id="mug_link"  href="product.html#mug" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Mug</p>
                 </a>
@@ -274,7 +288,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="users.html" class="nav-link active">
+            <a href="users.html" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Users
@@ -316,71 +330,145 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div id="lppresults" class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Users</h1>
+            <h1>Invoice</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Users</li>
+              <li class="breadcrumb-item active">Invoice</li>
             </ol>
           </div>
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
-    <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Users</h3>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+         <!--    <div class="callout callout-info">
+              <h5><i class="fas fa-info"></i> Note:</h5>
+              This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
+            </div> -->
+
+
+            <!-- Main content -->
+            <div class="invoice p-3 mb-3">
+              <!-- title row -->
+              <div class="row">
+                <div class="col-12">
+                  <h4>                    <small class="float-right">Date: <span id="invoicedate"></span></small>
+                  </h4>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- info row -->
+              <div class="row invoice-info">
+                <div class="col-sm-4 invoice-col">
+                  From
+                  <address>
+                  
+                    <strong> Polaris Commercial Mall,</strong><br>
+                    Opp. Bhaiyanagar BRTS Station,<br>
+                    Near Radhika Park Soc,<br>
+                    Parvat Patiya,<br>
+                    Surat- 395010
+                  </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                  To
+                  <address>
+                    <strong id="user_name">John Doe</strong><br>
+                    <span id="user_address"></span><br>
+                    <span id="user_city_pincode"></span> <br>
+                    <span id="user_state"></span> <br>
+                    <span id="user_contact"></span> <br>
+                    <span id="user_email"></span> 
+                    
+                   
+                  </address>
+                </div>
+                <!-- /.col -->
+                <div class="col-sm-4 invoice-col">
+                  <b>Invoice #007612</b><br>
+                  <br>
+                  <b>Order ID:</b><span id="order_id"></span><br>
+                  <!-- <b>Payment Due:</b> 2/22/2014<br>
+                  <b>Account:</b> 968-34567 -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <!-- Table row -->
+              <div class="row">
+                <div id="products_cart" class="col-12 table-responsive">
+                  
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <div class="row">
+                <!-- accepted payments column -->
+                <div class="col-6">
+                                  </div>
+                <!-- /.col -->
+                <div class="col-6">
+                  <!-- <p class="lead">Amount Due 2/22/2014</p> -->
+
+                  <div class="table-responsive">
+                    <table class="table">
+                      <tr>
+                        <th style="width:50%">Subtotal:</th>
+                        <td id="sub_total">$250.30</td>
+                      </tr>
+                      <tr>
+                        <th>Tax (18%)</th>
+                        <td id="gst_tax">$10.34</td>
+                      </tr>
+                      <tr>
+                        <th>Shipping:</th>
+                        <td id="shipping">$5.80</td>
+                      </tr>
+                      <tr>
+                        <th>Total:</th>
+                        <td id="total_amount">$265.24</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+
+              <!-- this row will not appear when printing -->
+              <div class="row no-print">
+                <div class="col-12">
+                  <button onclick="printinvoice()" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
+                 <!--  <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
+                    Payment
+                  </button> -->
+                  <button id="generatereport" type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                    <i class="fas fa-download"></i> Generate PDF
+                  </button>
+                </div>
+              </div>
             </div>
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Contact</th>
-                  <th>Email</th>              
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th>Name</th>
-                  <th>Contact</th>
-                  <th>Email</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
+            <!-- /.invoice -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.1
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -388,90 +476,198 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
-<!-- ./wrapper -->
+  
+</div>
+
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="plugins/datatables/jquery.dataTables.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="hosturl.js"></script>
-<!-- page script -->
-<!-- <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
-  });
+
+
+
+
+
+
+<!-- <script type="text/javascript">
+  function getdatafortable(unfiltered){
+    var filters = ["name","size","price"];
+    let filtered = JSON.parse(unfiltered).map(function(currObj) {
+  var temp = {};
+  for identifier in filters:
+    temp[identifier] = currObj[identifier];
+  return temp;
+});
+    return filtered
+  }
 </script> -->
 
 
-
 <script type="text/javascript">
-  $(document).ready(function() {
-    let userTable = $('#example1').DataTable({
-        "processing" : true,
-        "ajax" : {
-            "url" : `http://${hosturl}:5600/api/user/users`,
-            dataSrc : ''
-        },
-        "columns" : [ {
-            "data" : "first_name"
-        }, {
-            "data" : "contact"
-        }, {
-            "data" : "email_id"
-        }]
-    });
+
+  var doc = new jsPDF();
+$('#generatereport').click(function() {
+   doc.fromHTML($('#lppresults')[0], 15, 15, {
+      width: 170
+   }, function() {
+      doc.save('sample-file.pdf');
+   });
 });
 
+  function printinvoice(){
+    window.print()
+  }
+
+  function gettodaydate(){
+    console.log("date ran")
+    var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth() + 1; //January is 0!
+
+var yyyy = today.getFullYear();
+if (dd < 10) {
+  dd = '0' + dd;
+} 
+if (mm < 10) {
+  mm = '0' + mm;
+} 
+var today = dd + '/' + mm + '/' + yyyy;
+console.log(today)
+document.getElementById('invoicedate').innerHTML = today;
+  }
+
+  gettodaydate()
+
+    function getkeychains(oldkeychains){
+    let tokeyc = oldkeychains
+    console.log(oldkeychains)
+    let newkeychains = oldkeychains.map(keychain => {
+      delete keychain._id
+      delete keychain.__v
+      delete keychain.image
+      delete keychain.cover_type
+      return keychain
+    })
+    //console.log(newkeychains)
+    return newkeychains
+  }
+
+    function CreateTableFromJSON(myBookso) {
+      let myBooks = getkeychains(myBookso)
+
+
+        var col = [];
+        for (var i = 0; i < myBooks.length; i++) {
+            for (var key in myBooks[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+        table.setAttribute("class", "table");
+        table.setAttribute("id","keychaintable")
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);  
+        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");  
+                // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+
+        }
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+
+            tr = table.insertRow(-1);
+            //tr.setAttribute("contenteditable", "true"); 
+            for (var j = 0; j < col.length; j++) {
+              var tabCell = tr.insertCell(-1);
+                tabCell.innerHTML = myBooks[i][col[j]];
+            }
+            // let editbtn = document.createElement("button")
+            // editbtn.setAttribute("class", "btn btn-primary");
+            // editbtn.style.marginRight = "2px";
+            // editbtn.setAttribute("onclick", "editproduct(this)");
+            // editbtn.setAttribute("data-toggle", "modal");
+            // editbtn.setAttribute("data-target", "#myModal");
+            // editbtn.setAttribute("data-key",i)
+            // editbtn.style.padding = "1px 5px";
+            // editbtn.innerHTML = "Edit"
+            // let td = document.createElement("td");
+            // td.style.padding = "5px";
+            // let std = document.createElement("td");
+            // let deleteCheck = document.createElement("input")
+            // deleteCheck.setAttribute("type","checkbox")
+            // deleteCheck.setAttribute("name","todelete")
+            // deleteCheck.setAttribute("value",okchains[i]._id)
+
+            // std.appendChild(deleteCheck)
+            // td.appendChild(editbtn)
+            // tr.appendChild(td)
+            // tr.appendChild(std)
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("products_cart");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    }
+
+          function getcartproducts(orderid){
+      
+    fetch(`http://localhost:5600/api/order/getorderbyid/${orderid}`)
+    .then(response => {
+     // console.log(response)
+      return response.json()})
+    .then(data => {
+     // okchains = data.map(a => ({...a}));
+      //let okchains = Object.assign({}, data);
+    //  console.log(okchains)
+   okchains = Object.assign({}, data);
+   //console.log(okchains)
+   //let testkey = Object.assign({}, data);
+      //okchains = data
+      //let newkeychains = getkeychains(data)
+      let productscart = data.products
+      console.log(productscart)
+      CreateTableFromJSON(productscart)
+      document.getElementById("user_name").innerHTML = data.user_id.first_name
+      document.getElementById("user_address").innerHTML = data.user_id.address
+      let user_city_pincode = data.user_id.city + " - " + data.user_id.pincode
+      document.getElementById("user_city_pincode").innerHTML = user_city_pincode
+      document.getElementById('user_state').innerHTML = data.user_id.state
+      document.getElementById('user_contact').innerHTML = data.user_id.contact
+      document.getElementById('user_email').innerHTML = data.user_id.email
+      document.getElementById('order_id').innerHTML = data.order_id
+      document.getElementById("sub_total").innerHTML = data.sub_total ? data.sub_total : "N.A." 
+      document.getElementById("gst_tax").innerHTML = data.gst_tax ? data.gst_tax : "N.A." 
+      document.getElementById("shipping").innerHTML = data.shipping ? data.shipping : "N.A." 
+      document.getElementById("total_amount").innerHTML = data.total_amount ? data.total_amount : "N.A." 
+   })
+    .catch(err => console.log(err))
+}
+
+    getcartproducts("5e01fd083f319c4d10b8dfb0")
+
+  
+    
 </script>
+
 <script type="text/javascript">
 
-      function logOutUser(){
-    localStorage.clear();
-    window.location  =  "login.html";
-  }
-
-          function checkLogin(){
-    
-    if (localStorage.getItem("luser") === null) {
-     // $('#loggedIn').css("display","none")
-       // $('#logintosee').html("login to see the registered users")
-       // $('#notloggedbtn').css("display","block")
-        window.location = "login.html";
-      //  console.log(ran)
-    }
-    else{
-      console.log(localStorage.getItem("luser"))
-      //var loguser = JSON.parse(localStorage.getItem('luser'));
-      //var username = loguser.name;
-
-      var authtokend = localStorage.getItem('authorization')
-      //getproducts()
-      console.log(authtokend)
-      
-      //console.log(username)   
-       }
-  }
-  checkLogin()
 </script>
-<!-- <script type="text/javascript">
-    $.ajax({url: "demo_test.txt", success: function(result){
-    $("#div1").html(result);
-  }});
-</script> -->
 </body>
 </html>

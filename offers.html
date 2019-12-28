@@ -184,8 +184,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Products
@@ -260,10 +260,19 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="notification.html" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 Notifications
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="sms.html" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                SMS
                 <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>
@@ -355,7 +364,17 @@
                     <div class="col-sm-3">
                       <div class="form-group">
                         <label>Product Name</label>
-                        <input id="k_product" type="text" class="form-control" placeholder="Enter ...">
+                          <select id="k_product" class="form-control custom-select">
+                  <option>Phonecase</option>
+                  <option>Tshirt</option>
+                  <option>Keychain</option>
+                  <option>Mug</option>
+                  <option>Popholder</option>
+                  <option>Photoframe</option>
+                  <option>Watch</option>
+                  <option>Wallclock</option>
+                  <option>Slipper Bottle</option>
+                </select>
                       </div>
                     </div> 
                       <div class="col-sm-3">
@@ -402,12 +421,12 @@
                   
                   <div class="row">
                     <div class="col-sm-6">
-                          <div class="form-group">
+                         <!--  <div class="form-group">
                         <div class="custom-control custom-checkbox">
                           <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
                           <label for="customCheckbox1" class="custom-control-label">Activated</label>
                         </div>
-                      </div>
+                      </div> -->
                     </div>    
                     <div class="col-sm-6">
                       <input type="button" id="add_offer" value="add Offer" class="btn btn-success float-right">

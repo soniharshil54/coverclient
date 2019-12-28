@@ -22,6 +22,10 @@
       color: red
     }
 
+    .custom-select{
+    padding: 0px;height: 20px;font-size: 14px;border: 0px;box-shadow: none;text-align: center;-webkit-appearance: none;
+    }
+
     @media (min-width: 576px){
     .modal-dialog {
       max-width: 550px;
@@ -185,8 +189,8 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
                 Products
@@ -261,10 +265,19 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="notification.html" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 Notifications
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="sms.html" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                SMS
                 <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>
@@ -279,7 +292,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="orders.html" class="nav-link">
+            <a href="orders.html" class="nav-link active">
               <i class="nav-icon fas fa-table"></i>
               <p>
                 Orders
@@ -332,101 +345,7 @@
 
     <!-- Main content -->
     <section style="margin-top: 120px" class="content">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card card-secondary collapsed-card">
-         <!--    <div class="card-header">
-              <h3 id="productAddHeading" class="card-title">Add Key chain</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-plus"></i></button>
-              </div>
-            </div> -->
-            <div class="card-body">
-                
-                                <div class="row">
-                    <div class="col-sm-4">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Name</label>
-                        <input id="k_name" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                    <div class="col-sm-2">
-                      <div class="form-group">
-                        <label>Price</label>
-                        <input id="k_price" type="number" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>                    <div class="col-sm-3">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">header image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <form name="pImages" id="pImages" enctype="multipart/form-data">
-                        <input name="hImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div>
-                    </div>
-                    <div class="col-sm-3">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">in image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input name="inImage" id="inImage" type="file" class="custom-file-input" id="exampleInputFile">
-                        </form>
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                     <!--  <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-8">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Description</label>
-                        <textarea id="k_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
-                        </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                        <label>Size</label>
-                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                      </div>
-                  </div>
-                  
-                  <div class="row">
-                    <div class="col-sm-6">
-                          <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                          <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-                          <label for="customCheckbox1" class="custom-control-label">Available</label>
-                        </div>
-                      </div>
-                    </div>    
-                    <div class="col-sm-6">
-                      <input type="button" id="add_keychain" value="add Keychain" class="btn btn-success float-right">
-                    </div>   
-                  </div>
-                                       
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-      </div>
+      
       
               <!-- /.row -->
         <div class="row">
@@ -435,7 +354,7 @@
               <div class="card-header">
                 <h3 id="productShowHeading" class="card-title">Orders</h3>
   <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3>
-      <div class="form-group">
+   <!--    <div class="form-group">
                   <label>Date range button:</label>
 
                   <div class="input-group">
@@ -444,7 +363,7 @@
                       <i class="fas fa-caret-down"></i>
                     </button>
                   </div>
-                </div>
+                </div> -->
                 <div class="card-tools">
                 </div>
               </div>
@@ -481,43 +400,12 @@
   <!-- /.control-sidebar -->
 </div>
 
-  <!-- The Modal -->
-  <div class="modal" id="imageModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: transparent;border: none">
-      
-        <!-- Modal Header -->
-        <!-- <div class="modal-header" style="">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-        
-        <!-- Modal body -->
-        <div class="modal-body" style="text-align: center;">
-          <!-- <h1>ello</h1> -->
-          <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg">
-        </div>
-        
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
 
 
       <!-- The Modal -->
   <div class="modal" id="cartUserModal">
     <div class="modal-dialog">
       <div class="modal-content" style="background-color: transparent;border: none">
-      
-        <!-- Modal Header -->
-        <!-- <div class="modal-header" style="">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-        
-        <!-- Modal body -->
         <div class="modal-body" style="text-align: center;">
           <table class="table table-dark" style="width:100%">
             <tr>
@@ -542,15 +430,8 @@
               <td><span id="cart_u_addresstype"></span></td>
             </tr>
           </table>
-          <!-- <h1>ello</h1> -->
-          <!-- <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg"> -->
 
         </div>
-        
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
         
       </div>
     </div>
@@ -620,127 +501,7 @@
     Open modal
   </button> -->
   <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header" style="">
-          <h4 id="productEditHeading" class="modal-title">Edit Keychain</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <div class="row">
-        <div class="col-md-12">
-          <div class="card card-secondary collapsed-card">
-            <!-- <div class="card-header">
-              <h3 class="card-title">Add Key chain</h3>
 
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-plus"></i></button>
-              </div>
-            </div> -->
-            <div class="card-body" style="display: block">
-                
-                                <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                       <input type="hidden" id="modal_id" name="modal_id" value="">
-                      <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Price</label>
-                        <input type="number" id="modal_price" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>                    <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">header image</label>
-                    <div class="input-group">
-                      <img width="38px" height="38px" id="modal_h_image" src="">
-                      <div class="custom-file">
-                        <form name="eImages" id="eImages" enctype="multipart/form-data">
-                        <input name="hImage" type="file" class="custom-file-input" id="productImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div>
-                    </div>
-                    <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">in image</label>
-                    <div class="input-group">
-                      <img width="38px" height="38px" id="modal_in_image" src="">
-                      <div class="custom-file">
-                        <input name="inImage" type="file" class="custom-file-input" id="exampleInputFile">
-                      </form>
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                     <!--  <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-8">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Description</label>
-                        <input id="modal_description" type="textarea" class="form-control" placeholder="Enter ...">
-                        </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <div class="form-group">
-                        <label>Size</label>
-                        <input id="modal_size" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                      </div>
-                  </div>
-                  
-                  <div class="row">
-                    <div class="col-sm-6">
-                           <div class="form-group">
-                          <label class="custom-control custom-checkbox">
-   <input type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
-   <span class="custom-control-label" for="chbxTerms">Available</span>
-   </label>
-                      </div>
-                    </div>    
-                    <div class="col-sm-6">
-                      <input id="productEditBtn" onclick="editkeychain()" type="button" value="Edit Keychain" class="btn btn-success float-right">
-                    </div>   
-                  </div>
-
-
-                                       
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-      </div>
-        </div>
-        
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
   
 </div>
 
@@ -796,43 +557,6 @@ $('#GetFile').on('click', function () {
     });
 });
 
-  $(document).ready(function(){
-  $('#add_keychain').click(function(e) {
-    let addpropara = globalProduct
-    let name = document.getElementById("k_name").value
-    let size = document.getElementById("k_size").value
-    let price = document.getElementById("k_price").value
-    let description = document.getElementById("k_description").value
-    let inputfile = document.getElementById("productImage").files[0]
-    let keydata = {
-      name:name,
-      size:size,
-      price:price,
-      description:description
-    }
-    //console.log(keydata)
-    fetch(`http://${hosturl}:5600/api/product/add/${addpropara}`,
-{
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    method: "POST",
-    body: JSON.stringify(keydata)
-})
-.then(function(res){ 
-  return res.json()
-  })
-.then(function(result){
-  console.log(result)
-  let productId = result.product._id
-  console.log(productId)
-  uploadFile(productId)
-  
-})
-.catch(function(res){ console.log(res) })
-        });
-})
 </script>
 
 <script type="text/javascript">
@@ -880,55 +604,26 @@ async function download() {
       if(items[i].type=='checkbox' && items[i].checked==true)
         selectedItems.push(items[i].value);
     }
-    console.log(selectedItems);
+    // console.log(selectedItems);
     return selectedItems
   }     
 </script>
 <script>
 
 
-  function productinfo(){
-    fetch()
-  }
 
 
-  function uploadFile(productid){
-    //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("pImages");
-    var formData = new FormData(form);
 
-fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}`, {
-  method: 'PUT',
-  body: formData
-}).then(res => {
-  console.log(res)
-  getproducts()
-}).catch(err => console.log(err))
-
-  }
-
-    function uploadFileEdit(productid){
-    //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("eImages");
-    var formData = new FormData(form);
-
-fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}`, {
-  method: 'PUT',
-  body: formData
-}).then(res => {
-  console.log(res)
-  getproducts(globalProduct)
-}).catch(err => console.log(err))
-
-  }
 
   function getkeychains(oldkeychains){
     let tokeyc = oldkeychains
-    console.log(oldkeychains)
+    // console.log(oldkeychains)
     let newkeychains = oldkeychains.map(keychain => {
       delete keychain._id
       delete keychain.__v
       delete keychain.available_status
+      delete keychain.is_paid
+      delete keychain.is_delivered
       return keychain
     })
     //console.log(newkeychains)
@@ -957,42 +652,16 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
           .catch(function(res){ console.log(res) })
   }
 
-    function editproduct(test){
-     // console.log(test)
-      let arrayn = test.getAttribute("data-key")
-      console.log(okchains[arrayn])
-      //console.log(okchains[arrayn].name)
-      document.getElementById("modal_id").value = okchains[arrayn]._id
-      //console.log(document.getElementById("modal_id").value)
-      document.getElementById("modal_name").value = okchains[arrayn].name
-      document.getElementById("modal_price").value = okchains[arrayn].price
-      document.getElementById("modal_description").value = okchains[arrayn].description
-      document.getElementById("modal_size").value = okchains[arrayn].size
-      let headerimage = okchains[arrayn].h_image
-      let innerimage = okchains[arrayn].in_image
-      document.getElementById("modal_h_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
-      document.getElementById("modal_in_image").src = `http://${hosturl}:5600/admin/uploads/${innerimage}`
-      // var row = $(test).closest("tr");
-      // test.removeAttribute("class","btn-primary")
-      // test.setAttribute("class","btn-success")
-      // test.innerHTML = "Save"
-      // var rowedit = row[0]
-      // rowedit.setAttribute("contenteditable","true")
-      // rowedit.focus()
-      // console.log(test)
-      // console.log(row[0])
-    }
-
     function productdetailsmodal(probtn){
       let proid = probtn.getAttribute('data-pid')
-      console.log(proid)
+      // console.log(proid)
       fetch(`http://${hosturl}:5600/api/order/getcartproductbyid/${proid}`)
       .then(response => {
         //console.log(result)
         return response.json()
       })
       .then(result => {
-        console.log(result)
+        // console.log(result)
         document.getElementById("cart_p_name").innerHTML = result.product_name
         document.getElementById("cart_p_printname").innerHTML = result.print_name ? result.print_name : "N.A."
         document.getElementById("cart_p_size").innerHTML = result.size ? result.size : "N.A."
@@ -1012,14 +681,14 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
 
         function userdetailsmodal(probtn){
       let proid = probtn.getAttribute('data-pid')
-      console.log(proid)
+      // console.log(proid)
       fetch(`http://${hosturl}:5600/api/user/getuser/${proid}`)
       .then(response => {
         //console.log(result)
         return response.json()
       })
       .then(result => {
-        console.log(result)
+        // console.log(result)
         let full_name = result.first_name + " " + result.last_name
         let address = result.address+ ", "+result.city+"-"+result.pincode+", "+result.city+", "+result.state
         document.getElementById("cart_u_name").innerHTML = full_name ? full_name : "N.A."
@@ -1040,53 +709,51 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
       })
     }
 
-    function editkeychain(){
-      console.log("edit ran")
-      let editprotoget = globalProduct
-        let name = document.getElementById("modal_name").value
-    let size = document.getElementById("modal_size").value
-    let price = document.getElementById("modal_price").value
-    let description = document.getElementById("modal_description").value
-    let keyid = document.getElementById("modal_id").value
-      let keditdata = {
-        name, size, price, description
+
+    function changeorderstatus(selop){
+      let orderref = selop.getAttribute('data-oid')
+      console.log("orderef",orderref)
+      let orderid = okchains[orderref]._id
+      console.log("orderid",orderid)
+      let foridf = `order_status_ind_${orderref}`
+      let newstatus = document.getElementById(foridf).value
+      console.log("newstatus",newstatus)
+      let statusbody = {
+        order_status : newstatus
       }
-      console.log(keyid)
-      console.log("k edit data")
-      console.log(keditdata)
+          fetch(`http://${hosturl}:5600/api/order/changeorderstatus/${orderid}`,
+{
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "PUT",
+    body: JSON.stringify(statusbody)
+})
+.then(function(res){ 
+  return res.json()
+  })
+.then(function(result){
+  // console.log(result)
+  //let productId = result.product._id
+ // console.log(productId)
+  document.getElementById(foridf).value = ""
+  getproducts()
+  //uploadFile(productId)
+  //getord
+  
+})
+.catch(function(res){ console.log(res) })
 
-          fetch(`http://${hosturl}:5600/api/product/edit/${editprotoget}/${keyid}`,
-          {
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            method: "PUT",
-            body: JSON.stringify(keditdata)
-          })
-          .then(function(res){ 
-            uploadFileEdit(keyid)
-            $("#myModal").modal("hide");
- 
-          })
-          .catch(function(res){ console.log(res) })
-    }
-
-    function imageModal(imgname){
-      let source = `http://${hosturl}:5600/admin/uploads/${imgname}`
-      document.getElementById("imgModal").src=source;
-
-      $('#imageModal').modal('show');
-      console.log(imgname)
-      
+      console.log(newstatus)
     }
 
     function CreateTableFromJSON(myBookso) {
       let myBooksold = getkeychains(myBookso)
-      console.log("orders")
-      console.log(myBooksold)
+      // console.log("orders")
+      // console.log(myBooksold)
       let myBooks= myBooksold.map(a => {
-        console.log(a)
+        // console.log(a)
         let fullname = a.user_id.first_name + " " + a.user_id.last_name 
         Object.assign(a, {name: fullname})
         Object.assign(a, {contact: a.user_id.contact});
@@ -1097,11 +764,11 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
       });
       const removePropery = (propKey, { [propKey]: propValue, ...rest }) => rest;
       //myBooks = removePropery('user_id', myBooks);
-      console.log(myBooks)
+      // console.log(myBooks)
 
       // var myBooks = JSON.parse(JSON.stringify( myBooksrow, ["name","contact","email","products","payment_type","is_paid","is_delivered"]));
 
-      console.log(myBooks)
+      // console.log(myBooks)
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
@@ -1147,27 +814,57 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
               if(j===0){
                 //console.log(myBooks[i][col[j]])
                 let products = myBooks[i][col[j]]
-                console.log(products)
+                // console.log(products)
                 let products_name = ''
                 for(let i=0; i < products.length; i++){
-                  console.log()
-                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${products[i]._id}">${products[i].product_name}</button>`
+                  // console.log()
+                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px" class="btn btn-info" data-pid="${products[i]._id}">${products[i].product_name}</button>`
                   products_name += `${btntag} </br> `
                 }
-                console.log(products_name)
+                // console.log(products_name)
                 tabCell.innerHTML = products_name
+              }
+              else if(j===1){
+                let orderid = okchains[i]._id
+                let atag = document.createElement('a')
+                atag.innerHTML = myBooks[i][col[j]]
+                let ahref = `invoice.html#${orderid}`
+                atag.setAttribute('href',ahref)
+                tabCell.appendChild(atag)
               }
               else if(j===8){
                 let userinfo = myBooks[i][col[j]]
                 let user = okchains[i].user_id._id
                 console.log("below user")
-                console.log(user)
+                // console.log(user)
                 let btntag2 =  `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${user}">view</button>`
                 tabCell.innerHTML = btntag2
               }
-                  else if(j===3){
-                let btntag3 =  `<span class="badge badge-success">${myBooks[i][col[j]]}</span>`
-                tabCell.innerHTML = btntag3
+                  else if(j===2){
+                 let valueStatus = myBooks[i][col[j]]   
+                 let spantag = document.createElement('span')
+                 spantag.setAttribute('id','order_status_span')
+                 if(myBooks[i][col[j]] === "Shipped"){
+                  spantag.innerHTML = "Shipped"
+                  spantag.setAttribute('class', 'badge badge-success')
+                 }
+                 else if(myBooks[i][col[j]] === "Pending"){
+                  spantag.innerHTML = "Pending"
+                  spantag.setAttribute('class', 'badge badge-warning')
+                 }
+                 else if(myBooks[i][col[j]] === "Delivered"){
+                  spantag.innerHTML = "Delivered"
+                  spantag.setAttribute('class', 'badge badge-danger')
+                 }
+                 else{
+                  spantag.innerHTML = "Processing"
+                  spantag.setAttribute('class', 'badge badge-info')
+                 }
+                 let forid = `order_status_ind_${i}`
+                let btntag3 =  `<select data-oid=${i} onchange="changeorderstatus(this)" style="width:25%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
+                //document.getElementById('order_status_ind').value="Delivered";
+                tabCell.appendChild(spantag)
+                tabCell.innerHTML += btntag3
               }
               else{
                 tabCell.innerHTML = myBooks[i][col[j]];
@@ -1230,7 +927,7 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
     .then(data => {
       okchains = data.map(a => ({...a}));
       //let okchains = Object.assign({}, data);
-      console.log(okchains)
+      // console.log(okchains)
   // okchains = Object.assign({}, data);
    //console.log(okchains)
    //let testkey = Object.assign({}, data);
@@ -1250,12 +947,12 @@ fetch(`http://${hosturl}:5600/api/product/${globalProduct}/addimage/${productid}
       // });
         if(window.location.hash) {
       var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
-      console.log(hash)
+      // console.log(hash)
 
       getproducts(hash)
       // hash found
   } else {
-      getproducts("keychain")
+      getproducts()
      // document.getElementById("keychain_link").setAttribute("class","nav-link active")
   }
 

@@ -15,6 +15,25 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+  <style type="text/css">
+        .custom-select{
+    padding: 0px;height: 20px;font-size: 14px;border: 0px;box-shadow: none;text-align: center;-webkit-appearance: none;
+    }
+
+    @media (min-width: 576px){
+    .modal-dialog {
+      max-width: 550px;
+      margin: 1.75rem auto;
+    }
+    }
+
+    @media (min-width: 576px){
+    .modal-content {
+      box-shadow: none;
+    }
+    }
+  </style>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 <div class="wrapper">
@@ -251,10 +270,19 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
+            <a href="notification.html" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 Notifications
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="sms.html" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                SMS
                 <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>
@@ -308,12 +336,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard v2</h1>
+            <h1 class="m-0 text-dark">Welcome to Mobile Cover Maker</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard v2</li>
+              <li class="breadcrumb-item"><a href="#">Home</a></li><!-- 
+              <li class="breadcrumb-item active">Dashboard v2</li> -->
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -332,7 +360,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Orders</span>
-                <span class="info-box-number">3,410</span>
+                <span id="orders_count" class="info-box-number"></span>
                 </span>
               </div>
               <!-- /.info-box-content -->
@@ -346,7 +374,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Products</span>
-                <span class="info-box-number">41,410</span>
+                <span id="products_count" class="info-box-number"></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -363,7 +391,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Sales</span>
-                <span class="info-box-number">760</span>
+                <span id="sales_amount" class="info-box-number"></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -376,7 +404,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text">Members</span>
-                <span class="info-box-number">2,000</span>
+                <span id="users_count" class="info-box-number"></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -394,176 +422,34 @@
           <div class="col-md-12">
             <!-- TABLE: LATEST ORDERS -->
             <div class="card">
-              <div class="card-header border-transparent">
-                <h3 class="card-title">Latest Orders</h3>
-
-                <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <div class="table-responsive">
-                  <table class="table m-0">
-                    <thead>
-                    <tr>
-                      <th>Order ID</th>
-                      <th>Item</th>
-                      <th>User</th>
-                      <th>Status</th>
-                      <th>Amount</th>
-                      <th>Payment type</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>Call of Duty IV</td>
-                      <td><span class="badge badge-success">Shipped</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-warning">Pending</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>iPhone 6 Plus</td>
-                      <td><span class="badge badge-danger">Delivered</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-info">Processing</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR1848</a></td>
-                      <td>Samsung Smart TV</td>
-                      <td><span class="badge badge-warning">Pending</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR7429</a></td>
-                      <td>iPhone 6 Plus</td>
-                      <td><span class="badge badge-danger">Delivered</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td><a href="pages/examples/invoice.html">OR9842</a></td>
-                      <td>Call of Duty IV</td>
-                      <td><span class="badge badge-success">Shipped</span></td>
-                      <td>
-                        <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                      </td>
-                    </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- /.table-responsive -->
-              </div>
-              <!-- /.card-body -->
-              <div class="card-footer clearfix">
-                <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a>
-                <a href="javascript:void(0)" class="btn btn-sm btn-secondary float-right">View All Orders</a>
-              </div>
-              <!-- /.card-footer -->
-            </div>
-            <!-- /.card -->
-          </div>
-          <!-- /.col -->
-
-          <div class="col-md-12">
-            <!-- /.card -->
-
-            <!-- PRODUCT LIST -->
-            <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Products</h3>
+                <h3 id="productShowHeading" class="card-title">Orders</h3>
+  <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3>
+   <!--    <div class="form-group">
+                  <label>Date range button:</label>
 
+                  <div class="input-group">
+                    <button type="button" class="btn btn-default float-right" id="daterange-btn">
+                      <i class="far fa-calendar-alt"></i> Date range picker
+                      <i class="fas fa-caret-down"></i>
+                    </button>
+                  </div>
+                </div> -->
                 <div class="card-tools">
-                  <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                    <i class="fas fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-tool" data-card-widget="remove">
-                    <i class="fas fa-times"></i>
-                  </button>
                 </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body p-0">
-                <ul class="products-list product-list-in-card pl-2 pr-2">
-                  <li class="item">
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Phone covers
-                        <span class="badge badge-warning float-right">$1800</span></a>
-                      
-                    </div>
-                  </li>
-                  <!-- /.item -->
-                  <li class="item">
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">T-Shirts
-                        <span class="badge badge-info float-right">$700</span></a>
-                    
-                    </div>
-                  </li>
-                  <!-- /.item -->
-                  <li class="item">
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">
-                        Key-chain <span class="badge badge-danger float-right">
-                        $350
-                      </span>
-                      </a>
-                      
-                    </div>
-                  </li>
-                  <!-- /.item -->
-                  <li class="item">
-                    <div class="product-info">
-                      <a href="javascript:void(0)" class="product-title">Pillow
-                        <span class="badge badge-success float-right">$399</span></a>
-                     
-                    </div>
-                  </li>
-                  <!-- /.item -->
-                </ul>
+              <div class="card-body table-responsive p-0">
+                <div id="samplejson"></div>
+                
               </div>
+
               <!-- /.card-body -->
-              <div class="card-footer text-center">
-                <a href="javascript:void(0)" class="uppercase">View All Products</a>
-              </div>
-              <!-- /.card-footer -->
             </div>
             <!-- /.card -->
+          
           </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-      </div><!--/. container-fluid -->
-    </section>
-    <!-- /.content -->
+        </div>    </section>
   </div>
   <!-- /.content-wrapper -->
 
@@ -571,16 +457,98 @@
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Control sidebar content goes here -->
   </aside>
-  <!-- /.control-sidebar -->
 
-  <!-- Main Footer -->
-  <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 3.0.1
+    <div class="modal" id="cartUserModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+        <div class="modal-body" style="text-align: center;">
+          <table class="table table-dark" style="width:100%">
+            <tr>
+              <th>Full Name:</th>
+              <td><span id="cart_u_name"></span></td>
+            </tr>
+            <tr>
+              <th>contact:</th>
+              <td><span id="cart_u_contact"></span></td>
+            </tr>
+            <tr>
+              <th>email:</th>
+              <td><span id="cart_u_email"></span></td>
+            </tr>
+             <tr>
+              <th>address:</th>
+              <td><span id="cart_u_address"></span></td>
+            </tr>
+            
+             <tr>
+              <th>address type:</th>
+              <td><span id="cart_u_addresstype"></span></td>
+            </tr>
+          </table>
+
+        </div>
+        
+      </div>
     </div>
-  </footer>
+  </div>
+
+      <!-- The Modal -->
+  <div class="modal" id="cartProductModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+      
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <table class="table table-dark" style="width:100%">
+            <tr>
+              <th>Product Name:</th>
+              <td><span id="cart_p_name"></span></td>
+            </tr>
+            <tr>
+              <th>Image:</th>
+            <!--   <td>  <a target="_blank" href="images/3.jpg" download>
+  <img src="images/3.jpg" alt="W3Schools" width="104" height="142">
+</a></td> -->
+              <td><a id="cart_p_d_image" href="images/3.jpg" download="">
+      <img id="cart_p_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+      </a><button class="btn btn-success" type="button" id="GetFile">Download</button></td>
+            </tr>
+            <tr>
+              <th>Print Name:</th>
+              <td><span id="cart_p_printname"></span></td>
+            </tr>
+             <tr>
+              <th>Size:</th>
+              <td><span id="cart_p_size"></span></td>
+            </tr>
+             <tr>
+              <th>Cover type:</th>
+              <td><span id="cart_p_covertype"></span></td>
+            </tr>
+            <tr>
+              <th>Quantity:</th>
+              <td><span id="cart_p_quantity"></span></td>
+            </tr>
+          </table>
+          <!-- <h1>ello</h1> -->
+          <!-- <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg"> -->
+
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
 </div>
 <!-- ./wrapper -->
 
@@ -610,11 +578,440 @@
 <script src="dist/js/pages/dashboard2.js"></script>
 <script src="hosturl.js"></script>
 <script type="text/javascript">
+  $('#GetFile').on('click', function () {
+    $.ajax({
+        url: `http://${hosturl}:5600/admin/uploads/${productGimage}`,
+        method: 'GET',
+        xhrFields: {
+            responseType: 'blob'
+        },
+        success: function (data) {
+            var a = document.createElement('a');
+            var url = window.URL.createObjectURL(data);
+            a.href = url;
+            a.download = 'images.jpg';
+            document.body.append(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        }
+    });
+});
+
+  function toDataURL(url) {
+    return fetch(url).then((response) => {
+            return response.blob();
+        }).then(blob => {
+            return URL.createObjectURL(blob);
+        });
+}
+
+
+async function download() {
+        const a = document.createElement("a");
+        a.href = await toDataURL("https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png");
+        a.download = "myImage.png";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+}
+
+  function getQueryStringValue (key) {  
+  return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+}
+
+
+
+  function checkAll()
+ {
+     var tablek = document.getElementById ('keychaintable');
+     var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
+     var val = checkboxes[0].checked;
+     for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
+ }
+
+  function printChecked(){
+    var items=document.getElementsByName('todelete');
+    var selectedItems=[];
+    for(var i=0; i<items.length; i++){
+      if(items[i].type=='checkbox' && items[i].checked==true)
+        selectedItems.push(items[i].value);
+    }
+    // console.log(selectedItems);
+    return selectedItems
+  }     
+</script>
+<script type="text/javascript">
+
+  getsummary()
 
     function logOutUser(){
     localStorage.clear();
     window.location  =  "login.html";
   }
+
+
+  function getsummary(){
+    fetch(`http://${hosturl}:5600/api/admin/countsummary`)
+    .then(response => {
+     // console.log(response)
+      return response.json()})
+    .then(data => {
+      console.log(data)
+      document.getElementById("orders_count").innerHTML = data.ordercount
+      document.getElementById("products_count").innerHTML = data.productscount
+      document.getElementById("users_count").innerHTML = data.usercount
+      document.getElementById("sales_amount").innerHTML = data.salesamount
+      
+   
+   })
+    .catch(err => console.log(err))
+
+  }
+  
+  
+</script>
+<script>
+
+
+
+
+
+
+  function getkeychains(oldkeychains){
+    let tokeyc = oldkeychains
+    // console.log(oldkeychains)
+    let newkeychains = oldkeychains.map(keychain => {
+      delete keychain._id
+      delete keychain.__v
+      delete keychain.available_status
+      delete keychain.is_paid
+      delete keychain.is_delivered
+      return keychain
+    })
+    //console.log(newkeychains)
+    return newkeychains
+  }
+
+  function deletekeychains(){
+    //let deleteprotoget = globalProduct
+    let todeleteids = printChecked()
+    let deleteArray = {
+      todeleteids
+    }
+              fetch(`http://${hosturl}:5600/api/order/deleteorder`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "DELETE",
+            body: JSON.stringify(deleteArray)
+          })
+          .then(function(res){ 
+
+            getproducts() 
+          })
+          .catch(function(res){ console.log(res) })
+  }
+
+    function productdetailsmodal(probtn){
+      let proid = probtn.getAttribute('data-pid')
+      // console.log(proid)
+      fetch(`http://${hosturl}:5600/api/order/getcartproductbyid/${proid}`)
+      .then(response => {
+        //console.log(result)
+        return response.json()
+      })
+      .then(result => {
+        // console.log(result)
+        document.getElementById("cart_p_name").innerHTML = result.product_name
+        document.getElementById("cart_p_printname").innerHTML = result.print_name ? result.print_name : "N.A."
+        document.getElementById("cart_p_size").innerHTML = result.size ? result.size : "N.A."
+        document.getElementById("cart_p_quantity").innerHTML = result.quantity ? result.quantity : "N.A."
+        document.getElementById("cart_p_covertype").innerHTML = result.cover_type ? result.cover_type : "N.A."
+        productGimage = result.image
+        document.getElementById("cart_p_image").src = `http://${hosturl}:5600/admin/uploads/${result.image}`
+        document.getElementById("cart_p_d_image").href = `http://${hosturl}:5600/admin/uploads/${result.image}`
+        document.getElementById("cart_p_d_image").download= `http://${hosturl}:5600/admin/uploads/${result.image}`
+        $('#cartProductModal').modal('show');
+
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+
+        function userdetailsmodal(probtn){
+      let proid = probtn.getAttribute('data-pid')
+      // console.log(proid)
+      fetch(`http://${hosturl}:5600/api/user/getuser/${proid}`)
+      .then(response => {
+        //console.log(result)
+        return response.json()
+      })
+      .then(result => {
+        // console.log(result)
+        let full_name = result.first_name + " " + result.last_name
+        let address = result.address+ ", "+result.city+"-"+result.pincode+", "+result.city+", "+result.state
+        document.getElementById("cart_u_name").innerHTML = full_name ? full_name : "N.A."
+        document.getElementById("cart_u_contact").innerHTML = result.contact ? result.contact : "N.A."
+        document.getElementById("cart_u_email").innerHTML = result.email ? result.email : "N.A."
+        document.getElementById("cart_u_address").innerHTML = address ? address : "N.A."
+        // document.getElementById("cart_u_pincode").innerHTML = result.pincode ? result.pincode : "N.A."
+        // document.getElementById("cart_u_city").innerHTML = result.city ? result.city : "N.A."
+        // document.getElementById("cart_u_state").innerHTML = result.state ? result.state : "N.A."
+        // document.getElementById("cart_u_country").innerHTML = result.country ? result.country : "N.A."
+        document.getElementById("cart_u_addresstype").innerHTML = result.address_type ? result.address_type : "N.A."
+        
+        $('#cartUserModal').modal('show');
+
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+
+
+    function changeorderstatus(selop){
+      let orderref = selop.getAttribute('data-oid')
+      console.log("orderef",orderref)
+      let orderid = okchains[orderref]._id
+      console.log("orderid",orderid)
+      let foridf = `order_status_ind_${orderref}`
+      let newstatus = document.getElementById(foridf).value
+      console.log("newstatus",newstatus)
+      let statusbody = {
+        order_status : newstatus
+      }
+          fetch(`http://${hosturl}:5600/api/order/changeorderstatus/${orderid}`,
+{
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "PUT",
+    body: JSON.stringify(statusbody)
+})
+.then(function(res){ 
+  return res.json()
+  })
+.then(function(result){
+  // console.log(result)
+  //let productId = result.product._id
+ // console.log(productId)
+  document.getElementById(foridf).value = ""
+  getproducts()
+  //uploadFile(productId)
+  //getord
+  
+})
+.catch(function(res){ console.log(res) })
+
+      console.log(newstatus)
+    }
+
+    function CreateTableFromJSON(myBookso) {
+      let myBooksold = getkeychains(myBookso)
+      // console.log("orders")
+      // console.log(myBooksold)
+      let myBooks= myBooksold.map(a => {
+        // console.log(a)
+        let fullname = a.user_id.first_name + " " + a.user_id.last_name 
+        Object.assign(a, {name: fullname})
+        Object.assign(a, {contact: a.user_id.contact});
+        Object.assign(a, {email: a.user_id.email});
+        Object.assign(a, {address: a.user_id.address})
+        delete a['user_id'];
+        return a
+      });
+      const removePropery = (propKey, { [propKey]: propValue, ...rest }) => rest;
+      //myBooks = removePropery('user_id', myBooks);
+      // console.log(myBooks)
+
+      // var myBooks = JSON.parse(JSON.stringify( myBooksrow, ["name","contact","email","products","payment_type","is_paid","is_delivered"]));
+
+      // console.log(myBooks)
+
+        var col = [];
+        for (var i = 0; i < myBooks.length; i++) {
+            for (var key in myBooks[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+        table.setAttribute("class", "table");
+        table.setAttribute("id","keychaintable")
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);  
+        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
+
+        for (var i = 0; i < col.length; i++) {
+            var th = document.createElement("th");  
+                // TABLE HEADER.
+            th.innerHTML = col[i];
+            tr.appendChild(th);
+
+        }
+       // var thn =  document.createElement("th"); 
+      //  thn.innerHTML = "Edit";
+            //tr.appendChild(thn);
+        var ths = document.createElement("th")
+        ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>All</label></div></div>"
+
+        // ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
+        tr.appendChild(ths);
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+
+            tr = table.insertRow(-1);
+            //tr.setAttribute("contenteditable", "true"); 
+            for (var j = 0; j < col.length; j++) {
+              var tabCell = tr.insertCell(-1);
+              if(j===0){
+                //console.log(myBooks[i][col[j]])
+                let products = myBooks[i][col[j]]
+                // console.log(products)
+                let products_name = ''
+                for(let i=0; i < products.length; i++){
+                  // console.log()
+                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px" class="btn btn-info" data-pid="${products[i]._id}">${products[i].product_name}</button>`
+                  products_name += `${btntag} </br> `
+                }
+                // console.log(products_name)
+                tabCell.innerHTML = products_name
+              }
+              else if(j===1){
+                let orderid = okchains[i]._id
+                let atag = document.createElement('a')
+                atag.innerHTML = myBooks[i][col[j]]
+                let ahref = `invoice.html#${orderid}`
+                atag.setAttribute('href',ahref)
+                tabCell.appendChild(atag)
+              }
+              else if(j===8){
+                let userinfo = myBooks[i][col[j]]
+                let user = okchains[i].user_id._id
+                console.log("below user")
+                // console.log(user)
+                let btntag2 =  `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${user}">view</button>`
+                tabCell.innerHTML = btntag2
+              }
+                  else if(j===2){
+                 let valueStatus = myBooks[i][col[j]]   
+                 let spantag = document.createElement('span')
+                 spantag.setAttribute('id','order_status_span')
+                 if(myBooks[i][col[j]] === "Shipped"){
+                  spantag.innerHTML = "Shipped"
+                  spantag.setAttribute('class', 'badge badge-success')
+                 }
+                 else if(myBooks[i][col[j]] === "Pending"){
+                  spantag.innerHTML = "Pending"
+                  spantag.setAttribute('class', 'badge badge-warning')
+                 }
+                 else if(myBooks[i][col[j]] === "Delivered"){
+                  spantag.innerHTML = "Delivered"
+                  spantag.setAttribute('class', 'badge badge-danger')
+                 }
+                 else{
+                  spantag.innerHTML = "Processing"
+                  spantag.setAttribute('class', 'badge badge-info')
+                 }
+                 let forid = `order_status_ind_${i}`
+                let btntag3 =  `<select data-oid=${i} onchange="changeorderstatus(this)" style="width:25%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
+                //document.getElementById('order_status_ind').value="Delivered";
+                tabCell.appendChild(spantag)
+                tabCell.innerHTML += btntag3
+              }
+              else{
+                tabCell.innerHTML = myBooks[i][col[j]];
+              }
+              
+              
+              //console.log(i, j)
+              }
+          //  console.log(myBooks[i])
+             // let delbtn = document.createElement("button")
+             // delbtn.setAttribute("class", "btn btn-danger");
+             // delbtn.innerHTML = "Delete"
+             // delbtn.style.margin = "5px";
+            let editbtn = document.createElement("button")
+            editbtn.setAttribute("class", "btn btn-primary");
+            editbtn.style.marginRight = "2px";
+            editbtn.setAttribute("onclick", "editproduct(this)");
+            editbtn.setAttribute("data-toggle", "modal");
+            editbtn.setAttribute("data-target", "#myModal");
+            editbtn.setAttribute("data-key",i)
+            // delbtn.setAttribute("data-key",i)
+            // delbtn.setAttribute("onclick", "deleteproduct(this)")
+            editbtn.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
+            editbtn.innerHTML = "Edit"
+            let td = document.createElement("td");
+            td.style.padding = "5px";
+            let std = document.createElement("td");
+            let deleteCheck = document.createElement("input")
+            deleteCheck.setAttribute("type","checkbox")
+            deleteCheck.setAttribute("name","todelete")
+            deleteCheck.setAttribute("value",okchains[i]._id)
+
+            // console.log(deleteCheck)
+            std.appendChild(deleteCheck)
+            td.appendChild(editbtn)
+            // td.appendChild(delbtn)
+            //tr.appendChild(td)
+            tr.appendChild(std)
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("samplejson");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    }
+      function getproducts(){
+        //globalProduct = proname
+        // document.getElementById("productAddHeading").innerHTML = "Add "+globalProduct
+        // document.getElementById("productEditHeading").innerHTML = "Edit "+globalProduct
+        // document.getElementById("productShowHeading").innerHTML = globalProduct
+        // document.getElementById("add_keychain").value = "Add "+globalProduct
+        // document.getElementById("productEditBtn").value = "Add "+globalProduct
+        // let producttoget = proname
+        // let getpropara = producttoget + "s"
+    fetch(`http://${hosturl}:5600/api/order/getorderswithdata`)
+    .then(response => {
+     // console.log(response)
+      return response.json()})
+    .then(data => {
+      okchains = data.map(a => ({...a}));
+      //let okchains = Object.assign({}, data);
+      // console.log(okchains)
+  // okchains = Object.assign({}, data);
+   //console.log(okchains)
+   //let testkey = Object.assign({}, data);
+      //okchains = data
+      //let newkeychains = getkeychains(data)
+      
+      CreateTableFromJSON(data)
+   })
+    .catch(err => console.log(err))
+}
+      // let filters = ["name", "size", "price"]
+      // let ndata = JSON.parse(unfiltered).map(function(currObj) {
+      // var temp = {};
+      // for identifier in filters:
+      //   temp[identifier] = currObj[identifier];
+      // return temp;
+      // });
+      getproducts()
+     // document.getElementById("keychain_link").setAttribute("class","nav-link active")
+  
+
         function checkLogin(){
     
     if (localStorage.getItem("luser") === null) {
@@ -630,13 +1027,15 @@
       //var username = loguser.name;
 
       var authtokend = localStorage.getItem('authorization')
-      //console.log(authtokend)
+      console.log(authtokend)
       
       //console.log(username)   
        }
   }
   checkLogin()
+
   
+    
 </script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 3 | DataTables</title>
+  <title>phone case</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,14 +11,41 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- DataTables -->
-  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
-  <!-- Theme style -->
+  <!-- overlayScrollbars -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/tagstyle.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style type="text/css">
+    #testtr{
+      color: red
+    }
+
+    #mobile_div{
+      display: none;
+    }
+
+    @media (min-width: 576px){
+    .modal-dialog {
+      max-width: 550px;
+      margin: 1.75rem auto;
+    }
+    }
+
+    @media (min-width: 576px){
+    .modal-content {
+      box-shadow: none;
+    }
+    }
+
+
+
+  </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<!-- <body class="hold-transition sidebar-mini"> -->
+  <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+<!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -27,39 +54,22 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+        <!-- <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
-        </a>
+        </a> -->
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -75,7 +85,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -91,7 +101,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -133,18 +143,16 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-      </li>
+      </li><!-- 
       <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
           <i class="fas fa-th-large"></i>
         </a>
-      </li>
+      </li> -->
     </ul>
   </nav>
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-  <!-- Main Sidebar Container -->
    <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -256,7 +264,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="notification.html" class="nav-link">
+            <a href="notification.html" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 Notifications
@@ -274,7 +282,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="users.html" class="nav-link active">
+            <a href="users.html" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Users
@@ -322,65 +330,86 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Users</h1>
+            <h1>Notification Panel</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Users</li>
+              <li class="breadcrumb-item active">Notification</li>
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
+      </div>
     </section>
 
     <!-- Main content -->
-    <section class="content">
+    <section style="" class="content">
       <div class="row">
-        <div class="col-12">
-          <div class="card">
+        <div class="col-md-6">
+          <div class="card card-secondary">
             <div class="card-header">
-              <h3 class="card-title">Users</h3>
+              <h3 id="productAddHeading" class="card-title">Notification</h3>
+
+              <!-- <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-plus"></i></button>
+              </div> -->
             </div>
-            <!-- /.card-header -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Contact</th>
-                  <th>Email</th>              
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th>Name</th>
-                  <th>Contact</th>
-                  <th>Email</th>
-                </tr>
-                </tfoot>
-              </table>
+                
+                                <div class="row">                    
+                                	<div id="" class="col-sm-12">
+                      <div class="form-group">
+                        <label>Notification Title</label>
+                        <input id="n_title" type="text" class="form-control" placeholder="Enter Title ...">
+                      </div>
+                    </div> 
+                      <div class="col-sm-12">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Text</label>
+                        <textarea style="height: 200px" id="s_text" type="textarea" class="form-control" placeholder="Enter ..."></textarea>
+                      </div>
+                    </div>
+                     <!--  <div class="col-sm-4">
+                        <div class="form-group">
+                        <label>Size</label>
+                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                      </div> -->
+                  </div>
+                      <div class="row">
+                    <div class="col-sm-6">
+                          
+                    </div>    
+                    <div class="col-sm-6">
+                      <input style="margin-right: 10px" onclick="resetform()" type="button" id="" value="Cancel" class="btn btn-danger float-right">
+                      <input style="margin-right: 10px" type="button" id="" value="Send Notification" class="btn btn-success float-right">
+                      
+                    </div>   
+                  </div>
+                  
+          
+                                       
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
         </div>
-        <!-- /.col -->
       </div>
-      <!-- /.row -->
+        
     </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
+
+  <!-- <footer class="main-footer">
     <div class="float-right d-none d-sm-block">
       <b>Version</b> 3.0.1
     </div>
     <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
     reserved.
-  </footer>
+  </footer> -->
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -388,90 +417,74 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
+
+
+
+
+
 <!-- ./wrapper -->
+ <!-- <h2>Modal Example</h2> -->
+  <!-- Button to Open the Modal -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button> -->
+  
+</div>
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- DataTables -->
-<script src="plugins/datatables/jquery.dataTables.js"></script>
-<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="hosturl.js"></script>
-<!-- page script -->
-<!-- <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
-    });
-  });
+
+
+
+
+
+
+<!-- <script type="text/javascript">
+  function getdatafortable(unfiltered){
+    var filters = ["name","size","price"];
+    let filtered = JSON.parse(unfiltered).map(function(currObj) {
+  var temp = {};
+  for identifier in filters:
+    temp[identifier] = currObj[identifier];
+  return temp;
+});
+    return filtered
+  }
 </script> -->
 
 
-
 <script type="text/javascript">
-  $(document).ready(function() {
-    let userTable = $('#example1').DataTable({
-        "processing" : true,
-        "ajax" : {
-            "url" : `http://${hosturl}:5600/api/user/users`,
-            dataSrc : ''
-        },
-        "columns" : [ {
-            "data" : "first_name"
-        }, {
-            "data" : "contact"
-        }, {
-            "data" : "email_id"
-        }]
-    });
-});
-
-</script>
-<script type="text/javascript">
-
-      function logOutUser(){
-    localStorage.clear();
-    window.location  =  "login.html";
-  }
-
-          function checkLogin(){
-    
-    if (localStorage.getItem("luser") === null) {
-     // $('#loggedIn').css("display","none")
-       // $('#logintosee').html("login to see the registered users")
-       // $('#notloggedbtn').css("display","block")
-        window.location = "login.html";
-      //  console.log(ran)
+  function tonotif(){
+    console.log("notif called")
+    let notifto = document.getElementById("notif_select").value
+    console.log(notifto)
+    if(notifto !== "All"){
+      console.log("its here")
+      document.getElementById("mobile_div").style.display = "block"
     }
     else{
-      console.log(localStorage.getItem("luser"))
-      //var loguser = JSON.parse(localStorage.getItem('luser'));
-      //var username = loguser.name;
-
-      var authtokend = localStorage.getItem('authorization')
-      //getproducts()
-      console.log(authtokend)
-      
-      //console.log(username)   
-       }
+      document.getElementById("mobile_div").style.display = "none"
+    }
   }
-  checkLogin()
+
+  function resetform(){
+    document.getElementById("n_title").value= ""
+    document.getElementById("s_text").value = ""
+  }
+
+  
+    
 </script>
-<!-- <script type="text/javascript">
-    $.ajax({url: "demo_test.txt", success: function(result){
-    $("#div1").html(result);
-  }});
-</script> -->
+
+<script type="text/javascript">
+
+</script>
 </body>
 </html>

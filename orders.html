@@ -818,7 +818,7 @@ async function download() {
                 let products_name = ''
                 for(let i=0; i < products.length; i++){
                   // console.log()
-                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px" class="btn btn-info" data-pid="${products[i]._id}">${products[i].product_name}</button>`
+                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px" class="btn" data-pid="${products[i]._id}">${products[i].product_name}</button>`
                   products_name += `${btntag} </br> `
                 }
                 // console.log(products_name)

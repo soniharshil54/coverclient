@@ -846,13 +846,15 @@ async function download() {
         return a
       });
       const removePropery = (propKey, { [propKey]: propValue, ...rest }) => rest;
+
+      let thdordersi = ["Products","id","Order Id","GST","Shipping","Subtotal","Amount","Status","Payment Type","Name","Contact","Email","Address"]
       //myBooks = removePropery('user_id', myBooks);
       // console.log(myBooks)
 
       // var myBooks = JSON.parse(JSON.stringify( myBooksrow, ["name","contact","email","products","payment_type","is_paid","is_delivered"]));
 
       // console.log(myBooks)
-      let thdordersi = ["Products","OrderId","Amount","Status","Payment Type","Name","Contact","Email","Address"]
+      // let thdordersi = ["Products","OrderId","Amount","Status","Payment Type","Name","Contact","Email","Address"]
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {

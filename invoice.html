@@ -629,7 +629,7 @@ document.getElementById('invoicedate').innerHTML = today;
           function getcartproducts(orderid){
             console.log("orderid", orderid)
       
-    fetch(`http://localhost:5600/api/order/getorderbyid/${orderid}`)
+    fetch(`http://${hosturl}:5600/api/order/getorderbyid/${orderid}`)
     .then(response => {
      // console.log(response)
       return response.json()})

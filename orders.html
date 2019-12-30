@@ -861,7 +861,7 @@ async function download() {
       // var myBooks = JSON.parse(JSON.stringify( myBooksrow, ["name","contact","email","products","payment_type","is_paid","is_delivered"]));
 
       // console.log(myBooks)
-      let thorders = ["Products","id","Order Id","Amount","Status","Payment Type","Name","Contact","Email","Address"]
+      let thorders = ["Products","id","Order Id","GST","Shipping","Subtotal","Amount","Status","Payment Type","Name","Contact","Email","Address"]
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
@@ -940,7 +940,7 @@ async function download() {
               else if(j === 1){
 
               }
-              else if(j===9){
+              else if(j===12){
                 let userinfo = myBooks[i][col[j]]
                 console.log(myBooksoldnew[i])
                 console.log(okchains[i])
@@ -950,7 +950,7 @@ async function download() {
                 let btntag2 =  `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${user}">view</button>`
                 tabCell.innerHTML = btntag2
               }
-                  else if(j===4){
+                  else if(j===7){
                  let valueStatus = myBooks[i][col[j]]   
                  let spantag = document.createElement('span')
                  spantag.setAttribute('id','order_status_span')

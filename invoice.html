@@ -627,6 +627,7 @@ document.getElementById('invoicedate').innerHTML = today;
     }
 
           function getcartproducts(orderid){
+            console.log("orderid", orderid)
       
     fetch(`http://localhost:5600/api/order/getorderbyid/${orderid}`)
     .then(response => {
@@ -641,6 +642,7 @@ document.getElementById('invoicedate').innerHTML = today;
    //let testkey = Object.assign({}, data);
       //okchains = data
       //let newkeychains = getkeychains(data)
+      console.log(data)
       let productscart = data.products
       console.log(productscart)
       CreateTableFromJSON(productscart)
@@ -660,7 +662,18 @@ document.getElementById('invoicedate').innerHTML = today;
     .catch(err => console.log(err))
 }
 
-    getcartproducts("5e01fd083f319c4d10b8dfb0")
+        if(window.location.hash) {
+      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+      console.log(hash)
+
+      getcartproducts(hash)
+      // hash found
+  } else {
+      console.log("order not found")
+     // document.getElementById("keychain_link").setAttribute("class","nav-link active")
+  }
+
+   // getcartproducts("5e01fd083f319c4d10b8dfb0")
 
   
     

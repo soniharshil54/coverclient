@@ -1334,7 +1334,7 @@ for (var i in strs) {
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
-
+            document.getElementById("company_notif")
             getcompanies() 
           })
           .catch(function(res){ console.log(res) })

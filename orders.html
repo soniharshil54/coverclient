@@ -765,7 +765,7 @@ async function download() {
         let address = result.address+ ", "+result.city+"-"+result.pincode+", "+result.city+", "+result.state
         document.getElementById("cart_u_name").innerHTML = full_name ? full_name : "N.A."
         document.getElementById("cart_u_contact").innerHTML = result.contact ? result.contact : "N.A."
-        document.getElementById("cart_u_email").innerHTML = result.email ? result.email : "N.A."
+        document.getElementById("cart_u_email").innerHTML = result.email_id ? result.email_id : "N.A."
         document.getElementById("cart_u_address").innerHTML = address ? address : "N.A."
         // document.getElementById("cart_u_pincode").innerHTML = result.pincode ? result.pincode : "N.A."
         // document.getElementById("cart_u_city").innerHTML = result.city ? result.city : "N.A."
@@ -849,7 +849,7 @@ async function download() {
         let fullname = a.user_id.first_name + " " + a.user_id.last_name 
         Object.assign(a, {name: fullname})
         Object.assign(a, {contact: a.user_id.contact});
-        Object.assign(a, {email: a.user_id.email});
+        Object.assign(a, {email_id: a.user_id.email_id});
         Object.assign(a, {address: a.user_id.address})
         delete a['user_id'];
         return a

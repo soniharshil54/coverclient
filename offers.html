@@ -35,6 +35,17 @@
     }
     }
 
+        body
+    {
+        counter-reset: Serial;           /* Set the Serial counter to 0 */
+    }
+
+    .auto-index td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: counter(Serial); /* Display the counter */
+}
+
 
 
   </style>
@@ -421,12 +432,7 @@
                   
                   <div class="row">
                     <div class="col-sm-6">
-                         <!--  <div class="form-group">
-                        <div class="custom-control custom-checkbox">
-                          <input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-                          <label for="customCheckbox1" class="custom-control-label">Activated</label>
-                        </div>
-                      </div> -->
+                       <span id="offer_success_id" style="color: green; font-weight: bold;"></span>
                     </div>    
                     <div class="col-sm-6">
                       <input type="button" id="add_offer" value="add Offer" class="btn btn-success float-right">
@@ -468,13 +474,9 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <!-- <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.1
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
-  </footer> -->
+<footer class="main-footer">
+  <strong>Call us:  <a href="#">+91 8866220223</a>.</strong> 
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -621,12 +623,12 @@
                   
                   <div class="row">
                     <div class="col-sm-6">
-                           <div class="form-group">
+                          <!--  <div class="form-group">
                           <label class="custom-control custom-checkbox">
    <input type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
    <span class="custom-control-label" for="chbxTerms">Active status</span>
    </label>
-                      </div>
+                      </div> -->
                     </div>    
                     <div class="col-sm-6">
                       <input id="productEditBtn" onclick="editkeychain()" type="button" value="Edit Offer" class="btn btn-success float-right">
@@ -720,6 +722,7 @@
     document.getElementById("k_code").value = ""
     document.getElementById("k_expirydate").value = ""
     document.getElementById("k_terms").value = ""
+    document.getElementById("offer_success_id").innerHTML = "Offer Created Successfully"
    //let productId = result._id
   // console.log(productId)
    uploadFile(offerid)
@@ -796,7 +799,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   }
 
   function getkeychains(oldkeychains){
-    let tokeyc = oldkeychains
+    let tokeyc = oldkeychains.reverse()
     // console.log(oldkeychains)
     let newkeychains = oldkeychains.map(keychain => {
       delete keychain._id
@@ -971,7 +974,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
     function CreateTableFromJSON(myBookso) {
       let myBooks = getkeychains(myBookso)
 
-
+      var thoffers = ["Offer Name", "Product", "Code", "Valip upto","Terms&Conditions","Image"]
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
             for (var key in myBooks[i]) {
@@ -983,17 +986,23 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
 
         // CREATE DYNAMIC TABLE.
         var table = document.createElement("table");
-        table.setAttribute("class", "table");
+        table.setAttribute("class", "table auto-index");
         table.setAttribute("id","keychaintable")
         // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
         var tr = table.insertRow(-1);  
         //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
 
-        for (var i = 0; i < col.length; i++) {
+        for (var i = -1; i < col.length; i++) {
             var th = document.createElement("th");  
                 // TABLE HEADER.
-            th.innerHTML = col[i];
+                if(i === -1){
+                  th.innerHTML = "No."
+                }
+                else {
+                  th.innerHTML = thoffers[i];
+                }
+            
             tr.appendChild(th);
 
         }
@@ -1013,9 +1022,12 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
 
             tr = table.insertRow(-1);
             //tr.setAttribute("contenteditable", "true"); 
-            for (var j = 0; j < col.length; j++) {
+            for (var j = -1; j < col.length; j++) {
               var tabCell = tr.insertCell(-1);
-              if(j === 5){
+              if(j === -1){
+                tabCell.innerHTML = ""
+              }
+              else if(j === 5){
                  let image = '"'+myBooks[i][col[j]]+'"'
                 tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
                 // console.log(myBooks[i][col[j]])

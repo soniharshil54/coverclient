@@ -34,6 +34,23 @@
       box-shadow: none;
     }
     }
+
+        body
+    {  
+        counter-reset: Serial;         /* Set the Serial counter to 0 */
+    }
+
+    .auto-index td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: counter(Serial); /* Display the counter */
+}
+
+    .auto-index-phone td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: counter(Serial); /* Display the counter */
+}
   </style>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -321,7 +338,8 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Add models</li>
+              <li class="breadcrumb-item active">Phonecases</li>
+              <!-- <li class="breadcrumb-item active">Add Company</li> -->
             </ol>
           </div>
         </div>
@@ -350,6 +368,9 @@
                     <button onclick="add_company()" type="button" class="btn btn-info btn-flat">Add Company</button>
                   </span>
                 </div>
+              </div>
+              <div class="col-sm-6">
+                <span id="company_notif" style="color: green; font-weight: bold"></span>
               </div>
               <!--  <div class="col-sm-6">
                   <button style="float: right;" onclick='deletecompanies()' class='btn btn-danger'>Delete Selected</button>
@@ -558,10 +579,13 @@
                         </div></div>
                   </div>
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                           <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='is_avail' value='option1'><label for='is_avail' class='custom-control-label'>Available</label></div></div>
                     </div>    
-                    <div class="col-sm-6">
+                      <div class="col-sm-4">
+                          <span id="phonecase_notif" style="color: green; font-weight: bold"></span>
+                    </div>   
+                    <div class="col-sm-4">
                       <input id="add_phonecase" type="button" value="Add Model" class="btn btn-success float-right">
                     </div>   
                   </div>
@@ -628,12 +652,8 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.1
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
+<footer class="main-footer">
+  <strong>Call us:  <a href="#">+91 8866220223</a>.</strong> 
   </footer>
 
   <!-- Control Sidebar -->
@@ -699,6 +719,120 @@
         <div class="modal-body" style="text-align: center;">
           <!-- <h1>ello</h1> -->
           <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg">
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+        <!-- The Modal -->
+  <div class="modal" id="details_3d">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+      
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <table class="table table-dark" style="width:100%">
+            <tr>
+              <th>Product Name:</th>
+              <td><span id="name_3d_m"></span></td>
+            </tr>
+            <tr>
+              <th>Images:</th>
+            <!--   <td>  <a target="_blank" href="images/3.jpg" download>
+  <img src="images/3.jpg" alt="W3Schools" width="104" height="142">
+</a></td> -->
+              <td><a id="s_3d_d_image" href="images/3.jpg" download="">
+      <img id="s_3d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+      </a><a id="c_3d_d_image" href="images/3.jpg" download="">
+      <img id="c_3d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+      </a><a id="m_3d_d_image" href="images/3.jpg" download="">
+      <img id="m_3d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+      </a></td>
+            </tr>
+            <tr>
+              <th>Price:</th>
+              <td><span id="price_3d_m"></span></td>
+            </tr>
+             <tr>
+              <th>Size:</th>
+              <td><span id="size_3d_m"></span></td>
+            </tr>
+             <tr>
+              <th>Description:</th>
+              <td><span id="description_3d_m"></span></td>
+            </tr>
+          </table>
+          <!-- <h1>ello</h1> -->
+          <!-- <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg"> -->
+
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+      <!-- The Modal -->
+  <div class="modal" id="details_2d">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+      
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <table class="table table-dark" style="width:100%">
+            <tr>
+              <th>Product Name:</th>
+              <td><span id="name_2d_m"></span></td>
+            </tr>
+            <tr>
+              <th>Images:</th>
+            <!--   <td>  <a target="_blank" href="images/3.jpg" download>
+  <img src="images/3.jpg" alt="W3Schools" width="104" height="142">
+</a></td> -->
+              <td><a id="s_2d_d_image" href="images/3.jpg" download="">
+      <img id="s_2d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+      </a><a id="c_2d_d_image" href="images/3.jpg" download="">
+      <img id="c_2d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+      </a><a id="m_2d_d_image" href="images/3.jpg" download="">
+      <img id="m_2d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+      </a></td>
+            </tr>
+            <tr>
+              <th>Price:</th>
+              <td><span id="price_2d_m"></span></td>
+            </tr>
+             <tr>
+              <th>Size:</th>
+              <td><span id="size_2d_m"></span></td>
+            </tr>
+             <tr>
+              <th>Description:</th>
+              <td><span id="description_2d_m"></span></td>
+            </tr>
+          </table>
+          <!-- <h1>ello</h1> -->
+          <!-- <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg"> -->
+
         </div>
         
         <!-- Modal footer -->
@@ -1011,17 +1145,18 @@
   return res.json()
   })
 .then(function(result){
-  // let name = document.getElementById("k_name").value = ""
-  //   document.getElementById("comp_option").value = ""
-  //   document.getElementById("k_size_2d").value = ""
-  //   document.getElementById("k_size_3d").value = ""
-  //   document.getElementById("k_size_4d").value = ""
-  //   document.getElementById("k_price_2d").value = ""
-  //   document.getElementById("k_price_3d").value = ""
-  //   document.getElementById("k_price_4d").value = ""
-  //   document.getElementById("k_description_2d").value = ""
-  //   document.getElementById("k_description_3d").value = ""
-  //   document.getElementById("k_description_4d").value = ""
+  let name = document.getElementById("k_name").value = ""
+    document.getElementById("comp_option").value = ""
+    document.getElementById("k_size_2d").value = ""
+    document.getElementById("k_size_3d").value = ""
+    document.getElementById("k_size_4d").value = ""
+    document.getElementById("k_price_2d").value = ""
+    document.getElementById("k_price_3d").value = ""
+    document.getElementById("k_price_4d").value = ""
+    document.getElementById("k_description_2d").value = ""
+    document.getElementById("k_description_3d").value = ""
+    document.getElementById("k_description_4d").value = ""
+    document.getElementById("phonecase_notif").innerHTML = `${name} added Successfully!!`
   console.log(result)
   let productId = result.product._id
   console.log(productId)
@@ -1131,7 +1266,9 @@ $("#modal_option").html(optionsd);
   }).then(function(response) {
     return response.json();
   }).then(function(data) {
-    console.log(data)
+    console.log(data.company.name)
+    document.getElementById("company_notif").innerHTML = `Company "${data.company.name}" Added Successfully!!!`
+    document.getElementById("company_name").value = ""
     getcompanies()
   });
   }
@@ -1169,7 +1306,8 @@ for (var i in strs) {
       return response.json()})
     .then(data => {
       console.log(data)
-      globalcompanies = data.map(a => ({...a}));
+      let globalcompaniesold = data.map(a => ({...a}));
+      globalcompanies = globalcompaniesold.reverse()
       const companies = data.map(comp => comp.name);
       console.log(companies)
       //companylist(companies)
@@ -1233,6 +1371,45 @@ for (var i in strs) {
     document.getElementById('c_old_name').value = companyrf.name
     document.getElementById('c_id').value = companyrf._id
    
+  }
+
+  function detalis2d(btn2d){
+    console.log(btn2d)
+    let arrayref2d = btn2d.getAttribute('data-key') 
+    let ref2d = okchains[arrayref2d]
+    document.getElementById("name_2d_m").innerHTML = okchains[arrayref2d].name
+    document.getElementById("price_2d_m").innerHTML = okchains[arrayref2d].price_2d
+    document.getElementById("size_2d_m").innerHTML = okchains[arrayref2d].size_2d
+    document.getElementById("description_2d_m").innerHTML = okchains[arrayref2d].description_2d
+    let sliderimage2d = okchains[arrayref2d].image_header_2d
+    let sliderimagesrc2d = `http://${hosturl}:5600/admin/uploads/${sliderimage2d}`
+    let coverimage2d = okchains[arrayref2d].image_inner_2d
+    let coverimagesrc2d = `http://${hosturl}:5600/admin/uploads/${coverimage2d}`
+    let maskimage2d = okchains[arrayref2d].image_mask_2d
+    let maskimagesrc2d = `http://${hosturl}:5600/admin/uploads/${maskimage2d}`
+    document.getElementById("s_2d_image").src = sliderimagesrc2d
+    document.getElementById("c_2d_image").src = coverimagesrc2d
+    document.getElementById("m_2d_image").src = maskimagesrc2d
+    //document.getElementById("name_2d_m").innerHTML = okchains[arrayref2d].name
+  }
+
+    function detalis3d(btn3d){
+        console.log(btn3d)
+    let arrayref3d = btn3d.getAttribute('data-key') 
+    let ref3d = okchains[arrayref3d]
+    document.getElementById("name_3d_m").innerHTML = okchains[arrayref3d].name
+    document.getElementById("price_3d_m").innerHTML = okchains[arrayref3d].price_3d
+    document.getElementById("size_3d_m").innerHTML = okchains[arrayref3d].size_3d
+    document.getElementById("description_3d_m").innerHTML = okchains[arrayref3d].description_3d
+    let sliderimage3d = okchains[arrayref3d].image_header_3d
+    let sliderimagesrc3d = `http://${hosturl}:5600/admin/uploads/${sliderimage3d}`
+    let coverimage3d = okchains[arrayref3d].image_inner_2d
+    let coverimagesrc3d = `http://${hosturl}:5600/admin/uploads/${coverimage3d}`
+    let maskimage3d = okchains[arrayref3d].image_mask_2d
+    let maskimagesrc3d = `http://${hosturl}:5600/admin/uploads/${maskimage3d}`
+    document.getElementById("s_3d_image").src = sliderimagesrc3d
+    document.getElementById("c_3d_image").src = coverimagesrc3d
+    document.getElementById("m_3d_image").src = maskimagesrc3d
   }
 
     function editproduct(test){
@@ -1348,6 +1525,7 @@ for (var i in strs) {
             getcompanies()
             getproducts()
             $("#compModal").modal("hide");
+            document.getElementById("company_notif").innerHTML =`Company "${oldname}" Successfully renamed to "${name}" !!`
  
           })
           .catch(function(res){ console.log(res) })
@@ -1452,7 +1630,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
 
     function getkeychains(oldkeychains){
-    let tokeyc = oldkeychains
+    let tokeyc = oldkeychains.reverse()
     console.log(oldkeychains)
     let newkeychains = oldkeychains.map(keychain => {
       delete keychain._id
@@ -1521,7 +1699,8 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
     function CreateTableFromJSON(myBookso) {
       let myBookson = getkeychains(myBookso)
-      var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","size_2d","price_2d","description_2d","image_header_2d","image_inner_2d","size_3d","price_3d","description_3d","image_header_3d","image_inner_3d","available_status"]));
+      var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","available_status"]));
+      let thphonecaes = ["Name", "Company"]
 
 
         var col = [];
@@ -1535,24 +1714,36 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
         // CREATE DYNAMIC TABLE.
         var table = document.createElement("table");
-        table.setAttribute("class", "table");
+        table.setAttribute("class", "table auto-index-phone");
         table.setAttribute("id","keychaintable")
         // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
         var tr = table.insertRow(-1);  
         //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
 
-        for (var i = 0; i < col.length; i++) {
+        for (var i = -1; i < col.length; i++) {
             var th = document.createElement("th");  
                 // TABLE HEADER.
-            th.innerHTML = col[i];
+                if(i === -1){
+                  th.innerHTML = "No.";
+                }
+                else {
+                  th.innerHTML = thphonecaes[i];
+                }
+            
             tr.appendChild(th);
 
         }
+        var th2d = document.createElement("th"); 
+        th2d.innerHTML = "2d Details"
+        var th3d = document.createElement("th"); 
+        th3d.innerHTML = "3d Details"
         var thn =  document.createElement("th"); 
         thn.innerHTML = "Edit";
          var tha =  document.createElement("th"); 
         tha.innerHTML = "Action";
+        tr.appendChild(th2d)
+        tr.appendChild(th3d)
             tr.appendChild(thn);
             tr.appendChild(tha)
         var ths = document.createElement("th")
@@ -1564,12 +1755,10 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
             tr = table.insertRow(-1);
             //tr.setAttribute("contenteditable", "true"); 
-            for (var j = 0; j < col.length; j++) {
+            for (var j = -1; j < col.length; j++) {
               var tabCell = tr.insertCell(-1);
-              if(j===5 || j===6 || j===10 || j===11){
-                let image = '"'+myBooks[i][col[j]]+'"'
-                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
-                console.log(myBooks[i][col[j]])
+              if(j === -1){
+                tabCell.innerHTML = ""
               }
               else{
                 tabCell.innerHTML = myBooks[i][col[j]];
@@ -1578,6 +1767,28 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
                 
                 //console.log(i, j)
             }
+            let btn2d = document.createElement("button")
+            btn2d.setAttribute("class", "btn btn-info");
+            btn2d.style.marginRight = "2px";
+            btn2d.setAttribute("onclick", "detalis2d(this)");
+            btn2d.setAttribute("data-toggle", "modal");
+            btn2d.setAttribute("data-target", "#details_2d");
+            btn2d.setAttribute("data-key",i)
+             btn2d.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
+            btn2d.innerHTML = "View 2d"
+
+            let btn3d = document.createElement("button")
+            btn3d.setAttribute("class", "btn btn-info");
+            btn3d.style.marginRight = "2px";
+            btn3d.setAttribute("onclick", "detalis3d(this)");
+            btn3d.setAttribute("data-toggle", "modal");
+            btn3d.setAttribute("data-target", "#details_3d");
+            btn3d.setAttribute("data-key",i)
+             btn3d.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
+            btn3d.innerHTML = "View 3d"
+
           //  console.log(myBooks[i])
              // let delbtn = document.createElement("button")
              // delbtn.setAttribute("class", "btn btn-danger");
@@ -1618,6 +1829,8 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
             let td = document.createElement("td");
             //td.style.padding = "5px";
             let std = document.createElement("td");
+            let td2d = document.createElement("td");
+            let td3d = document.createElement("td");
             let deleteCheck = document.createElement("input")
             deleteCheck.setAttribute("type","checkbox")
             deleteCheck.setAttribute("name","todelete")
@@ -1626,8 +1839,12 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
             // console.log(deleteCheck)
             std.appendChild(deleteCheck)
             atd.appendChild(activatebtn)
+            td2d.appendChild(btn2d)
+            td3d.appendChild(btn3d)
             td.appendChild(editbtn)
             // td.appendChild(delbtn)
+             tr.appendChild(td2d)
+             tr.appendChild(td3d)
             tr.appendChild(td)
             tr.appendChild(atd)
             tr.appendChild(std)
@@ -1656,17 +1873,23 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
         // CREATE DYNAMIC TABLE.
         var table = document.createElement("table");
-        table.setAttribute("class", "table");
+        table.setAttribute("class", "table auto-index");
         table.setAttribute("id","companytable")
         // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
         var tr = table.insertRow(-1);  
         //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
 
-        for (var i = 0; i < col.length; i++) {
+        for (var i = -1; i < col.length; i++) {
             var th = document.createElement("th");  
                 // TABLE HEADER.
-            th.innerHTML = col[i];
+                if(i === -1){
+                  th.innerHTML = "No";
+                }
+                else {
+                  th.innerHTML = col[i];
+                }
+            
             tr.appendChild(th);
 
         }
@@ -1688,9 +1911,15 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
             tr = table.insertRow(-1);
             //tr.setAttribute("contenteditable", "true"); 
-            for (var j = 0; j < col.length; j++) {
+            for (var j = -1; j < col.length; j++) {
               var tabCell = tr.insertCell(-1)
+              if(j === -1){
+                tabCell.innerHTML = ""
+              }
+              else {
                 tabCell.innerHTML = myBooks[i][col[j]];
+              }
+                
               
                 
                 
@@ -1944,7 +2173,9 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
      // console.log(response)
       return response.json()})
     .then(data => {
-      okchains = data.map(a => ({...a}));
+
+      let okchainsold = data.map(a => ({...a}));
+      okchains = okchainsold.reverse()
       //let okchains = Object.assign({}, data);
       console.log(okchains)
   // okchains = Object.assign({}, data);

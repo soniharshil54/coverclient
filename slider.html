@@ -34,6 +34,17 @@
       box-shadow: none;
     }
     }
+
+    body
+    {
+        counter-reset: Serial;           /* Set the Serial counter to 0 */
+    }
+
+    .auto-index td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: counter(Serial); /* Display the counter */
+}
   </style>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -321,7 +332,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Add models</li>
+              <li class="breadcrumb-item active">Sliders</li>
             </ol>
           </div>
         </div>
@@ -477,7 +488,7 @@
 
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Models</h3>
+                <!-- <h3 class="card-title">Models</h3> -->
 
              <!--    <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 470px;">
@@ -512,12 +523,8 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
-    <div class="float-right d-none d-sm-block">
-      <b>Version</b> 3.0.1
-    </div>
-    <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights
-    reserved.
+<footer class="main-footer">
+  <strong>Call us:  <a href="#">+91 8866220223</a>.</strong> 
   </footer>
 
   <!-- Control Sidebar -->
@@ -884,6 +891,61 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
 
   }
 
+
+  function activeslider(activebtn){
+    let sliderref = activebtn.getAttribute("data-key")
+    let sliderid = okchains[sliderref]._id
+    let ceditdata = {
+      active_status : 1
+    }
+              fetch(`http://${hosturl}:5600/api/product/editsliderstatus/${sliderid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(ceditdata)
+          })
+          .then(function(res){ 
+            console.log(res)
+           // uploadFileEdit(keyid)
+            getproducts()
+           // $("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    console.log(sliderid)
+  }
+
+  function deactiveslider(activebtn){
+    let sliderref = activebtn.getAttribute("data-key")
+    let sliderid = okchains[sliderref]._id
+     let ceditdata = {
+      active_status : 0
+    }
+              fetch(`http://${hosturl}:5600/api/product/editsliderstatus/${sliderid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(ceditdata)
+          })
+          .then(function(res){ 
+             console.log(res)
+            getproducts()
+           // uploadFileEdit(keyid)
+           // getproducts()
+            //$("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    console.log(sliderid)
+  }
+
+
     function getkeychains(oldkeychains){
     let tokeyc = oldkeychains
     console.log(oldkeychains)
@@ -899,7 +961,7 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
     function CreateTableFromJSON(myBookso) {
       let myBookson = getkeychains(myBookso)
       var myBooks = JSON.parse(JSON.stringify( myBookson, ["product_display_name","slider_image"]));
-
+      var thsliders = ["Product Name", "Image", "Active"] 
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
@@ -912,23 +974,34 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
 
         // CREATE DYNAMIC TABLE.
         var table = document.createElement("table");
-        table.setAttribute("class", "table");
+        table.setAttribute("class", "table auto-index");
         table.setAttribute("id","keychaintable")
         // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
 
         var tr = table.insertRow(-1);  
         //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
-
-        for (var i = 0; i < col.length; i++) {
+        // var thno =  document.createElement("th");   
+        // thno.innerHTML = "No."
+        // tr.appendChild(thno);
+        for (var i = -1; i < col.length; i++) {
             var th = document.createElement("th");  
                 // TABLE HEADER.
-            th.innerHTML = col[i];
+                if(i === -1){
+                  th.innerHTML = "No."
+                }
+                else {
+                  th.innerHTML = thsliders[i];
+                }
+            
             tr.appendChild(th);
 
         }
         var thn =  document.createElement("th"); 
         thn.innerHTML = "Edit";
             tr.appendChild(thn);
+             var tha =  document.createElement("th"); 
+        tha.innerHTML = "Action";
+            tr.appendChild(tha);
         var ths = document.createElement("th")
         ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
         //tr.appendChild(ths);
@@ -938,9 +1011,12 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
 
             tr = table.insertRow(-1);
             //tr.setAttribute("contenteditable", "true"); 
-            for (var j = 0; j < col.length; j++) {
+            for (var j = -1; j < col.length; j++) {
               var tabCell = tr.insertCell(-1);
-              if(j===1){
+              if(j === -1){
+                tabCell.innerHTML = ""
+              }
+              else if(j===1){
                 let image = '"'+myBooks[i][col[j]]+'"'
                 tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
                 console.log(myBooks[i][col[j]])
@@ -969,7 +1045,28 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
             editbtn.style.padding = "1px 5px";
             // delbtn.style.padding = "1px 5px";
             editbtn.innerHTML = "Edit"
+            let activatebtn = document.createElement("button")
+            activatebtn.style.marginRight = "2px"
+           
+            activatebtn.style.padding = "1px 5px";
             let td = document.createElement("td");
+            let atd = document.createElement("td");
+            if(okchains[i].active_status === 1){
+                activatebtn.setAttribute("onclick","deactiveslider(this)")
+                activatebtn.setAttribute("class", "btn btn-success");
+                activatebtn.innerHTML = "Activated";
+            }
+            else{
+                activatebtn.setAttribute("onclick","activeslider(this)")
+                activatebtn.setAttribute("class", "btn btn-danger");
+                activatebtn.innerHTML = "Deactivated";
+            }
+           // activatebtn.setAttribute("onclick","productstatustoggle(this)")
+            //activatebtn.setAttribute("class", "btn btn-success");
+           // activatebtn.innerHTML = "Activated";
+            activatebtn.setAttribute("data-key",i)
+            //std.style.padding = "5px";
+            atd.style.padding = "5px";
             td.style.padding = "5px";
             let std = document.createElement("td");
             let deleteCheck = document.createElement("input")
@@ -980,8 +1077,10 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
             // console.log(deleteCheck)
             std.appendChild(deleteCheck)
             td.appendChild(editbtn)
+            atd.appendChild(activatebtn)
             // td.appendChild(delbtn)
             tr.appendChild(td)
+            tr.appendChild(atd)
             //tr.appendChild(std)
         }
 

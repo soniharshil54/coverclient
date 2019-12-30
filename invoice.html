@@ -561,6 +561,8 @@ document.getElementById('invoicedate').innerHTML = today;
     function CreateTableFromJSON(myBookso) {
       let myBooks = getkeychains(myBookso)
 
+      let thinvoice = ["Product Name", "Print Name","Size", "Subtotal","Quantity"]
+
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
@@ -583,7 +585,7 @@ document.getElementById('invoicedate').innerHTML = today;
         for (var i = 0; i < col.length; i++) {
             var th = document.createElement("th");  
                 // TABLE HEADER.
-            th.innerHTML = col[i];
+            th.innerHTML = thinvoice[i];
             tr.appendChild(th);
 
         }

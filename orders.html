@@ -861,7 +861,7 @@ async function download() {
       // var myBooks = JSON.parse(JSON.stringify( myBooksrow, ["name","contact","email","products","payment_type","is_paid","is_delivered"]));
 
       // console.log(myBooks)
-      let thorders = ["Products","id","Order Id","GST","Shipping","Subtotal","Amount","Status","Payment Type","Name","Contact","Email","Address"]
+      let thorders = ["Products","id","Order Id","GST","Shipping","Subtotal","Amount","Order Status","Payment Type","Name","Contact","Email","Address"]
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
@@ -972,7 +972,7 @@ async function download() {
                  }
                  let orderreftable = myBooks[i]._id
                  let forid = `order_status_ind_${orderreftable}`
-                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:25%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:50%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
                 //document.getElementById('order_status_ind').value="Delivered";
                 tabCell.appendChild(spantag)
                 tabCell.innerHTML += btntag3

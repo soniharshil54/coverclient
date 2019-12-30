@@ -920,21 +920,21 @@ async function download() {
                 // console.log(products_name)
                 tabCell.innerHTML = products_name
               }
-                   else if(j===2){
+              //      else if(j===2){
+              //   let orderid = okchains[i]._id
+              //   let atag = document.createElement('a')
+              //   atag.innerHTML = myBooks[i][col[j]]
+              //   let ahref = `invoice.html#${orderid}`
+              //   atag.setAttribute('href',ahref)
+              //   tabCell.appendChild(atag)
+              // }
+              else if(j===1){
                 let orderid = okchains[i]._id
                 let atag = document.createElement('a')
                 atag.innerHTML = myBooks[i][col[j]]
                 let ahref = `invoice.html#${orderid}`
                 atag.setAttribute('href',ahref)
                 tabCell.appendChild(atag)
-              }
-              else if(j===1){
-                // let orderid = okchains[i]._id
-                // let atag = document.createElement('a')
-                // atag.innerHTML = myBooks[i][col[j]]
-                // let ahref = `invoice.html#${orderid}`
-                // atag.setAttribute('href',ahref)
-                // tabCell.appendChild(atag)
               }
               else if(j===12){
                 let userinfo = myBooks[i][col[j]]
@@ -965,7 +965,7 @@ async function download() {
                   spantag.setAttribute('class', 'badge badge-info')
                  }
                  let forid = `order_status_ind_${i}`
-                let btntag3 =  `<select data-oid=${i} onchange="changeorderstatus(this)" style="width:25%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
+                let btntag3 =  `<select data-oid=${i} onchange="changeorderstatus(this)" style="width:50%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
                 //document.getElementById('order_status_ind').value="Delivered";
                 tabCell.appendChild(spantag)
                 tabCell.innerHTML += btntag3

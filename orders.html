@@ -476,31 +476,15 @@
       <!-- The Modal -->
   <div class="modal" id="cartUserModal">
     <div class="modal-dialog">
-      <div class="modal-content" style="background-color: transparent;border: none">
-        <div class="modal-body" style="text-align: center;">
-          <table class="table table-dark" style="width:100%">
-            <tr>
-              <th>Full Name:</th>
-              <td><span id="cart_u_name"></span></td>
-            </tr>
-            <tr>
-              <th>contact:</th>
-              <td><span id="cart_u_contact"></span></td>
-            </tr>
-            <tr>
-              <th>email:</th>
-              <td><span id="cart_u_email"></span></td>
-            </tr>
-             <tr>
-              <th>address:</th>
-              <td><span id="cart_u_address"></span></td>
-            </tr>
-            
-             <tr>
-              <th>address type:</th>
-              <td><span id="cart_u_addresstype"></span></td>
-            </tr>
-          </table>
+      <div class="modal-content" style="background-color: white;border: none">
+        <div class="modal-body" style="text-align: left;">
+         <span style="font-weight: bold;" id="cart_u_name"></span><br>
+         <span id="cart_u_address"></span><br>
+         <span id="cart_u_city"></span><span id="cart_u_pincode"></span><br>
+         <span id="cart_u_state"></span><br>
+         <span id="cart_u_contact"></span><br>
+         <span id="cart_u_email"></span>
+         
 
         </div>
         
@@ -762,16 +746,17 @@ async function download() {
       .then(result => {
         // console.log(result)
         let full_name = result.first_name + " " + result.last_name
-        let address = result.address+ ", "+result.city+"-"+result.pincode+", "+result.city+", "+result.state
+        let address = result.address
+
         document.getElementById("cart_u_name").innerHTML = full_name ? full_name : "N.A."
         document.getElementById("cart_u_contact").innerHTML = result.contact ? result.contact : "N.A."
         document.getElementById("cart_u_email").innerHTML = result.email_id ? result.email_id : "N.A."
         document.getElementById("cart_u_address").innerHTML = address ? address : "N.A."
-        // document.getElementById("cart_u_pincode").innerHTML = result.pincode ? result.pincode : "N.A."
-        // document.getElementById("cart_u_city").innerHTML = result.city ? result.city : "N.A."
-        // document.getElementById("cart_u_state").innerHTML = result.state ? result.state : "N.A."
+        document.getElementById("cart_u_pincode").innerHTML = result.pincode ? result.pincode : "N.A."
+        document.getElementById("cart_u_city").innerHTML = result.city ? result.city : "N.A."
+        document.getElementById("cart_u_state").innerHTML = result.state ? result.state : "N.A."
         // document.getElementById("cart_u_country").innerHTML = result.country ? result.country : "N.A."
-        document.getElementById("cart_u_addresstype").innerHTML = result.address_type ? result.address_type : "N.A."
+        // document.getElementById("cart_u_addresstype").innerHTML = result.address_type ? result.address_type : "N.A."
         
         $('#cartUserModal').modal('show');
 

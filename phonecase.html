@@ -1300,7 +1300,7 @@ for (var i in strs) {
   
 
   function getcompanies(){
-        fetch(`http://${hosturl}:5600/api/phonecase/companies`)
+        fetch(`http://${hosturl}:5600/api/phonecase/allcompanies`)
     .then(response => {
      // console.log(response)
       return response.json()})
@@ -2168,7 +2168,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
 
           function getproducts(){
-    fetch(`http://${hosturl}:5600/api/phonecase/getphonecases`)
+    fetch(`http://${hosturl}:5600/api/phonecase/getallphonecases`)
     .then(response => {
      // console.log(response)
       return response.json()})

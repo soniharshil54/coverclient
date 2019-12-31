@@ -1092,7 +1092,7 @@ fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
     //CreateTableFromJSON() 
 
           function getproducts(){
-    fetch(`http://${hosturl}:5600/api/product/sliders`)
+    fetch(`http://${hosturl}:5600/api/product/allsliders`)
     .then(response => {
      // console.log(response)
       return response.json()})

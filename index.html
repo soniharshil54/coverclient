@@ -776,7 +776,7 @@ async function download() {
         let address = result.address+ ", "+result.city+"-"+result.pincode+", "+result.city+", "+result.state
         document.getElementById("cart_u_name").innerHTML = full_name ? full_name : "N.A."
         document.getElementById("cart_u_contact").innerHTML = result.contact ? result.contact : "N.A."
-        document.getElementById("cart_u_email").innerHTML = result.email ? result.email : "N.A."
+        document.getElementById("cart_u_email").innerHTML = result.email_id ? result.email_id : "N.A."
         document.getElementById("cart_u_address").innerHTML = address ? address : "N.A."
         // document.getElementById("cart_u_pincode").innerHTML = result.pincode ? result.pincode : "N.A."
         // document.getElementById("cart_u_city").innerHTML = result.city ? result.city : "N.A."
@@ -936,7 +936,7 @@ async function download() {
                 atag.setAttribute('href',ahref)
                 tabCell.appendChild(atag)
               }
-              else if(j===12){
+              else if(j===11){
                 let userinfo = myBooks[i][col[j]]
                 let user = okchains[i].user_id._id
                 console.log("below user")
@@ -944,7 +944,7 @@ async function download() {
                 let btntag2 =  `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${user}">view</button>`
                 tabCell.innerHTML = btntag2
               }
-                  else if(j===7){
+                  else if(j===6){
                  let valueStatus = myBooks[i][col[j]]   
                  let spantag = document.createElement('span')
                  spantag.setAttribute('id','order_status_span')

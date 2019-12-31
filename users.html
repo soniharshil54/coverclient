@@ -341,9 +341,14 @@
           <div class="card">
             <div class="card-header">
               <h3 class="card-title">Users</h3>
+               <div style="float: right;" class="download-wrapper" onClick="download()">
+  <button class="btn btn-success">Export to csv</button>
+</div>
             </div>
+
             <!-- /.card-header -->
             <div class="card-body">
+              
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
@@ -441,6 +446,30 @@
     window.location  =  "login.html";
   }
 
+
+  function getusers(){
+        fetch(`http://${hosturl}:5600/api/user/users`)
+    .then(response => {
+     // console.log(response)
+      return response.json()})
+    .then(data => {
+      okoffers = data.map(a => ({...a}));
+      globalusers = okoffers
+      //let okchains = Object.assign({}, data);
+      // console.log(okoffers)
+  // okchains = Object.assign({}, data);
+   //console.log(okchains)
+   //let testkey = Object.assign({}, data);
+      //okchains = data
+      //let newkeychains = getkeychains(data)
+      
+     // CreateTableFromJSON(data)
+   })
+    .catch(err => console.log(err))
+  }
+
+  getusers()
+
           function checkLogin(){
     
     if (localStorage.getItem("luser") === null) {
@@ -463,6 +492,82 @@
        }
   }
   checkLogin()
+
+
+  function convertToCSV(objArray) {
+    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    var str = '';
+
+    for (var i = 0; i < array.length; i++) {
+        var line = '';
+        for (var index in array[i]) {
+            if (line != '') line += ','
+
+            line += array[i][index];
+        }
+
+        str += line + '\r\n';
+    }
+
+    return str;
+}
+
+function exportCSVFile(headers, items, fileTitle) {
+    if (headers) {
+        items.unshift(headers);
+    }
+
+    // Convert Object to JSON
+    var jsonObject = JSON.stringify(items);
+
+    var csv = this.convertToCSV(jsonObject);
+
+    var exportedFilenmae = fileTitle + '.csv' || 'export.csv';
+
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    if (navigator.msSaveBlob) { // IE 10+
+        navigator.msSaveBlob(blob, exportedFilenmae);
+    } else {
+        var link = document.createElement("a");
+        if (link.download !== undefined) { // feature detection
+            // Browsers that support HTML5 download attribute
+            var url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", exportedFilenmae);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+}
+
+function download(){
+  var headers = {
+      name: 'Name', // remove commas to avoid errors
+      contact: "Contact",
+      email: "Email",
+      city: "City"
+  };
+
+  itemsNotFormatted = globalusers
+
+  var itemsFormatted = [];
+
+  // format the data
+  itemsNotFormatted.forEach((item) => {
+      itemsFormatted.push({
+          name: item.first_name, // remove commas to avoid errors,
+          contact: item.contact,
+          email: item.email_id,
+          city: item.city
+      });
+  });
+
+  var fileTitle = 'users'; // or 'my-unique-title'
+
+  exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+}
 </script>
 <!-- <script type="text/javascript">
     $.ajax({url: "demo_test.txt", success: function(result){

@@ -616,6 +616,11 @@ $('#GetFile').on('click', function () {
 
 <script type="text/javascript">
 
+
+  function filterbydate(){
+    
+  }
+
   function toDataURL(url) {
     return fetch(url).then((response) => {
             return response.blob();
@@ -846,7 +851,7 @@ async function download() {
       // var myBooks = JSON.parse(JSON.stringify( myBooksrow, ["name","contact","email","products","payment_type","is_paid","is_delivered"]));
 
       // console.log(myBooks)
-      let thorders = ["Products","id","Order Id","GST","Shipping","Subtotal","Amount","Order Status","Payment Type","Name","Contact","Email","Address"]
+      let thorders = ["Products","id","Order Id","GST","Shipping","Subtotal","Amount","Order Status","Payment Type","Date","Name","Contact","Email","Address"]
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
@@ -925,7 +930,7 @@ async function download() {
               else if(j === 1){
 
               }
-              else if(j===12){
+              else if(j===13){
                 let userinfo = myBooks[i][col[j]]
                 console.log(myBooksoldnew[i])
                 console.log(okchains[i])
@@ -962,6 +967,7 @@ async function download() {
                 tabCell.appendChild(spantag)
                 tabCell.innerHTML += btntag3
               }
+
               else{
                 tabCell.innerHTML = myBooks[i][col[j]];
               }

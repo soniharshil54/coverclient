@@ -137,10 +137,10 @@
       </li>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+       <!--  <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
-        </a>
+        </a> -->
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">15 Notifications</span>
           <div class="dropdown-divider"></div>
@@ -847,7 +847,7 @@ async function download() {
       });
       const removePropery = (propKey, { [propKey]: propValue, ...rest }) => rest;
 
-      let thdordersi = ["Products","Order Id","GST","Shipping","Subtotal","Amount","Status","Payment Type","Name","Contact","Email","Address"]
+      let thdordersi = ["Products","Order Id","GST","Shipping","Subtotal","Amount","Status","Payment Type","Date","Name","Contact","Email","Address"]
       //myBooks = removePropery('user_id', myBooks);
       // console.log(myBooks)
 
@@ -969,6 +969,10 @@ async function download() {
                 //document.getElementById('order_status_ind').value="Delivered";
                 tabCell.appendChild(spantag)
                 tabCell.innerHTML += btntag3
+              }
+                else if(j === 8){
+                let onlydate = myBooks[i][col[j]].split('T')[0]
+                tabCell.innerHTML = onlydate
               }
               else{
                 tabCell.innerHTML = myBooks[i][col[j]];

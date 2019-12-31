@@ -131,10 +131,10 @@
       </li>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+        <!-- <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
-        </a>
+        </a> -->
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <span class="dropdown-item dropdown-header">15 Notifications</span>
           <div class="dropdown-divider"></div>
@@ -1208,6 +1208,7 @@ function filterbycompany(){
     return i.company === filcompany}) ; 
   console.log(result)
   CreateTableFromJSON(result)
+  return result
   }
 
 }
@@ -1420,28 +1421,35 @@ for (var i in strs) {
     function editproduct(test){
      // console.log(test)
       let arrayn = test.getAttribute("data-key")
-      console.log(okchains[arrayn])
+      console.log("arrayn",arrayn)
+      //console.log(okchains[arrayn])
       //console.log(okchains[arrayn].name)
-      document.getElementById("modal_id").value = okchains[arrayn]._id
-      //console.log(document.getElementById("modal_id").value)
-      document.getElementById("modal_name").value = okchains[arrayn].name
-      document.getElementById("modal_option").value = okchains[arrayn].company
-      document.getElementById("modal_2d_price").value = okchains[arrayn].price_2d
-       document.getElementById("modal_3d_price").value = okchains[arrayn].price_3d
-        document.getElementById("modal_4d_price").value = okchains[arrayn].price_4d
-      document.getElementById("modal_2d_description").value = okchains[arrayn].description_2d
-      document.getElementById("modal_3d_description").value = okchains[arrayn].description_3d
-      document.getElementById("modal_4d_description").value = okchains[arrayn].description_4d
-      document.getElementById("modal_2d_size").value = okchains[arrayn].size_2d
-      document.getElementById("modal_3d_size").value = okchains[arrayn].size_3d
-      document.getElementById("modal_4d_size").value = okchains[arrayn].size_4d
-      let image_i_2d = okchains[arrayn].image_inner_2d
-      let image_m_2d = okchains[arrayn].image_mask_2d
-      let image_i_3d = okchains[arrayn].image_inner_3d
-      let image_m_3d = okchains[arrayn].image_mask_3d
-      let image_h_2d = okchains[arrayn].image_header_2d
-      let image_h_3d = okchains[arrayn].image_header_3d
-      let image_h_4d = okchains[arrayn].image_header_4d
+      document.getElementById("modal_id").value = arrayn
+
+              fetch(`http://${hosturl}:5600/api/phonecase/getphonecasebyidadmin/${arrayn}`)
+    .then(response => {
+     // console.log(response)
+      return response.json()})
+    .then(data => {
+      console.log(data)
+            document.getElementById("modal_name").value = data.name
+      document.getElementById("modal_option").value = data.company
+      document.getElementById("modal_2d_price").value = data.price_2d
+       document.getElementById("modal_3d_price").value = data.price_3d
+        document.getElementById("modal_4d_price").value = data.price_4d
+      document.getElementById("modal_2d_description").value = data.description_2d
+      document.getElementById("modal_3d_description").value = data.description_3d
+      document.getElementById("modal_4d_description").value = data.description_4d
+      document.getElementById("modal_2d_size").value = data.size_2d
+      document.getElementById("modal_3d_size").value = data.size_3d
+      document.getElementById("modal_4d_size").value = data.size_4d
+      let image_i_2d = data.image_inner_2d
+      let image_m_2d = data.image_mask_2d
+      let image_i_3d = data.image_inner_3d
+      let image_m_3d = data.image_mask_3d
+      let image_h_2d = data.image_header_2d
+      let image_h_3d = data.image_header_3d
+      let image_h_4d = data.image_header_4d
       document.getElementById("modal_2d_i_image").src = `http://${hosturl}:5600/admin/uploads/${image_i_2d}`
       document.getElementById("modal_2d_m_image").src = `http://${hosturl}:5600/admin/uploads/${image_m_2d}`
       document.getElementById("modal_3d_i_image").src = `http://${hosturl}:5600/admin/uploads/${image_i_3d}`
@@ -1449,15 +1457,15 @@ for (var i in strs) {
       document.getElementById("modal_2d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_2d}`
       document.getElementById("modal_3d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_3d}`
       document.getElementById("modal_4d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_4d}`
-      // var row = $(test).closest("tr");
-      // test.removeAttribute("class","btn-primary")
-      // test.setAttribute("class","btn-success")
-      // test.innerHTML = "Save"
-      // var rowedit = row[0]
-      // rowedit.setAttribute("contenteditable","true")
-      // rowedit.focus()
-      // console.log(test)
-      // console.log(row[0])
+      
+   })
+    .catch(err => console.log(err))
+
+
+
+
+      //console.log(document.getElementById("modal_id").value)
+
     }
 
     function editkeychain(){
@@ -1634,7 +1642,20 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
 
 
-    function getkeychains(oldkeychains){
+  //   function getkeychains(oldkeychains){
+  //   let tokeyc = oldkeychains.reverse()
+  //   console.log(oldkeychains)
+  //   let newkeychains = oldkeychains.map(keychain => {
+  //     delete keychain._id
+  //     delete keychain.__v
+  //     delete keychain.available_status
+  //     return keychain
+  //   })
+  //   //console.log(newkeychains)
+  //   return newkeychains
+  // }
+
+      function getkeychainscomp(oldkeychains){
     let tokeyc = oldkeychains.reverse()
     console.log(oldkeychains)
     let newkeychains = oldkeychains.map(keychain => {
@@ -1649,7 +1670,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
       function activephonecase(activebtn){
     let phonecaseref = activebtn.getAttribute("data-key")
-    let phonecaseid = okchains[phonecaseref]._id
+    let phonecaseid = phonecaseref
     let ceditdata = {
       available_status : 1
     }
@@ -1675,7 +1696,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
   function deactivephonecase(activebtn){
     let phonecaseref = activebtn.getAttribute("data-key")
-    let phonecaseid = okchains[phonecaseref]._id
+    let phonecaseid = phonecaseref
      let ceditdata = {
       available_status : 0
     }
@@ -1703,9 +1724,13 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
 
 
     function CreateTableFromJSON(myBookso) {
-      let myBookson = getkeychains(myBookso)
-      var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","available_status"]));
+      console.log("myBookso")
+      console.log(myBookso)
+      //let myBookson = getkeychains(myBookso)
+      var myBooks = JSON.parse(JSON.stringify( myBookso, ["name","company","available_status"]));
       let thphonecaes = ["Name", "Company"]
+         console.log("myBookso")
+      console.log(myBookso)
 
 
         var col = [];
@@ -1805,7 +1830,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
             editbtn.setAttribute("onclick", "editproduct(this)");
             editbtn.setAttribute("data-toggle", "modal");
             editbtn.setAttribute("data-target", "#myModal");
-            editbtn.setAttribute("data-key",i)
+            editbtn.setAttribute("data-key",myBookso[i]._id)
             // delbtn.setAttribute("data-key",i)
             // delbtn.setAttribute("onclick", "deleteproduct(this)")
             editbtn.style.padding = "1px 5px";
@@ -1818,7 +1843,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
              let atd = document.createElement("td");
              console.log("active status below")
              console.log(okchains[i].available_status)
-             if(okchains[i].available_status === 1){
+             if(myBookso[i].available_status === 1){
               console.log("its in if")
                 activatebtn.setAttribute("onclick","deactivephonecase(this)")
                 activatebtn.setAttribute("class", "btn btn-success");
@@ -1830,7 +1855,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
                 activatebtn.setAttribute("class", "btn btn-danger");
                 activatebtn.innerHTML = "Deactivated";
             }
-            activatebtn.setAttribute("data-key",i)
+            activatebtn.setAttribute("data-key",myBookso[i]._id)
             let td = document.createElement("td");
             //td.style.padding = "5px";
             let std = document.createElement("td");
@@ -1839,7 +1864,10 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
             let deleteCheck = document.createElement("input")
             deleteCheck.setAttribute("type","checkbox")
             deleteCheck.setAttribute("name","todelete")
-            deleteCheck.setAttribute("value",okchains[i]._id)
+            deleteCheck.setAttribute("value",myBookso[i]._id)
+            console.log("deactivate id", i)
+            console.log("deactivate id", okchains[i]._id)
+            console.log("deactivate id", myBookso[i]._id)
 
             // console.log(deleteCheck)
             std.appendChild(deleteCheck)
@@ -1863,7 +1891,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
     //CreateTableFromJSON() 
 
         function CreateTableFromJSONcompany(myBookso) {
-      let myBookson = getkeychains(myBookso)
+      let myBookson = getkeychainscomp(myBookso)
         let myBooks = JSON.parse(JSON.stringify( myBookson, ["name"]));
 
 
@@ -2180,7 +2208,8 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
     .then(data => {
 
       let okchainsold = data.map(a => ({...a}));
-      okchains = okchainsold.reverse()
+      okchains = okchainsold
+      // okchains = okchainsold.reverse()
       //let okchains = Object.assign({}, data);
       console.log(okchains)
   // okchains = Object.assign({}, data);
@@ -2188,8 +2217,9 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
    //let testkey = Object.assign({}, data);
       //okchains = data
       //let newkeychains = getkeychains(data)
+      let ndata = filterbycompany()
       
-      CreateTableFromJSON(data)
+      CreateTableFromJSON(ndata)
    })
     .catch(err => console.log(err))
 }

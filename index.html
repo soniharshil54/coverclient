@@ -840,7 +840,7 @@ async function download() {
         let fullname = a.user_id.first_name + " " + a.user_id.last_name 
         Object.assign(a, {name: fullname})
         Object.assign(a, {contact: a.user_id.contact});
-        Object.assign(a, {email: a.user_id.email});
+        Object.assign(a, {email: a.user_id.email_id});
         Object.assign(a, {address: a.user_id.address})
         delete a['user_id'];
         return a

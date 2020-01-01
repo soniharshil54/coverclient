@@ -1727,7 +1727,7 @@ fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
       console.log("myBookso")
       console.log(myBookso)
       //let myBookson = getkeychains(myBookso)
-      var myBooks = JSON.parse(JSON.stringify( myBookso, ["name","company","available_status"]));
+      var myBooks = JSON.parse(JSON.stringify( myBookso, ["name","company"]));
       let thphonecaes = ["Name", "Company"]
          console.log("myBookso")
       console.log(myBookso)

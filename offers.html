@@ -451,10 +451,27 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 id="productShowHeading" class="card-title">Offers</h3>
-                <!-- <button onclick="paginatortest(1,4)" class="btn btn-info">test pagination</button> -->
-                <span style="color: green; font-weight: bold; margin-left: 200px"></span>
-  <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>
+                <div class="row">
+                  <div class="col-sm-3">
+                     <h3 id="productShowHeading" class="card-title">Offers</h3>
+                  </div>
+                  <div class="col-sm-5">
+                       <ul style="" class="list-group list-group-horizontal">
+                  <li style="padding: 5px 10px " onclick="paginatortest(1,2)" class="list-group-item">1</li>
+                  <li style="padding: 5px 10px " onclick="paginatortest(2,2)" class="list-group-item">2</li>
+                  <li style="padding: 5px 10px " onclick="paginatortest(3,2)" class="list-group-item">3</li>
+                  <li style="padding: 5px 10px " onclick="paginatortest(4,2)" class="list-group-item">4</li>
+                </ul>
+                  </div>
+                  <div class="col-sm-4">
+                     <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>
+                  </div>
+                </div>
+               
+             
+                <!-- <button onclick="paginatortest(1,2)" class="btn btn-info">test pagination</button> -->
+                <!-- <span style="color: green; font-weight: bold; margin-left: 200px"></span> -->
+ 
                 <div class="card-tools">
                 </div>
               </div>
@@ -749,7 +766,15 @@
 
 
 function paginatortest(page, per_page) {
- let items = okoffers
+ //  console.log(okofferstemp)
+ // let items = okofferstemp
+ // let pagintemp = ""
+ if(typeof pagintemp === 'undefined'){
+  pagintemp = okofferstemp.map(a => ({...a}));
+ }
+ 
+ console.log(pagintemp)
+ let items = pagintemp
   var page = page || 1,
   per_page = per_page || 10,
   offset = (page - 1) * per_page,
@@ -824,7 +849,8 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   }
 
   function getkeychains(oldkeychains){
-    let tokeyc = oldkeychains.reverse()
+    okofferstemp = oldkeychains.map(a => ({...a}));
+    okoffersreverse = okofferstemp.reverse()
     // console.log(oldkeychains)
     let testkey = oldkeychains.map(a => ({...a}));
     let newkeychains = testkey.map(keychain => {
@@ -946,7 +972,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
     }
       function activeoffer(activebtn){
     let offerref = activebtn.getAttribute("data-key")
-    let offerid = okoffers[offerref]._id
+    let offerid = offerref
     let ceditdata = {
       active_status : 1
     }
@@ -972,7 +998,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
 
   function deactiveoffer(activebtn){
     let offerref = activebtn.getAttribute("data-key")
-    let offerid = okoffers[offerref]._id
+    let offerid = offerref
      let ceditdata = {
       active_status : 0
     }
@@ -1000,7 +1026,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
     function CreateTableFromJSON(myBookso) {
       let myBooks = getkeychains(myBookso)
 
-      var thoffers = ["Offer Name", "Product", "Code", "Valip upto","Terms&Conditions","Image"]
+      var thoffers = ["Offer Name", "Product", "Code", "Valid upto","Terms&Conditions","Image"]
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
             for (var key in myBooks[i]) {
@@ -1086,7 +1112,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
              let atd = document.createElement("td");
              // console.log("active status below")
              // console.log(okoffers[i].active_status)
-             if(okoffers[i].active_status === 1){
+             if(myBookso[i].active_status === 1){
               // console.log("its in if")
                 activatebtn.setAttribute("onclick","deactiveoffer(this)")
                 activatebtn.setAttribute("class", "btn btn-success");
@@ -1098,7 +1124,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
                 activatebtn.setAttribute("class", "btn btn-danger");
                 activatebtn.innerHTML = "Deactivated";
             }
-            activatebtn.setAttribute("data-key",i)
+            activatebtn.setAttribute("data-key",myBookso[i]._id)
             //std.style.padding = "5px";
             //atd.style.padding = "5px";
             // delbtn.setAttribute("data-key",i)
@@ -1112,7 +1138,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
             let deleteCheck = document.createElement("input")
             deleteCheck.setAttribute("type","checkbox")
             deleteCheck.setAttribute("name","todelete")
-            deleteCheck.setAttribute("value",okoffers[i]._id)
+            deleteCheck.setAttribute("value",myBookso[i]._id)
 
             // console.log(deleteCheck)
             std.appendChild(deleteCheck)

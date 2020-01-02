@@ -39,6 +39,17 @@
     }
     }
 
+            body
+    {
+        counter-reset: Serial;           /* Set the Serial counter to 0 */
+    }
+
+    .auto-index td:first-child:before
+{
+  counter-increment: Serial;      /* Increment the Serial counter */
+  content: counter(Serial); /* Display the counter */
+}
+
 
 
   </style>
@@ -345,7 +356,7 @@
     <!-- Main content -->
     <section style="" class="content">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-5">
           <div class="card card-secondary">
             <div class="card-header">
               <h3 id="productAddHeading" class="card-title">SMS</h3>
@@ -406,6 +417,9 @@
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
+        </div>
+        <div class="col-sm-7">
+          <div id="smsjsontable"></div>
         </div>
       </div>
       
@@ -661,6 +675,81 @@
     document.getElementById("s_mobilenumber").value= ""
     document.getElementById("s_text").value = ""
   }
+
+  function getsmsdata(){
+        fetch(`http://${hosturl}:5600/api/user/getsmsdata`)
+    .then(response => {
+      return response.json()})
+    .then(data => {
+      oksmsdata = data.map(a => ({...a}));
+      
+      CreateTableFromJSON(data)
+   })
+    .catch(err => console.log(err))
+  }
+  getsmsdata()
+
+      function CreateTableFromJSON(myBookso) {
+      // let myBooksnotform = getkeychains(myBookso)
+
+       var myBooks = JSON.parse(JSON.stringify( myBookso, ["sendtotype","sendto","content"]));
+
+      let thinvoice = ["send type", "Send to","Content"]
+
+
+        var col = [];
+        for (var i = 0; i < myBooks.length; i++) {
+            for (var key in myBooks[i]) {
+                if (col.indexOf(key) === -1) {
+                    col.push(key);
+                }
+            }
+        }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+        table.setAttribute("class", "table table-striped auto-index");
+        table.setAttribute("id","keychaintable")
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);  
+        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
+
+        for (var i = -1; i < col.length; i++) {
+            var th = document.createElement("th");  
+                // TABLE HEADER.
+                if(i === -1){
+                  th.innerHTML = "No.";
+                }
+                else {
+                  th.innerHTML = thinvoice[i];
+                }
+            
+            tr.appendChild(th);
+
+        }
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+
+            tr = table.insertRow(-1);
+            //tr.setAttribute("contenteditable", "true"); 
+            for (var j = -1; j < col.length; j++) {
+              var tabCell = tr.insertCell(-1);
+              if(j === -1){
+                tabCell.innerHTML = "";
+              }
+              else {
+                tabCell.innerHTML = myBooks[i][col[j]];
+              }
+            }
+        }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("smsjsontable");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+    }
 
   function sendsmscall(){
     let notiftosms = document.getElementById("notif_select").value

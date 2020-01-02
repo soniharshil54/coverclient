@@ -860,7 +860,7 @@ async function download() {
       let productsref = order.products
       let productsstr = ""
       for(let i =0; i < productsref.length; i++){
-        let prostr = `${productsref[i].product_name} (${productsref[i].quantity}), `
+        let prostr = `${productsref[i].product_name} (${productsref[i].quantity}) | `
         productsstr += prostr
       }
       order.productsdata = productsstr
@@ -871,6 +871,7 @@ async function download() {
       order.state = order.user_id.state
       order.address = order.user_id.address
       order.city = order.user_id.city
+      order.pincode = order.user_id.pincode
 
       //delete keychain._id
       delete order.__v
@@ -882,8 +883,8 @@ async function download() {
       return order
     })
     //console.log(newkeychains)
-    var ordercsvordered = JSON.parse(JSON.stringify( myBookso, ["order_id","date_ordered","payment_type","first_name"]));
-    return ordercsv
+    var ordercsvordered = JSON.parse(JSON.stringify( ordercsv, ["order_id","productsdata","date_ordered","payment_type","first_name","last_name","email_id","contact","address","state","city","pincode","sub_total","gst_tax","shipping","amount"]));
+    return ordercsvordered
   }
 
 
@@ -1327,10 +1328,22 @@ function exportCSVFile(headers, items, fileTitle) {
 
 function download(){
   var headers = {
-      name: 'Name', // remove commas to avoid errors
-      contact: "Contact",
-      email: "Email",
-      city: "City"
+      order_id : "Order Id",
+      productsdata: "Products",
+      date_ordered: "Date",
+      payment_type: "Payment Method",
+      first_name: "Customer First Name",
+      last_name: "Customer Last Name",
+      email_id :"Email",
+      contact :"Contact",
+      address :"Address", 
+      state :"State",
+      city  :"City",
+      pincode: "Pincode",
+      sub_total :"Subtotal",
+      gst_tax: "GST",
+      shipping :"Shipping",
+      amount :"Total Amount"
   };
 
   itemsNotFormatted = getordercsvdata(okchains)

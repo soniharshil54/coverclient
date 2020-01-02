@@ -366,7 +366,8 @@
                         <label>Date</label>
                           <select onchange="filterdatecustom()" id="filter_range" class="form-control custom-select">
                   <option>All</option>          
-                  <option>Today</option>         
+                  <option>Today</option>  
+                  <option>Yesterday</option>         
                  <option>Last Week</option>
                   <option>Last Month</option>
                   <option>Custom</option>
@@ -691,6 +692,10 @@ $('#cart_p_c_image').on('click', function () {
             startDate = Yesterdaydate
             endDate = dateNow
           }
+          else if(filterrange === "Yesterday"){
+            startDate = daybeforeyesterday
+            endDate = Yesterdaydate
+          }
           else if(filterrange === "Last Week"){
             startDate = lastweekdate
             endDate = dateNow 
@@ -700,8 +705,8 @@ $('#cart_p_c_image').on('click', function () {
             endDate = dateNow
           }
           else{
-            let startdatecustom = document.getElementById("").value
-            let enddatecustom = document.getElementById("").value
+            let startdatecustom = document.getElementById("from_date_c").value
+            let enddatecustom = document.getElementById("to_date_c").value
             startDate = new Date(startdatecustom)  
             endDate = new Date(enddatecustom) 
 
@@ -761,6 +766,10 @@ ddate.setFullYear(ddate.getFullYear() - 5);
     if(filterrange === "Today"){
       startDate = Yesterdaydate
       endDate = dateNow
+    }
+    else if(filterrange === "Yesterday"){
+      startDate = daybeforeyesterday
+      endDate = Yesterdaydate
     }
     else if(filterrange === "Last Week"){
       startDate = lastweekdate
@@ -889,7 +898,7 @@ async function download() {
 
 
   function getkeychains(oldkeychains){
-    let tokeyc = oldkeychains.reverse()
+    //let tokeyc = oldkeychains.reverse()
     // console.log(oldkeychains)
     let foruser = oldkeychains.map(a => ({...a}))
     let newkeychains = foruser.map(keychain => {
@@ -1118,7 +1127,7 @@ async function download() {
                 tabCell.innerHTML = products_name
               }
               else if(j===2){
-                let orderid = okchains[i]._id
+                let orderid = myBookso[i]._id
                 let atag = document.createElement('a')
                 atag.innerHTML = myBooks[i][col[j]]
                 let ahref = `invoice.html#${orderid}`
@@ -1131,7 +1140,6 @@ async function download() {
               else if(j===13){
                 let userinfo = myBooks[i][col[j]]
                 console.log(myBooksoldnew[i])
-                console.log(okchains[i])
                 let user = myBooksoldnew[i].user_id._id
                 console.log("below user")
                 // console.log(user)
@@ -1201,7 +1209,7 @@ async function download() {
             let deleteCheck = document.createElement("input")
             deleteCheck.setAttribute("type","checkbox")
             deleteCheck.setAttribute("name","todelete")
-            deleteCheck.setAttribute("value",okchains[i]._id)
+            deleteCheck.setAttribute("value",myBooks[i]._id)
 
             // console.log(deleteCheck)
             std.appendChild(deleteCheck)

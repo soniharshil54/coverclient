@@ -429,13 +429,13 @@
 
               <div class="row">
                 <!-- accepted payments column -->
-                <div class="col-6">
+                <div class="col-8">
                                   </div>
                 <!-- /.col -->
-                <div class="col-6">
+                <div class="col-4">
                   <!-- <p class="lead">Amount Due 2/22/2014</p> -->
 
-                  <div class="table-responsive">
+                  <div style="padding-right: 12px" class="table-responsive">
                     <table class="table">
                       <tr>
                         <th style="width:50%">Subtotal:</th>
@@ -562,6 +562,7 @@ document.getElementById('invoicedate').innerHTML = today;
       delete keychain._id
       delete keychain.__v
       delete keychain.image
+      delete keychain.cropped_image
       delete keychain.cover_type
       return keychain
     })
@@ -570,9 +571,11 @@ document.getElementById('invoicedate').innerHTML = today;
   }
 
     function CreateTableFromJSON(myBookso) {
-      let myBooks = getkeychains(myBookso)
+      let myBooksnotform = getkeychains(myBookso)
 
-      let thinvoice = ["Product Name", "Print Name","Size", "Subtotal","Quantity"]
+       var myBooks = JSON.parse(JSON.stringify( myBooksnotform, ["product_name","print_name","size","quantity","subtotal"]));
+
+      let thinvoice = ["Product Name", "Print Name","Size", "Quantity","Subtotal"]
 
 
         var col = [];
@@ -616,6 +619,10 @@ document.getElementById('invoicedate').innerHTML = today;
               var tabCell = tr.insertCell(-1);
               if(j === -1){
                 tabCell.innerHTML = "";
+              }
+              else if(j === 4){
+                let subtotalm = `${myBooks[i][col[j]]} Rs.`
+                tabCell.innerHTML = subtotalm
               }
               else {
                 tabCell.innerHTML = myBooks[i][col[j]];

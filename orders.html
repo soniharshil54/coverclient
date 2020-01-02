@@ -869,7 +869,7 @@ async function download() {
       order.contact = order.user_id.contact
       order.email_id = order.user_id.email_id
       order.state = order.user_id.state
-      order.address = order.user_id.address
+      order.address = order.user_id.address.replace(/,/g, '-')
       order.city = order.user_id.city
       order.pincode = order.user_id.pincode
 

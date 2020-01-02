@@ -389,12 +389,14 @@
                       </div> -->
                   </div>
                       <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-7">
+                        <span id="sendsmsconfirm" style="font-weight: bold; color: green">
                           
+                        </span>
                     </div>    
-                    <div class="col-sm-6">
+                    <div class="col-sm-5">
                        <input style="margin-right: 10px" onclick="resetform()" type="button" id="" value="Cancel" class="btn btn-danger float-right">
-                      <input style="margin-right: 10px" type="button" id="add_keychain" value="Send SMS" class="btn btn-success float-right">
+                      <input onclick="sendsmscall()" style="margin-right: 10px" type="button" id="add_keychain" value="Send SMS" class="btn btn-success float-right">
                     </div>   
                   </div>
                   
@@ -658,6 +660,77 @@
     function resetform(){
     document.getElementById("s_mobilenumber").value= ""
     document.getElementById("s_text").value = ""
+  }
+
+  function sendsmscall(){
+    let notiftosms = document.getElementById("notif_select").value
+    if(notiftosms === "Personal"){
+      let mobilenumber = document.getElementById("s_mobilenumber").value
+      let smscontent = document.getElementById("s_text").value
+      fetch(`http://api.msg91.com/api/sendhttp.php?authkey=156882AhFEUQ93mZpo5948a188&mobiles=${mobilenumber}&country=91&message=${smscontent}&sender=TESTIN&route=4`)
+      .then(response => {
+        document.getElementById("sendsmsconfirm").innerHTML = "SMS successfully sent!!!"
+        console.log(response)
+      })
+      .catch(error => {
+        document.getElementById("sendsmsconfirm").innerHTML = "SMS successfully sent!!!"
+        
+        console.log(error)
+      })
+    }
+
+    else{
+      var settings = {
+  "async": true,
+  "crossDomain": true,
+  "url": "http://api.msg91.com/api/v2/sendsms",
+  "method": "POST",
+  "headers": {
+    "authkey": "$authentication_key",
+    "content-type": "application/json"
+  },
+  "processData": false,
+  "data": "{ \"sender\": \"SOCKET\", \"route\": \"4\", \"country\": \"91\", \"sms\": [ { \"message\": \"TestBulk\", \"to\": [ \"8686865852\", \"9426823617\" ] } ] }"
+}
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
+      // let mobilenumberarray = ['8686865852',"9426823617"]
+      // let smscontent = document.getElementById("s_text").value
+      // let smsarray = [{
+      //       message : "test bulk 5",
+      //       to : ['8686865852','9426823617']
+      //     }
+      //   ]
+      // let keydata = {
+      //   sender: "SOCKET",
+      //   route: "4",
+      //   country: "91",
+      //   sms: smsarray
+      // }
+      //   fetch(`https://api.msg91.com/api/v2/sendsms`,
+      //     {
+      //       "async": true,
+      //       "crossDomain": true,
+      //       mode: 'no-cors',
+      //         headers: {
+      //           'authkey': '156882AhFEUQ93mZpo5948a188',
+      //           'Content-Type': 'application/json'
+      //         },
+      //         method: "POST",
+      //         body: JSON.stringify(keydata)
+      //     })
+      //     .then(function(res){ 
+      //       return res.json()
+      //       })
+      //     .then(function(result){
+      //       console.log(result)
+      //     })
+      //     .catch(function(error){
+      //       console.log(error)
+      //     })
+        }
   }
 
   

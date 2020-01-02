@@ -22,6 +22,14 @@
       color: red
     }
 
+    #fromdatediv{
+      display: none;
+    }
+
+    #todatediv{
+      display: none;
+    }
+
     .custom-select{
     padding: 0px;height: 20px;font-size: 14px;border: 0px;box-shadow: none;text-align: center;-webkit-appearance: none;
     }
@@ -340,36 +348,46 @@
   <div class="content-wrapper">
      <div class="row">
         <div class="col-md-12">
-          <div class="card card-secondary collapsed-card">
+          <div class="card card-secondary">
             <div class="card-header">
               <h3 id="productAddHeading" class="card-title">Filter Orders</h3>
 
-              <div class="card-tools">
+              <!-- <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-plus"></i></button>
-              </div>
+              </div> -->
             </div>
-            <div class="card-body">
+            <div  class="card-body" style="display: block;">
                 
                                 <div class="row">
                     <div class="col-sm-2">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Date</label>
-                          <select onchange="filterbydate()" id="filter_range" class="form-control custom-select">
+                          <select onchange="filterdatecustom()" id="filter_range" class="form-control custom-select">
                   <option>All</option>          
                   <option>Today</option>         
                  <option>Last Week</option>
                   <option>Last Month</option>
+                  <option>Custom</option>
                 </select>
                       </div>
                     </div>
-                    <div class="col-sm-2"></div>
+                    <div id="fromdatediv" class="col-sm-2">
+                      <label>From</label>
+                      <input id="from_date_c" type="date" class="form-control" name="fromdate">
+                      
+                    </div>
+                    <div id="todatediv" class="col-sm-2">
+                      <label>To</label>
+                      <input id="to_date_c" type="date" class="form-control" name="todate">
+                    </div>
+
                       <div style="float: right;" class="col-sm-2">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Order Status</label>
-                           <select onchange="filterbystatus()" id="sel_status" class="form-control custom-select">
+                           <select id="sel_status" class="form-control custom-select">
                   <option>All</option>          
                   <option>Pending</option>
                   <option>Shipped</option>
@@ -377,7 +395,13 @@
                   <option>Processing</option>
                 </select>
                       </div>
-                    </div>                   </div>
+                    </div>   
+                    <div class="col-sm-4">
+                      <p></p>
+                      <button onclick="filterorders()" style="float: right;margin-right: 30px"  class="btn btn-success">Filter Orders</button>
+                    </div>              
+
+                      </div>
                   
                   <div class="row">
                      
@@ -415,18 +439,17 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 id="productShowHeading" class="card-title">Orders</h3>
-  <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3>
-   <!--    <div class="form-group">
-                  <label>Date range button:</label>
-
-                  <div class="input-group">
-                    <button type="button" class="btn btn-default float-right" id="daterange-btn">
-                      <i class="far fa-calendar-alt"></i> Date range picker
-                      <i class="fas fa-caret-down"></i>
-                    </button>
+                <div class="row">
+                  <div class="col-sm-8">
+                    <h3 id="productShowHeading" class="card-title">Orders</h3>
                   </div>
-                </div> -->
+                  <div class="col-sm-2">
+                    <h3 class="card-title" style="float: right"><button onClick="download()" class="btn btn-success">Export to CSV</button></h3>
+                  </div>
+                   <div class="col-sm-2">
+                    <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3>
+                  </div>
+                </div>
                 <div class="card-tools">
                 </div>
               </div>
@@ -503,9 +526,10 @@
             <!--   <td>  <a target="_blank" href="images/3.jpg" download>
   <img src="images/3.jpg" alt="W3Schools" width="104" height="142">
 </a></td> -->
-              <td><a id="cart_p_d_image" href="images/3.jpg" download="">
-      <img id="cart_p_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
-      </a><button class="btn btn-success" type="button" id="GetFile">Download</button></td>
+              <td>
+      <img id="cart_p_image" src="images/3.jpg" alt="W3Schools" style="max-height: 200px; max-width: 200px">
+      <img id="cart_p_c_image" src="images/3.jpg" alt="W3Schools" style="max-height: 200px; max-width: 200px">
+      
             </tr>
             <tr>
               <th>Print Name:</th>
@@ -580,9 +604,9 @@
 
 <script type="text/javascript">
 
-$('#GetFile').on('click', function () {
+$('#cart_p_image').on('click', function () {
     $.ajax({
-        url: `http://${hosturl}:5600/admin/uploads/${productGimage}`,
+        url: `http://${hosturl}:5600/admin/uploads/${productGimagefull}`,
         method: 'GET',
         xhrFields: {
             responseType: 'blob'
@@ -591,7 +615,27 @@ $('#GetFile').on('click', function () {
             var a = document.createElement('a');
             var url = window.URL.createObjectURL(data);
             a.href = url;
-            a.download = 'images.jpg';
+            a.download = productGimagefull;
+            document.body.append(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        }
+    });
+});
+
+$('#cart_p_c_image').on('click', function () {
+    $.ajax({
+        url: `http://${hosturl}:5600/admin/uploads/${productGimagecropped}`,
+        method: 'GET',
+        xhrFields: {
+            responseType: 'blob'
+        },
+        success: function (data) {
+            var a = document.createElement('a');
+            var url = window.URL.createObjectURL(data);
+            a.href = url;
+            a.download = productGimagecropped;
             document.body.append(a);
             a.click();
             a.remove();
@@ -603,6 +647,100 @@ $('#GetFile').on('click', function () {
 </script>
 
 <script type="text/javascript">
+
+  function filterdatecustom(){
+    let filterrange = document.getElementById("filter_range").value
+    if(filterrange === "Custom"){
+      document.getElementById("fromdatediv").style.display = "block"
+      document.getElementById("todatediv").style.display = "block"
+    }
+    else {
+            document.getElementById("fromdatediv").style.display = "none"
+      document.getElementById("todatediv").style.display = "none"
+    }
+  }
+
+
+
+  function filterorders(){
+    let filterdaterange = document.getElementById("filter_range").value
+    let filterstatus = document.getElementById("sel_status").value
+    let teststatus = okchains.map(a => ({...a}));
+    if (filterdaterange === "All") {
+      filterbystatus()
+    }
+    else if(filterstatus === "All") {
+      filterbydate()
+    }
+    else {
+          var ddate = new Date(2019, 7, 25);
+          ddate.setFullYear(ddate.getFullYear() - 5);
+          var dateNow = new Date()
+          let startDate = ""
+          let endDate = ""
+          var Yesterdaydate = new Date(Date.now() - 86400000);
+          let ldaybyes = 86400000*2
+          let daybeforeyesterday = new Date(Date.now() - ldaybyes);
+          let lastweekseconds = 86400000*7
+          var lastweekdate = new Date(Date.now() - lastweekseconds);
+          let lastmonthsecs = 8640000*30
+          var lastmonthdate = new Date(Date.now() - lastmonthsecs);
+          var tomorrowsdate = new Date(Date.now() + 86400000);
+          let filterrange = document.getElementById("filter_range").value
+          if(filterrange === "Today"){
+            startDate = Yesterdaydate
+            endDate = dateNow
+          }
+          else if(filterrange === "Last Week"){
+            startDate = lastweekdate
+            endDate = dateNow 
+          }
+          else if(filterrange === "Last Month"){
+            startDate = lastmonthdate
+            endDate = dateNow
+          }
+          else{
+            let startdatecustom = document.getElementById("").value
+            let enddatecustom = document.getElementById("").value
+            startDate = new Date(startdatecustom)  
+            endDate = new Date(enddatecustom) 
+
+          }
+          var aDate = new Date();
+          var filteredData = teststatus.filter(function(a){
+          let onlydateto = a.date_ordered.split('T')[0]
+          aDate = new Date(onlydateto);
+          console.log("aDate: "+aDate);
+          console.log("startDate: "+Yesterdaydate);
+          console.log("endDate: "+tomorrowsdate);
+          return aDate >= startDate && aDate <= endDate && a.order_status === filterstatus;
+          });
+          console.log(filteredData)
+          CreateTableFromJSON(filteredData)
+    }
+
+  }
+
+      function filterbystatus(){
+  console.log("filtering")
+  let filstatus = document.getElementById("sel_status").value
+  //let teststatussta = okchains.map(a => ({...a}));
+  if(filstatus === "All"){
+    console.log(okchains)
+    CreateTableFromJSON(okchains)
+  }
+  else {
+      let teststatussta = okchains.map(a => ({...a}));
+      //console.log(okchains)
+  let result = teststatussta.filter(i => {
+    console.log(i)
+    return i.order_status === filstatus}) ; 
+  console.log(result)
+  CreateTableFromJSON(result)
+  }
+
+}
+
 
 
   function filterbydate(){
@@ -632,12 +770,19 @@ ddate.setFullYear(ddate.getFullYear() - 5);
       startDate = lastmonthdate
       endDate = dateNow
     }
-    else{
+    else if(filterrange === "All"){
       startDate = ddate
       endDate = dateNow
     }
-  var aDate = new Date();
-  var filteredData = okchains.filter(function(a){
+    else{
+      let startdatecustom = document.getElementById("from_date_c").value
+      let enddatecustom = document.getElementById("to_date_c").value
+      startDate = new Date(startdatecustom)  
+      endDate = new Date(enddatecustom) 
+    }
+    var aDate = new Date();
+    let teststatusdate = okchains.map(a => ({...a}));
+    var filteredData = teststatusdate.filter(function(a){
     let onlydateto = a.date_ordered.split('T')[0]
     aDate = new Date(onlydateto);
     console.log("aDate: "+aDate);
@@ -709,7 +854,37 @@ async function download() {
 
 
 
+  function getordercsvdata(oldorderjson){
+    let oldorderref = oldorderjson.map(a => ({...a}))
+    let ordercsv = oldorderref.map(order => {
+      let productsref = order.products
+      let productsstr = ""
+      for(let i =0; i < productsref.length; i++){
+        let prostr = `${productsref[i].product_name} (${productsref[i].quantity}), `
+        productsstr += prostr
+      }
+      order.productsdata = productsstr
+      order.first_name = order.user_id.first_name
+      order.last_name = order.user_id.last_name
+      order.contact = order.user_id.contact
+      order.email_id = order.user_id.email_id
+      order.state = order.user_id.state
+      order.address = order.user_id.address
+      order.city = order.user_id.city
 
+      //delete keychain._id
+      delete order.__v
+      delete order._id
+      delete order.products
+      delete order.user_id
+      delete order.is_paid
+      delete order.is_delivered
+      return order
+    })
+    //console.log(newkeychains)
+    var ordercsvordered = JSON.parse(JSON.stringify( myBookso, ["order_id","date_ordered","payment_type","first_name"]));
+    return ordercsv
+  }
 
 
   function getkeychains(oldkeychains){
@@ -765,10 +940,12 @@ async function download() {
         document.getElementById("cart_p_size").innerHTML = result.size ? result.size : "N.A."
         document.getElementById("cart_p_quantity").innerHTML = result.quantity ? result.quantity : "N.A."
         document.getElementById("cart_p_covertype").innerHTML = result.cover_type ? result.cover_type : "N.A."
-        productGimage = result.image
+        productGimagefull = result.image ? result.image : "noimage.png" 
+        productGimagecropped = result.cropped_image ? result.cropped_image : "noimage.png" 
         document.getElementById("cart_p_image").src = `http://${hosturl}:5600/admin/uploads/${result.image}`
-        document.getElementById("cart_p_d_image").href = `http://${hosturl}:5600/admin/uploads/${result.image}`
-        document.getElementById("cart_p_d_image").download= `http://${hosturl}:5600/admin/uploads/${result.image}`
+        document.getElementById("cart_p_c_image").src = `http://${hosturl}:5600/admin/uploads/${productGimagecropped}`
+        // document.getElementById("cart_p_d_image").href = `http://${hosturl}:5600/admin/uploads/${result.image}`
+        // document.getElementById("cart_p_d_image").download= `http://${hosturl}:5600/admin/uploads/${result.image}`
         $('#cartProductModal').modal('show');
 
       })
@@ -808,24 +985,7 @@ async function download() {
       })
     }
 
-    function filterbystatus(){
-  console.log("filtering")
-  let filstatus = document.getElementById("sel_status").value
-  if(filstatus === "All"){
-    console.log(okchains)
-    CreateTableFromJSON(okchains)
-  }
-  else {
-      let teststatus = okchains.map(a => ({...a}));
-      //console.log(okchains)
-  let result = teststatus.filter(i => {
-    console.log(i)
-    return i.order_status === filstatus}) ; 
-  console.log(result)
-  CreateTableFromJSON(result)
-  }
 
-}
 
 
     function changeorderstatus(selop){
@@ -1071,14 +1231,7 @@ async function download() {
     .then(data => {
        let okchainsold = data.map(a => ({...a}));
        okchains = okchainsold.reverse()
-      //let okchains = Object.assign({}, data);
-      // console.log(okchains)
-  // okchains = Object.assign({}, data);
-   //console.log(okchains)
-   //let testkey = Object.assign({}, data);
-      //okchains = data
-      //let newkeychains = getkeychains(data)
-      filterbystatus()
+      filterorders()
       //CreateTableFromJSON(data)
    })
     .catch(err => console.log(err))
@@ -1122,6 +1275,82 @@ async function download() {
        }
   }
   checkLogin()
+
+
+    function convertToCSV(objArray) {
+    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    var str = '';
+
+    for (var i = 0; i < array.length; i++) {
+        var line = '';
+        for (var index in array[i]) {
+            if (line != '') line += ','
+
+            line += array[i][index];
+        }
+
+        str += line + '\r\n';
+    }
+
+    return str;
+}
+
+function exportCSVFile(headers, items, fileTitle) {
+    if (headers) {
+        items.unshift(headers);
+    }
+
+    // Convert Object to JSON
+    var jsonObject = JSON.stringify(items);
+
+    var csv = this.convertToCSV(jsonObject);
+
+    var exportedFilenmae = fileTitle + '.csv' || 'export.csv';
+
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    if (navigator.msSaveBlob) { // IE 10+
+        navigator.msSaveBlob(blob, exportedFilenmae);
+    } else {
+        var link = document.createElement("a");
+        if (link.download !== undefined) { // feature detection
+            // Browsers that support HTML5 download attribute
+            var url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", exportedFilenmae);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+}
+
+function download(){
+  var headers = {
+      name: 'Name', // remove commas to avoid errors
+      contact: "Contact",
+      email: "Email",
+      city: "City"
+  };
+
+  itemsNotFormatted = getordercsvdata(okchains)
+
+  var itemsFormatted = [];
+
+  // format the data
+  itemsNotFormatted.forEach((item) => {
+      itemsFormatted.push({
+          name: item.first_name, 
+          contact: item.contact,
+          email: item.email_id,
+          city: item.city
+      });
+  });
+
+  var fileTitle = 'orders'; // or 'my-unique-title'
+
+  exportCSVFile(headers, itemsNotFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+}
 
   
     

@@ -340,10 +340,23 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Users</h3>
-               <div style="float: right;" class="download-wrapper" onClick="download()">
-  <button class="btn btn-success">Export to csv</button>
-</div>
+              <div class="row">
+                <div class="col-sm-8">
+                     <h3 class="card-title">Users</h3>
+                  </div>
+                  <div class="col-sm-2">
+                    <div style="float: right;" class="download-wrapper" onClick="download()">
+                  <button class="btn btn-success">Export to csv</button>
+                </div>
+                  </div>
+                <div class="col-sm-2">
+                     <h3 class="card-title" style="float: right"><button onclick="deleteusers()" class="btn btn-danger">Delete All</button></h3>
+                  </div>
+                  
+                  
+              </div>
+             
+                
             </div>
 
             <!-- /.card-header -->
@@ -354,7 +367,8 @@
                 <tr>
                   <th>Name</th>
                   <th>Contact</th>
-                  <th>Email</th>              
+                  <th>Email</th>  
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div></th>            
                 </tr>
                 </thead>
                 <tbody>
@@ -364,6 +378,7 @@
                   <th>Name</th>
                   <th>Contact</th>
                   <th>Email</th>
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div></th>
                 </tr>
                 </tfoot>
               </table>
@@ -421,8 +436,10 @@
 
 
 <script type="text/javascript">
-  $(document).ready(function() {
-    let userTable = $('#example1').DataTable({
+
+    function getusersdatatable(){
+          let userTable = $('#example1').DataTable({
+            destroy: true,
         "processing" : true,
         "ajax" : {
             "url" : `http://${hosturl}:5600/api/user/users`,
@@ -434,9 +451,64 @@
             "data" : "contact"
         }, {
             "data" : "email_id"
+        }, {
+          "data": "_id",
+            "mRender": function(data, type) {
+              console.log(data)
+              return `<input name="todelete" onClick="deleteUser(this)" value=${data} type="checkbox">`;
+            }
         }]
     });
-});
+    }
+
+    getusersdatatable()
+
+
+
+  function deleteUser(deleteinput){
+
+  }
+
+    function checkAll()
+ {
+     var tablek = document.getElementById ('example1');
+     var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
+     var val = checkboxes[0].checked;
+     for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
+ }
+
+  function printChecked(){
+    var items=document.getElementsByName('todelete');
+    var selectedItems=[];
+    for(var i=0; i<items.length; i++){
+      if(items[i].type=='checkbox' && items[i].checked==true)
+        selectedItems.push(items[i].value);
+    }
+    // console.log(selectedItems);
+    return selectedItems
+  } 
+
+    function deleteusers(){
+   // let deleteprotoget = globalProduct
+    let todeleteids = printChecked()
+    let deleteArray = {
+      todeleteids
+    }
+              fetch(`http://${hosturl}:5600/api/user/deleteusers`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "DELETE",
+            body: JSON.stringify(deleteArray)
+          })
+          .then(function(res){ 
+            getusersdatatable()
+            console.log(res)
+          })
+          .catch(function(res){ console.log(res) })
+  }
 
 </script>
 <script type="text/javascript">
@@ -529,8 +601,7 @@ function exportCSVFile(headers, items, fileTitle) {
         navigator.msSaveBlob(blob, exportedFilenmae);
     } else {
         var link = document.createElement("a");
-        if (link.download !== undefined) { // feature detection
-            // Browsers that support HTML5 download attribute
+        if (link.download !== undefined) { 
             var url = URL.createObjectURL(blob);
             link.setAttribute("href", url);
             link.setAttribute("download", exportedFilenmae);
@@ -544,7 +615,7 @@ function exportCSVFile(headers, items, fileTitle) {
 
 function download(){
   var headers = {
-      name: 'Name', // remove commas to avoid errors
+      name: 'Name', 
       contact: "Contact",
       email: "Email",
       city: "City"

@@ -469,6 +469,83 @@
         
     </section>
     <!-- /.content -->
+        <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-sm-3">
+                     <h3 class="card-title">Users</h3>
+                  </div>
+                  <div class="col-sm-5">
+                    <span style="color: green; font-weight: bold;" id="confirmDelete"></span>
+                  </div>
+                  <div class="col-sm-2">
+                    <div style="float: right;" class="download-wrapper" onClick="download()">
+                  <button class="btn btn-success">Export to csv</button>
+                </div>
+                  </div>
+                <div class="col-sm-2">
+                     <h3 class="card-title" style="float: right"><button onclick="deleteusers()" class="btn btn-danger">Delete All</button></h3>
+                  </div>
+                  
+                  
+              </div>
+             
+                
+            </div>
+
+            <!-- /.card-header -->
+            <div class="card-body">
+              
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Id</th>
+                  <th>GST</th>
+                  <th>Shipping</th>  
+                  <th>Subtotal</th>
+                  <th>Amount</th>
+                  <th>Payment</th>  
+                  <th>Status</th>
+                  <th>Date</th>
+                  <th>Name</th>
+                  <th>Contact</th>  
+                  <th>Email</th>  
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()"" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>All</label></div></div></th>            
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Id</th>
+                  <th>GST</th>
+                  <th>Shipping</th>  
+                  <th>Subtotal</th>
+                  <th>Amount</th>
+                  <th>Method</th>
+                  <th>Status</th>  
+                  <th>Date</th>
+                  <th>Name</th>
+                  <th>Contact</th>  
+                  <th>Email</th>  
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox3' value='option1'><label for='customCheckbox3' class='custom-control-label'>All</label></div></div></th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
@@ -578,6 +655,8 @@
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/datatables/jquery.dataTables.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -1371,8 +1450,85 @@ function download(){
   var fileTitle = 'orders'; // or 'my-unique-title'
 
   exportCSVFile(headers, itemsNotFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+
+
+
 }
 
+
+    function getordersdatatable(){
+          let userTable = $('#example1').DataTable({
+            destroy: true,
+        "processing" : true,
+        "ajax" : {
+            "url" : `http://${hosturl}:5600/api/order/getorderswithdata`,
+            dataSrc : ''
+        },
+        "columns" : [ {
+            "data" : "order_id"
+        }, {
+            "data" : "gst_tax"
+        }, {
+            "data" : "shipping"
+        }, {
+            "data" : "sub_total"
+        }, {
+            "data" : "amount"
+        }, {
+            "data" : "payment_type"
+        },{
+            "data" : "order_status",
+            "mRender": function(data,type){
+              let spantag = ""
+                 if(data === "Shipped"){
+                  spantag = `<span id="span_status" class="badge badge-success">Shipped</span>`
+                 }
+                 else if(data === "Pending"){
+                  spantag = `<span id="span_status" class="badge badge-warning">Pending</span>`
+                 }
+                 else if(data === "Delivered"){
+                  spantag = `<span id="span_status" class="badge badge-danger">Delivered</span>`
+                 }
+                 else{
+                  spantag = `<span id="span_status" class="badge badge-info">Processing</span>`
+                 }
+                 return spantag
+            }
+        }, {
+            "data" : "date_ordered",
+            "mRender" : function(data, type){
+              let date = data.split("T")[0]
+              return date
+            }
+        },  {
+          "data": "user_id",
+            "mRender": function(data, type) {
+              console.log(data)
+              return `${data.first_name} ${data.last_name}`;
+            }
+        },  {
+          "data": "user_id",
+            "mRender": function(data, type) {
+              console.log(data)
+              return `${data.contact}`;
+            }
+        },  {
+          "data": "user_id",
+            "mRender": function(data, type) {
+              console.log(data)
+              return `${data.email_id}`;
+            }
+        }, {
+          "data": "_id",
+            "mRender": function(data, type) {
+              console.log(data)
+              return `<input name="todelete" onClick="deleteUser(this)" value=${data} type="checkbox">`;
+            }
+        }]
+    });
+    }
+
+getordersdatatable()
   
     
 </script>

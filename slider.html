@@ -482,11 +482,14 @@
             <div class="card-body" style="display: block">
                 
                                 <div class="row">
-                   
+                                  <div class="col-sm-12">
+                    <div class="form-group">
+                      <input disabled name="slider_name" type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                    </div></div>
                           
                     <div class="col-sm-6">
                       <input type="hidden" id="modal_id" name="modal_id" value="">
-                      <input type="hidden" id="modal_name" class="form-control" placeholder="Enter ...">
+                      
                                         <div class="form-group">
                     <div class="input-group">
                       <img width="38px" height="38px" id="modal_slider_image" src="">
@@ -552,14 +555,15 @@
                       <div class="col-sm-6">
                          <div class="form-group">
                       <label>Slider Name</label>
-                      <input type="text" id="modal_s_display_name" class="form-control" placeholder="Enter ...">
+                      <input disabled name="slider_name" type="text" id="modal_s_display_name" class="form-control" placeholder="Enter ...">
                     </div>
 
                       </div>
                       <div class="col-sm-6">
                          <div class="form-group">
                     <label>Company</label>
-                    <select  id="modal_s_product_name" class="form-control custom-select">
+                    <form name="sliderImages" id="slider_s_images" enctype="multipart/form-data">
+                    <select name="product_slider"  id="modal_s_product_name" class="form-control custom-select">
                       <option selected disabled>Select one</option>
                       <option>phonecase</option>
                       <option>tshirt</option>
@@ -582,7 +586,7 @@
                     <div class="input-group">
                       <img width="38px" height="38px" id="modal_s_slider_image" src="">
                       <div class="custom-file">
-                        <form name="sliderImages" id="slider_s_images" enctype="multipart/form-data">
+                        
                         <input name="modal_s_slider_image" type="file" class="custom-file-input" id="exampleInputFile">
                       </form>
                       

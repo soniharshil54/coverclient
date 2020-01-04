@@ -432,7 +432,7 @@
     </section> -->
 
     <!-- Main content -->
-    <section style="margin-top: 20px" class="content">
+    <section  style="margin-top: 20px; display: none" class="content">
       
       
               <!-- /.row -->
@@ -470,14 +470,14 @@
     </section>
     <!-- /.content -->
         <!-- Main content -->
-    <section style="display: none;" class="content">
+    <section class="content">
       <div class="row">
         <div class="col-12">
           <div class="card">
             <div class="card-header">
               <div class="row">
                 <div class="col-sm-3">
-                     <h3 class="card-title">Users</h3>
+                     <h3 class="card-title">Orders</h3>
                   </div>
                   <div class="col-sm-5">
                     <span style="color: green; font-weight: bold;" id="confirmDelete"></span>
@@ -488,7 +488,7 @@
                 </div>
                   </div>
                 <div class="col-sm-2">
-                     <h3 class="card-title" style="float: right"><button onclick="deleteusers()" class="btn btn-danger">Delete All</button></h3>
+                     <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>
                   </div>
                   
                   
@@ -503,17 +503,15 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>No.</th>
                   <th>Id</th>
-                  <th>GST</th>
-                  <th>Shipping</th>  
-                  <th>Subtotal</th>
+                  <th>Products</th>
                   <th>Amount</th>
                   <th>Payment</th>  
                   <th>Status</th>
                   <th>Date</th>
                   <th>Name</th>
-                  <th>Contact</th>  
-                  <th>Email</th>  
+                  <th>User Info</th>
                   <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>All</label></div></div></th>            
                 </tr>
                 </thead>
@@ -521,17 +519,15 @@
                 </tbody>
                 <tfoot>
                 <tr>
+                  <th>No.</th>
                   <th>Id</th>
-                  <th>GST</th>
-                  <th>Shipping</th>  
-                  <th>Subtotal</th>
+                  <th>Products</th>
                   <th>Amount</th>
                   <th>Method</th>
                   <th>Status</th>  
                   <th>Date</th>
                   <th>Name</th>
-                  <th>Contact</th>  
-                  <th>Email</th>  
+                  <th>User Info</th>
                   <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox3' value='option1'><label for='customCheckbox3' class='custom-control-label'>All</label></div></div></th>
                 </tr>
                 </tfoot>
@@ -601,9 +597,6 @@
             </tr>
             <tr>
               <th>Image:</th>
-            <!--   <td>  <a target="_blank" href="images/3.jpg" download>
-  <img src="images/3.jpg" alt="W3Schools" width="104" height="142">
-</a></td> -->
               <td>
       <img id="cart_p_image" src="images/3.jpg" alt="W3Schools" style="max-height: 200px; max-width: 200px">
       <img id="cart_p_c_image" src="images/3.jpg" alt="W3Schools" style="max-height: 200px; max-width: 200px">
@@ -800,7 +793,7 @@ $('#cart_p_c_image').on('click', function () {
           return aDate >= startDate && aDate <= endDate && a.order_status === filterstatus;
           });
           console.log(filteredData)
-          CreateTableFromJSON(filteredData)
+          getfilteredordersdatatable(filteredData)
     }
 
   }
@@ -820,7 +813,9 @@ $('#cart_p_c_image').on('click', function () {
     console.log(i)
     return i.order_status === filstatus}) ; 
   console.log(result)
-  CreateTableFromJSON(result)
+  let nresult = JSON.stringify(result)
+  console.log(result)
+  getfilteredordersdatatable(result)
   }
 
 }
@@ -879,7 +874,7 @@ ddate.setFullYear(ddate.getFullYear() - 5);
     return aDate >= startDate && aDate <= endDate;
     });
   console.log(filteredData)
-  CreateTableFromJSON(filteredData)
+  getfilteredordersdatatable(filteredData)
   }
 
   function getYesterdaysDate() {
@@ -921,7 +916,7 @@ async function download() {
 
   function checkAll()
  {
-     var tablek = document.getElementById ('keychaintable');
+     var tablek = document.getElementById ('example1');
      var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
      var val = checkboxes[0].checked;
      for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
@@ -1009,7 +1004,7 @@ async function download() {
           })
           .then(function(res){ 
 
-            getproducts() 
+            getordersdatatable()
           })
           .catch(function(res){ console.log(res) })
   }
@@ -1105,7 +1100,7 @@ async function download() {
   //let productId = result.product._id
  // console.log(productId)
   document.getElementById(foridf).value = ""
-  getproducts()
+  getordersdatatable()
   //uploadFile(productId)
   //getord
   
@@ -1324,6 +1319,8 @@ async function download() {
    })
     .catch(err => console.log(err))
 }
+
+getproducts()
       // let filters = ["name", "size", "price"]
       // let ndata = JSON.parse(unfiltered).map(function(currObj) {
       // var temp = {};
@@ -1331,16 +1328,6 @@ async function download() {
       //   temp[identifier] = currObj[identifier];
       // return temp;
       // });
-        if(window.location.hash) {
-      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
-      // console.log(hash)
-
-      getproducts(hash)
-      // hash found
-  } else {
-      getproducts()
-     // document.getElementById("keychain_link").setAttribute("class","nav-link active")
-  }
 
         function checkLogin(){
     
@@ -1460,38 +1447,58 @@ function download(){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+          "rowCallback": function (nRow, aData, iDisplayIndex) {
+               var oSettings = this.fnSettings ();
+               $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+               return nRow;
+          },
         "ajax" : {
             "url" : `http://${hosturl}:5600/api/order/getorderswithdata`,
             dataSrc : ''
         },
         "columns" : [ {
+            "data" : null
+        }, {
             "data" : "order_id"
         }, {
-            "data" : "gst_tax"
-        }, {
-            "data" : "shipping"
-        }, {
-            "data" : "sub_total"
-        }, {
+            "data" : "products",
+            "mRender" : function(data, type){
+                let products_name = ''
+                for(let i=0; i < data.length; i++){
+                  // console.log()
+                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px;color:green" class="btn" data-pid="${data[i]._id}">${data[i].product_name}</button>`
+                  products_name += `${btntag} </br> `
+                }
+              return products_name
+            }
+        },{
             "data" : "amount"
         }, {
             "data" : "payment_type"
         },{
-            "data" : "order_status",
+          "data":null,
             "mRender": function(data,type){
+              let orderreftable = data._id
+              console.log(orderreftable)
+              console.log(data.order_status)
+                 let forid = `order_status_ind_${orderreftable}`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:25%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
+          
               let spantag = ""
-                 if(data === "Shipped"){
+                 if(data.order_status === "Shipped"){
                   spantag = `<span id="span_status" class="badge badge-success">Shipped</span>`
                  }
-                 else if(data === "Pending"){
+                 else if(data.order_status === "Pending"){
                   spantag = `<span id="span_status" class="badge badge-warning">Pending</span>`
                  }
-                 else if(data === "Delivered"){
+                 else if(data.order_status === "Delivered"){
                   spantag = `<span id="span_status" class="badge badge-danger">Delivered</span>`
                  }
                  else{
+                  console.log(data.order_status)
                   spantag = `<span id="span_status" class="badge badge-info">Processing</span>`
                  }
+                 spantag += btntag3
                  return spantag
             }
         }, {
@@ -1503,32 +1510,110 @@ function download(){
         },  {
           "data": "user_id",
             "mRender": function(data, type) {
-              console.log(data)
+             
               return `${data.first_name} ${data.last_name}`;
             }
-        },  {
-          "data": "user_id",
-            "mRender": function(data, type) {
-              console.log(data)
-              return `${data.contact}`;
-            }
-        },  {
-          "data": "user_id",
-            "mRender": function(data, type) {
-              console.log(data)
-              return `${data.email_id}`;
-            }
         }, {
+          "data": "user_id",
+            "mRender": function(data, type) {
+             
+              return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data._id}">view</button>`;
+            }
+        },{
           "data": "_id",
             "mRender": function(data, type) {
-              console.log(data)
-              return `<input name="todelete" onClick="deleteUser(this)" value=${data} type="checkbox">`;
+             
+              return `<input name="todelete" value=${data} type="checkbox">`;
             }
         }]
     });
     }
 
-//getordersdatatable()
+    function getfilteredordersdatatable(newdata){
+          let userTable = $('#example1').DataTable({
+            destroy: true,
+        "processing" : true,
+          "rowCallback": function (nRow, aData, iDisplayIndex) {
+               var oSettings = this.fnSettings ();
+               $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+               return nRow;
+          },
+            "aaData" : newdata
+        ,
+        "columns" : [ {
+            "data" : null
+        }, {
+            "data" : "order_id"
+        }, {
+            "data" : "products",
+            "mRender" : function(data, type){
+                let products_name = ''
+                for(let i=0; i < data.length; i++){
+                  // console.log()
+                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px;color:green" class="btn" data-pid="${data[i]._id}">${data[i].product_name}</button>`
+                  products_name += `${btntag} </br> `
+                }
+              return products_name
+            }
+        },{
+            "data" : "amount"
+        }, {
+            "data" : "payment_type"
+        },{
+          "data":null,
+            "mRender": function(data,type){
+              let orderreftable = data._id
+              console.log(orderreftable)
+              console.log(data.order_status)
+                 let forid = `order_status_ind_${orderreftable}`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:25%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
+          
+              let spantag = ""
+                 if(data.order_status === "Shipped"){
+                  spantag = `<span id="span_status" class="badge badge-success">Shipped</span>`
+                 }
+                 else if(data.order_status === "Pending"){
+                  spantag = `<span id="span_status" class="badge badge-warning">Pending</span>`
+                 }
+                 else if(data.order_status === "Delivered"){
+                  spantag = `<span id="span_status" class="badge badge-danger">Delivered</span>`
+                 }
+                 else{
+                  console.log(data.order_status)
+                  spantag = `<span id="span_status" class="badge badge-info">Processing</span>`
+                 }
+                 spantag += btntag3
+                 return spantag
+            }
+        }, {
+            "data" : "date_ordered",
+            "mRender" : function(data, type){
+              let date = data.split("T")[0]
+              return date
+            }
+        },  {
+          "data": "user_id",
+            "mRender": function(data, type) {
+             
+              return `${data.first_name} ${data.last_name}`;
+            }
+        }, {
+          "data": "user_id",
+            "mRender": function(data, type) {
+             
+              return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data._id}">view</button>`;
+            }
+        },{
+          "data": "_id",
+            "mRender": function(data, type) {
+             
+              return `<input name="todelete" value=${data} type="checkbox">`;
+            }
+        }]
+    });
+    }
+
+getordersdatatable()
   
     
 </script>

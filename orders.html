@@ -22,6 +22,10 @@
       color: red
     }
 
+    #example1_filter {
+  text-align: right;
+}
+
     #fromdatediv{
       display: none;
     }
@@ -390,10 +394,12 @@
                         <label>Order Status</label>
                            <select id="sel_status" class="form-control custom-select">
                   <option>All</option>          
-                  <option>Pending</option>
-                  <option>Shipped</option>
-                  <option>Delivered</option>
+                  <option>Pending Payment</option>
                   <option>Processing</option>
+                  <option>Failed</option>
+                  <option>On hold</option>
+                  <option>Refunded</option>
+                  <option>Trash</option>
                 </select>
                       </div>
                     </div>   
@@ -413,63 +419,9 @@
           </div>
           <!-- /.card -->
         </div>
-      </div>
-    <!-- Content Header (Page header) -->
-<!--     <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Keychain</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Keychain</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
-    <!-- Main content -->
-    <section  style="margin-top: 20px; display: none" class="content">
       
-      
-              <!-- /.row -->
-        <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <div class="row">
-                  <div class="col-sm-8">
-                    <h3 id="productShowHeading" class="card-title">Orders</h3>
-                  </div>
-                  <div class="col-sm-2">
-                    <h3 class="card-title" style="float: right"><button onClick="download()" class="btn btn-success">Export to CSV</button></h3>
-                  </div>
-                   <div class="col-sm-2">
-                    <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete Selected</button></h3>
-                  </div>
-                </div>
-                <div class="card-tools">
-                </div>
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
-                <div id="samplejson"></div>
-                
-              </div>
+     <div class="col-md-12">
 
-              <!-- /.card-body -->
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
-        <!-- /.row -->
-        
-    </section>
-    <!-- /.content -->
-        <!-- Main content -->
     <section class="content">
       <div class="row">
         <div class="col-12">
@@ -488,7 +440,7 @@
                 </div>
                   </div>
                 <div class="col-sm-2">
-                     <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>
+                     <h3 class="card-title" style="float: right"><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></h3>
                   </div>
                   
                   
@@ -541,6 +493,10 @@
       </div>
       <!-- /.row -->
     </section>
+    </div>
+
+    </div>
+   
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -555,6 +511,43 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
+
+
+ <div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div style="margin-bottom: 30px" class="col-sm-12">
+              <span>Are you sure you want to delete selected records ??</span>
+            </div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="form-group">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="deletekeychains()" type="button" value="Confirm" class="btn btn-success float-right">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
+             </div>
+
+           </div> 
+         </div>
+       </div>
+
+       <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
 
 
 
@@ -798,13 +791,17 @@ $('#cart_p_c_image').on('click', function () {
 
   }
 
+  function opendeletemodal(){
+    $("#deleteModal").modal("show");
+  }
+
       function filterbystatus(){
   console.log("filtering")
   let filstatus = document.getElementById("sel_status").value
   //let teststatussta = okchains.map(a => ({...a}));
   if(filstatus === "All"){
     console.log(okchains)
-    CreateTableFromJSON(okchains)
+    getfilteredordersdatatable(okchains)
   }
   else {
       let teststatussta = okchains.map(a => ({...a}));
@@ -987,6 +984,10 @@ async function download() {
     return newkeychains
   }
 
+  function canceldelete(){
+    $("#deleteModal").modal("hide");
+  }
+
   function deletekeychains(){
     //let deleteprotoget = globalProduct
     let todeleteids = printChecked()
@@ -1003,7 +1004,7 @@ async function download() {
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
-
+            $("#deleteModal").modal("hide");
             getordersdatatable()
           })
           .catch(function(res){ console.log(res) })
@@ -1015,6 +1016,7 @@ async function download() {
       fetch(`http://${hosturl}:5600/api/order/getcartproductbyid/${proid}`)
       .then(response => {
         //console.log(result)
+        //$("#deleteModal").modal("hide");
         return response.json()
       })
       .then(result => {
@@ -1482,21 +1484,31 @@ function download(){
               console.log(orderreftable)
               console.log(data.order_status)
                  let forid = `order_status_ind_${orderreftable}`
-                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:25%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Pending Payment">Pending Payment</option><option value="Failed">Failed</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option></select>`
           
               let spantag = ""
-                 if(data.order_status === "Shipped"){
-                  spantag = `<span id="span_status" class="badge badge-success">Shipped</span>`
+                 if(data.order_status === "Pending Payment"){
+                  spantag = `<span id="span_status" class="badge badge-warning">Pending Payment</span>`
                  }
-                 else if(data.order_status === "Pending"){
-                  spantag = `<span id="span_status" class="badge badge-warning">Pending</span>`
+                   else if(data.order_status === "Processing"){
+                  spantag = `<span id="span_status" class="badge badge-success">Processing</span>`
                  }
-                 else if(data.order_status === "Delivered"){
-                  spantag = `<span id="span_status" class="badge badge-danger">Delivered</span>`
+                 else if(data.order_status === "Failed"){
+                  spantag = `<span id="span_status" class="badge badge-danger">Failed</span>`
                  }
+                  else if(data.order_status === "On Hold"){
+                  spantag = `<span id="span_status" class="badge badge-info">On Hold</span>`
+                 }
+                  else if(data.order_status === "Refunded"){
+                  spantag = `<span id="span_status" class="badge badge-warning">Refunded</span>`
+                 }
+                   else if(data.order_status === "Trash"){
+                  spantag = `<span id="span_status" class="badge badge-danger">Trash</span>`
+                 }
+
                  else{
                   console.log(data.order_status)
-                  spantag = `<span id="span_status" class="badge badge-info">Processing</span>`
+                  spantag = `<span id="span_status" class="badge badge-info">old</span>`
                  }
                  spantag += btntag3
                  return spantag
@@ -1566,21 +1578,31 @@ function download(){
               console.log(orderreftable)
               console.log(data.order_status)
                  let forid = `order_status_ind_${orderreftable}`
-                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:25%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Pending Payment">Pending Payment</option><option id="Failed" value="Failed">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option></select>`
           
               let spantag = ""
-                 if(data.order_status === "Shipped"){
-                  spantag = `<span id="span_status" class="badge badge-success">Shipped</span>`
+                 if(data.order_status === "Pending Payment"){
+                  spantag = `<span id="span_status" class="badge badge-warning">Pending Payment</span>`
                  }
-                 else if(data.order_status === "Pending"){
-                  spantag = `<span id="span_status" class="badge badge-warning">Pending</span>`
+                   else if(data.order_status === "Processing"){
+                  spantag = `<span id="span_status" class="badge badge-success">Processing</span>`
                  }
-                 else if(data.order_status === "Delivered"){
-                  spantag = `<span id="span_status" class="badge badge-danger">Delivered</span>`
+                 else if(data.order_status === "Failed"){
+                  spantag = `<span id="span_status" class="badge badge-danger">Failed</span>`
                  }
+                  else if(data.order_status === "On Hold"){
+                  spantag = `<span id="span_status" class="badge badge-info">On Hold</span>`
+                 }
+                  else if(data.order_status === "Refunded"){
+                  spantag = `<span id="span_status" class="badge badge-warning">Refunded</span>`
+                 }
+                   else if(data.order_status === "Trash"){
+                  spantag = `<span id="span_status" class="badge badge-danger">Trash</span>`
+                 }
+
                  else{
                   console.log(data.order_status)
-                  spantag = `<span id="span_status" class="badge badge-info">Processing</span>`
+                  spantag = `<span id="span_status" class="badge badge-info">old</span>`
                  }
                  spantag += btntag3
                  return spantag

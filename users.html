@@ -353,7 +353,7 @@
                 </div>
                   </div>
                 <div class="col-sm-2">
-                     <h3 class="card-title" style="float: right"><button onclick="deleteusers()" class="btn btn-danger">Delete All</button></h3>
+                     <h3 class="card-title" style="float: right"><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></h3>
                   </div>
                   
                   
@@ -397,6 +397,42 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
+  </div>
+
+   <div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div style="margin-bottom: 30px" class="col-sm-12">
+              <span>Are you sure you want to delete selected records ??</span>
+            </div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="form-group">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="deleteusers()" type="button" value="Confirm" class="btn btn-success float-right">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
+             </div>
+
+           </div> 
+         </div>
+       </div>
+
+       <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
@@ -480,7 +516,13 @@
     getusersdatatable()
 
 
+ function canceldelete(){
+    $("#deleteModal").modal("hide");
+  }
 
+    function opendeletemodal(){
+    $("#deleteModal").modal("show");
+  }
 
     function checkAll()
  {
@@ -522,6 +564,7 @@
         // .row( $(this).parents('tr') )
         // .remove()
         // .draw();
+         $("#deleteModal").modal("hide");
             getusersdatatable()
             document.getElementById("confirmDelete").innerHTML = "Seleted users deleted successfully!!!"
             console.log(res)

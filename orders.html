@@ -1516,7 +1516,7 @@ function download(){
         }, {
             "data" : "date_ordered",
             "mRender" : function(data, type){
-              let date = data.split("T")[0]
+              let date = data.split("T")[0].split('-').reverse().join('-')
               return date
             }
         },  {

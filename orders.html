@@ -1314,7 +1314,7 @@ async function download() {
     .then(data => {
        let okchainsold = data.map(a => ({...a}));
        okchains = okchainsold.reverse()
-      filterorders()
+     // filterorders()
       //CreateTableFromJSON(data)
    })
     .catch(err => console.log(err))

@@ -458,7 +458,7 @@
           "data": "_id",
             "mRender": function(data, type) {
               console.log(data)
-              return `<input name="todelete" onClick="deleteUser(this)" value=${data} type="checkbox">`;
+              return `<input name="todelete" value=${data} type="checkbox">`;
             }
         }]
     });
@@ -468,9 +468,6 @@
 
 
 
-  function deleteUser(deleteinput){
-
-  }
 
     function checkAll()
  {
@@ -493,6 +490,7 @@
 
     function deleteusers(){
    // let deleteprotoget = globalProduct
+    // let userrow = 
     let todeleteids = printChecked()
     let deleteArray = {
       todeleteids
@@ -507,6 +505,10 @@
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
+        //         table
+        // .row( $(this).parents('tr') )
+        // .remove()
+        // .draw();
             getusersdatatable()
             document.getElementById("confirmDelete").innerHTML = "Seleted users deleted successfully!!!"
             console.log(res)
@@ -593,7 +595,6 @@ function exportCSVFile(headers, items, fileTitle) {
         items.unshift(headers);
     }
 
-    // Convert Object to JSON
     var jsonObject = JSON.stringify(items);
 
     var csv = this.convertToCSV(jsonObject);
@@ -601,7 +602,7 @@ function exportCSVFile(headers, items, fileTitle) {
     var exportedFilenmae = fileTitle + '.csv' || 'export.csv';
 
     var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    if (navigator.msSaveBlob) { // IE 10+
+    if (navigator.msSaveBlob) { 
         navigator.msSaveBlob(blob, exportedFilenmae);
     } else {
         var link = document.createElement("a");
@@ -629,10 +630,9 @@ function download(){
 
   var itemsFormatted = [];
 
-  // format the data
   itemsNotFormatted.forEach((item) => {
       itemsFormatted.push({
-          name: item.first_name, // remove commas to avoid errors,
+          name: item.first_name, 
           contact: item.contact,
           email: item.email_id,
           city: item.city
@@ -641,7 +641,7 @@ function download(){
 
   var fileTitle = 'users'; // or 'my-unique-title'
 
-  exportCSVFile(headers, itemsFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+  exportCSVFile(headers, itemsFormatted, fileTitle); 
 }
 </script>
 <!-- <script type="text/javascript">

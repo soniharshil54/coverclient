@@ -446,10 +446,11 @@
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
-        "fnRowCallback" : function(nRow, aData, iDisplayIndex){
-          $("td:first", nRow).html(iDisplayIndex +1);
-          return nRow;
-          },
+        "rowCallback": function (nRow, aData, iDisplayIndex) {
+     var oSettings = this.fnSettings ();
+     $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+     return nRow;
+},
                 
         "ajax" : {
             "url" : `http://${hosturl}:5600/api/user/users`,
@@ -471,6 +472,9 @@
             }
         }]
     });
+
+
+
     }
 
     getusersdatatable()

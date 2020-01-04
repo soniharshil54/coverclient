@@ -45,6 +45,10 @@
   counter-increment: Serial;      /* Increment the Serial counter */
   content: counter(Serial); /* Display the counter */
 }
+    tr:first-child
+    {
+      counter-reset: Serial;           /* Set the Serial counter to 0 */
+    }
   </style>
 </head>
 <body class="hold-transition sidebar-mini">
@@ -544,6 +548,31 @@
             <div class="card-body" style="display: block">
                 
                                 <div class="row">
+
+                      <div class="col-sm-6">
+                         <div class="form-group">
+                      <label>Slider Name</label>
+                      <input type="text" id="modal_s_display_name" class="form-control" placeholder="Enter ...">
+                    </div>
+
+                      </div>
+                      <div class="col-sm-6">
+                         <div class="form-group">
+                    <label>Company</label>
+                    <select  id="modal_s_product_name" class="form-control custom-select">
+                      <option selected disabled>Select one</option>
+                      <option>phonecase</option>
+                      <option>tshirt</option>
+                      <option>keychain</option>
+                      <option>mug</option>
+                      <option>popholder</option>
+                      <option>watch</option>
+                      <option>wallclock</option>
+                      <option>photoframe</option>
+                      <option>slipperbottle</option>
+                    </select>
+                  </div>
+                      </div>            
                    
                           
                     <div class="col-sm-6">
@@ -783,7 +812,9 @@ for (var i in strs) {
       let arrayn = test.getAttribute("data-key")
       console.log(secondarychains[arrayn])
       //console.log(okchains[arrayn].name)
+      document.getElementById("modal_s_display_name").value = secondarychains[arrayn].slider_display_name
       document.getElementById("modal_s_name").value = secondarychains[arrayn].product_name
+      document.getElementById("modal_s_product_name").value = secondarychains[arrayn].product_name
       document.getElementById("modal_s_id").value = secondarychains[arrayn]._id
       //console.log(document.getElementById("modal_id").value)
       let slider_image = secondarychains[arrayn].slider_image

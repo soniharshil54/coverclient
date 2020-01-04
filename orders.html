@@ -34,7 +34,7 @@
       display: none;
     }
 
-    .custom-select{
+    .custom-select-nn{
     padding: 0px;height: 20px;font-size: 14px;border: 0px;box-shadow: none;text-align: center;-webkit-appearance: none;
     }
 
@@ -1244,7 +1244,7 @@ async function download() {
                  }
                  let orderreftable = myBooks[i]._id
                  let forid = `order_status_ind_${orderreftable}`
-                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:50%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:50%" value="Delivered" id="${forid}" class="form-control custom-select custom-select-nn"><option value=""></option><option value="Shipped">Shipped</option><option id="Delivered" value="Delivered">Delivered</option><option value="Pending">Pending</option><option value="Processing">Processing</option></select>`
                 //document.getElementById('order_status_ind').value="Delivered";
                 tabCell.appendChild(spantag)
                 tabCell.innerHTML += btntag3
@@ -1484,7 +1484,7 @@ function download(){
               console.log(orderreftable)
               console.log(data.order_status)
                  let forid = `order_status_ind_${orderreftable}`
-                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Pending Payment">Pending Payment</option><option value="Failed">Failed</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option></select>`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option value="Failed">Failed</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option></select>`
           
               let spantag = ""
                  if(data.order_status === "Pending Payment"){
@@ -1578,7 +1578,7 @@ function download(){
               console.log(orderreftable)
               console.log(data.order_status)
                  let forid = `order_status_ind_${orderreftable}`
-                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select"><option value=""></option><option value="Pending Payment">Pending Payment</option><option id="Failed" value="Failed">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option></select>`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select  custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option id="Failed" value="Failed">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option></select>`
           
               let spantag = ""
                  if(data.order_status === "Pending Payment"){

@@ -175,7 +175,7 @@
             <a href="slider.html" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Sliders
+                Main Categories
                 <!-- <i class="right fas fa-angle-left"></i> -->
               </p>
             </a>
@@ -368,6 +368,7 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
+                  <th>Sr No.</th>
                   <th>Name</th>
                   <th>Contact</th>
                   <th>Email</th>  
@@ -378,6 +379,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
+                  <th>Sr No.</th>
                   <th>Name</th>
                   <th>Contact</th>
                   <th>Email</th>
@@ -444,11 +446,18 @@
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+        "fnRowCallback" : function(nRow, aData, iDisplayIndex){
+          $("td:first", nRow).html(iDisplayIndex +1);
+          return nRow;
+          },
+                
         "ajax" : {
             "url" : `http://${hosturl}:5600/api/user/users`,
             dataSrc : ''
         },
-        "columns" : [ {
+        "columns" : [{
+            "data" : null
+        },{
             "data" : "first_name"
         }, {
             "data" : "contact"

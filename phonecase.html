@@ -585,7 +585,7 @@
                   </div>
                   <div class="row">
                     <div class="col-sm-4">
-                      <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='is_avail' value='option1'><label for='is_avail' class='custom-control-label'>Available</label></div></div>
+                     <!--  <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='is_avail' value='option1'><label for='is_avail' class='custom-control-label'>Available</label></div></div> -->
                     </div>    
                     <div class="col-sm-4">
                       <span id="phonecase_notif" style="color: green; font-weight: bold"></span>
@@ -1129,12 +1129,12 @@
       let description_2d = document.getElementById("k_description_2d").value
       let description_3d = document.getElementById("k_description_3d").value
       let description_4d = document.getElementById("k_description_4d").value
-      let avail_status = document.getElementById("is_avail").checked
-      let available_status = avail_status ? 1 : 0
+    // let avail_status = document.getElementById("is_avail").checked
+    //  let available_status = avail_status ? 1 : 0
     //let inputfile = document.getElementById("productImage").files[0]
     let keydata = {
       name, company, size_2d, size_3d, size_4d, price_2d, price_3d, price_4d,description_2d, description_3d, 
-      description_4d, available_status
+      description_4d
     }
     //console.log(keydata)
     fetch(`http://${hosturl}:5600/api/phonecase/addphonecase`,
@@ -1484,7 +1484,7 @@ function add_company(){
       let keyid = document.getElementById("modal_id").value
     //let avail_status = document.getElementById("modal_avail_status").checked
     //console.log("avail status", avail_status)
-    let available_status = avail_status ? 1 : 0
+    //let available_status = avail_status ? 1 : 0
     let keditdata = {
       name, company, size_2d, price_2d, description_2d, size_3d, price_3d, description_3d, size_4d, price_4d, description_4d
     }

@@ -620,6 +620,11 @@ document.getElementById('invoicedate').innerHTML = today;
               if(j === -1){
                 tabCell.innerHTML = "";
               }
+
+              if(j === 4){
+                let sub = `${myBooks[i][col[j]]} ₹`
+                tabCell.innerHTML = sub;
+              }
               else {
                 tabCell.innerHTML = myBooks[i][col[j]];
               }

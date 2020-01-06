@@ -780,10 +780,11 @@
       .then(response => {
         document.getElementById("sendsmsconfirm").innerHTML = "SMS successfully sent!!!"
         console.log(response)
+        resetform()
       })
       .catch(error => {
         document.getElementById("sendsmsconfirm").innerHTML = "SMS successfully sent!!!"
-        
+        resetform()
         console.log(error)
       })
     }

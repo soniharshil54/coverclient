@@ -1479,7 +1479,11 @@ function download(){
               return products_name
             }
         },{
-            "data" : "amount"
+            "data" : "amount",
+              "mRender" : function(data, type){
+              let amou = `${data} ₹`
+              return amou
+            }
         }, {
             "data" : "payment_type"
         },{
@@ -1576,7 +1580,11 @@ function download(){
               return products_name
             }
         },{
-            "data" : "amount"
+            "data" : "amount",
+              "mRender" : function(data, type){
+              let amou = `${data} ₹`
+              return amou
+            }
         }, {
             "data" : "payment_type"
         },{

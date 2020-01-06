@@ -460,10 +460,10 @@
                   <th>Products</th>
                   <th>Amount</th>
                   <th>Payment</th>  
-                  <th>Status</th>
+                  
                   <th>Date</th>
-                  <th>Name</th>
                   <th>User Info</th>
+                  <th>Status</th>
                   <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>All</label></div></div></th>            
                 </tr>
                 </thead>
@@ -475,11 +475,10 @@
                   <th>Id</th>
                   <th>Products</th>
                   <th>Amount</th>
-                  <th>Method</th>
-                  <th>Status</th>  
+                  <th>Payment</th>  
                   <th>Date</th>
-                  <th>Name</th>
                   <th>User Info</th>
+                  <th>Status</th>
                   <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox3' value='option1'><label for='customCheckbox3' class='custom-control-label'>All</label></div></div></th>
                 </tr>
                 </tfoot>
@@ -1483,6 +1482,18 @@ function download(){
         }, {
             "data" : "payment_type"
         },{
+            "data" : "date_ordered",
+            "mRender" : function(data, type){
+              let date = data.split("T")[0].split('-').reverse().join('-')
+              return date
+            }
+        }, {
+          "data": "user_id",
+            "mRender": function(data, type) {
+             
+              return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data._id}">view</button>`;
+            }
+        },{
           "data":null,
             "mRender": function(data,type){
               let orderreftable = data._id
@@ -1510,6 +1521,10 @@ function download(){
                    else if(data.order_status === "Trash"){
                   spantag = `<span id="span_status" class="badge badge-danger">Trash</span>`
                  }
+                   else if(data.order_status === "Completed"){
+                  spantag = `<span id="span_status" class="badge badge-success">Completed</span>`
+                 }
+
 
                  else{
                   console.log(data.order_status)
@@ -1519,24 +1534,6 @@ function download(){
                  return spantag
             }
         }, {
-            "data" : "date_ordered",
-            "mRender" : function(data, type){
-              let date = data.split("T")[0].split('-').reverse().join('-')
-              return date
-            }
-        },  {
-          "data": "user_id",
-            "mRender": function(data, type) {
-             
-              return `${data.first_name} ${data.last_name}`;
-            }
-        }, {
-          "data": "user_id",
-            "mRender": function(data, type) {
-             
-              return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data._id}">view</button>`;
-            }
-        },{
           "data": "_id",
             "mRender": function(data, type) {
              
@@ -1582,6 +1579,18 @@ function download(){
         }, {
             "data" : "payment_type"
         },{
+            "data" : "date_ordered",
+            "mRender" : function(data, type){
+              let date = data.split("T")[0]
+              return date
+            }
+        },  {
+          "data": "user_id",
+            "mRender": function(data, type) {
+             
+              return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data._id}">view</button>`;
+            }
+        },{
           "data":null,
             "mRender": function(data,type){
               let orderreftable = data._id
@@ -1609,6 +1618,9 @@ function download(){
                    else if(data.order_status === "Trash"){
                   spantag = `<span id="span_status" class="badge badge-danger">Trash</span>`
                  }
+                     else if(data.order_status === "Completed"){
+                  spantag = `<span id="span_status" class="badge badge-success">Completed</span>`
+                 }
 
                  else{
                   console.log(data.order_status)
@@ -1618,24 +1630,6 @@ function download(){
                  return spantag
             }
         }, {
-            "data" : "date_ordered",
-            "mRender" : function(data, type){
-              let date = data.split("T")[0]
-              return date
-            }
-        },  {
-          "data": "user_id",
-            "mRender": function(data, type) {
-             
-              return `${data.first_name} ${data.last_name}`;
-            }
-        }, {
-          "data": "user_id",
-            "mRender": function(data, type) {
-             
-              return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data._id}">view</button>`;
-            }
-        },{
           "data": "_id",
             "mRender": function(data, type) {
              

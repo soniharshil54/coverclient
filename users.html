@@ -489,7 +489,7 @@
 },
                 
         "ajax" : {
-            "url" : `http://${hosturl}:5600/api/user/users`,
+            "url" : `http://${hosturl}:5600/api/user/activeusers`,
             dataSrc : ''
         },
         "columns" : [{
@@ -544,19 +544,20 @@
   } 
 
     function deleteusers(){
+      console.log("delete users running")
    // let deleteprotoget = globalProduct
     // let userrow = 
-    let todeleteids = printChecked()
+    let todeactiveids = printChecked()
     let deleteArray = {
-      todeleteids
+      todeactiveids
     }
-              fetch(`http://${hosturl}:5600/api/user/deleteusers`,
+              fetch(`http://${hosturl}:5600/api/user/deactivateusers`,
           {
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            method: "DELETE",
+            method: "PUT",
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
@@ -582,7 +583,7 @@
 
 
   function getusers(){
-        fetch(`http://${hosturl}:5600/api/user/users`)
+        fetch(`http://${hosturl}:5600/api/user/activeusers`)
     .then(response => {
      // console.log(response)
       return response.json()})

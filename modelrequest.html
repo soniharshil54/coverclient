@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>phone case</title>
+  <title>AdminLTE 3 | DataTables</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -11,52 +11,14 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- overlayScrollbars -->
+  <!-- DataTables -->
+  <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <link rel="stylesheet" href="dist/css/tagstyle.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-  <style type="text/css">
-    #testtr{
-      color: red
-    }
-
-    #mobile_div{
-      display: none;
-    }
-
-    @media (min-width: 576px){
-    .modal-dialog {
-      max-width: 550px;
-      margin: 1.75rem auto;
-    }
-    }
-
-    @media (min-width: 576px){
-    .modal-content {
-      box-shadow: none;
-    }
-    }
-
-                body
-    {
-        counter-reset: Serial;           /* Set the Serial counter to 0 */
-    }
-
-    .auto-index td:first-child:before
-{
-  counter-increment: Serial;      /* Increment the Serial counter */
-  content: counter(Serial); /* Display the counter */
-}
-
-
-
-  </style>
 </head>
-<!-- <body class="hold-transition sidebar-mini"> -->
-  <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-<!-- Site wrapper -->
+<body class="hold-transition sidebar-mini">
 <div class="wrapper">
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -65,14 +27,31 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
       </li>
+   <!--    <li class="nav-item d-none d-sm-inline-block">
+        <a href="index3.html" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item d-none d-sm-inline-block">
+        <a href="#" class="nav-link">Contact</a>
+      </li> -->
     </ul>
 
+    <!-- SEARCH FORM -->
+<!--     <form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form> -->
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
-        <!-- <a class="nav-link" data-toggle="dropdown" href="#">
+       <!--  <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-comments"></i>
           <span class="badge badge-danger navbar-badge">3</span>
         </a> -->
@@ -80,7 +59,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="../../dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -96,7 +75,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../../dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -112,7 +91,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="../../dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -154,8 +133,8 @@
           <div class="dropdown-divider"></div>
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
-      </li><!-- 
-      <li class="nav-item">
+      </li>
+     <!--  <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
           <i class="fas fa-th-large"></i>
         </a>
@@ -164,6 +143,8 @@
   </nav>
   <!-- /.navbar -->
 
+  <!-- Main Sidebar Container -->
+  <!-- Main Sidebar Container -->
    <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -275,7 +256,7 @@
             </a>
           </li>
              <li class="nav-item has-treeview">
-            <a href="modelrequest.html" class="nav-link">
+            <a href="modelrequest.html" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 New Model Requests
@@ -284,7 +265,7 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <a href="notification.html" class="nav-link active">
+            <a href="notification.html" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 Notifications
@@ -350,117 +331,124 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Notification Panel</h1>
+            <h1>Users</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Notification</li>
+              <li class="breadcrumb-item active">Users</li>
             </ol>
           </div>
         </div>
-      </div>
+      </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
-    <section style="" class="content">
+    <section class="content">
       <div class="row">
-        <div class="col-md-5">
-          <div class="card card-secondary">
+        <div class="col-12">
+          <div class="card">
             <div class="card-header">
-              <h3 id="productAddHeading" class="card-title">Notification</h3>
-
-              <!-- <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-plus"></i></button>
-              </div> -->
-            </div>
-            <div class="card-body">
-                
-                                <div class="row">                    
-                                	<div id="" class="col-sm-12">
-                      <div class="form-group">
-                        <label>Notification Title</label>
-                        <input id="n_title" type="text" class="form-control" placeholder="Enter Title ...">
-                      </div>
-                    </div> 
-                      <div id="" class="col-sm-6">
-                      <div class="form-group">
-                        <label>Order Status</label>
-                         <select id="notif_select" class="form-control custom-select">
-                           <option>All</option>          
-                  <option>Pending Payment</option>
-                  <option>Processing</option>
-                  <option>Failed</option>
-                  <option>On hold</option>
-                  <option>Refunded</option>
-                  <option>Trash</option>
-                        </select>
-                      </div>
-                    </div> 
-                      <div id="" class="col-sm-6">
-                      <div class="form-group">
-                        <label>Date</label>
-                        <input type="date" class="form-control" placeholder="Enter Title ...">
-                      </div>
-                    </div> 
-                       <div class="col-sm-12">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">Image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <form name="ohImages" id="ohImages" enctype="multipart/form-data">
-                        <input name="offer_image" id="hImage" type="file" class="custom-file-input" id="exampleInputFile"></form>
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
+              <div class="row">
+                <div class="col-sm-3">
+                     <h3 class="card-title">Users</h3>
                   </div>
-                    </div>
-                    <div class="col-sm-12">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Text</label>
-                        <textarea style="height: 200px" id="s_text" type="textarea" class="form-control" placeholder="Enter ..."></textarea>
-                      </div>
-                    </div>
-                       
-                     <!--  <div class="col-sm-4">
-                        <div class="form-group">
-                        <label>Size</label>
-                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                      </div> -->
+                  <div class="col-sm-5">
+                    <span style="color: green; font-weight: bold;" id="confirmDelete"></span>
                   </div>
-                      <div class="row">
-                    <div class="col-sm-4">
-                          
-                    </div>    
-                    <div class="col-sm-8">
-                      <input style="margin-right: 10px" onclick="resetform()" type="button" id="" value="Cancel" class="btn btn-danger float-right">
-                      <input style="margin-right: 10px" type="button" id="" value="Send Notification" class="btn btn-success float-right">
-                      
-                    </div>   
+                  <div class="col-sm-2">
+                    <div style="float: right;" class="download-wrapper" onClick="download()">
+                  <button class="btn btn-success">Export to csv</button>
+                </div>
+                  </div>
+                <div class="col-sm-2">
+                     <h3 class="card-title" style="float: right"><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></h3>
                   </div>
                   
-          
-                                       
+                  
+              </div>
+             
+                
+            </div>
+
+            <!-- /.card-header -->
+            <div class="card-body">
+              
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Sr No.</th>
+                  <th>Name</th>
+                  <th>Contact</th>
+                  <th>Email</th>  
+                  <th>Date</th>
+                  <th>Model name</th>
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div></th>            
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Sr No.</th>
+                  <th>Name</th>
+                  <th>Contact</th>
+                  <th>Email</th>
+                  <th>Date</th>
+                  <th>Model name</th>
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div></th>
+                </tr>
+                </tfoot>
+              </table>
             </div>
             <!-- /.card-body -->
           </div>
           <!-- /.card -->
         </div>
-        <div class="col-md-7">
-          <div id="notificationjson"></div>
-        </div>
+        <!-- /.col -->
       </div>
-        
+      <!-- /.row -->
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
-<footer class="main-footer">
+   <div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div style="margin-bottom: 30px" class="col-sm-12">
+              <span>Are you sure you want to delete selected records ??</span>
+            </div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="form-group">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="deleteusers()" type="button" value="Confirm" class="btn btn-success float-right">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
+             </div>
+
+           </div> 
+         </div>
+       </div>
+
+       <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
   <strong>Call us:  <a href="#">+91 8866220223</a>.</strong> 
   </footer>
 
@@ -470,150 +458,288 @@
   </aside>
   <!-- /.control-sidebar -->
 </div>
-
-
-
-
-
 <!-- ./wrapper -->
- <!-- <h2>Modal Example</h2> -->
-  <!-- Button to Open the Modal -->
-  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Open modal
-  </button> -->
-  
-</div>
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- DataTables -->
+<script src="plugins/datatables/jquery.dataTables.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="hosturl.js"></script>
-
-
-
-
-
-
-<!-- <script type="text/javascript">
-  function getdatafortable(unfiltered){
-    var filters = ["name","size","price"];
-    let filtered = JSON.parse(unfiltered).map(function(currObj) {
-  var temp = {};
-  for identifier in filters:
-    temp[identifier] = currObj[identifier];
-  return temp;
-});
-    return filtered
-  }
+<!-- page script -->
+<!-- <script>
+  $(function () {
+    $("#example1").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+    });
+  });
 </script> -->
 
 
+
 <script type="text/javascript">
-  function tonotif(){
-    console.log("notif called")
-    let notifto = document.getElementById("notif_select").value
-    console.log(notifto)
-    if(notifto !== "All"){
-      console.log("its here")
-      document.getElementById("mobile_div").style.display = "block"
+
+    function getusersdatatable(){
+          let userTable = $('#example1').DataTable({
+            destroy: true,
+        "processing" : true,
+        "rowCallback": function (nRow, aData, iDisplayIndex) {
+     var oSettings = this.fnSettings ();
+     $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+     return nRow;
+},
+                
+        "ajax" : {
+            "url" : `http://${hosturl}:5600/api/order/getmodelrequests`,
+            dataSrc : ''
+        },
+        "columns" : [{
+            "data" : null
+        },{
+            "data" : "user_id",
+            mRender : function(data, type) {
+              let mname = data ? data.first_name + " " + data.last_name : " "
+              return mname
+            }
+        }, {
+            "data" : "user_id",
+            mRender : function(data, type) {
+              let mcontact = data ? data.contact : " "
+              return mcontact
+            }
+        }, {
+            "data" : "user_id",
+            mRender : function(data, type) {
+              let mmail = data ? data.email_id : " "
+              return mmail
+            }
+        },{
+          "data" : "date",
+          mRender : function(data, type){
+            let mdate = data ? data.split("T")[0].split("-").reverse().join("-") : " "
+            return mdate
+          }
+        }  
+
+        ,{
+            "data" : "model_name"
+        },{
+          "data": "_id",
+            "mRender": function(data, type) {
+              console.log(data)
+              return `<input name="todelete" value=${data} type="checkbox">`;
+            }
+        }]
+    });
+
+
+
     }
-    else{
-      document.getElementById("mobile_div").style.display = "none"
-    }
+
+    getusersdatatable()
+
+
+ function canceldelete(){
+    $("#deleteModal").modal("hide");
   }
 
-  function resetform(){
-    document.getElementById("n_title").value= ""
-    document.getElementById("s_text").value = ""
+    function opendeletemodal(){
+    $("#deleteModal").modal("show");
+  }
+
+    function checkAll()
+ {
+     var tablek = document.getElementById ('example1');
+     var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
+     var val = checkboxes[0].checked;
+     for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
+ }
+
+  function printChecked(){
+    var items=document.getElementsByName('todelete');
+    var selectedItems=[];
+    for(var i=0; i<items.length; i++){
+      if(items[i].type=='checkbox' && items[i].checked==true)
+        selectedItems.push(items[i].value);
+    }
+    // console.log(selectedItems);
+    return selectedItems
+  } 
+
+    function deleteusers(){
+      console.log("delete users running")
+   // let deleteprotoget = globalProduct
+    // let userrow = 
+    let todeactiveids = printChecked()
+    let deleteArray = {
+      todeactiveids
+    }
+              fetch(`http://${hosturl}:5600/api/order/deletemodelrequests`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(deleteArray)
+          })
+          .then(function(res){ 
+        //         table
+        // .row( $(this).parents('tr') )
+        // .remove()
+        // .draw();
+         $("#deleteModal").modal("hide");
+            getusersdatatable()
+            document.getElementById("confirmDelete").innerHTML = "Seleted users deleted successfully!!!"
+            console.log(res)
+          })
+          .catch(function(res){ console.log(res) })
+  }
+
+</script>
+<script type="text/javascript">
+
+      function logOutUser(){
+    localStorage.clear();
+    window.location  =  "login.html";
   }
 
 
-    function getsmsdata(){
-        fetch(`http://${hosturl}:5600/api/user/getsmsdata`)
+  function getusers(){
+        fetch(`http://${hosturl}:5600/api/user/activeusers`)
     .then(response => {
+     // console.log(response)
       return response.json()})
     .then(data => {
-      oksmsdata = data.map(a => ({...a}));
+      okoffers = data.map(a => ({...a}));
+      globalusers = okoffers
+      //let okchains = Object.assign({}, data);
+      // console.log(okoffers)
+  // okchains = Object.assign({}, data);
+   //console.log(okchains)
+   //let testkey = Object.assign({}, data);
+      //okchains = data
+      //let newkeychains = getkeychains(data)
       
-      CreateTableFromJSON(data)
+     // CreateTableFromJSON(data)
    })
     .catch(err => console.log(err))
   }
-  getsmsdata()
 
-      function CreateTableFromJSON(myBookso) {
-      // let myBooksnotform = getkeychains(myBookso)
+  //getusers()
 
-       var myBooks = JSON.parse(JSON.stringify( myBookso, ["sendtotype","sendto","content"]));
+          function checkLogin(){
+    
+    if (localStorage.getItem("luser") === null) {
+     // $('#loggedIn').css("display","none")
+       // $('#logintosee').html("login to see the registered users")
+       // $('#notloggedbtn').css("display","block")
+        window.location = "login.html";
+      //  console.log(ran)
+    }
+    else{
+      console.log(localStorage.getItem("luser"))
+      //var loguser = JSON.parse(localStorage.getItem('luser'));
+      //var username = loguser.name;
 
-      let thinvoice = ["send type", "Send to","Content"]
+      var authtokend = localStorage.getItem('authorization')
+      //getproducts()
+      console.log(authtokend)
+      
+      //console.log(username)   
+       }
+  }
+  checkLogin()
 
 
-        var col = [];
-        for (var i = 0; i < myBooks.length; i++) {
-            for (var key in myBooks[i]) {
-                if (col.indexOf(key) === -1) {
-                    col.push(key);
-                }
-            }
+  function convertToCSV(objArray) {
+    var array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray;
+    var str = '';
+
+    for (var i = 0; i < array.length; i++) {
+        var line = '';
+        for (var index in array[i]) {
+            if (line != '') line += ','
+
+            line += array[i][index];
         }
 
-        // CREATE DYNAMIC TABLE.
-        var table = document.createElement("table");
-        table.setAttribute("class", "table table-striped auto-index");
-        table.setAttribute("id","keychaintable")
-        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
-
-        var tr = table.insertRow(-1);  
-        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
-
-        for (var i = -1; i < col.length; i++) {
-            var th = document.createElement("th");  
-                // TABLE HEADER.
-                if(i === -1){
-                  th.innerHTML = "No.";
-                }
-                else {
-                  th.innerHTML = thinvoice[i];
-                }
-            
-            tr.appendChild(th);
-
-        }
-
-        // ADD JSON DATA TO THE TABLE AS ROWS.
-        for (var i = 0; i < myBooks.length; i++) {
-
-            tr = table.insertRow(-1);
-            //tr.setAttribute("contenteditable", "true"); 
-            for (var j = -1; j < col.length; j++) {
-              var tabCell = tr.insertCell(-1);
-              if(j === -1){
-                tabCell.innerHTML = "";
-              }
-              else {
-                tabCell.innerHTML = myBooks[i][col[j]];
-              }
-            }
-        }
-
-        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-        var divContainer = document.getElementById("notificationjson");
-        divContainer.innerHTML = "";
-        divContainer.appendChild(table);
+        str += line + '\r\n';
     }
 
-  
-    
-</script>
+    return str;
+}
 
-<script type="text/javascript">
+function exportCSVFile(headers, items, fileTitle) {
+    if (headers) {
+        items.unshift(headers);
+    }
 
+    var jsonObject = JSON.stringify(items);
+
+    var csv = this.convertToCSV(jsonObject);
+
+    var exportedFilenmae = fileTitle + '.csv' || 'export.csv';
+
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    if (navigator.msSaveBlob) { 
+        navigator.msSaveBlob(blob, exportedFilenmae);
+    } else {
+        var link = document.createElement("a");
+        if (link.download !== undefined) { 
+            var url = URL.createObjectURL(blob);
+            link.setAttribute("href", url);
+            link.setAttribute("download", exportedFilenmae);
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    }
+}
+
+function download(){
+  var headers = {
+      name: 'Name', 
+      contact: "Contact",
+      email: "Email",
+      city: "City"
+  };
+
+  itemsNotFormatted = globalusers
+
+  var itemsFormatted = [];
+
+  itemsNotFormatted.forEach((item) => {
+      itemsFormatted.push({
+          name: item.first_name, 
+          contact: item.contact,
+          email: item.email_id,
+          city: item.city
+      });
+  });
+
+  var fileTitle = 'users'; // or 'my-unique-title'
+
+  exportCSVFile(headers, itemsFormatted, fileTitle); 
+}
 </script>
+<!-- <script type="text/javascript">
+    $.ajax({url: "demo_test.txt", success: function(result){
+    $("#div1").html(result);
+  }});
+</script> -->
 </body>
 </html>

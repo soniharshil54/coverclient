@@ -1461,7 +1461,12 @@ function download(){
         "columns" : [ {
             "data" : null
         }, {
-            "data" : "order_id"
+            "data" : null,
+            "mRender": function(data, type){
+              let orderid = data._id
+              let atag = `<a href='invoice.html#${orderid}'>${data.order_id}</a>`
+              return atag
+            }
         }, {
             "data" : "products",
             "mRender" : function(data, type){
@@ -1555,7 +1560,12 @@ function download(){
         "columns" : [ {
             "data" : null
         }, {
-            "data" : "order_id"
+            "data" : null,
+            "mRender": function(data, type){
+              let orderid = data._id
+              let atag = `<a href='invoice.html#${orderid}'>${data.order_id}</a>`
+              return atag
+            }
         }, {
             "data" : "products",
             "mRender" : function(data, type){

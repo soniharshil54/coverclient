@@ -588,7 +588,12 @@
               <th>Product Name:</th>
               <td><span id="cart_p_name"></span></td>
             </tr>
+              <tr>
+              <th>Order Id:</th>
+              <td><span id="cart_order_id"></span></td>
+            </tr>
             <tr>
+
               <th>Image:</th>
               <td>
       <img id="cart_p_image" src="images/3.jpg" alt="W3Schools" style="max-height: 200px; max-width: 200px">
@@ -1012,6 +1017,7 @@ async function download() {
 
     function productdetailsmodal(probtn){
       let proid = probtn.getAttribute('data-pid')
+      let orderid = probtn.getAttribute('data-oid')
       // console.log(proid)
       fetch(`http://${hosturl}:5600/api/order/getcartproductbyid/${proid}`)
       .then(response => {
@@ -1022,6 +1028,7 @@ async function download() {
       .then(result => {
         // console.log(result)
         document.getElementById("cart_p_name").innerHTML = result.product_name
+        document.getElementById("cart_order_id").innerHTML = orderid
         document.getElementById("cart_p_printname").innerHTML = result.print_name ? result.print_name : "N.A."
         document.getElementById("cart_p_size").innerHTML = result.size ? result.size : "N.A."
         document.getElementById("cart_p_quantity").innerHTML = result.quantity ? result.quantity : "N.A."
@@ -1468,12 +1475,15 @@ function download(){
               return atag
             }
         }, {
-            "data" : "products",
+            "data" : null,
             "mRender" : function(data, type){
                 let products_name = ''
-                for(let i=0; i < data.length; i++){
+                let productsref = data.products
+                let order_id = data.order_id
+                for(let i=0; i < productsref.length; i++){
                   // console.log()
-                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px;color:green" class="btn" data-pid="${data[i]._id}">${data[i].product_name}</button>`
+
+                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px;color:green" class="btn" data-oid=${order_id} data-pid="${productsref[i]._id}">${productsref[i].product_name}</button>`
                   products_name += `${btntag} </br> `
                 }
               return products_name
@@ -1569,12 +1579,15 @@ function download(){
               return atag
             }
         }, {
-            "data" : "products",
+            "data" : null,
             "mRender" : function(data, type){
                 let products_name = ''
-                for(let i=0; i < data.length; i++){
+                let productsref = data.products
+                let order_id = data.order_id
+                for(let i=0; i < productsref.length; i++){
                   // console.log()
-                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px;color:green" class="btn" data-pid="${data[i]._id}">${data[i].product_name}</button>`
+
+                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px;color:green" class="btn" data-oid=${order_id} data-pid="${productsref[i]._id}">${productsref[i].product_name}</button>`
                   products_name += `${btntag} </br> `
                 }
               return products_name

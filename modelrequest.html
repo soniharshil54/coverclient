@@ -331,12 +331,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Users</h1>
+            <h1>Model requests</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Users</li>
+              <li class="breadcrumb-item active">Model requests</li>
             </ol>
           </div>
         </div>
@@ -351,16 +351,16 @@
             <div class="card-header">
               <div class="row">
                 <div class="col-sm-3">
-                     <h3 class="card-title">Users</h3>
+                     <h3 class="card-title">Model requests</h3>
                   </div>
-                  <div class="col-sm-5">
+                  <div class="col-sm-7">
                     <span style="color: green; font-weight: bold;" id="confirmDelete"></span>
                   </div>
-                  <div class="col-sm-2">
+                 <!--  <div class="col-sm-2">
                     <div style="float: right;" class="download-wrapper" onClick="download()">
                   <button class="btn btn-success">Export to csv</button>
                 </div>
-                  </div>
+                  </div> -->
                 <div class="col-sm-2">
                      <h3 class="card-title" style="float: right"><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></h3>
                   </div>
@@ -582,9 +582,9 @@
       console.log("delete users running")
    // let deleteprotoget = globalProduct
     // let userrow = 
-    let todeactiveids = printChecked()
+    let todeleteids = printChecked()
     let deleteArray = {
-      todeactiveids
+      todeleteids
     }
               fetch(`http://${hosturl}:5600/api/order/deletemodelrequests`,
           {
@@ -592,7 +592,7 @@
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            method: "PUT",
+            method: "DELETE",
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 

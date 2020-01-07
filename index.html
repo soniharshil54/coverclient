@@ -21,6 +21,10 @@
     padding: 0px;height: 20px;font-size: 14px;border: 0px;box-shadow: none;text-align: center;-webkit-appearance: none;
     }
 
+    #customdate-filter{
+      display: none;
+    }
+
     @media (min-width: 576px){
     .modal-dialog {
       max-width: 550px;
@@ -470,11 +474,13 @@
               <div class="card-header d-flex p-0">
                 <h3 class="card-title p-3">Reports</h3>
                 <ul class="nav nav-pills ml-auto p-2">
-                  <li class="nav-item"><a class="nav-link active" href="#tab_1" data-toggle="tab">Year</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Last Month</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#tab_3" data-toggle="tab">This Month</a></li>
+                  <li class="nav-item"><a class="nav-link active" onclick="reportlogics('year')" href="#tab_1" data-toggle="tab">Year</a></li>
+                  <li class="nav-item"><a class="nav-link" onclick="reportlogics('lmonth')" href="#tab_1" data-toggle="tab">Last Month</a></li>
+                  <li class="nav-item"><a class="nav-link" onclick="reportlogics('tmonth')" href="#tab_1" data-toggle="tab">This Month</a></li>
                   
-                  <li class="nav-item"><a class="nav-link" href="#tab_2" data-toggle="tab">Last 7 Days</a></li>
+                  <li class="nav-item"><a class="nav-link" onclick="reportlogics('week')" href="#tab_1" data-toggle="tab">Last 7 Days</a></li>
+                  <li class="nav-item"><a class="nav-link" onclick="showcustomrange()" href="#tab_1" data-toggle="tab">Custom</a></li>
+                  <li style="margin-left: 30px" id="customdate-filter" class="nav-item"><input onchange="filtercustomrange()" id="report_start" style="display: inline;width: 40%" type="date" class="form-control" name="">&nbsp;To&nbsp;<input id="report_end" onchange="filtercustomrange()" style="display: inline;width: 40%" type="date" class="form-control" name=""></li>
                   
                 <!--   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
@@ -494,29 +500,26 @@
                 <div class="tab-content">
                   <div class="tab-pane active" id="tab_1">
               <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
+        <!--   <div class="col-12 col-sm-6 col-md-3">
             <a href="orders.html">
             <div class="info-box">
-              <!-- <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span> -->
 
               <div style="color: black" class="info-box-content">
-                <span class="info-box-text">gross sales in this period</span>
+                <span class="info-box-text">Gross sales in this period</span>
                 <span id="orders_count" class="info-box-number">Rs. 45,200</span>
                
               </div>
-              <!-- /.info-box-content -->
             </div>
             </a>
-            <!-- /.info-box -->
-          </div>
+          </div> -->
           <!-- /.col -->
           <div class="col-12 col-sm-6 col-md-3">
             <div class="info-box mb-3">
               <!-- <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span> -->
 
               <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Orders Placed</span>
-                <span id="products_count" class="info-box-number">190</span>
+                <span class="info-box-text">Total sales in this period</span>
+                <span id="totalsales_r" class="info-box-number">190</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -533,8 +536,8 @@
               <!-- <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span> -->
 
               <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Items Purchased</span>
-                <span id="sales_amount" class="info-box-number">250</span>
+                <span class="info-box-text">Worth of coupon used</span>
+                <span id="couponused_r" class="info-box-number">250</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -548,8 +551,23 @@
               <!-- <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span> -->
 
               <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Charged for shipping</span>
-                <span id="users_count" class="info-box-number">Rs. 4,890</span>
+                <span class="info-box-text">Refunded amount in this period</span>
+                <span id="refunded_r" class="info-box-number">Rs. 4,890</span>
+              </div>
+              <!-- /.info-box-content -->
+            </div>
+          </a>
+            <!-- /.info-box -->
+          </div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+            <a href="users.html">
+            <div class="info-box mb-3">
+              <!-- <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span> -->
+
+              <div style="color: black" class="info-box-content">
+                <span class="info-box-text">Shipping Charge</span>
+                <span id="shippingcharges_r" class="info-box-number">Rs. 4,890</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -565,8 +583,8 @@
               <!-- <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span> -->
 
               <div style="color: black" class="info-box-content">
-                <span class="info-box-text">worth of coupans used</span>
-                <span id="orders_count" class="info-box-number">Rs. 45,200</span>
+                <span class="info-box-text">Pending Amount</span>
+                <span id="pendingamount_r" class="info-box-number">Rs. 45,200</span>
                
               </div>
               <!-- /.info-box-content -->
@@ -581,7 +599,7 @@
 
               <div style="color: black" class="info-box-content">
                 <span class="info-box-text">Orders Placed</span>
-                <span id="products_count" class="info-box-number">190</span>
+                <span id="ordersplaced_r" class="info-box-number">190</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -599,7 +617,7 @@
 
               <div style="color: black" class="info-box-content">
                 <span class="info-box-text">Items Purchased</span>
-                <span id="sales_amount" class="info-box-number">250</span>
+                <span id="itemspurchased_r" class="info-box-number">250</span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -607,289 +625,11 @@
             <!-- /.info-box -->
           </div>
           <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="users.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Average net daily sales</span>
-                <span id="users_count" class="info-box-number">Rs. 4,890</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
+        
           <!-- /.col -->
         </div>
                   </div>
-                  <!-- /.tab-pane -->
-                  <div class="tab-pane" id="tab_2">
-                   <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box">
-              <!-- <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Average net daily sales</span>
-                <span id="orders_count" class="info-box-number">Rs. 12,200</span>
-               
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Orders Placed</span>
-                <span id="products_count" class="info-box-number">310</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Items Purchased</span>
-                <span id="sales_amount" class="info-box-number">430</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="users.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Charged for shipping</span>
-                <span id="users_count" class="info-box-number">Rs. 9,790</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box">
-              <!-- <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">gross sales in this period</span>
-                <span id="orders_count" class="info-box-number">Rs. 24,700</span>
-               
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Orders Placed</span>
-                <span id="products_count" class="info-box-number">80</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Items Purchased</span>
-                <span id="sales_amount" class="info-box-number">210</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="users.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Average net daily sales</span>
-                <span id="users_count" class="info-box-number">Rs. 1090</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        </div>
-                  </div>
-                  <!-- /.tab-pane -->
-                  <div class="tab-pane" id="tab_3">
-                    <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box">
-              <!-- <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">gross sales in this period</span>
-                <span id="orders_count" class="info-box-number">Rs. 37,200</span>
-               
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Orders Placed</span>
-                <span id="products_count" class="info-box-number">890</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Items Purchased</span>
-                <span id="sales_amount" class="info-box-number">1050</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="users.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Charged for shipping</span>
-                <span id="users_count" class="info-box-number">Rs. 890</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box">
-              <!-- <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Worth of Coupans used</span>
-                <span id="orders_count" class="info-box-number">Rs. 15,200</span>
-               
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Orders Placed</span>
-                <span id="products_count" class="info-box-number">290</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Items Purchased</span>
-                <span id="sales_amount" class="info-box-number">385</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="users.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Average net daily sales</span>
-                <span id="users_count" class="info-box-number">Rs. 400</span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        </div>
-                  </div>
+                
                   <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->
@@ -1303,7 +1043,7 @@ async function download() {
    })
     .catch(err => console.log(err))
 }
-getcharges()
+//getcharges()
 
 
     function changeorderstatus(selop){
@@ -1533,52 +1273,280 @@ getcharges()
         divContainer.appendChild(table);
     }
       function getproducts(){
-        //globalProduct = proname
-        // document.getElementById("productAddHeading").innerHTML = "Add "+globalProduct
-        // document.getElementById("productEditHeading").innerHTML = "Edit "+globalProduct
-        // document.getElementById("productShowHeading").innerHTML = globalProduct
-        // document.getElementById("add_keychain").value = "Add "+globalProduct
-        // document.getElementById("productEditBtn").value = "Add "+globalProduct
-        // let producttoget = proname
-        // let getpropara = producttoget + "s"
     fetch(`http://${hosturl}:5600/api/order/getorderswithdata`)
     .then(response => {
      // console.log(response)
       return response.json()})
     .then(data => {
       okchains = data.map(a => ({...a}));
-      //let okchains = Object.assign({}, data);
-      // console.log(okchains)
-  // okchains = Object.assign({}, data);
-   //console.log(okchains)
-   //let testkey = Object.assign({}, data);
-      //okchains = data
-      //let newkeychains = getkeychains(data)
       
       CreateTableFromJSON(data)
    })
     .catch(err => console.log(err))
 }
-      // let filters = ["name", "size", "price"]
-      // let ndata = JSON.parse(unfiltered).map(function(currObj) {
-      // var temp = {};
-      // for identifier in filters:
-      //   temp[identifier] = currObj[identifier];
-      // return temp;
-      // });
-      //getproducts()
-     // document.getElementById("keychain_link").setAttribute("class","nav-link active")
+
+function generatereport(){
+      fetch(`http://${hosturl}:5600/api/admin/generatereport`)
+    .then(response => {
+     // console.log(response)
+      return response.json()})
+    .then(data => {
+      okreport = data.map(a => ({...a}));
+      reportlogics("year")
+      //CreateTableFromJSON(data)
+   })
+    .catch(err => console.log(err))
+}
+generatereport()
+
+function filterreport(duration){
+
+}
+
+function showcustomrange(){
+  document.getElementById("customdate-filter").style.display = "block"
+}
+
+function filtercustomrange(){
+  let start_date_ref = document.getElementById("report_start").value
+  let end_date_ref = document.getElementById("report_end").value
+  let start_date = new Date(start_date_ref)
+  let end_date = new Date(end_date_ref)
+  end_date.setDate(end_date.getDate() + 1); 
+      let reportref = okreport.map(a => ({...a}))
+    let totalsales = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= start_date && dateref <= end_date
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let refundedamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= start_date && dateref <= end_date && a.order_status === "Refunded"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let pendingamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= start_date && dateref <= end_date && a.order_status === "Pending Payment"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let shippingcharge = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= start_date && dateref <= end_date
+            }).map(a => a.shipping).reduce((a,b) => a + b, 0  )
+    let ordersplaced = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= start_date && dateref <= end_date
+            }).length
+    let itemspurchased = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= start_date && dateref <= end_date
+            }).map(a =>  a.products.length).reduce((a,b) => a + b, 0)
+    //let totalsalesred = totalsales.reduce((a,b) => a + b )
+    //console.log(totalsalesred)
+    document.getElementById('totalsales_r').innerHTML =  `₹ ${totalsales}`
+    document.getElementById('couponused_r').innerHTML = ""
+    document.getElementById('refunded_r').innerHTML =  `₹ ${refundedamount}`
+    document.getElementById('pendingamount_r').innerHTML =  `₹ ${pendingamount}`
+    document.getElementById('shippingcharges_r').innerHTML =  `₹ ${shippingcharge}`
+    document.getElementById('ordersplaced_r').innerHTML = ordersplaced
+    document.getElementById('itemspurchased_r').innerHTML = itemspurchased
+    console.log(totalsales)
+    console.log(refundedamount)
+    console.log(pendingamount)
+    console.log(shippingcharge)
+}
+
+function reportlogics(duration){
+  if(duration === "year"){
+    document.getElementById("customdate-filter").style.display = "none"
+    var d = new Date();
+    var curyear = d.getFullYear();
+    let reportref = okreport.map(a => ({...a}))
+    let totalsales = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let refundedamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && a.order_status === "Refunded"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let pendingamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && a.order_status === "Pending Payment"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let shippingcharge = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear
+            }).map(a => a.shipping).reduce((a,b) => a + b, 0  )
+    let ordersplaced = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear
+            }).length
+    let itemspurchased = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear
+            }).map(a =>  a.products.length).reduce((a,b) => a + b, 0)
+    //let totalsalesred = totalsales.reduce((a,b) => a + b )
+    //console.log(totalsalesred)
+     document.getElementById('totalsales_r').innerHTML =  `₹ ${totalsales}`
+    document.getElementById('couponused_r').innerHTML = ""
+    document.getElementById('refunded_r').innerHTML =  `₹ ${refundedamount}`
+    document.getElementById('pendingamount_r').innerHTML =  `₹ ${pendingamount}`
+    document.getElementById('shippingcharges_r').innerHTML =  `₹ ${shippingcharge}`
+    document.getElementById('ordersplaced_r').innerHTML = ordersplaced
+   document.getElementById('itemspurchased_r').innerHTML = itemspurchased
+    console.log(totalsales)
+    console.log(refundedamount)
+    console.log(pendingamount)
+    console.log(shippingcharge)
+  }
+  else if(duration === "tmonth"){
+    document.getElementById("customdate-filter").style.display = "none"
+        var d = new Date();
+    var curyear = d.getFullYear();
+    var curmonth = d.getMonth()
+    let reportref = okreport.map(a => ({...a}))
+    let totalsales = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === curmonth
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let refundedamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === curmonth && a.order_status === "Refunded"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let pendingamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === curmonth && a.order_status === "Pending Payment"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let shippingcharge = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === curmonth
+            }).map(a => a.shipping).reduce((a,b) => a + b, 0  )
+    let ordersplaced = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === curmonth
+            }).length
+    let itemspurchased = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === curmonth
+            }).map(a =>  a.products.length).reduce((a,b) => a + b, 0)
+    //let totalsalesred = totalsales.reduce((a,b) => a + b )
+    //console.log(totalsalesred)
+    console.log(totalsales)
+    console.log(refundedamount)
+    console.log(pendingamount)
+    console.log(shippingcharge)
+    document.getElementById('totalsales_r').innerHTML =  `₹ ${totalsales}`
+    document.getElementById('couponused_r').innerHTML = ""
+    document.getElementById('refunded_r').innerHTML =  `₹ ${refundedamount}`
+    document.getElementById('pendingamount_r').innerHTML =  `₹ ${pendingamount}`
+    document.getElementById('shippingcharges_r').innerHTML =  `₹ ${shippingcharge}`
+    document.getElementById('ordersplaced_r').innerHTML = ordersplaced
+    document.getElementById('itemspurchased_r').innerHTML = itemspurchased 
+     }
+    else if(duration === "lmonth"){
+      document.getElementById("customdate-filter").style.display = "none"
+        var d = new Date();
+    var curyear = d.getFullYear();
+    var curmonth = d.getMonth()
+    var lastmonth = curmonth - 1
+    let reportref = okreport.map(a => ({...a}))
+    let totalsales = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === lastmonth
+            }).map(a => a.amount).reduce((a,b) => a + b, 0 )
+    let refundedamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === lastmonth && a.order_status === "Refunded"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let pendingamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === lastmonth && a.order_status === "Pending Payment"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let shippingcharge = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === lastmonth
+            }).map(a => a.shipping).reduce((a,b) => a + b, 0 )
+    let ordersplaced = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === lastmonth
+            }).length
+    let itemspurchased = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref.getFullYear() === curyear && dateref.getMonth() === lastmonth
+            }).map(a =>  a.products.length).reduce((a,b) => a + b, 0)
+    //let totalsalesred = totalsales.reduce((a,b) => a + b )
+    //console.log(totalsalesred)
+    console.log(totalsales)
+    console.log(refundedamount)
+    console.log(pendingamount)
+    console.log(shippingcharge)
+     document.getElementById('totalsales_r').innerHTML =  `₹ ${totalsales}`
+    document.getElementById('couponused_r').innerHTML = ""
+    document.getElementById('refunded_r').innerHTML =  `₹ ${refundedamount}`
+    document.getElementById('pendingamount_r').innerHTML =  `₹ ${pendingamount}`
+    document.getElementById('shippingcharges_r').innerHTML =  `₹ ${shippingcharge}`
+    document.getElementById('ordersplaced_r').innerHTML = ordersplaced
+    document.getElementById('itemspurchased_r').innerHTML = itemspurchased
+  }
+  else if( duration === "week"){
+    document.getElementById("customdate-filter").style.display = "none"
+            var d = new Date();
+    var curyear = d.getFullYear();
+    var curmonth = d.getMonth()
+    var lastmonth = curmonth - 1
+        let lastweekseconds = 86400000*7
+          var lastweekdate = new Date(Date.now() - lastweekseconds);
+    let reportref = okreport.map(a => ({...a}))
+    let totalsales = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= lastweekdate  && dateref <= d
+            }).map(a => a.amount).reduce((a,b) => a + b, 0 )
+    let refundedamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= lastweekdate  && dateref <= d && a.order_status === "Refunded"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let pendingamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= lastweekdate  && dateref <= d && a.order_status === "Pending Payment"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let shippingcharge = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= lastweekdate  && dateref <= d
+            }).map(a => a.shipping).reduce((a,b) => a + b, 0 )
+    let ordersplaced = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= lastweekdate  && dateref <= d
+            }).length
+    let itemspurchased = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref >= lastweekdate  && dateref <= d
+            }).map(a =>  a.products.length).reduce((a,b) => a + b, 0)
+    //let totalsalesred = totalsales.reduce((a,b) => a + b )
+    //console.log(totalsalesred)
+    console.log(totalsales)
+    console.log(refundedamount)
+    console.log(pendingamount)
+    console.log(shippingcharge)
+   document.getElementById('totalsales_r').innerHTML =  `₹ ${totalsales}`
+    document.getElementById('couponused_r').innerHTML = ""
+    document.getElementById('refunded_r').innerHTML =  `₹ ${refundedamount}`
+    document.getElementById('pendingamount_r').innerHTML =  `₹ ${pendingamount}`
+    document.getElementById('shippingcharges_r').innerHTML =  `₹ ${shippingcharge}`
+    document.getElementById('ordersplaced_r').innerHTML = ordersplaced
+    document.getElementById('itemspurchased_r').innerHTML = itemspurchased
+  }
+  else {
+    console.log("its in else")
+  }
+}
+
+//reportlogics("year")
   
 
+
+
         function checkLogin(){
-    
-    if (localStorage.getItem("luser") === null) {
-     // $('#loggedIn').css("display","none")
-       // $('#logintosee').html("login to see the registered users")
-       // $('#notloggedbtn').css("display","block")
+        if (localStorage.getItem("luser") === null) {
         window.location = "login.html";
-      //  console.log(ran)
-    }
+        }
     else{
       console.log(localStorage.getItem("luser"))
       //var loguser = JSON.parse(localStorage.getItem('luser'));

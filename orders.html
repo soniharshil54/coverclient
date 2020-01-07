@@ -982,6 +982,70 @@ async function download() {
   }
 
 
+    function getordercsvdatanew(oldorderjson){
+    let oldorderref = oldorderjson.map(a => ({...a}))
+    let ordercsv = []
+    for(i=0; i < oldorderref.length; i++){
+      let products = oldorderref[i].products
+      oldorderref[i].first_name = oldorderref[i].user_id.first_name
+      oldorderref[i].last_name = oldorderref[i].user_id.last_name
+      oldorderref[i].contact = oldorderref[i].user_id.contact
+      oldorderref[i].email_id = oldorderref[i].user_id.email_id
+      oldorderref[i].state = oldorderref[i].user_id.state
+      oldorderref[i].address = oldorderref[i].user_id.address.replace(/,/g, '-')
+      oldorderref[i].city = oldorderref[i].user_id.city
+      oldorderref[i].pincode = oldorderref[i].user_id.pincode
+      //delete oldorderref[i].user_id
+      delete oldorderref[i].is_paid
+      delete oldorderref[i].is_delivered
+      for(j =0; j < products.length; j++){
+        console.log(products[j].product_name)
+        console.log(products[j])
+        oldorderref[i].product_name = products[j].product_name
+        oldorderref[i].quantity = products[j].quantity
+        oldorderref[i].size = products[j].size
+        oldorderref[i].print_name = products[j].print_name
+        oldorderref[i].cover_type = products[j].cover_type
+        oldorderref[i].subamount = products[j].subtotal
+        oldorderref[i].product_name = products[j].product_name
+        var ordercsvn = { ...oldorderref[i] };
+        ordercsv.push(ordercsvn)
+      }
+    }
+    // let ordercsv = oldorderref.map(order => {
+    //   let productsref = order.products
+    //   let productsstr = ""
+    //   for(let i =0; i < productsref.length; i++){
+    //     let prostr = `${productsref[i].product_name} (${productsref[i].quantity}) | `
+    //     productsstr += prostr
+    //   }
+    //   order.productsdata = productsstr
+    //   order.first_name = order.user_id.first_name
+    //   order.last_name = order.user_id.last_name
+    //   order.contact = order.user_id.contact
+    //   order.email_id = order.user_id.email_id
+    //   order.state = order.user_id.state
+    //   order.address = order.user_id.address.replace(/,/g, '-')
+    //   order.city = order.user_id.city
+    //   order.pincode = order.user_id.pincode
+
+    //   //delete keychain._id
+    //   delete order.__v
+    //   delete order._id
+    //   delete order.products
+    //   delete order.user_id
+    //   delete order.is_paid
+    //   delete order.is_delivered
+    //   return order
+    // })
+    //console.log(newkeychains)
+    var ordercsvordered = JSON.parse(JSON.stringify( ordercsv, ["order_id","date_ordered","payment_type","first_name","last_name","email_id","contact","address","state","city","pincode","product_name","size","print_name","cover_type","quantity", "subamount"]));
+    console.log("ordercsv")
+    console.log(ordercsv)
+    return ordercsvordered
+  }
+
+
   function getkeychains(oldkeychains){
     //let tokeyc = oldkeychains.reverse()
     // console.log(oldkeychains)
@@ -1418,10 +1482,11 @@ function exportCSVFile(headers, items, fileTitle) {
     }
 }
 
+ ["order_id","date_ordered","payment_type","first_name","last_name","email_id","contact","address","state","city","pincode","product_name","size","print_name","cover_type","quantity", "subamount"]
+
 function download(){
   var headers = {
       order_id : "Order Id",
-      productsdata: "Products",
       date_ordered: "Date",
       payment_type: "Payment Method",
       first_name: "Customer First Name",
@@ -1432,13 +1497,15 @@ function download(){
       state :"State",
       city  :"City",
       pincode: "Pincode",
-      sub_total :"Subtotal",
-      gst_tax: "GST",
-      shipping :"Shipping",
-      amount :"Total Amount"
+      product_name: "Product Name",
+      size: "Size",
+      print_name: "print_name",
+      cover_type :"Cover Type",
+      quantity : "Quantity",
+      subamount : "Subamount"
   };
 
-  itemsNotFormatted = getordercsvdata(okchains)
+  itemsNotFormatted = getordercsvdatanew(okchains)
 
   var itemsFormatted = [];
 

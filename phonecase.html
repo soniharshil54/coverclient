@@ -952,7 +952,7 @@
                       </div> -->
                     </div>
                   </div> 
-                  <div class="col-sm-2">
+                  <div class="col-sm-1">
                     <!-- text input -->
                     <input type="hidden" id="modal_id" name="modal_id" value="">
                     <div class="form-group">
@@ -973,6 +973,14 @@
                     <div style="padding-left: 0" class="custom-control custom-checkbox">
                       <label>2d-Description</label>
                       <textarea id="modal_2d_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                    </div>
+                  </div>
+                </div>
+                   <div class="col-sm-1">
+                   <div class="form-group">
+                    <div style="padding-left: 0" class="custom-control custom-checkbox">
+                      <label>2d-available</label>
+                      <input type="checkbox" id="is_2d_available" name="">
                     </div>
                   </div>
                 </div>
@@ -1017,7 +1025,7 @@
                       </div> -->
                     </div>
                   </div> 
-                  <div class="col-sm-2">
+                  <div class="col-sm-1">
                     <!-- text input -->
                     <input type="hidden" id="modal_id" name="modal_id" value="">
                     <div class="form-group">
@@ -1038,6 +1046,14 @@
                     <div style="padding-left: 0" class="custom-control custom-checkbox">
                       <label>3d-Description</label>
                       <textarea id="modal_3d_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                    </div>
+                  </div>
+                </div>
+                    <div class="col-sm-1">
+                   <div class="form-group">
+                    <div style="padding-left: 0" class="custom-control custom-checkbox">
+                      <label>3d-available</label>
+                      <input type="checkbox" id="is_3d_available" name="">
                     </div>
                   </div>
                 </div>
@@ -1069,7 +1085,7 @@
                   <input type="text" id="modal_4d_price" class="form-control" placeholder="Enter ...">
                 </div>
               </div>
-              <div class="col-sm-6">
+              <div class="col-sm-5">
                <div class="form-group">
                 <div style="padding-left: 0" class="custom-control custom-checkbox">
                   <label>4d-Description</label>
@@ -1077,6 +1093,14 @@
                 </div>
               </div>
             </div>
+              <div class="col-sm-1">
+                   <div class="form-group">
+                    <div style="padding-left: 0" class="custom-control custom-checkbox">
+                      <label>4d-available</label>
+                      <input type="checkbox" id="is_4d_available" name="">
+                    </div>
+                  </div>
+                </div>
 
           </div>
 
@@ -1452,6 +1476,12 @@ function add_company(){
         document.getElementById("modal_2d_size").value = data.size_2d
         document.getElementById("modal_3d_size").value = data.size_3d
         document.getElementById("modal_4d_size").value = data.size_4d
+        let available_2d = data.available_2d === 1 ? true : false
+        let available_3d = data.available_3d === 1 ? true : false
+        let available_4d = data.available_4d === 1 ? true : false
+        document.getElementById("is_2d_available").checked = available_2d
+        document.getElementById("is_3d_available").checked = available_3d
+        document.getElementById("is_4d_available").checked = available_4d
         let image_i_2d = data.image_inner_2d
         let image_m_2d = data.image_mask_2d
         let image_i_3d = data.image_inner_3d
@@ -1491,11 +1521,17 @@ function add_company(){
       let description_3d = document.getElementById("modal_3d_description").value
       let description_4d = document.getElementById("modal_4d_description").value
       let keyid = document.getElementById("modal_id").value
+      let available_2d_ref = document.getElementById("is_2d_available").checked
+      let available_3d_ref = document.getElementById("is_3d_available").checked
+      let available_4d_ref = document.getElementById("is_4d_available").checked
+      let available_2d = available_2d_ref ? 1 : 0
+       let available_3d = available_3d_ref ? 1 : 0
+       let available_4d = available_4d_ref ? 1 : 0
     //let avail_status = document.getElementById("modal_avail_status").checked
     //console.log("avail status", avail_status)
     //let available_status = avail_status ? 1 : 0
     let keditdata = {
-      name, company, size_2d, price_2d, description_2d, size_3d, price_3d, description_3d, size_4d, price_4d, description_4d
+      name, company, size_2d, price_2d, description_2d, size_3d, price_3d, description_3d, size_4d, price_4d, description_4d, available_2d, available_3d, available_4d
     }
     console.log(keyid)
     console.log("k edit data")

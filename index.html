@@ -358,12 +358,35 @@
           <div class="col-sm-6">
             <h1 class="m-0 text-dark">Welcome to Mobile Cover Maker</h1>
           </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li><!-- 
-              <li class="breadcrumb-item active">Dashboard v2</li> -->
-            </ol>
-          </div><!-- /.col -->
+          <div class="col-sm-2">
+            <div class="form-group">
+              <div class="row">
+              <div class="col-sm-4"><label>COD:</label></div>
+              <div class="col-sm-8"><input id="n_cod" type="number" class="form-control" placeholder="Enter cod charges ..."></div></div>
+              
+              
+            </div>
+           
+          </div>
+          <div class="col-sm-2">
+              <div class="form-group">
+              <div class="row">
+              <div class="col-sm-5"><label>Shipping:</label></div>
+              <div class="col-sm-7"><input id="n_shipping" type="number" class="form-control" placeholder="Enter cod charges ..."></div></div>
+              
+              
+            </div>
+          </div>
+          <div class="col-sm-2">
+              <div class="form-group">
+              <div class="row">
+              <div class="col-sm-12"><input onclick="updatecharges()" class="btn btn-success" type="button" value="Update" name=""></div>
+              </div>
+              
+              
+            </div>
+          </div>
+          <!-- /.col -->
         </div><!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
@@ -1236,6 +1259,51 @@ async function download() {
         console.log(err)
       })
     }
+
+          function updatecharges(){
+    let cod_charges = document.getElementById("n_cod").value
+    let shipping_charges = document.getElementById("n_shipping").value
+    //let shippingcharge = offerref
+    let chargesdata = {
+      cod_charges, shipping_charges
+    }
+              fetch(`http://${hosturl}:5600/api/admin/editcharges`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(chargesdata)
+          })
+          .then(function(res){ 
+            console.log(res)
+            getcharges()
+            // console.log(res)
+           // uploadFileEdit(keyid)
+            //getoffers()
+           // $("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    //console.log(offerid)
+  }
+
+      function getcharges(){
+    fetch(`http://${hosturl}:5600/api/admin/getcharges`)
+    .then(response => {
+      return response.json()})
+    .then(data => {
+      console.log(data)
+      //okoffers = data.map(a => ({...a}));
+      document.getElementById("n_cod").value = data.cod_charges
+      document.getElementById("n_shipping").value = data.shipping_charges
+      
+      //CreateTableFromJSON(data)
+   })
+    .catch(err => console.log(err))
+}
+getcharges()
 
 
     function changeorderstatus(selop){

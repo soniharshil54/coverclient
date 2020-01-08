@@ -598,6 +598,7 @@
                   <th>Order Name</th>
                   <th>Order Type</th>
                   <th>Code</th>
+                  <th>Valid till</th>
                   <th>Edit</th>  
                   
                   <!-- <th>Date</th>
@@ -614,6 +615,7 @@
                   <th>Order Name</th>
                   <th>Order Type</th>
                   <th>Code</th>
+                  <th>Valid till</th>
                   <th>Edit</th>    <!-- 
                   <th>Date</th>
                   <th>User Info</th>
@@ -1766,6 +1768,12 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
             "data" : "offer_type"
         },{
             "data" : "code"
+        },{
+            "data" : "expiry_date",
+             "mRender" : function(data, type){
+              let date = data.split("T")[0].split("-").reverse().join("-")
+              return date
+            }
         },  {
           "data": "_id",
             "mRender": function(data, type) {

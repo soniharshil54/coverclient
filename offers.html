@@ -13,6 +13,9 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
   <link rel="stylesheet" href="dist/css/tagstyle.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
@@ -27,6 +30,10 @@
       max-width: 550px;
       margin: 1.75rem auto;
     }
+    }
+
+     #free_shipping_div, #buy_div, #get_div, #first_time_div {
+      display: none;
     }
 
     @media (min-width: 576px){
@@ -362,49 +369,87 @@
     <section style="margin-top: 120px" class="content">
       <div class="row">
         <div class="col-md-12">
-          <div class="card card-secondary collapsed-card">
+          <div class="card card-secondary">
             <div class="card-header">
               <h3 id="productAddHeading" class="card-title">Add Offer</h3>
 
-              <div class="card-tools">
+             <!--  <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
                   <i class="fas fa-plus"></i></button>
-              </div>
+              </div> -->
             </div>
             <div class="card-body">
                 
                                 <div class="row">
-                    <div class="col-sm-6">
+                                    <div class="col-sm-3">
+                      <div class="form-group">
+                        <label>Offer Type</label>
+                          <select onchange="changeofferinputs()" id="k_offer_type" class="form-control custom-select">
+                  <option value="flatdis">Flat Discount</option>
+                  <option value="bogo">BOGO</option>
+                  <option value="freeshipping">Free Shipping</option>
+                  <option value="firsttime">First Time Buy Discount</option>
+                  
+                </select>
+                      </div>
+                    </div> 
+                    <div class="col-sm-4">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Offer Name</label>
                         <input id="k_offer" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <label>Product Name</label>
-                          <select id="k_product" class="form-control custom-select">
-                  <option>Phonecase</option>
-                  <option>Tshirt</option>
-                  <option>Keychain</option>
-                  <option>Mug</option>
-                  <option>Popholder</option>
-                  <option>Photoframe</option>
-                  <option>Watch</option>
-                  <option>Wallclock</option>
-                  <option>Slipper Bottle</option>
-                </select>
-                      </div>
-                    </div> 
+                     <div class="col-sm-2">
+                                    <label>Date</label>
+                        <input id="k_expirydate" type="date" class="form-control" placeholder="Enter ...">
+                    </div>
+                  
                       <div class="col-sm-3">
                       <!-- text input -->
                       <div class="form-group">
                         <label>Code</label>
                         <input id="k_code" type="text" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div>                   <div class="col-sm-3">
-                                        <div class="form-group">
+                    </div>  
+                      <div id="flat_discount_div" class="col-sm-2">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Flat Discount</label>
+                        <input id="k_flat_discount" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>  
+                     <div id="free_shipping_div" class="col-sm-2">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Free Shipping On</label>
+                        <input id="k_free_shipping" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div> 
+                      <div id="first_time_div" class="col-sm-2">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>First Time Disc.</label>
+                        <input id="k_first_time" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>  
+                    <div id="buy_div" class="col-sm-1">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Buy</label>
+                        <input id="k_buy" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div> 
+                     <div id="get_div" class="col-sm-1">
+                      <!-- text input -->
+                      <div class="form-group">
+                        <label>Get</label>
+                        <input id="k_get" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div> 
+
+                     <div class="col-sm-2">
+                      <div class="form-group">
                     <label for="exampleInputFile">header image</label>
                     <div class="input-group">
                       <div class="custom-file">
@@ -413,17 +458,27 @@
                         
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
                     </div>
                   </div>
                     </div>
-                    <div class="col-sm-3">
-                                    <label>Date</label>
-                        <input id="k_expirydate" type="date" class="form-control" placeholder="Enter ...">
-                    </div>
-                    <div class="col-sm-6">
+                     <div class="col-sm-2">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>Minimum spend</label>
+                        <input id="k_min_spend" type="number" class="form-control" placeholder="Enter ..."></input> 
+                        </div>
+                        </div>
+                      </div>
+                       <div class="col-sm-2">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>Maximum spend</label>
+                        <input id="k_max_spend" type="number" class="form-control" placeholder="Enter ..."></input>
+                        </div>
+                        </div>
+                      </div>
+                   
+                    <div class="col-sm-4">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             <label>Terms & Conditions</label>
@@ -431,6 +486,8 @@
                         </div>
                         </div>
                       </div>
+                     
+                  
                      <!--  <div class="col-sm-4">
                         <div class="form-group">
                         <label>Size</label>
@@ -438,8 +495,50 @@
                       </div>
                       </div> -->
                   </div>
+                  <div class="row">
+                        <div class="col-sm-6">
+                         <div class="form-group">
+                  <label>Include Categories</label>
+                  <div class="select2-purple">
+                    <select onchange="disablecat(this)"  id="k_categories_inc" class="select2" multiple="multiple" data-placeholder="Select Categories" data-dropdown-css-class="select2-purple" style="width: 100%;"><div id="incdisdiv" style="position:absolute; left:0; right:0; top:0; bottom:0; cursor: pointer;" ></div>
+                      <option>Phonecase</option>
+                      <option>Tshirt</option>
+                      <option>Keychain</option>
+                      <option>Mug</option>
+                      <option>Popholder</option>
+                      <option>Slipper Bottle</option>
+                      <option>Watch</option>
+                      <option>Wall-clock</option>
+                      <option>Photoframe</option>
+                    </select>
+                  </div>
+                </div>
+                      </div>
+                      <div class="col-sm-6">
+                        <div class="form-group">
+                  <label>Exclude Categories</label>
+                  <select onchange="disablecat(this)" id="k_categories_ex" class="select2bs4" multiple="multiple" data-placeholder="Select Categories"
+                          style="width: 100%;">
+                      <option>Phonecase</option>
+                      <option>Tshirt</option>
+                      <option>Keychain</option>
+                      <option>Mug</option>
+                      <option>Popholder</option>
+                      <option>Slipper Bottle</option>
+                      <option>Watch</option>
+                      <option>Wall-clock</option>
+                      <option>Photoframe</option>
+                  </select>
+                </div>
+                      </div>
+                  </div>
                   
                   <div class="row">
+                    <div class="col-sm-6">
+                       <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='is_avail' value='option1'><label for='is_avail' class='custom-control-label'>Allow Free Shipping</label></div></div>
+                    </div>
+                    <div class="col-sm-6"></div>
+                     
                     <div class="col-sm-6">
                        <span id="offer_success_id" style="color: green; font-weight: bold;"></span>
                     </div>    
@@ -686,11 +785,90 @@
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/select2/js/select2.full.min.js"></script>
+<script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="hosturl.js"></script>
+
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
+
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Timepicker
+    $('#timepicker').datetimepicker({
+      format: 'LT'
+    })
+    
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function(event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    });
+
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    });
+
+  })
+</script>
 
 
 
@@ -716,10 +894,12 @@
   $('#add_offer').click(function(e) {
     //let addpropara = globalProduct
     let offer_name = document.getElementById("k_offer").value
-    let product_name = document.getElementById("k_product").value
     let code = document.getElementById("k_code").value
     let expiry_date = document.getElementById("k_expirydate").value
     let termsnconditions = document.getElementById("k_terms").value
+    let include_products = document.getElementById("k_categories_inc").value
+    let exclude_products = document.getElementById("k_categories_ex").value
+  
     let keydata = {
       offer_name : offer_name,
       product_name : product_name,
@@ -728,36 +908,40 @@
       termsnconditions : termsnconditions 
     }
     //console.log(keydata)
-    fetch(`http://${hosturl}:5600/api/offer/addoffer`,
-{
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    method: "POST",
-    body: JSON.stringify(keydata)
-})
-.then(function(res){ 
-  return res.json()
-  })
-.then(function(result){
-  console.log(result)
-  let offerid = result._id
-  console.log(result._id)
-  //getoffers()
-    document.getElementById("k_offer").value = ""
-    document.getElementById("k_product").value = ""
-    document.getElementById("k_code").value = ""
-    document.getElementById("k_expirydate").value = ""
-    document.getElementById("k_terms").value = ""
-    document.getElementById("offer_success_id").innerHTML = "Offer Created Successfully"
-   //let productId = result._id
-  // console.log(productId)
-   uploadFile(offerid)
+//     fetch(`http://${hosturl}:5600/api/offer/addoffer`,
+// {
+//     headers: {
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     },
+//     method: "POST",
+//     body: JSON.stringify(keydata)
+// })
+// .then(function(res){ 
+//   return res.json()
+//   })
+// .then(function(result){
+//   console.log(result)
+//   let offerid = result._id
+//   console.log(result._id)
+//     document.getElementById("k_offer").value = ""
+//     document.getElementById("k_product").value = ""
+//     document.getElementById("k_code").value = ""
+//     document.getElementById("k_expirydate").value = ""
+//     document.getElementById("k_terms").value = ""
+//     document.getElementById("offer_success_id").innerHTML = "Offer Created Successfully"
+   
+//    uploadFile(offerid)
   
+// })
+// .catch(function(res){ console.log(res) })
+//         });
 })
-.catch(function(res){ console.log(res) })
-        });
+
+//   $("#incdisdiv").click(function (evt) {
+//     $(this).hide()
+//     document.getElementById("k_categories_inc").disabled = false
+// });
 })
 </script>
 
@@ -801,6 +985,53 @@ function paginatortest(page, per_page) {
   // total_pages: total_pages,
   // data: paginatedItems
   // };
+}
+     // <option value="flatdis">Flat Discount</option>
+     // <option value="bogo">BOGO</option>
+     // <option value="freeshipping">Free Shipping</option>
+     // <option value="firsttime">First Time Buy Discount</option>
+function changeofferinputs(){
+  let offer_type = document.getElementById("k_offer_type").value
+  let inc_cat = $('#k_categories_inc').val();
+  let ex_cat = $('#k_categories_ex').val();
+  console.log(inc_cat)
+  console.log(ex_cat)
+  switch(offer_type) {
+  case 'flatdis':
+    document.getElementById("flat_discount_div").style.display = "block"
+    document.getElementById("free_shipping_div").style.display = "none"
+    document.getElementById("first_time_div").style.display = "none"
+    document.getElementById("buy_div").style.display = "none"
+    document.getElementById("get_div").style.display = "none"
+    // code block
+    break;
+  case 'bogo':
+    document.getElementById("flat_discount_div").style.display = "none"
+    document.getElementById("free_shipping_div").style.display = "none"
+    document.getElementById("first_time_div").style.display = "none"
+    document.getElementById("buy_div").style.display = "block"
+    document.getElementById("get_div").style.display = "block"
+    // code block
+    break;
+  case 'freeshipping':
+    document.getElementById("flat_discount_div").style.display = "none"
+    document.getElementById("free_shipping_div").style.display = "block"
+    document.getElementById("first_time_div").style.display = "none"
+    document.getElementById("buy_div").style.display = "none"
+    document.getElementById("get_div").style.display = "none"
+    // code block
+    break;
+  case 'firsttime':
+    document.getElementById("flat_discount_div").style.display = "none"
+    document.getElementById("free_shipping_div").style.display = "none"
+    document.getElementById("first_time_div").style.display = "block"
+    document.getElementById("buy_div").style.display = "none"
+    document.getElementById("get_div").style.display = "none"
+    // code block
+    break;  
+  default:
+    // code block
+}
 }
 
 
@@ -855,6 +1086,34 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   getoffers()
 }).catch(err => console.log(err))
 
+  }
+
+  function enableit(selectin){
+    console.log("chnage")
+    selectin.disabled = false
+  }
+
+  function disablecat(selectele){
+    console.log(selectele.id)
+    console.log("clicked")
+    let incsel = document.getElementById("k_categories_inc")
+    let exsel = document.getElementById("k_categories_ex")
+    if(selectele.id === "k_categories_inc"){
+      if(selectele.value === "" || selectele.value === null){
+        exsel.disabled = false
+      }
+      else{
+        exsel.disabled = true
+      }
+    }
+    else if(selectele.id === "k_categories_ex") {
+      if(selectele.value === "" || selectele.value === null){
+        incsel.disabled = false
+      }
+      else{
+        incsel.disabled = true
+      }
+    }
   }
 
   function getkeychains(oldkeychains){
@@ -1222,6 +1481,112 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   }
   checkLogin()
   getoffers()
+
+      function getordersdatatable(){
+          let userTable = $('#example1').DataTable({
+            destroy: true,
+        "processing" : true,
+          "rowCallback": function (nRow, aData, iDisplayIndex) {
+               var oSettings = this.fnSettings ();
+               $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+               return nRow;
+          },
+        "ajax" : {
+            "url" : `http://${hosturl}:5600/api/order/getorderswithdata`,
+            dataSrc : ''
+        },
+        "columns" : [ {
+            "data" : null
+        }, {
+            "data" : null,
+            "mRender": function(data, type){
+              let orderid = data._id
+              let atag = `<a href='invoice.html#${orderid}'>${data.order_id}</a>`
+              return atag
+            }
+        }, {
+            "data" : null,
+            "mRender" : function(data, type){
+                let products_name = ''
+                let productsref = data.products
+                let order_id = data.order_id
+                for(let i=0; i < productsref.length; i++){
+                  // console.log()
+
+                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px;color:green" class="btn" data-oid=${order_id} data-pid="${productsref[i]._id}">${productsref[i].product_name}</button>`
+                  products_name += `${btntag} </br> `
+                }
+              return products_name
+            }
+        },{
+            "data" : "amount",
+              "mRender" : function(data, type){
+              let amou = `${data} ₹`
+              return amou
+            }
+        }, {
+            "data" : "payment_type"
+        },{
+            "data" : "date_ordered",
+            "mRender" : function(data, type){
+              let date = data.split("T")[0].split('-').reverse().join('-')
+              return date
+            }
+        }, {
+          "data": "user_id",
+            "mRender": function(data, type) {
+             
+              return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data._id}">view</button>`;
+            }
+        },{
+          "data":null,
+            "mRender": function(data,type){
+              let orderreftable = data._id
+              console.log(orderreftable)
+              console.log(data.order_status)
+                 let forid = `order_status_ind_${orderreftable}`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option value="Failed">Failed</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
+          
+              let spantag = ""
+                 if(data.order_status === "Pending Payment"){
+                  spantag = `<span id="span_status" class="badge badge-warning">Pending Payment</span>`
+                 }
+                   else if(data.order_status === "Processing"){
+                  spantag = `<span id="span_status" class="badge badge-success">Processing</span>`
+                 }
+                 else if(data.order_status === "Failed"){
+                  spantag = `<span id="span_status" class="badge badge-danger">Failed</span>`
+                 }
+                  else if(data.order_status === "On Hold"){
+                  spantag = `<span id="span_status" class="badge badge-info">On Hold</span>`
+                 }
+                  else if(data.order_status === "Refunded"){
+                  spantag = `<span id="span_status" class="badge badge-warning">Refunded</span>`
+                 }
+                   else if(data.order_status === "Trash"){
+                  spantag = `<span id="span_status" class="badge badge-danger">Trash</span>`
+                 }
+                   else if(data.order_status === "Completed"){
+                  spantag = `<span id="span_status" class="badge badge-success">Completed</span>`
+                 }
+
+
+                 else{
+                  console.log(data.order_status)
+                  spantag = `<span id="span_status" class="badge badge-info">old</span>`
+                 }
+                 spantag += btntag3
+                 return spantag
+            }
+        }, {
+          "data": "_id",
+            "mRender": function(data, type) {
+             
+              return `<input name="todelete" value=${data} type="checkbox">`;
+            }
+        }]
+    });
+    }
 
   
     

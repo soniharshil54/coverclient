@@ -1457,7 +1457,16 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
       document.getElementById("modal_buy").value = data.buy_product ? data.buy_product : ""
       document.getElementById("modal_get").value = data.get_product ? data.get_product : ""
       document.getElementById("modal_offer_code").value = data.code ? data.code : ""
-      document.getElementById("modal_offer_date").value = data.expiry_date
+        var date = new Date(data.expiry_date);
+  field = document.querySelector('#modal_offer_date');
+  var day = date.getDate();
+  if(day<10){ day="0"+day;}
+
+  var month = date.getMonth()+1;
+  if(month<10){ month="0"+month;}
+
+  field.value = date.getFullYear()+"-"+month+"-"+day;
+     // document.getElementById("modal_offer_date").value = data.expiry_date
       document.getElementById("modal_offer_terms").value = data.termsnconditions
       let headerimage = data.h_image
       document.getElementById("modal_h_o_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
@@ -1839,11 +1848,11 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
         },{
             "data" : "code"
         },{
-            "data" : "expiry_date"
-            //  "mRender" : function(data, type){
-            //   let date = data.split("T")[0].split("-").reverse().join("-")
-            //   return date
-            // }
+            "data" : "expiry_date",
+             "mRender" : function(data, type){
+              let date = data.split("T")[0].split("-").reverse().join("-")
+              return date
+            }
         }, {
           "data": "_id",
             "mRender": function(data, type) {

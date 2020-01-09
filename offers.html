@@ -1870,10 +1870,10 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
              if(data.active_status === 1){
 
             outerbutton = `<button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
-            statuslink = `<a data-key=${data._id} onclick="deactiveoffer(this)" class="dropdown-item">Deactivated</a>`
+            statuslink = `<a data-key=${data._id} onclick="deactiveoffer(this)" class="dropdown-item">Inactive</a>`
              }
               else {
-             outerbutton = `<button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Inactive</button>`
+             outerbutton = `<button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
              statuslink = `<a data-key=${data._id} onclick="activeoffer(this)"  class="dropdown-item">Active</a>`
              }
 

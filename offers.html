@@ -539,10 +539,25 @@
                   </div>
                   
                   <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                        <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='free_shipping_allow' value='option1'><label for='is_avail' class='custom-control-label'>Allow Free Shipping</label></div></div>
                     </div>
-                    <div class="col-sm-6"></div>
+                    <div style="text-align: right" class="col-sm-3">
+                      <label>Usage Limit per Coupon : </label>
+                      
+                    </div>
+                    <div class="col-sm-2">
+                       <select id="k_offer_usage_limit" class="form-control custom-select">
+                  <option value="unlimited">Unlimited</option>
+                  <option value="10">10</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                  <option value="500">500</option>
+                  <option value="1000">1000</option>
+                  
+                </select>
+                    </div>
+                    <div class="col-sm-4"></div>
                      
                     <div class="col-sm-6">
                        <span id="offer_success_id" style="color: green; font-weight: bold;"></span>
@@ -595,12 +610,12 @@
                 <thead>
                 <tr>
                   <th>No.</th>
-                  <th>Order Name</th>
-                  <th>Order Type</th>
+                  <th>Offer Name</th>
+                  <th>Offer Type</th>
                   <th>Code</th>
                   <th>Valid till</th>
                   <th>View</th>
-                  <th>Edit</th>  
+                  <th>Action</th>  
                   
                   <!-- <th>Date</th>
                   <th>User Info</th>
@@ -613,12 +628,12 @@
                 <tfoot>
                 <tr>
                  <th>No.</th>
-                  <th>Order Name</th>
-                  <th>Order Type</th>
+                  <th>Offer Name</th>
+                  <th>Offer Type</th>
                   <th>Code</th>
                   <th>Valid till</th>
                   <th>View</th>
-                  <th>Edit</th>    <!-- 
+                  <th>Action</th>    <!-- 
                   <th>Date</th>
                   <th>User Info</th>
                   <th>Status</th> -->
@@ -858,6 +873,18 @@
                   </div>
                 </div>
                       </div>  
+                      <div class="col-sm-5">
+                        <label>Usage limit per coupon</label>
+                          <select id="modal_offer_usage_limit" class="form-control custom-select">
+                  <option value="unlimited">Unlimited</option>
+                  <option value="10">10</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                  <option value="500">500</option>
+                  <option value="1000">1000</option>
+                  
+                </select>
+                      </div>
                                   
                    
                         
@@ -1081,6 +1108,7 @@
     let include_products = document.getElementById("k_categories_inc")
     let exclude_products = document.getElementById("k_categories_ex")
     let free_shipping_allow_ref = document.getElementById("free_shipping_allow").checked
+    let usage_limit = document.getElementById("k_offer_usage_limit").value
     let free_shipping_allow = free_shipping_allow_ref ? 1 : 0
     let categories = []
     if(!include_products.disabled){
@@ -1096,8 +1124,7 @@
     //let categories = ["phonecase", "keychain"]
   
     let keydata = {
-      offer_name, offer_type, code,categories , expiry_date, flat_discount, firsttime_dis, freeshipping,buy_product,
-      get_product, min_spend, max_spend, termsnconditions, categories
+      offer_name, offer_type, code,categories , expiry_date, flat_discount, firsttime_dis, freeshipping,buy_product, get_product, min_spend, max_spend, usage_limit, termsnconditions, categories
     }
     console.log(keydata)
     fetch(`http://${hosturl}:5600/api/offer/addoffer`,
@@ -1457,6 +1484,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
       document.getElementById("modal_buy").value = data.buy_product ? data.buy_product : ""
       document.getElementById("modal_get").value = data.get_product ? data.get_product : ""
       document.getElementById("modal_offer_code").value = data.code ? data.code : ""
+      document.getElementById("modal_offer_usage_limit").value = data.usage_limit
         var date = new Date(data.expiry_date);
   field = document.querySelector('#modal_offer_date');
   var day = date.getDate();
@@ -1540,6 +1568,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
     let min_spend = document.getElementById("modal_min_spend").value
     let max_spend = document.getElementById("modal_max_spend").value
     let termsnconditions = document.getElementById("modal_offer_terms").value
+    let usage_limit = document.getElementById("modal_offer_usage_limit").value
     //let include_products = document.getElementById("modal_categories_inc")
     let products_ref = $('#modal_categories_inc').val();
       categories = products_ref
@@ -1547,7 +1576,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
 
       let keditdata = {
         offer_name, offer_type, code, expiry_date, flat_discount,firsttime_dis,  freeshipping
-        ,buy_product,get_product,min_spend, max_spend,termsnconditions
+        ,buy_product,get_product,min_spend, max_spend,termsnconditions, usage_limit
       }
       // console.log(keyid)
       console.log("k edit data")

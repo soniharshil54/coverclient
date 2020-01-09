@@ -272,15 +272,31 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="offers.html" class="nav-link active">
-              <i class="nav-icon fas fa-chart-pie"></i>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
               <p>
                 Offers
-                <!-- <i class="right fas fa-angle-left"></i> -->
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="addoffer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Offer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="offerlist.html" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Offer List</p>
+                </a>
+              </li>
+            </ul>
           </li>
+        
              <li class="nav-item has-treeview">
             <a href="modelrequest.html" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
@@ -371,7 +387,7 @@
 
     <!-- Main content -->
     <section style="margin-top: 120px" class="content">
-      <div class="row">
+      <div style="display: none;" class="row">
         <div class="col-md-12">
           <div class="card card-secondary">
             <div class="card-header">
@@ -592,9 +608,9 @@
                   <li style="padding: 5px 10px " onclick="paginatortest(4,2)" class="list-group-item">4</li>
                 </ul>
                   </div> -->
-                 <!--  <div class="col-sm-4">
+                  <div class="col-sm-4">
                      <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>
-                  </div> -->
+                  </div>
                 </div>
                
              
@@ -1088,81 +1104,6 @@
 </script> -->
 
 
-<script type="text/javascript">
-  $(document).ready(function(){
-  $('#add_offer').click(function(e) {
-    console.log("add_offer")
-    //let addpropara = globalProduct
-    let offer_name = document.getElementById("k_offer").value
-    let offer_type = document.getElementById("k_offer_type").value
-    let code = document.getElementById("k_code").value
-    let expiry_date = document.getElementById("k_expirydate").value
-    let flat_discount = document.getElementById("k_flat_discount").value
-    let firsttime_dis = document.getElementById("k_first_time").value
-    let freeshipping = document.getElementById("k_free_shipping").value
-    let buy_product = document.getElementById("k_buy").value
-    let get_product = document.getElementById("k_get").value
-    let min_spend = document.getElementById("k_min_spend").value
-    let max_spend = document.getElementById("k_max_spend").value
-    let termsnconditions = document.getElementById("k_terms").value
-    let include_products = document.getElementById("k_categories_inc")
-    let exclude_products = document.getElementById("k_categories_ex")
-    let free_shipping_allow_ref = document.getElementById("free_shipping_allow").checked
-    let usage_limit = document.getElementById("k_offer_usage_limit").value
-    let free_shipping_allow = free_shipping_allow_ref ? 1 : 0
-    let categories = []
-    if(!include_products.disabled){
-      let products_ref = $('#k_categories_inc').val();
-      categories = products_ref
-    }
-    else {
-      let products_ref = ['phonecase', 'keychain', 'tshirt', 'mug', 'popholder', 'slipperbottle', 'photoframe', 'photoframe', 'watch', 'wallclock']
-      let products_ref_ex = $('#k_categories_ex').val();
-      let products = removeFromArray(products_ref, products_ref_ex)
-      categories = products
-    }
-    //let categories = ["phonecase", "keychain"]
-  
-    let keydata = {
-      offer_name, offer_type, code,categories , expiry_date, flat_discount, firsttime_dis, freeshipping,buy_product, get_product, min_spend, max_spend, usage_limit, termsnconditions, categories
-    }
-    console.log(keydata)
-    fetch(`http://${hosturl}:5600/api/offer/addoffer`,
-{
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    method: "POST",
-    body: JSON.stringify(keydata)
-})
-.then(function(res){ 
-  return res.json()
-  })
-.then(function(result){
-  console.log(result)
-  let offerid = result._id
-  console.log(result._id)
-  getordersdatatable()
-    // document.getElementById("k_offer").value = ""
-    // document.getElementById("k_product").value = ""
-    // document.getElementById("k_code").value = ""
-    // document.getElementById("k_expirydate").value = ""
-    // document.getElementById("k_terms").value = ""
-    //document.getElementById("offer_success_id").innerHTML = "Offer Created Successfully"
-   
-   uploadFile(offerid)
-  
-})
-.catch(function(res){ console.log(res) })
-        });
-})
-
-//   $("#incdisdiv").click(function (evt) {
-//     $(this).hide()
-//     document.getElementById("k_categories_inc").disabled = false
-// });
-</script>
 
 <script type="text/javascript">
   function removeFromArray(original, remove) {
@@ -1394,11 +1335,11 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
         document.getElementById("offer_modal_name").innerHTML = result.offer_name ? result.offer_name : "N.A."
         document.getElementById("offer_modal_type").innerHTML = result.offer_type ? result.offer_type : "N.A."
         document.getElementById("offer_modal_categories").innerHTML = categories ? categories : "N.A."
-        document.getElementById("offer_modal_minspend").innerHTML = result.min_spend ? result.min_spend : "N.A."
-        document.getElementById("offer_modal_maxspend").innerHTML = result.max_spend ? result.max_spend : "N.A."
-        document.getElementById("offer_modal_flatdis").innerHTML = result.flat_discount ? result.flat_discount : "N.A."
-        document.getElementById("offer_modal_freeship").innerHTML = result.freeshipping ? result.freeshipping : "N.A."
-        document.getElementById("offer_modal_firsttime").innerHTML = result.firsttime_dis ? result.firsttime_dis : "N.A."
+        document.getElementById("offer_modal_minspend").innerHTML = result.min_spend ? `${result.min_spend} ₹` : "N.A."
+        document.getElementById("offer_modal_maxspend").innerHTML = result.max_spend ? `${result.max_spend} ₹` : "N.A."
+        document.getElementById("offer_modal_flatdis").innerHTML = result.flat_discount ? `${result.flat_discount} ₹` : "N.A."
+        document.getElementById("offer_modal_freeship").innerHTML = result.freeshipping ? `${result.freeshipping} ₹` : "N.A."
+        document.getElementById("offer_modal_firsttime").innerHTML = result.firsttime_dis ? `${result.firsttime_dis} ₹`: "N.A."
         document.getElementById("offer_modal_buy").innerHTML = result.buy_product ? result.buy_product : "N.A."
         document.getElementById("offer_modal_get").innerHTML = result.get_product ? result.get_product : "N.A."
         // document.getElementById("cart_u_country").innerHTML = result.country ? result.country : "N.A."

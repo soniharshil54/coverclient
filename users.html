@@ -246,14 +246,29 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="offers.html" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+               <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
               <p>
                 Offers
-                <!-- <i class="right fas fa-angle-left"></i> -->
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="addoffer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Offer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="offerlist.html" class="nav-link\">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Offer List</p>
+                </a>
+              </li>
+            </ul>
           </li>
              <li class="nav-item has-treeview">
             <a href="modelrequest.html" class="nav-link">
@@ -286,7 +301,7 @@
             <a href="users.html" class="nav-link active">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                Users
+                User List
                 <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>
@@ -361,9 +376,9 @@
                   <button class="btn btn-success">Export to csv</button>
                 </div>
                   </div>
-                <div class="col-sm-2">
+               <!--  <div class="col-sm-2">
                      <h3 class="card-title" style="float: right"><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></h3>
-                  </div>
+                  </div> -->
                   
                   
               </div>
@@ -381,7 +396,7 @@
                   <th>Name</th>
                   <th>Contact</th>
                   <th>Email</th>  
-                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div></th>            
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>            
                 </tr>
                 </thead>
                 <tbody>
@@ -392,7 +407,7 @@
                   <th>Name</th>
                   <th>Contact</th>
                   <th>Email</th>
-                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div></th>
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>
                 </tr>
                 </tfoot>
               </table>

@@ -255,14 +255,29 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="offers.html" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+               <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
               <p>
                 Offers
-                <!-- <i class="right fas fa-angle-left"></i> -->
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="addoffer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Offer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="offerlist.html" class="nav-link\">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Offer List</p>
+                </a>
+              </li>
+            </ul>
           </li>
              <li class="nav-item has-treeview">
             <a href="modelrequest.html" class="nav-link">
@@ -295,7 +310,7 @@
             <a href="users.html" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                Users
+                User List
                 <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>
@@ -359,15 +374,15 @@
         <div class="row">
           <div class="col-12">
 
-            <div style="margin-bottom: 40px" class="card card-primary collapsed-card">
-              <button style="padding: 0px" type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+            <div style="margin-bottom: 40px" class="card card-primary">
+              <!-- <button style="padding: 0px" type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse"> -->
               <div class="card-header">
                  <h3 id="productAddHeading" class="card-title">Main Categories</h3>
 
-              <div class="card-tools">
+              <!-- <div class="card-tools">
                 
                   <i class="fas fa-plus"></i>
-              </div>
+              </div> -->
               <!-- /.card-header -->
               
               <!-- /.card-body -->
@@ -382,15 +397,15 @@
         </div>
                   <div class="col-12">
 
-            <div class="card card-secondary collapsed-card">
+            <div class="card card-secondary">
               <button style="padding: 0px" type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
               <div class="card-header">
                  <h3 id="productAddHeading" class="card-title">Secondary Sliders</h3>
 
-              <div class="card-tools">
+            <!--   <div class="card-tools">
                 
                   <i class="fas fa-plus"></i>
-              </div>
+              </div> -->
               <!-- /.card-header -->
               
               <!-- /.card-body -->
@@ -822,6 +837,7 @@ for (var i in strs) {
       //console.log(document.getElementById("modal_id").value)
       let slider_image = okchains[arrayn].slider_image
       document.getElementById("modal_slider_image").src = `http://${hosturl}:5600/admin/uploads/${slider_image}`
+      $('#myModal').modal('show')
     }
 
         function editproductsec(test){
@@ -836,6 +852,7 @@ for (var i in strs) {
       //console.log(document.getElementById("modal_id").value)
       let slider_image = secondarychains[arrayn].slider_image
       document.getElementById("modal_s_slider_image").src = `http://${hosturl}:5600/admin/uploads/${slider_image}`
+      $('#mySecondaryModal').modal('show')
     }
 
     function editkeychain(){
@@ -1052,7 +1069,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
     function CreateTableFromJSON(myBookso) {
       let myBookson = getkeychains(myBookso)
       var myBooks = JSON.parse(JSON.stringify( myBookson, ["product_display_name","slider_image"]));
-      var thsliders = ["Product Name", "Image", "Active"] 
+      var thsliders = ["Category Name", "Image", "Active"] 
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
@@ -1082,7 +1099,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
         }
         var thn =  document.createElement("th"); 
         thn.innerHTML = "Edit";
-            tr.appendChild(thn);
+            //tr.appendChild(thn);
              var tha =  document.createElement("th"); 
         tha.innerHTML = "Action";
             tr.appendChild(tha);
@@ -1108,45 +1125,23 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
                 
                 //console.log(i, j)
             }
-            let editbtn = document.createElement("button")
-            editbtn.setAttribute("class", "btn btn-primary");
-            editbtn.style.marginRight = "2px";
-            editbtn.setAttribute("onclick", "editproduct(this)");
-            editbtn.setAttribute("data-toggle", "modal");
-            editbtn.setAttribute("data-target", "#myModal");
-            editbtn.setAttribute("data-key",i)
-            editbtn.style.padding = "1px 5px";
-            editbtn.innerHTML = "Edit"
-            let activatebtn = document.createElement("button")
-            activatebtn.style.marginRight = "2px"
-           
-            activatebtn.style.padding = "1px 5px";
-            let td = document.createElement("td");
-            let atd = document.createElement("td");
-            if(okchains[i].active_status === 1){
-                activatebtn.setAttribute("onclick","deactiveslider(this)")
-                activatebtn.setAttribute("class", "btn btn-success");
-                activatebtn.innerHTML = "Activated";
+            let outerbutton = ""
+            let statuslink = ""
+            if(okchains[i].active_status === 1 ){
+            outerbutton =  `<button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            statuslink = `<a data-key=${i} onclick="deactiveslider(this)" class="dropdown-item">Inactive</a>`
             }
-            else{
-                activatebtn.setAttribute("onclick","activeslider(this)")
-                activatebtn.setAttribute("class", "btn btn-danger");
-                activatebtn.innerHTML = "Deactivated";
+            else {
+               outerbutton = `<button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             statuslink = `<a data-key=${i} onclick="activeslider(this)"  class="dropdown-item">Active</a>`
             }
-            activatebtn.setAttribute("data-key",i)
-            atd.style.padding = "12px";
-            td.style.padding = "12px";
-            let std = document.createElement("td");
-            let deleteCheck = document.createElement("input")
-            deleteCheck.setAttribute("type","checkbox")
-            deleteCheck.setAttribute("name","todelete")
-            deleteCheck.setAttribute("value",okchains[i]._id)
+            
 
-            std.appendChild(deleteCheck)
-            td.appendChild(editbtn)
-            atd.appendChild(activatebtn)
-            tr.appendChild(td)
-            tr.appendChild(atd)
+            let finalbtn = `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editproduct(this)" data-key="${i}" class="dropdown-item">Edit</a></div></div>`
+
+            let ntd = document.createElement("td")
+            ntd.innerHTML = finalbtn
+            tr.appendChild(ntd)
         }
         var divContainer = document.getElementById("samplejson");
         divContainer.innerHTML = "";
@@ -1157,7 +1152,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
         function CreateSecondaryJSON(myBookso) {
       let myBookson = getkeychains(myBookso)
       var myBooks = JSON.parse(JSON.stringify( myBookson, ["slider_display_name","product_name","slider_image",]));
-      var thsliders = ["Slider Name", "Product Name","Image", "Active"] 
+      var thsliders = ["Slider Name", "Category Name","Image", "Active"] 
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
@@ -1187,7 +1182,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
         }
         var thn =  document.createElement("th"); 
         thn.innerHTML = "Edit";
-            tr.appendChild(thn);
+           // tr.appendChild(thn);
              var tha =  document.createElement("th"); 
         tha.innerHTML = "Action";
             tr.appendChild(tha);
@@ -1213,45 +1208,23 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
                 
                 //console.log(i, j)
             }
-            let editbtn = document.createElement("button")
-            editbtn.setAttribute("class", "btn btn-primary");
-            editbtn.style.marginRight = "2px";
-            editbtn.setAttribute("onclick", "editproductsec(this)");
-            editbtn.setAttribute("data-toggle", "modal");
-            editbtn.setAttribute("data-target", "#mySecondaryModal");
-            editbtn.setAttribute("data-key",i)
-            editbtn.style.padding = "1px 5px";
-            editbtn.innerHTML = "Edit"
-            let activatebtn = document.createElement("button")
-            activatebtn.style.marginRight = "2px"
-           
-            activatebtn.style.padding = "1px 5px";
-            let td = document.createElement("td");
-            let atd = document.createElement("td");
-            if(secondarychains[i].active_status === 1){
-                activatebtn.setAttribute("onclick","deactivesecslider(this)")
-                activatebtn.setAttribute("class", "btn btn-success");
-                activatebtn.innerHTML = "Activated";
+                        let outerbutton = ""
+            let statuslink = ""
+            if(secondarychains[i].active_status === 1 ){
+            outerbutton =  `<button style="padding: 4px" button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            statuslink = `<a data-key=${i} onclick="deactivesecslider(this)" class="dropdown-item">Inactive</a>`
             }
-            else{
-                activatebtn.setAttribute("onclick","activesecslider(this)")
-                activatebtn.setAttribute("class", "btn btn-danger");
-                activatebtn.innerHTML = "Deactivated";
+            else {
+               outerbutton = `<button style="padding: 4px" button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             statuslink = `<a data-key=${i} onclick="activesecslider(this)"  class="dropdown-item">Active</a>`
             }
-            activatebtn.setAttribute("data-key",i)
-            atd.style.padding = "12px";
-            td.style.padding = "12px";
-            let std = document.createElement("td");
-            let deleteCheck = document.createElement("input")
-            deleteCheck.setAttribute("type","checkbox")
-            deleteCheck.setAttribute("name","todelete")
-            deleteCheck.setAttribute("value",secondarychains[i]._id)
+            
 
-            std.appendChild(deleteCheck)
-            td.appendChild(editbtn)
-            atd.appendChild(activatebtn)
-            tr.appendChild(td)
-            tr.appendChild(atd)
+            let finalbtn = `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editproductsec(this)" data-key="${i}" class="dropdown-item">Edit</a></div></div>`
+
+            let ntd = document.createElement("td")
+            ntd.innerHTML = finalbtn
+            tr.appendChild(ntd)
         }
         var divContainer = document.getElementById("extraSliders");
         divContainer.innerHTML = "";

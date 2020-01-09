@@ -265,14 +265,29 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview">
-            <a href="offers.html" class="nav-link">
-              <i class="nav-icon fas fa-chart-pie"></i>
+               <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
               <p>
                 Offers
-                <!-- <i class="right fas fa-angle-left"></i> -->
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="addoffer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Offer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="offerlist.html" class="nav-link\">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Offer List</p>
+                </a>
+              </li>
+            </ul>
           </li>
              <li class="nav-item has-treeview">
             <a href="modelrequest.html" class="nav-link">
@@ -305,7 +320,7 @@
             <a href="users.html" class="nav-link">
               <i class="nav-icon fas fa-edit"></i>
               <p>
-                Users
+                User List
                 <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
             </a>
@@ -716,7 +731,7 @@
    })
     .catch(err => console.log(err))
   }
-  getsmsdata()
+  //getsmsdata()
 
       function CreateTableFromJSON(myBookso) {
       // let myBooksnotform = getkeychains(myBookso)

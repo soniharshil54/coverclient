@@ -32,7 +32,7 @@
     }
     }
 
-     #free_shipping_div, #buy_div, #get_div, #first_time_div {
+     #free_shipping_div, #get_buy_div, #first_time_div {
       display: none;
     }
 
@@ -421,45 +421,51 @@
                 </select>
                       </div>
                     </div> 
-                    <div class="col-sm-3">
-                      <label>Flat Discount</label>
-                    </div>
-                     <div id="flat_discount_div" class="col-sm-3">
-                      <!-- text input -->
-                      <div class="form-group">
-                        
-                        <input id="k_flat_discount" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>  
-                     <div id="free_shipping_div" class="col-sm-2">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Free Shipping On</label>
-                        <input id="k_free_shipping" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div> 
-                      <div id="first_time_div" class="col-sm-2">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>First Time Disc.</label>
-                        <input id="k_first_time" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>  
-                    <div id="buy_div" class="col-sm-1">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Buy</label>
-                        <input id="k_buy" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div> 
-                     <div id="get_div" class="col-sm-1">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Get</label>
-                        <input id="k_get" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div> 
                     <div class="col-sm-6">
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <div id="flat_discount_div" class="row">
+                          <div style="text-align: right;" class="col-sm-6"><label>Flat Discount</label></div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                            <input id="k_flat_discount" type="text" class="form-control" placeholder="Enter ...">
+                            </div>
+                          </div>
+                          </div>
+                          <div id="free_shipping_div" class="row">
+                          <div style="text-align: right;" class="col-sm-6"><label>Free Shipping</label></div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                            <input id="k_free_shipping" type="text" class="form-control" placeholder="Enter ...">
+                            </div>
+                          </div>
+                          </div>
+                          <div id="first_time_div" class="row">
+                          <div style="text-align: right;" class="col-sm-6"><label>First time Dis.</label></div>
+                          <div class="col-sm-6">
+                            <div class="form-group">
+                            <input id="k_first_time" type="text" class="form-control" placeholder="Enter ...">
+                            </div>
+                          </div>
+                          </div>
+                          <div id="get_buy_div" class="row">
+                          <div style="text-align: right;" class="col-sm-3"><label>Buy</label></div>
+                          <div class="col-sm-3">
+                            <div class="form-group">
+                            <input id="k_buy" type="text" class="form-control" placeholder="Enter ...">
+                            </div>
+                          </div>
+                          <div style="text-align: right;" class="col-sm-3"><label>Get</label></div>
+                          <div class="col-sm-3">
+                            <div class="form-group">
+                            <input id="k_get" type="text" class="form-control" placeholder="Enter ...">
+                            </div>
+                          </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>  
+                    <div class="col-sm-3">
                        <label>Offer Name</label>
                     </div>
                     <div class="col-sm-6">
@@ -468,73 +474,58 @@
                        
                         <input id="k_offer" type="text" class="form-control" placeholder="Enter ...">
                       </div>
+                    </div><div class="col-sm-3"></div>
+                      <div class="col-sm-3">
+                       <label>Code</label>
                     </div>
-                    
-                     <div class="col-sm-2">
-                                    <label>Valid till</label>
-                        <input id="k_expirydate" type="date" class="form-control" placeholder="Enter ...">
-                    </div>
-                  
                       <div class="col-sm-3">
                       <!-- text input -->
                       <div class="form-group">
-                        <label>Code</label>
+                        
                         <input id="k_code" type="text" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div>  
+                    </div>  <div class="col-sm-6"></div>
+                    <div class="col-sm-3">
+                      <label>Valid till</label>
+                    </div>
+                     <div class="col-sm-3">
+                                <div class="form-group">    
+                        <input id="k_expirydate" type="date" class="form-control" placeholder="Enter ...">
+                        </div>
+                    </div><div class="col-sm-6"></div>
+                
                      
 
-                 
+                 <div class="col-sm-3">
+                        <label>Minimum spend</label>
+                    </div>
                      <div class="col-sm-2">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Minimum spend</label>
+                           
                         <input id="k_min_spend" type="number" class="form-control" placeholder="Enter ...">
                         </div>
                         </div>
-                      </div>
+                      </div><div class="col-sm-7"></div>
+
+                      <div class="col-sm-3">
+                        <label>Maximum spend</label>
+                    </div>
                        <div class="col-sm-2">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Maximum spend</label>
+                            
                         <input id="k_max_spend" type="number" class="form-control" placeholder="Enter ...">
                         </div>
                         </div>
-                      </div>
-                       <div class="col-sm-2">
-                      <div class="form-group">
-                    <label for="exampleInputFile">header image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <form name="ohImages" id="ohImages" enctype="multipart/form-data">
-                        <input name="offer_image" id="hImage" type="file" class="custom-file-input" id="exampleInputFile"></form>
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
+                      </div><div class="col-sm-7"></div>
+                      <div class="col-sm-12"><div class="row">
+                    <div class="col-sm-3">
+                       <label>Include Categories</label>
                     </div>
-                  </div>
-                    </div>
-                    <div class="col-sm-4">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Terms & Conditions</label>
-                        <textarea id="k_terms" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
-                        </div>
-                        </div>
-                      </div>
-                     
-                  
-                     <!--  <div class="col-sm-4">
-                        <div class="form-group">
-                        <label>Size</label>
-                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                      </div> -->
-                  </div>
-                  <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-9">
                          <div class="form-group">
-                  <label>Include Categories</label>
+                  
                   <div class="select2-green">
                     <select onchange="disablecat(this)"  id="k_categories_inc" class="select2" multiple="multiple" data-placeholder="Select Categories" data-dropdown-css-class="select2-green" style="width: 100%;">
                       <option value="phonecase">Phonecase</option>
@@ -550,9 +541,12 @@
                   </div>
                 </div>
                       </div>
-                        <div class="col-sm-6">
+                      <div class="col-sm-3">
+                       <label>Exclude Categories</label>
+                    </div>
+                        <div class="col-sm-9">
                          <div class="form-group">
-                  <label>Exclude Categories</label>
+                  
                   <div class="select2-red">
                     <select onchange="disablecat(this)"  id="k_categories_ex" class="select2" multiple="multiple" data-placeholder="Select Categories" data-dropdown-css-class="select2-red" style="width: 100%;">
                       <option value="phonecase">Phonecase</option>
@@ -567,18 +561,42 @@
                     </select>
                   </div>
                 </div>
-                      </div>
+                      </div></div>
                   </div>
-                  
-                  <div class="row">
-                    <div class="col-sm-3">
-                       <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='free_shipping_allow' value='option1'><label for='is_avail' class='custom-control-label'>Allow Free Shipping</label></div></div>
+
+                      <div class="col-sm-3">
+                        <label for="exampleInputFile">header image</label>
                     </div>
-                    <div style="text-align: right" class="col-sm-3">
+                       <div class="col-sm-4">
+                      <div class="form-group">
+                   
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <form name="ohImages" id="ohImages" enctype="multipart/form-data">
+                        <input name="offer_image" id="hImage" type="file" class="custom-file-input" id="exampleInputFile"></form>
+                        
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                    </div>
+                  </div>
+                    </div><div class="col-sm-5"></div>
+
+                    <div class="col-sm-3">
+                       <label>Terms & Conditions</label>
+                    </div>
+                    <div class="col-sm-9">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            
+                        <textarea id="k_terms" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        </div>
+                        </div>
+                      </div>
+                       <div class="col-sm-3">
                       <label>Usage Limit per Coupon : </label>
                       
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                        <select id="k_offer_usage_limit" class="form-control custom-select">
                   <option value="unlimited">Unlimited</option>
                   <option value="10">10</option>
@@ -588,14 +606,33 @@
                   <option value="1000">1000</option>
                   
                 </select>
-                    </div>
-                    <div class="col-sm-4"></div>
+                    </div><div style="margin-bottom: 30px" class="col-sm-5"></div>
+                    <div class="col-sm-12"><div style="margin-top: 20px" class="row">
+                       <div style="margin-top: 10px" class="col-sm-3"></div>
+                       <div class="col-sm-3">
+                       <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='free_shipping_allow' value='option1'><label for='is_avail' class='custom-control-label'>Allow Free Shipping</label></div></div>
+                    </div><div class="col-sm-6"></div>
+                    </div></div>
+                    
+                  
+                     <!--  <div class="col-sm-4">
+                        <div class="form-group">
+                        <label>Size</label>
+                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                      </div> -->
+                  </div>
+                  
+                  
+                  <div class="row">
+                   
                      
-                    <div class="col-sm-6">
-                       <span id="offer_success_id" style="color: green; font-weight: bold;"></span>
+                    <div style="text-align: left" class="col-sm-2">
+                       <input type="button" id="add_offer" value="add Offer" class="btn btn-success float-right">
+                    
                     </div>    
-                    <div class="col-sm-6">
-                      <input type="button" id="add_offer" value="add Offer" class="btn btn-success float-right">
+                    <div class="col-sm-11">
+                        <span id="offer_success_id" style="color: green; font-weight: bold;"></span>
                     </div>   
                   </div>
                                        
@@ -792,7 +829,7 @@
   console.log(result)
   let offerid = result._id
   console.log(result._id)
-  getordersdatatable()
+  //getordersdatatable()
     // document.getElementById("k_offer").value = ""
     // document.getElementById("k_product").value = ""
     // document.getElementById("k_code").value = ""
@@ -834,35 +871,35 @@ function changeofferinputs(){
   console.log(ex_cat)
   switch(offer_type) {
   case 'flatdis':
-    document.getElementById("flat_discount_div").style.display = "block"
+    document.getElementById("flat_discount_div").style.display = "flex"
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "none"
-    document.getElementById("buy_div").style.display = "none"
-    document.getElementById("get_div").style.display = "none"
+    document.getElementById("get_buy_div").style.display = "none"
+    //document.getElementById("get_div").style.display = "none"
     // code block
     break;
   case 'bogo':
     document.getElementById("flat_discount_div").style.display = "none"
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "none"
-    document.getElementById("buy_div").style.display = "block"
-    document.getElementById("get_div").style.display = "block"
+    document.getElementById("get_buy_div").style.display = "flex"
+    //document.getElementById("get_div").style.display = "block"
     // code block
     break;
   case 'freeshipping':
     document.getElementById("flat_discount_div").style.display = "none"
-    document.getElementById("free_shipping_div").style.display = "block"
+    document.getElementById("free_shipping_div").style.display = "flex"
     document.getElementById("first_time_div").style.display = "none"
-    document.getElementById("buy_div").style.display = "none"
-    document.getElementById("get_div").style.display = "none"
+    document.getElementById("get_buy_div").style.display = "none"
+    //document.getElementById("get_div").style.display = "none"
     // code block
     break;
   case 'firsttime':
     document.getElementById("flat_discount_div").style.display = "none"
     document.getElementById("free_shipping_div").style.display = "none"
-    document.getElementById("first_time_div").style.display = "block"
-    document.getElementById("buy_div").style.display = "none"
-    document.getElementById("get_div").style.display = "none"
+    document.getElementById("first_time_div").style.display = "flex"
+    document.getElementById("get_buy_div").style.display = "none"
+    //document.getElementById("get_div").style.display = "none"
     // code block
     break;  
   default:
@@ -890,6 +927,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+  document.getElementById("successAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))
 

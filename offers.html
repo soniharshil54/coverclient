@@ -599,6 +599,7 @@
                   <th>Order Type</th>
                   <th>Code</th>
                   <th>Valid till</th>
+                  <th>View</th>
                   <th>Edit</th>  
                   
                   <!-- <th>Date</th>
@@ -616,6 +617,7 @@
                   <th>Order Type</th>
                   <th>Code</th>
                   <th>Valid till</th>
+                  <th>View</th>
                   <th>Edit</th>    <!-- 
                   <th>Date</th>
                   <th>User Info</th>
@@ -891,6 +893,62 @@
       </div>
     </div>
   </div>
+
+    <div class="modal" id="OfferDetailModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+        <div class="modal-body" style="text-align: left;">
+         <table class="table table-dark" style="width:100%">
+            <tr>
+              <th>Offer Name:</th>
+              <td><span id="offer_modal_name"></span></td>
+            </tr>
+              <tr>
+              <th>Offer Type:</th>
+              <td><span id="offer_modal_type"></span></td>
+            </tr>
+            <tr>
+
+              <th>Categories</th>
+              <td><span id="offer_modal_categories"></span></td>
+      
+            </tr>
+            <tr>
+              <th>Minimum Spend:</th>
+              <td><span id="offer_modal_minspend"></span></td>
+            </tr>
+             <tr>
+              <th>Maximum Spend:</th>
+              <td><span id="offer_modal_maxspend"></span></td>
+            </tr>
+             <tr>
+              <th>Flat Discount</th>
+              <td><span id="offer_modal_flatdis"></span></td>
+            </tr>
+            <tr>
+              <th>Free Shipping On</th>
+              <td><span id="offer_modal_freeship"></span></td>
+            </tr>
+             <tr>
+              <th>First Time Discount</th>
+              <td><span id="offer_modal_firsttime"></span></td>
+            </tr>
+             <tr>
+              <th>Buy</th>
+              <td><span id="offer_modal_buy"></span></td>
+            </tr>
+             <tr>
+              <th>Get</th>
+              <td><span id="offer_modal_get"></span></td>
+            </tr>
+          </table>
+         
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
   
 </div>
 
@@ -1012,7 +1070,7 @@
     let offer_type = document.getElementById("k_offer_type").value
     let code = document.getElementById("k_code").value
     let expiry_date = document.getElementById("k_expirydate").value
-    let flat_discount = document.getElementById("k_free_shipping").value
+    let flat_discount = document.getElementById("k_flat_discount").value
     let firsttime_dis = document.getElementById("k_first_time").value
     let freeshipping = document.getElementById("k_free_shipping").value
     let buy_product = document.getElementById("k_buy").value
@@ -1296,27 +1354,30 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
           function offerdetailsmodal(probtn){
       let offerid = probtn.getAttribute('data-pid')
       // console.log(proid)
-      fetch(`http://${hosturl}:5600/api/user/getuser/${proid}`)
+      fetch(`http://${hosturl}:5600/api/offer/getofferbyid/${offerid}`)
       .then(response => {
         //console.log(result)
         return response.json()
       })
       .then(result => {
         // console.log(result)
-        let full_name = result.first_name + " " + result.last_name
-        let address = result.address
-
-        document.getElementById("").innerHTML = full_name ? full_name : "N.A."
-        document.getElementById("").innerHTML = result.contact ? result.contact : "N.A."
-        document.getElementById("").innerHTML = result.email_id ? result.email_id : "N.A."
-        document.getElementById("").innerHTML = address ? address : "N.A."
-        document.getElementById("").innerHTML = result.pincode ? result.pincode : "N.A."
-        document.getElementById("").innerHTML = result.city ? result.city : "N.A."
-        document.getElementById("").innerHTML = result.state ? result.state : "N.A."
+        // let full_name = result.first_name + " " + result.last_name
+        // let address = result.address
+        let categories = result.categories.join(",")
+        document.getElementById("offer_modal_name").innerHTML = result.offer_name ? result.offer_name : "N.A."
+        document.getElementById("offer_modal_type").innerHTML = result.offer_type ? result.offer_type : "N.A."
+        document.getElementById("offer_modal_categories").innerHTML = categories ? categories : "N.A."
+        document.getElementById("offer_modal_minspend").innerHTML = result.min_spend ? result.min_spend : "N.A."
+        document.getElementById("offer_modal_maxspend").innerHTML = result.max_spend ? result.max_spend : "N.A."
+        document.getElementById("offer_modal_flatdis").innerHTML = result.flat_discount ? result.flat_discount : "N.A."
+        document.getElementById("offer_modal_freeship").innerHTML = result.freeshipping ? result.freeshipping : "N.A."
+        document.getElementById("offer_modal_firsttime").innerHTML = result.firsttime_dis ? result.firsttime_dis : "N.A."
+        document.getElementById("offer_modal_buy").innerHTML = result.buy_product ? result.buy_product : "N.A."
+        document.getElementById("offer_modal_get").innerHTML = result.get_product ? result.get_product : "N.A."
         // document.getElementById("cart_u_country").innerHTML = result.country ? result.country : "N.A."
         // document.getElementById("cart_u_addresstype").innerHTML = result.address_type ? result.address_type : "N.A."
         
-        $('#cartUserModal').modal('show');
+        $('#OfferDetailModal').modal('show');
 
       })
       .catch(err => {
@@ -1774,6 +1835,12 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
              "mRender" : function(data, type){
               let date = data.split("T")[0].split("-").reverse().join("-")
               return date
+            }
+        }, {
+          "data": "_id",
+            "mRender": function(data, type) {
+             //return data
+              return `<button onclick="offerdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data}">view</button>`;
             }
         },  {
           "data": "_id",

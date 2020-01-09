@@ -206,69 +206,43 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
+        <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-circle"></i>
               <p>
                 Products
-                <i class="fas fa-angle-left right"></i>
-                <!-- <span class="badge badge-info right">6</span> -->
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="phonecase.html" class="nav-link">
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Phone cases</p>
+                  <p>
+                    Phonecase
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="tshirt.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>T-Shirts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="keychain_link" onclick="getproducts('keychain')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Keychain</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="mug_link" onclick="getproducts('mug')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Mug</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="photoframe_link" onclick="getproducts('photoframe')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Photo Frame</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="popholder_link" onclick="getproducts('popholder')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Popholder</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="slipperbottle_link" onclick="getproducts('slipperbottle')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Slipper Bottle</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="wallclock_link" onclick="getproducts('wallclock')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Wall Clock</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="Watch_link" onclick="getproducts('watch')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Watches</p>
-                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="company.html" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Phone Company List</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="addmodel.html" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Add Model</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="modellist.html" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Model List</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>
@@ -409,7 +383,7 @@
                 
                                 <div class="row">
                                   <div class="col-sm-3"><label>Offer Type</label></div>
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-2">
                       <div class="form-group">
                         
                           <select onchange="changeofferinputs()" id="k_offer_type" class="form-control custom-select">
@@ -426,7 +400,7 @@
                         <div class="col-sm-12">
                           <div id="flat_discount_div" class="row">
                           <div style="text-align: right;" class="col-sm-6"><label>Flat Discount</label></div>
-                          <div class="col-sm-6">
+                          <div class="col-sm-4">
                             <div class="form-group">
                             <input id="k_flat_discount" type="text" class="form-control" placeholder="Enter ...">
                             </div>
@@ -468,31 +442,31 @@
                     <div class="col-sm-3">
                        <label>Offer Name</label>
                     </div>
-                    <div class="col-sm-6">
+                    <div class="col-sm-3">
                       <!-- text input -->
                       <div class="form-group">
                        
                         <input id="k_offer" type="text" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div><div class="col-sm-3"></div>
+                    </div><div class="col-sm-6"></div>
                       <div class="col-sm-3">
                        <label>Code</label>
                     </div>
-                      <div class="col-sm-3">
+                      <div class="col-sm-2">
                       <!-- text input -->
                       <div class="form-group">
                         
                         <input id="k_code" type="text" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div>  <div class="col-sm-6"></div>
+                    </div>  <div class="col-sm-7"></div>
                     <div class="col-sm-3">
-                      <label>Valid till</label>
+                      <label>Valid Till</label>
                     </div>
-                     <div class="col-sm-3">
+                     <div class="col-sm-2">
                                 <div class="form-group">    
                         <input id="k_expirydate" type="date" class="form-control" placeholder="Enter ...">
                         </div>
-                    </div><div class="col-sm-6"></div>
+                    </div><div class="col-sm-7"></div>
                 
                      
 
@@ -567,7 +541,7 @@
                       <div class="col-sm-3">
                         <label for="exampleInputFile">header image</label>
                     </div>
-                       <div class="col-sm-4">
+                       <div class="col-sm-2">
                       <div class="form-group">
                    
                     <div class="input-group">
@@ -579,7 +553,7 @@
                       </div>
                     </div>
                   </div>
-                    </div><div class="col-sm-5"></div>
+                    </div><div class="col-sm-7"></div>
 
                     <div class="col-sm-3">
                        <label>Terms & Conditions</label>
@@ -596,7 +570,7 @@
                       <label>Usage Limit per Coupon : </label>
                       
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-2">
                        <select id="k_offer_usage_limit" class="form-control custom-select">
                   <option value="unlimited">Unlimited</option>
                   <option value="10">10</option>
@@ -606,7 +580,7 @@
                   <option value="1000">1000</option>
                   
                 </select>
-                    </div><div style="margin-bottom: 30px" class="col-sm-5"></div>
+                    </div><div style="margin-bottom: 30px" class="col-sm-6"></div>
                     <div class="col-sm-12"><div style="margin-top: 20px" class="row">
                        <div style="margin-top: 10px" class="col-sm-3"></div>
                        <div class="col-sm-3">
@@ -626,9 +600,9 @@
                   
                   <div class="row">
                    
-                     
-                    <div style="text-align: left" class="col-sm-2">
-                       <input type="button" id="add_offer" value="add Offer" class="btn btn-success float-right">
+                     <div class="col-sm-2"></div>
+                    <div  class="col-sm-2">
+                       <input type="button" id="add_offer" value="Add Offer" class="btn btn-success float-right">
                     
                     </div>    
                     <div class="col-sm-11">

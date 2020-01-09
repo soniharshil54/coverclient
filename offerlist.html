@@ -206,69 +206,43 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
+           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-copy"></i>
+              <i class="nav-icon fas fa-circle"></i>
               <p>
                 Products
-                <i class="fas fa-angle-left right"></i>
-                <!-- <span class="badge badge-info right">6</span> -->
+                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="phonecase.html" class="nav-link">
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Phone cases</p>
+                  <p>
+                    Phonecase
+                    <i class="right fas fa-angle-left"></i>
+                  </p>
                 </a>
-              </li>
-              <li class="nav-item">
-                <a href="tshirt.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>T-Shirts</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="keychain_link" onclick="getproducts('keychain')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Keychain</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="mug_link" onclick="getproducts('mug')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Mug</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="photoframe_link" onclick="getproducts('photoframe')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Photo Frame</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="popholder_link" onclick="getproducts('popholder')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Popholder</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="slipperbottle_link" onclick="getproducts('slipperbottle')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Slipper Bottle</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="wallclock_link" onclick="getproducts('wallclock')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Wall Clock</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a id="Watch_link" onclick="getproducts('watch')" href="javascript:void(0);" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Watches</p>
-                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="company.html" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Phone Company List</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="addmodel.html" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Add Model</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="modellist.html" class="nav-link">
+                      <i class="far fa-dot-circle nav-icon"></i>
+                      <p>Model List</p>
+                    </a>
+                  </li>
+                </ul>
               </li>
             </ul>
           </li>
@@ -609,7 +583,7 @@
                 </ul>
                   </div> -->
                   <div class="col-sm-4">
-                     <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>
+                     <!-- <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3> -->
                   </div>
                 </div>
                
@@ -621,15 +595,15 @@
                 </div>
               </div>
               <!-- /.card-header -->
-              <div class="card-body table-responsive p-0">
+              <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
                   <th>No.</th>
                   <th>Offer Name</th>
                   <th>Offer Type</th>
-                  <th>Code</th>
-                  <th>Valid till</th>
+                  <th>Coupon Code</th>
+                  <th>Valid Till</th>
                   <th>View</th>
                   <th>Action</th>  
                   
@@ -646,14 +620,14 @@
                  <th>No.</th>
                   <th>Offer Name</th>
                   <th>Offer Type</th>
-                  <th>Code</th>
-                  <th>Valid till</th>
+                  <th>Coupon Code</th>
+                  <th>Valid Till</th>
                   <th>View</th>
                   <th>Action</th>    <!-- 
                   <th>Date</th>
                   <th>User Info</th>
                   <th>Status</th> -->
-                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox3' value='option1'><label for='customCheckbox3' class='custom-control-label'><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></label></div></div></th>
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox3' value='option1'><label for='customCheckbox3' class='custom-control-label'></label></div></div></th>
                 </tr>
                 </tfoot>
               </table>
@@ -1240,7 +1214,7 @@ function modalofferinputs(offer_type){
 
   function checkAll()
  {
-     var tablek = document.getElementById ('keychaintable');
+     var tablek = document.getElementById ('example1');
      var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
      var val = checkboxes[0].checked;
      for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;

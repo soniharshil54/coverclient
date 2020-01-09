@@ -1,0 +1,2290 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>phone case</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/tagstyle.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style type="text/css">
+    #testtr{
+      color: red
+    }
+
+
+    @media (min-width: 576px){
+      .modal-dialog {
+        max-width: 550px;
+        margin: 1.75rem auto;
+      }
+    }
+
+    @media (min-width: 576px){
+      .modal-content {
+        box-shadow: none;
+      }
+    }
+
+    body
+    {  
+      counter-reset: Serial;         /* Set the Serial counter to 0 */
+    }
+
+    tr:first-child
+    {
+      counter-reset: Serial;           /* Set the Serial counter to 0 */
+    }
+
+    .auto-index td:first-child:before
+    {
+      counter-increment: Serial;      /* Increment the Serial counter */
+      content: counter(Serial); /* Display the counter */
+    }
+
+    .auto-index-phone td:first-child:before
+    {
+      counter-increment: Serial;      /* Increment the Serial counter */
+      content: counter(Serial); /* Display the counter */
+    }
+  </style>
+</head>
+<body class="hold-transition sidebar-mini">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+      </ul>
+
+
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item dropdown">
+
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    Brad Diesel
+                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">Call me whenever you can...</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    John Pierce
+                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">I got your message bro</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    Nora Silvester
+                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">The subject goes here</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+          </div>
+        </li>
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+        <!-- <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a> -->
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+      style="opacity: .8">
+      <span class="brand-text font-weight-light">phone case</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+           with font-awesome or any other icon font library -->
+           <li class="nav-item has-treeview menu-open">
+            <a href="index.html" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <!-- <i class="right fas fa-angle-left"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="slider.html" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Main Categories
+                <!-- <i class="right fas fa-angle-left"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview menu-open">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Products
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Phone cases</p>
+                  <i class="fas fa-angle-left right"></i>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                <a href="company.html" class="nav-link">
+                  <!-- <i class="far fa-circle nav-icon"></i> -->
+                  <p>Phone Company List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="addmodel.html" class="nav-link">
+                  <!-- <i class="far fa-circle nav-icon"></i> -->
+                  <p>Add Model</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="modellist.html"  class="nav-link active">
+                  <!-- <i class="far fa-circle nav-icon"></i> -->
+                  <p>Model List</p>
+                </a>
+              </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+               <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-copy"></i>
+              <p>
+                Offers
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="addoffer.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Offer</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="offerlist.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Offer List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+             <li class="nav-item has-treeview">
+            <a href="modelrequest.html" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                New Model Requests
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="notification.html" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Notifications
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="sms.html" class="nav-link">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                SMS
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="users.html" class="nav-link">
+              <i class="nav-icon fas fa-edit"></i>
+              <p>
+                User List
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="orders.html" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Orders
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="cpassword.html" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
+              <p>
+                Change Password
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <button onclick="logOutUser()" style="width: 100%" class="nav-link">              
+              <p>
+                Logout
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </button>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Phone case</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Phonecases</li>
+              <!-- <li class="breadcrumb-item active">Add Company</li> -->
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div style="display: none" class="col-md-12">
+          <div class="card card-primary collapsed-card">
+            <div class="card-header">
+              <h3 class="card-title">Add company</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-plus"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                 <div class="col-sm-6">
+                  <div style="width: 300px;margin-bottom: 20px; height: 30px" class="input-group input-group-sm">
+                    <input id = "company_name" type="text" class="form-control">
+                    <span class="input-group-append">
+                      <button onclick="add_company()" type="button" class="btn btn-info btn-flat">Add Company</button>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <span id="company_notif" style="color: green; font-weight: bold"></span>
+                </div>
+              <!--  <div class="col-sm-6">
+                  <button style="float: right;" onclick='deletecompanies()' class='btn btn-danger'>Delete Selected</button>
+                </div> -->
+              </div>
+
+              
+
+              <div>
+                <div class="card-body table-responsive p-0">
+                  <div id="companyjson"></div>
+
+                </div>
+              </div>
+            <!--   <div style="overflow: auto" class="form-group">
+                <ul style="list-style-position: inside;" class="list-group list-group-horizontal" id="company_list"></ul>
+              </div> -->
+
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+        <div style="display: none" class="col-md-12">
+          <div class="card card-secondary collapsed-card">
+            <div class="card-header">
+              <h3 class="card-title">Add model</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-plus"></i></button>
+                </div>
+              </div>
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <div class="form-group">
+                      <label for="inputStatus">Company</label>
+                      <select onchange="getcompopt()" id="comp_option" class="form-control custom-select">
+                        <option selected disabled>Select one</option>
+                        <option>Samsung</option>
+                        <option>Oppo</option>
+                        <option>Vivo</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input id="k_name" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+
+                  <!-- text input -->
+                  <input type="hidden" id="modal_id" name="modal_id" value="">
+
+                  <div class="col-sm-2">
+                    <label for="exampleInputFile">2d image slider</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <form name="putImages" id="put_images" enctype="multipart/form-data">
+                          <input name="image_2d_slider" type="file" class="custom-file-input" id="productImage">
+                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>  
+                  <div class="col-sm-2">
+                    <label for="exampleInputFile">2d image cover</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="image_2d_inner" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> 
+                  <div class="col-sm-2">
+                    <label for="exampleInputFile">2d image mask</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="image_2d_mask" type="file" class="custom-file-input">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> 
+                  <div class="col-sm-2">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>2d-Size</label>
+                      <input id="k_size_2d" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>2d-Price</label>
+                      <input id="k_price_2d" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <div style="padding-left: 0" class="custom-control custom-checkbox">
+                        <label>2d-Description</label>
+                        <textarea id="k_description_2d" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                      </div>
+                    </div></div>
+                    <div class="col-sm-2">
+                      <label for="exampleInputFile">3d image cover</label>
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input name="image_3d_slider" type="file" class="custom-file-input" id="productImage">
+                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <label for="exampleInputFile">3d image mask</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="image_3d_mask" type="file" class="custom-file-input">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>   
+                  <div class="col-sm-2">
+                    <label for="exampleInputFile">3d image inner</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="image_3d_inner" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> 
+                  <div class="col-sm-2">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>3d-Size</label>
+                      <input id="k_size_3d" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>3d-Price</label>
+                      <input id="k_price_3d" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <div style="padding-left: 0" class="custom-control custom-checkbox">
+                        <label>3d-Description</label>
+                        <textarea id="k_description_3d" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                      </div>
+                    </div></div>
+                    <div class="col-sm-3">
+                      <label for="exampleInputFile">4d image slider</label>
+                      <div class="input-group">
+                        <div class="custom-file">
+                          <input name="image_4d_slider" type="file" class="custom-file-input" id="productImage">
+                          <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </form>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>  
+                  <div class="col-sm-3">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>4d-Size</label>
+                      <input id="k_size_4d" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-2">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>4d-Price</label>
+                      <input id="k_price_4d" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <div style="padding-left: 0" class="custom-control custom-checkbox">
+                        <label>4d-Description</label>
+                        <textarea id="k_description_4d" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                      </div>
+                    </div></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-4">
+                     <!--  <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='is_avail' value='option1'><label for='is_avail' class='custom-control-label'>Available</label></div></div> -->
+                    </div>    
+                    <div class="col-sm-4">
+                      <span id="phonecase_notif" style="color: green; font-weight: bold"></span>
+                    </div>   
+                    <div class="col-sm-4">
+                      <input id="add_phonecase" type="button" value="Add Model" class="btn btn-success float-right">
+                    </div>   
+                  </div>
+
+                </div>
+                <!-- /.card-body -->
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+          <!-- /.row -->
+          <div class="row">
+            <div class="col-12">
+
+              <div class="card">
+                <div class="card-header">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h3 class="card-title">Models</h3>
+                    </div>
+                    <div class="col-sm-5">
+                      <div class="card-tools">
+                        <div class="input-group input-group-sm" style="width: 270px;">
+                          <label style="margin-right: 20px" for="inputStatus">Company Name</label>
+                          <select onchange="filterbycompany()" id="sel_comp" class="form-control custom-select">
+                            <option selected disabled>All</option>
+                            <option>Samsung</option>
+                            <option>Oppo</option>
+                            <option>Vivo</option>
+                          </select>                 </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>  
+                      </div>
+                    </div>
+
+
+
+
+                    <div class="card-tools">
+                    </div>
+                  </div>
+                  <!-- /.card-header -->
+                  <div class="card-body table-responsive p-0">
+                    <div id="samplejson"></div>
+
+                  </div>
+                  <!-- /.card-body -->
+           <!--    <ul class="list-group list-group-horizontal">
+                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
+                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
+                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
+                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
+              </ul> -->
+
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+      <strong>Call us:  <a href="#">+91 8866220223</a>.</strong> 
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+      <!-- Control sidebar content goes here -->
+    </aside>
+    <!-- /.control-sidebar -->
+  </div>
+  <!-- ./wrapper -->
+
+  <!-- The Modal -->
+  <div class="modal" id="compModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div class="col-sm-6">
+              <input id="c_id" type="hidden" class="form-control" placeholder="Enter new name...">
+              <input id="c_old_name" type="hidden" class="form-control" placeholder="Enter new name...">
+              <div class="form-group">
+                <!-- <label>New Company Name</label> -->
+                <input id="c_name" type="text" class="form-control" placeholder="Enter new name...">
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+               <label>&nbsp;</label>
+               <input id="productEditBtn" onclick="editcompanyname()" type="button" value="Edit Company Name" class="btn btn-success float-right">
+             </div>
+
+           </div> 
+         </div>
+       </div>
+
+       <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="imageModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg">
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="details_3d">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <table class="table table-dark" style="width:100%">
+            <tr>
+              <th>Product Name:</th>
+              <td><span id="name_3d_m"></span></td>
+            </tr>
+            <tr>
+              <th>Images:</th>
+            <!--   <td>  <a target="_blank" href="images/3.jpg" download>
+  <img src="images/3.jpg" alt="W3Schools" width="104" height="142">
+</a></td> -->
+<td><a id="s_3d_d_image" href="images/3.jpg" download="">
+  <img id="s_3d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+</a><a id="c_3d_d_image" href="images/3.jpg" download="">
+  <img id="c_3d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+</a><a id="m_3d_d_image" href="images/3.jpg" download="">
+  <img id="m_3d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+</a></td>
+</tr>
+<tr>
+  <th>Price:</th>
+  <td><span id="price_3d_m"></span></td>
+</tr>
+<tr>
+  <th>Size:</th>
+  <td><span id="size_3d_m"></span></td>
+</tr>
+<tr>
+  <th>Description:</th>
+  <td><span id="description_3d_m"></span></td>
+</tr>
+</table>
+<!-- <h1>ello</h1> -->
+<!-- <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg"> -->
+
+</div>
+
+<!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- The Modal -->
+  <div class="modal" id="details_2d">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <table class="table table-dark" style="width:100%">
+            <tr>
+              <th>Product Name:</th>
+              <td><span id="name_2d_m"></span></td>
+            </tr>
+            <tr>
+              <th>Images:</th>
+            <!--   <td>  <a target="_blank" href="images/3.jpg" download>
+  <img src="images/3.jpg" alt="W3Schools" width="104" height="142">
+</a></td> -->
+<td><a id="s_2d_d_image" href="images/3.jpg" download="">
+  <img id="s_2d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+</a><a id="c_2d_d_image" href="images/3.jpg" download="">
+  <img id="c_2d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+</a><a id="m_2d_d_image" href="images/3.jpg" download="">
+  <img id="m_2d_image" src="images/3.jpg" alt="W3Schools" width="104" height="142">
+</a></td>
+</tr>
+<tr>
+  <th>Price:</th>
+  <td><span id="price_2d_m"></span></td>
+</tr>
+<tr>
+  <th>Size:</th>
+  <td><span id="size_2d_m"></span></td>
+</tr>
+<tr>
+  <th>Description:</th>
+  <td><span id="description_2d_m"></span></td>
+</tr>
+</table>
+<!-- <h1>ello</h1> -->
+<!-- <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg"> -->
+
+</div>
+
+<!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+  <!-- ./wrapper -->
+  <!-- <h2>Modal Example</h2> -->
+  <!-- Button to Open the Modal -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button> -->
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog" style="max-width: 1050px">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header" style="">
+          <h4 id="productEditHeading" class="modal-title">Edit Phonecase</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card card-secondary collapsed-card">
+            <!-- <div class="card-header">
+              <h3 class="card-title">Add Key chain</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-plus"></i></button>
+              </div>
+            </div> -->
+            <div class="card-body" style="display: block">
+
+              <div class="row">
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <input type="hidden" id="modal_id" name="modal_id" value="">
+                  <div class="form-group">
+                    <label>Company</label>
+                    <select onchange="getcompopt()" id="modal_option" class="form-control custom-select">
+                      <option selected disabled>Select one</option>
+                      <option>Samsung</option>
+                      <option>Oppo</option>
+                      <option>Vivo</option>
+                    </select>
+                  </div>
+                </div>              
+                <div class="col-sm-6">
+                  <!-- text input -->
+                  <input type="hidden" id="modal_id" name="modal_id" value="">
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="modal_name" class="form-control" placeholder="Enter ...">
+                  </div>
+                </div>     
+
+                <div class="col-sm-2">
+                  <label for="exampleInputFile">2d image slider</label>
+                  <div class="input-group">
+                    <img width="38px" height="38px" id="modal_2d_h_image" src="">
+                    <div class="custom-file">
+                      <form name="phoneImages" id="edit_images" enctype="multipart/form-data">
+                        <input name="image_2d_slider" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> 
+                  <div class="col-sm-2">
+                    <label for="exampleInputFile">2d image cover</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_2d_i_image" src="">
+                      <div class="custom-file">
+                        <input name="image_2d_inner" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>  
+                  <div class="col-sm-2">
+                    <label for="exampleInputFile">2d image inner</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_2d_m_image" src="">
+                      <div class="custom-file">
+                        <input name="image_2d_mask" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> 
+                  <div class="col-sm-1">
+                    <!-- text input -->
+                    <input type="hidden" id="modal_id" name="modal_id" value="">
+                    <div class="form-group">
+                      <label>2d-size</label>
+                      <input type="text" id="modal_2d_size" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <!-- text input -->
+                    <input type="hidden" id="modal_id" name="modal_id" value="">
+                    <div class="form-group">
+                      <label>2d-price</label>
+                      <input type="text" id="modal_2d_price" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-3">
+                   <div class="form-group">
+                    <div style="padding-left: 0" class="custom-control custom-checkbox">
+                      <label>2d-Description</label>
+                      <textarea id="modal_2d_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                    </div>
+                  </div>
+                </div>
+                   <div class="col-sm-1">
+                   <div class="form-group">
+                    <div style="padding-left: 0" class="custom-control custom-checkbox">
+                      <label>2d-available</label>
+                      <input type="checkbox" id="is_2d_available" name="">
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="col-sm-2">
+                  <label for="exampleInputFile">3d image slider</label>
+                  <div class="input-group">
+                    <img width="38px" height="38px" id="modal_3d_h_image" src="">
+                    <div class="custom-file">
+                      <input name="image_3d_slider" type="file" class="custom-file-input" id="productImage">
+                      <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                    </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> 
+                  <div class="col-sm-2">
+                    <label for="exampleInputFile">3d image cover</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_3d_i_image" src="">
+                      <div class="custom-file">
+                        <input name="image_3d_inner" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>  
+                  <div class="col-sm-2">
+                    <label for="exampleInputFile">3d image mask</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_3d_m_image" src="">
+                      <div class="custom-file">
+                        <input name="image_3d_mask" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> 
+                  <div class="col-sm-1">
+                    <!-- text input -->
+                    <input type="hidden" id="modal_id" name="modal_id" value="">
+                    <div class="form-group">
+                      <label>3d-size</label>
+                      <input type="text" id="modal_3d_size" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                  <div class="col-sm-1">
+                    <!-- text input -->
+                    <input type="hidden" id="modal_id" name="modal_id" value="">
+                    <div class="form-group">
+                      <label>3d-price</label>
+                      <input type="text" id="modal_3d_price" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div> 
+                  <div class="col-sm-3">
+                   <div class="form-group">
+                    <div style="padding-left: 0" class="custom-control custom-checkbox">
+                      <label>3d-Description</label>
+                      <textarea id="modal_3d_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                    </div>
+                  </div>
+                </div>
+                    <div class="col-sm-1">
+                   <div class="form-group">
+                    <div style="padding-left: 0" class="custom-control custom-checkbox">
+                      <label>3d-available</label>
+                      <input type="checkbox" id="is_3d_available" name="">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                  <label for="exampleInputFile">4d image slider</label>
+                  <div class="input-group">
+                    <img width="38px" height="38px" id="modal_4d_h_image" src="">
+                    <div class="custom-file">
+                      <input name="image_4d_slider" type="file" class="custom-file-input" id="productImage">
+                      <label class="custom-file-label" for="exampleInputFile">Choose</label>
+                    </form>
+                  </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>   
+                  <div class="col-sm-2">
+                   <input type="hidden" id="modal_id" name="modal_id" value="">
+                   <div class="form-group">
+                    <label>4d-size</label>
+                    <input type="text" id="modal_4d_size" class="form-control" placeholder="Enter ...">
+                  </div>
+                </div>
+                <div class="col-sm-2">
+                 <input type="hidden" id="modal_id" name="modal_id" value="">
+                 <div class="form-group">
+                  <label>4d-price</label>
+                  <input type="text" id="modal_4d_price" class="form-control" placeholder="Enter ...">
+                </div>
+              </div>
+              <div class="col-sm-5">
+               <div class="form-group">
+                <div style="padding-left: 0" class="custom-control custom-checkbox">
+                  <label>4d-Description</label>
+                  <textarea id="modal_4d_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                </div>
+              </div>
+            </div>
+              <div class="col-sm-1">
+                   <div class="form-group">
+                    <div style="padding-left: 0" class="custom-control custom-checkbox">
+                      <label>4d-available</label>
+                      <input type="checkbox" id="is_4d_available" name="">
+                    </div>
+                  </div>
+                </div>
+
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+                           <!-- <div class="form-group">
+                          <label class="custom-control custom-checkbox">
+   <input id="modal_avail_status" type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
+   <span class="custom-control-label" for="chbxTerms">Available</span>
+   </label>
+ </div> -->
+</div>    
+<div class="col-sm-6">
+  <input id="productEditBtn" onclick="editkeychain()" type="button" value="Edit Phonecase" class="btn btn-success float-right">
+</div>   
+</div>
+
+</div>
+<!-- /.card-body -->
+</div>
+<!-- /.card -->
+</div>
+</div>
+</div>
+
+<!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<script src="hosturl.js"></script>
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    $('#add_phonecase').click(function(e) {
+      let name = document.getElementById("k_name").value
+      let company = document.getElementById("comp_option").value
+      let size_2d = document.getElementById("k_size_2d").value
+      let size_3d = document.getElementById("k_size_3d").value
+      let size_4d = document.getElementById("k_size_4d").value
+      let price_2d = document.getElementById("k_price_2d").value
+      let price_3d = document.getElementById("k_price_3d").value
+      let price_4d = document.getElementById("k_price_4d").value
+      let description_2d = document.getElementById("k_description_2d").value
+      let description_3d = document.getElementById("k_description_3d").value
+      let description_4d = document.getElementById("k_description_4d").value
+    // let avail_status = document.getElementById("is_avail").checked
+    //  let available_status = avail_status ? 1 : 0
+    //let inputfile = document.getElementById("productImage").files[0]
+    let keydata = {
+      name, company, size_2d, size_3d, size_4d, price_2d, price_3d, price_4d,description_2d, description_3d, 
+      description_4d
+    }
+    //console.log(keydata)
+    fetch(`http://${hosturl}:5600/api/phonecase/addphonecase`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(keydata)
+    })
+    .then(function(res){ 
+      return res.json()
+    })
+    .then(function(result){
+      let name = document.getElementById("k_name").value = ""
+      document.getElementById("comp_option").value = ""
+      document.getElementById("k_size_2d").value = ""
+      document.getElementById("k_size_3d").value = ""
+      document.getElementById("k_size_4d").value = ""
+      document.getElementById("k_price_2d").value = ""
+      document.getElementById("k_price_3d").value = ""
+      document.getElementById("k_price_4d").value = ""
+      document.getElementById("k_description_2d").value = ""
+      document.getElementById("k_description_3d").value = ""
+      document.getElementById("k_description_4d").value = ""
+      document.getElementById("phonecase_notif").innerHTML = `${name} added Successfully!!`
+      console.log(result)
+      let productId = result.product._id
+      console.log(productId)
+      uploadFile(productId)
+  //getproducts()
+  
+})
+    .catch(function(res){ console.log(res) })
+  });
+  })
+
+  function logOutUser(){
+    localStorage.clear();
+    location.href =  "file:///home/phoenix/Downloads/archives/admintemp/pages/examples/login.html";
+  }
+
+
+  function checkAll()
+  {
+   var tablek = document.getElementById('keychaintable');
+   var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
+   var val = checkboxes[0].checked;
+   for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
+ }
+
+function checkAllCompanies()
+{
+ var tablec = document.getElementById('companytable');
+ var checkboxes = tablec.querySelectorAll ('input[type=checkbox]');
+ var val = checkboxes[0].checked;
+ for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
+}
+
+function filterbycompany(){
+  console.log("filtering")
+  let filcompany = document.getElementById("sel_comp").value
+  if(filcompany === "all"){
+    CreateTableFromJSON(okchains)
+  }
+  else {
+    let testcomp = okchains.map(a => ({...a}));
+    let result = testcomp.filter(i => {
+      console.log(i)
+      return i.company === filcompany}) ; 
+    console.log(result)
+    CreateTableFromJSON(result)
+    return result
+  }
+
+}
+
+function printChecked(){
+  var items=document.getElementsByName('todelete');
+  var selectedItems=[];
+  for(var i=0; i<items.length; i++){
+    if(items[i].type=='checkbox' && items[i].checked==true)
+      selectedItems.push(items[i].value);
+  }
+  console.log(selectedItems);
+  return selectedItems
+}  
+
+function printCheckedCompanies(){
+  var items=document.getElementsByName('todeletecomp');
+  var selectedItems=[];
+  for(var i=0; i<items.length; i++){
+    if(items[i].type=='checkbox' && items[i].checked==true)
+      selectedItems.push(items[i].value);
+  }
+  console.log(selectedItems);
+  return selectedItems
+}  
+
+function getcompopt(){
+  let res = document.getElementById("comp_option").value
+  console.log(res)
+}
+function populateoption(options){
+
+  var optionsd = ""
+  var optionsdx = ""
+
+  for (var i = 0; i < options.length; i++) {
+   optionsd += '<option value="' + options[i]+ '">' + options[i] + '</option>';
+
+ }
+ optionsdx += '<option value="all">all</option>';
+ for (var i = 0; i < options.length; i++) {
+   optionsdx += '<option value="' + options[i]+ '">' + options[i] + '</option>';
+
+ }
+ $("#comp_option").html(optionsd);
+ $("#sel_comp").html(optionsdx);
+ $("#modal_option").html(optionsd);
+}
+function add_company(){
+  console.log("func")
+  let companyname = document.getElementById("company_name").value
+  let comp_data = {
+    "company_name" : companyname
+  }
+  fetch(`http://${hosturl}:5600/api/phonecase/addcompany`, {
+    method: 'post',
+    body: JSON.stringify(comp_data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    console.log(data.company.name)
+    document.getElementById("company_notif").innerHTML = `Company "${data.company.name}" Added Successfully!!!`
+    document.getElementById("company_name").value = ""
+    getcompanies()
+  });
+}
+
+</script>
+<script type="text/javascript">
+
+  function logOutUser(){
+    localStorage.clear();
+    window.location  =  "login.html";
+  }
+
+  function companylist(strs){
+    var list = document.getElementById('company_list');
+    list.innerHTML = ""
+    for (var i in strs) {
+      var spanli = document.createElement("span")
+      var icondel = document.createElement("i")
+      spanli.innerText = strs[i];
+      icondel.setAttribute("class","fas fa-trash")
+      var elem = document.createElement("li");
+      elem.setAttribute("class", "list-group-item");
+      elem.appendChild(spanli);
+      elem.appendChild(icondel);
+      list.appendChild(elem);
+    }
+
+  }
+  
+
+  function getcompanies(){
+    fetch(`http://${hosturl}:5600/api/phonecase/allcompanies`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      let globalcompaniesold = data.map(a => ({...a}));
+      globalcompanies = globalcompaniesold.reverse()
+      const companies = data.map(comp => comp.name);
+      console.log(companies)
+      //companylist(companies)
+      populateoption(companies)
+      CreateTableFromJSONcompany(data)
+    })
+    .catch(err => console.log(err))
+  }
+
+  getcompanies()
+
+  function deletecompanies(){
+    let todeleteids = printCheckedCompanies()
+    let deleteArray = {
+      todeleteids
+    }
+    fetch(`http://${hosturl}:5600/api/phonecase/deletecompany`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "DELETE",
+      body: JSON.stringify(deleteArray)
+    })
+    .then(function(res){ 
+      document.getElementById("company_notif")
+      getcompanies() 
+    })
+    .catch(function(res){ console.log(res) })
+  }
+
+
+  function deletekeychains(){
+    let todeleteids = printChecked()
+    let deleteArray = {
+      todeleteids
+    }
+    fetch(`http://${hosturl}:5600/api/phonecase/deletephonecase`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "DELETE",
+      body: JSON.stringify(deleteArray)
+    })
+    .then(function(res){ 
+
+      getproducts() 
+    })
+    .catch(function(res){ console.log(res) })
+  }
+
+  function editcompany(company){
+    let companyref = company.getAttribute("data-key")
+    let companyrf = globalcompanies[companyref]
+    console.log(globalcompanies[companyref])
+    //console.log()
+    document.getElementById('c_name').value = companyrf.name
+    document.getElementById('c_old_name').value = companyrf.name
+    document.getElementById('c_id').value = companyrf._id
+
+  }
+
+  function detalis2d(btn2d){
+    console.log(btn2d)
+    let arrayref2d = btn2d.getAttribute('data-key') 
+    let ref2d = okchains[arrayref2d]
+    document.getElementById("name_2d_m").innerHTML = okchains[arrayref2d].name
+    document.getElementById("price_2d_m").innerHTML = okchains[arrayref2d].price_2d
+    document.getElementById("size_2d_m").innerHTML = okchains[arrayref2d].size_2d
+    document.getElementById("description_2d_m").innerHTML = okchains[arrayref2d].description_2d
+    let sliderimage2d = okchains[arrayref2d].image_header_2d
+    let sliderimagesrc2d = `http://${hosturl}:5600/admin/uploads/${sliderimage2d}`
+    let coverimage2d = okchains[arrayref2d].image_inner_2d
+    let coverimagesrc2d = `http://${hosturl}:5600/admin/uploads/${coverimage2d}`
+    let maskimage2d = okchains[arrayref2d].image_mask_2d
+    let maskimagesrc2d = `http://${hosturl}:5600/admin/uploads/${maskimage2d}`
+    document.getElementById("s_2d_image").src = sliderimagesrc2d
+    document.getElementById("c_2d_image").src = coverimagesrc2d
+    document.getElementById("m_2d_image").src = maskimagesrc2d
+    //document.getElementById("name_2d_m").innerHTML = okchains[arrayref2d].name
+  }
+
+  function detalis3d(btn3d){
+    console.log(btn3d)
+    let arrayref3d = btn3d.getAttribute('data-key') 
+    let ref3d = okchains[arrayref3d]
+    document.getElementById("name_3d_m").innerHTML = okchains[arrayref3d].name
+    document.getElementById("price_3d_m").innerHTML = okchains[arrayref3d].price_3d
+    document.getElementById("size_3d_m").innerHTML = okchains[arrayref3d].size_3d
+    document.getElementById("description_3d_m").innerHTML = okchains[arrayref3d].description_3d
+    let sliderimage3d = okchains[arrayref3d].image_header_3d
+    let sliderimagesrc3d = `http://${hosturl}:5600/admin/uploads/${sliderimage3d}`
+    let coverimage3d = okchains[arrayref3d].image_inner_3d
+    let coverimagesrc3d = `http://${hosturl}:5600/admin/uploads/${coverimage3d}`
+    let maskimage3d = okchains[arrayref3d].image_mask_3d
+    let maskimagesrc3d = `http://${hosturl}:5600/admin/uploads/${maskimage3d}`
+    document.getElementById("s_3d_image").src = sliderimagesrc3d
+    document.getElementById("c_3d_image").src = coverimagesrc3d
+    document.getElementById("m_3d_image").src = maskimagesrc3d
+  }
+
+  function editproduct(test){
+     // console.log(test)
+     let arrayn = test.getAttribute("data-key")
+     console.log("arrayn",arrayn)
+      //console.log(okchains[arrayn])
+      //console.log(okchains[arrayn].name)
+      document.getElementById("modal_id").value = arrayn
+
+      fetch(`http://${hosturl}:5600/api/phonecase/getphonecasebyidadmin/${arrayn}`)
+      .then(response => {
+     // console.log(response)
+     return response.json()})
+      .then(data => {
+        console.log(data)
+        document.getElementById("modal_name").value = data.name
+        document.getElementById("modal_option").value = data.company
+        document.getElementById("modal_2d_price").value = data.price_2d
+        document.getElementById("modal_3d_price").value = data.price_3d
+        document.getElementById("modal_4d_price").value = data.price_4d
+        document.getElementById("modal_2d_description").value = data.description_2d
+        document.getElementById("modal_3d_description").value = data.description_3d
+        document.getElementById("modal_4d_description").value = data.description_4d
+        document.getElementById("modal_2d_size").value = data.size_2d
+        document.getElementById("modal_3d_size").value = data.size_3d
+        document.getElementById("modal_4d_size").value = data.size_4d
+        let available_2d = data.available_2d === 1 ? true : false
+        let available_3d = data.available_3d === 1 ? true : false
+        let available_4d = data.available_4d === 1 ? true : false
+        document.getElementById("is_2d_available").checked = available_2d
+        document.getElementById("is_3d_available").checked = available_3d
+        document.getElementById("is_4d_available").checked = available_4d
+        let image_i_2d = data.image_inner_2d
+        let image_m_2d = data.image_mask_2d
+        let image_i_3d = data.image_inner_3d
+        let image_m_3d = data.image_mask_3d
+        let image_h_2d = data.image_header_2d
+        let image_h_3d = data.image_header_3d
+        let image_h_4d = data.image_header_4d
+        document.getElementById("modal_2d_i_image").src = `http://${hosturl}:5600/admin/uploads/${image_i_2d}`
+        document.getElementById("modal_2d_m_image").src = `http://${hosturl}:5600/admin/uploads/${image_m_2d}`
+        document.getElementById("modal_3d_i_image").src = `http://${hosturl}:5600/admin/uploads/${image_i_3d}`
+        document.getElementById("modal_3d_m_image").src = `http://${hosturl}:5600/admin/uploads/${image_m_3d}`
+        document.getElementById("modal_2d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_2d}`
+        document.getElementById("modal_3d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_3d}`
+        document.getElementById("modal_4d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_4d}`
+
+      })
+      .catch(err => console.log(err))
+
+
+
+
+      //console.log(document.getElementById("modal_id").value)
+
+    }
+
+    function editkeychain(){
+      console.log("edit ran")
+      let name = document.getElementById("modal_name").value
+      let company = document.getElementById("modal_option").value
+      let size_2d = document.getElementById("modal_2d_size").value
+      let size_3d = document.getElementById("modal_3d_size").value
+      let size_4d = document.getElementById("modal_4d_size").value
+      let price_2d = document.getElementById("modal_2d_price").value
+      let price_3d = document.getElementById("modal_3d_price").value
+      let price_4d = document.getElementById("modal_4d_price").value
+      let description_2d = document.getElementById("modal_2d_description").value
+      let description_3d = document.getElementById("modal_3d_description").value
+      let description_4d = document.getElementById("modal_4d_description").value
+      let keyid = document.getElementById("modal_id").value
+      let available_2d_ref = document.getElementById("is_2d_available").checked
+      let available_3d_ref = document.getElementById("is_3d_available").checked
+      let available_4d_ref = document.getElementById("is_4d_available").checked
+      let available_2d = available_2d_ref ? 1 : 0
+       let available_3d = available_3d_ref ? 1 : 0
+       let available_4d = available_4d_ref ? 1 : 0
+    //let avail_status = document.getElementById("modal_avail_status").checked
+    //console.log("avail status", avail_status)
+    //let available_status = avail_status ? 1 : 0
+    let keditdata = {
+      name, company, size_2d, price_2d, description_2d, size_3d, price_3d, description_3d, size_4d, price_4d, description_4d, available_2d, available_3d, available_4d
+    }
+    console.log(keyid)
+    console.log("k edit data")
+    console.log(keditdata)
+
+    fetch(`http://${hosturl}:5600/api/phonecase/editphonecase/${keyid}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "PUT",
+      body: JSON.stringify(keditdata)
+    })
+    .then(function(res){ 
+      uploadFileEdit(keyid)
+           // getproducts()
+           $("#myModal").modal("hide");
+
+         })
+    .catch(function(res){ console.log(res) })
+  }
+
+  function editcompanyname(){
+    console.log("edit ran")
+    let name = document.getElementById("c_name").value
+    let keyid = document.getElementById("c_id").value
+    let oldname = document.getElementById("c_old_name").value
+    //console.log("avail status", avail_status)
+    //let available_status = avail_status ? 1 : 0
+    let keditdata = {
+      name, oldname
+    }
+    console.log(keyid)
+    console.log("k edit data")
+    console.log(keditdata)
+
+    fetch(`http://${hosturl}:5600/api/phonecase/editcompanyname/${keyid}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "PUT",
+      body: JSON.stringify(keditdata)
+    })
+    .then(function(res){ 
+            //uploadFileEdit(keyid)
+            getcompanies()
+            getproducts()
+            $("#compModal").modal("hide");
+            document.getElementById("company_notif").innerHTML =`Company "${oldname}" Successfully renamed to "${name}" !!`
+
+          })
+    .catch(function(res){ console.log(res) })
+  }
+
+  function imageModal(imgname){
+    let source = `http://${hosturl}:5600/admin/uploads/${imgname}` 
+    document.getElementById("imgModal").src=source;
+
+    setTimeout(function () { 
+      $('#imageModal').modal('show');
+    }, 50);
+    console.log(imgname)
+
+  }
+
+  function uploadFile(productid){
+    //var input = document.querySelector('input[type="file"]')
+    var form = document.getElementById("put_images");
+    var formData = new FormData(form);
+    console.log(formData)
+
+    fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
+      method: 'PUT',
+      body: formData
+    }).then(res => {
+      console.log(res)
+      getproducts()
+    }).catch(err => console.log(err))
+
+  }
+
+  function uploadFileEdit(productid){
+    //var input = document.querySelector('input[type="file"]')
+    var form = document.getElementById("edit_images");
+    var formData = new FormData(form);
+
+    fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
+      method: 'PUT',
+      body: formData
+    }).then(res => {
+      console.log(res)
+      getproducts()
+    }).catch(err => console.log(err))
+
+  }
+
+
+  function activeproduct(activebtn){
+    let companyref = activebtn.getAttribute("data-key")
+    let companyid = globalcompanies[companyref]._id
+    let ceditdata = {
+      active_status : 1
+    }
+    fetch(`http://${hosturl}:5600/api/phonecase/editcompany/${companyid}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "PUT",
+      body: JSON.stringify(ceditdata)
+    })
+    .then(function(res){ 
+      console.log(res)
+           // uploadFileEdit(keyid)
+           getcompanies()
+           // $("#myModal").modal("hide");
+
+         })
+    .catch(function(res){ console.log(res) })
+    console.log(companyid)
+  }
+
+  function deactiveproduct(activebtn){
+    let companyref = activebtn.getAttribute("data-key")
+    let companyid = globalcompanies[companyref]._id
+    let ceditdata = {
+      active_status : 0
+    }
+    fetch(`http://${hosturl}:5600/api/phonecase/editcompany/${companyid}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "PUT",
+      body: JSON.stringify(ceditdata)
+    })
+    .then(function(res){ 
+     console.log(res)
+     getcompanies()
+           // uploadFileEdit(keyid)
+           // getproducts()
+            //$("#myModal").modal("hide");
+
+          })
+    .catch(function(res){ console.log(res) })
+    console.log(companyid)
+  }
+
+
+
+  //   function getkeychains(oldkeychains){
+  //   let tokeyc = oldkeychains.reverse()
+  //   console.log(oldkeychains)
+  //   let newkeychains = oldkeychains.map(keychain => {
+  //     delete keychain._id
+  //     delete keychain.__v
+  //     delete keychain.available_status
+  //     return keychain
+  //   })
+  //   //console.log(newkeychains)
+  //   return newkeychains
+  // }
+
+  function getkeychainscomp(oldkeychains){
+    let tokeyc = oldkeychains.reverse()
+    console.log(oldkeychains)
+    let newkeychains = oldkeychains.map(keychain => {
+      delete keychain._id
+      delete keychain.__v
+      delete keychain.available_status
+      return keychain
+    })
+    //console.log(newkeychains)
+    return newkeychains
+  }
+
+  function activephonecase(activebtn){
+    let phonecaseref = activebtn.getAttribute("data-key")
+    let phonecaseid = phonecaseref
+    let ceditdata = {
+      available_status : 1
+    }
+    fetch(`http://${hosturl}:5600/api/phonecase/editphonecasestatus/${phonecaseid}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "PUT",
+      body: JSON.stringify(ceditdata)
+    })
+    .then(function(res){ 
+      console.log(res)
+           // uploadFileEdit(keyid)
+           getproducts()
+           // $("#myModal").modal("hide");
+
+         })
+    .catch(function(res){ console.log(res) })
+    console.log(phonecaseid)
+  }
+
+  function deactivephonecase(activebtn){
+    let phonecaseref = activebtn.getAttribute("data-key")
+    let phonecaseid = phonecaseref
+    let ceditdata = {
+      available_status : 0
+    }
+    fetch(`http://${hosturl}:5600/api/phonecase/editphonecasestatus/${phonecaseid}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "PUT",
+      body: JSON.stringify(ceditdata)
+    })
+    .then(function(res){ 
+     console.log(res)
+     getproducts()
+           // uploadFileEdit(keyid)
+           // getproducts()
+            //$("#myModal").modal("hide");
+
+          })
+    .catch(function(res){ console.log(res) })
+    console.log(phonecaseid)
+  }
+
+
+
+  function CreateTableFromJSON(myBookso) {
+    console.log("myBookso")
+    console.log(myBookso)
+
+      //let myBookson = getkeychains(myBookso)
+      var myBooks = JSON.parse(JSON.stringify( myBookso, ["name","company"]));
+      let thphonecaes = ["Name", "Company"]
+      console.log("myBookso")
+      console.log(myBookso)
+
+
+      var col = [];
+      for (var i = 0; i < myBooks.length; i++) {
+        for (var key in myBooks[i]) {
+          if (col.indexOf(key) === -1) {
+            col.push(key);
+          }
+        }
+      }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+        table.setAttribute("class", "table table-striped auto-index-phone");
+        table.setAttribute("id","keychaintable")
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);  
+        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
+
+        for (var i = -1; i < col.length; i++) {
+          var th = document.createElement("th");  
+                // TABLE HEADER.
+                if(i === -1){
+                  th.innerHTML = "No.";
+                }
+                else {
+                  th.innerHTML = thphonecaes[i];
+                }
+
+                tr.appendChild(th);
+
+              }
+              var th2d = document.createElement("th"); 
+              th2d.innerHTML = "2d Details"
+              var th3d = document.createElement("th"); 
+              th3d.innerHTML = "3d Details"
+              var thn =  document.createElement("th"); 
+              thn.innerHTML = "Edit";
+              var tha =  document.createElement("th"); 
+              tha.innerHTML = "Action";
+              tr.appendChild(th2d)
+              tr.appendChild(th3d)
+              tr.appendChild(thn);
+              tr.appendChild(tha)
+              var ths = document.createElement("th")
+              ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox3' value='option1'><label for='customCheckbox3' class='custom-control-label'>Select All</label></div></div>"
+              tr.appendChild(ths);
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+
+          tr = table.insertRow(-1);
+            //tr.setAttribute("contenteditable", "true"); 
+            for (var j = -1; j < col.length; j++) {
+              var tabCell = tr.insertCell(-1);
+              if(j === -1){
+                tabCell.innerHTML = ""
+              }
+              else{
+                tabCell.innerHTML = myBooks[i][col[j]];
+              }
+
+
+                //console.log(i, j)
+              }
+              let btn2d = document.createElement("button")
+              btn2d.setAttribute("class", "btn btn-info");
+              btn2d.style.marginRight = "2px";
+              btn2d.setAttribute("onclick", "detalis2d(this)");
+              btn2d.setAttribute("data-toggle", "modal");
+              btn2d.setAttribute("data-target", "#details_2d");
+              btn2d.setAttribute("data-key",i)
+              
+              btn2d.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
+            btn2d.innerHTML = "View 2d"
+
+            let btn3d = document.createElement("button")
+            btn3d.setAttribute("class", "btn btn-info");
+            btn3d.style.marginRight = "2px";
+            btn3d.setAttribute("onclick", "detalis3d(this)");
+            btn3d.setAttribute("data-toggle", "modal");
+            btn3d.setAttribute("data-target", "#details_3d");
+            btn3d.setAttribute("data-key",i)
+            btn3d.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
+            btn3d.innerHTML = "View 3d"
+
+          //  console.log(myBooks[i])
+             // let delbtn = document.createElement("button")
+             // delbtn.setAttribute("class", "btn btn-danger");
+             // delbtn.innerHTML = "Delete"
+             // delbtn.style.margin = "5px";
+             let editbtn = document.createElement("button")
+             editbtn.setAttribute("class", "btn btn-primary");
+             editbtn.style.marginRight = "2px";
+             editbtn.setAttribute("onclick", "editproduct(this)");
+             editbtn.setAttribute("data-toggle", "modal");
+             editbtn.setAttribute("data-target", "#myModal");
+             editbtn.setAttribute("data-key",myBookso[i]._id)
+            // delbtn.setAttribute("data-key",i)
+            // delbtn.setAttribute("onclick", "deleteproduct(this)")
+            editbtn.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
+            editbtn.innerHTML = "Edit"
+            let activatebtn = document.createElement("button")
+            activatebtn.style.marginRight = "2px"
+
+            activatebtn.style.padding = "1px 5px";
+            let atd = document.createElement("td");
+            console.log("active status below")
+            console.log(okchains[i].available_status)
+            if(myBookso[i].available_status === 1){
+              console.log("its in if")
+              activatebtn.setAttribute("onclick","deactivephonecase(this)")
+              activatebtn.setAttribute("class", "btn btn-success");
+              activatebtn.innerHTML = "Activated";
+            }
+            else{
+              console.log("its in else")
+              activatebtn.setAttribute("onclick","activephonecase(this)")
+              activatebtn.setAttribute("class", "btn btn-danger");
+              activatebtn.innerHTML = "Deactivated";
+            }
+            activatebtn.setAttribute("data-key",myBookso[i]._id)
+            let td = document.createElement("td");
+            //td.style.padding = "5px";
+            let std = document.createElement("td");
+            let td2d = document.createElement("td");
+            let td3d = document.createElement("td");
+            let deleteCheck = document.createElement("input")
+            deleteCheck.setAttribute("type","checkbox")
+            deleteCheck.setAttribute("name","todelete")
+            deleteCheck.setAttribute("value",myBookso[i]._id)
+            console.log("deactivate id", i)
+            console.log("deactivate id", okchains[i]._id)
+            console.log("deactivate id", myBookso[i]._id)
+
+            // console.log(deleteCheck)
+            std.appendChild(deleteCheck)
+            atd.appendChild(activatebtn)
+            td2d.appendChild(btn2d)
+            td3d.appendChild(btn3d)
+            td.appendChild(editbtn)
+            // td.appendChild(delbtn)
+            tr.appendChild(td2d)
+            tr.appendChild(td3d)
+            tr.appendChild(td)
+            tr.appendChild(atd)
+            tr.appendChild(std)
+          }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("samplejson");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+      }
+    //CreateTableFromJSON() 
+
+    function CreateTableFromJSONcompany(myBookso) {
+      let myBookson = getkeychainscomp(myBookso)
+
+      let myBooks = JSON.parse(JSON.stringify( myBookson, ["name"]));
+
+
+      var col = [];
+      for (var i = 0; i < myBooks.length; i++) {
+        for (var key in myBooks[i]) {
+          if (col.indexOf(key) === -1) {
+            col.push(key);
+          }
+        }
+      }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+        table.setAttribute("class", "table table-striped auto-index");
+        table.setAttribute("id","companytable")
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);  
+        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
+
+        for (var i = -1; i < col.length; i++) {
+          var th = document.createElement("th");  
+                // TABLE HEADER.
+                if(i === -1){
+                  th.innerHTML = "No";
+                }
+                else {
+                  th.innerHTML = col[i];
+                }
+
+                tr.appendChild(th);
+
+              }
+              var thn =  document.createElement("th"); 
+              thn.innerHTML = "Edit";
+              tr.appendChild(thn);
+              var tha =  document.createElement("th"); 
+              tha.innerHTML = "Action";
+              tr.appendChild(tha);
+              var ths = document.createElement("th")
+              var thd = document.createElement("th")
+              thd.innerHTML="<button onclick='deletecompanies()' class='btn btn-danger'>Delete Selected</button>"
+              ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAllCompanies() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label><button style='margin-left:10px' onclick='deletecompanies()' class='btn btn-danger'>Delete All</button></div></div> "
+              tr.appendChild(ths);
+        //tr.appendChild(thd);
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+
+          tr = table.insertRow(-1);
+            //tr.setAttribute("contenteditable", "true"); 
+            for (var j = -1; j < col.length; j++) {
+              var tabCell = tr.insertCell(-1)
+              if(j === -1){
+                tabCell.innerHTML = ""
+              }
+              else {
+                tabCell.innerHTML = myBooks[i][col[j]];
+              }
+
+              
+
+
+                //console.log(i, j)
+              }
+          //  console.log(myBooks[i])
+             // let delbtn = document.createElement("button")
+             // delbtn.setAttribute("class", "btn btn-danger");
+             // delbtn.innerHTML = "Delete"
+             // delbtn.style.margin = "5px";
+             let editbtn = document.createElement("button")
+             editbtn.setAttribute("class", "btn btn-primary");
+             editbtn.style.marginRight = "2px";
+             editbtn.setAttribute("onclick", "editcompany(this)");
+             editbtn.setAttribute("data-toggle", "modal");
+             editbtn.setAttribute("data-target", "#compModal");
+             editbtn.setAttribute("data-key",i)
+             editbtn.innerHTML = "Edit"
+            // delbtn.setAttribute("data-key",i)
+            // delbtn.setAttribute("onclick", "deleteproduct(this)")
+            editbtn.style.padding = "1px 5px";
+            let activatebtn = document.createElement("button")
+            activatebtn.style.marginRight = "2px"
+
+            activatebtn.style.padding = "1px 5px";
+            
+            let td = document.createElement("td");
+            td.style.padding = "5px";
+            let std = document.createElement("td");
+            let atd = document.createElement("td");
+            if(globalcompanies[i].active_status === 1){
+              activatebtn.setAttribute("onclick","deactiveproduct(this)")
+              activatebtn.setAttribute("class", "btn btn-success");
+              activatebtn.innerHTML = "Activated";
+            }
+            else{
+              activatebtn.setAttribute("onclick","activeproduct(this)")
+              activatebtn.setAttribute("class", "btn btn-danger");
+              activatebtn.innerHTML = "Deactivated";
+            }
+           // activatebtn.setAttribute("onclick","productstatustoggle(this)")
+            //activatebtn.setAttribute("class", "btn btn-success");
+           // activatebtn.innerHTML = "Activated";
+           activatebtn.setAttribute("data-key",i)
+            //std.style.padding = "5px";
+            atd.style.padding = "5px";
+            let deleteCheck = document.createElement("input")
+            deleteCheck.setAttribute("type","checkbox")
+            deleteCheck.setAttribute("name","todeletecomp")
+            deleteCheck.setAttribute("value",globalcompanies[i]._id)
+
+            // console.log(deleteCheck)
+            std.appendChild(deleteCheck)
+            td.appendChild(editbtn)
+            atd.appendChild(activatebtn)
+            // td.appendChild(delbtn)
+            tr.appendChild(td)
+            tr.appendChild(atd)
+            tr.appendChild(std)
+          }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("companyjson");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+      }
+
+
+        // function CreateTableFromJSON(myBookso) {
+      // let myBookson = getkeychains(myBookso)
+      // var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","size_2d","price_2d","description_2d","image_header_2d","image_inner_2d","size_3d","price_3d","description_3d","image_header_3d","image_inner_3d","available_status"]));
+
+
+        // var col = [];
+        // for (var i = 0; i < myBooks.length; i++) {
+        //     for (var key in myBooks[i]) {
+        //         if (col.indexOf(key) === -1) {
+        //             col.push(key);
+        //         }
+        //     }
+        // }
+
+        
+        // var table = document.createElement("table");
+        // table.setAttribute("class", "table");
+        // table.setAttribute("id","keychaintable")
+
+
+        // var tr = table.insertRow(-1);  
+
+
+        // for (var i = 0; i < col.length; i++) {
+        //     var th = document.createElement("th");  
+        //         // TABLE HEADER.
+        //     th.innerHTML = col[i];
+        //     tr.appendChild(th);
+
+        // }
+        // var thn =  document.createElement("th"); 
+        // thn.innerHTML = "Edit";
+        //     tr.appendChild(thn);
+        // var ths = document.createElement("th")
+        // ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
+        // tr.appendChild(ths);
+
+
+        // for (var i = 0; i < myBooks.length; i++) {
+
+        //     tr = table.insertRow(-1);
+
+        //     for (var j = 0; j < col.length; j++) {
+        //       var tabCell = tr.insertCell(-1);
+        //       if(j===5 || j===6 || j===10 || j===11){
+        //         let image = '"'+myBooks[i][col[j]]+'"'
+        //         tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
+        //         console.log(myBooks[i][col[j]])
+        //       }
+        //       else{
+        //         tabCell.innerHTML = myBooks[i][col[j]];
+        //       }
+
+        //     }
+        //     let editbtn = document.createElement("button")
+        //     editbtn.setAttribute("class", "btn btn-primary");
+        //     editbtn.style.marginRight = "2px";
+        //     editbtn.setAttribute("onclick", "editproduct(this)");
+        //     editbtn.setAttribute("data-toggle", "modal");
+        //     editbtn.setAttribute("data-target", "#myModal");
+        //     editbtn.setAttribute("data-key",i)
+        //     editbtn.style.padding = "1px 5px";
+        //     editbtn.innerHTML = "Edit"
+        //     let td = document.createElement("td");
+        //     td.style.padding = "5px";
+        //     let std = document.createElement("td");
+        //     let deleteCheck = document.createElement("input")
+        //     deleteCheck.setAttribute("type","checkbox")
+        //     deleteCheck.setAttribute("name","todelete")
+        //     deleteCheck.setAttribute("value",okchains[i]._id)
+
+        //     std.appendChild(deleteCheck)
+        //     td.appendChild(editbtn)
+        //     tr.appendChild(td)
+        //     tr.appendChild(std)
+        // }
+
+    //     var divContainer = document.getElementById("samplejson");
+    //     divContainer.innerHTML = "";
+    //     divContainer.appendChild(table);
+    // }
+
+
+    function CreateTableFromJSON4d(myBookso) {
+      let myBookson = getkeychains(myBookso)
+      var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","size_2d","price_2d","description_2d","image_header_2d","image_inner_2d","size_3d","price_3d","description_3d","image_header_3d","image_inner_3d","available_status"]));
+
+
+      var col = [];
+      for (var i = 0; i < myBooks.length; i++) {
+        for (var key in myBooks[i]) {
+          if (col.indexOf(key) === -1) {
+            col.push(key);
+          }
+        }
+      }
+
+        // CREATE DYNAMIC TABLE.
+        var table = document.createElement("table");
+        table.setAttribute("class", "table");
+        table.setAttribute("id","keychaintable")
+        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+        var tr = table.insertRow(-1);  
+        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
+
+        for (var i = 0; i < col.length; i++) {
+          var th = document.createElement("th");  
+                // TABLE HEADER.
+                th.innerHTML = col[i];
+                tr.appendChild(th);
+
+              }
+              var thn =  document.createElement("th"); 
+              thn.innerHTML = "Edit";
+              tr.appendChild(thn);
+              var ths = document.createElement("th")
+              ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
+              tr.appendChild(ths);
+
+        // ADD JSON DATA TO THE TABLE AS ROWS.
+        for (var i = 0; i < myBooks.length; i++) {
+
+          tr = table.insertRow(-1);
+            //tr.setAttribute("contenteditable", "true"); 
+            for (var j = 0; j < col.length; j++) {
+              var tabCell = tr.insertCell(-1);
+              if(j===5 || j===6 || j===10 || j===11){
+                let image = '"'+myBooks[i][col[j]]+'"'
+                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
+                console.log(myBooks[i][col[j]])
+              }
+              else{
+                tabCell.innerHTML = myBooks[i][col[j]];
+              }
+
+
+                //console.log(i, j)
+              }
+          //  console.log(myBooks[i])
+             // let delbtn = document.createElement("button")
+             // delbtn.setAttribute("class", "btn btn-danger");
+             // delbtn.innerHTML = "Delete"
+             // delbtn.style.margin = "5px";
+             let editbtn = document.createElement("button")
+             editbtn.setAttribute("class", "btn btn-primary");
+             editbtn.style.marginRight = "2px";
+             editbtn.setAttribute("onclick", "editproduct(this)");
+             editbtn.setAttribute("data-toggle", "modal");
+             editbtn.setAttribute("data-target", "#myModal");
+             editbtn.setAttribute("data-key",i)
+            // delbtn.setAttribute("data-key",i)
+            // delbtn.setAttribute("onclick", "deleteproduct(this)")
+            editbtn.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
+            editbtn.innerHTML = "Edit"
+            let td = document.createElement("td");
+            td.style.padding = "5px";
+            let std = document.createElement("td");
+            let deleteCheck = document.createElement("input")
+            deleteCheck.setAttribute("type","checkbox")
+            deleteCheck.setAttribute("name","todelete")
+            deleteCheck.setAttribute("value",okchains[i]._id)
+
+            // console.log(deleteCheck)
+            std.appendChild(deleteCheck)
+            td.appendChild(editbtn)
+            // td.appendChild(delbtn)
+            tr.appendChild(td)
+            tr.appendChild(std)
+          }
+
+        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+        var divContainer = document.getElementById("samplejson4dcovers");
+        divContainer.innerHTML = "";
+        divContainer.appendChild(table);
+      }
+
+
+      function getproducts(){
+        fetch(`http://${hosturl}:5600/api/phonecase/getallphonecases`)
+        .then(response => {
+     // console.log(response)
+     return response.json()})
+        .then(data => {
+
+          let okchainsold = data.map(a => ({...a}));
+      //okchains = okchainsold
+      okchains = okchainsold.reverse()
+      //let okchains = Object.assign({}, data);
+      console.log(okchains)
+  // okchains = Object.assign({}, data);
+   //console.log(okchains)
+   //let testkey = Object.assign({}, data);
+      //okchains = data
+      //let newkeychains = getkeychains(data)
+      let ndata = filterbycompany()
+      
+      CreateTableFromJSON(ndata)
+    })
+        .catch(err => console.log(err))
+      }
+
+
+
+
+      function checkLogin(){
+
+        if (localStorage.getItem("luser") === null) {
+     // $('#loggedIn').css("display","none")
+       // $('#logintosee').html("login to see the registered users")
+       // $('#notloggedbtn').css("display","block")
+       window.location = "login.html";
+      //  console.log(ran)
+    }
+    else{
+      console.log(localStorage.getItem("luser"))
+      //var loguser = JSON.parse(localStorage.getItem('luser'));
+      //var username = loguser.name;
+
+      var authtokend = localStorage.getItem('authorization')
+      getproducts()
+      console.log(authtokend)
+      
+      //console.log(username)   
+    }
+  }
+  checkLogin()
+</script>
+</body>
+</html>

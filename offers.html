@@ -1599,7 +1599,8 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
           .then(function(res){ 
             // console.log(res)
            // uploadFileEdit(keyid)
-            getoffers()
+           // getoffers()
+           getordersdatatable()
            // $("#myModal").modal("hide");
  
           })
@@ -1624,7 +1625,8 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
           })
           .then(function(res){ 
              // console.log(res)
-            getoffers()
+            //getoffers()
+            getordersdatatable()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");
@@ -1860,10 +1862,22 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
               return `<button onclick="offerdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data}">view</button>`;
             }
         },  {
-          "data": "_id",
+          "data": null,
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="editoffermodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-key="${data}">edit</button>`;
+             let outerbutton = ""
+             let statuslink = ""
+             if(data.active_status === 1){
+
+            outerbutton = `<button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            statuslink = `<a data-key=${data._id} onclick="deactiveoffer(this)" class="dropdown-item">Deactivated</a>`
+             }
+              else {
+             outerbutton = `<button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Inactive</button>`
+             statuslink = `<a data-key=${data._id} onclick="activeoffer(this)"  class="dropdown-item">Active</a>`
+             }
+
+              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editoffermodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
             }
         }, {
           "data": "_id",
@@ -1877,7 +1891,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
 
     getordersdatatable()
 
-  
+
     
 </script>
 

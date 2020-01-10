@@ -1466,6 +1466,11 @@ function add_company(){
     document.getElementById("m_3d_image").src = maskimagesrc3d
   }
 
+    function detalis4d(btn4d){
+    console.log(btn4d)
+    window.location = "ncovers4d.html"
+  }
+
   function editproduct(test){
      // console.log(test)
      let arrayn = test.getAttribute("data-key")
@@ -1830,11 +1835,14 @@ function add_company(){
               var th3d = document.createElement("th"); 
               th3d.innerHTML = "3d Details"
               var thn =  document.createElement("th"); 
+              th4d.innerHTML = "4d Details"
+              var thn =  document.createElement("th"); 
               thn.innerHTML = "Edit";
               var tha =  document.createElement("th"); 
               tha.innerHTML = "Action";
               tr.appendChild(th2d)
               tr.appendChild(th3d)
+              tr.appendChild(th4d)
               tr.appendChild(thn);
               tr.appendChild(tha)
               var ths = document.createElement("th")
@@ -1874,6 +1882,18 @@ function add_company(){
             btn3d.setAttribute("class", "btn btn-info");
             btn3d.style.marginRight = "2px";
             btn3d.setAttribute("onclick", "detalis3d(this)");
+            btn3d.setAttribute("data-toggle", "modal");
+            btn3d.setAttribute("data-target", "#details_3d");
+            btn3d.setAttribute("data-key",i)
+            btn3d.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
+            btn3d.innerHTML = "View 3d"
+
+
+            let btn3d = document.createElement("button")
+            btn3d.setAttribute("class", "btn btn-info");
+            btn3d.style.marginRight = "2px";
+            btn3d.setAttribute("onclick", "detalis4d(this)");
             btn3d.setAttribute("data-toggle", "modal");
             btn3d.setAttribute("data-target", "#details_3d");
             btn3d.setAttribute("data-key",i)

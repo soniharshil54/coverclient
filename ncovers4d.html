@@ -319,12 +319,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Main Categories</h1>
+            <h1>4D Covers</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Main Categories</li>
+              <li class="breadcrumb-item active">4D Covers</li>
             </ol>
           </div>
         </div>
@@ -339,11 +339,11 @@
           <div class="col-12">
 
             <div style="margin-bottom: 40px" class="card card-primary">
-              <!-- <button style="padding: 0px" type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse"> -->
+              <button style="padding: 0px" type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
               <div class="card-header">
-                 <h3 id="productAddHeading" class="card-title">Main Categories</h3>
+                 <h3 id="productAddHeading" class="card-title">4D Covers</h3>
 
-              <!-- <div class="card-tools">
+             <!--  <div class="card-tools">
                 
                   <i class="fas fa-plus"></i>
               </div> -->
@@ -359,17 +359,17 @@
             <!-- /.card -->
           </div>
         </div>
-                  <div class="col-12">
+                  <div style="display: none" class="col-12">
 
-            <div class="card card-secondary">
+            <div class="card card-secondary collapsed-card">
               <button style="padding: 0px" type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
               <div class="card-header">
                  <h3 id="productAddHeading" class="card-title">Secondary Sliders</h3>
 
-            <!--   <div class="card-tools">
+              <div class="card-tools">
                 
                   <i class="fas fa-plus"></i>
-              </div> -->
+              </div>
               <!-- /.card-header -->
               
               <!-- /.card-body -->
@@ -1032,8 +1032,8 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
   }
     function CreateTableFromJSON(myBookso) {
       let myBookson = getkeychains(myBookso)
-      var myBooks = JSON.parse(JSON.stringify( myBookson, ["product_display_name","slider_image"]));
-      var thsliders = ["Category Name", "Image", "Active"] 
+      var myBooks = JSON.parse(JSON.stringify( myBookson, ["slider_image","inner_image"]));
+      var thsliders = ["Slider image", "Inner image"] 
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
@@ -1077,14 +1077,15 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
               if(j === -1){
                 tabCell.innerHTML = ""
               }
-              else if(j===1){
-                let image = '"'+myBooks[i][col[j]]+'"'
-                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
-                console.log(myBooks[i][col[j]])
-              }
-              else{
-                tabCell.innerHTML = myBooks[i][col[j]];
-              }
+             else {
+              let imgsrcref = myBooks[i][col[j]];
+              let imgsrc = `http://${hosturl}:5600/admin/uploads/${imgsrcref}`
+              let imgff = `<img width="100px" src="${imgsrc}"></img>`
+              tabCell.innerHTML = imgff
+             }
+                
+
+              
                 
                 
                 //console.log(i, j)
@@ -1197,7 +1198,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
     //CreateTableFromJSON() 
 
           function getproducts(){
-    fetch(`http://${hosturl}:5600/api/product/allsliders`)
+    fetch(`http://${hosturl}:5600/api/phonecase/get4dcoversbymodel/5e004179e266f2246c6b1ed1`)
     .then(response => {
      // console.log(response)
       return response.json()})
@@ -1224,7 +1225,7 @@ getproducts()
    })
     .catch(err => console.log(err))
 }
-getsecondary()
+//getsecondary()
 </script>
 </body>
 </html>

@@ -200,38 +200,29 @@
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Products
+                Phonecase
                 <i class="fas fa-angle-left right"></i>
                 <!-- <span class="badge badge-info right">6</span> -->
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Phone cases</p>
-                  <i class="fas fa-angle-left right"></i>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
+              <li class="nav-item">
                 <a href="company.html" class="nav-link">
-                  <!-- <i class="far fa-circle nav-icon"></i> -->
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Phone Company List</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="addmodel.html" class="nav-link">
-                  <!-- <i class="far fa-circle nav-icon"></i> -->
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Add Model</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="modellist.html"  class="nav-link active">
-                  <!-- <i class="far fa-circle nav-icon"></i> -->
+                <li class="nav-item">
+                <a href="modellist.html" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Model List</p>
                 </a>
-              </li>
-                </ul>
               </li>
             </ul>
           </li>
@@ -1439,6 +1430,11 @@ function add_company(){
     document.getElementById("m_3d_image").src = maskimagesrc3d
   }
 
+      function detalis4d(btn4d){
+    console.log(btn4d)
+    window.location = "ncovers4d.html"
+  }
+
   function editproduct(test){
      // console.log(test)
      let arrayn = test.getAttribute("data-key")
@@ -1802,12 +1798,15 @@ function add_company(){
               th2d.innerHTML = "2d Details"
               var th3d = document.createElement("th"); 
               th3d.innerHTML = "3d Details"
+              var th4d = document.createElement("th"); 
+              th4d.innerHTML = "4d Details"
               var thn =  document.createElement("th"); 
               thn.innerHTML = "Edit";
               var tha =  document.createElement("th"); 
               tha.innerHTML = "Action";
               tr.appendChild(th2d)
               tr.appendChild(th3d)
+              tr.appendChild(th4d)
               tr.appendChild(thn);
               tr.appendChild(tha)
               var ths = document.createElement("th")
@@ -1854,6 +1853,15 @@ function add_company(){
             // delbtn.style.padding = "1px 5px";
             btn3d.innerHTML = "View 3d"
 
+             let btn4d = document.createElement("button")
+            btn4d.setAttribute("class", "btn btn-info");
+            btn4d.style.marginRight = "2px";
+            btn4d.setAttribute("onclick", "detalis4d(this)");
+            btn4d.setAttribute("data-key",i)
+            btn4d.style.padding = "1px 5px";
+            // delbtn.style.padding = "1px 5px";
+            btn4d.innerHTML = "View 4d"
+
           //  console.log(myBooks[i])
              // let delbtn = document.createElement("button")
              // delbtn.setAttribute("class", "btn btn-danger");
@@ -1896,6 +1904,7 @@ function add_company(){
             let std = document.createElement("td");
             let td2d = document.createElement("td");
             let td3d = document.createElement("td");
+            let td4d = document.createElement("td");
             let deleteCheck = document.createElement("input")
             deleteCheck.setAttribute("type","checkbox")
             deleteCheck.setAttribute("name","todelete")
@@ -1909,10 +1918,13 @@ function add_company(){
             atd.appendChild(activatebtn)
             td2d.appendChild(btn2d)
             td3d.appendChild(btn3d)
+            td4d.appendChild(btn4d)
             td.appendChild(editbtn)
             // td.appendChild(delbtn)
             tr.appendChild(td2d)
             tr.appendChild(td3d)
+            tr.appendChild(td4d)
+
             tr.appendChild(td)
             tr.appendChild(atd)
             tr.appendChild(std)

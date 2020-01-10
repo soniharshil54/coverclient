@@ -196,42 +196,33 @@
               </p>
             </a>
           </li>
-                    <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
-                Products
+                Phonecase
                 <i class="fas fa-angle-left right"></i>
                 <!-- <span class="badge badge-info right">6</span> -->
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Phone cases</p>
-                  <i class="fas fa-angle-left right"></i>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
+              <li class="nav-item">
                 <a href="company.html" class="nav-link">
-                  <!-- <i class="far fa-circle nav-icon"></i> -->
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Phone Company List</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="addmodel.html" class="nav-link active">
-                  <!-- <i class="far fa-circle nav-icon"></i> -->
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Add Model</p>
                 </a>
               </li>
-              <li class="nav-item">
-                <a href="modellist.html"  class="nav-link">
-                  <!-- <i class="far fa-circle nav-icon"></i> -->
+                <li class="nav-item">
+                <a href="modellist.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
                   <p>Model List</p>
                 </a>
-              </li>
-                </ul>
               </li>
             </ul>
           </li>
@@ -1069,10 +1060,11 @@ $(document).ready(function(){
 
     else {
       if($('#4d_info_tab').hasClass('active')){
-        if(size_4d === "" && price_4d === "" && description_4d === ""){
+        if(size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === ""){
           console.log("4d all empty")
+
         }
-        else if(size_4d !== "" && price_4d !== "" && description_4d !== ""){
+        else if(size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== ""){
         console.log("4d all filled")}
         else {
          document.getElementById("4d_err").innerHTML = "fill 4d completely or not at all"
@@ -1081,10 +1073,10 @@ $(document).ready(function(){
       }
 
       else if($('#3d_info_tab').hasClass('active')){
-        if(size_3d === "" && price_3d === "" && description_3d === ""){
+        if(size_3d === "" && price_3d === "" && description_3d === ""  && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === ""){
           console.log("3d all empty")
         }
-        else if(size_3d !== "" && price_3d !== "" && description_3d !== ""){
+        else if(size_3d !== "" && price_3d !== "" && description_3d !== ""  && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== ""){
         console.log("3d all filled")}
         else {
          document.getElementById("3d_err").innerHTML = "fill 3d completely or not at all"
@@ -1138,10 +1130,10 @@ $(document).ready(function(){
 
     else {
       if($('#2d_info_tab').hasClass('active')){
-        if(size_2d === "" && price_2d === "" && description_2d === ""){
+        if(size_2d === "" && price_2d === "" && description_2d === ""  && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === ""){
           console.log("2d all empty")
         }
-        else if(size_2d !== "" && price_2d !== "" && description_2d !== ""){
+        else if(size_2d !== "" && price_2d !== "" && description_2d !== ""  && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== ""){
         console.log("2d all filled")}
         else {
          document.getElementById("2d_err").innerHTML = "fill 2d completely or not at all"
@@ -1150,13 +1142,13 @@ $(document).ready(function(){
       }
 
       else if($('#4d_info_tab').hasClass('active')){
-        if(size_4d === "" && price_4d === "" && description_4d === ""){
+        if(size_4d === "" && price_4d === "" && description_4d === ""  && sliderimage_4d === ""){
           console.log("4d all empty")
         }
-        else if(size_4d !== "" && price_4d !== "" && description_4d !== ""){
+        else if(size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== ""){
         console.log("4d all filled")}
         else {
-         document.getElementById("2d_err").innerHTML = "fill 2d completely or not at all"
+         document.getElementById("4d_err").innerHTML = "fill 4d completely or not at all"
           console.log("fill 4d completely or not at all")
         }
       }
@@ -1200,20 +1192,20 @@ $(document).ready(function(){
       }
       else {
         console.log("its inhere")
-        $('#model_info_tab').tab('hide')
-        $('#4d_info_tab').tab('show');
+       // $('#model_info_tab').tab('hide')
+        $(this).tab('show');
       }
       
     }
 
     else {
       if($('#2d_info_tab').hasClass('active')){
-        if(size_2d === "" && price_2d === "" && description_2d === ""){
-          $('#2d_info_tab').tab('hide')
+        if(size_2d === "" && price_2d === "" && description_2d === ""  && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === "" ){
+        //  $('#2d_info_tab').tab('hide')
            $(this).tab('show');
           console.log("2d all empty")
         }
-        else if(size_2d !== "" && price_2d !== "" && description_2d !== ""){
+        else if(size_2d !== "" && price_2d !== "" && description_2d !== ""  && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== ""){
            $(this).tab('show');
         console.log("2d all filled")}
         else {
@@ -1223,11 +1215,11 @@ $(document).ready(function(){
       }
 
       else if($('#3d_info_tab').hasClass('active')){
-        if(size_3d === "" && price_3d === "" && description_3d === ""){
+        if(size_3d === "" && price_3d === "" && description_3d === ""  && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === ""){
            $(this).tab('show');
           console.log("3d all empty")
         }
-        else if(size_3d !== "" && price_3d !== "" && description_3d !== ""){
+        else if(size_3d !== "" && price_3d !== "" && description_3d !== ""  && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== ""){
            $(this).tab('show');
         console.log("3d all filled")}
         else {

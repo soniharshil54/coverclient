@@ -569,18 +569,18 @@
             <div class="col-sm-12 col-lg-12">
             <div class="card card-primary card-outline card-tabs">
               <div class="card-header p-0 pt-1 border-bottom-0">
-                <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
+                                <ul class="nav nav-tabs" id="custom-tabs-two-tab" role="tablist">
                   <li class="nav-item">
-                    <a id="model_info_tab" class="nav-link active" id="custom-tabs-two-home-tab" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Model Name</a>
+                    <a class="nav-link active" id="custom-tabs-two-home-tab" data-toggle="pill" href="#custom-tabs-two-home" role="tab" aria-controls="custom-tabs-two-home" aria-selected="true">Model Name</a>
                   </li>
                   <li class="nav-item">
-                    <a id="2d_info_tab" class="nav-link" id="custom-tabs-two-profile-tab" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">2D</a>
+                    <a class="nav-link" id="custom-tabs-two-profile-tab" data-toggle="pill" href="#custom-tabs-two-profile" role="tab" aria-controls="custom-tabs-two-profile" aria-selected="false">2D</a>
                   </li>
                   <li class="nav-item">
-                    <a id="3d_info_tab" class="nav-link" id="custom-tabs-two-messages-tab" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">3D</a>
+                    <a class="nav-link" id="custom-tabs-two-messages-tab" data-toggle="pill" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">3D</a>
                   </li>
                   <li class="nav-item">
-                    <a id="4d_info_tab" class="nav-link" id="custom-tabs-two-settings-tab" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">4D</a>
+                    <a class="nav-link" id="custom-tabs-two-settings-tab" data-toggle="pill" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">4D</a>
                   </li>
                 </ul>
               </div>
@@ -611,6 +611,7 @@
                     </div>
                   </div><div class="col-sm-5"></div>
                   <div class="col-sm-6"><span style="color: red; font-weight: bold;" id="modelname_err"></span></div>
+                 
                     </div>
                      
                   </div>
@@ -680,12 +681,12 @@
                         <textarea id="k_description_2d" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                       </div>
                     </div></div><div class="col-sm-3"></div>
-                     <div class="col-sm-6"><span style="color: red; font-weight: bold;" id="2d_err"></span></div>
+                     <div class="col-sm-6"><span style="color: red; font-weight: bold;" id="2d_err"></span>
                      </div>
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-two-messages" role="tabpanel" aria-labelledby="custom-tabs-two-messages-tab">
                      <div class="row">
-                      <div class="col-sm-3"> <label for="exampleInputFile">3d image cover</label></div>
+                      <div class="col-sm-3"> <label for="exampleInputFile">3d image slider</label></div>
                        <div class="col-sm-3">
                      
                       <div class="form-group">
@@ -698,6 +699,19 @@
                       </div> -->
                     </div>
                   </div><div class="col-sm-6"></div>
+                  <div class="col-sm-3"><label for="exampleInputFile">3d image cover</label></div>  
+                  <div class="col-sm-3">
+                    
+                    <div class="form-group">
+                      <div class="custom-file">
+                        <input id="image_3d_inner" name="image_3d_inner" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> <div class="col-sm-6"></div>
                   <div class="col-sm-3"><label for="exampleInputFile">3d image mask</label></div>
                   <div class="col-sm-3">
                     
@@ -711,19 +725,7 @@
                       </div> -->
                     </div>
                   </div> <div class="col-sm-6"></div>
-                  <div class="col-sm-3"><label for="exampleInputFile">3d image inner</label></div>  
-                  <div class="col-sm-3">
-                    
-                    <div class="form-group">
-                      <div class="custom-file">
-                        <input id="image_3d_inner" name="image_3d_inner" type="file" class="custom-file-input" id="productImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div> <div class="col-sm-6"></div>
+                  
                   <div class="col-sm-3"><label>3d-Size</label></div>
                   <div class="col-sm-3">
                     <!-- text input -->
@@ -750,7 +752,7 @@
                         <textarea id="k_description_3d" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                       </div>
                     </div></div><div class="col-sm-3"></div>
-                     <div class="col-sm-6"><span style="color: red; font-weight: bold;" id="3d_err"></span></div>
+                     <div class="col-sm-6"><span style="color: red; font-weight: bold;" id="3d_err"></span>
                      </div>
                   </div>
                   <div class="tab-pane fade" id="custom-tabs-two-settings" role="tabpanel" aria-labelledby="custom-tabs-two-settings-tab">
@@ -793,7 +795,7 @@
                         <textarea id="k_description_4d" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                       </div>
                     </div></div><div class="col-sm-3"></div>
-                     <div class="col-sm-6"><span style="color: red; font-weight: bold;" id="4d_err"></span></div>
+                     <div class="col-sm-6"><span style="color: red; font-weight: bold;" id="4d_err"></span>
                      </div>
                   </div>
                 </div>
@@ -804,65 +806,19 @@
 
           <div class="col-sm-12">
             <div class="row">
-              <div class="col-sm-3">
-                 <input id="add_phonecase" type="button" value="Add Model" class="btn btn-success float-right">
+              
+            </div>
+          </div>
+
+          </div>
+          <div class="col-sm-3">
+               
               </div>
-            </div>
-          </div>
-
-          </div>
           <!-- /.row -->
-          <div class="row">
-            <div style="display: none" class="col-12">
-
-              <div class="card">
-                <div class="card-header">
-                  <div class="row">
-                    <div class="col-sm-3">
-                      <h3 class="card-title">Models</h3>
-                    </div>
-                    <div class="col-sm-5">
-                      <div class="card-tools">
-                        <div class="input-group input-group-sm" style="width: 270px;">
-                          <label style="margin-right: 20px" for="inputStatus">Company Name</label>
-                          <select onchange="filterbycompany()" id="sel_comp" class="form-control custom-select">
-                            <option selected disabled>All</option>
-                            <option>Samsung</option>
-                            <option>Oppo</option>
-                            <option>Vivo</option>
-                          </select>                 </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-4">
-                        <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>  
-                      </div>
-                    </div>
-
-
-
-
-                    <div class="card-tools">
-                    </div>
-                  </div>
-                  <!-- /.card-header -->
-                  <div class="card-body table-responsive p-0">
-                    <div id="samplejson"></div>
-
-                  </div>
-                  <!-- /.card-body -->
-           <!--    <ul class="list-group list-group-horizontal">
-                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
-                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
-                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
-                <li style="" class="list-group-item"><img height="200px" width="170px" src="images/cover4d.jpeg"></li>
-              </ul> -->
-
-            </div>
-            <!-- /.card -->
-          </div>
-        </div>
-        <!-- /.row -->
+         
       </section>
+      <div></div>
+        <input style="margin-left: 20px" id="add_phonecase" type="button" value="Add Model" class="btn btn-success float-left">
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
@@ -879,72 +835,6 @@
   </div>
   <!-- ./wrapper -->
 
-  <!-- The Modal -->
-  <div class="modal" id="compModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border: none">
-
-        <!-- Modal Header -->
-        <!-- <div class="modal-header" style="">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-        
-        <!-- Modal body -->
-        <div class="modal-body" style="text-align: center;">
-          <!-- <h1>ello</h1> -->
-          <div class="row">
-            <div class="col-sm-6">
-              <input id="c_id" type="hidden" class="form-control" placeholder="Enter new name...">
-              <input id="c_old_name" type="hidden" class="form-control" placeholder="Enter new name...">
-              <div class="form-group">
-                <!-- <label>New Company Name</label> -->
-                <input id="c_name" type="text" class="form-control" placeholder="Enter new name...">
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="form-group">
-               <label>&nbsp;</label>
-               <input id="productEditBtn" onclick="editcompanyname()" type="button" value="Edit Company Name" class="btn btn-success float-right">
-             </div>
-
-           </div> 
-         </div>
-       </div>
-
-       <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
-
-  <!-- The Modal -->
-  <div class="modal" id="imageModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: transparent;border: none">
-
-        <!-- Modal Header -->
-        <!-- <div class="modal-header" style="">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-        
-        <!-- Modal body -->
-        <div class="modal-body" style="text-align: center;">
-          <!-- <h1>ello</h1> -->
-          <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg">
-        </div>
-        
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
-
   
 </div>
 
@@ -959,36 +849,28 @@
 <script src="dist/js/demo.js"></script>
 <script src="hosturl.js"></script>
 
-<script>
+<!-- <script>
 $(document).ready(function(){
   $("#model_info_tab").click(function(){
-
-    let model_name = document.getElementById("k_name").value
-    let size_2d =  document.getElementById("k_size_2d").value
+     let size_2d =  document.getElementById("k_size_2d").value
     let price_2d = document.getElementById("k_price_2d").value
     let description_2d = document.getElementById("k_description_2d").value
-    let size_4d =  document.getElementById("k_size_4d").value
+      let modal_name = document.getElementById("k_name").value
+     let size_4d =  document.getElementById("k_size_4d").value
     let price_4d = document.getElementById("k_price_4d").value
     let description_4d = document.getElementById("k_description_4d").value
-    let size_3d =  document.getElementById("k_size_3d").value
+        let size_3d =  document.getElementById("k_size_3d").value
     let price_3d = document.getElementById("k_price_3d").value
     let description_3d = document.getElementById("k_description_3d").value
 
-     let sliderimage_2d = $("#image_2d_slider").val();
-    let innerimage_2d = $("#image_2d_inner").val();
-    let maskimage_2d = $("#image_2d_mask").val();
-    let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
-    let sliderimage_4d = $("#image_4d_slider").val();
 
 
 
           if($('#4d_info_tab').hasClass('active')){
-        if(size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === ""){
+        if(size_4d === "" && price_4d === "" && description_4d === ""){
           $(this).tab('show');
         }
-        else if(size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== ""){
+        else if(size_4d !== "" && price_4d !== "" && description_4d !== ""){
         $(this).tab('show');}
         else {
           document.getElementById("4d_err").innerHTML = "fill 4d completely or not at all"
@@ -997,10 +879,10 @@ $(document).ready(function(){
       }
 
       else if($('#3d_info_tab').hasClass('active')){
-        if(size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === ""){
+        if(size_3d === "" && price_3d === "" && description_3d === ""){
           $(this).tab('show');
         }
-        else if(size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== ""){
+        else if(size_3d !== "" && price_3d !== "" && description_3d !== ""){
         $(this).tab('show');}
         else {
           document.getElementById("3d_err").innerHTML = "fill 3d completely or not at all"
@@ -1009,10 +891,10 @@ $(document).ready(function(){
       }
 
       else if($('#2d_info_tab').hasClass('active')){
-        if(size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === ""){
+        if(size_2d === "" && price_2d === "" && description_2d === ""){
            $(this).tab('show');
         }
-        else if(size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== ""){
+        else if(size_2d !== "" && price_2d !== "" && description_2d !== ""){
          $(this).tab('show');
         }
         else {
@@ -1036,27 +918,19 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
   $("#2d_info_tab").click(function(){
-    let model_name = document.getElementById("k_name").value
-    let size_4d =  document.getElementById("k_size_4d").value
+    let modal_name = document.getElementById("k_name").value
+     let size_4d =  document.getElementById("k_size_4d").value
     let price_4d = document.getElementById("k_price_4d").value
     let description_4d = document.getElementById("k_description_4d").value
-    let size_3d =  document.getElementById("k_size_3d").value
+        let size_3d =  document.getElementById("k_size_3d").value
     let price_3d = document.getElementById("k_price_3d").value
     let description_3d = document.getElementById("k_description_3d").value
-  
-         let sliderimage_2d = $("#image_2d_slider").val();
-    let innerimage_2d = $("#image_2d_inner").val();
-    let maskimage_2d = $("#image_2d_mask").val();
-    let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
-    let sliderimage_4d = $("#image_4d_slider").val();
 
 
 
-    if( ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "")  && ( size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d === "")  && ( size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")) || ((size_3d !== "" && price_3d === "" && description_3d === "")  && ( size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")  && ( size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === ""))   ){
+    if( ((size_3d === "" && price_3d === "" && description_3d === "")  && ( size_4d === "" && price_4d === "" && description_4d === "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "")  && ( size_4d !== "" && price_4d !== "" && description_4d !== "")) || ((size_3d === "" && price_3d === "" && description_3d === "")  && ( size_4d !== "" && price_4d !== "" && description_4d !== "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "")  && ( size_4d === "" && price_4d === "" && description_4d === ""))   ){
 
-      if(model_name === ""){
+      if(modal_name === ""){
         document.getElementById("modelname_err").innerHTML = "model name is required"
         console.log("model name is required")
       }
@@ -1075,7 +949,7 @@ $(document).ready(function(){
         else if(size_4d !== "" && price_4d !== "" && description_4d !== ""){
         console.log("4d all filled")}
         else {
-         document.getElementById("4d_err").innerHTML = "fill 4d completely or not at all"
+          document.getElementById("4d_err").innerHTML = "fill 4d completely or not at all"
           console.log("fill 4d completely or not at all")
         }
       }
@@ -1087,13 +961,13 @@ $(document).ready(function(){
         else if(size_3d !== "" && price_3d !== "" && description_3d !== ""){
         console.log("3d all filled")}
         else {
-         document.getElementById("3d_err").innerHTML = "fill 3d completely or not at all"
+          document.getElementById("3d_err").innerHTML = "fill 3d completely or not at all"
           console.log("fill 3d completely or not at all")
         }
       }
 
       else {
-       document.getElementById("modelname_err").innerHTML = "model name is required"
+        document.getElementById("modelname_err").innerHTML = "model name is required"
         console.log("model name is required")
       }
      
@@ -1106,7 +980,7 @@ $(document).ready(function(){
 <script>
 $(document).ready(function(){
   $("#3d_info_tab").click(function(){
-    let model_name = document.getElementById("k_name").value
+    let modal_name = document.getElementById("k_name").value
      let size_2d =  document.getElementById("k_size_2d").value
     let price_2d = document.getElementById("k_price_2d").value
     let description_2d = document.getElementById("k_description_2d").value
@@ -1114,19 +988,11 @@ $(document).ready(function(){
     let price_4d = document.getElementById("k_price_4d").value
     let description_4d = document.getElementById("k_description_4d").value
 
-         let sliderimage_2d = $("#image_2d_slider").val();
-    let innerimage_2d = $("#image_2d_inner").val();
-    let maskimage_2d = $("#image_2d_mask").val();
-    let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
-    let sliderimage_4d = $("#image_4d_slider").val();
 
 
+    if( ((size_4d === "" && price_4d === "" && description_4d === "")  && ( size_2d === "" && price_2d === "" && description_2d === "")) || ((size_4d !== "" && price_4d !== "" && description_4d !== "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "")) || ((size_4d === "" && price_4d === "" && description_4d === "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "")) || ((size_4d !== "" && price_4d !== "" && description_4d !== "")  && ( size_2d === "" && price_2d === "" && description_2d === ""))   ){
 
-    if( ((size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === "")) || ((size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === ""))   ){
-
-      if(model_name === ""){
+      if(modal_name === ""){
         document.getElementById("modelname_err").innerHTML = "model name is required"
         console.log("model name is required")
       }
@@ -1144,7 +1010,7 @@ $(document).ready(function(){
         else if(size_2d !== "" && price_2d !== "" && description_2d !== ""){
         console.log("2d all filled")}
         else {
-         document.getElementById("2d_err").innerHTML = "fill 2d completely or not at all"
+          document.getElementById("2d_err").innerHTML = "fill 2d completely or not at all"
           console.log("fill 2d completely or not at all")
         }
       }
@@ -1156,83 +1022,8 @@ $(document).ready(function(){
         else if(size_4d !== "" && price_4d !== "" && description_4d !== ""){
         console.log("4d all filled")}
         else {
-         document.getElementById("2d_err").innerHTML = "fill 2d completely or not at all"
+          document.getElementById("2d_err").innerHTML = "fill 2d completely or not at all"
           console.log("fill 4d completely or not at all")
-        }
-      }
-
-      else {
-       document.getElementById("modelname_err").innerHTML = "model name is required"
-        console.log("model name is required")
-      }
-     
-    }
-  });
-});
-</script>
-
-<script>
-$(document).ready(function(){
-  $("#4d_info_tab").click(function(){
-    let model_name = document.getElementById("k_name").value
-     let size_2d =  document.getElementById("k_size_2d").value
-    let price_2d = document.getElementById("k_price_2d").value
-    let description_2d = document.getElementById("k_description_2d").value
-        let size_3d =  document.getElementById("k_size_3d").value
-    let price_3d = document.getElementById("k_price_3d").value
-    let description_3d = document.getElementById("k_description_3d").value
-  
-         let sliderimage_2d = $("#image_2d_slider").val();
-    let innerimage_2d = $("#image_2d_inner").val();
-    let maskimage_2d = $("#image_2d_mask").val();
-    let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
-    let sliderimage_4d = $("#image_4d_slider").val();
-
-
-
-    if( ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === ""))   ){
-
-      if(model_name === ""){
-       document.getElementById("modelname_err").innerHTML = "model name is required"
-        console.log("model name is required")
-      }
-      else {
-        console.log("its inhere")
-        $('#model_info_tab').tab('hide')
-        $('#4d_info_tab').tab('show');
-      }
-      
-    }
-
-    else {
-      if($('#2d_info_tab').hasClass('active')){
-        if(size_2d === "" && price_2d === "" && description_2d === ""){
-          $('#2d_info_tab').tab('hide')
-           $(this).tab('show');
-          console.log("2d all empty")
-        }
-        else if(size_2d !== "" && price_2d !== "" && description_2d !== ""){
-           $(this).tab('show');
-        console.log("2d all filled")}
-        else {
-         document.getElementById("2d_err").innerHTML = "fill 2d completely or not at all"
-          console.log("fill 2d completely or not at all")
-        }
-      }
-
-      else if($('#3d_info_tab').hasClass('active')){
-        if(size_3d === "" && price_3d === "" && description_3d === ""){
-           $(this).tab('show');
-          console.log("3d all empty")
-        }
-        else if(size_3d !== "" && price_3d !== "" && description_3d !== ""){
-           $(this).tab('show');
-        console.log("3d all filled")}
-        else {
-         document.getElementById("3d_err").innerHTML = "fill 3d completely or not at all"
-          console.log("fill 3d completely or not at all")
         }
       }
 
@@ -1246,7 +1037,68 @@ $(document).ready(function(){
 });
 </script>
 
-<!-- <script type="text/javascript">
+<script>
+$(document).ready(function(){
+  $("#4d_info_tab").click(function(){
+    let modal_name = document.getElementById("k_name").value
+     let size_2d =  document.getElementById("k_size_2d").value
+    let price_2d = document.getElementById("k_price_2d").value
+    let description_2d = document.getElementById("k_description_2d").value
+        let size_3d =  document.getElementById("k_size_3d").value
+    let price_3d = document.getElementById("k_price_3d").value
+    let description_3d = document.getElementById("k_description_3d").value
+
+
+
+
+    if( ((size_3d === "" && price_3d === "" && description_3d === "")  && ( size_2d === "" && price_2d === "" && description_2d === "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "")) || ((size_3d === "" && price_3d === "" && description_3d === "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "")  && ( size_2d === "" && price_2d === "" && description_2d === ""))   ){
+
+      if(modal_name === ""){
+        document.getElementById("modelname_err").innerHTML = "model name is required"
+        console.log("model name is required")
+      }
+      else {
+        $(this).tab('show');
+      }
+      
+    }
+
+    else {
+      if($('#2d_info_tab').hasClass('active')){
+        if(size_2d === "" && price_2d === "" && description_2d === ""){
+          console.log("2d all empty")
+        }
+        else if(size_2d !== "" && price_2d !== "" && description_2d !== ""){
+        console.log("2d all filled")}
+        else {
+          document.getElementById("2d_err").innerHTML = "fill 2d completely or not at all"
+          console.log("fill 2d completely or not at all")
+        }
+      }
+
+      else if($('#3d_info_tab').hasClass('active')){
+        if(size_3d === "" && price_3d === "" && description_3d === ""){
+          console.log("3d all empty")
+        }
+        else if(size_3d !== "" && price_3d !== "" && description_3d !== ""){
+        console.log("3d all filled")}
+        else {
+          document.getElementById("3d_err").innerHTML = "fill 3d completely or not at all"
+          console.log("fill 3d completely or not at all")
+        }
+      }
+
+      else {
+        document.getElementById("modelname_err").innerHTML = "model name is required"
+        console.log("model name is required")
+      }
+     
+    }
+  });
+});
+</script> -->
+
+<script type="text/javascript">
   $(document).ready(function(){
   $("#model_info_tab").click(function(){
   
@@ -1272,14 +1124,41 @@ $(this).tab('show');
 
   });
 });
-</script> -->
+</script>
+
+
+
 <script type="text/javascript">
+
+
+
+
+
+      $('.pull-right').click(function () {
+        var validationMessage = '';
+
+        // Check inputs are filled.
+        $.each($(this).closest('.tab-pane').find('input[type="text"]'), function () {
+            if ($(this).val() == '') 
+                validationMessage = "Model name is required"           
+        });
+
+        // Validation is false
+        if (validationMessage != '')
+            document.getElementById("modelname_err").innerHTML = validationMessage
+        else
+          document.getElementById("modelname_err").innerHTML = ""
+            $('.nav-tabs > .active').next('li').find('a').trigger('click');
+    });
 
 
 
   $(document).ready(function(){
     $('#add_phonecase').click(function(e) {
       let name = document.getElementById("k_name").value
+      if(name === ""){
+        document.getElementById("modelname_err").innerHTML = "model name is required"
+      }
       let company = document.getElementById("new_comp_option").value
       let size_2d = document.getElementById("k_size_2d").value
       let size_3d = document.getElementById("k_size_3d").value

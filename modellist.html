@@ -1391,47 +1391,71 @@ function add_company(){
 
   }
 
-  function detalis2d(btn2d){
+
+    function details2d(btn2d){
     console.log(btn2d)
-    let arrayref2d = btn2d.getAttribute('data-key') 
-    let ref2d = okchains[arrayref2d]
-    document.getElementById("name_2d_m").innerHTML = okchains[arrayref2d].name
-    document.getElementById("price_2d_m").innerHTML = okchains[arrayref2d].price_2d
-    document.getElementById("size_2d_m").innerHTML = okchains[arrayref2d].size_2d
-    document.getElementById("description_2d_m").innerHTML = okchains[arrayref2d].description_2d
-    let sliderimage2d = okchains[arrayref2d].image_header_2d
+    let model_id_2d = btn2d.getAttribute('data-key') 
+    console.log(model_id_2d)
+
+          fetch(`http://${hosturl}:5600/api/phonecase/getphonecasebyidadmin/${model_id_2d}`)
+      .then(response => {
+     // console.log(response)
+     return response.json()})
+      .then(data => {
+        console.log(data)
+            document.getElementById("name_2d_m").innerHTML = data.name
+    document.getElementById("price_2d_m").innerHTML = data.price_2d
+    document.getElementById("size_2d_m").innerHTML = data.size_2d
+    document.getElementById("description_2d_m").innerHTML = data.description_2d
+    let sliderimage2d = data.image_header_2d
     let sliderimagesrc2d = `http://${hosturl}:5600/admin/uploads/${sliderimage2d}`
-    let coverimage2d = okchains[arrayref2d].image_inner_2d
+    let coverimage2d = data.image_inner_2d
     let coverimagesrc2d = `http://${hosturl}:5600/admin/uploads/${coverimage2d}`
-    let maskimage2d = okchains[arrayref2d].image_mask_2d
+    let maskimage2d = data.image_mask_2d
     let maskimagesrc2d = `http://${hosturl}:5600/admin/uploads/${maskimage2d}`
     document.getElementById("s_2d_image").src = sliderimagesrc2d
     document.getElementById("c_2d_image").src = coverimagesrc2d
     document.getElementById("m_2d_image").src = maskimagesrc2d
-    //document.getElementById("name_2d_m").innerHTML = okchains[arrayref2d].name
+
+      })
+      .catch(err => console.log(err))
   }
 
-  function detalis3d(btn3d){
+
+  function details3d(btn3d){
     console.log(btn3d)
-    let arrayref3d = btn3d.getAttribute('data-key') 
-    let ref3d = okchains[arrayref3d]
-    document.getElementById("name_3d_m").innerHTML = okchains[arrayref3d].name
-    document.getElementById("price_3d_m").innerHTML = okchains[arrayref3d].price_3d
-    document.getElementById("size_3d_m").innerHTML = okchains[arrayref3d].size_3d
-    document.getElementById("description_3d_m").innerHTML = okchains[arrayref3d].description_3d
-    let sliderimage3d = okchains[arrayref3d].image_header_3d
+    let model_id_3d = btn3d.getAttribute('data-key') 
+    console.log(model_id_3d)
+
+          fetch(`http://${hosturl}:5600/api/phonecase/getphonecasebyidadmin/${model_id_3d}`)
+      .then(response => {
+     // console.log(response)
+     return response.json()})
+      .then(data => {
+        console.log(data)
+            document.getElementById("name_3d_m").innerHTML = data.name
+    document.getElementById("price_3d_m").innerHTML = data.price_3d
+    document.getElementById("size_3d_m").innerHTML = data.size_3d
+    document.getElementById("description_3d_m").innerHTML = data.description_3d
+    let sliderimage3d = data.image_header_3d
     let sliderimagesrc3d = `http://${hosturl}:5600/admin/uploads/${sliderimage3d}`
-    let coverimage3d = okchains[arrayref3d].image_inner_3d
+    let coverimage3d = data.image_inner_3d
     let coverimagesrc3d = `http://${hosturl}:5600/admin/uploads/${coverimage3d}`
-    let maskimage3d = okchains[arrayref3d].image_mask_3d
+    let maskimage3d = data.image_mask_3d
     let maskimagesrc3d = `http://${hosturl}:5600/admin/uploads/${maskimage3d}`
     document.getElementById("s_3d_image").src = sliderimagesrc3d
     document.getElementById("c_3d_image").src = coverimagesrc3d
     document.getElementById("m_3d_image").src = maskimagesrc3d
+
+      })
+      .catch(err => console.log(err))
   }
+
+
 
       function detalis4d(btn4d){
         let model_id = btn4d.getAttribute('data-key') 
+        //let model
     console.log(btn4d)
     window.location = `ncovers4d.html#${model_id}`
   }
@@ -1759,7 +1783,7 @@ function add_company(){
 
       //let myBookson = getkeychains(myBookso)
       var myBooks = JSON.parse(JSON.stringify( myBookso, ["name","company"]));
-      let thphonecaes = ["Name", "Company"]
+      let thphonecaes = ["Model Name", "Company Name"]
       console.log("myBookso")
       console.log(myBookso)
 
@@ -1834,10 +1858,10 @@ function add_company(){
               let btn2d = document.createElement("button")
               btn2d.setAttribute("class", "btn btn-info");
               btn2d.style.marginRight = "2px";
-              btn2d.setAttribute("onclick", "detalis2d(this)");
+              btn2d.setAttribute("onclick", "details2d(this)");
               btn2d.setAttribute("data-toggle", "modal");
               btn2d.setAttribute("data-target", "#details_2d");
-              btn2d.setAttribute("data-key",i)
+              btn2d.setAttribute("data-key",myBookso[i]._id)
               
               btn2d.style.padding = "1px 5px";
             // delbtn.style.padding = "1px 5px";
@@ -1846,10 +1870,10 @@ function add_company(){
             let btn3d = document.createElement("button")
             btn3d.setAttribute("class", "btn btn-info");
             btn3d.style.marginRight = "2px";
-            btn3d.setAttribute("onclick", "detalis3d(this)");
+            btn3d.setAttribute("onclick", "details3d(this)");
             btn3d.setAttribute("data-toggle", "modal");
             btn3d.setAttribute("data-target", "#details_3d");
-            btn3d.setAttribute("data-key",i)
+            btn3d.setAttribute("data-key",myBookso[i]._id)
             btn3d.style.padding = "1px 5px";
             // delbtn.style.padding = "1px 5px";
             btn3d.innerHTML = "View 3d"
@@ -2268,10 +2292,123 @@ function add_company(){
       //let newkeychains = getkeychains(data)
       let ndata = filterbycompany()
       
-      CreateTableFromJSON(ndata)
+      //CreateTableFromJSON(ndata)
     })
         .catch(err => console.log(err))
       }
+
+          function getordersdatatable(){
+          let userTable = $('#example1').DataTable({
+            destroy: true,
+        "processing" : true,
+          "rowCallback": function (nRow, aData, iDisplayIndex) {
+               var oSettings = this.fnSettings ();
+               $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+               return nRow;
+          },
+        "ajax" : {
+            "url" : `http://${hosturl}:5600/api/order/getorderswithdata`,
+            dataSrc : ''
+        },
+        "columns" : [ {
+            "data" : null
+        }, {
+            "data" : 'name'
+        }, {
+            "data" : null,
+            "mRender" : function(data, type){
+                let model_id = data._id
+
+                  let btntag =  `<button onclick="details2d(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-primary" data-toggle= "modal" data-target="#details2d">View 2d</button>`
+                  return btntag
+                }
+        }, {
+            "data" : null,
+            "mRender" : function(data, type){
+                let model_id = data._id
+
+                  let btntag =  `<button onclick="details3d(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info" data-toggle= "modal" data-target="#details3d">View 3d</button>`
+                  return btntag
+                }
+        },{
+            "data" : null,
+            "mRender" : function(data, type){
+                let model_id = data._id
+
+                  let btntag =  `<button onclick="details4d(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info">View 4d</button>`
+                  return btntag
+                }
+        }, {
+            "data" : null,
+            "mRender" : function(data, type){
+                let model_id = data._id
+
+                  let btntag =  `<button onclick="editproduct(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info" data-toggle= "modal" data-target="#myModal">Edit</button>`
+                  return btntag
+                }
+        },{
+            "data" : "payment_type"
+        },{
+            "data" : "date_ordered",
+            "mRender" : function(data, type){
+              let date = data.split("T")[0].split('-').reverse().join('-')
+              return date
+            }
+        }, {
+          "data": "user_id",
+            "mRender": function(data, type) {
+             
+              return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data._id}">view</button>`;
+            }
+        },{
+          "data":null,
+            "mRender": function(data,type){
+              let orderreftable = data._id
+              console.log(orderreftable)
+              console.log(data.order_status)
+                 let forid = `order_status_ind_${orderreftable}`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option value="Failed">Failed</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
+          
+              let spantag = ""
+                 if(data.order_status === "Pending Payment"){
+                  spantag = `<span id="span_status" class="badge badge-warning">Pending Payment</span>`
+                 }
+                   else if(data.order_status === "Processing"){
+                  spantag = `<span id="span_status" class="badge badge-success">Processing</span>`
+                 }
+                 else if(data.order_status === "Failed"){
+                  spantag = `<span id="span_status" class="badge badge-danger">Failed</span>`
+                 }
+                  else if(data.order_status === "On Hold"){
+                  spantag = `<span id="span_status" class="badge badge-info">On Hold</span>`
+                 }
+                  else if(data.order_status === "Refunded"){
+                  spantag = `<span id="span_status" class="badge badge-warning">Refunded</span>`
+                 }
+                   else if(data.order_status === "Trash"){
+                  spantag = `<span id="span_status" class="badge badge-danger">Trash</span>`
+                 }
+                   else if(data.order_status === "Completed"){
+                  spantag = `<span id="span_status" class="badge badge-success">Completed</span>`
+                 }
+
+
+                 else{
+                  console.log(data.order_status)
+                  spantag = `<span id="span_status" class="badge badge-info">old</span>`
+                 }
+                 spantag += btntag3
+                 return spantag
+            }
+        }, {
+          "data": "_id",
+            "mRender": function(data, type) {
+             
+              return `<input name="todelete" value=${data} type="checkbox">`;
+            }
+        }]
+    });
+    }
 
 
 

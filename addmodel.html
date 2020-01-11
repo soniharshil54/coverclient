@@ -796,7 +796,7 @@
           <div class="col-sm-12">
             <div class="row">
               <div class="col-sm-3">
-                 <input id="add_phonecase" type="button" value="Add Model" class="btn btn-success float-right">
+                 <input onclick="add_phonecase()" id="add_phonecase" type="button" value="Add Model" class="btn btn-success float-right">
               </div>
             </div>
           </div>
@@ -1237,40 +1237,10 @@ $(document).ready(function(){
   });
 });
 </script>
-
-<!-- <script type="text/javascript">
-  $(document).ready(function(){
-  $("#model_info_tab").click(function(){
-  
-$(this).tab('show');
-
-  });
-
-    $("#2d_info_tab").click(function(){
-  
-$(this).tab('show');
-
-  });
-
-      $("#3d_info_tab").click(function(){
-  
-
-$(this).tab('show');
-  });
-
-        $("#4d_info_tab").click(function(){
-  
-$(this).tab('show');
-
-  });
-});
-</script> -->
 <script type="text/javascript">
 
 
-
-  $(document).ready(function(){
-    $('#add_phonecase').click(function(e) {
+  function add_phonecase() {
       let name = document.getElementById("k_name").value
       let company = document.getElementById("new_comp_option").value
       let size_2d = document.getElementById("k_size_2d").value
@@ -1323,8 +1293,59 @@ $(this).tab('show');
   
 })
     .catch(function(res){ console.log(res) })
-  });
-  })
+  }
+
+
+//   $(document).ready(function(){
+//     $('#add_phonecase').click(function(e) {
+//       let name = document.getElementById("k_name").value
+//       let company = document.getElementById("new_comp_option").value
+//       let size_2d = document.getElementById("k_size_2d").value
+//       let size_3d = document.getElementById("k_size_3d").value
+//       let size_4d = document.getElementById("k_size_4d").value
+//       let price_2d = document.getElementById("k_price_2d").value
+//       let price_3d = document.getElementById("k_price_3d").value
+//       let price_4d = document.getElementById("k_price_4d").value
+//       let description_2d = document.getElementById("k_description_2d").value
+//       let description_3d = document.getElementById("k_description_3d").value
+//       let description_4d = document.getElementById("k_description_4d").value
+//     let keydata = {
+//       name, company, size_2d, size_3d, size_4d, price_2d, price_3d, price_4d,description_2d, description_3d, 
+//       description_4d
+//     }
+//     fetch(`http://${hosturl}:5600/api/phonecase/addphonecase`,
+//     {
+//       headers: {
+//         'Accept': 'application/json',
+//         'Content-Type': 'application/json'
+//       },
+//       method: "POST",
+//       body: JSON.stringify(keydata)
+//     })
+//     .then(function(res){ 
+//       return res.json()
+//     })
+//     .then(function(result){
+//       let name = document.getElementById("k_name").value = ""
+//       document.getElementById("new_comp_option").value = ""
+//       document.getElementById("k_size_2d").value = ""
+//       document.getElementById("k_size_3d").value = ""
+//       document.getElementById("k_size_4d").value = ""
+//       document.getElementById("k_price_2d").value = ""
+//       document.getElementById("k_price_3d").value = ""
+//       document.getElementById("k_price_4d").value = ""
+//       document.getElementById("k_description_2d").value = ""
+//       document.getElementById("k_description_3d").value = ""
+//       document.getElementById("k_description_4d").value = ""
+//       console.log(result)
+//       let productId = result.product._id
+//       console.log(productId)
+//       uploadFile(productId)
+  
+// })
+//     .catch(function(res){ console.log(res) })
+//   });
+//   })
 
   function logOutUser(){
     localStorage.clear();
@@ -1396,7 +1417,7 @@ function populateoption(options){
 
   var optionsd = ""
   var optionsdx = ""
-
+  optionsd += '<option value="Select Company">all</option>';
   for (var i = 0; i < options.length; i++) {
    optionsd += '<option value="' + options[i]+ '">' + options[i] + '</option>';
 

@@ -1431,8 +1431,9 @@ function add_company(){
   }
 
       function detalis4d(btn4d){
+        let model_id = btn4d.getAttribute('data-key') 
     console.log(btn4d)
-    window.location = "ncovers4d.html"
+    window.location = `ncovers4d.html#${model_id}`
   }
 
   function editproduct(test){
@@ -1857,7 +1858,7 @@ function add_company(){
             btn4d.setAttribute("class", "btn btn-info");
             btn4d.style.marginRight = "2px";
             btn4d.setAttribute("onclick", "detalis4d(this)");
-            btn4d.setAttribute("data-key",i)
+            btn4d.setAttribute("data-key",myBookso[i]._id)
             btn4d.style.padding = "1px 5px";
             // delbtn.style.padding = "1px 5px";
             btn4d.innerHTML = "View 4d"

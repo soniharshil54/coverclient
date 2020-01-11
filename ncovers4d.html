@@ -352,7 +352,8 @@
                     <!-- text input -->
                     <div class="form-group">
                       <label>Name</label>
-                      <input id="k_name" type="text" class="form-control" placeholder="Enter ...">
+                      <input id="k_4d_modelid" type="hidden" class="form-control" placeholder="Enter ...">
+                      <input id="k_4d_modelname" type="text" class="form-control" placeholder="Enter ...">
                     </div>
                   </div>
 
@@ -362,7 +363,7 @@
                     <div class="input-group">
                       <div class="custom-file">
                       
-                          <input name="image_2d_slider" type="file" class="custom-file-input" id="productImage">
+                          <input name="image_4d_slider" type="file" class="custom-file-input" id="productImage">
                           <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                         </div>
                       <!-- <div class="input-group-append">
@@ -374,7 +375,7 @@
                     <label for="exampleInputFile">4d image cover</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="image_2d_inner" type="file" class="custom-file-input" id="productImage">
+                        <input name="image_4d_inner" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -386,7 +387,7 @@
                     <label for="exampleInputFile">4d image mask</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="image_2d_mask" type="file" class="custom-file-input">
+                        <input name="image_4d_mask" type="file" class="custom-file-input">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -1268,20 +1269,30 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
     }
     //CreateTableFromJSON() 
 
-          function getproducts(){
-    fetch(`http://${hosturl}:5600/api/phonecase/get4dcoversbymodel/5e004179e266f2246c6b1ed1`)
+          function get4dcovers(modelid){
+    fetch(`http://${hosturl}:5600/api/phonecase/get4dcoversbymodel/${modelid}`)
     .then(response => {
      // console.log(response)
       return response.json()})
     .then(data => {
       okchains = data.map(a => ({...a}));
       console.log(okchains)
-      
+      document.getElementById().value = data.model_name
+      document.getElementById().value = data.modelid
       CreateTableFromJSON(data)
    })
     .catch(err => console.log(err))
 }
-getproducts()
+        if(window.location.hash) {
+      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
+      console.log(hash)
+
+      get4dcovers(hash)
+      // hash found
+  } else {
+      get4dcovers("5e004179e266f2246c6b1ed1")
+     // document.getElementById("keychain_link").setAttribute("class","nav-link active")
+  }
 
           function getsecondary(){
     fetch(`http://${hosturl}:5600/api/product/allsecondarysliders`)

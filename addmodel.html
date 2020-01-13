@@ -1028,6 +1028,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $("#2d_info_tab").click(function(){
     let model_name = document.getElementById("k_name").value
+    let company_name = document.getElementById("new_comp_option").value
     let size_4d =  document.getElementById("k_size_4d").value
     let price_4d = document.getElementById("k_price_4d").value
     let description_4d = document.getElementById("k_description_4d").value
@@ -1035,7 +1036,7 @@ $(document).ready(function(){
     let price_3d = document.getElementById("k_price_3d").value
     let description_3d = document.getElementById("k_description_3d").value
   
-         let sliderimage_2d = $("#image_2d_slider").val();
+    let sliderimage_2d = $("#image_2d_slider").val();
     let innerimage_2d = $("#image_2d_inner").val();
     let maskimage_2d = $("#image_2d_mask").val();
     let sliderimage_3d = $("#image_3d_slider").val();
@@ -1046,9 +1047,9 @@ $(document).ready(function(){
 
 
     if( ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "")  && ( size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d === "")  && ( size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")) || ((size_3d !== "" && price_3d === "" && description_3d === "")  && ( size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")  && ( size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === ""))   ){
-
-      if(model_name === ""){
-        document.getElementById("modelname_err").innerHTML = "model name is required"
+ 
+      if(model_name === "" || company_name === "Select Company"){
+        document.getElementById("modelname_err").innerHTML = "model name and company name are required"
         console.log("model name is required")
       }
       else {
@@ -1099,6 +1100,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $("#3d_info_tab").click(function(){
     let model_name = document.getElementById("k_name").value
+     let company_name = document.getElementById("new_comp_option").value
      let size_2d =  document.getElementById("k_size_2d").value
     let price_2d = document.getElementById("k_price_2d").value
     let description_2d = document.getElementById("k_description_2d").value
@@ -1118,8 +1120,8 @@ $(document).ready(function(){
 
     if( ((size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === "")) || ((size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === ""))   ){
 
-      if(model_name === ""){
-        document.getElementById("modelname_err").innerHTML = "model name is required"
+      if(model_name === "" || company_name === "Select Company"){
+        document.getElementById("modelname_err").innerHTML = "model name and company name are required"
         console.log("model name is required")
       }
       else {
@@ -1167,6 +1169,7 @@ $(document).ready(function(){
 $(document).ready(function(){
   $("#4d_info_tab").click(function(){
     let model_name = document.getElementById("k_name").value
+     let company_name = document.getElementById("new_comp_option").value
      let size_2d =  document.getElementById("k_size_2d").value
     let price_2d = document.getElementById("k_price_2d").value
     let description_2d = document.getElementById("k_description_2d").value
@@ -1186,8 +1189,8 @@ $(document).ready(function(){
 
     if( ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === ""))   ){
 
-      if(model_name === ""){
-       document.getElementById("modelname_err").innerHTML = "model name is required"
+      if(model_name === "" || company_name === "Select Company"){
+       document.getElementById("modelname_err").innerHTML = "model name and company name are required"
         console.log("model name is required")
       }
       else {

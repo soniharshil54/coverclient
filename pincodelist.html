@@ -200,7 +200,7 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview menu-open">
+          <li class="nav-item has-treeview">
             <a href="slider.html" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -265,7 +265,15 @@
               </li>
             </ul>
           </li>
-      
+           <li class="nav-item has-treeview">
+            <a href="pincodelist.html" class="nav-link active">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Pincode List
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
            <li class="nav-item has-treeview">
             <a href="modelrequest.html" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
@@ -337,14 +345,13 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
     <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
-          <div class="col-sm-6">
+         <!--  <div class="col-sm-6">
             <h1 class="m-0 text-dark">Welcome to Mobile Cover Maker</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-2">
+          </div> -->
+         <!--  <div class="col-sm-2">
             <div class="form-group">
               <div class="row">
               <div class="col-sm-4"><label>COD:</label></div>
@@ -353,8 +360,8 @@
               
             </div>
            
-          </div>
-          <div class="col-sm-2">
+          </div> -->
+         <!--  <div class="col-sm-2">
               <div class="form-group">
               <div class="row">
               <div class="col-sm-5"><label>Shipping:</label></div>
@@ -362,8 +369,8 @@
               
               
             </div>
-          </div>
-          <div class="col-sm-2">
+          </div> -->
+         <!--  <div class="col-sm-2">
               <div class="form-group">
               <div class="row">
               <div class="col-sm-12"><input onclick="updatecharges()" class="btn btn-success" type="button" value="Update" name=""></div>
@@ -371,10 +378,8 @@
               
               
             </div>
-          </div>
-          <!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+          </div> -->
+      </div>
     </div>
     <!-- /.content-header -->
 
@@ -449,172 +454,23 @@
         </div>
         <!-- /.row -->
 
-        <div style="display: none" class="row">
+        <div class="row">
           <div class="col-12">
             <!-- Custom Tabs -->
             <div class="card">
-              <div class="card-header d-flex p-0">
-                <h3 class="card-title p-3">Reports</h3>
-                <ul class="nav nav-pills ml-auto p-2">
-                  <li class="nav-item"><a class="nav-link active" onclick="reportlogics('year')" href="#tab_1" data-toggle="tab">Year</a></li>
-                  <li class="nav-item"><a class="nav-link" onclick="reportlogics('lmonth')" href="#tab_1" data-toggle="tab">Last Month</a></li>
-                  <li class="nav-item"><a class="nav-link" onclick="reportlogics('tmonth')" href="#tab_1" data-toggle="tab">This Month</a></li>
-                  
-                  <li class="nav-item"><a class="nav-link" onclick="reportlogics('week')" href="#tab_1" data-toggle="tab">Last 7 Days</a></li>
-                  <li class="nav-item"><a class="nav-link" onclick="showcustomrange()" href="#tab_1" data-toggle="tab">Custom</a></li>
-                  <li style="margin-left: 30px" id="customdate-filter" class="nav-item"><input onchange="filtercustomrange()" id="report_start" style="display: inline;width: 40%" type="date" class="form-control" name="">&nbsp;To&nbsp;<input id="report_end" onchange="filtercustomrange()" style="display: inline;width: 40%" type="date" class="form-control" name=""></li>
-                  
-                <!--   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">
-                      Dropdown <span class="caret"></span>
-                    </a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" tabindex="-1" href="#">Action</a>
-                      <a class="dropdown-item" tabindex="-1" href="#">Another action</a>
-                      <a class="dropdown-item" tabindex="-1" href="#">Something else here</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" tabindex="-1" href="#">Separated link</a>
-                    </div>
-                  </li> -->
-                </ul>
-              </div><!-- /.card-header -->
+            
               <div class="card-body">
-                <div class="tab-content">
-                  <div class="tab-pane active" id="tab_1">
-              <div class="row">
-        <!--   <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box">
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Gross sales in this period</span>
-                <span id="orders_count" class="info-box-number">Rs. 45,200</span>
-               
-              </div>
-            </div>
-            </a>
-          </div> -->
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Total sales in this period</span>
-                <span id="totalsales_r" class="info-box-number"></span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Worth of coupon used</span>
-                <span id="couponused_r" class="info-box-number"></span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="users.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Refunded amount in this period</span>
-                <span id="refunded_r" class="info-box-number"></span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-
-            <div class="col-12 col-sm-6 col-md-3">
-            <a href="users.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Shipping Charge</span>
-                <span id="shippingcharges_r" class="info-box-number"></span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <div class="row">
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box">
-              <!-- <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Pending Amount</span>
-                <span id="pendingamount_r" class="info-box-number"></span>
-               
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-          <div class="col-12 col-sm-6 col-md-3">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Orders Placed</span>
-                <span id="ordersplaced_r" class="info-box-number"></span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-
-          <!-- fix for small devices only -->
-          <div class="clearfix hidden-md-up"></div>
-
-          <div class="col-12 col-sm-6 col-md-3">
-            <a href="orders.html">
-            <div class="info-box mb-3">
-              <!-- <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span> -->
-
-              <div style="color: black" class="info-box-content">
-                <span class="info-box-text">Items Purchased</span>
-                <span id="itemspurchased_r" class="info-box-number"></span>
-              </div>
-              <!-- /.info-box-content -->
-            </div>
-          </a>
-            <!-- /.info-box -->
-          </div>
-          <!-- /.col -->
-        
-          <!-- /.col -->
-        </div>
-                  </div>
-                
-                  <!-- /.tab-pane -->
-                </div>
-                <!-- /.tab-content -->
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>Pincodes</label>
+                        <textarea id="k_pincodes" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        </div>
+                        </div>
+                     <div class="form-group">
+                        <div>
+                            <input onclick="updatepincodes()" class="btn btn-success" type="button" name="" value="Update Pincodes">
+                        </div>
+                        </div>     
               </div><!-- /.card-body -->
             </div>
             <!-- ./card -->
@@ -788,6 +644,48 @@
 <script src="dist/js/pages/dashboard2.js"></script>
 <script src="hosturl.js"></script>
 <script type="text/javascript">
+
+  function updatepincodes(){
+    let cod_pincodes = document.getElementById("k_pincodes").value
+    let pincodes = cod_pincodes
+    let pincodedata = {
+      cod_available : pincodes
+    }
+            fetch(`http://${hosturl}:5600/api/order/updatepincodes`,
+        {
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          method: "PUT",
+          body: JSON.stringify(pincodedata)
+        })
+        .then(function(res){ 
+           console.log("pincodes updated")
+           getpincodes()
+        })
+        .catch(function(res){ console.log(res) })
+  }
+
+  function getpincodes(){
+    fetch(`http://${hosturl}:5600/api/order/getpincodes`)
+    .then(response => {
+      return response.json()})
+    .then(data => {
+      console.log(data)
+      let pincode_avails = data[0].cod_available
+      pincodes_available = pincode_avails.join(',')
+      document.getElementById("k_pincodes").value = pincodes_available
+      //okoffers = data.map(a => ({...a}));
+      // document.getElementById("n_cod").value = data.cod_charges
+      // document.getElementById("n_shipping").value = data.shipping_charges
+      
+      //CreateTableFromJSON(data)
+   })
+    .catch(err => console.log(err))
+}
+
+getpincodes()
 
   $(function(){
     var dtToday = new Date();
@@ -1043,7 +941,7 @@ async function download() {
    })
     .catch(err => console.log(err))
 }
-getcharges()
+//getcharges()
 
 
     function changeorderstatus(selop){
@@ -1301,7 +1199,7 @@ function generatereport(){
    })
     .catch(err => console.log(err))
 }
-generatereport()
+//generatereport()
 
 function filterreport(duration){
 

@@ -649,7 +649,8 @@
   function updatepincodes(){
     let cod_pincodes = document.getElementById("k_pincodes").value
     let pincode_ref = cod_pincodes.replace(/\s+/g, '').split(',')
-    let pincodes = pincode_ref
+    let pincode_unique = [...new Set(pincode_ref)];
+    let pincodes = pincode_unique
     let pincodedata = {
       cod_available : pincodes
     }

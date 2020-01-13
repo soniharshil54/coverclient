@@ -467,6 +467,7 @@
                         </div>
                         </div>
                      <div class="form-group">
+                      <div><span id="pincode_updated" style="font-weight: bold;color: green"></span></div>
                         <div>
                             <input onclick="updatepincodes()" class="btn btn-success" type="button" name="" value="Update Pincodes">
                         </div>
@@ -661,6 +662,8 @@
           body: JSON.stringify(pincodedata)
         })
         .then(function(res){ 
+          document.getElementById("pincode_updated").innerHTML = "Pincodes Updated"
+          pincode_updated
            console.log("pincodes updated")
            getpincodes()
         })

@@ -1655,6 +1655,7 @@ function download(){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+        "aaSorting": [[ 5, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
                $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
@@ -1693,6 +1694,9 @@ function download(){
             }
         }, {
             "data" : "payment_type"
+        },{
+          "data":"date_ordered",
+          "visible":false
         },{
             "data" : "date_ordered",
             "mRender" : function(data, type){

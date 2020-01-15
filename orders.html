@@ -454,12 +454,12 @@
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>No.</th>
+                  <th style="width: 40px">No.</th>
                   <th>Order Id</th>
                   <th>Products</th>
                   <th>Amount</th>
                   <th>Payment</th>  
-                  
+                  <th style="display: none;">Datetimehidden</th>
                   <th>Date</th>
                   <th>User Info</th>
                   <th style="width: 120px">Status</th>
@@ -474,7 +474,8 @@
                   <th>Order Id</th>
                   <th>Products</th>
                   <th>Amount</th>
-                  <th>Payment</th>  
+                  <th>Payment</th>
+                  <th>Datetimehidden</th>  
                   <th>Date</th>
                   <th>User Info</th>
                   <th>Status</th>
@@ -1540,6 +1541,7 @@ function download(){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+        "aaSorting": [[ 5, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
                $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
@@ -1581,6 +1583,10 @@ function download(){
         }, {
             "data" : "payment_type"
         },{
+          "data":"date_ordered",
+          "visible":false
+        }
+        ,{
             "data" : "date_ordered",
             "mRender" : function(data, type){
               let date = data.split("T")[0].split('-').reverse().join('-')

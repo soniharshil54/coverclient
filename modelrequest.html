@@ -369,6 +369,7 @@
                   <th>Name</th>
                   <th>Contact</th>
                   <th>Email</th>  
+                  <th style="display: none;">Dateteimehidden</th>
                   <th>Date</th>
                   <th>Model name</th>
                   <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>            
@@ -382,6 +383,7 @@
                   <th>Name</th>
                   <th>Contact</th>
                   <th>Email</th>
+                  <th style="display: none;">Dateteimehidden</th>
                   <th>Date</th>
                   <th>Model name</th>
                   <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>
@@ -483,6 +485,7 @@
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+        "aaSorting": [[ 4, "desc" ]],
         "rowCallback": function (nRow, aData, iDisplayIndex) {
      var oSettings = this.fnSettings ();
      $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
@@ -513,6 +516,9 @@
               let mmail = data ? data.email_id : " "
               return mmail
             }
+        },{
+          "data":"date",
+          "visible":false
         },{
           "data" : "date",
           mRender : function(data, type){

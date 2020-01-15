@@ -609,6 +609,7 @@
                   <th>Offer Name</th>
                   <th>Offer Type</th>
                   <th>Coupon Code</th>
+                  <th style="display: none;">datetimehidden</th>
                   <th>Valid Till</th>
                   <th>View</th>
                   <th>Action</th>  
@@ -627,6 +628,7 @@
                   <th>Offer Name</th>
                   <th>Offer Type</th>
                   <th>Coupon Code</th>
+                   <th>datetimehidden</th>
                   <th>Valid Till</th>
                   <th>View</th>
                   <th>Action</th>    <!-- 
@@ -1781,6 +1783,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+        "aaSorting": [[ 4, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
                $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
@@ -1799,6 +1802,9 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
             "data" : "offer_type"
         },{
             "data" : "code"
+        },{
+            "data" : "create_date",
+            "visible":false
         },{
             "data" : "expiry_date",
              "mRender" : function(data, type){

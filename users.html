@@ -368,7 +368,8 @@
                   <th>Sr No.</th>
                   <th>Name</th>
                   <th>Contact</th>
-                  <th>Email</th>  
+                  <th>Email</th>
+                  <th>Date</th>  
                   <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>            
                 </tr>
                 </thead>
@@ -380,6 +381,7 @@
                   <th>Name</th>
                   <th>Contact</th>
                   <th>Email</th>
+                  <th>Date</th>
                   <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>
                 </tr>
                 </tfoot>
@@ -479,6 +481,7 @@
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+        "aaSorting": [[ 4, "desc" ]],
         "rowCallback": function (nRow, aData, iDisplayIndex) {
      var oSettings = this.fnSettings ();
      $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
@@ -498,6 +501,9 @@
         }, {
             "data" : "email_id"
         }, {
+            "data" : "datestamp",
+            "visible":false
+        },{
           "data": "_id",
             "mRender": function(data, type) {
               console.log(data)

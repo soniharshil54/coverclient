@@ -420,25 +420,6 @@
         </div>
       </div>
       
-              <!-- /.row -->
-    <!--     <div class="row">
-          <div class="col-12">
-            <div class="card">
-              <div class="card-header">
-                <h3 id="productShowHeading" class="card-title">Offers</h3>
-  <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>
-                <div class="card-tools">
-                </div>
-              </div>
-              <div class="card-body table-responsive p-0">
-                <div id="samplejson"></div>
-                
-              </div>
-
-            </div>
-          </div>
-        </div> -->
-        <!-- /.row -->
         
     </section>
     <!-- /.content -->
@@ -456,172 +437,8 @@
   <!-- /.control-sidebar -->
 </div>
 
-  <!-- The Modal -->
-  <div class="modal" id="imageModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: transparent;border: none">
-      
-        <!-- Modal Header -->
-        <!-- <div class="modal-header" style="">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-        
-        <!-- Modal body -->
-        <div class="modal-body" style="text-align: center;">
-          <!-- <h1>ello</h1> -->
-          <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg">
-        </div>
-        
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
+ 
 
-
-    <!-- The Modal -->
-  <div class="modal" id="cartProductModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: transparent;border: none">
-      
-        <!-- Modal Header -->
-        <!-- <div class="modal-header" style="">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-        
-        <!-- Modal body -->
-        <div class="modal-body" style="text-align: center;">
-          <!-- <h1>ello</h1> -->
-          <!-- <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg"> -->
-        </div>
-        
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
-<!-- ./wrapper -->
- <!-- <h2>Modal Example</h2> -->
-  <!-- Button to Open the Modal -->
-  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-    Open modal
-  </button> -->
-  <!-- The Modal -->
-  <div class="modal" id="myModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-      
-        <!-- Modal Header -->
-        <div class="modal-header" style="">
-          <h4 id="productEditHeading" class="modal-title">Edit Offer</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <div class="row">
-        <div class="col-md-12">
-          <div class="card card-secondary collapsed-card">
-            <!-- <div class="card-header">
-              <h3 class="card-title">Add Key chain</h3>
-
-              <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-plus"></i></button>
-              </div>
-            </div> -->
-            <div class="card-body" style="display: block">
-                
-                                <div class="row">
-                    <div class="col-sm-6">
-                      <!-- text input -->
-                       <input type="hidden" id="modal_offer_id" name="modal_offer_id" value="">
-                      <div class="form-group">
-                        <label>Offer Name</label>
-                        <input type="text" id="modal_offer_name" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                    <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Product Name</label>
-                        <input type="text" id="modal_offer_product" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>    
-                      <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Code</label>
-                        <input type="text" id="modal_offer_code" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>              
-                     <div class="col-sm-6">
-                      <div class="form-group">
-                        <label>Expiry Date</label>
-                        <input type="date" id="modal_offer_date" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div> 
-                         <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">header image</label>
-                    <div class="input-group">
-                      <img width="38px" height="38px" id="modal_h_o_image" src="">
-                      <div class="custom-file">
-                        <form name="ohEditImages" id="ohEditImages" enctype="multipart/form-data">
-                        <input name="offer_image" type="file" class="custom-file-input" id="exampleInputFile"></form>
-                     
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                     <!--  <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div>
-                    </div>
-                    <div class="col-sm-6">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Terms and coditions</label>
-                        <input id="modal_offer_terms" type="textarea" class="form-control" placeholder="Enter ...">
-                        </div>
-                        </div>
-                      </div>
-                  </div>
-                  
-                  <div class="row">
-                    <div class="col-sm-6">
-                           <div class="form-group">
-                          <label class="custom-control custom-checkbox">
-   <input type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
-   <span class="custom-control-label" for="chbxTerms">Active status</span>
-   </label>
-                      </div>
-                    </div>    
-                    <div class="col-sm-6">
-                      <input id="productEditBtn" onclick="editkeychain()" type="button" value="Edit Offer" class="btn btn-success float-right">
-                    </div>   
-                  </div>
-                                       
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-      </div>
-        </div>
-        
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
   
 </div>
 
@@ -773,17 +590,30 @@
     if(notiftosms === "Personal"){
       let mobilenumber = document.getElementById("s_mobilenumber").value
       let smscontent = document.getElementById("s_text").value
-      fetch(`http://api.msg91.com/api/sendhttp.php?authkey=156882AcKCbmqX8fWL5e16b85cP1&mobiles=${mobilenumber}&country=91&message=${smscontent}&sender=TESTIN&route=4`, { mode: 'no-cors'})
-      .then(response => {
-        document.getElementById("sendsmsconfirm").innerHTML = "SMS successfully sent!!!"
-        console.log(response)
-        resetform()
-      })
-      .catch(error => {
-        document.getElementById("sendsmsconfirm").innerHTML = "SMS successfully sent!!!"
-        resetform()
-        console.log(error)
-      })
+      let smsbody = {
+        mobilenumber, smscontent
+      }
+       fetch(`http://${hosturl}:5600/api/notification/postsmsdata`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(smsbody)
+    })
+    .then(function(res){ 
+      return res.json()
+    })
+    .then(function(result){
+      console.log(result)
+      document.getElementById("s_mobilenumber").value = ""
+      document.getElementById("s_text").value = ""
+      document.getElementById("sendsmsconfirm") = "sms sent successfully !!!" 
+  //getproducts()
+  
+    })
+    .catch(function(res){ console.log(res) })
     }
 
     else{

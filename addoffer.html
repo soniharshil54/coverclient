@@ -32,6 +32,10 @@
     }
     }
 
+    #inexcategories{
+      display: none;
+    }
+
      #free_shipping_div, #get_buy_div, #first_time_div {
       display: none;
     }
@@ -468,7 +472,7 @@
                     </div><div class="col-sm-7"></div>
                 
                      
-
+                    
                  <div class="col-sm-3">
                         <label>Minimum spend</label>
                     </div>
@@ -492,7 +496,7 @@
                         </div>
                         </div>
                       </div><div class="col-sm-7"></div>
-                      <div class="col-sm-12"><div class="row">
+                      <div class="col-sm-12"><div id="inexcategories" class="row">
                     <div class="col-sm-3">
                        <label>Include Categories</label>
                     </div>
@@ -770,16 +774,23 @@
     let usage_limit = document.getElementById("k_offer_usage_limit").value
     let free_shipping_allow = free_shipping_allow_ref ? 1 : 0
     let categories = []
-    if(!include_products.disabled){
+    if(offer_type === "BOGO"){
+          if(!include_products.disabled){
       let products_ref = $('#k_categories_inc').val();
       categories = products_ref
+          }
+          else {
+            let products_ref = 
+            let products_ref_ex = $('#k_categories_ex').val();
+            let products = removeFromArray(products_ref, products_ref_ex)
+            categories = products
+          }
     }
-    else {
-      let products_ref = ['phonecase', 'keychain', 'tshirt', 'mug', 'popholder', 'slipperbottle', 'photoframe', 'photoframe', 'watch', 'wallclock']
-      let products_ref_ex = $('#k_categories_ex').val();
-      let products = removeFromArray(products_ref, products_ref_ex)
-      categories = products
+
+    else{
+      categories = ['phonecase', 'keychain', 'tshirt', 'mug', 'popholder', 'slipperbottle', 'photoframe', 'photoframe', 'watch', 'wallclock']
     }
+
     //let categories = ["phonecase", "keychain"]
   
     let keydata = {
@@ -845,6 +856,7 @@ function changeofferinputs(){
   switch(offer_type) {
   case 'flatdis':
     document.getElementById("flat_discount_div").style.display = "flex"
+    document.getElementById("inexcategories").style.display = "none"
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "none"
     //document.getElementById("get_buy_div").style.display = "none"
@@ -853,6 +865,7 @@ function changeofferinputs(){
     break;
   case 'bogo':
     document.getElementById("flat_discount_div").style.display = "none"
+    document.getElementById("inexcategories").style.display = "flex"
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "none"
    // document.getElementById("get_buy_div").style.display = "flex"
@@ -861,6 +874,7 @@ function changeofferinputs(){
     break;
   case 'freeshipping':
     document.getElementById("flat_discount_div").style.display = "none"
+    document.getElementById("inexcategories").style.display = "none"
     document.getElementById("free_shipping_div").style.display = "flex"
     document.getElementById("first_time_div").style.display = "none"
    // document.getElementById("get_buy_div").style.display = "none"
@@ -869,6 +883,7 @@ function changeofferinputs(){
     break;
   case 'firsttime':
     document.getElementById("flat_discount_div").style.display = "none"
+    document.getElementById("inexcategories").style.display = "none"
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "flex"
    // document.getElementById("get_buy_div").style.display = "none"

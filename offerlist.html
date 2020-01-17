@@ -855,7 +855,7 @@
                         </div>
                       </div>
                     <div class="col-sm-6">
-                         <div class="form-group">
+                         <div id="modal_incategories" class="form-group">
                   <label>Categories</label>
                   <div class="select2-green">
                     <select  id="modal_categories_inc" class="select2" multiple="multiple" data-placeholder="Select Categories" data-dropdown-css-class="select2-green" style="width: 100%;">
@@ -1138,6 +1138,7 @@ function changeofferinputs(){
   case 'flatdis':
     document.getElementById("flat_discount_div").style.display = "block"
     document.getElementById("free_shipping_div").style.display = "none"
+    document.getElementById("modal_categories_inc").disabled = true
     document.getElementById("first_time_div").style.display = "none"
     document.getElementById("buy_div").style.display = "none"
     document.getElementById("get_div").style.display = "none"
@@ -1145,6 +1146,7 @@ function changeofferinputs(){
     break;
   case 'bogo':
     document.getElementById("flat_discount_div").style.display = "none"
+    document.getElementById("modal_categories_inc").disabled = false
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "none"
     //document.getElementById("buy_div").style.display = "block"
@@ -1153,6 +1155,7 @@ function changeofferinputs(){
     break;
   case 'freeshipping':
     document.getElementById("flat_discount_div").style.display = "none"
+    document.getElementById("modal_categories_inc").disabled = true
     document.getElementById("free_shipping_div").style.display = "block"
     document.getElementById("first_time_div").style.display = "none"
     document.getElementById("buy_div").style.display = "none"
@@ -1161,6 +1164,7 @@ function changeofferinputs(){
     break;
   case 'firsttime':
     document.getElementById("flat_discount_div").style.display = "none"
+    document.getElementById("modal_categories_inc").disabled = true
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "block"
     document.getElementById("buy_div").style.display = "none"
@@ -1177,6 +1181,7 @@ function modalofferinputs(offer_type){
   switch(offer_type) {
   case 'flatdis':
     document.getElementById("modal_flat_discount_div").style.display = "block"
+    document.getElementById("modal_categories_inc").disabled = true
     document.getElementById("modal_free_shipping_div").style.display = "none"
     document.getElementById("modal_first_time_div").style.display = "none"
     document.getElementById("modal_buy_div").style.display = "none"
@@ -1185,6 +1190,7 @@ function modalofferinputs(offer_type){
     break;
   case 'bogo':
     document.getElementById("modal_flat_discount_div").style.display = "none"
+    document.getElementById("modal_categories_inc").disabled = false
     document.getElementById("modal_free_shipping_div").style.display = "none"
     document.getElementById("modal_first_time_div").style.display = "none"
     // document.getElementById("modal_buy_div").style.display = "block"
@@ -1193,6 +1199,7 @@ function modalofferinputs(offer_type){
     break;
   case 'freeshipping':
     document.getElementById("modal_flat_discount_div").style.display = "none"
+    document.getElementById("modal_categories_inc").disabled = true
     document.getElementById("modal_free_shipping_div").style.display = "block"
     document.getElementById("modal_first_time_div").style.display = "none"
     document.getElementById("modal_buy_div").style.display = "none"
@@ -1201,6 +1208,7 @@ function modalofferinputs(offer_type){
     break;
   case 'firsttime':
     document.getElementById("modal_flat_discount_div").style.display = "none"
+    document.getElementById("modal_categories_inc").disabled = true
     document.getElementById("modal_free_shipping_div").style.display = "none"
     document.getElementById("modal_first_time_div").style.display = "block"
     document.getElementById("modal_buy_div").style.display = "none"
@@ -1492,7 +1500,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
 
       let keditdata = {
         offer_name, offer_type, code, expiry_date, flat_discount,firsttime_dis,  freeshipping
-        ,min_spend, max_spend,termsnconditions, usage_limit
+        ,min_spend,categories, max_spend,termsnconditions, usage_limit
       }
       // console.log(keyid)
       console.log("k edit data")

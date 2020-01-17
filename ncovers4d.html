@@ -357,11 +357,14 @@
                 </div> -->
               </div>
               <div class="card-body">
+                <form name="images_4d" id="images_4d" enctype="multipart/form-data">
                 <div class="row">
+                  
                   <div class="col-sm-4">
                     <!-- text input -->
                     <div class="form-group">
                       <label>Name</label>
+                      <input id="k_4d_companyname" type="hidden" class="form-control" placeholder="Enter ...">
                       <input id="k_4d_modelid" type="hidden" class="form-control" placeholder="Enter ...">
                       <input id="k_4d_modelname" type="text" class="form-control" placeholder="Enter ...">
                     </div>
@@ -373,7 +376,7 @@
                     <div class="input-group">
                       <div class="custom-file">
 
-                        <input name="image_4d_slider" type="file" class="custom-file-input" id="productImage">
+                        <input name="slider_image" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -385,7 +388,7 @@
                     <label for="exampleInputFile">4d image cover</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="image_4d_inner" type="file" class="custom-file-input" id="productImage">
+                        <input name="header_image" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -394,10 +397,22 @@
                     </div>
                   </div> 
                   <div class="col-sm-4">
-                    <label for="exampleInputFile">4d image mask</label>
+                    <label for="exampleInputFile">4d image png</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="image_4d_mask" type="file" class="custom-file-input">
+                        <input name="png_image" type="file" class="custom-file-input">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>  
+                   <div class="col-sm-4">
+                    <label for="exampleInputFile">4d image inner</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="inner_image" type="file" class="custom-file-input">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -409,19 +424,7 @@
                     <label for="exampleInputFile">4d image mask</label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="image_4d_mask" type="file" class="custom-file-input">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div>  
-                   <div class="col-sm-4">
-                    <label for="exampleInputFile">4d image mask</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input name="image_4d_mask" type="file" class="custom-file-input">
+                        <input name="mask_image" type="file" class="custom-file-input">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -431,12 +434,14 @@
                   </div> 
 
                   <div style="margin-top: 10px" class="col-sm-8">
-                   <button class="btn btn-success">Add 4D Model</button>
+                   <button id="add_4d_phonecase" class="btn btn-success">Add 4D Model</button>
                  </div>
                  <div class="col-sm-4">
 
-                 </div>  
+                 </div> 
+                 
                </div>
+             </form>
 
              </div>
              <!-- /.card-body -->
@@ -555,6 +560,7 @@
         
         <!-- Modal body -->
         <div class="modal-body">
+          <form name="images_4d_edit" id="images_4d_edit" enctype="multipart/form-data">
           <div class="row">
                   <div class="col-sm-4">
                     <!-- text input -->
@@ -572,7 +578,7 @@
                       <img width="38px" height="38px" id="modal_slider_image" src="">
                       <div class="custom-file">
 
-                        <input name="image_4d_slider" type="file" class="custom-file-input" id="productImage">
+                        <input name="slider_image" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -585,7 +591,7 @@
                     <div class="input-group">
                       <img width="38px" height="38px" id="modal_header_image" src="">
                       <div class="custom-file">
-                        <input name="image_4d_inner" type="file" class="custom-file-input" id="productImage">
+                        <input name="header_image" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -598,7 +604,7 @@
                     <div class="input-group">
                       <img width="38px" height="38px" id="modal_inner_image" src="">
                       <div class="custom-file">
-                        <input name="image_4d_mask" type="file" class="custom-file-input">
+                        <input name="inner_image" type="file" class="custom-file-input">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -611,7 +617,7 @@
                     <div class="input-group">
                       <img width="38px" height="38px" id="modal_png_image" src="">
                       <div class="custom-file">
-                        <input name="image_4d_mask" type="file" class="custom-file-input">
+                        <input name="png_image" type="file" class="custom-file-input">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -624,7 +630,7 @@
                     <div class="input-group">
                       <img width="38px" height="38px" id="modal_mask_image" src="">
                       <div class="custom-file">
-                        <input name="image_4d_mask" type="file" class="custom-file-input">
+                        <input name="mask_image" type="file" class="custom-file-input">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -634,12 +640,13 @@
                   </div> 
 
                   <div style="margin-top: 10px" class="col-sm-8">
-                   <button class="btn btn-success">Edit 4D Model</button>
+                   <button onclick="uploadFile4dEdit()" class="btn btn-success">Edit 4D Model</button>
                  </div>
                  <div class="col-sm-4">
 
                  </div>  
                </div>
+             </form>
           </div>
 
           <!-- Modal footer -->
@@ -670,18 +677,20 @@
 
 
   $(document).ready(function(){
-    $('#add_phonecase').click(function(e) {
+    $('#add_4d_phonecase').click(function(e) {
+      console.log("4d add")
       let model_id = document.getElementById("k_4d_modelid").value
       let model_name = document.getElementById("k_4d_modelname").value
       // let company = document.getElementById("modal_4d_company").value
-      let company = "vivo"
+      let company = document.getElementById("k_4d_companyname").value
     //let inputfile = document.getElementById("productImage").files[0]
     let keydata = {
       model_name: model_name,
-      company:company
+      company:company,
+      model_id: model_id
     }
     //console.log(keydata)
-    fetch(`http://${hosturl}:5600/api/phonecase/addphonecase`,
+    fetch(`http://${hosturl}:5600/api/phonecase/add4dphonecase/${model_id}`,
     {
       headers: {
         'Accept': 'application/json',
@@ -693,9 +702,9 @@
     .then(function(res){ 
       return res.json()
     })
-    .then(function(result){
-      console.log(result)
-      let productId = result.product._id
+    .then(function(resultdata){
+     // console.log(result)
+      let productId = resultdata.result._id
       console.log(productId)
       uploadFile4d(productId)
   //getproducts()
@@ -706,16 +715,39 @@
   })
 
       function uploadFile4d(productid){
+        console.log("images 4d from browser")
     //var input = document.querySelector('input[type="file"]')
     var form = document.getElementById("images_4d");
     var formData = new FormData(form);
 
-    fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
+    fetch(`http://${hosturl}:5600/api/phonecase/add4dphonecaseimages/${productid}`, {
       method: 'PUT',
       body: formData
     }).then(res => {
       console.log(res)
-      getproducts()
+      get4dcoversdatatable(globalmodelid)
+      console.log("upload file 4d fineished then")
+      //getproducts()
+    }).catch(err => console.log(err))
+
+  }
+
+        function uploadFile4dEdit(){
+          let productid = document.getElementById("modal_4d_id").value
+        console.log("images 4d from browser")
+    //var input = document.querySelector('input[type="file"]')
+    var form = document.getElementById("images_4d_edit");
+    var formData = new FormData(form);
+
+    fetch(`http://${hosturl}:5600/api/phonecase/add4dphonecaseimages/${productid}`, {
+      method: 'PUT',
+      body: formData
+    }).then(res => {
+      console.log(res)
+      console.log("upload file 4d fineished then")
+      get4dcoversdatatable(globalmodelid)
+      $('#myModal').modal('hide')
+      //getproducts()
     }).catch(err => console.log(err))
 
   }
@@ -855,7 +887,7 @@ function editproduct(test){
       console.log(keyid)
       console.log("k edit data")
       // console.log(keditdata)
-      uploadFileEdit(keyid)
+      uploadFile4dEdit(keyid)
       $("#myModal").modal("hide");
     }
 
@@ -922,7 +954,7 @@ function editproduct(test){
            // uploadFileEdit(keyid)
           // getproducts()
            // $("#myModal").modal("hide");
-get4dcoversdatatable("5e004179e266f2246c6b1ed1")
+get4dcoversdatatable(globalmodelid)
          })
     .catch(function(res){ console.log(res) })
     console.log(phonecaseid)
@@ -945,7 +977,7 @@ get4dcoversdatatable("5e004179e266f2246c6b1ed1")
     })
     .then(function(res){ 
      console.log(res)
-get4dcoversdatatable("5e004179e266f2246c6b1ed1")
+get4dcoversdatatable(globalmodelid)
      //getproducts()
            // uploadFileEdit(keyid)
            // getproducts()
@@ -1055,7 +1087,7 @@ get4dcoversdatatable("5e004179e266f2246c6b1ed1")
 
     //CreateTableFromJSON() 
 
-    function get4dcovers(modelid){
+    function get4dmodelsdetails(modelid){
 
       fetch(`http://${hosturl}:5600/api/phonecase/getphonecasebyidadmin/${modelid}`)
       .then(function(response) { 
@@ -1064,7 +1096,9 @@ get4dcoversdatatable("5e004179e266f2246c6b1ed1")
       .then(function(data) {   
                     // do stuff with `data`, call second `fetch`
                     let modelname = data.name
+                    let companyname = data.company
                     document.getElementById("k_4d_modelname").value = modelname
+                    document.getElementById("k_4d_companyname").value = modelname
                     return fetch(`http://${hosturl}:5600/api/phonecase/get4dcoversbymodel/${modelid}`)
                   })
       .then(function(response) { 
@@ -1075,7 +1109,7 @@ get4dcoversdatatable("5e004179e266f2246c6b1ed1")
 
         console.log(okchains)
         document.getElementById("k_4d_modelid").value = modelid
-        CreateTableFromJSON(data)
+       // CreateTableFromJSON(data)
       })
       .catch(function(error) { 
         console.log('Requestfailed', error) 
@@ -1083,16 +1117,11 @@ get4dcoversdatatable("5e004179e266f2246c6b1ed1")
     }
 
     
-   //  if(window.location.hash) {
-   //    var hash = window.location.hash.substring(1); 
-   //    console.log(hash)
 
-   //    get4dcovers(hash)
-   //  } else {
-   //    get4dcovers("5e004179e266f2246c6b1ed1")
-   // }
 
        function get4dcoversdatatable(modelid){
+        get4dmodelsdetails(modelid)
+
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
@@ -1112,35 +1141,35 @@ get4dcoversdatatable("5e004179e266f2246c6b1ed1")
         },{
             "data" : "slider_image",
             mRender : function(data, type){
-              console.log(data)
+              //console.log(data)
                let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
               return `<img width="70px" src="${imgsrc}"></img>`;
             }
         }, {
             "data" : "header_image",
             mRender : function(data, type){
-              console.log(data)
+              //console.log(data)
                let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
               return `<img width="70px" src="${imgsrc}"></img>`;
             }
         }, {
             "data" : "inner_image",
             mRender : function(data, type){
-              console.log(data)
+              //console.log(data)
                let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
               return `<img width="70px" src="${imgsrc}"></img>`;
             }
         }, {
             "data" : "png_image",
             mRender : function(data, type){
-              console.log(data)
+              //console.log(data)
                let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
               return `<img width="70px" src="${imgsrc}"></img>`;
             }
         }, {
             "data" : "mask_image",
             mRender : function(data, type){
-              console.log(data)
+              //console.log(data)
                let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
               return `<img width="70px" src="${imgsrc}"></img>`;
             }
@@ -1165,7 +1194,7 @@ get4dcoversdatatable("5e004179e266f2246c6b1ed1")
         },{
           "data": "_id",
             "mRender": function(data, type) {
-              console.log(data)
+              //console.log(data)
               return `<input name="todelete" value=${data} type="checkbox">`;
             }
         }]
@@ -1175,7 +1204,16 @@ get4dcoversdatatable("5e004179e266f2246c6b1ed1")
 
     }
 
-    get4dcoversdatatable("5e004179e266f2246c6b1ed1")
+       if(window.location.hash) {
+      var hash = window.location.hash.substring(1); 
+      console.log(hash)
+      globalmodelid = hash
+
+      get4dcoversdatatable(hash)
+    } else {
+      get4dcoversdatatable("5e004179e266f2246c6b1ed1")
+      globalmodelid = "5e004179e266f2246c6b1ed1"
+   }
 
 </script>
 </body>

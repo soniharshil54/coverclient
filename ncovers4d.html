@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="dist/css/tagstyle.css">
@@ -357,7 +358,7 @@
               </div>
               <div class="card-body">
                 <div class="row">
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
                     <!-- text input -->
                     <div class="form-group">
                       <label>Name</label>
@@ -367,7 +368,7 @@
                   </div>
 
 
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
                     <label for="exampleInputFile">4d image slider</label>
                     <div class="input-group">
                       <div class="custom-file">
@@ -380,7 +381,7 @@
                       </div> -->
                     </div>
                   </div>  
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
                     <label for="exampleInputFile">4d image cover</label>
                     <div class="input-group">
                       <div class="custom-file">
@@ -392,7 +393,7 @@
                       </div> -->
                     </div>
                   </div> 
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
                     <label for="exampleInputFile">4d image mask</label>
                     <div class="input-group">
                       <div class="custom-file">
@@ -404,7 +405,32 @@
                       </div> -->
                     </div>
                   </div>  
-                  <div class="col-sm-8">
+                   <div class="col-sm-4">
+                    <label for="exampleInputFile">4d image mask</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="image_4d_mask" type="file" class="custom-file-input">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>  
+                   <div class="col-sm-4">
+                    <label for="exampleInputFile">4d image mask</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="image_4d_mask" type="file" class="custom-file-input">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> 
+
+                  <div style="margin-top: 10px" class="col-sm-8">
                    <button class="btn btn-success">Add 4D Model</button>
                  </div>
                  <div class="col-sm-4">
@@ -433,36 +459,40 @@
                 <!-- /.card-body -->
               </div>
             </button>
-            <div style="margin-top: 10px" class="card-body table-responsive p-0">
-              <div id="samplejson"></div>
-
+                <div class="card-body">
+              
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Sr No.</th>
+                  <th>slider</th>
+                  <th>header</th>
+                  <th>inner</th>
+                  <th>png</th>  
+                  <th>mask</th> 
+                  <th>action</th>
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>            
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Sr No.</th>
+                  <th>slider</th>
+                  <th>header</th>
+                  <th>inner</th>
+                  <th>png</th>  
+                  <th>mask</th> 
+                  <th>action</th>
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>
+                </tr>
+                </tfoot>
+              </table>
             </div>
             <!-- /.card -->
           </div>
         </div>
-        <div style="display: none" class="col-12">
-
-          <div class="card card-secondary collapsed-card">
-            <button style="padding: 0px" type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-              <div class="card-header">
-               <h3 id="productAddHeading" class="card-title">Secondary Sliders</h3>
-
-               <div class="card-tools">
-
-                <i class="fas fa-plus"></i>
-              </div>
-              <!-- /.card-header -->
-              
-              <!-- /.card-body -->
-            </div>
-          </button>
-          <div style="margin-top: 10px" class="card-body table-responsive p-0">
-            <div id="extraSliders"></div>
-
-          </div>
-          <!-- /.card -->
-        </div>
-      </div>
       <!-- /.row -->
     </section>
     <!-- /.content -->
@@ -506,30 +536,6 @@
     </div>
   </div>
 
-
-  <div class="modal" id="imageSecondaryModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: transparent;border: none">
-
-        <!-- Modal Header -->
-        <!-- <div class="modal-header" style="">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-        
-        <!-- Modal body -->
-        <div class="modal-body" style="text-align: center;">
-          <!-- <h1>ello</h1> -->
-          <img style="max-width: 500px" id="imageModalSec" style="" src="images/3.jpg">
-        </div>
-        
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
   <!-- ./wrapper -->
   <!-- <h2>Modal Example</h2> -->
   <!-- Button to Open the Modal -->
@@ -550,145 +556,93 @@
         <!-- Modal body -->
         <div class="modal-body">
           <div class="row">
-            <div class="col-md-12">
-              <div class="card card-secondary collapsed-card">
-                <div class="card-body" style="display: block">
-
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="form-group">
-                        <input disabled name="slider_name" type="text" id="modal_name" class="form-control" placeholder="Enter ...">
-                      </div></div>
-
-                      <div class="col-sm-6">
-                        <input type="hidden" id="modal_id" name="modal_id" value="">
-
-                        <div class="form-group">
-                          <div class="input-group">
-                            <img width="38px" height="38px" id="modal_slider_image" src="">
-                            <div class="custom-file">
-                              <form name="sliderImages" id="slider_images" enctype="multipart/form-data">
-                                <input name="modal_slider_image" type="file" class="custom-file-input" id="exampleInputFile2">
-                              </form>
-
-                              <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-sm-6">
-                        <label for="exampleInputFile"></label>
-                        <input id="productEditBtn" onclick="editkeychain()" type="button" value="Change slider" class="btn btn-success float-right">
-                      </div> 
+                  <div class="col-sm-4">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input id="modal_4d_id" type="hidden" class="form-control" placeholder="Enter ...">
+                      <input id="modal_4d_modelname" type="text" class="form-control" placeholder="Enter ...">
                     </div>
-                    <div class="row">
-                    </div>
-
-                    <div class="row">   
-
-                    </div>
-
                   </div>
-                  <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
-              </div>
-            </div>
+
+
+                  <div class="col-sm-4">
+                    <label for="exampleInputFile">4d image slider</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_slider_image" src="">
+                      <div class="custom-file">
+
+                        <input name="image_4d_slider" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>  
+                  <div class="col-sm-4">
+                    <label for="exampleInputFile">4d image header</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_header_image" src="">
+                      <div class="custom-file">
+                        <input name="image_4d_inner" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> 
+                  <div class="col-sm-4">
+                    <label for="exampleInputFile">4d image inner</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_inner_image" src="">
+                      <div class="custom-file">
+                        <input name="image_4d_mask" type="file" class="custom-file-input">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>  
+                   <div class="col-sm-4">
+                    <label for="exampleInputFile">4d image png</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_png_image" src="">
+                      <div class="custom-file">
+                        <input name="image_4d_mask" type="file" class="custom-file-input">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>  
+                   <div class="col-sm-4">
+                    <label for="exampleInputFile">4d image mask</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_mask_image" src="">
+                      <div class="custom-file">
+                        <input name="image_4d_mask" type="file" class="custom-file-input">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> 
+
+                  <div style="margin-top: 10px" class="col-sm-8">
+                   <button class="btn btn-success">Edit 4D Model</button>
+                 </div>
+                 <div class="col-sm-4">
+
+                 </div>  
+               </div>
           </div>
 
           <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
-
-  <!-- The Modal -->
-  <div class="modal" id="mySecondaryModal">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <!-- Modal Header -->
-        <div class="modal-header" style="">
-          <h4 id="productEditHeading" class="modal-title">Change slider</h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div>
-        
-        <!-- Modal body -->
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="card card-secondary collapsed-card">
-                <div class="card-body" style="display: block">
-
-                  <div class="row">
-
-                    <div class="col-sm-6">
-                     <div class="form-group">
-                      <label>Slider Name</label>
-                      <input disabled name="slider_name" type="text" id="modal_s_display_name" class="form-control" placeholder="Enter ...">
-                    </div>
-
-                  </div>
-                  <div class="col-sm-6">
-                   <div class="form-group">
-                    <label>Company</label>
-                    <form name="sliderImages" id="slider_s_images" enctype="multipart/form-data">
-                      <select name="product_slider"  id="modal_s_product_name" class="form-control custom-select">
-                        <option selected disabled>Select one</option>
-                        <option>phonecase</option>
-                        <option>tshirt</option>
-                        <option>keychain</option>
-                        <option>mug</option>
-                        <option>popholder</option>
-                        <option>watch</option>
-                        <option>wallclock</option>
-                        <option>photoframe</option>
-                        <option>slipperbottle</option>
-                      </select>
-                    </div>
-                  </div>            
-
-
-                  <div class="col-sm-6">
-                    <input type="hidden" id="modal_s_id" name="modal_s_id" value="">
-                    <input type="hidden" id="modal_s_name" class="form-control" placeholder="Enter ...">
-                    <div class="form-group">
-                      <div class="input-group">
-                        <img width="38px" height="38px" id="modal_s_slider_image" src="">
-                        <div class="custom-file">
-
-                          <input name="modal_s_slider_image" type="file" class="custom-file-input" id="exampleInputFile">
-                        </form>
-
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <label for="exampleInputFile"></label>
-                  <input id="productEditBtn" onclick="editsecondary()" type="button" value="Change slider" class="btn btn-success float-right">
-                </div> 
-              </div>
-              <div class="row">
-              </div>
-
-              <div class="row">   
-
-              </div>
-
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal footer -->
         <!-- <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div> -->
@@ -704,6 +658,8 @@
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/datatables/jquery.dataTables.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
@@ -711,61 +667,18 @@
 <script src="hosturl.js"></script>
 <script type="text/javascript">
 
-  $(document).ready(function(){
-    $('#add_phonecase').click(function(e) {
-      let model_id = document.getElementById('k_4d_modelid').value
-
-    //let inputfile = document.getElementById("productImage").files[0]
-    let keydata = {
-      name:name,
-      company:company,
-      price:price,
-      description:description,
-      available_status:available_status
-    }
-    //console.log(keydata)
-    fetch(`http://${hosturl}:5600/api/add4dphonecase/${model_id}`,
-    {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "POST",
-      body: JSON.stringify(keydata)
-    })
-    .then(function(res){ 
-      return res.json()
-    })
-    .then(function(result){
-      console.log(result)
-      let productId = result.product._id
-      console.log(productId)
-      uploadFile(productId)
-  //getproducts()
-  
-})
-    .catch(function(res){ console.log(res) })
-  });
-  })
-
 
 
   $(document).ready(function(){
     $('#add_phonecase').click(function(e) {
-      let name = document.getElementById("k_name").value
-      let company = document.getElementById("comp_option").value
-    // let size = document.getElementById("k_size").value
-    let price = document.getElementById("k_price").value
-    let description = document.getElementById("k_description").value
-    let avail_status = document.getElementById("is_avail").checked
-    let available_status = avail_status ? 1 : 0
+      let model_id = document.getElementById("k_4d_modelid").value
+      let model_name = document.getElementById("k_4d_modelname").value
+      // let company = document.getElementById("modal_4d_company").value
+      let company = "vivo"
     //let inputfile = document.getElementById("productImage").files[0]
     let keydata = {
-      name:name,
-      company:company,
-      price:price,
-      description:description,
-      available_status:available_status
+      model_name: model_name,
+      company:company
     }
     //console.log(keydata)
     fetch(`http://${hosturl}:5600/api/phonecase/addphonecase`,
@@ -784,13 +697,28 @@
       console.log(result)
       let productId = result.product._id
       console.log(productId)
-      uploadFile(productId)
+      uploadFile4d(productId)
   //getproducts()
   
 })
     .catch(function(res){ console.log(res) })
   });
   })
+
+      function uploadFile4d(productid){
+    //var input = document.querySelector('input[type="file"]')
+    var form = document.getElementById("images_4d");
+    var formData = new FormData(form);
+
+    fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
+      method: 'PUT',
+      body: formData
+    }).then(res => {
+      console.log(res)
+      getproducts()
+    }).catch(err => console.log(err))
+
+  }
 
 
 
@@ -819,22 +747,6 @@ function printChecked(){
   return selectedItems
 }  
 
-function getcompopt(){
-  let res = document.getElementById("comp_option").value
-  console.log(res)
-}
-function populateoption(options){
-
-  var optionsd = ""
-
-  for (var i = 0; i < options.length; i++) {
-   optionsd += '<option value="' + options[i]+ '">' + options[i] + '</option>';
-
- }
- $("#comp_option").html(optionsd);
- $("#sel_comp").html(optionsd);
- $("#modal_option").html(optionsd);
-}
 function add_company(){
   console.log("func")
   let companyname = document.getElementById("company_name").value
@@ -857,40 +769,7 @@ function add_company(){
 
 </script>
 <script type="text/javascript">
-  function companylist(strs){
-    var list = document.getElementById('company_list');
-    list.innerHTML = ""
-    for (var i in strs) {
-      var spanli = document.createElement("span")
-      spanli.innerText = strs[i];
-
-      var elem = document.createElement("li");
-      elem.setAttribute("class", "list-group-item");
-      elem.appendChild(spanli);
-      list.appendChild(elem);
-    }
-
-  }
   
-
-  function getcompanies(){
-    fetch(`http://${hosturl}:5600/api/phonecase/companies`)
-    .then(response => {
-     // console.log(response)
-     return response.json()})
-    .then(data => {
-      console.log(data)
-      const companies = data.map(comp => comp.name);
-      console.log(companies)
-      companylist(companies)
-      populateoption(companies)
-    })
-    .catch(err => console.log(err))
-  }
-
- // getcompanies()
-
-
 
  function deletekeychains(){
   let todeleteids = printChecked()
@@ -925,20 +804,48 @@ function editproduct(test){
       document.getElementById("modal_slider_image").src = `http://${hosturl}:5600/admin/uploads/${slider_image}`
       $('#myModal').modal('show')
     }
-
-    function editproductsec(test){
+    function edit4dcover(test){
      // console.log(test)
-     let arrayn = test.getAttribute("data-key")
-     console.log(secondarychains[arrayn])
+
+     // console.log( $('#modal_categories_inc').val() )
+     let coverid4d = test.getAttribute("data-key")
+     // console.log("arrayn",arrayn)
+      //console.log(okchains[arrayn])
       //console.log(okchains[arrayn].name)
-      document.getElementById("modal_s_display_name").value = secondarychains[arrayn].slider_display_name
-      document.getElementById("modal_s_name").value = secondarychains[arrayn].product_name
-      document.getElementById("modal_s_product_name").value = secondarychains[arrayn].product_name
-      document.getElementById("modal_s_id").value = secondarychains[arrayn]._id
+    //  document.getElementById("modal_offer_id").value = coverid4d
+
+      fetch(`http://${hosturl}:5600/api/phonecase/get4dphonecasebyid/${coverid4d}`)
+      .then(response => {
+     // console.log(response)
+     return response.json()})
+      .then(data => {
+        console.log(data)
+
+      document.getElementById("modal_4d_id").value = data._id
+
+      //document.getElementById("modal_offer_type").value = data.offer_type
+      document.getElementById("modal_4d_modelname").value = data.model_name
+      let sliderimage = data.slider_image
+      let headerimage = data.header_image
+      let innerimage = data.inner_image
+      let pngimage = data.png_image
+      let maskimage = data.mask_image
+      document.getElementById("modal_slider_image").src = `http://${hosturl}:5600/admin/uploads/${sliderimage}`
+      document.getElementById("modal_header_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
+      document.getElementById("modal_inner_image").src = `http://${hosturl}:5600/admin/uploads/${innerimage}`
+      document.getElementById("modal_png_image").src = `http://${hosturl}:5600/admin/uploads/${pngimage}`
+      document.getElementById("modal_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
+       $("#myModal").modal('show')
+
+      })
+     
+      .catch(err => console.log(err))
+
+
+
+
       //console.log(document.getElementById("modal_id").value)
-      let slider_image = secondarychains[arrayn].slider_image
-      document.getElementById("modal_s_slider_image").src = `http://${hosturl}:5600/admin/uploads/${slider_image}`
-      $('#mySecondaryModal').modal('show')
+
     }
 
     function editkeychain(){
@@ -952,16 +859,6 @@ function editproduct(test){
       $("#myModal").modal("hide");
     }
 
-    function editsecondary(){
-      console.log("edit ran")
-      let name = document.getElementById("modal_s_name").value
-      let keyid = document.getElementById("modal_s_id").value
-      console.log(keyid)
-      console.log("k edit data")
-      // console.log(keditdata)
-      uploadFileEditSecondary(keyid)
-      $("#mySecondaryModal").modal("hide");
-    }
 
     function imageModal(imgname){
       let source = `http://${hosturl}:5600/admin/uploads/${imgname}`
@@ -969,17 +866,6 @@ function editproduct(test){
 
       setTimeout(function () { 
         $('#imageModal').modal('show');
-      }, 50);
-      console.log(imgname)
-      
-    }
-
-    function imageModalSec(imgname){
-      let source = `http://${hosturl}:5600/admin/uploads/${imgname}`
-      document.getElementById("imageModalSec").src=source;
-
-      setTimeout(function () { 
-        $('#imageSecondaryModal').modal('show');
       }, 50);
       console.log(imgname)
       
@@ -1016,30 +902,13 @@ function editproduct(test){
 
   }
 
-  function uploadFileEditSecondary(productid){
-    console.log("productId is",productid)
-    //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("slider_s_images");
-    var formData = new FormData(form);
-
-    fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
-      method: 'PUT',
-      body: formData
-    }).then(res => {
-      console.log(res)
-      getsecondary()
-    }).catch(err => console.log(err))
-
-  }
-
-
-  function activeslider(activebtn){
-    let sliderref = activebtn.getAttribute("data-key")
-    let sliderid = okchains[sliderref]._id
+  function active4dphonecase(activebtn){
+    let phonecaseref = activebtn.getAttribute("data-key")
+    let phonecaseid = phonecaseref
     let ceditdata = {
       active_status : 1
     }
-    fetch(`http://${hosturl}:5600/api/product/editsliderstatus/${sliderid}`,
+    fetch(`http://${hosturl}:5600/api/phonecase/edit4dphonecasestatus/${phonecaseid}`,
     {
       headers: {
         'Accept': 'application/json',
@@ -1051,21 +920,21 @@ function editproduct(test){
     .then(function(res){ 
       console.log(res)
            // uploadFileEdit(keyid)
-           getproducts()
+          // getproducts()
            // $("#myModal").modal("hide");
-
+get4dcoversdatatable("5e004179e266f2246c6b1ed1")
          })
     .catch(function(res){ console.log(res) })
-    console.log(sliderid)
+    console.log(phonecaseid)
   }
 
-  function deactiveslider(activebtn){
-    let sliderref = activebtn.getAttribute("data-key")
-    let sliderid = okchains[sliderref]._id
+  function deactive4dphonecase(activebtn){
+    let phonecaseref = activebtn.getAttribute("data-key")
+    let phonecaseid = phonecaseref
     let ceditdata = {
       active_status : 0
     }
-    fetch(`http://${hosturl}:5600/api/product/editsliderstatus/${sliderid}`,
+    fetch(`http://${hosturl}:5600/api/phonecase/edit4dphonecasestatus/${phonecaseid}`,
     {
       headers: {
         'Accept': 'application/json',
@@ -1076,68 +945,17 @@ function editproduct(test){
     })
     .then(function(res){ 
      console.log(res)
-     getproducts()
+get4dcoversdatatable("5e004179e266f2246c6b1ed1")
+     //getproducts()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");
 
           })
     .catch(function(res){ console.log(res) })
-    console.log(sliderid)
+    console.log(phonecaseid)
   }
 
-  function activesecslider(activebtn){
-    let sliderref = activebtn.getAttribute("data-key")
-    let sliderid = secondarychains[sliderref]._id
-    let ceditdata = {
-      active_status : 1
-    }
-    fetch(`http://${hosturl}:5600/api/product/editsecsliderstatus/${sliderid}`,
-    {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "PUT",
-      body: JSON.stringify(ceditdata)
-    })
-    .then(function(res){ 
-      console.log(res)
-           // uploadFileEdit(keyid)
-           getsecondary()
-           // $("#myModal").modal("hide");
-
-         })
-    .catch(function(res){ console.log(res) })
-    console.log(sliderid)
-  }
-
-  function deactivesecslider(activebtn){
-    let sliderref = activebtn.getAttribute("data-key")
-    let sliderid = secondarychains[sliderref]._id
-    let ceditdata = {
-      active_status : 0
-    }
-    fetch(`http://${hosturl}:5600/api/product/editsecsliderstatus/${sliderid}`,
-    {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "PUT",
-      body: JSON.stringify(ceditdata)
-    })
-    .then(function(res){ 
-     console.log(res)
-     getsecondary()
-           // uploadFileEdit(keyid)
-           // getproducts()
-            //$("#myModal").modal("hide");
-
-          })
-    .catch(function(res){ console.log(res) })
-    console.log(sliderid)
-  }
 
 
   function getkeychains(oldkeychains){
@@ -1235,88 +1053,6 @@ function editproduct(test){
            divContainer.appendChild(table);
          }
 
-
-         function CreateSecondaryJSON(myBookso) {
-          let myBookson = getkeychains(myBookso)
-          var myBooks = JSON.parse(JSON.stringify( myBookson, ["slider_display_name","product_name","slider_image",]));
-          var thsliders = ["Slider Name", "Category Name","Image", "Active"] 
-
-          var col = [];
-          for (var i = 0; i < myBooks.length; i++) {
-            for (var key in myBooks[i]) {
-              if (col.indexOf(key) === -1) {
-                col.push(key);
-              }
-            }
-          }
-          var table = document.createElement("table");
-          table.setAttribute("class", "table auto-index");
-          table.setAttribute("id","secondarytable")
-
-          var tr = table.insertRow(-1);  
-          for (var i = -1; i < col.length; i++) {
-            var th = document.createElement("th");  
-                // TABLE HEADER.
-                if(i === -1){
-                  th.innerHTML = "No."
-                }
-                else {
-                  th.innerHTML = thsliders[i];
-                }
-
-                tr.appendChild(th);
-
-              }
-              var thn =  document.createElement("th"); 
-              thn.innerHTML = "Edit";
-           // tr.appendChild(thn);
-           var tha =  document.createElement("th"); 
-           tha.innerHTML = "Action";
-           tr.appendChild(tha);
-           var ths = document.createElement("th")
-           ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
-           for (var i = 0; i < myBooks.length; i++) {
-
-            tr = table.insertRow(-1); 
-            for (var j = -1; j < col.length; j++) {
-              var tabCell = tr.insertCell(-1);
-              if(j === -1){
-                tabCell.innerHTML = ""
-              }
-              else if(j===2){
-                let image = '"'+myBooks[i][col[j]]+'"'
-                tabCell.innerHTML = `<button onclick='imageModalSec(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
-                console.log(myBooks[i][col[j]])
-              }
-              else{
-                tabCell.innerHTML = myBooks[i][col[j]];
-              }
-
-
-                //console.log(i, j)
-              }
-              let outerbutton = ""
-              let statuslink = ""
-              if(secondarychains[i].active_status === 1 ){
-                outerbutton =  `<button style="padding: 4px" button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
-                statuslink = `<a data-key=${i} onclick="deactivesecslider(this)" class="dropdown-item">Inactive</a>`
-              }
-              else {
-               outerbutton = `<button style="padding: 4px" button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
-               statuslink = `<a data-key=${i} onclick="activesecslider(this)"  class="dropdown-item">Active</a>`
-             }
-
-
-             let finalbtn = `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editproductsec(this)" data-key="${i}" class="dropdown-item">Edit</a></div></div>`
-
-             let ntd = document.createElement("td")
-             ntd.innerHTML = finalbtn
-             tr.appendChild(ntd)
-           }
-           var divContainer = document.getElementById("extraSliders");
-           divContainer.innerHTML = "";
-           divContainer.appendChild(table);
-         }
     //CreateTableFromJSON() 
 
     function get4dcovers(modelid){
@@ -1347,31 +1083,100 @@ function editproduct(test){
     }
 
     
-    if(window.location.hash) {
-      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
-      console.log(hash)
+   //  if(window.location.hash) {
+   //    var hash = window.location.hash.substring(1); 
+   //    console.log(hash)
 
-      get4dcovers(hash)
-      // hash found
-    } else {
-      get4dcovers("5e004179e266f2246c6b1ed1")
-     // document.getElementById("keychain_link").setAttribute("class","nav-link active")
-   }
+   //    get4dcovers(hash)
+   //  } else {
+   //    get4dcovers("5e004179e266f2246c6b1ed1")
+   // }
 
-   function getsecondary(){
-    fetch(`http://${hosturl}:5600/api/product/allsecondarysliders`)
-    .then(response => {
-     // console.log(response)
-     return response.json()})
-    .then(data => {
-      secondarychains = data.map(a => ({...a}));
-      console.log(secondarychains)
-      
-      CreateSecondaryJSON(data)
-    })
-    .catch(err => console.log(err))
-  }
-//getsecondary()
+       function get4dcoversdatatable(modelid){
+          let userTable = $('#example1').DataTable({
+            destroy: true,
+        "processing" : true,
+        "aaSorting": [[ 4, "desc" ]],
+        "rowCallback": function (nRow, aData, iDisplayIndex) {
+     var oSettings = this.fnSettings ();
+     $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+     return nRow;
+},
+                
+        "ajax" : {
+            "url" : `http://${hosturl}:5600/api/phonecase/get4dcoversbymodel/${modelid}`,
+            dataSrc : ''
+        },
+        "columns" : [{
+            "data" : null
+        },{
+            "data" : "slider_image",
+            mRender : function(data, type){
+              console.log(data)
+               let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
+              return `<img width="70px" src="${imgsrc}"></img>`;
+            }
+        }, {
+            "data" : "header_image",
+            mRender : function(data, type){
+              console.log(data)
+               let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
+              return `<img width="70px" src="${imgsrc}"></img>`;
+            }
+        }, {
+            "data" : "inner_image",
+            mRender : function(data, type){
+              console.log(data)
+               let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
+              return `<img width="70px" src="${imgsrc}"></img>`;
+            }
+        }, {
+            "data" : "png_image",
+            mRender : function(data, type){
+              console.log(data)
+               let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
+              return `<img width="70px" src="${imgsrc}"></img>`;
+            }
+        }, {
+            "data" : "mask_image",
+            mRender : function(data, type){
+              console.log(data)
+               let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
+              return `<img width="70px" src="${imgsrc}"></img>`;
+            }
+        },  {
+          "data": null,
+            "mRender": function(data, type) {
+             //return data
+             let outerbutton = ""
+             let statuslink = ""
+             if(data.active_status === 1){
+
+            outerbutton = `<button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            statuslink = `<a data-key=${data._id} onclick="deactive4dphonecase(this)" class="dropdown-item">Inactive</a>`
+             }
+              else {
+             outerbutton = `<button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             statuslink = `<a data-key=${data._id} onclick="active4dphonecase(this)"  class="dropdown-item">Active</a>`
+             }
+
+              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="edit4dcover(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
+            }
+        },{
+          "data": "_id",
+            "mRender": function(data, type) {
+              console.log(data)
+              return `<input name="todelete" value=${data} type="checkbox">`;
+            }
+        }]
+    });
+
+
+
+    }
+
+    get4dcoversdatatable("5e004179e266f2246c6b1ed1")
+
 </script>
 </body>
 </html>

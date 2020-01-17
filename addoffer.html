@@ -615,7 +615,7 @@
                     
                     </div>    
                     <div class="col-sm-11">
-                        <span id="successAdded" style="color: green; font-weight: bold;"></span>
+                        <span id="offer_success_id" style="color: green; font-weight: bold;"></span>
                     </div>   
                   </div>
                                        
@@ -825,12 +825,14 @@
   let offerid = result._id
   console.log(result._id)
   //getordersdatatable()
-    // document.getElementById("k_offer").value = ""
-    // document.getElementById("k_product").value = ""
-    // document.getElementById("k_code").value = ""
-    // document.getElementById("k_expirydate").value = ""
-    // document.getElementById("k_terms").value = ""
-    //document.getElementById("offer_success_id").innerHTML = "Offer Created Successfully"
+    document.getElementById("k_offer").value = ""
+  //  document.getElementById("k_product").value = ""
+    document.getElementById("k_code").value = ""
+    document.getElementById("k_expirydate").value = ""
+    document.getElementById("k_terms").value = ""
+    document.getElementById("k_min_spend").value = ""
+    document.getElementById("k_max_spend").value = ""
+    document.getElementById("offer_success_id").innerHTML = "Offer Created Successfully"
    
    uploadFile(offerid)
   

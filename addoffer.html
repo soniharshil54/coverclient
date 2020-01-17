@@ -459,7 +459,7 @@
                       <!-- text input -->
                       <div class="form-group">
                         
-                        <input id="k_code" type="text" class="form-control" placeholder="Enter ...">
+                        <input oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);" id="k_code" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>  <div class="col-sm-7"></div>
                     <div class="col-sm-3">

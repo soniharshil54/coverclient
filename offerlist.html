@@ -409,7 +409,7 @@
                       <!-- text input -->
                       <div class="form-group">
                         <label>Code</label>
-                        <input id="k_code" type="text" class="form-control" placeholder="Enter ...">
+                        <input oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);" id="k_code" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>  
                       <div id="flat_discount_div" class="col-sm-2">

@@ -611,6 +611,7 @@
                   <th>Coupon Code</th>
                   <th style="display: none;">datetimehidden</th>
                   <th>Valid Till</th>
+                  <th>Usage Count</th>
                   <th>View</th>
                   <th>Action</th>  
                   
@@ -630,6 +631,7 @@
                   <th>Coupon Code</th>
                    <th>datetimehidden</th>
                   <th>Valid Till</th>
+                  <th>Usage Count</th>
                   <th>View</th>
                   <th>Action</th>    <!-- 
                   <th>Date</th>
@@ -1802,6 +1804,8 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
               let date = data.split("T")[0].split("-").reverse().join("-")
               return date
             }
+        },{
+            "data" : "usage_count"
         }, {
           "data": "_id",
             "mRender": function(data, type) {

@@ -584,10 +584,16 @@
                   
                 </select>
                     </div><div style="margin-bottom: 30px" class="col-sm-6"></div>
-                    <div class="col-sm-12"><div style="margin-top: 20px" class="row">
+                    <div class="col-sm-12"><div id="allow_freeshipping_check" style="margin-top: 20px" class="row">
                        <div style="margin-top: 10px" class="col-sm-3"></div>
                        <div class="col-sm-3">
                        <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='free_shipping_allow' value='option1'><label for='free_shipping_allow' class='custom-control-label'>Allow Free Shipping</label></div></div>
+                    </div><div class="col-sm-6"></div>
+                    </div></div>
+                    <div class="col-sm-12"><div class="row">
+                       <div style="margin-top: 10px" class="col-sm-3"></div>
+                       <div class="col-sm-3">
+                       <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='online_payment' value='option4'><label for='online_payment' class='custom-control-label'>Only for online payment</label></div></div>
                     </div><div class="col-sm-6"></div>
                     </div></div>
                     
@@ -770,17 +776,22 @@
     let termsnconditions = document.getElementById("k_terms").value
     let include_products = document.getElementById("k_categories_inc")
     let exclude_products = document.getElementById("k_categories_ex")
-    let free_shipping_allow_ref = document.getElementById("free_shipping_allow").checked
+   // if (offer_type === "Free Shipping") {}
+    let free_shipping_allow_ref = document.getElementById("free_shipping_allow") ? document.getElementById("free_shipping_allow") : 1
+    let online_payment_ref = document.getElementById("online_payment").checked
     let usage_limit = document.getElementById("k_offer_usage_limit").value
     let free_shipping_allow = free_shipping_allow_ref ? 1 : 0
+    let online_payment = online_payment_ref ? 1 : 0
+    only_online = online_payment
+
     let categories = []
     if(offer_type === "BOGO"){
           if(!include_products.disabled){
-      let products_ref = $('#k_categories_inc').val();
-      categories = products_ref
+            let products_ref = $('#k_categories_inc').val();
+            categories = products_ref
           }
           else {
-            let products_ref = 
+            let products_ref = ['phonecase', 'keychain', 'tshirt', 'mug', 'popholder', 'slipperbottle', 'photoframe', 'photoframe', 'watch', 'wallclock']
             let products_ref_ex = $('#k_categories_ex').val();
             let products = removeFromArray(products_ref, products_ref_ex)
             categories = products
@@ -794,7 +805,7 @@
     //let categories = ["phonecase", "keychain"]
   
     let keydata = {
-      offer_name, offer_type, code,categories , expiry_date, flat_discount, firsttime_dis, freeshipping, min_spend, max_spend, usage_limit, termsnconditions, categories
+      offer_name, offer_type, code,categories , expiry_date, flat_discount, firsttime_dis, freeshipping, min_spend, max_spend, usage_limit, termsnconditions, categories, only_online
     }
     console.log(keydata)
     fetch(`http://${hosturl}:5600/api/offer/addoffer`,
@@ -857,6 +868,7 @@ function changeofferinputs(){
   case 'flatdis':
     document.getElementById("flat_discount_div").style.display = "flex"
     document.getElementById("inexcategories").style.display = "none"
+    document.getElementById('allow_freeshipping_check').style.display = "flex"
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "none"
     //document.getElementById("get_buy_div").style.display = "none"
@@ -866,6 +878,7 @@ function changeofferinputs(){
   case 'bogo':
     document.getElementById("flat_discount_div").style.display = "none"
     document.getElementById("inexcategories").style.display = "flex"
+    document.getElementById('allow_freeshipping_check').style.display = "flex"
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "none"
    // document.getElementById("get_buy_div").style.display = "flex"
@@ -875,6 +888,7 @@ function changeofferinputs(){
   case 'freeshipping':
     document.getElementById("flat_discount_div").style.display = "none"
     document.getElementById("inexcategories").style.display = "none"
+    document.getElementById('allow_freeshipping_check').style.display = "none"
     document.getElementById("free_shipping_div").style.display = "flex"
     document.getElementById("first_time_div").style.display = "none"
    // document.getElementById("get_buy_div").style.display = "none"
@@ -884,6 +898,7 @@ function changeofferinputs(){
   case 'firsttime':
     document.getElementById("flat_discount_div").style.display = "none"
     document.getElementById("inexcategories").style.display = "none"
+    document.getElementById('allow_freeshipping_check').style.display = "flex"
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "flex"
    // document.getElementById("get_buy_div").style.display = "none"

@@ -618,7 +618,7 @@
                   <!-- <th>Date</th>
                   <th>User Info</th>
                   <th>Status</th> -->
-                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></label></div></div></th>            
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="deletekeychains()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
                 </tr>
                 </thead>
                 <tbody>
@@ -890,15 +890,13 @@
                   </div>
                   
                   <div class="row">
-                    <div class="col-sm-6">
-                          <!--  <div class="form-group">
-                          <label class="custom-control custom-checkbox">
-   <input type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
-   <span class="custom-control-label" for="chbxTerms">Active status</span>
-   </label>
-                      </div> -->
-                    </div>    
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
+                           <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='free_shipping_allow_modal' value='option1'><label for='free_shipping_allow_modal' class='custom-control-label'>Allow Free Shipping</label></div></div>
+                    </div>  
+                    <div class="col-sm-4">
+                      <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='online_payment_modal' value='option2'><label for='online_payment_modal' class='custom-control-label'>Only for online payment</label></div></div>
+                    </div>  
+                    <div class="col-sm-4">
                       <input id="productEditBtn" onclick="editkeychain()" type="button" value="Edit Offer" class="btn btn-success float-right">
                     </div>   
                   </div>
@@ -1268,6 +1266,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
+  getordersdatatable()
   // console.log(res)
   //getoffers()
 }).catch(err => console.log(err))
@@ -1396,8 +1395,11 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
         let categories = data.categories
       $('#modal_categories_inc').val(categories).trigger('change')
       modalofferinputs(data.offer_type)
-
+      let allowfreeshipmod = data.free_shipping_allow === 1 ? true : false
+      let onlyonlinemod = data.only_online === 1 ? true : false
       document.getElementById("modal_offer_type").value = data.offer_type
+      document.getElementById("free_shipping_allow_modal").checked = allowfreeshipmod
+      document.getElementById("online_payment_modal").checked = onlyonlinemod
       document.getElementById("modal_offer_name").value = data.offer_name
       document.getElementById("modal_max_spend").value = data.max_spend ? data.max_spend : ""
       document.getElementById("modal_min_spend").value = data.min_spend ? data.min_spend : ""
@@ -1487,6 +1489,11 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
     let flat_discount = document.getElementById("modal_flat_discount").value
     let firsttime_dis = document.getElementById("modal_first_time").value
     let freeshipping = document.getElementById("modal_free_shipping").value
+    let free_shipping_allow_ref = document.getElementById("free_shipping_allow_modal").checked
+    let free_shipping_allow = free_shipping_allow_ref ? 1 : 0
+    let online_payment_ref = document.getElementById("online_payment_modal").checked
+    let online_payment = online_payment_ref ? 1 : 0
+    only_online = online_payment
     //let buy_product = document.getElementById("modal_buy").value
     //let get_product = document.getElementById("modal_get").value
     let min_spend = document.getElementById("modal_min_spend").value
@@ -1500,7 +1507,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
 
       let keditdata = {
         offer_name, offer_type, code, expiry_date, flat_discount,firsttime_dis,  freeshipping
-        ,min_spend,categories, max_spend,termsnconditions, usage_limit
+        ,min_spend,categories, max_spend,termsnconditions, usage_limit, free_shipping_allow, only_online
       }
       // console.log(keyid)
       console.log("k edit data")

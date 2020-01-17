@@ -431,7 +431,7 @@
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                  </div> 
+                  </div> </form>
 
                   <div style="margin-top: 10px" class="col-sm-8">
                    <button id="add_4d_phonecase" class="btn btn-success">Add 4D Model</button>
@@ -441,7 +441,7 @@
                  </div> 
                  
                </div>
-             </form>
+             
 
              </div>
              <!-- /.card-body -->
@@ -637,7 +637,7 @@
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                  </div> 
+                  </div> </form>
 
                   <div style="margin-top: 10px" class="col-sm-8">
                    <button onclick="uploadFile4dEdit()" class="btn btn-success">Edit 4D Model</button>
@@ -646,7 +646,7 @@
 
                  </div>  
                </div>
-             </form>
+             
           </div>
 
           <!-- Modal footer -->
@@ -762,7 +762,7 @@
 
   function checkAll()
   {
-   var tablek = document.getElementById ('keychaintable');
+   var tablek = document.getElementById ('example1');
    var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
    var val = checkboxes[0].checked;
    for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
@@ -808,7 +808,7 @@ function add_company(){
   let deleteArray = {
     todeleteids
   }
-  fetch(`http://${hosturl}:5600/api/phonecase/deletephonecase`,
+  fetch(`http://${hosturl}:5600/api/phonecase/delete4dphonecase`,
   {
     headers: {
       'Accept': 'application/json',

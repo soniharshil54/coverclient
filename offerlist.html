@@ -367,208 +367,7 @@
 
     <!-- Main content -->
     <section style="margin-top: 120px" class="content">
-      <div style="display: none;" class="row">
-        <div class="col-md-12">
-          <div class="card card-secondary">
-            <div class="card-header">
-              <h3 id="productAddHeading" class="card-title">Add Offer</h3>
-
-             <!--  <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-plus"></i></button>
-              </div> -->
-            </div>
-            <div class="card-body">
-                
-                                <div class="row">
-                                    <div class="col-sm-3">
-                      <div class="form-group">
-                        <label>Offer Type</label>
-                          <select onchange="changeofferinputs()" id="k_offer_type" class="form-control custom-select">
-                  <option value="flatdis">Flat Discount</option>
-                  <option value="bogo">BOGO</option>
-                  <option value="freeshipping">Free Shipping</option>
-                  <option value="firsttime">First Time Buy Discount</option>
-                  
-                </select>
-                      </div>
-                    </div> 
-                    <div class="col-sm-4">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Offer Name</label>
-                        <input id="k_offer" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                     <div class="col-sm-2">
-                                    <label>Valid till</label>
-                        <input id="k_expirydate" type="date" class="form-control" placeholder="Enter ...">
-                    </div>
-                  
-                      <div class="col-sm-3">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Code</label>
-                        <input  id="k_code" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>  
-                      <div id="flat_discount_div" class="col-sm-2">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Flat Discount</label>
-                        <input id="k_flat_discount" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>  
-                     <div id="free_shipping_div" class="col-sm-2">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Free Shipping On</label>
-                        <input id="k_free_shipping" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div> 
-                      <div id="first_time_div" class="col-sm-2">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>First Time Disc.</label>
-                        <input id="k_first_time" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>  
-                    <div id="buy_div" class="col-sm-1">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Buy</label>
-                        <input id="k_buy" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div> 
-                     <div id="get_div" class="col-sm-1">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Get</label>
-                        <input id="k_get" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div> 
-
-                 
-                     <div class="col-sm-2">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Minimum spend</label>
-                        <input id="k_min_spend" type="number" class="form-control" placeholder="Enter ...">
-                        </div>
-                        </div>
-                      </div>
-                       <div class="col-sm-2">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Maximum spend</label>
-                        <input id="k_max_spend" type="number" class="form-control" placeholder="Enter ...">
-                        </div>
-                        </div>
-                      </div>
-                       <div class="col-sm-2">
-                      <div class="form-group">
-                    <label for="exampleInputFile">header image</label>
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <form name="ohImages" id="ohImages" enctype="multipart/form-data">
-                        <input name="offer_image" id="hImage" type="file" class="custom-file-input" id="exampleInputFile"></form>
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
-                  </div>
-                    </div>
-                    <div class="col-sm-4">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Terms & Conditions</label>
-                        <textarea id="k_terms" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
-                        </div>
-                        </div>
-                      </div>
-                     
-                  
-                     <!--  <div class="col-sm-4">
-                        <div class="form-group">
-                        <label>Size</label>
-                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                      </div> -->
-                  </div>
-                  <div class="row">
-                        <div class="col-sm-6">
-                         <div class="form-group">
-                  <label>Include Categories</label>
-                  <div class="select2-green">
-                    <select onchange="disablecat(this)"  id="k_categories_inc" class="select2" multiple="multiple" data-placeholder="Select Categories" data-dropdown-css-class="select2-green" style="width: 100%;">
-                      <option value="phonecase">Phonecase</option>
-                      <option value="tshirt">Tshirt</option>
-                      <option value="keychain">Keychain</option>
-                      <option value="mug">Mug</option>
-                      <option value="popholder">Popholder</option>
-                      <option value="slipperbottle">Slipper Bottle</option>
-                      <option value="watch">Watch</option>
-                      <option value="wallclock">Wall-clock</option>
-                      <option value="photoframe">Photoframe</option>
-                    </select>
-                  </div>
-                </div>
-                      </div>
-                        <div class="col-sm-6">
-                         <div class="form-group">
-                  <label>Exclude Categories</label>
-                  <div class="select2-red">
-                    <select onchange="disablecat(this)"  id="k_categories_ex" class="select2" multiple="multiple" data-placeholder="Select Categories" data-dropdown-css-class="select2-red" style="width: 100%;">
-                      <option value="phonecase">Phonecase</option>
-                      <option value="tshirt">Tshirt</option>
-                      <option value="keychain">Keychain</option>
-                      <option value="mug">Mug</option>
-                      <option value="popholder">Popholder</option>
-                      <option value="slipperbottle">Slipper Bottle</option>
-                      <option value="watch">Watch</option>
-                      <option value="wallclock">Wall-clock</option>
-                      <option value="photoframe">Photoframe</option>
-                    </select>
-                  </div>
-                </div>
-                      </div>
-                  </div>
-                  
-                  <div class="row">
-                    <div class="col-sm-3">
-                       <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='free_shipping_allow' value='option1'><label for='is_avail' class='custom-control-label'>Allow Free Shipping</label></div></div>
-                    </div>
-                    <div style="text-align: right" class="col-sm-3">
-                      <label>Usage Limit per Coupon : </label>
-                      
-                    </div>
-                    <div class="col-sm-2">
-                       <select id="k_offer_usage_limit" class="form-control custom-select">
-                  <option value="unlimited">Unlimited</option>
-                  <option value="10">10</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
-                  <option value="500">500</option>
-                  <option value="1000">1000</option>
-                  
-                </select>
-                    </div>
-                    <div class="col-sm-4"></div>
-                     
-                    <div class="col-sm-6">
-                       <span id="offer_success_id" style="color: green; font-weight: bold;"></span>
-                    </div>    
-                    <div class="col-sm-6">
-                      <input type="button" id="add_offer" value="add Offer" class="btn btn-success float-right">
-                    </div>   
-                  </div>
-                                       
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-      </div>
+     
       
               <!-- /.row -->
         <div class="row">
@@ -618,7 +417,7 @@
                   <!-- <th>Date</th>
                   <th>User Info</th>
                   <th>Status</th> -->
-                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="deletekeychains()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="deleteoffers()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
                 </tr>
                 </thead>
                 <tbody>
@@ -693,30 +492,7 @@
   </div>
 
 
-    <!-- The Modal -->
-  <div class="modal" id="cartProductModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: transparent;border: none">
-      
-        <!-- Modal Header -->
-        <!-- <div class="modal-header" style="">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-        
-        <!-- Modal body -->
-        <div class="modal-body" style="text-align: center;">
-          <!-- <h1>ello</h1> -->
-          <!-- <img style="max-width: 500px" id="imgModal" style="" src="images/3.jpg"> -->
-        </div>
-        
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
+
 <!-- ./wrapper -->
  <!-- <h2>Modal Example</h2> -->
   <!-- Button to Open the Modal -->
@@ -897,7 +673,7 @@
                       <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='online_payment_modal' value='option2'><label for='online_payment_modal' class='custom-control-label'>Only for online payment</label></div></div>
                     </div>  
                     <div class="col-sm-4">
-                      <input id="productEditBtn" onclick="editkeychain()" type="button" value="Edit Offer" class="btn btn-success float-right">
+                      <input id="productEditBtn" onclick="editoffer()" type="button" value="Edit Offer" class="btn btn-success float-right">
                     </div>   
                   </div>
                                        
@@ -1060,32 +836,12 @@
 
 
 
-
-
-
-<!-- <script type="text/javascript">
-  function getdatafortable(unfiltered){
-    var filters = ["name","size","price"];
-    let filtered = JSON.parse(unfiltered).map(function(currObj) {
-  var temp = {};
-  for identifier in filters:
-    temp[identifier] = currObj[identifier];
-  return temp;
-});
-    return filtered
-  }
-</script> -->
-
-
-
 <script type="text/javascript">
   function removeFromArray(original, remove) {
   return original.filter(value => !remove.includes(value));
 }
 
-  function getQueryStringValue (key) {  
-  return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
-}
+
 
   function logOutUser(){
     localStorage.clear();
@@ -1093,86 +849,6 @@
   }
 
 
-
-function paginatortest(page, per_page) {
- //  console.log(okofferstemp)
- // let items = okofferstemp
- // let pagintemp = ""
- if(typeof pagintemp === 'undefined'){
-  pagintemp = okofferstemp.map(a => ({...a}));
- }
- 
- console.log(pagintemp)
- let items = pagintemp
-  var page = page || 1,
-  per_page = per_page || 10,
-  offset = (page - 1) * per_page,
- 
-  paginatedItems = items.slice(offset).slice(0, per_page),
-  total_pages = Math.ceil(items.length / per_page);
-  console.log(paginatedItems)
-  CreateTableFromJSON(paginatedItems)
-  // return {
-  // page: page,
-  // per_page: per_page,
-  // pre_page: page - 1 ? page - 1 : null,
-  // next_page: (total_pages > page) ? page + 1 : null,
-  // total: items.length,
-  // total_pages: total_pages,
-  // data: paginatedItems
-  // };
-}
-     // <option value="flatdis">Flat Discount</option>
-     // <option value="bogo">BOGO</option>
-     // <option value="freeshipping">Free Shipping</option>
-     // <option value="firsttime">First Time Buy Discount</option>
-function changeofferinputs(){
-  let offer_type = document.getElementById("k_offer_type").value
-  let inc_cat = $('#k_categories_inc').val();
-  let ex_cat = $('#k_categories_ex').val();
-  console.log(inc_cat)
-  console.log(ex_cat)
-  switch(offer_type) {
-  case 'flatdis':
-    document.getElementById("flat_discount_div").style.display = "block"
-    document.getElementById("free_shipping_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("first_time_div").style.display = "none"
-    document.getElementById("buy_div").style.display = "none"
-    document.getElementById("get_div").style.display = "none"
-    // code block
-    break;
-  case 'bogo':
-    document.getElementById("flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = false
-    document.getElementById("free_shipping_div").style.display = "none"
-    document.getElementById("first_time_div").style.display = "none"
-    //document.getElementById("buy_div").style.display = "block"
-    //document.getElementById("get_div").style.display = "block"
-    // code block
-    break;
-  case 'freeshipping':
-    document.getElementById("flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("free_shipping_div").style.display = "block"
-    document.getElementById("first_time_div").style.display = "none"
-    document.getElementById("buy_div").style.display = "none"
-    document.getElementById("get_div").style.display = "none"
-    // code block
-    break;
-  case 'firsttime':
-    document.getElementById("flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("free_shipping_div").style.display = "none"
-    document.getElementById("first_time_div").style.display = "block"
-    document.getElementById("buy_div").style.display = "none"
-    document.getElementById("get_div").style.display = "none"
-    // code block
-    break;  
-  default:
-    // code block
-}
-}
 
 function modalofferinputs(offer_type){
   //let offer_type = document.getElementById("modal_offer_type").value
@@ -1237,25 +913,7 @@ function modalofferinputs(offer_type){
     // console.log(selectedItems);
     return selectedItems
   }     
-</script>
-<script>
 
-
-  function uploadFile(productid){
-    console.log("uploads file")
-    //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("ohImages");
-    var formData = new FormData(form);
-
-fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
-  method: 'PUT',
-  body: formData
-}).then(res => {
-  console.log(res)
- // getoffers()
-}).catch(err => console.log(err))
-
-  }
 
     function uploadFileEdit(productid){
     //var input = document.querySelector('input[type="file"]')
@@ -1266,7 +924,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
-  getordersdatatable()
+  getoffersdatatable()
   // console.log(res)
   //getoffers()
 }).catch(err => console.log(err))
@@ -1335,22 +993,8 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
       })
     }
 
-  function getkeychains(oldkeychains){
-    okofferstemp = oldkeychains.map(a => ({...a}));
-    okoffersreverse = okofferstemp.reverse()
-    // console.log(oldkeychains)
-    let testkey = oldkeychains.map(a => ({...a}));
-    let newkeychains = testkey.map(keychain => {
-      delete keychain._id
-      delete keychain.__v
-      delete keychain.active_status
-      return keychain
-    })
-    //console.log(newkeychains)
-    return newkeychains
-  }
 
-  function deletekeychains(){
+  function deleteoffers(){
     console.log("delete")
    // let deleteprotoget = globalProduct
     let todeleteids = printChecked()
@@ -1367,7 +1011,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
-            getordersdatatable()
+            getoffersdatatable()
             //getoffers() 
           })
           .catch(function(res){ console.log(res) })
@@ -1437,48 +1081,8 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
 
     }
 
-    function editproduct_old(test){
-     // console.log(test)
-      let arrayn = test.getAttribute("data-key")
-      // console.log(okoffers[arrayn])
-      //console.log(okchains[arrayn].name)
-      document.getElementById("modal_offer_id").value = okoffers[arrayn]._id
-      //console.log(document.getElementById("modal_id").value)
-       $('#modal_categories_inc').val(['phonecase', 'keychain']) 
-      document.getElementById("modal_offer_name").value = okoffers[arrayn].offer_name
-      document.getElementById("modal_offer_product").value = okoffers[arrayn].product_name
-      document.getElementById("modal_offer_code").value = okoffers[arrayn].code
-      document.getElementById("modal_offer_date").value = okoffers[arrayn].expiry_date
-      document.getElementById("modal_offer_terms").value = okoffers[arrayn].termsnconditions
-      let headerimage = okoffers[arrayn].h_image
-      document.getElementById("modal_h_o_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
-      // var row = $(test).closest("tr");
-      // test.removeAttribute("class","btn-primary")
-      // test.setAttribute("class","btn-success")
-      // test.innerHTML = "Save"
-      // var rowedit = row[0]
-      // rowedit.setAttribute("contenteditable","true")
-      // rowedit.focus()
-      // console.log(test)
-      // console.log(row[0])
-      $("#editoffermodal").show()
-    }
 
-    // function offerdetailsmodal(probtn){
-    //   let proid = probtn.getAttribute('data-pid')
-    //   // console.log(proid)
-    //   fetch(`http://${hosturl}:5600/api/order/getcartproductbyid/${proid}`)
-    //   .then(response => {
-    //     return response.json()
-    //   })
-    //   .then(result => {
-    //   })
-    //   .catch(err => {
-    //     console.log(err)
-    //   })
-    // }
-
-    function editkeychain(){
+    function editoffer(){
       // console.log("edit ran")
       //let editprotoget = globalProduct
       let keyid = document.getElementById("modal_offer_id").value
@@ -1560,7 +1164,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
             // console.log(res)
            // uploadFileEdit(keyid)
            // getoffers()
-           getordersdatatable()
+           getoffersdatatable()
            // $("#myModal").modal("hide");
  
           })
@@ -1586,7 +1190,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
           .then(function(res){ 
              // console.log(res)
             //getoffers()
-            getordersdatatable()
+            getoffersdatatable()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");
@@ -1596,198 +1200,35 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
     console.log(offerid)
   }
 
-    function CreateTableFromJSON(myBookso) {
-      let myBooks = getkeychains(myBookso)
 
-      var thoffers = ["Offer Name", "Product", "Code", "Valid upto","Terms&Conditions","Image"]
-        var col = [];
-        for (var i = 0; i < myBooks.length; i++) {
-            for (var key in myBooks[i]) {
-                if (col.indexOf(key) === -1) {
-                    col.push(key);
-                }
-            }
-        }
-
-        // CREATE DYNAMIC TABLE.
-        var table = document.createElement("table");
-        table.setAttribute("class", "table table-striped auto-index");
-        table.setAttribute("id","keychaintable")
-        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
-
-        var tr = table.insertRow(-1);  
-        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
-
-        for (var i = -1; i < col.length; i++) {
-            var th = document.createElement("th");  
-                // TABLE HEADER.
-                if(i === -1){
-                  th.innerHTML = "No."
-                }
-                else {
-                  th.innerHTML = thoffers[i];
-                }
-            
-            tr.appendChild(th);
-
-        }
-        var thn =  document.createElement("th"); 
-        thn.innerHTML = "Edit";
-                    var tha =  document.createElement("th"); 
-        tha.innerHTML = "Action";
-        tr.appendChild(thn);
-            tr.appendChild(tha);
-            
-        var ths = document.createElement("th")
-        ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
-        tr.appendChild(ths);
-
-        // ADD JSON DATA TO THE TABLE AS ROWS.
-        for (var i = 0; i < myBooks.length; i++) {
-
-            tr = table.insertRow(-1);
-            //tr.setAttribute("contenteditable", "true"); 
-            for (var j = -1; j < col.length; j++) {
-              var tabCell = tr.insertCell(-1);
-              if(j === -1){
-                tabCell.innerHTML = ""
-              }
-              else if(j === 5){
-                 let image = '"'+myBooks[i][col[j]]+'"'
-                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
-                // console.log(myBooks[i][col[j]])
-              }
-              else{
-
-              tabCell.innerHTML = myBooks[i][col[j]];
-
-              }
-                           
-              
-              //console.log(i, j)
-              }
-          //  console.log(myBooks[i])
-             // let delbtn = document.createElement("button")
-             // delbtn.setAttribute("class", "btn btn-danger");
-             // delbtn.innerHTML = "Delete"
-             // delbtn.style.margin = "5px";
-            let editbtn = document.createElement("button")
-            editbtn.setAttribute("class", "btn btn-primary");
-            editbtn.style.marginRight = "2px";
-            editbtn.setAttribute("onclick", "editproduct(this)");
-            editbtn.setAttribute("data-toggle", "modal");
-            editbtn.setAttribute("data-target", "#myModal");
-            editbtn.setAttribute("data-key",i)
-            let activatebtn = document.createElement("button")
-            activatebtn.style.marginRight = "2px"
-           
-            activatebtn.style.padding = "1px 5px";
-             let atd = document.createElement("td");
-             // console.log("active status below")
-             // console.log(okoffers[i].active_status)
-             if(myBookso[i].active_status === 1){
-              // console.log("its in if")
-                activatebtn.setAttribute("onclick","deactiveoffer(this)")
-                activatebtn.setAttribute("class", "btn btn-success");
-                activatebtn.innerHTML = "Activated";
-            }
-            else{
-              // console.log("its in else")
-                activatebtn.setAttribute("onclick","activeoffer(this)")
-                activatebtn.setAttribute("class", "btn btn-danger");
-                activatebtn.innerHTML = "Deactivated";
-            }
-            activatebtn.setAttribute("data-key",myBookso[i]._id)
-            //std.style.padding = "5px";
-            //atd.style.padding = "5px";
-            // delbtn.setAttribute("data-key",i)
-            // delbtn.setAttribute("onclick", "deleteproduct(this)")
-            editbtn.style.padding = "1px 5px";
-            // delbtn.style.padding = "1px 5px";
-            editbtn.innerHTML = "Edit"
-            let td = document.createElement("td");
-            //td.style.padding = "5px";
-            let std = document.createElement("td");
-            let deleteCheck = document.createElement("input")
-            deleteCheck.setAttribute("type","checkbox")
-            deleteCheck.setAttribute("name","todelete")
-            deleteCheck.setAttribute("value",myBookso[i]._id)
-
-            // console.log(deleteCheck)
-            std.appendChild(deleteCheck)
-            td.appendChild(editbtn)
-            atd.appendChild(activatebtn)
-            // td.appendChild(delbtn)
-            tr.appendChild(td)
-            tr.appendChild(atd)
-            tr.appendChild(std)
-        }
-
-        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-        var divContainer = document.getElementById("samplejson");
-        divContainer.innerHTML = "";
-        divContainer.appendChild(table);
-    }
       function getoffers(){
-        //globalProduct = proname
-        // document.getElementById("productAddHeading").innerHTML = "Add "+globalProduct
-        // document.getElementById("productEditHeading").innerHTML = "Edit "+globalProduct
-        // document.getElementById("productShowHeading").innerHTML = globalProduct
-        // document.getElementById("add_keychain").value = "Add "+globalProduct
-        // document.getElementById("productEditBtn").value = "Add "+globalProduct
-        // let producttoget = proname
-        // let getpropara = producttoget + "s"
     fetch(`http://${hosturl}:5600/api/offer/getalloffers`)
     .then(response => {
      // console.log(response)
       return response.json()})
     .then(data => {
       okoffers = data.map(a => ({...a}));
-      //let okchains = Object.assign({}, data);
-      // console.log(okoffers)
-  // okchains = Object.assign({}, data);
-   //console.log(okchains)
-   //let testkey = Object.assign({}, data);
-      //okchains = data
-      //let newkeychains = getkeychains(data)
-      
-     // CreateTableFromJSON(data)
    })
     .catch(err => console.log(err))
 }
-      // let filters = ["name", "size", "price"]
-      // let ndata = JSON.parse(unfiltered).map(function(currObj) {
-      // var temp = {};
-      // for identifier in filters:
-      //   temp[identifier] = currObj[identifier];
-      // return temp;
-      // });
     
 
         function checkLogin(){
     
     if (localStorage.getItem("luser") === null) {
-     // $('#loggedIn').css("display","none")
-       // $('#logintosee').html("login to see the registered users")
-       // $('#notloggedbtn').css("display","block")
         window.location = "login.html";
-      //  console.log(ran)
     }
     else{
       console.log(localStorage.getItem("luser"))
-      //var loguser = JSON.parse(localStorage.getItem('luser'));
-      //var username = loguser.name;
 
       var authtokend = localStorage.getItem('authorization')
-      console.log(authtokend)
-      
-      //console.log(username)   
+      console.log(authtokend) 
        }
   }
   checkLogin()
   //getoffers()
 
-      function getordersdatatable(){
+      function getoffersdatatable(){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
@@ -1855,7 +1296,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
       });
     }
 
-    getordersdatatable()
+    getoffersdatatable()
 
 
     

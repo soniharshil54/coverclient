@@ -478,17 +478,30 @@ async function download() {
       if(newstatus === "Processing"){
       let mobilenumber = user_contact
       let smscontent = sms_content
-      fetch(`http://api.msg91.com/api/sendhttp.php?authkey=156882AhFEUQ93mZpo5948a188&mobiles=${mobilenumber}&country=91&message=${smscontent}&sender=TESTIN&route=4`)
-      .then(response => {
-       // document.getElementById("sendsmsconfirm").innerHTML = "SMS successfully sent!!!"
-        console.log(response)
-        resetform()
-      })
-      .catch(error => {
-       // document.getElementById("sendsmsconfirm").innerHTML = "SMS successfully sent!!!"
-       // resetform()
-        console.log(error)
-      })
+      let smsbody = {
+        mobilenumber, orderid_user,user_name
+      }
+      fetch(`http://${hosturl}:5600/api/notification/postorderconfirm`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(smsbody)
+    })
+    .then(function(res){ 
+      return res.json()
+    })
+    .then(function(result){
+      console.log(result)
+      // document.getElementById("s_mobilenumber").value = ""
+      // document.getElementById("s_text").value = ""
+      // document.getElementById("sendsmsconfirm") = "sms sent successfully !!!" 
+  //getproducts()
+  
+    })
+    .catch(function(res){ console.log(res) })
       }
       let statusbody = {
         order_status : newstatus

@@ -55,6 +55,12 @@
   content: counter(Serial); /* Display the counter */
 }
 
+tr:first-child
+    {
+      counter-reset: Serial;           /* Set the Serial counter to 0 */
+    }
+
+
 
 
   </style>
@@ -630,7 +636,7 @@ document.getElementById('invoicedate').innerHTML = today;
                 tabCell.innerHTML = "";
               }
 
-              if(j === 4){
+              else if(j === 4){
                 let sub = `${myBooks[i][col[j]]} ₹`
                 tabCell.innerHTML = sub;
               }

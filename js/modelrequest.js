@@ -1,3 +1,27 @@
+      function getmodelreqs(){
+        fetch(`http://${hosturl}:5600/api/order/getmodelrequests`)
+    .then(response => {
+     // console.log(response)
+      return response.json()})
+    .then(data => {
+      okoffers = data.map(a => ({...a}));
+      globalmodelreqs = okoffers
+      //let okchains = Object.assign({}, data);
+      // console.log(okoffers)
+  // okchains = Object.assign({}, data);
+   //console.log(okchains)
+   //let testkey = Object.assign({}, data);
+      //okchains = data
+      //let newkeychains = getkeychains(data)
+      
+     // CreateTableFromJSON(data)
+   })
+    .catch(err => console.log(err))
+  }
+
+  getmodelreqs()
+
+
     function getmodelreqsdatatable(){
           let userTable = $('#example1').DataTable({
             destroy: true,
@@ -201,19 +225,21 @@ function download(){
       name: 'Name', 
       contact: "Contact",
       email: "Email",
-      city: "City"
+      date: "Date",
+      model_name: "Model Name"
   };
 
-  itemsNotFormatted = globalusers
+  itemsNotFormatted = globalmodelreqs
 
   var itemsFormatted = [];
 
   itemsNotFormatted.forEach((item) => {
       itemsFormatted.push({
-          name: item.first_name, 
-          contact: item.contact,
-          email: item.email_id,
-          city: item.city
+          name: item.user_id ? item.user_id.first_name : "NA" , 
+          contact: item.user_id ? item.user_id.contact : "NA",
+          email: item.user_id ? item.user_id.email_id : "NA",
+          date : item.date.split("T")[0].split('-').reverse().join('-'),
+          model_name: item.model_name
       });
   });
 

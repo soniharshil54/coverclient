@@ -1405,6 +1405,7 @@ function add_company(){
       body: JSON.stringify(deleteArray)
     })
     .then(function(res){ 
+      $("#deleteModal").modal("hide");
       document.getElementById("company_notif")
       getcompanies() 
     })

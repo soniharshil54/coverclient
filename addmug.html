@@ -13,22 +13,16 @@
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
   <link rel="stylesheet" href="dist/css/tagstyle.css">
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style type="text/css">
     #testtr{
       color: red
-    }
-
-    #order_status_ind{
-    padding: 0px;
-    height: 20px;
-    font-size: 14px;
-    text-align: center;
-    -webkit-appearance: none;
     }
 
     @media (min-width: 576px){
@@ -38,13 +32,25 @@
     }
     }
 
+    #inexcategories{
+      display: none;
+    }
+
+     #free_shipping_div, #get_buy_div, #first_time_div {
+      display: none;
+    }
+
+     #modal_free_shipping_div, #modal_buy_div, #modal_get_div, #modal_first_time_div {
+      display: none;
+    }
+
     @media (min-width: 576px){
     .modal-content {
       box-shadow: none;
     }
     }
 
-            body
+        body
     {
         counter-reset: Serial;           /* Set the Serial counter to 0 */
     }
@@ -55,19 +61,12 @@
   content: counter(Serial); /* Display the counter */
 }
 
-tr:first-child
-    {
-      counter-reset: Serial;           /* Set the Serial counter to 0 */
-    }
-
-
 
 
   </style>
 </head>
 <!-- <body class="hold-transition sidebar-mini"> -->
   <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-
 <!-- Site wrapper -->
 <div class="wrapper">
   <!-- Navbar -->
@@ -142,7 +141,7 @@ tr:first-child
       </li>
       <!-- Notifications Dropdown Menu -->
       <li class="nav-item dropdown">
-       <!--  <a class="nav-link" data-toggle="dropdown" href="#">
+        <!-- <a class="nav-link" data-toggle="dropdown" href="#">
           <i class="far fa-bell"></i>
           <span class="badge badge-warning navbar-badge">15</span>
         </a> -->
@@ -202,7 +201,7 @@ tr:first-child
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
+                    <li class="nav-item has-treeview menu-open">
             <a href="slider.html" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -211,7 +210,6 @@ tr:first-child
               </p>
             </a>
           </li>
-
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
@@ -242,8 +240,7 @@ tr:first-child
               </li>
             </ul>
           </li>
-         
-           <li class="nav-item has-treeview">
+             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -254,7 +251,7 @@ tr:first-child
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="addoffer.html" class="nav-link">
+                <a href="addoffer.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Offer</p>
                 </a>
@@ -267,6 +264,14 @@ tr:first-child
               </li>
             </ul>
           </li>
+        <!--   <li class="nav-item has-treeview">
+            <a href="offers.html" class="nav-link active">
+              <i class="nav-icon fas fa-chart-pie"></i>
+              <p>
+                Offers
+              </p>
+            </a>
+          </li> -->
            <li class="nav-item has-treeview">
             <a href="pincodelist.html" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
@@ -276,7 +281,7 @@ tr:first-child
               </p>
             </a>
           </li>
-           <li class="nav-item has-treeview">
+             <li class="nav-item has-treeview">
             <a href="modelrequest.html" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
@@ -346,145 +351,194 @@ tr:first-child
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div id="lppresults" class="content-wrapper">
+  <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+<!--     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Invoice</h1>
+            <h1>Keychain</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Invoice</li>
+              <li class="breadcrumb-item active">Keychain</li>
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
+      </div>
+    </section> -->
 
-    <section class="content">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12">
-         <!--    <div class="callout callout-info">
-              <h5><i class="fas fa-info"></i> Note:</h5>
-              This page has been enhanced for printing. Click the print button at the bottom of the invoice to test.
-            </div> -->
+    <!-- Main content -->
+    <section style="margin-top: 120px" class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card card-secondary">
+            <div class="card-header">
+              <h3 id="productAddHeading" class="card-title">Add Offer</h3>
 
-
-            <!-- Main content -->
-            <div class="invoice p-3 mb-3">
-              <!-- title row -->
-              <div class="row">
-                <div class="col-12">
-                  <h4>                    <small class="float-right">Date: <span id="invoicedate"></span></small>
-                  </h4>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- info row -->
-              <div class="row invoice-info">
-                <div class="col-sm-4 invoice-col">
-                  From
-                  <address>
-                  
-                    <strong> Polaris Commercial Mall,</strong><br>
-                    Opp. Bhaiyanagar BRTS Station,<br>
-                    Near Radhika Park Soc,<br>
-                    Parvat Patiya,<br>
-                    Surat- 395010
-                  </address>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 invoice-col">
-                  To
-                  <address>
-                    <strong id="user_name">John Doe</strong><br>
-                    <span id="user_address"></span><br>
-                    <span id="user_city_pincode"></span> <br>
-                    <span id="user_state"></span> <br>
-                    <span id="user_contact"></span> <br>
-                    <span id="user_email"></span> 
-                    
-                   
-                  </address>
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 invoice-col">
-                  <b>Invoice #007612</b><br>
-                  <br>
-                  <b>Order ID:</b><span id="order_id"></span><br>
-                  <!-- <b>Payment Due:</b> 2/22/2014<br>
-                  <b>Account:</b> 968-34567 -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-
-              <!-- Table row -->
-              <div class="row">
-                <div id="products_cart" class="col-12 table-responsive">
-                  
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-
-              <div class="row">
-                <!-- accepted payments column -->
-                <div class="col-8">
-                                  </div>
-                <!-- /.col -->
-                <div class="col-4">
-                  <!-- <p class="lead">Amount Due 2/22/2014</p> -->
-
-                  <div style="padding-right: 12px" class="table-responsive">
-                    <table class="table">
-                      <tr>
-                        <th style="width:50%">Subtotal:</th>
-                        <td id="sub_total">$250.30</td>
-                      </tr>
-                      <tr>
-                        <th>Tax (18%)</th>
-                        <td id="gst_tax">$10.34</td>
-                      </tr>
-                      <tr>
-                        <th>Shipping:</th>
-                        <td id="shipping">$5.80</td>
-                      </tr>
-                      <tr>
-                        <th>Total:</th>
-                        <td id="total_amount">$265.24</td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-
-              <!-- this row will not appear when printing -->
-              <div class="row no-print">
-                <div class="col-12">
-                  <button onclick="printinvoice()" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
-                 <!--  <button type="button" class="btn btn-success float-right"><i class="far fa-credit-card"></i> Submit
-                    Payment
-                  </button> -->
-                 <!--  <button id="generatereport" type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                    <i class="fas fa-download"></i> Generate PDF
-                  </button> -->
-                </div>
-              </div>
+             <!--  <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-plus"></i></button>
+              </div> -->
             </div>
-            <!-- /.invoice -->
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
+            <div class="card-body">
+                
+                                <div class="row"> 
+                    <div class="col-sm-3">
+                       <label>Mug Name</label>
+                    </div>
+                    <div class="col-sm-3">
+                      <!-- text input -->
+                      <div class="form-group">
+                       
+                        <input id="m_name" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div><div class="col-sm-6"></div>
+                      <div class="col-sm-3">
+                       <label>Mug Volume</label>
+                    </div>
+                      <div class="col-sm-2">
+                      <!-- text input -->
+                      <div class="form-group">
+                        
+                        <input id="m_volume" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>  <div class="col-sm-7"></div>
+                  
+                
+                     
+                    
+                 <div class="col-sm-3">
+                        <label>Price</label>
+                    </div>
+                     <div class="col-sm-2">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                           
+                        <input id="m_price" type="number" class="form-control" placeholder="Enter ...">
+                        </div>
+                        </div>
+                      </div><div class="col-sm-7"></div>
+
+                                          <div class="col-sm-3">
+                       <label>Description</label>
+                    </div>
+                    <div class="col-sm-9">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            
+                        <textarea id="m_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        </div>
+                        </div>
+                      </div>
+
+
+
+                      <div class="col-sm-3">
+                        <label>Pick Image Size</label>
+                    </div>
+                       <div class="col-sm-2">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            
+                        <input id="m_pick_image_size" type="number" class="form-control" placeholder="Enter ...">
+                        </div>
+                        </div>
+                      </div><div class="col-sm-7"></div>
+
+
+                      <div class="col-sm-3">
+                        <label for="exampleInputFile">header image</label>
+                    </div>
+                       <div class="col-sm-2">
+                      <div class="form-group">
+                   
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <form name="mugImages" id="mugImages" enctype="multipart/form-data">
+                        <input name="hImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
+                        
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                    </div>
+                  </div>
+                    </div><div class="col-sm-7"></div>
+
+                                          <div class="col-sm-3">
+                        <label for="exampleInputFile">inner image</label>
+                    </div>
+                       <div class="col-sm-2">
+                      <div class="form-group">
+                   
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="inImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
+                        
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                    </div>
+                  </div>
+                    </div><div class="col-sm-7"></div>
+
+                                          <div class="col-sm-3">
+                        <label for="exampleInputFile">mask image</label>
+                    </div>
+                       <div class="col-sm-2">
+                      <div class="form-group">
+                   
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="maskImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
+                      </form>
+                        
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                    </div>
+                  </div>
+                    </div><div class="col-sm-7"></div>
+
+          
+                    
+                  
+                     <!--  <div class="col-sm-4">
+                        <div class="form-group">
+                        <label>Size</label>
+                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                      </div> -->
+                  </div>
+                  
+                  
+                  <div class="row">
+                   
+                     <div class="col-sm-2"></div>
+                    <div  class="col-sm-2">
+                       <input type="button" id="add_mug" value="Add Mug" class="btn btn-success float-right">
+                    
+                    </div>    
+                    <div class="col-sm-11">
+                        <span id="mug_success_id" style="color: green; font-weight: bold;"></span>
+                    </div>   
+                  </div>
+                                       
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+      
+          
+        
     </section>
     <!-- /.content -->
   </div>
+  <!-- /.content-wrapper -->
+
+<footer class="main-footer">
+  <strong>Call us:  <a href="#">+91 8866220223</a>.</strong> 
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -492,210 +546,106 @@ tr:first-child
   </aside>
   <!-- /.control-sidebar -->
 </div>
+
+
   
 </div>
-
 
 <!-- jQuery -->
 <script src="plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/select2/js/select2.full.min.js"></script>
+<script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="plugins/datatables/jquery.dataTables.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="hosturl.js"></script>
 
+<script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
 
-
-
-
-
-<!-- <script type="text/javascript">
-  function getdatafortable(unfiltered){
-    var filters = ["name","size","price"];
-    let filtered = JSON.parse(unfiltered).map(function(currObj) {
-  var temp = {};
-  for identifier in filters:
-    temp[identifier] = currObj[identifier];
-  return temp;
-});
-    return filtered
-  }
-</script> -->
-
-
-<script type="text/javascript">
-
-  var doc = new jsPDF();
-$('#generatereport').click(function() {
-   doc.fromHTML($('#lppresults')[0], 15, 15, {
-      width: 170
-   }, function() {
-      doc.save('sample-file.pdf');
-   });
-});
-
-  function printinvoice(){
-    window.print()
-  }
-
-  function gettodaydate(){
-    console.log("date ran")
-    var today = new Date();
-var dd = today.getDate();
-var mm = today.getMonth() + 1; //January is 0!
-
-var yyyy = today.getFullYear();
-if (dd < 10) {
-  dd = '0' + dd;
-} 
-if (mm < 10) {
-  mm = '0' + mm;
-} 
-var today = dd + '/' + mm + '/' + yyyy;
-console.log(today)
-document.getElementById('invoicedate').innerHTML = today;
-  }
-
-  gettodaydate()
-
-    function getkeychains(oldkeychains){
-    let tokeyc = oldkeychains
-    console.log(oldkeychains)
-    let newkeychains = oldkeychains.map(keychain => {
-      delete keychain._id
-      delete keychain.__v
-      delete keychain.image
-      delete keychain.cropped_image
-      delete keychain.cover_type
-      return keychain
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
     })
-    //console.log(newkeychains)
-    return newkeychains
-  }
 
-    function CreateTableFromJSON(myBookso) {
-      let myBooksnotform = getkeychains(myBookso)
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
 
-       var myBooks = JSON.parse(JSON.stringify( myBooksnotform, ["product_name","print_name","size","quantity","subtotal"]));
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
 
-      let thinvoice = ["Product Name", "Print Name","Size", "Quantity","Subtotal"]
-
-
-        var col = [];
-        for (var i = 0; i < myBooks.length; i++) {
-            for (var key in myBooks[i]) {
-                if (col.indexOf(key) === -1) {
-                    col.push(key);
-                }
-            }
-        }
-
-        // CREATE DYNAMIC TABLE.
-        var table = document.createElement("table");
-        table.setAttribute("class", "table auto-index");
-        table.setAttribute("id","keychaintable")
-        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
-
-        var tr = table.insertRow(-1);  
-        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
-
-        for (var i = -1; i < col.length; i++) {
-            var th = document.createElement("th");  
-                // TABLE HEADER.
-                if(i === -1){
-                  th.innerHTML = "No.";
-                }
-                else {
-                  th.innerHTML = thinvoice[i];
-                }
-            
-            tr.appendChild(th);
-
-        }
-
-        // ADD JSON DATA TO THE TABLE AS ROWS.
-        for (var i = 0; i < myBooks.length; i++) {
-
-            tr = table.insertRow(-1);
-            //tr.setAttribute("contenteditable", "true"); 
-            for (var j = -1; j < col.length; j++) {
-              var tabCell = tr.insertCell(-1);
-              if(j === -1){
-                tabCell.innerHTML = "";
-              }
-
-              else if(j === 4){
-                let sub = `${myBooks[i][col[j]]} ₹`
-                tabCell.innerHTML = sub;
-              }
-              else {
-                tabCell.innerHTML = myBooks[i][col[j]];
-              }
-            }
-        }
-
-        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-        var divContainer = document.getElementById("products_cart");
-        divContainer.innerHTML = "";
-        divContainer.appendChild(table);
-    }
-
-          function getcartproducts(orderid){
-            console.log("orderid", orderid)
-      
-    fetch(`http://${hosturl}:5600/api/order/getorderbyid/${orderid}`)
-    .then(response => {
-     // console.log(response)
-      return response.json()})
-    .then(data => {
-     // okchains = data.map(a => ({...a}));
-      //let okchains = Object.assign({}, data);
-    //  console.log(okchains)
-   okchains = Object.assign({}, data);
-   //console.log(okchains)
-   //let testkey = Object.assign({}, data);
-      //okchains = data
-      //let newkeychains = getkeychains(data)
-      console.log(data)
-      let productscart = data.products
-      console.log(productscart)
-      CreateTableFromJSON(productscart)
-      document.getElementById("user_name").innerHTML = data.user_id.first_name
-      document.getElementById("user_address").innerHTML = data.user_id.address
-      let user_city_pincode = data.user_id.city + " - " + data.user_id.pincode
-      document.getElementById("user_city_pincode").innerHTML = user_city_pincode
-      document.getElementById('user_state').innerHTML = data.user_id.state
-      document.getElementById('user_contact').innerHTML = data.user_id.contact
-      document.getElementById('user_email').innerHTML = data.user_id.email_id
-      document.getElementById('order_id').innerHTML = data.order_id
-      document.getElementById("sub_total").innerHTML = data.sub_total ? data.sub_total + " ₹ " : "N.A." 
-      document.getElementById("gst_tax").innerHTML = data.gst_tax ? data.gst_tax + " ₹ " : "N.A." 
-      document.getElementById("shipping").innerHTML = data.shipping ? data.shipping + " ₹ " : "N.A."
-      document.getElementById("coupon_amount").innerHTML = data.coupon_amount ? data.coupon_amount + " ₹ " : "N.A." 
-      let amounttotal = data.sub_total + data.gst_tax + data.shipping
-      document.getElementById("total_amount").innerHTML =  amounttotal + " ₹ "
-   })
-    .catch(err => console.log(err))
-}
-
-        if(window.location.hash) {
-      var hash = window.location.hash.substring(1); //Puts hash in variable, and removes the # character
-      console.log(hash)
-
-      getcartproducts(hash)
-      // hash found
-  } else {
-      console.log("order not found")
-     // document.getElementById("keychain_link").setAttribute("class","nav-link active")
-  }
-
-   // getcartproducts("5e01fd083f319c4d10b8dfb0")
-
-  
+    //Timepicker
+    $('#timepicker').datetimepicker({
+      format: 'LT'
+    })
     
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function(event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    });
+
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    });
+
+  })
 </script>
+
+
+
+
+
+<script src="js/addmug.js"></script>
 
 <script type="text/javascript">
 

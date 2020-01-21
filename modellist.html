@@ -1436,6 +1436,14 @@ function add_company(){
     .catch(err => console.log(err))
   }
 
+     function canceldelete(){
+    $("#deleteModal").modal("hide");
+  }
+
+    function opendeletemodal(){
+    $("#deleteModal").modal("show");
+  }
+
   getcompanies()
 
   function deletecompanies(){

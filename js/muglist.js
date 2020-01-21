@@ -73,10 +73,18 @@ function modalofferinputs(offer_type){
     }
     // console.log(selectedItems);
     return selectedItems
-  }     
+  }    
+
+   function canceldelete(){
+    $("#deleteModal").modal("hide");
+  }
+
+    function opendeletemodal(){
+    $("#deleteModal").modal("show");
+  } 
 
 
-    function uploadFileEdit(productid){
+    function uploadFileEditOld(productid){
     //var input = document.querySelector('input[type="file"]')
     var form = document.getElementById("ohEditImages");
     var formData = new FormData(form);
@@ -88,6 +96,24 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   getoffersdatatable()
   // console.log(res)
   //getoffers()
+}).catch(err => console.log(err))
+
+  }
+
+    function uploadFileEdit(mugid){
+    console.log("uploads file")
+    //var input = document.querySelector('input[type="file"]')
+    var form = document.getElementById("mugImagesEdit");
+    var formData = new FormData(form);
+
+fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
+  method: 'PUT',
+  body: formData
+}).then(res => {
+  console.log(res)
+  getmugsdatatable()
+  //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
+ // getoffers()
 }).catch(err => console.log(err))
 
   }
@@ -118,6 +144,35 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
         incsel.disabled = true
       }
     }
+  }
+
+      function detailsmug(btnmug){
+    console.log(btnmug)
+    let mug_id = btnmug.getAttribute('data-key') 
+    console.log(mug_id)
+
+          fetch(`http://${hosturl}:5600/api/mug/getmugbyidadmin/${mug_id}`)
+      .then(response => {
+     // console.log(response)
+     return response.json()})
+      .then(data => {
+        console.log(data)
+            document.getElementById("name_details_m").innerHTML = data.name
+    document.getElementById("price_details_m").innerHTML = data.price
+    document.getElementById("volume_details_m").innerHTML = data.volume
+    document.getElementById("description_details_m").innerHTML = data.description
+    let headerimagemug = data.h_image
+    let headerimagemugsrc = `http://${hosturl}:5600/admin/uploads/${headerimagemug}`
+    let innerimagemug = data.in_image
+    let innerimagemugsrc = `http://${hosturl}:5600/admin/uploads/${innerimagemug}`
+    let maskimagemug = data.mask_image
+    let maskimagesrc = `http://${hosturl}:5600/admin/uploads/${maskimagemug}`
+    document.getElementById("image_details_h").src = headerimagemugsrc
+    document.getElementById("image_details_in").src = innerimagemugsrc
+    document.getElementById("image_details_mask").src = maskimagesrc
+
+      })
+      .catch(err => console.log(err))
   }
 
           function offerdetailsmodal(probtn){
@@ -155,14 +210,14 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
     }
 
 
-  function deleteoffers(){
+  function deletemugs(){
     console.log("delete")
    // let deleteprotoget = globalProduct
     let todeleteids = printChecked()
     let deleteArray = {
       todeleteids
     }
-              fetch(`http://${hosturl}:5600/api/offer/deleteoffer`,
+              fetch(`http://${hosturl}:5600/api/mug/deletemug`,
           {
             headers: {
               'Accept': 'application/json',
@@ -172,13 +227,13 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
-            getoffersdatatable()
+            getmugsdatatable()
             //getoffers() 
           })
           .catch(function(res){ console.log(res) })
   }
 
-    function editoffermodal(test){
+    function editmugmodal(test){
      // console.log(test)
 
      // console.log( $('#modal_categories_inc').val() )
@@ -186,109 +241,62 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
      console.log("arrayn",arrayn)
       //console.log(okchains[arrayn])
       //console.log(okchains[arrayn].name)
-      document.getElementById("modal_offer_id").value = arrayn
+      //document.getElementById("modal_offer_id").value = arrayn
 
-      fetch(`http://${hosturl}:5600/api/offer/getofferbyid/${arrayn}`)
+      fetch(`http://${hosturl}:5600/api/mug/getmugbyidadmin/${arrayn}`)
       .then(response => {
      // console.log(response)
      return response.json()})
       .then(data => {
         console.log(data)
-
-            document.getElementById("modal_offer_id").value = data._id
-      //console.log(document.getElementById("modal_id").value)
-        let categories = data.categories
-      $('#modal_categories_inc').val(categories).trigger('change')
-      modalofferinputs(data.offer_type)
-      let allowfreeshipmod = data.free_shipping_allow === 1 ? true : false
-      let onlyonlinemod = data.only_online === 1 ? true : false
-      document.getElementById("modal_offer_type").value = data.offer_type
-      document.getElementById("free_shipping_allow_modal").checked = allowfreeshipmod
-      document.getElementById("online_payment_modal").checked = onlyonlinemod
-      document.getElementById("modal_offer_name").value = data.offer_name
-      document.getElementById("modal_max_spend").value = data.max_spend ? data.max_spend : ""
-      document.getElementById("modal_min_spend").value = data.min_spend ? data.min_spend : ""
-      //document.getElementById("modal_offer_product").value = data.product_name
-      document.getElementById("modal_free_shipping").value = data.freeshipping ? data.freeshipping : ""
-      document.getElementById("modal_flat_discount").value = data.flat_discount ? data.flat_discount : ""
-      document.getElementById("modal_first_time").value = data.firsttime_dis ? data.firsttime_dis : ""
-      document.getElementById("modal_buy").value = data.buy_product ? data.buy_product : ""
-      document.getElementById("modal_get").value = data.get_product ? data.get_product : ""
-      document.getElementById("modal_offer_code").value = data.code ? data.code : ""
-      document.getElementById("modal_offer_usage_limit").value = data.usage_limit
-        var date = new Date(data.expiry_date);
-  field = document.querySelector('#modal_offer_date');
-  var day = date.getDate();
-  if(day<10){ day="0"+day;}
-
-  var month = date.getMonth()+1;
-  if(month<10){ month="0"+month;}
-
-  field.value = date.getFullYear()+"-"+month+"-"+day;
-     // document.getElementById("modal_offer_date").value = data.expiry_date
-      document.getElementById("modal_offer_terms").value = data.termsnconditions
+        document.getElementById("edit_m_id").value = data._id
+    document.getElementById("edit_m_name").value = data.name
+    document.getElementById("edit_m_volume").value = data.volume
+    document.getElementById("edit_m_price").value = data.price
+    document.getElementById("edit_m_description").value = data.description
+    document.getElementById("edit_m_pick_image_size").value = data.pick_image_size
       let headerimage = data.h_image
-      document.getElementById("modal_h_o_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
+      document.getElementById("edit_m_h_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
+      let innerimage = data.in_image
+      document.getElementById("edit_m_in_image").src = `http://${hosturl}:5600/admin/uploads/${innerimage}`
+      let maskimage = data.mask_image
+      document.getElementById("edit_m_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
        $("#myModal").modal('show')
 
       })
      
       .catch(err => console.log(err))
-
-
-
-
       //console.log(document.getElementById("modal_id").value)
+}
 
+
+    function editmug(){
+      let mug_id = document.getElementById("edit_m_id").value
+    let mug_name = document.getElementById("edit_m_name").value
+    let mug_volume = document.getElementById("edit_m_volume").value
+    let price = document.getElementById("edit_m_price").value
+    let description = document.getElementById("edit_m_description").value
+    let pick_image_size = document.getElementById("edit_m_pick_image_size").value
+     let mugdata = {
+      name : mug_name,
+      volume : mug_volume,
+     price,description , pick_image_size
     }
-
-
-    function editoffer(){
-      // console.log("edit ran")
-      //let editprotoget = globalProduct
-      let keyid = document.getElementById("modal_offer_id").value
-      let offer_name = document.getElementById("modal_offer_name").value
-    let offer_type = document.getElementById("modal_offer_type").value
-    let code = document.getElementById("modal_offer_code").value
-    let expiry_date = document.getElementById("modal_offer_date").value
-    let flat_discount = document.getElementById("modal_flat_discount").value
-    let firsttime_dis = document.getElementById("modal_first_time").value
-    let freeshipping = document.getElementById("modal_free_shipping").value
-    let free_shipping_allow_ref = document.getElementById("free_shipping_allow_modal").checked
-    let free_shipping_allow = free_shipping_allow_ref ? 1 : 0
-    let online_payment_ref = document.getElementById("online_payment_modal").checked
-    let online_payment = online_payment_ref ? 1 : 0
-    only_online = online_payment
-    //let buy_product = document.getElementById("modal_buy").value
-    //let get_product = document.getElementById("modal_get").value
-    let min_spend = document.getElementById("modal_min_spend").value
-    let max_spend = document.getElementById("modal_max_spend").value
-    let termsnconditions = document.getElementById("modal_offer_terms").value
-    let usage_limit = document.getElementById("modal_offer_usage_limit").value
-    //let include_products = document.getElementById("modal_categories_inc")
-    let products_ref = $('#modal_categories_inc').val();
-      categories = products_ref
-   // let exclude_products = document.getElementById("modal_categories_ex")
-
-      let keditdata = {
-        offer_name, offer_type, code, expiry_date, flat_discount,firsttime_dis,  freeshipping
-        ,min_spend,categories, max_spend,termsnconditions, usage_limit, free_shipping_allow, only_online
-      }
       // console.log(keyid)
       console.log("k edit data")
       // console.log(keditdata)
 
-          fetch(`http://${hosturl}:5600/api/offer/editoffer/${keyid}`,
+          fetch(`http://${hosturl}:5600/api/mug/editmug/${mug_id}`,
           {
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
             method: "PUT",
-            body: JSON.stringify(keditdata)
+            body: JSON.stringify(mugdata)
           })
           .then(function(res){ 
-            uploadFileEdit(keyid)
+            uploadFileEdit(mug_id)
             //getoffers()
             $("#myModal").modal("hide");
  
@@ -313,13 +321,13 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
     //   btnstatus.html("Active")
     // }
 
-      function activeoffer(activebtn){
-    let offerref = activebtn.getAttribute("data-key")
-    let offerid = offerref
+      function activemug(activebtn){
+    let mugref = activebtn.getAttribute("data-key")
+    let mugid = mugref
     let ceditdata = {
-      active_status : 1
+     available_status : 1
     }
-              fetch(`http://${hosturl}:5600/api/offer/editofferstatus/${offerid}`,
+              fetch(`http://${hosturl}:5600/api/mug/editmugstatus/${mugid}`,
           {
             headers: {
               'Accept': 'application/json',
@@ -339,21 +347,21 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
             // console.log(res)
            // uploadFileEdit(keyid)
            // getoffers()
-           getoffersdatatable()
+           getmugsdatatable()
            // $("#myModal").modal("hide");
  
           })
           .catch(function(res){ console.log(res) })
-    console.log(offerid)
+    console.log(mugid)
   }
 
-  function deactiveoffer(activebtn){
-    let offerref = activebtn.getAttribute("data-key")
-    let offerid = offerref
+  function deactivemug(activebtn){
+    let mugref = activebtn.getAttribute("data-key")
+    let mugid = mugref
      let ceditdata = {
-      active_status : 0
+      available_status : 0
     }
-              fetch(`http://${hosturl}:5600/api/offer/editofferstatus/${offerid}`,
+              fetch(`http://${hosturl}:5600/api/mug/editmugstatus/${mugid}`,
           {
             headers: {
               'Accept': 'application/json',
@@ -365,27 +373,27 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
           .then(function(res){ 
              // console.log(res)
             //getoffers()
-            getoffersdatatable()
+            getmugsdatatable()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");
  
           })
           .catch(function(res){ console.log(res) })
-    console.log(offerid)
+    console.log(mugid)
   }
 
 
-      function getoffers(){
-    fetch(`http://${hosturl}:5600/api/offer/getalloffers`)
-    .then(response => {
-     // console.log(response)
-      return response.json()})
-    .then(data => {
-      okoffers = data.map(a => ({...a}));
-   })
-    .catch(err => console.log(err))
-}
+//       function getoffers(){
+//     fetch(`http://${hosturl}:5600/api/offer/getalloffers`)
+//     .then(response => {
+//      // console.log(response)
+//       return response.json()})
+//     .then(data => {
+//       okoffers = data.map(a => ({...a}));
+//    })
+//     .catch(err => console.log(err))
+// }
     
 
         function checkLogin(){
@@ -403,7 +411,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   checkLogin()
   //getoffers()
 
-      function getoffersdatatable(){
+      function getmugsdatatable(){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
@@ -414,34 +422,24 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
                return nRow;
           },
         "ajax" : {
-            "url" : `http://${hosturl}:5600/api/offer/getalloffers`,
+            "url" : `http://${hosturl}:5600/api/mug/getallmugs`,
             dataSrc : ''
         },
         "columns" : [ {
             "data" : null
         }, {
-            "data" : "offer_name"
+            "data" : "name"
             
-        }, {
-            "data" : "offer_type"
         },{
-            "data" : "code"
+            "data" : "volume"
+            
+        },  {
+            "data" : "price"
         },{
-            "data" : "create_date",
-            "visible":false
-        },{
-            "data" : "expiry_date",
-             "mRender" : function(data, type){
-              let date = data.split("T")[0].split("-").reverse().join("-")
-              return date
-            }
-        },{
-            "data" : "usage_count"
-        }, {
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="offerdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data}">view</button>`;
+              return `<button onclick="detailsmug(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailsmug" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,
@@ -449,17 +447,17 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
              //return data
              let outerbutton = ""
              let statuslink = ""
-             if(data.active_status === 1){
+             if(data.available_status === 1){
 
             outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
-            statuslink = `<a data-key=${data._id} onclick="deactiveoffer(this)" class="dropdown-item">Inactive</a>`
+            statuslink = `<a data-key=${data._id} onclick="deactivemug(this)" class="dropdown-item">Inactive</a>`
              }
               else {
              outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
-             statuslink = `<a data-key=${data._id} onclick="activeoffer(this)"  class="dropdown-item">Active</a>`
+             statuslink = `<a data-key=${data._id} onclick="activemug(this)"  class="dropdown-item">Active</a>`
              }
 
-              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editoffermodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
+              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editmugmodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
             }
         }, {
           "data": "_id",
@@ -471,4 +469,4 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
       });
     }
 
-    getoffersdatatable()
+    getmugsdatatable()

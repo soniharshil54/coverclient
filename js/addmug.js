@@ -35,7 +35,8 @@ document.getElementById("m_volume").value = ""
 document.getElementById("m_price").value = ""
  document.getElementById("m_description").value = ""
   document.getElementById("m_pick_image_size").value = ""
-  document.getElementById("mug_success_id").innerHTML = "Mug Added Successfully !!!"
+  // document.getElementById("mug_success_id").innerHTML = "Mug Added Successfully !!!"
+    
    uploadFile(mugid)
   
 })
@@ -58,60 +59,6 @@ document.getElementById("m_price").value = ""
   }
 
 
-
-function changeofferinputs(){
-  let offer_type = document.getElementById("k_offer_type").value
-  let inc_cat = $('#k_categories_inc').val();
-  let ex_cat = $('#k_categories_ex').val();
-  console.log(inc_cat)
-  console.log(ex_cat)
-  switch(offer_type) {
-  case 'flatdis':
-    document.getElementById("flat_discount_div").style.display = "flex"
-    document.getElementById("inexcategories").style.display = "none"
-    document.getElementById('allow_freeshipping_check').style.display = "flex"
-    document.getElementById("free_shipping_div").style.display = "none"
-    document.getElementById("first_time_div").style.display = "none"
-    //document.getElementById("get_buy_div").style.display = "none"
-    //document.getElementById("get_div").style.display = "none"
-    // code block
-    break;
-  case 'bogo':
-    document.getElementById("flat_discount_div").style.display = "none"
-    document.getElementById("inexcategories").style.display = "flex"
-    document.getElementById('allow_freeshipping_check').style.display = "flex"
-    document.getElementById("free_shipping_div").style.display = "none"
-    document.getElementById("first_time_div").style.display = "none"
-   // document.getElementById("get_buy_div").style.display = "flex"
-    //document.getElementById("get_div").style.display = "block"
-    // code block
-    break;
-  case 'freeshipping':
-    document.getElementById("flat_discount_div").style.display = "none"
-    document.getElementById("inexcategories").style.display = "none"
-    document.getElementById('allow_freeshipping_check').style.display = "none"
-    document.getElementById("free_shipping_div").style.display = "flex"
-    document.getElementById("first_time_div").style.display = "none"
-   // document.getElementById("get_buy_div").style.display = "none"
-    //document.getElementById("get_div").style.display = "none"
-    // code block
-    break;
-  case 'firsttime':
-    document.getElementById("flat_discount_div").style.display = "none"
-    document.getElementById("inexcategories").style.display = "none"
-    document.getElementById('allow_freeshipping_check').style.display = "flex"
-    document.getElementById("free_shipping_div").style.display = "none"
-    document.getElementById("first_time_div").style.display = "flex"
-   // document.getElementById("get_buy_div").style.display = "none"
-    //document.getElementById("get_div").style.display = "none"
-    // code block
-    break;  
-  default:
-    // code block
-}
-}
-
-
   function uploadFile(mugid){
     console.log("uploads file")
     //var input = document.querySelector('input[type="file"]')
@@ -125,6 +72,7 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
   console.log(res)
   //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
+ window.location  =  "muglist.html"
 }).catch(err => console.log(err))
 
   }

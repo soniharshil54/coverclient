@@ -35,7 +35,8 @@ document.getElementById("p_size").value = ""
 document.getElementById("p_price").value = ""
  document.getElementById("p_description").value = ""
   document.getElementById("p_pick_image_size").value = ""
-  document.getElementById("popholder_success_id").innerHTML = "Popholder Added Successfully !!!"
+  // document.getElementById("popholder_success_id").innerHTML = "Popholder Added Successfully !!!"
+  
    uploadFile(popholderid)
   
 })
@@ -67,6 +68,7 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+  window.location  =  "popholderlist.html"
   //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))

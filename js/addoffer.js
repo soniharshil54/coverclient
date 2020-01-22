@@ -72,7 +72,8 @@
     document.getElementById("k_terms").value = ""
     document.getElementById("k_min_spend").value = ""
     document.getElementById("k_max_spend").value = ""
-    document.getElementById("offer_success_id").innerHTML = "Offer Created Successfully"
+    // document.getElementById("offer_success_id").innerHTML = "Offer Created Successfully"
+      
    
    uploadFile(offerid)
   
@@ -162,6 +163,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
 }).then(res => {
   console.log(res)
   document.getElementById("successAdded").innerHTML = "Offer successfully added !!!"
+  window.location = "offerlist.html"
  // getoffers()
 }).catch(err => console.log(err))
 

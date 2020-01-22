@@ -332,12 +332,13 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-            <button onclick="logOutUser()" style="width: 100%" class="nav-link">              
+            <a href="javascript:void(0);" onclick="logOutUser()" style="width: 100%" class="nav-link">     
+            <i class="nav-icon fas fa-sign-out-alt"></i>         
               <p>
                 Logout
                 <!-- <i class="fas fa-angle-left right"></i> -->
               </p>
-            </button>
+            </a>
           </li>
         </ul>
       </nav>
@@ -1315,6 +1316,7 @@ $(document).ready(function(){
       document.getElementById("k_description_3d").value = ""
       document.getElementById("k_description_4d").value = ""
       //document.getElementById("phonecase_notif").innerHTML = `${name} added Successfully!!`
+      
       console.log(result)
       let productId = result.product._id
       console.log(productId)
@@ -1783,7 +1785,8 @@ function add_company(){
       body: formData
     }).then(res => {
       console.log(res)
-      getproducts()
+      window.location = "modellist.html"
+      //getproducts()
     }).catch(err => console.log(err))
 
   }

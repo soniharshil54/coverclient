@@ -338,6 +338,9 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
         },  {
             "data" : "price"
         },{
+            "data" : "create_date",
+            "visible":false
+        },{
           "data": "_id",
             "mRender": function(data, type) {
              //return data

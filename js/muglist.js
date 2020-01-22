@@ -443,6 +443,9 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
         },  {
             "data" : "price"
         },{
+            "data" : "create_date",
+            "visible":false
+        },{
           "data": "_id",
             "mRender": function(data, type) {
              //return data

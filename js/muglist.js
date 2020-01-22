@@ -167,10 +167,13 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
     let headerimagemugsrc = `http://${hosturl}:5600/admin/uploads/${headerimagemug}`
     let innerimagemug = data.in_image
     let innerimagemugsrc = `http://${hosturl}:5600/admin/uploads/${innerimagemug}`
+    let overlayimagemug = data.overlay_image
+    let overlayimagesrc = `http://${hosturl}:5600/admin/uploads/${overlayimagemug}`
     let maskimagemug = data.mask_image
     let maskimagesrc = `http://${hosturl}:5600/admin/uploads/${maskimagemug}`
     document.getElementById("image_details_h").src = headerimagemugsrc
     document.getElementById("image_details_in").src = innerimagemugsrc
+    document.getElementById("image_details_overlay").src = overlayimagesrc
     document.getElementById("image_details_mask").src = maskimagesrc
 
       })
@@ -261,6 +264,8 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
       document.getElementById("edit_m_h_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
       let innerimage = data.in_image
       document.getElementById("edit_m_in_image").src = `http://${hosturl}:5600/admin/uploads/${innerimage}`
+       let overlayimage = data.overlay_image
+      document.getElementById("edit_m_overlay_image").src = `http://${hosturl}:5600/admin/uploads/${overlayimage}`
       let maskimage = data.mask_image
       document.getElementById("edit_m_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
        $("#myModal").modal('show')

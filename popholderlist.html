@@ -245,7 +245,7 @@
             </ul>
           </li>
                      <li class="nav-item has-treeview">
-            <a href="muglist.html" class="nav-link active">
+            <a href="muglist.html" class="nav-link">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 Mug
@@ -254,7 +254,7 @@
             </a>
           </li>
            <li class="nav-item has-treeview">
-            <a href="popholderlist.html" class="nav-link">
+            <a href="popholderlist.html" class="nav-link active">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 Popholder
@@ -394,7 +394,7 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-3">
-                     <h3 id="productShowHeading" class="card-title">Mug List</h3>
+                     <h3 id="productShowHeading" class="card-title">Popholder List</h3>
                   </div>
                   <div class="col-sm-5"></div>
                   <!-- <div class="col-sm-5">
@@ -406,7 +406,7 @@
                 </ul>
                   </div> -->
                   <div class="col-sm-4">
-                     <h3 class="card-title" style="float: right"><button onclick="addmug()" class="btn btn-success">Add Mug</button></h3>
+                     <h3 class="card-title" style="float: right"><button onclick="addpopholder()" class="btn btn-success">Add Popholder</button></h3>
                   </div>
                 </div>
                
@@ -423,9 +423,9 @@
                 <thead>
                 <tr>
                   <th>No.</th>
-                  <th>Mug Name</th>
-                  <th>Mug Volume</th>
-                  <th>Mug Price</th>
+                  <th>Popholder Name</th>
+                  <th>Popholder Volume</th>
+                  <th>Popholder Price</th>
                   <!-- <th style="display: none;">datetimehidden</th> -->
                   <th>Details</th>
                   <th>Action</th>  
@@ -441,9 +441,9 @@
                 <tfoot>
                 <tr>
                   <th>No.</th>
-                  <th>Mug Name</th>
-                  <th>Mug Volume</th>
-                  <th>Mug Price</th>
+                  <th>Popholder Name</th>
+                  <th>Popholder Volume</th>
+                  <th>Popholder Price</th>
                   <!-- <th style="display: none;">datetimehidden</th> -->
                   <th>Details</th>
                   <th>Action</th>    <!-- 
@@ -520,7 +520,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header" style="">
-          <h4 id="productEditHeading" class="modal-title">Edit Mug</h4>
+          <h4 id="productEditHeading" class="modal-title">Edit Popholder</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -542,32 +542,32 @@
                                 <div class="row">
                     <div class="col-sm-4">
                       <!-- text input -->
-                       <input type="hidden" id="edit_m_id" name="modal_id" value="">
+                       <input type="hidden" id="edit_p_id" name="modal_id" value="">
                       <div class="form-group">
                         <label>Name</label>
-                        <input type="text" id="edit_m_name" class="form-control" placeholder="Enter ...">
+                        <input type="text" id="edit_p_name" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
                        <div class="col-sm-4">
                       <!-- text input -->
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
-                        <label>Volume</label>
-                        <input type="text" id="edit_m_volume" class="form-control" placeholder="Enter ...">
+                        <label>Size</label>
+                        <input type="text" id="edit_p_size" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
                     <div class="col-sm-4">
                       <div class="form-group">
                         <label>Price</label>
-                        <input type="number" id="edit_m_price" class="form-control" placeholder="Enter ...">
+                        <input type="number" id="edit_p_price" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>                    <div class="col-sm-6">
                                         <div class="form-group">
                     <label for="exampleInputFile">header image</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="edit_m_h_image" src="">
+                      <img width="38px" height="38px" id="edit_p_h_image" src="">
                       <div class="custom-file">
-                         <form name="mugImagesEdit" id="mugImagesEdit" enctype="multipart/form-data">
+                         <form name="popholderImagesEdit" id="popholderImagesEdit" enctype="multipart/form-data">
                         <input name="hImage" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
@@ -579,11 +579,11 @@
                     </div>
                     <div class="col-sm-6">
                                         <div class="form-group">
-                    <label for="exampleInputFile">in image</label>
+                    <label for="exampleInputFile">shadow image</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="edit_m_in_image" src="">
+                      <img width="38px" height="38px" id="edit_p_shadow_image" src="">
                       <div class="custom-file">
-                        <input name="inImage" type="file" class="custom-file-input" id="exampleInputFile">
+                        <input name="shadowImage" type="file" class="custom-file-input" id="exampleInputFile">
                      
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
@@ -598,7 +598,7 @@
                                         <div class="form-group">
                     <label for="exampleInputFile">overlay image</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="edit_m_overlay_image" src="">
+                      <img width="38px" height="38px" id="edit_p_overlay_image" src="">
                       <div class="custom-file">
                         <input name="overlayImage" type="file" class="custom-file-input" id="exampleInputFile">
                      
@@ -615,7 +615,7 @@
                                         <div class="form-group">
                     <label for="exampleInputFile">mask image</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="edit_m_mask_image" src="">
+                      <img width="38px" height="38px" id="edit_p_mask_image" src="">
                       <div class="custom-file">
                         <input name="maskImage" type="file" class="custom-file-input" id="exampleInputFile">
                      </form>
@@ -634,14 +634,14 @@
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             <label>Description</label>
-                         <textarea id="edit_m_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                         <textarea id="edit_p_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                         </div>
                         </div>
                       </div>
                       <div class="col-sm-4">
                         <div class="form-group">
                         <label>Pick Image Size</label>
-                        <input id="edit_m_pick_image_size" type="text" class="form-control" placeholder="Enter ...">
+                        <input id="edit_p_pick_image_size" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                       </div>
                   </div>
@@ -656,7 +656,7 @@
                       </div> -->
                     </div>    
                     <div class="col-sm-6">
-                      <input id="productEditBtn" onclick="editmug()" type="button" value="Edit Mug" class="btn btn-success float-right">
+                      <input id="productEditBtn" onclick="editpopholder()" type="button" value="Edit Popholder" class="btn btn-success float-right">
                     </div>   
                   </div>
                                        
@@ -678,7 +678,7 @@
   </div>
 
     <!-- The Modal -->
-  <div class="modal" id="detailsmug">
+  <div class="modal" id="detailspopholder">
     <div class="modal-dialog" style="max-width: 900px">
       <div class="modal-content" style="background-color: transparent;border: none">
 
@@ -691,8 +691,8 @@
         <div class="modal-body" style="text-align: center;">
           <table class="table table-dark" style="width:100%">
             <tr>
-              <th>Mug Name:</th>
-              <td><span id="name_details_m"></span></td>
+              <th>Popholder Name:</th>
+              <td><span id="name_details_p"></span></td>
             </tr>
             <tr>
               <th>Images:</th>
@@ -701,8 +701,8 @@
 </a></td> -->
 <td><a id="image_details_h_a" href="images/3.jpg" download="">
   <img id="image_details_h" src="images/3.jpg" alt="noimage" width="104">
-</a><a id="image_details_in_a" href="images/3.jpg" download="">
-  <img id="image_details_in" src="images/3.jpg" alt="noimage" width="104">
+</a><a id="image_details_shadow_a" href="images/3.jpg" download="">
+  <img id="image_details_shadow" src="images/3.jpg" alt="noimage" width="104">
 </a><a id="image_details_overlay_a" href="images/3.jpg" download="">
   <img id="image_details_overlay" src="images/3.jpg" alt="noimage" width="104" >
 </a><a id="image_details_mask_a" href="images/3.jpg" download="">
@@ -711,15 +711,15 @@
 </tr>
 <tr>
   <th>Price:</th>
-  <td><span id="price_details_m"></span></td>
+  <td><span id="price_details_p"></span></td>
 </tr>
 <tr>
-  <th>Volume:</th>
-  <td><span id="volume_details_m"></span></td>
+  <th>Size:</th>
+  <td><span id="size_details_p"></span></td>
 </tr>
 <tr>
   <th>Description:</th>
-  <td><span id="description_details_m"></span></td>
+  <td><span id="description_details_p"></span></td>
 </tr>
 </table>
 <!-- <h1>ello</h1> -->
@@ -736,53 +736,6 @@
     </div>
   </div>
 
-    <div class="modal" id="OfferDetailModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: transparent;border: none">
-        <div class="modal-body" style="text-align: left;">
-         <table class="table table-dark" style="width:100%">
-            <tr>
-              <th>Offer Name:</th>
-              <td><span id="offer_modal_name"></span></td>
-            </tr>
-              <tr>
-              <th>Offer Type:</th>
-              <td><span id="offer_modal_type"></span></td>
-            </tr>
-            <tr>
-
-              <th>Categories</th>
-              <td><span id="offer_modal_categories"></span></td>
-      
-            </tr>
-            <tr>
-              <th>Minimum Spend:</th>
-              <td><span id="offer_modal_minspend"></span></td>
-            </tr>
-             <tr>
-              <th>Maximum Spend:</th>
-              <td><span id="offer_modal_maxspend"></span></td>
-            </tr>
-             <tr>
-              <th>Flat Discount</th>
-              <td><span id="offer_modal_flatdis"></span></td>
-            </tr>
-            <tr>
-              <th>Free Shipping On</th>
-              <td><span id="offer_modal_freeship"></span></td>
-            </tr>
-             <tr>
-              <th>First Time Discount</th>
-              <td><span id="offer_modal_firsttime"></span></td>
-            </tr>
-          </table>
-         
-
-        </div>
-        
-      </div>
-    </div>
-  </div>
 
 
      <div class="modal" id="deleteModal">
@@ -804,7 +757,7 @@
             <div class="col-sm-6"></div>
             <div class="col-sm-6">
               <div class="form-group">
-               <input style="margin-right: 20px" id="productEditBtn" onclick="deletemugs()" type="button" value="Confirm" class="btn btn-success float-right">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="deletepopholders()" type="button" value="Confirm" class="btn btn-success float-right">
                <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
              </div>
 
@@ -914,7 +867,7 @@
 
 
 
-<script src="js/muglist.js"></script>
+<script src="js/popholderlist.js"></script>
 
 <script type="text/javascript">
 

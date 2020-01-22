@@ -9,7 +9,9 @@ function removeFromArray(original, remove) {
     window.location  =  "login.html";
   }
 
-
+function addmug(){
+  window.location = "addmug.html";
+}
 
 function modalofferinputs(offer_type){
   //let offer_type = document.getElementById("modal_offer_type").value

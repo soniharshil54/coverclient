@@ -30,7 +30,12 @@
 .then(function(result){
   console.log(result)
   let mugid = result._id
- 
+ document.getElementById("m_name").value = ""
+document.getElementById("m_volume").value = ""
+document.getElementById("m_price").value = ""
+ document.getElementById("m_description").value = ""
+  document.getElementById("m_pick_image_size").value = ""
+  document.getElementById("mug_success_id").innerHTML = "Mug Added Successfully !!!"
    uploadFile(mugid)
   
 })

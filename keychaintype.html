@@ -367,25 +367,63 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-<!--     <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Keychain</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Keychain</li>
-            </ol>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-md-12">
+              <div class="card card-secondary">
+          <div class="card-header">
+            <h3 class="card-title">Add Keychain Type</h3>
+
+             <!--  <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-plus"></i></button>
+                </div> -->
+              </div>
+              <div class="card-body">
+               
+                <div class="row">
+                  
+                  <div class="col-sm-4">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input id="kt_name" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+
+
+                  <div class="col-sm-4">
+                    <form name="keychainTypeImage" id="keychainTypeImage" enctype="multipart/form-data">
+                    <label for="exampleInputFile">Slider Image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                         
+                        <input name="sliderImage" type="file" class="custom-file-input" id="productImage">
+                      
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                    </form> 
+                  </div>   
+
+                  <div style="margin-top: 10px" class="col-sm-8">
+                   <button id="add_keychain_type" class="btn btn-success">Add Keychain Type</button>
+                 </div>
+                 <div class="col-sm-4">
+
+                 </div> 
+                 
+               </div>
+             
+
+             </div>
       </div>
-    </section> -->
+    </div></div>
 
     <!-- Main content -->
-    <section style="margin-top: 120px" class="content">
+    <section style="margin-top: 10px" class="content">
      
       
               <!-- /.row -->
@@ -395,25 +433,13 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-3">
-                     <h3 id="productShowHeading" class="card-title">Offer List</h3>
+                     <h3 id="productShowHeading" class="card-title">Keychain Type List</h3>
                   </div>
                   <div class="col-sm-5"></div>
-                  <!-- <div class="col-sm-5">
-                       <ul style="" class="list-group list-group-horizontal">
-                  <li style="padding: 5px 10px " onclick="paginatortest(1,2)" class="list-group-item">1</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(2,2)" class="list-group-item">2</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(3,2)" class="list-group-item">3</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(4,2)" class="list-group-item">4</li>
-                </ul>
-                  </div> -->
                   <div class="col-sm-4">
-                     <!-- <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3> -->
                   </div>
                 </div>
                
-             
-                <!-- <button onclick="paginatortest(1,2)" class="btn btn-info">test pagination</button> -->
-                <!-- <span style="color: green; font-weight: bold; margin-left: 200px"></span> -->
  
                 <div class="card-tools">
                 </div>
@@ -424,13 +450,9 @@
                 <thead>
                 <tr>
                   <th>No.</th>
-                  <th>Offer Name</th>
-                  <th>Offer Type</th>
-                  <th>Coupon Code</th>
+                  <th>Keychain Type Name</th>
+                  <th>Keychain Slider</th>
                   <th style="display: none;">datetimehidden</th>
-                  <th>Valid Till</th>
-                  <th>Usage Count</th>
-                  <th>View</th>
                   <th>Action</th>  
                   
                   <!-- <th>Date</th>
@@ -443,14 +465,10 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                 <th>No.</th>
-                  <th>Offer Name</th>
-                  <th>Offer Type</th>
-                  <th>Coupon Code</th>
-                   <th>datetimehidden</th>
-                  <th>Valid Till</th>
-                  <th>Usage Count</th>
-                  <th>View</th>
+                  <th>No.</th>
+                  <th>Keychain Type Name</th>
+                  <th>Keychain Slider</th>
+                  <th style="display: none;">datetimehidden</th>
                   <th>Action</th>    <!-- 
                   <th>Date</th>
                   <th>User Info</th>
@@ -471,7 +489,7 @@
         
     </section>
     <!-- /.content -->
-  </div>
+  
   <!-- /.content-wrapper -->
 
 <footer class="main-footer">
@@ -525,7 +543,7 @@
       
         <!-- Modal Header -->
         <div class="modal-header" style="">
-          <h4 id="productEditHeading" class="modal-title">Edit Offer</h4>
+          <h4 id="productEditHeading" class="modal-title">Edit Keychain Type</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -544,94 +562,24 @@
             </div> -->
             <div class="card-body" style="display: block">
                 
-                                <div class="row">
-                                  <div class="col-sm-3">
-                      <div class="form-group">
-                        <label>Offer Type</label>
-                        <input disabled="true" type="text" id="modal_offer_type" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div> 
+                                <div class="row"> 
                     <div class="col-sm-4">
                       <!-- text input -->
-                       <input type="hidden" id="modal_offer_id" name="modal_offer_id" value="">
+                       <input type="hidden" id="edit_kt_id" name="kt_edit_id" value="">
                       <div class="form-group">
-                        <label>Offer Name</label>
-                        <input type="text" id="modal_offer_name" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                      <div class="col-sm-2">
-                      <div class="form-group">
-                        <label>Valid till</label>
-                        <input type="date" id="modal_offer_date" class="form-control" placeholder="Enter ...">
+                        <label>Keychain Type Name</label>
+                        <input type="text" id="edit_kt_name" class="form-control" placeholder="Enter ...">
                       </div>
                     </div> 
-                      <div class="col-sm-3">
-                      <div class="form-group">
-                        <label>Code</label>
-                        <input oninput="let p = this.selectionStart; this.value = this.value.toUpperCase();this.setSelectionRange(p, p);" type="text" id="modal_offer_code" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                     
-                    <div id="modal_flat_discount_div" class="col-sm-2">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Flat Discount</label>
-                        <input id="modal_flat_discount" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>  
-                     <div id="modal_free_shipping_div" class="col-sm-2">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>Free Shipping On</label>
-                        <input id="modal_free_shipping" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div> 
-                      <div id="modal_first_time_div" class="col-sm-2">
-                      <!-- text input -->
-                      <div class="form-group">
-                        <label>First Time Disc.</label>
-                        <input id="modal_first_time" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>  
-                    <div id="modal_buy_div" class="col-sm-1">
-                      <div style="display: none;" class="form-group">
-                        <label>Buy</label>
-                        <input id="modal_buy" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div> 
-                     <div id="modal_get_div" class="col-sm-1">
-                      <!-- text input -->
-                      <div style="display: none;" class="form-group">
-                        <label>Get</label>
-                        <input id="modal_get" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div> 
-
-                 
-                     <div class="col-sm-2">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Minimum spend</label>
-                        <input id="modal_min_spend" type="number" class="form-control" placeholder="Enter ...">
-                        </div>
-                        </div>
-                      </div>
-                       <div class="col-sm-2">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Maximum spend</label>
-                        <input id="modal_max_spend" type="number" class="form-control" placeholder="Enter ...">
-                        </div>
-                        </div>
-                      </div>
-                       <div class="col-sm-2">
+                       <div class="col-sm-4">
+                        <form name="ktImageEdit" id="ktImageEdit" enctype="multipart/form-data">
                                         <div class="form-group">
-                    <label for="exampleInputFile">header image</label>
+                    <label for="exampleInputFile">Slider image</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="modal_h_o_image" src="">
+                      <img width="38px" height="38px" id="edit_kt_slider_image" src="">
                       <div class="custom-file">
-                        <form name="ohEditImages" id="ohEditImages" enctype="multipart/form-data">
-                        <input name="offer_image" type="file" class="custom-file-input" id="exampleInputFile"></form>
+                        
+                        <input name="sliderImage" type="file" class="custom-file-input" id="exampleInputFile">
                      
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
@@ -639,62 +587,19 @@
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                  </div>
-                    </div>
-                    <div class="col-sm-4">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Terms and coditions</label>
-                        <textarea id="modal_offer_terms" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
-                        </div>
-                        </div>
-                      </div>
-                    <div class="col-sm-6">
-                         <div id="modal_incategories" class="form-group">
-                  <label>Categories</label>
-                  <div class="select2-green">
-                    <select  id="modal_categories_inc" class="select2" multiple="multiple" data-placeholder="Select Categories" data-dropdown-css-class="select2-green" style="width: 100%;">
-                      <option value="phonecase">Phonecase</option>
-                      <option value="tshirt">Tshirt</option>
-                      <option value="keychain">Keychain</option>
-                      <option value="mug">Mug</option>
-                      <option value="popholder">Popholder</option>
-                      <option value="slipperbottle">Slipper Bottle</option>
-                      <option value="watch">Watch</option>
-                      <option value="wallclock">Wall-clock</option>
-                      <option value="photoframe">Photoframe</option>
-                    </select>
-                  </div>
-                </div>
-                      </div>  
-                      <div class="col-sm-5">
-                        <label>Usage limit per coupon</label>
-                          <select id="modal_offer_usage_limit" class="form-control custom-select">
-                  <option value="unlimited">Unlimited</option>
-                  <option value="10">10</option>
-                  <option value="50">50</option>
-                  <option value="100">100</option>
-                  <option value="500">500</option>
-                  <option value="1000">1000</option>
-                  
-                </select>
-                      </div>
+                  </div></form>
+                    </div> 
+                      <div class="col-sm-4">
+                      <input id="productEditBtn" onclick="editkeychaintype()" type="button" value="Edit Offer" class="btn btn-success float-right">
+                    </div> 
                                   
                    
                         
                   </div>
                   
-                  <div class="row">
-                    <div class="col-sm-4">
-                           <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='free_shipping_allow_modal' value='option1'><label for='free_shipping_allow_modal' class='custom-control-label'>Allow Free Shipping</label></div></div>
-                    </div>  
-                    <div class="col-sm-4">
-                      <div class='form-group'><div class='custom-control custom-checkbox'><input class='custom-control-input' type='checkbox' id='online_payment_modal' value='option2'><label for='online_payment_modal' class='custom-control-label'>Only for online payment</label></div></div>
-                    </div>  
-                    <div class="col-sm-4">
-                      <input id="productEditBtn" onclick="editoffer()" type="button" value="Edit Offer" class="btn btn-success float-right">
-                    </div>   
-                  </div>
+               
+                    
+              
                                        
             </div>
             <!-- /.card-body -->
@@ -808,7 +713,7 @@
 
 
 
-<script src="js/offerlist.js"></script>
+<script src="js/keychaintype.js"></script>
 
 <script type="text/javascript">
 

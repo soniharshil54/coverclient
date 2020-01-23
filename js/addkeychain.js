@@ -3,7 +3,7 @@
     //console.log("add_offer")
     //let addpropara = globalProduct
     let keychain_name = document.getElementById("k_name").value
-    let keychain_volume = document.getElementById("k_volume").value
+   let keychain_type = document.getElementById("k_type").value
     let price = document.getElementById("k_price").value
     let description = document.getElementById("k_description").value
     let pick_image_size = document.getElementById("k_pick_image_size").value
@@ -12,7 +12,7 @@
     //let categories = ["phonecase", "keychain"]
   
     let keychaindata = {
-      keychain_name, keychain_volume, price,description , pick_image_size
+      keychain_name, keychain_type ,price,description , pick_image_size
     }
    // console.log(keydata)
     fetch(`http://${hosturl}:5600/api/keychain/addkeychain`,
@@ -31,7 +31,7 @@
   console.log(result)
   let keychainid = result._id
  document.getElementById("k_name").value = ""
-document.getElementById("k_volume").value = ""
+//document.getElementById("k_volume").value = ""
 document.getElementById("k_price").value = ""
  document.getElementById("k_description").value = ""
   document.getElementById("k_pick_image_size").value = ""
@@ -50,6 +50,22 @@ document.getElementById("k_price").value = ""
 // });
   function removeFromArray(original, remove) {
   return original.filter(value => !remove.includes(value));
+}
+
+function changekeychaininputs(){
+  let keychain_type = document.getElementById("k_type").value
+  //let inc_cat = $('#k_categories_inc').val();
+ // let ex_cat = $('#k_categories_ex').val();
+  //console.log(inc_cat)
+  //console.log(ex_cat)
+  if(keychain_type === "RegularKeychain"){
+    document.getElementById("type_d_overlay").style.display = "block"
+     document.getElementById("type_d_mask").style.display = "block"
+  }
+  else{
+    document.getElementById("type_d_overlay").style.display = "none"
+     document.getElementById("type_d_mask").style.display = "none"
+  }
 }
 
 

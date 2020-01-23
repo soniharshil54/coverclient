@@ -240,6 +240,31 @@
               </li>
             </ul>
           </li>
+
+             <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-circle-notch"></i>
+              <p>
+                Keychain
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="keychaintype.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Keychain Type List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="keychainlist.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Keychain List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
                      <li class="nav-item has-treeview">
             <a href="muglist.html" class="nav-link active">
               <i class="nav-icon fas fa-mug-hot"></i>
@@ -406,16 +431,20 @@
                         <input id="k_name" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div><div class="col-sm-6"></div>
-                      <div class="col-sm-3">
-                       <label>Keychain Volume</label>
-                    </div>
-                      <div class="col-sm-2">
-                      <!-- text input -->
+
+                       <div class="col-sm-3"><label>Keychain Type</label></div>
+                                    <div class="col-sm-2">
                       <div class="form-group">
                         
-                        <input id="k_volume" type="text" class="form-control" placeholder="Enter ...">
+                          <select onchange="changekeychaininputs()" id="k_type" class="form-control custom-select">
+                  <option value="RegularKeychain">Regular Keychain</option>
+                  <option value="EngravedKeychain">Engraved Keychain</option>
+                  <option value="LetterKeychain">Acrylic Letter Keychain</option>
+                  
+                </select>
                       </div>
-                    </div>  <div class="col-sm-7"></div>
+                    </div> <div class="col-sm-7"></div>
+                     
                   
                 
                      
@@ -453,13 +482,13 @@
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             
-                        <input id="k_pick_image_size" type="number" class="form-control" placeholder="Enter ...">
+                        <input id="k_pick_image_size" type="text" class="form-control" placeholder="Enter ...">
                         </div>
                         </div>
                       </div><div class="col-sm-7"></div>
-
-
-                      <div class="col-sm-3">
+                      <div class="col-sm-12">
+                        <div class="row">
+                           <div class="col-sm-3">
                         <label for="exampleInputFile">Header image</label>
                     </div>
                        <div class="col-sm-2">
@@ -475,8 +504,12 @@
                     </div>
                   </div>
                     </div><div class="col-sm-7"></div>
+                        </div>
+                      </div>
 
-                                          <div class="col-sm-3">
+                     
+
+                  <div class="col-sm-3">
                         <label for="exampleInputFile">Inner image</label>
                     </div>
                        <div class="col-sm-2">
@@ -491,7 +524,9 @@
                     </div>
                   </div>
                     </div><div class="col-sm-7"></div>
-                    <div class="col-sm-3">
+                    <div id="type_d_overlay" class="col-sm-12">
+                      <div class="row">
+                          <div class="col-sm-3">
                         <label for="exampleInputFile">Overlay image</label>
                     </div>
                        <div class="col-sm-2">
@@ -507,8 +542,13 @@
                     </div>
                   </div>
                     </div><div class="col-sm-7"></div>
+                      </div>
+                    </div>
+                  
 
-                                          <div class="col-sm-3">
+                    <div id="type_d_mask" class="col-sm-12">
+                      <div class="row">
+                         <div class="col-sm-3">
                         <label for="exampleInputFile">Mask image</label>
                     </div>
                        <div class="col-sm-2">
@@ -517,13 +557,17 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <input name="maskImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
-                      </form>
+                      
                         
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
                   </div>
                     </div><div class="col-sm-7"></div>
+                      </div>
+                    </div></form>
+
+                                         
 
           
                     

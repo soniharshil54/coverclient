@@ -13,48 +13,20 @@ function addkeychain(){
   window.location = "addkeychain.html";
 }
 
-function modalofferinputs(offer_type){
-  //let offer_type = document.getElementById("modal_offer_type").value
-  switch(offer_type) {
-  case 'flatdis':
-    document.getElementById("modal_flat_discount_div").style.display = "block"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("modal_free_shipping_div").style.display = "none"
-    document.getElementById("modal_first_time_div").style.display = "none"
-    document.getElementById("modal_buy_div").style.display = "none"
-    document.getElementById("modal_get_div").style.display = "none"
-    // code block
-    break;
-  case 'bogo':
-    document.getElementById("modal_flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = false
-    document.getElementById("modal_free_shipping_div").style.display = "none"
-    document.getElementById("modal_first_time_div").style.display = "none"
-    // document.getElementById("modal_buy_div").style.display = "block"
-    // document.getElementById("modal_get_div").style.display = "block"
-    // code block
-    break;
-  case 'freeshipping':
-    document.getElementById("modal_flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("modal_free_shipping_div").style.display = "block"
-    document.getElementById("modal_first_time_div").style.display = "none"
-    document.getElementById("modal_buy_div").style.display = "none"
-    document.getElementById("modal_get_div").style.display = "none"
-    // code block
-    break;
-  case 'firsttime':
-    document.getElementById("modal_flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("modal_free_shipping_div").style.display = "none"
-    document.getElementById("modal_first_time_div").style.display = "block"
-    document.getElementById("modal_buy_div").style.display = "none"
-    document.getElementById("modal_get_div").style.display = "none"
-    // code block
-    break;  
-  default:
-    // code block
-}
+function modalkctypeinputs(offer_type){
+  let keychain_type = document.getElementById("edit_k_type").value
+  //let inc_cat = $('#k_categories_inc').val();
+ // let ex_cat = $('#k_categories_ex').val();
+  //console.log(inc_cat)
+  //console.log(ex_cat)
+  if(keychain_type === "RegularKeychain"){
+    document.getElementById("edit_k_d_overlay").style.display = "block"
+     document.getElementById("edit_k_d_mask").style.display = "block"
+  }
+  else{
+    document.getElementById("edit_k_d_overlay").style.display = "none"
+     document.getElementById("edit_k_d_mask").style.display = "none"
+  }
 }
 
 
@@ -161,13 +133,13 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
         console.log(data)
             document.getElementById("name_details_m").innerHTML = data.name
     document.getElementById("price_details_m").innerHTML = data.price
-    document.getElementById("volume_details_m").innerHTML = data.volume
+   // document.getElementById("volume_details_m").innerHTML = data.volume
     document.getElementById("description_details_m").innerHTML = data.description
     let headerimagekeychain = data.h_image
     let headerimagekeychainsrc = `http://${hosturl}:5600/admin/uploads/${headerimagekeychain}`
-    let innerimagekeychain = data.in_image
+    let innerimagekeychain = data.shadow_image
     let innerimagekeychainsrc = `http://${hosturl}:5600/admin/uploads/${innerimagekeychain}`
-    let overlayimagekeychain = data.overlay_image
+    let overlayimagekeychain = data.overlay_image 
     let overlayimagesrc = `http://${hosturl}:5600/admin/uploads/${overlayimagekeychain}`
     let maskimagekeychain = data.mask_image
     let maskimagesrc = `http://${hosturl}:5600/admin/uploads/${maskimagekeychain}`
@@ -232,6 +204,7 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
+            $("#deleteModal").modal("hide");
             getkeychainsdatatable()
             //getoffers() 
           })
@@ -254,20 +227,21 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
      return response.json()})
       .then(data => {
         console.log(data)
-        document.getElementById("edit_m_id").value = data._id
-    document.getElementById("edit_m_name").value = data.name
-    document.getElementById("edit_m_volume").value = data.volume
-    document.getElementById("edit_m_price").value = data.price
-    document.getElementById("edit_m_description").value = data.description
-    document.getElementById("edit_m_pick_image_size").value = data.pick_image_size
+        document.getElementById("edit_k_id").value = data._id
+    document.getElementById("edit_k_name").value = data.name
+   document.getElementById("edit_k_type").value = data.type
+    document.getElementById("edit_k_price").value = data.price
+    document.getElementById("edit_k_description").value = data.description
+    document.getElementById("edit_k_pick_image_size").value = data.pick_image_size
       let headerimage = data.h_image
-      document.getElementById("edit_m_h_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
-      let innerimage = data.in_image
-      document.getElementById("edit_m_in_image").src = `http://${hosturl}:5600/admin/uploads/${innerimage}`
+      document.getElementById("edit_k_h_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
+      let innerimage = data.shadow_image
+      document.getElementById("edit_k_in_image").src = `http://${hosturl}:5600/admin/uploads/${innerimage}`
        let overlayimage = data.overlay_image
-      document.getElementById("edit_m_overlay_image").src = `http://${hosturl}:5600/admin/uploads/${overlayimage}`
+      document.getElementById("edit_k_overlay_image").src = `http://${hosturl}:5600/admin/uploads/${overlayimage}`
       let maskimage = data.mask_image
-      document.getElementById("edit_m_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
+      document.getElementById("edit_k_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
+      modalkctypeinputs()
        $("#myModal").modal('show')
 
       })
@@ -278,15 +252,14 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
 
 
     function editkeychain(){
-      let keychain_id = document.getElementById("edit_m_id").value
-    let keychain_name = document.getElementById("edit_m_name").value
-    let keychain_volume = document.getElementById("edit_m_volume").value
-    let price = document.getElementById("edit_m_price").value
-    let description = document.getElementById("edit_m_description").value
-    let pick_image_size = document.getElementById("edit_m_pick_image_size").value
+      let keychain_id = document.getElementById("edit_k_id").value
+    let keychain_name = document.getElementById("edit_k_name").value
+    //let keychain_volume = document.getElementById("edit_m_volume").value
+    let price = document.getElementById("edit_k_price").value
+    let description = document.getElementById("edit_k_description").value
+    let pick_image_size = document.getElementById("edit_k_pick_image_size").value
      let keychaindata = {
       name : keychain_name,
-      volume : keychain_volume,
      price,description , pick_image_size
     }
       // console.log(keyid)
@@ -437,10 +410,10 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
         }, {
             "data" : "name"
             
-        },{
-            "data" : "volume"
+        }, {
+            "data" : "type"
             
-        },  {
+        },{
             "data" : "price"
         },{
             "data" : "create_date",

@@ -8,7 +8,11 @@
     let description = document.getElementById("m_description").value
     let pick_image_size = document.getElementById("m_pick_image_size").value
 
-
+    let validatemform = validateaddmugform()
+    if(!validatemform){
+      document.getElementById("mug_success_id").innerHTML = "All the fields are mandatory"
+      return false
+    }
     //let categories = ["phonecase", "keychain"]
   
     let mugdata = {
@@ -51,6 +55,20 @@ document.getElementById("m_price").value = ""
   function removeFromArray(original, remove) {
   return original.filter(value => !remove.includes(value));
 }
+
+ function validateaddmugform(){
+      let mug_name = document.getElementById("m_name").value
+   let mug_volume = document.getElementById("m_volume").value
+    let price = document.getElementById("m_price").value
+    let description = document.getElementById("m_description").value
+    let pick_image_size = document.getElementById("m_pick_image_size").value
+    if(mug_name == "" || mug_volume == "" || price == "" || description == "" || pick_image_size == "" ){
+      return false
+    }
+    else{
+      return true
+    }
+ }
 
 
   function logOutUser(){

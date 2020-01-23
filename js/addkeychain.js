@@ -8,6 +8,12 @@
     let description = document.getElementById("k_description").value
     let pick_image_size = document.getElementById("k_pick_image_size").value
 
+    let validatekform = validateaddkeychainform()
+    if(!validatekform){
+      document.getElementById("keychain_success_id").innerHTML = "All the fields are mandatory"
+      return false
+    }
+
 
     //let categories = ["phonecase", "keychain"]
   
@@ -43,6 +49,20 @@ document.getElementById("k_price").value = ""
 .catch(function(res){ console.log(res) })
         });
 })
+
+ function validateaddkeychainform(){
+      let keychain_name = document.getElementById("k_name").value
+   let keychain_type = document.getElementById("k_type").value
+    let price = document.getElementById("k_price").value
+    let description = document.getElementById("k_description").value
+    let pick_image_size = document.getElementById("k_pick_image_size").value
+    if(keychain_name == "" || keychain_type == "" || price == "" || description == "" || pick_image_size == "" ){
+      return false
+    }
+    else{
+      return true
+    }
+ }
 
 //   $("#incdisdiv").click(function (evt) {
 //     $(this).hide()

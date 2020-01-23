@@ -7,7 +7,11 @@
     let price = document.getElementById("p_price").value
     let description = document.getElementById("p_description").value
     let pick_image_size = document.getElementById("p_pick_image_size").value
-
+    let validatemform = validatepopholder()
+    if(!validatemform){
+      document.getElementById("popholder_success_id").innerHTML = "All the fields are mandatory"
+      return false
+    }
 
     //let categories = ["phonecase", "keychain"]
   
@@ -49,7 +53,19 @@ document.getElementById("p_price").value = ""
 //     document.getElementById("k_categories_inc").disabled = false
 // });
 
-
+ function validatepopholder(){
+      let popholder_name = document.getElementById("p_name").value
+   let popholder_size = document.getElementById("p_size").value
+    let price = document.getElementById("p_price").value
+    let description = document.getElementById("p_description").value
+    let pick_image_size = document.getElementById("p_pick_image_size").value
+    if(popholder_name == "" || popholder_size == "" || price == "" || description == "" || pick_image_size == "" ){
+      return false
+    }
+    else{
+      return true
+    }
+ }
 
   function logOutUser(){
     localStorage.clear();

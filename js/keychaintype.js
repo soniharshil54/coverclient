@@ -38,6 +38,70 @@
         });
 })
 
+
+      function activektype(activebtn){
+    let ktyperef = activebtn.getAttribute("data-key")
+    let ktypeid = ktyperef
+    let ceditdata = {
+      active_status : 1
+    }
+              fetch(`http://${hosturl}:5600/api/keychain/editktypestatus/${ktypeid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(ceditdata)
+          })
+          .then(function(res){ 
+            //let btnstatus = activebtn.previousSibling
+             //let btnstatus2 = activebtn.previousSibling
+            //let btnstatus = $(activebtn[0]).parent().find('button')
+           // let btnstatus = $(activebtn[0]).closest('button')
+            //console.log(btnstatus)
+           // setTimeout(timeout(activebtn), 5000)
+          //  btnstatus.html("Active")
+            // console.log(res)
+           // uploadFileEdit(keyid)
+           // getoffers()
+           getktypesdatatable()
+           // $("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    console.log(ktypeid)
+  }
+
+  function deactivektype(activebtn){
+    let ktyperef = activebtn.getAttribute("data-key")
+    let ktypeid = ktyperef
+     let ceditdata = {
+      active_status : 0
+    }
+              fetch(`http://${hosturl}:5600/api/keychain/editktypestatus/${ktypeid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(ceditdata)
+          })
+          .then(function(res){ 
+             // console.log(res)
+            //getoffers()
+            getktypesdatatable()
+           // uploadFileEdit(keyid)
+           // getproducts()
+            //$("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+    console.log(ktypeid)
+  }
+
+
 //   $("#incdisdiv").click(function (evt) {
 //     $(this).hide()
 //     document.getElementById("k_categories_inc").disabled = false
@@ -130,6 +194,7 @@ fetch(`http://${hosturl}:5600/api/keychain/ktaddimage/${ktid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+  getktypesdatatable()
   //document.getElementById("successAdded").innerHTML = "Offer successfully added !!!"
  // window.location = "offerlist.html"
  // getoffers()
@@ -150,6 +215,7 @@ fetch(`http://${hosturl}:5600/api/keychain/ktaddimage/${ktid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+  getktypesdatatable()
   //document.getElementById("successAdded").innerHTML = "Offer successfully added !!!"
  // window.location = "offerlist.html"
  // getoffers()
@@ -223,22 +289,24 @@ fetch(`http://${hosturl}:5600/api/keychain/ktaddimage/${ktid}`, {
              if(data.active_status === 1){
 
             outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
-            statuslink = `<a data-key=${data._id} onclick="deactiveoffer(this)" class="dropdown-item">Inactive</a>`
+            statuslink = `<a data-key=${data._id} onclick="deactivektype(this)" class="dropdown-item">Inactive</a>`
              }
               else {
              outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
-             statuslink = `<a data-key=${data._id} onclick="activeoffer(this)"  class="dropdown-item">Active</a>`
+             statuslink = `<a data-key=${data._id} onclick="activektype(this)"  class="dropdown-item">Active</a>`
              }
 
               return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editkeychaintypemodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
             }
-        }, {
-          "data": "_id",
-            "mRender": function(data, type) {
+        }
+        // , {
+        //   "data": "_id",
+        //     "mRender": function(data, type) {
              
-              return `<input name="todelete" value=${data} type="checkbox">`;
-            }
-        }]
+        //       return `<input name="todelete" value=${data} type="checkbox">`;
+        //     }
+        // }
+        ]
       });
     }
 

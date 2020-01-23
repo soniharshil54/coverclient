@@ -1,43 +1,43 @@
  $(document).ready(function(){
-  $('#add_mug').click(function(e) {
+  $('#add_keychain').click(function(e) {
     //console.log("add_offer")
     //let addpropara = globalProduct
-    let mug_name = document.getElementById("m_name").value
-    let mug_volume = document.getElementById("m_volume").value
-    let price = document.getElementById("m_price").value
-    let description = document.getElementById("m_description").value
-    let pick_image_size = document.getElementById("m_pick_image_size").value
+    let keychain_name = document.getElementById("k_name").value
+    let keychain_volume = document.getElementById("k_volume").value
+    let price = document.getElementById("k_price").value
+    let description = document.getElementById("k_description").value
+    let pick_image_size = document.getElementById("k_pick_image_size").value
 
 
     //let categories = ["phonecase", "keychain"]
   
-    let mugdata = {
-      mug_name, mug_volume, price,description , pick_image_size
+    let keychaindata = {
+      keychain_name, keychain_volume, price,description , pick_image_size
     }
    // console.log(keydata)
-    fetch(`http://${hosturl}:5600/api/mug/addmug`,
+    fetch(`http://${hosturl}:5600/api/keychain/addkeychain`,
 {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
     method: "POST",
-    body: JSON.stringify(mugdata)
+    body: JSON.stringify(keychaindata)
 })
 .then(function(res){ 
   return res.json()
   })
 .then(function(result){
   console.log(result)
-  let mugid = result._id
- document.getElementById("m_name").value = ""
-document.getElementById("m_volume").value = ""
-document.getElementById("m_price").value = ""
- document.getElementById("m_description").value = ""
-  document.getElementById("m_pick_image_size").value = ""
-  // document.getElementById("mug_success_id").innerHTML = "Mug Added Successfully !!!"
+  let keychainid = result._id
+ document.getElementById("k_name").value = ""
+document.getElementById("k_volume").value = ""
+document.getElementById("k_price").value = ""
+ document.getElementById("k_description").value = ""
+  document.getElementById("k_pick_image_size").value = ""
+  // document.getElementById("keychain_success_id").innerHTML = "keychain Added Successfully !!!"
     
-   uploadFile(mugid)
+   uploadFile(keychainid)
   
 })
 .catch(function(res){ console.log(res) })
@@ -59,20 +59,20 @@ document.getElementById("m_price").value = ""
   }
 
 
-  function uploadFile(mugid){
+  function uploadFile(keychainid){
     console.log("uploads file")
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("mugImages");
+    var form = document.getElementById("keychainImages");
     var formData = new FormData(form);
 
-fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
+fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
   console.log(res)
-  //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
+  //document.getElementById("keychainsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
- window.location  =  "muglist.html"
+ window.location  =  "keychainlist.html"
 }).catch(err => console.log(err))
 
   }

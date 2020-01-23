@@ -9,8 +9,8 @@ function removeFromArray(original, remove) {
     window.location  =  "login.html";
   }
 
-function addmug(){
-  window.location = "addmug.html";
+function addkeychain(){
+  window.location = "addkeychain.html";
 }
 
 function modalofferinputs(offer_type){
@@ -102,19 +102,19 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
 
   }
 
-    function uploadFileEdit(mugid){
+    function uploadFileEdit(keychainid){
     console.log("uploads file")
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("mugImagesEdit");
+    var form = document.getElementById("keychainImagesEdit");
     var formData = new FormData(form);
 
-fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
+fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
   console.log(res)
-  getmugsdatatable()
-  //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
+  getkeychainsdatatable()
+  //document.getElementById("keychainsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))
 
@@ -148,12 +148,12 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
     }
   }
 
-      function detailsmug(btnmug){
-    console.log(btnmug)
-    let mug_id = btnmug.getAttribute('data-key') 
-    console.log(mug_id)
+      function detailskeychain(btnkeychain){
+    console.log(btnkeychain)
+    let keychain_id = btnkeychain.getAttribute('data-key') 
+    console.log(keychain_id)
 
-          fetch(`http://${hosturl}:5600/api/mug/getmugbyidadmin/${mug_id}`)
+          fetch(`http://${hosturl}:5600/api/keychain/getkeychainbyidadmin/${keychain_id}`)
       .then(response => {
      // console.log(response)
      return response.json()})
@@ -163,16 +163,16 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
     document.getElementById("price_details_m").innerHTML = data.price
     document.getElementById("volume_details_m").innerHTML = data.volume
     document.getElementById("description_details_m").innerHTML = data.description
-    let headerimagemug = data.h_image
-    let headerimagemugsrc = `http://${hosturl}:5600/admin/uploads/${headerimagemug}`
-    let innerimagemug = data.in_image
-    let innerimagemugsrc = `http://${hosturl}:5600/admin/uploads/${innerimagemug}`
-    let overlayimagemug = data.overlay_image
-    let overlayimagesrc = `http://${hosturl}:5600/admin/uploads/${overlayimagemug}`
-    let maskimagemug = data.mask_image
-    let maskimagesrc = `http://${hosturl}:5600/admin/uploads/${maskimagemug}`
-    document.getElementById("image_details_h").src = headerimagemugsrc
-    document.getElementById("image_details_in").src = innerimagemugsrc
+    let headerimagekeychain = data.h_image
+    let headerimagekeychainsrc = `http://${hosturl}:5600/admin/uploads/${headerimagekeychain}`
+    let innerimagekeychain = data.in_image
+    let innerimagekeychainsrc = `http://${hosturl}:5600/admin/uploads/${innerimagekeychain}`
+    let overlayimagekeychain = data.overlay_image
+    let overlayimagesrc = `http://${hosturl}:5600/admin/uploads/${overlayimagekeychain}`
+    let maskimagekeychain = data.mask_image
+    let maskimagesrc = `http://${hosturl}:5600/admin/uploads/${maskimagekeychain}`
+    document.getElementById("image_details_h").src = headerimagekeychainsrc
+    document.getElementById("image_details_in").src = innerimagekeychainsrc
     document.getElementById("image_details_overlay").src = overlayimagesrc
     document.getElementById("image_details_mask").src = maskimagesrc
 
@@ -215,14 +215,14 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
     }
 
 
-  function deletemugs(){
+  function deletekeychains(){
     console.log("delete")
    // let deleteprotoget = globalProduct
     let todeleteids = printChecked()
     let deleteArray = {
       todeleteids
     }
-              fetch(`http://${hosturl}:5600/api/mug/deletemug`,
+              fetch(`http://${hosturl}:5600/api/keychain/deletekeychain`,
           {
             headers: {
               'Accept': 'application/json',
@@ -232,13 +232,13 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
-            getmugsdatatable()
+            getkeychainsdatatable()
             //getoffers() 
           })
           .catch(function(res){ console.log(res) })
   }
 
-    function editmugmodal(test){
+    function editkeychainmodal(test){
      // console.log(test)
 
      // console.log( $('#modal_categories_inc').val() )
@@ -248,7 +248,7 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
       //console.log(okchains[arrayn].name)
       //document.getElementById("modal_offer_id").value = arrayn
 
-      fetch(`http://${hosturl}:5600/api/mug/getmugbyidadmin/${arrayn}`)
+      fetch(`http://${hosturl}:5600/api/keychain/getkeychainbyidadmin/${arrayn}`)
       .then(response => {
      // console.log(response)
      return response.json()})
@@ -277,33 +277,33 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
 }
 
 
-    function editmug(){
-      let mug_id = document.getElementById("edit_m_id").value
-    let mug_name = document.getElementById("edit_m_name").value
-    let mug_volume = document.getElementById("edit_m_volume").value
+    function editkeychain(){
+      let keychain_id = document.getElementById("edit_m_id").value
+    let keychain_name = document.getElementById("edit_m_name").value
+    let keychain_volume = document.getElementById("edit_m_volume").value
     let price = document.getElementById("edit_m_price").value
     let description = document.getElementById("edit_m_description").value
     let pick_image_size = document.getElementById("edit_m_pick_image_size").value
-     let mugdata = {
-      name : mug_name,
-      volume : mug_volume,
+     let keychaindata = {
+      name : keychain_name,
+      volume : keychain_volume,
      price,description , pick_image_size
     }
       // console.log(keyid)
       console.log("k edit data")
       // console.log(keditdata)
 
-          fetch(`http://${hosturl}:5600/api/mug/editmug/${mug_id}`,
+          fetch(`http://${hosturl}:5600/api/keychain/editkeychain/${keychain_id}`,
           {
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
             method: "PUT",
-            body: JSON.stringify(mugdata)
+            body: JSON.stringify(keychaindata)
           })
           .then(function(res){ 
-            uploadFileEdit(mug_id)
+            uploadFileEdit(keychain_id)
             //getoffers()
             $("#myModal").modal("hide");
  
@@ -328,13 +328,13 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
     //   btnstatus.html("Active")
     // }
 
-      function activemug(activebtn){
-    let mugref = activebtn.getAttribute("data-key")
-    let mugid = mugref
+      function activekeychain(activebtn){
+    let keychainref = activebtn.getAttribute("data-key")
+    let keychainid = keychainref
     let ceditdata = {
      available_status : 1
     }
-              fetch(`http://${hosturl}:5600/api/mug/editmugstatus/${mugid}`,
+              fetch(`http://${hosturl}:5600/api/keychain/editkeychainstatus/${keychainid}`,
           {
             headers: {
               'Accept': 'application/json',
@@ -354,21 +354,21 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
             // console.log(res)
            // uploadFileEdit(keyid)
            // getoffers()
-           getmugsdatatable()
+           getkeychainsdatatable()
            // $("#myModal").modal("hide");
  
           })
           .catch(function(res){ console.log(res) })
-    console.log(mugid)
+    console.log(keychainid)
   }
 
-  function deactivemug(activebtn){
-    let mugref = activebtn.getAttribute("data-key")
-    let mugid = mugref
+  function deactivekeychain(activebtn){
+    let keychainref = activebtn.getAttribute("data-key")
+    let keychainid = keychainref
      let ceditdata = {
       available_status : 0
     }
-              fetch(`http://${hosturl}:5600/api/mug/editmugstatus/${mugid}`,
+              fetch(`http://${hosturl}:5600/api/keychain/editkeychainstatus/${keychainid}`,
           {
             headers: {
               'Accept': 'application/json',
@@ -380,14 +380,14 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
           .then(function(res){ 
              // console.log(res)
             //getoffers()
-            getmugsdatatable()
+            getkeychainsdatatable()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");
  
           })
           .catch(function(res){ console.log(res) })
-    console.log(mugid)
+    console.log(keychainid)
   }
 
 
@@ -418,7 +418,7 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
   checkLogin()
   //getoffers()
 
-      function getmugsdatatable(){
+      function getkeychainsdatatable(){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
@@ -429,7 +429,7 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
                return nRow;
           },
         "ajax" : {
-            "url" : `http://${hosturl}:5600/api/mug/getallmugs`,
+            "url" : `http://${hosturl}:5600/api/keychain/getallkeychains`,
             dataSrc : ''
         },
         "columns" : [ {
@@ -449,7 +449,7 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailsmug(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailsmug" data-key="${data}">view</button>`;
+              return `<button onclick="detailskeychain(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailskeychain" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,
@@ -460,14 +460,14 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
              if(data.available_status === 1){
 
             outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
-            statuslink = `<a data-key=${data._id} onclick="deactivemug(this)" class="dropdown-item">Inactive</a>`
+            statuslink = `<a data-key=${data._id} onclick="deactivekeychain(this)" class="dropdown-item">Inactive</a>`
              }
               else {
              outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
-             statuslink = `<a data-key=${data._id} onclick="activemug(this)"  class="dropdown-item">Active</a>`
+             statuslink = `<a data-key=${data._id} onclick="activekeychain(this)"  class="dropdown-item">Active</a>`
              }
 
-              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editmugmodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
+              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editkeychainmodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
             }
         }, {
           "data": "_id",
@@ -479,4 +479,4 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
       });
     }
 
-    getmugsdatatable()
+    getkeychainsdatatable()

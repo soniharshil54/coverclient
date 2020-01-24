@@ -418,7 +418,7 @@
                 </div> -->
               </div>
               <div class="card-body">
-                <form name="images_4d" id="images_4d" enctype="multipart/form-data">
+                
                 <div class="row">
                   
                   <div class="col-sm-4">
@@ -427,7 +427,7 @@
                       <label>Name</label>
                       <input id="k_4d_companyname" type="hidden" class="form-control" placeholder="Enter ...">
                       <input id="k_4d_modelid" type="hidden" class="form-control" placeholder="Enter ...">
-                      <input id="k_4d_modelname" type="text" class="form-control" placeholder="Enter ...">
+                      <input disabled id="k_4d_modelname" type="text" class="form-control" placeholder="Enter ...">
                     </div>
                   </div>
 
@@ -436,7 +436,7 @@
                     <label for="exampleInputFile">4d image slider</label>
                     <div class="input-group">
                       <div class="custom-file">
-
+                        <form name="images_4d" id="images_4d" enctype="multipart/form-data">
                         <input name="slider_image" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
@@ -487,12 +487,13 @@
                       <div class="custom-file">
                         <input name="mask_image" type="file" class="custom-file-input">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </form>
                       </div>
                       <!-- <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                  </div> </form>
+                  </div> 
 
                   <div style="margin-top: 10px" class="col-sm-8">
                    <button id="add_4d_phonecase" class="btn btn-success">Add 4D Model</button>

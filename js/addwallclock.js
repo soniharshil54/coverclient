@@ -79,6 +79,8 @@ document.getElementById("p_price").value = ""
     var form = document.getElementById("wallclockImages");
     var formData = new FormData(form);
 
+    
+
 fetch(`http://${hosturl}:5600/api/wallclock/addimage/${wallclockid}`, {
   method: 'PUT',
   body: formData

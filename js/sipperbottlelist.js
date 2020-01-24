@@ -232,6 +232,7 @@ fetch(`http://${hosturl}:5600/api/sipperbottle/addimage/${sipperbottleid}`, {
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
+            $("#deleteModal").modal("hide");
             getsipperbottlesdatatable()
             //getoffers() 
           })

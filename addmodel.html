@@ -626,6 +626,7 @@
               </div>
             </div> -->
           </div>
+          <div><span style="font-size: 24px;font-weight: bold; color: red" id="formvalerr"></span></div>
           <div class="row">
             <div class="col-sm-12 col-lg-12">
             <div class="card card-primary card-outline card-tabs">
@@ -1325,6 +1326,22 @@ $(document).ready(function(){
       let description_2d = document.getElementById("k_description_2d").value
       let description_3d = document.getElementById("k_description_3d").value
       let description_4d = document.getElementById("k_description_4d").value
+
+      let validate2dform = validate2d()
+      if (!validate2dform) {
+        document.getElementById("formvalerr").innerHTML = "Fill all the 2d fields or not at all"
+        return false
+      }
+      let validate3dform = validate2d()
+      if (!validate3dform) {
+        document.getElementById("formvalerr").innerHTML = "Fill all the 3d fields or not at all"
+        return false
+      }
+      let validate4dform = validate2d()
+      if (!validate4dform) {
+        document.getElementById("formvalerr").innerHTML = "Fill all the 4d fields or not at all"
+        return false
+      }
     // let avail_status = document.getElementById("is_avail").checked
     //  let available_status = avail_status ? 1 : 0
     //let inputfile = document.getElementById("productImage").files[0]
@@ -1345,6 +1362,7 @@ $(document).ready(function(){
     .then(function(res){ 
       return res.json()
     })
+    .catch(function(err){ console.log(err) })
     .then(function(result){
       let name = document.getElementById("k_name").value = ""
       document.getElementById("new_comp_option").value = ""
@@ -1366,9 +1384,52 @@ $(document).ready(function(){
   //getproducts()
   
 })
-    .catch(function(res){ console.log(res) })
+    .catch(function(err){ console.log(err) })
   }
 
+
+function validate2d(){
+   let size_2d =  document.getElementById("k_size_2d").value
+    let price_2d = document.getElementById("k_price_2d").value
+    let description_2d = document.getElementById("k_description_2d").value
+       let sliderimage_2d = $("#image_2d_slider").val();
+    let innerimage_2d = $("#image_2d_inner").val();
+    let maskimage_2d = $("#image_2d_mask").val();
+    if((size_2d === "" && price_2d === "" && description_2d === ""  && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === "") || (size_2d !== "" && price_2d !== "" && description_2d !== ""  && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")){
+      return true
+    }
+    else{
+      return false
+    }
+}
+
+function validate3d(){
+   let size_3d =  document.getElementById("k_size_3d").value
+    let price_3d = document.getElementById("k_price_3d").value
+    let description_3d = document.getElementById("k_description_3d").value
+       let sliderimage_2d = $("#image_3d_slider").val();
+    let innerimage_3d = $("#image_3d_inner").val();
+    let maskimage_3d = $("#image_3d_mask").val();
+    if((size_3d === "" && price_3d === "" && description_3d === ""  && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "") || (size_3d !== "" && price_3d !== "" && description_3d !== ""  && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")){
+      return true
+    }
+    else{
+      return false
+    }
+}
+
+function validate4d(){
+    let size_4d =  document.getElementById("k_size_4d").value
+    let price_4d = document.getElementById("k_price_4d").value
+    let description_4d = document.getElementById("k_description_4d").value
+    let sliderimage_4d = $("#image_4d_slider").val();
+    if((size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === "") || (size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")){
+      return true
+    }
+    else{
+      return false
+    }
+}
 
 //   $(document).ready(function(){
 //     $('#add_phonecase').click(function(e) {

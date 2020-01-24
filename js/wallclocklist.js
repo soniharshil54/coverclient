@@ -127,6 +127,7 @@ fetch(`http://${hosturl}:5600/api/wallclock/addimage/${wallclockid}`, {
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
+            $("#deleteModal").modal("hide");
             getwallclocksdatatable()
             //getoffers() 
           })

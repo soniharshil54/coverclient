@@ -233,6 +233,7 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
           })
           .then(function(res){ 
             getmugsdatatable()
+            $("#deleteModal").modal("hide");
             //getoffers() 
           })
           .catch(function(res){ console.log(res) })

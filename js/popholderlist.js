@@ -127,6 +127,7 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
+            $("#deleteModal").modal("hide");
             getpopholdersdatatable()
             //getoffers() 
           })

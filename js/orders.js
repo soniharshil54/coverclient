@@ -38,6 +38,14 @@ $('#cart_p_c_image').on('click', function () {
     });
 });
 
+$('#cartProductModal').on('hidden.bs.modal', function () {
+  console.log("it worked")
+   document.getElementById("cart_p_image").src = `images/3dloader.gif`
+        document.getElementById("cart_p_c_image").src = `images/3dloader.gif`
+
+    // do something…
+});
+
 
   function filterdatecustom(){
     let filterrange = document.getElementById("filter_range").value

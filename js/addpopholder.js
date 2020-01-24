@@ -3,6 +3,7 @@
     //console.log("add_offer")
     //let addpropara = globalProduct
     let popholder_name = document.getElementById("p_name").value
+    let popholder_type = document.getElementById("p_type").value
     let popholder_size = document.getElementById("p_size").value
     let price = document.getElementById("p_price").value
     let description = document.getElementById("p_description").value
@@ -16,7 +17,7 @@
     //let categories = ["phonecase", "keychain"]
   
     let popholderdata = {
-      popholder_name, popholder_size, price,description , pick_image_size
+      popholder_name, popholder_type, popholder_size, price,description , pick_image_size
     }
    // console.log(keydata)
     fetch(`http://${hosturl}:5600/api/popholder/addpopholder`,
@@ -66,6 +67,22 @@ document.getElementById("p_price").value = ""
       return true
     }
  }
+
+ function changepopholderinputs(){
+  let popholder_type = document.getElementById("p_type").value
+  //let inc_cat = $('#k_categories_inc').val();
+ // let ex_cat = $('#k_categories_ex').val();
+  //console.log(inc_cat)
+  //console.log(ex_cat)
+  if(popholder_type === "regular"){
+    document.getElementById("type_d_overlay").style.display = "none"
+     document.getElementById("type_d_mask").style.display = "none"
+  }
+  else{
+    document.getElementById("type_d_overlay").style.display = "block"
+     document.getElementById("type_d_mask").style.display = "block"
+  }
+}
 
   function logOutUser(){
     localStorage.clear();

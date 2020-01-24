@@ -448,6 +448,17 @@
                         <input id="p_name" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div><div class="col-sm-6"></div>
+                    <div class="col-sm-3"><label>Popholder Type</label></div>
+                                    <div class="col-sm-2">
+                      <div class="form-group">
+                        
+                          <select onchange="changepopholderinputs()" id="p_type" class="form-control custom-select">
+                  <option value="regular">Regular Popholder</option>
+                  <option value="custom">Custom Popholder</option>
+                  
+                </select>
+                      </div>
+                    </div> <div class="col-sm-7"></div>
                       <div class="col-sm-3">
                        <label>Popholder Size</label>
                     </div>
@@ -533,7 +544,9 @@
                     </div>
                   </div>
                     </div><div class="col-sm-7"></div>
-                    <div class="col-sm-3">
+                    <div id="type_d_overlay" class="col-sm-12">
+                      <div class="row">
+                        <div class="col-sm-3">
                         <label for="exampleInputFile">Overlay image</label>
                     </div>
                        <div class="col-sm-2">
@@ -549,8 +562,12 @@
                     </div>
                   </div>
                     </div><div class="col-sm-7"></div>
+                      </div>
+                    </div>
 
-                                          <div class="col-sm-3">
+                    <div id="type_d_mask" class="col-sm-12">
+                      <div class="row">
+                         <div class="col-sm-3">
                         <label for="exampleInputFile">Mask image</label>
                     </div>
                        <div class="col-sm-2">
@@ -566,6 +583,11 @@
                     </div>
                   </div>
                     </div><div class="col-sm-7"></div>
+                      </div>
+                    </div>
+                    
+
+                                         
 
           
                     

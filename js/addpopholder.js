@@ -60,13 +60,74 @@ document.getElementById("p_price").value = ""
     let price = document.getElementById("p_price").value
     let description = document.getElementById("p_description").value
     let pick_image_size = document.getElementById("p_pick_image_size").value
-    if(popholder_name == "" || popholder_size == "" || price == "" || description == "" || pick_image_size == "" ){
+        let banner_image = $("#bannerImage").val();
+    let inner_image = $("#innerImage").val();
+    if(popholder_name == "" || popholder_size == "" || price == "" || description == "" || pick_image_size == "" || banner_image == "" || inner_image  ){
+       if (popholder_name == "") {
+       // document.getElementById("mval_name_err").innerHTML = "Name is required"
+        document.getElementById("p_name").style.border = "1px solid red"
+      }
+       if (popholder_size == "") {
+        //document.getElementById("mval_volume_err").innerHTML = "Volume is required"
+        document.getElementById("p_size").style.border = "1px solid red"
+      }
+       if (price == "") {
+       // document.getElementById("mval_price_err").innerHTML = "Price is required"
+        document.getElementById("p_price").style.border = "1px solid red"
+      }
+       if (description == "") {
+       // document.getElementById("mval_description_err").innerHTML = "Description is required"
+        document.getElementById("p_description").style.border = "1px solid red"
+      }
+       if (pick_image_size == "") {
+       // document.getElementById("mval_pis_err").innerHTML = "Pick Image Size is required"
+        document.getElementById("p_pick_image_size").style.border = "1px solid red"
+      }
+       if (banner_image == "") {
+        document.getElementById("pval_bannerimage_err").innerHTML = "Banner image is required"
+        document.getElementById("bannerImage").style.border = "1px solid red"
+      }
+      else{
+        document.getElementById("pval_bannerimage_err").innerHTML = ""
+      }
+         if (inner_image == "") {
+        document.getElementById("pval_innerimage_err").innerHTML = "Inner image is required"
+        document.getElementById("innerImage").style.border = "1px solid red"
+      }
+      else{
+        document.getElementById("pval_innerimage_err").innerHTML = "Name is required"
+      }
       return false
     }
     else{
       return true
     }
  }
+
+  $('input').focus(function(){
+    $(this).css('border-color','#80bdff');
+});
+$('input').blur(function(){
+  if (this.value == "") {
+    $(this).css('border','1px solid red');
+  }
+  else{    
+    $(this).css('border-color','#ced4da');
+  }
+});
+
+ $('textarea').focus(function(){
+    $(this).css('border-color','#80bdff');
+});
+$('textarea').blur(function(){
+  if (this.value == "") {
+    $(this).css('border','1px solid red');
+  }
+  else{    
+    $(this).css('border-color','#ced4da');
+  }
+});
+
 
  function changepopholderinputs(){
   let popholder_type = document.getElementById("p_type").value

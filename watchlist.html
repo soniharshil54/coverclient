@@ -15,12 +15,20 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
 <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
   <link rel="stylesheet" href="dist/css/tagstyle.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style type="text/css">
+
+
+
+    label {
+
+    }
+
     #testtr{
       color: red
     }
@@ -32,11 +40,7 @@
     }
     }
 
-    #inexcategories{
-      display: none;
-    }
-
-     #free_shipping_div, #get_buy_div, #first_time_div {
+     #free_shipping_div, #buy_div, #get_div, #first_time_div {
       display: none;
     }
 
@@ -283,7 +287,7 @@
             </a>
           </li>
            <li class="nav-item has-treeview">
-            <a href="popholderlist.html" class="nav-link">
+            <a href="popholderlist.html" class="nav-link active">
               <i class="nav-icon fas fa-circle-notch"></i>
               <p>
                 Popholder
@@ -424,181 +428,84 @@
 
     <!-- Main content -->
     <section style="margin-top: 120px" class="content">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card card-secondary">
-            <div class="card-header">
-              <h3 id="productAddHeading" class="card-title">Add Sipperbottle</h3>
-
-             <!--  <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-plus"></i></button>
-              </div> -->
-            </div>
-            <div class="card-body">
-                
-                                <div class="row"> 
-                    <div class="col-sm-3">
-                       <label>Sipperbottle Name</label>
-                    </div>
-                    <div class="col-sm-3">
-                      <!-- text input -->
-                      <div class="form-group">
-                       
-                        <input id="m_name" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div><div class="col-sm-6"></div>
-                      <div class="col-sm-3">
-                       <label>Sipperbottle Volume</label>
-                    </div>
-                      <div class="col-sm-2">
-                      <!-- text input -->
-                      <div class="form-group">
-                        
-                        <input id="m_volume" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>  <div class="col-sm-7"></div>
-                  
-                
-                     
-                    
-                 <div class="col-sm-3">
-                        <label>Price</label>
-                    </div>
-                     <div class="col-sm-2">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                           
-                        <input id="m_price" type="number" class="form-control" placeholder="Enter ...">
-                        </div>
-                        </div>
-                      </div><div class="col-sm-7"></div>
-
-                                          <div class="col-sm-3">
-                       <label>Description</label>
-                    </div>
-                    <div class="col-sm-9">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            
-                        <textarea id="m_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
-                        </div>
-                        </div>
-                      </div>
-
-
-
-                      <div class="col-sm-3">
-                        <label>Pick Image Size</label>
-                    </div>
-                       <div class="col-sm-2">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            
-                        <input id="m_pick_image_size" type="text" class="form-control" placeholder="Enter ...">
-                        </div>
-                        </div>
-                      </div><div class="col-sm-7"></div>
-
-
-                      <div class="col-sm-3">
-                        <label for="exampleInputFile">Banner image</label>
-                    </div>
-                       <div class="col-sm-2">
-                      <div class="form-group">
-                   
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <form name="sipperbottleImages" id="sipperbottleImages" enctype="multipart/form-data">
-                        <input name="hImage" id="bannerImage" type="file" class="custom-file-input" id="exampleInputFile">
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
-                  </div>
-                    </div><div class="col-sm-7"><span id="mval_bannerimage_err" style="font-weight: bold; color: red"></span></div>
-
-                                          <div class="col-sm-3">
-                        <label for="exampleInputFile">Inner image</label>
-                    </div>
-                       <div class="col-sm-2">
-                      <div class="form-group">
-                   
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input name="inImage" id="innerImage" type="file" class="custom-file-input" id="exampleInputFile">
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
-                  </div>
-                    </div><div class="col-sm-7"><span id="mval_innerimage_err" style="font-weight: bold; color: red"></span></div>
-                    <div class="col-sm-3">
-                        <label for="exampleInputFile">Overlay image</label>
-                    </div>
-                       <div class="col-sm-2">
-                      <div class="form-group">
-                   
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input name="overlayImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
-                      
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
-                  </div>
-                    </div><div class="col-sm-7"></div>
-
-                                          <div class="col-sm-3">
-                        <label for="exampleInputFile">Mask image</label>
-                    </div>
-                       <div class="col-sm-2">
-                      <div class="form-group">
-                   
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input name="maskImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
-                      </form>
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
-                  </div>
-                    </div><div class="col-sm-7"></div>
-
-          
-                    
-                  
-                     <!--  <div class="col-sm-4">
-                        <div class="form-group">
-                        <label>Size</label>
-                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                      </div> -->
-                  </div>
-                  
-                  
-                  <div class="row">
-                   
-                     <div class="col-sm-2"></div>
-                    <div  class="col-sm-2">
-                       <input type="button" id="add_sipperbottle" value="Add Sipperbottle" class="btn btn-success float-right">
-                    
-                    </div>    
-                    <div class="col-sm-11">
-                        <span id="sipperbottle_success_id" style="color: red; font-weight: bold;"></span>
-                    </div>   
-                  </div>
-                                       
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-        </div>
-      </div>
+     
       
-          
+              <!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-sm-3">
+                     <h3 id="productShowHeading" class="card-title">Watch List</h3>
+                  </div>
+                  <div class="col-sm-5"></div>
+                  <!-- <div class="col-sm-5">
+                       <ul style="" class="list-group list-group-horizontal">
+                  <li style="padding: 5px 10px " onclick="paginatortest(1,2)" class="list-group-item">1</li>
+                  <li style="padding: 5px 10px " onclick="paginatortest(2,2)" class="list-group-item">2</li>
+                  <li style="padding: 5px 10px " onclick="paginatortest(3,2)" class="list-group-item">3</li>
+                  <li style="padding: 5px 10px " onclick="paginatortest(4,2)" class="list-group-item">4</li>
+                </ul>
+                  </div> -->
+                  <div class="col-sm-4">
+                     <h3 class="card-title" style="float: right"><button onclick="addwatch()" class="btn btn-success">Add Watch</button></h3>
+                  </div>
+                </div>
+               
+             
+                <!-- <button onclick="paginatortest(1,2)" class="btn btn-info">test pagination</button> -->
+                <!-- <span style="color: green; font-weight: bold; margin-left: 200px"></span> -->
+ 
+                <div class="card-tools">
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Watch Name</th>
+                  <th>Watch Size</th>
+                  <th>Watch Price</th>
+                  <th style="display: none;">datetimehidden</th>
+                  <th>Details</th>
+                  <th>Action</th>  
+                  
+                  <!-- <th>Date</th>
+                  <th>User Info</th>
+                  <th>Status</th> -->
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>No.</th>
+                  <th>Watch Name</th>
+                  <th>Watch Size</th>
+                  <th>Watch Price</th>
+                  <th style="display: none;">datetimehidden</th>
+                  <th>Details</th>
+                  <th>Action</th>    <!-- 
+                  <th>Date</th>
+                  <th>User Info</th>
+                  <th>Status</th> -->
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox3' value='option1'><label for='customCheckbox3' class='custom-control-label'></label></div></div></th>
+                </tr>
+                </tfoot>
+              </table>
+                
+              </div>
+
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
         
     </section>
     <!-- /.content -->
@@ -616,8 +523,299 @@
   <!-- /.control-sidebar -->
 </div>
 
+  <!-- The Modal -->
+  <div class="modal" id="imageModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+      
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <img style="max-width: 500px" id="imgModal" style="" src="images/3dloader.gif">
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
 
-  
+
+
+<!-- ./wrapper -->
+ <!-- <h2>Modal Example</h2> -->
+  <!-- Button to Open the Modal -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button> -->
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header" style="">
+          <h4 id="productEditHeading" class="modal-title">Edit Popholder</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+        <div class="col-md-12">
+          <div class="card card-secondary collapsed-card">
+            <!-- <div class="card-header">
+              <h3 class="card-title">Add Key chain</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-plus"></i></button>
+              </div>
+            </div> -->
+            <div class="card-body" style="display: block">
+                
+                                <div class="row">
+                    <div class="col-sm-4">
+                      <!-- text input -->
+                       <input type="hidden" id="edit_p_id" name="modal_id" value="">
+                      <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" id="edit_p_name" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                       <div class="col-sm-4">
+                      <!-- text input -->
+                       <input type="hidden" id="modal_id" name="modal_id" value="">
+                      <div class="form-group">
+                        <label>Size</label>
+                        <input type="text" id="edit_p_size" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>
+                    <div class="col-sm-4">
+                      <div class="form-group">
+                        <label>Price</label>
+                        <input type="number" id="edit_p_price" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>                    <div class="col-sm-6">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">Banner image</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="edit_p_h_image" src="">
+                      <div class="custom-file">
+                         <form name="watchImagesEdit" id="watchImagesEdit" enctype="multipart/form-data">
+                        <input name="hImage" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                    </div>
+                    <div class="col-sm-6">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">shadow image</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="edit_p_shadow_image" src="">
+                      <div class="custom-file">
+                        <input name="shadowImage" type="file" class="custom-file-input" id="exampleInputFile">
+                     
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                     <!--  <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+
+                    </div>
+                     <div class="col-sm-6">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">overlay image</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="edit_p_overlay_image" src="">
+                      <div class="custom-file">
+                        <input name="overlayImage" type="file" class="custom-file-input" id="exampleInputFile">
+                     
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                     <!--  <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                  
+                    </div>
+                          <div class="col-sm-6">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">mask image</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="edit_p_mask_image" src="">
+                      <div class="custom-file">
+                        <input name="maskImage" type="file" class="custom-file-input" id="exampleInputFile">
+                     </form>
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                     <!--  <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                  
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-8">
+                   <div class="form-group">
+                        <div style="padding-left: 0" class="custom-control custom-checkbox">
+                            <label>Description</label>
+                         <textarea id="edit_p_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-4">
+                        <div class="form-group">
+                        <label>Pick Image Size</label>
+                        <input id="edit_p_pick_image_size" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                      </div>
+                  </div>
+                  
+                  <div class="row">
+                    <div class="col-sm-6">
+                         <!--   <div class="form-group">
+                          <label class="custom-control custom-checkbox">
+   <input type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
+   <span class="custom-control-label" for="chbxTerms">Available</span>
+   </label>
+                      </div> -->
+                    </div>    
+                    <div class="col-sm-6">
+                      <input id="productEditBtn" onclick="editwatch()" type="button" value="Edit Popholder" class="btn btn-success float-right">
+                    </div>   
+                  </div>
+                                       
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+    <!-- The Modal -->
+  <div class="modal" id="detailswatch">
+    <div class="modal-dialog" style="max-width: 900px">
+      <div class="modal-content" style="background-color: transparent;border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <table class="table table-dark" style="width:100%">
+            <tr>
+              <th>Popholder Name:</th>
+              <td><span id="name_details_p"></span></td>
+            </tr>
+            <tr>
+              <th>Images:</th>
+            <!--   <td>  <a target="_blank" href="images/3dloader.gif" download>
+  <img src="images/3dloader.gif" alt="W3Schools" width="104" height="142">
+</a></td> -->
+<td><a id="image_details_h_a" href="images/3dloader.gif" download="">
+  <img id="image_details_h" src="images/3dloader.gif" alt="noimage" width="104">
+</a><a id="image_details_shadow_a" href="images/3dloader.gif" download="">
+  <img id="image_details_shadow" src="images/3dloader.gif" alt="noimage" width="104">
+</a><a id="image_details_overlay_a" href="images/3dloader.gif" download="">
+  <img id="image_details_overlay" src="images/3dloader.gif" alt="noimage" width="104" >
+</a><a id="image_details_mask_a" href="images/3dloader.gif" download="">
+  <img id="image_details_mask" src="images/3dloader.gif" alt="noimage" width="104">
+</a></td>
+</tr>
+<tr>
+  <th>Price:</th>
+  <td><span id="price_details_p"></span></td>
+</tr>
+<tr>
+  <th>Size:</th>
+  <td><span id="size_details_p"></span></td>
+</tr>
+<tr>
+  <th>Description:</th>
+  <td><span id="description_details_p"></span></td>
+</tr>
+</table>
+<!-- <h1>ello</h1> -->
+<!-- <img style="max-width: 500px" id="imgModal" style="" src="images/3dloader.gif"> -->
+
+</div>
+
+<!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+
+
+     <div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div style="margin-bottom: 30px" class="col-sm-12">
+              <span>Are you sure you want to delete selected records ??</span>
+            </div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="form-group">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="deletewatchs()" type="button" value="Confirm" class="btn btn-success float-right">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
+             </div>
+
+           </div> 
+         </div>
+       </div>
+
+       <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- jQuery -->
@@ -712,9 +910,7 @@
 
 
 
-
-
-<script src="js/addsipperbottle.js"></script>
+<script src="js/watchlist.js"></script>
 
 <script type="text/javascript">
 

@@ -85,36 +85,21 @@ function changemuginputs(){
        // document.getElementById("mval_name_err").innerHTML = "Name is required"
         document.getElementById("m_name").style.border = "1px solid red"
       }
-      else{
-        document.getElementById("mval_name_err").innerHTML = ""
-      }
        if (mug_volume == "") {
         //document.getElementById("mval_volume_err").innerHTML = "Volume is required"
         document.getElementById("m_volume").style.border = "1px solid red"
-      }
-      else{
-        document.getElementById("mval_volume_err").innerHTML = ""
       }
        if (price == "") {
        // document.getElementById("mval_price_err").innerHTML = "Price is required"
         document.getElementById("m_price").style.border = "1px solid red"
       }
-      else{
-        document.getElementById("mval_price_err").innerHTML = ""
-      }
        if (description == "") {
        // document.getElementById("mval_description_err").innerHTML = "Description is required"
         document.getElementById("m_description").style.border = "1px solid red"
       }
-      else{
-        document.getElementById("mval_description_err").innerHTML = ""
-      }
        if (pick_image_size == "") {
        // document.getElementById("mval_pis_err").innerHTML = "Pick Image Size is required"
         document.getElementById("m_pick_image_size").style.border = "1px solid red"
-      }
-      else{
-        document.getElementById("mval_pis_err").innerHTML = ""
       }
        if (banner_image == "") {
         document.getElementById("mval_bannerimage_err").innerHTML = "Banner image is required"
@@ -141,6 +126,18 @@ function changemuginputs(){
     $(this).css('border-color','#80bdff');
 });
 $('input').blur(function(){
+  if (this.value == "") {
+    $(this).css('border','1px solid red');
+  }
+  else{    
+    $(this).css('border-color','#ced4da');
+  }
+});
+
+ $('textarea').focus(function(){
+    $(this).css('border-color','#80bdff');
+});
+$('textarea').blur(function(){
   if (this.value == "") {
     $(this).css('border','1px solid red');
   }

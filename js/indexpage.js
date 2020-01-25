@@ -47,11 +47,11 @@
 
 
           function updatecharges(){
-    let cod_charges = document.getElementById("n_cod").value
+    //let cod_charges = document.getElementById("n_cod").value
     let shipping_charges = document.getElementById("n_shipping").value
     //let shippingcharge = offerref
     let chargesdata = {
-      cod_charges, shipping_charges
+       shipping_charges
     }
               fetch(`http://${hosturl}:5600/api/admin/editcharges`,
           {
@@ -82,7 +82,7 @@
     .then(data => {
       console.log(data)
       //okoffers = data.map(a => ({...a}));
-      document.getElementById("n_cod").value = data.cod_charges
+      //document.getElementById("n_cod").value = data.cod_charges
       document.getElementById("n_shipping").value = data.shipping_charges
       
       //CreateTableFromJSON(data)
@@ -100,7 +100,7 @@ function generatereport(){
       return response.json()})
     .then(data => {
       okreport = data.map(a => ({...a}));
-      reportlogics("year")
+      reportlogics("today")
       //CreateTableFromJSON(data)
    })
     .catch(err => console.log(err))
@@ -169,7 +169,59 @@ function filtercustomrange(){
 }
 
 function reportlogics(duration){
-  if(duration === "year"){
+    if(duration === "today"){
+    document.getElementById("customdate-filter").style.display = "none"
+    var d = new Date();
+    var curyear = d.getFullYear();
+    let reportref = okreport.map(a => ({...a}))
+    let totalsales = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref === d
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let refundedamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref === d && a.order_status === "Refunded"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let pendingamount = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref === d && a.order_status === "Pending Payment"
+            }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+    let shippingcharge = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref === d
+            }).map(a => a.shipping).reduce((a,b) => a + b, 0  )
+    let ordersplaced = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref === d
+            }).length
+    let itemspurchased = reportref.filter(a => {
+              let dateref = new Date(a.date_ordered);
+              return dateref === d
+            }).map(a =>  a.products.length).reduce((a,b) => a + b, 0)
+    let couponamount = reportref.filter(a => {
+         let dateref = new Date(a.date_ordered);
+         return dateref === d
+       }).map(a => {
+        let amountconsole = a.coupon_amount ? a.coupon_amount : 0
+        console.log("amount coupon", amountconsole)
+        return amountconsole}).reduce((a,b) => a + b, 0  )
+    //let totalsalesred = totalsales.reduce((a,b) => a + b )
+    //console.log(totalsalesred)
+     document.getElementById('totalsales_r').innerHTML =  `₹ ${totalsales}`
+    document.getElementById('couponamount_r').innerHTML =  `₹ ${couponamount}`
+    document.getElementById('refunded_r').innerHTML =  `₹ ${refundedamount}`
+    document.getElementById('pendingamount_r').innerHTML =  `₹ ${pendingamount}`
+    document.getElementById('shippingcharges_r').innerHTML =  `₹ ${shippingcharge}`
+    document.getElementById('ordersplaced_r').innerHTML = ordersplaced
+   document.getElementById('itemspurchased_r').innerHTML = itemspurchased
+   
+    console.log(totalsales)
+    console.log(refundedamount)
+    console.log(pendingamount)
+    console.log(shippingcharge)
+  }
+
+  else if(duration === "year"){
     document.getElementById("customdate-filter").style.display = "none"
     var d = new Date();
     var curyear = d.getFullYear();

@@ -415,7 +415,7 @@
           <div class="col-sm-6">
             <h1 class="m-0 text-dark">Welcome to Mobile Cover Maker</h1>
           </div><!-- /.col -->
-          <div class="col-sm-2">
+          <!-- <div class="col-sm-2">
             <div class="form-group">
               <div class="row">
               <div class="col-sm-4"><label>COD:</label></div>
@@ -424,7 +424,8 @@
               
             </div>
            
-          </div>
+          </div> -->
+          <div class="col-sm-2"></div>
           <div class="col-sm-2">
               <div class="form-group">
               <div class="row">
@@ -526,12 +527,13 @@
             <div class="card">
               <div class="card-header d-flex p-0">
                 <h3 class="card-title p-3">Reports</h3>
-                <ul class="nav nav-pills ml-auto p-2">
-                  <li class="nav-item"><a class="nav-link active" onclick="reportlogics('year')" href="#tab_1" data-toggle="tab">Year</a></li>
+                <ul style="margin-left: 10px !important" class="nav nav-pills ml-auto p-2">
+                  <li class="nav-item"><a class="nav-link" onclick="reportlogics('year')" href="#tab_1" data-toggle="tab">Year</a></li>
                   <li class="nav-item"><a class="nav-link" onclick="reportlogics('lmonth')" href="#tab_1" data-toggle="tab">Last Month</a></li>
                   <li class="nav-item"><a class="nav-link" onclick="reportlogics('tmonth')" href="#tab_1" data-toggle="tab">This Month</a></li>
                   
                   <li class="nav-item"><a class="nav-link" onclick="reportlogics('week')" href="#tab_1" data-toggle="tab">Last 7 Days</a></li>
+                  <li class="nav-item"><a class="nav-link  active" onclick="reportlogics('today')" href="#tab_1" data-toggle="tab">Today</a></li>
                   <li class="nav-item"><a class="nav-link" onclick="showcustomrange()" href="#tab_1" data-toggle="tab">Custom</a></li>
                   <li style="margin-left: 30px" id="customdate-filter" class="nav-item"><input onchange="filtercustomrange()" id="report_start" style="display: inline;width: 40%" type="date" class="form-control" name="">&nbsp;To&nbsp;<input id="report_end" onchange="filtercustomrange()" style="display: inline;width: 40%" type="date" class="form-control" name=""></li>
                   

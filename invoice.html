@@ -472,10 +472,10 @@ tr:first-child
                         <th style="width:50%">Subtotal:</th>
                         <td id="sub_total">$250.30</td>
                       </tr>
-                      <tr>
+                     <!--  <tr>
                         <th>Tax (18%)</th>
                         <td id="gst_tax">$10.34</td>
-                      </tr>
+                      </tr> -->
                       <tr>
                         <th>Shipping:</th>
                         <td id="shipping">$5.80</td>
@@ -697,10 +697,10 @@ document.getElementById('invoicedate').innerHTML = today;
       document.getElementById('user_email').innerHTML = data.user_id.email_id
       document.getElementById('order_id').innerHTML = data.order_id
       document.getElementById("sub_total").innerHTML = data.sub_total ? data.sub_total + " ₹ " : "N.A." 
-      document.getElementById("gst_tax").innerHTML = data.gst_tax ? data.gst_tax + " ₹ " : "N.A." 
+     // document.getElementById("gst_tax").innerHTML = data.gst_tax ? data.gst_tax + " ₹ " : "N.A." 
       document.getElementById("shipping").innerHTML = data.shipping ? data.shipping + " ₹ " : "N.A."
       document.getElementById("coupon_amount").innerHTML = data.coupon_amount ? data.coupon_amount + " ₹ " : "N.A." 
-      let amounttotal = data.sub_total + data.gst_tax + data.shipping
+      let amounttotal = data.sub_total + data.shipping
       document.getElementById("total_amount").innerHTML =  amounttotal + " ₹ "
    })
     .catch(err => console.log(err))

@@ -447,7 +447,22 @@
                        
                         <input id="m_name" type="text" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div><div class="col-sm-6"></div>
+                    </div><div class="col-sm-6"><span id="mval_name_err" style="font-weight: bold; color: red"></span></div>
+
+                                           <div class="col-sm-3"><label>Mug Type</label></div>
+                                    <div class="col-sm-2">
+                      <div class="form-group">
+                        
+                          <select onchange="changemuginputs()" id="m_type" class="form-control custom-select">
+                            <option value="CustomMug">Custom Mug</option>
+                  <option value="RegularMug">Regular Mug</option>
+                 <!--  <option value="EngravedKeychain">Engraved Keychain</option>
+                  <option value="LetterKeychain">Acrylic Letter Keychain</option> -->
+                  
+                </select>
+                      </div>
+                    </div> <div class="col-sm-7"></div>
+
                       <div class="col-sm-3">
                        <label>Mug Volume</label>
                     </div>
@@ -457,7 +472,7 @@
                         
                         <input id="m_volume" type="text" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div>  <div class="col-sm-7"></div>
+                    </div>  <div class="col-sm-7"><span id="mval_volume_err" style="font-weight: bold; color: red"></span></div>
                   
                 
                      
@@ -472,19 +487,19 @@
                         <input id="m_price" type="number" class="form-control" placeholder="Enter ...">
                         </div>
                         </div>
-                      </div><div class="col-sm-7"></div>
+                      </div><div class="col-sm-7"><span id="mval_price_err" style="font-weight: bold; color: red"></span></div>
 
                                           <div class="col-sm-3">
                        <label>Description</label>
                     </div>
-                    <div class="col-sm-9">
+                    <div class="col-sm-5">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             
                         <textarea id="m_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                         </div>
                         </div>
-                      </div>
+                      </div><div class="col-sm-4"><span id="mval_description_err" style="font-weight: bold; color: red"></span></div>
 
 
 
@@ -498,11 +513,11 @@
                         <input id="m_pick_image_size" type="test" class="form-control" placeholder="Enter ...">
                         </div>
                         </div>
-                      </div><div class="col-sm-7"></div>
+                      </div><div class="col-sm-7"><span id="mval_pis_err" style="font-weight: bold; color: red"></span></div>
 
 
                       <div class="col-sm-3">
-                        <label for="exampleInputFile">Header image</label>
+                        <label for="exampleInputFile">Banner image</label>
                     </div>
                        <div class="col-sm-2">
                       <div class="form-group">
@@ -510,13 +525,13 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <form name="mugImages" id="mugImages" enctype="multipart/form-data">
-                        <input name="hImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
+                        <input name="hImage" id="bannerImage" type="file" class="custom-file-input" id="exampleInputFile">
                         
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
                   </div>
-                    </div><div class="col-sm-7"></div>
+                    </div><div class="col-sm-7"><span id="mval_bannerimage_err" style="font-weight: bold; color: red"></span></div>
 
                                           <div class="col-sm-3">
                         <label for="exampleInputFile">Inner image</label>
@@ -526,14 +541,16 @@
                    
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="inImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
+                        <input name="inImage" id="innerImage" type="file" class="custom-file-input" id="exampleInputFile">
                         
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
                   </div>
-                    </div><div class="col-sm-7"></div>
-                    <div class="col-sm-3">
+                    </div><div class="col-sm-7"><span id="mval_innerimage_err" style="font-weight: bold; color: red"></span></div>
+                    <div id="type_d_overlay" class="col-sm-12">
+                      <div class="row">
+                        <div class="col-sm-3">
                         <label for="exampleInputFile">Overlay image</label>
                     </div>
                        <div class="col-sm-2">
@@ -549,8 +566,12 @@
                     </div>
                   </div>
                     </div><div class="col-sm-7"></div>
+                      </div>
+                    </div>
 
-                                          <div class="col-sm-3">
+                    <div id="type_d_mask" class="col-sm-12">
+                      <div class="row">
+                         <div class="col-sm-3">
                         <label for="exampleInputFile">Mask image</label>
                     </div>
                        <div class="col-sm-2">
@@ -566,6 +587,11 @@
                     </div>
                   </div>
                     </div><div class="col-sm-7"></div>
+                      </div>
+                    </div>
+                    
+
+                                         
 
           
                     

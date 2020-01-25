@@ -74,7 +74,7 @@ document.getElementById("p_price").value = ""
  // let ex_cat = $('#k_categories_ex').val();
   //console.log(inc_cat)
   //console.log(ex_cat)
-  if(popholder_type === "regular"){
+  if(popholder_type === "RegularPopholder"){
     document.getElementById("type_d_overlay").style.display = "none"
      document.getElementById("type_d_mask").style.display = "none"
   }

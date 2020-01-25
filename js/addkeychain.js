@@ -78,7 +78,7 @@ function changekeychaininputs(){
  // let ex_cat = $('#k_categories_ex').val();
   //console.log(inc_cat)
   //console.log(ex_cat)
-  if(keychain_type === "RegularKeychain"){
+  if(keychain_type === "CustomKeychain"){
     document.getElementById("type_d_overlay").style.display = "block"
      document.getElementById("type_d_mask").style.display = "block"
   }

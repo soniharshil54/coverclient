@@ -25,12 +25,9 @@
       color: red
     }
 
-    document.getElementById("type_d_overlay").style.display = "none"
-     document.getElementById("type_d_mask").style.display = "none"
-
-     #type_d_overlay, #type_d_mask {
+    /* #type_d_overlay, #type_d_mask {
       display: none;
-     }
+     }*/
 
     @media (min-width: 576px){
     .modal-dialog {
@@ -460,8 +457,8 @@
                       <div class="form-group">
                         
                           <select onchange="changepopholderinputs()" id="p_type" class="form-control custom-select">
-                  <option value="regular">Regular Popholder</option>
-                  <option value="custom">Custom Popholder</option>
+                  <option value="CustomPopholder">Custom Popholder</option>
+                  <option value="RegularPopholder">Regular Popholder</option>
                   
                 </select>
                       </div>
@@ -520,7 +517,7 @@
 
 
                       <div class="col-sm-3">
-                        <label for="exampleInputFile">Header image</label>
+                        <label for="exampleInputFile">Banner image</label>
                     </div>
                        <div class="col-sm-2">
                       <div class="form-group">

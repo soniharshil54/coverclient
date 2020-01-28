@@ -1,16 +1,16 @@
  $(document).ready(function(){
-  $('#add_watch_type').click(function(e) {
-    console.log("add_watch_type")
+  $('#add_keychain_type').click(function(e) {
+    console.log("add_keychain_type")
     //let addpropara = globalProduct
-    let wt_name = document.getElementById("wt_name").value
+    let kt_name = document.getElementById("kt_name").value
 
-    //let categories = ["phonecase", "watch"]
+    //let categories = ["phonecase", "keychain"]
   
     let keydata = {
-      wt_name
+      kt_name
     }
     console.log(keydata)
-    fetch(`http://${hosturl}:5600/api/watch/addtype`,
+    fetch(`http://${hosturl}:5600/api/keychain/addtype`,
 {
     headers: {
       'Accept': 'application/json',
@@ -24,14 +24,14 @@
   })
 .then(function(result){
   console.log(result)
-  let wtid = result._id
+  let ktid = result._id
   console.log(result._id)
   //getordersdatatable()
-    document.getElementById("wt_name").value = ""
+    document.getElementById("kt_name").value = ""
     // document.getElementById("offer_success_id").innerHTML = "Offer Created Successfully"
       
    
-   uploadFile(wtid)
+   uploadFile(ktid)
   
 })
 .catch(function(res){ console.log(res) })
@@ -39,13 +39,13 @@
 })
 
 
-      function activewtype(activebtn){
-    let wtyperef = activebtn.getAttribute("data-key")
-    let wtypeid = wtyperef
+      function activewmtype(activebtn){
+    let wmtyperef = activebtn.getAttribute("data-key")
+    let wmtypeid = wmtyperef
     let ceditdata = {
       active_status : 1
     }
-              fetch(`http://${hosturl}:5600/api/watch/editwtypestatus/${wtypeid}`,
+              fetch(`http://${hosturl}:5600/api/watch/editwmtypestatus/${wmtypeid}`,
           {
             headers: {
               'Accept': 'application/json',
@@ -65,21 +65,21 @@
             // console.log(res)
            // uploadFileEdit(keyid)
            // getoffers()
-           getwtypesdatatable()
+           getwmtypesdatatable()
            // $("#myModal").modal("hide");
  
           })
           .catch(function(res){ console.log(res) })
-    console.log(wtypeid)
+    console.log(wmtypeid)
   }
 
-  function deactivewtype(activebtn){
-    let wtyperef = activebtn.getAttribute("data-key")
-    let wtypeid = wtyperef
+  function deactivewmtype(activebtn){
+    let wmtyperef = activebtn.getAttribute("data-key")
+    let wmtypeid = wmtyperef
      let ceditdata = {
       active_status : 0
     }
-              fetch(`http://${hosturl}:5600/api/watch/editwtypestatus/${wtypeid}`,
+              fetch(`http://${hosturl}:5600/api/watch/editwmtypestatus/${wmtypeid}`,
           {
             headers: {
               'Accept': 'application/json',
@@ -91,14 +91,14 @@
           .then(function(res){ 
              // console.log(res)
             //getoffers()
-            getwtypesdatatable()
+            getwmtypesdatatable()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");
  
           })
           .catch(function(res){ console.log(res) })
-    console.log(wtypeid)
+    console.log(wmtypeid)
   }
 
 
@@ -117,7 +117,7 @@
   }
 
 
-    function editwatchtypemodal(test){
+    function editkeychaintypemodal(test){
      // console.log(test)
 
      // console.log( $('#modal_categories_inc').val() )
@@ -127,16 +127,16 @@
       //console.log(okchains[arrayn].name)
       //document.getElementById("modal_offer_id").value = arrayn
 
-      fetch(`http://${hosturl}:5600/api/watch/getwtbyidadmin/${arrayn}`)
+      fetch(`http://${hosturl}:5600/api/keychain/getktbyidadmin/${arrayn}`)
       .then(response => {
      // console.log(response)
      return response.json()})
       .then(data => {
         console.log(data)
-      document.getElementById("edit_wt_id").value = data._id
-      document.getElementById("edit_wt_name").value = data.name
+      document.getElementById("edit_kt_id").value = data._id
+      document.getElementById("edit_kt_name").value = data.name
       let sliderimage = data.slider_image
-      document.getElementById("edit_wt_slider_image").src = `http://${hosturl}:5600/admin/uploads/${sliderimage}`
+      document.getElementById("edit_kt_slider_image").src = `http://${hosturl}:5600/admin/uploads/${sliderimage}`
     
        $("#myModal").modal('show')
 
@@ -153,27 +153,27 @@ function openimagemodal(imgpath){
 }
 
 
-    function editwatchtype(){
-      let wt_id = document.getElementById("edit_wt_id").value
-    let wt_name = document.getElementById("edit_wt_name").value
-     let wtdata = {
-      name : wt_name
+    function editkeychaintype(){
+      let kt_id = document.getElementById("edit_kt_id").value
+    let kt_name = document.getElementById("edit_kt_name").value
+     let ktdata = {
+      name : kt_name
     }
       // console.log(keyid)
       console.log("k edit data")
       // console.log(keditdata)
 
-          fetch(`http://${hosturl}:5600/api/watch/editwatchtype/${wt_id}`,
+          fetch(`http://${hosturl}:5600/api/keychain/editkeychaintype/${kt_id}`,
           {
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
             method: "PUT",
-            body: JSON.stringify(wtdata)
+            body: JSON.stringify(ktdata)
           })
           .then(function(res){ 
-            uploadFileEdit(wt_id)
+            uploadFileEdit(kt_id)
             //getoffers()
             $("#myModal").modal("hide");
  
@@ -182,20 +182,19 @@ function openimagemodal(imgpath){
     }
 
 
-  function uploadFile(wtid){
+  function uploadFile(ktid){
     console.log("uploads file")
-    console.log("wtid",wtid)
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("watchTypeImage");
+    var form = document.getElementById("keychainTypeImage");
     var formData = new FormData(form);
     console.log(formData)
 
-fetch(`http://${hosturl}:5600/api/watch/wtaddimage/${wtid}`, {
+fetch(`http://${hosturl}:5600/api/keychain/ktaddimage/${ktid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
   console.log(res)
-  getwtypesdatatable()
+  getktypesdatatable()
   //document.getElementById("successAdded").innerHTML = "Offer successfully added !!!"
  // window.location = "offerlist.html"
  // getoffers()
@@ -204,19 +203,19 @@ fetch(`http://${hosturl}:5600/api/watch/wtaddimage/${wtid}`, {
   }
 
 
-    function uploadFileEdit(wtid){
+    function uploadFileEdit(ktid){
     console.log("uploads file")
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("wtImageEdit");
+    var form = document.getElementById("ktImageEdit");
     var formData = new FormData(form);
     console.log(formData)
 
-fetch(`http://${hosturl}:5600/api/watch/wtaddimage/${wtid}`, {
+fetch(`http://${hosturl}:5600/api/keychain/ktaddimage/${ktid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
   console.log(res)
-  getwtypesdatatable()
+  getktypesdatatable()
   //document.getElementById("successAdded").innerHTML = "Offer successfully added !!!"
  // window.location = "offerlist.html"
  // getoffers()
@@ -253,18 +252,18 @@ fetch(`http://${hosturl}:5600/api/watch/wtaddimage/${wtid}`, {
     }
   }
 
-        function getwtypesdatatable(){
+        function getwmtypesdatatable(){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
-        "aaSorting": [[ 4, "desc" ]],
+        "aaSorting": [[ 5, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
                $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
                return nRow;
           },
         "ajax" : {
-            "url" : `http://${hosturl}:5600/api/watch/getallwatchtypes`,
+            "url" : `http://${hosturl}:5600/api/watch/getallwatchmaintypes`,
             dataSrc : ''
         },
         "columns" : [ {
@@ -272,7 +271,13 @@ fetch(`http://${hosturl}:5600/api/watch/wtaddimage/${wtid}`, {
         }, {
             "data" : "name"
             
+        },  {
+            "data" : "type_name"
+            
         }, {
+            "data" : "subtype_name"
+            
+        },{
             "data" : "slider_image",
                "mRender": function(data, type) {
              //return data
@@ -290,14 +295,14 @@ fetch(`http://${hosturl}:5600/api/watch/wtaddimage/${wtid}`, {
              if(data.active_status === 1){
 
             outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
-            statuslink = `<a data-key=${data._id} onclick="deactivewtype(this)" class="dropdown-item">Inactive</a>`
+            statuslink = `<a data-key=${data._id} onclick="deactivewmtype(this)" class="dropdown-item">Inactive</a>`
              }
               else {
              outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
-             statuslink = `<a data-key=${data._id} onclick="activewtype(this)"  class="dropdown-item">Active</a>`
+             statuslink = `<a data-key=${data._id} onclick="activewmtype(this)"  class="dropdown-item">Active</a>`
              }
 
-              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editwatchtypemodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
+              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editkeychaintypemodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
             }
         }
         // , {
@@ -311,7 +316,7 @@ fetch(`http://${hosturl}:5600/api/watch/wtaddimage/${wtid}`, {
       });
     }
 
-    getwtypesdatatable()
+    getwmtypesdatatable()
 
           
     

@@ -214,7 +214,7 @@
               </p>
             </a>
           </li>
-                     <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-mobile-alt"></i>
               <p>
@@ -244,7 +244,7 @@
               </li>
             </ul>
           </li>
-             <li class="nav-item has-treeview">
+             <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-circle-notch"></i>
               <p>
@@ -255,7 +255,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="keychaintype.html" class="nav-link">
+                <a href="keychaintype.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Keychain Type List</p>
                 </a>
@@ -287,7 +287,7 @@
             </a>
           </li>
            <li class="nav-item has-treeview">
-            <a href="popholderlist.html" class="nav-link active">
+            <a href="popholderlist.html" class="nav-link">
               <i class="nav-icon fas fa-circle-notch"></i>
               <p>
                 Popholder
@@ -304,7 +304,7 @@
               </p>
             </a>
           </li>
-               <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -321,7 +321,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="offerlist.html" class="nav-link">
+                <a href="offerlist.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Offer List</p>
                 </a>
@@ -409,25 +409,55 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-<!--     <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Keychain</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Keychain</li>
-            </ol>
-          </div>
-        </div>
+<!--     <div class="row">
+      <div class="col-md-12">
+              <div class="card card-secondary">
+          <div class="card-header">
+            <h3 class="card-title">Add Keychain Type</h3>
+
+              </div>
+              <div class="card-body">
+               
+                <div class="row">
+                  
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input id="kt_name" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+
+
+                  <div class="col-sm-4">
+                    <form name="keychainTypeImage" id="keychainTypeImage" enctype="multipart/form-data">
+                    <label for="exampleInputFile">Slider Image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                         
+                        <input name="sliderImage" type="file" class="custom-file-input" id="productImage">
+                      
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                    </div>
+                    </form> 
+                  </div>   
+
+                  <div style="margin-top: 10px" class="col-sm-8">
+                   <button id="add_keychain_type" class="btn btn-success">Add Keychain Type</button>
+                 </div>
+                 <div class="col-sm-4">
+
+                 </div> 
+                 
+               </div>
+             
+
+             </div>
       </div>
-    </section> -->
+    </div></div> -->
 
     <!-- Main content -->
-    <section style="margin-top: 120px" class="content">
+    <section style="margin-top: 10px" class="content">
      
       
               <!-- /.row -->
@@ -437,25 +467,13 @@
               <div class="card-header">
                 <div class="row">
                   <div class="col-sm-3">
-                     <h3 id="productShowHeading" class="card-title">Watch List</h3>
+                     <h3 id="productShowHeading" class="card-title">Keychain Type List</h3>
                   </div>
                   <div class="col-sm-5"></div>
-                  <!-- <div class="col-sm-5">
-                       <ul style="" class="list-group list-group-horizontal">
-                  <li style="padding: 5px 10px " onclick="paginatortest(1,2)" class="list-group-item">1</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(2,2)" class="list-group-item">2</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(3,2)" class="list-group-item">3</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(4,2)" class="list-group-item">4</li>
-                </ul>
-                  </div> -->
                   <div class="col-sm-4">
-                     <h3 class="card-title" style="float: right"><button onclick="addwatch()" class="btn btn-success">Add Watch</button></h3>
                   </div>
                 </div>
                
-             
-                <!-- <button onclick="paginatortest(1,2)" class="btn btn-info">test pagination</button> -->
-                <!-- <span style="color: green; font-weight: bold; margin-left: 200px"></span> -->
  
                 <div class="card-tools">
                 </div>
@@ -466,17 +484,17 @@
                 <thead>
                 <tr>
                   <th>No.</th>
-                  <th>Watch Name</th>
-                  <th>Watch Type</th>
-                  <th>Watch Price</th>
+                  <th>Watch Main Type Name</th>
+                  <th>Watch Type Name</th>
+                  <th>Watch Subtype Name</th>
+                  <th>Slider</th>
                   <th style="display: none;">datetimehidden</th>
-                  <th>Details</th>
                   <th>Action</th>  
                   
                   <!-- <th>Date</th>
                   <th>User Info</th>
                   <th>Status</th> -->
-                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
+                  <!-- <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="deleteoffers()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>    -->         
                 </tr>
                 </thead>
                 <tbody>
@@ -484,16 +502,16 @@
                 <tfoot>
                 <tr>
                   <th>No.</th>
-                  <th>Watch Name</th>
-                  <th>Watch Type</th>
-                  <th>Watch Price</th>
+                  <th>Watch Main Type Name</th>
+                  <th>Watch Type Name</th>
+                  <th>Watch Subtype Name</th>
+                  <th>Slider</th>
                   <th style="display: none;">datetimehidden</th>
-                  <th>Details</th>
                   <th>Action</th>    <!-- 
                   <th>Date</th>
                   <th>User Info</th>
                   <th>Status</th> -->
-                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox3' value='option1'><label for='customCheckbox3' class='custom-control-label'></label></div></div></th>
+                  <!-- <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox3' value='option1'><label for='customCheckbox3' class='custom-control-label'></label></div></div></th> -->
                 </tr>
                 </tfoot>
               </table>
@@ -509,7 +527,7 @@
         
     </section>
     <!-- /.content -->
-  </div>
+  
   <!-- /.content-wrapper -->
 
 <footer class="main-footer">
@@ -558,12 +576,12 @@
   </button> -->
   <!-- The Modal -->
   <div class="modal" id="myModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="max-width: 1050px">
       <div class="modal-content">
       
         <!-- Modal Header -->
         <div class="modal-header" style="">
-          <h4 id="productEditHeading" class="modal-title">Edit Watch</h4>
+          <h4 id="productEditHeading" class="modal-title">Edit Keychain Type</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -582,54 +600,24 @@
             </div> -->
             <div class="card-body" style="display: block">
                 
-                                <div class="row">
-                                  <div class="col-sm-12">
-                                    <h3><input disabled="" type="text" id="edit_p_type" class="form-control" placeholder="Enter ..."></h3>
-                                  </div>
+                                <div class="row"> 
                     <div class="col-sm-4">
                       <!-- text input -->
-                       <input type="hidden" id="edit_p_id" name="modal_id" value="">
+                       <input type="hidden" id="edit_kt_id" name="kt_edit_id" value="">
                       <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" id="edit_p_name" class="form-control" placeholder="Enter ...">
+                        <label>Keychain Type Name</label>
+                        <input disabled type="text" id="edit_kt_name" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div>
+                    </div> 
                        <div class="col-sm-4">
-                      <!-- text input -->
-                       <input type="hidden" id="modal_id" name="modal_id" value="">
-                      <div class="form-group">
-                        <label>Size</label>
-                        <input type="text" id="edit_p_size" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>
-                    <div class="col-sm-4">
-                      <div class="form-group">
-                        <label>Price</label>
-                        <input type="number" id="edit_p_price" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div>                    <div class="col-sm-6">
+                        <form name="ktImageEdit" id="ktImageEdit" enctype="multipart/form-data">
                                         <div class="form-group">
-                    <label for="exampleInputFile">Banner image</label>
+                    <label for="exampleInputFile">Slider image</label>
                     <div class="input-group">
-                      <img width="38px" height="38px" id="edit_p_h_image" src="">
+                      <img width="38px" height="38px" id="edit_kt_slider_image" src="">
                       <div class="custom-file">
-                         <form name="watchImagesEdit" id="watchImagesEdit" enctype="multipart/form-data">
-                        <input name="hImage" type="file" class="custom-file-input" id="productImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div>
-                    </div>
-                    <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">shadow image</label>
-                    <div class="input-group">
-                      <img width="38px" height="38px" id="edit_p_shadow_image" src="">
-                      <div class="custom-file">
-                        <input name="shadowImage" type="file" class="custom-file-input" id="exampleInputFile">
+                        
+                        <input name="sliderImage" type="file" class="custom-file-input" id="exampleInputFile">
                      
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
@@ -637,74 +625,19 @@
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                  </div>
-
-                    </div>
-                     <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">overlay image</label>
-                    <div class="input-group">
-                      <img width="38px" height="38px" id="edit_p_overlay_image" src="">
-                      <div class="custom-file">
-                        <input name="overlayImage" type="file" class="custom-file-input" id="exampleInputFile">
-                     
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                     <!--  <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div>
-                  
-                    </div>
-                          <div class="col-sm-6">
-                                        <div class="form-group">
-                    <label for="exampleInputFile">mask image</label>
-                    <div class="input-group">
-                      <img width="38px" height="38px" id="edit_p_mask_image" src="">
-                      <div class="custom-file">
-                        <input name="maskImage" type="file" class="custom-file-input" id="exampleInputFile">
-                     </form>
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                     <!--  <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
-                    </div>
-                  </div>
-                  
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-8">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            <label>Description</label>
-                         <textarea id="edit_p_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
-                        </div>
-                        </div>
-                      </div>
+                  </div></form>
+                    </div> 
                       <div class="col-sm-4">
-                        <div class="form-group">
-                        <label>Pick Image Size</label>
-                        <input id="edit_p_pick_image_size" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                      </div>
+                      <input id="productEditBtn" onclick="editkeychaintype()" type="button" value="Edit Keychain Type" class="btn btn-success float-right">
+                    </div> 
+                                  
+                   
+                        
                   </div>
                   
-                  <div class="row">
-                    <div class="col-sm-6">
-                         <!--   <div class="form-group">
-                          <label class="custom-control custom-checkbox">
-   <input type="checkbox" value="2" name="chbxTerms" class="custom-control-input">
-   <span class="custom-control-label" for="chbxTerms">Available</span>
-   </label>
-                      </div> -->
-                    </div>    
-                    <div class="col-sm-6">
-                      <input id="productEditBtn" onclick="editwatch()" type="button" value="Edit Watch" class="btn btn-success float-right">
-                    </div>   
-                  </div>
+               
+                    
+              
                                        
             </div>
             <!-- /.card-body -->
@@ -723,102 +656,7 @@
     </div>
   </div>
 
-    <!-- The Modal -->
-  <div class="modal" id="detailswatch">
-    <div class="modal-dialog" style="max-width: 900px">
-      <div class="modal-content" style="background-color: transparent;border: none">
-
-        <!-- Modal Header -->
-        <!-- <div class="modal-header" style="">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-        
-        <!-- Modal body -->
-        <div class="modal-body" style="text-align: center;">
-          <table class="table table-dark" style="width:100%">
-            <tr>
-              <th>Watch Name:</th>
-              <td><span id="name_details_p"></span></td>
-            </tr>
-            <tr>
-              <th>Images:</th>
-            <!--   <td>  <a target="_blank" href="images/3dloader.gif" download>
-  <img src="images/3dloader.gif" alt="W3Schools" width="104" height="142">
-</a></td> -->
-<td><a id="image_details_h_a" href="images/3dloader.gif" download="">
-  <img id="image_details_h" src="images/3dloader.gif" alt="noimage" width="104">
-</a><a id="image_details_shadow_a" href="images/3dloader.gif" download="">
-  <img id="image_details_shadow" src="images/3dloader.gif" alt="noimage" width="104">
-</a><a id="image_details_overlay_a" href="images/3dloader.gif" download="">
-  <img id="image_details_overlay" src="images/3dloader.gif" alt="noimage" width="104" >
-</a><a id="image_details_mask_a" href="images/3dloader.gif" download="">
-  <img id="image_details_mask" src="images/3dloader.gif" alt="noimage" width="104">
-</a></td>
-</tr>
-<tr>
-  <th>Price:</th>
-  <td><span id="price_details_p"></span></td>
-</tr>
-<tr>
-  <th>Size:</th>
-  <td><span id="size_details_p"></span></td>
-</tr>
-<tr>
-  <th>Description:</th>
-  <td><span id="description_details_p"></span></td>
-</tr>
-</table>
-<!-- <h1>ello</h1> -->
-<!-- <img style="max-width: 500px" id="imgModal" style="" src="images/3dloader.gif"> -->
-
-</div>
-
-<!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
-
-
-
-     <div class="modal" id="deleteModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="border: none">
-
-        <!-- Modal Header -->
-        <!-- <div class="modal-header" style="">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-        
-        <!-- Modal body -->
-        <div class="modal-body" style="text-align: center;">
-          <!-- <h1>ello</h1> -->
-          <div class="row">
-            <div style="margin-bottom: 30px" class="col-sm-12">
-              <span>Are you sure you want to delete selected records ??</span>
-            </div>
-            <div class="col-sm-6"></div>
-            <div class="col-sm-6">
-              <div class="form-group">
-               <input style="margin-right: 20px" id="productEditBtn" onclick="deletewatchs()" type="button" value="Confirm" class="btn btn-success float-right">
-               <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
-             </div>
-
-           </div> 
-         </div>
-       </div>
-
-       <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
+  
 </div>
 
 <!-- jQuery -->
@@ -913,7 +751,7 @@
 
 
 
-<script src="js/watchlist.js"></script>
+<script src="js/watchmaintype.js"></script>
 
 <script type="text/javascript">
 

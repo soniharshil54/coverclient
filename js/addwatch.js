@@ -4,6 +4,7 @@
     //let addpropara = globalProduct
     let watch_name = document.getElementById("w_name").value
     let watch_type = document.getElementById("w_type").value
+    let watch_subtype = document.getElementById("w_subtype").value
     let watch_size = document.getElementById("w_size").value
     let price = document.getElementById("w_price").value
     let description = document.getElementById("w_description").value
@@ -15,9 +16,9 @@
     }
 
     //let categories = ["phonecase", "keychain"]
-  
+    console.log(watch_subtype)
     let watchdata = {
-      watch_name, watch_type, watch_size, price,description , pick_image_size
+      watch_name, watch_type, watch_subtype, watch_size, price,description , pick_image_size
     }
    // console.log(keydata)
     fetch(`http://${hosturl}:5600/api/watch/addwatch`,
@@ -59,8 +60,45 @@ document.getElementById("w_price").value = ""
    let watch_size = document.getElementById("w_size").value
     let price = document.getElementById("w_price").value
     let description = document.getElementById("w_description").value
+    let banner_image = $("#bannerImage").val();
+    let inner_image = $("#innerImage").val();
     let pick_image_size = document.getElementById("w_pick_image_size").value
     if(watch_name == "" || watch_size == "" || price == "" || description == "" || pick_image_size == "" ){
+      if (mug_name == "") {
+       // document.getElementById("mval_name_err").innerHTML = "Name is required"
+        document.getElementById("w_name").style.border = "1px solid red"
+      }
+       if (mug_volume == "") {
+        //document.getElementById("mval_volume_err").innerHTML = "Volume is required"
+        document.getElementById("w_size").style.border = "1px solid red"
+      }
+       if (price == "") {
+       // document.getElementById("mval_price_err").innerHTML = "Price is required"
+        document.getElementById("w_price").style.border = "1px solid red"
+      }
+       if (description == "") {
+       // document.getElementById("mval_description_err").innerHTML = "Description is required"
+        document.getElementById("w_description").style.border = "1px solid red"
+      }
+       if (pick_image_size == "") {
+       // document.getElementById("mval_pis_err").innerHTML = "Pick Image Size is required"
+        document.getElementById("w_pick_image_size").style.border = "1px solid red"
+      }
+       if (banner_image == "") {
+        document.getElementById("wval_bannerimage_err").innerHTML = "Banner image is required"
+        document.getElementById("bannerImage").style.border = "1px solid red"
+      }
+      else{
+        document.getElementById("wval_bannerimage_err").innerHTML = ""
+      }
+         if (inner_image == "") {
+        document.getElementById("wval_innerimage_err").innerHTML = "Shadow image is required"
+        document.getElementById("innerImage").style.border = "1px solid red"
+      }
+      else{
+        document.getElementById("wval_innerimage_err").innerHTML = "Name is required"
+      }
+      return false
       return false
     }
     else{
@@ -68,13 +106,52 @@ document.getElementById("w_price").value = ""
     }
  }
 
+   function getwatchtypes(){
+    fetch(`http://${hosturl}:5600/api/watch/getallwatchtypes`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      let watchtypes = data.map(a => ({...a}));
+     // globalcompanies = globalcompaniesold.reverse()
+      // const watchtypes = data.map(type => type.name);
+      console.log(watchtypes)
+      //companylist(companies)
+      populateoption(watchtypes)
+     // CreateTableFromJSONcompany(data)
+    })
+    .catch(err => console.log(err))
+  }
+
+  getwatchtypes()
+
+ function populateoption(options){
+
+  var optionsd = ""
+  var optionsdx = ""
+
+  for (var i = 0; i < options.length; i++) {
+   optionsd += '<option value="' + options[i]._id+ '">' + options[i].name + '</option>';
+
+ }
+ // optionsdx += '<option value="all">all</option>';
+ // for (var i = 0; i < options.length; i++) {
+ //   optionsdx += '<option value="' + options[i]+ '">' + options[i] + '</option>';
+
+ // }
+ $("#w_type").html(optionsd);
+ // $("#sel_comp").html(optionsdx);
+ // $("#modal_option").html(optionsd);
+}
+
  function changewatchinputs(){
-  let watch_type = document.getElementById("w_type").value
+  let watch_type = document.getElementById("w_subtype").value
   //let inc_cat = $('#k_categories_inc').val();
  // let ex_cat = $('#k_categories_ex').val();
   //console.log(inc_cat)
   //console.log(ex_cat)
-  if(watch_type === "Regularwatch"){
+  if(watch_type === "5e2e77187d507f1a376667de"){
     document.getElementById("type_d_overlay").style.display = "none"
      document.getElementById("type_d_mask").style.display = "none"
   }
@@ -101,7 +178,7 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
   body: formData
 }).then(res => {
   console.log(res)
-  window.location  =  "watchlist.html"
+  //window.location  =  "watchlist.html"
   //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))

@@ -152,6 +152,7 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
         console.log(data)
         document.getElementById("edit_p_id").value = data._id
     document.getElementById("edit_p_name").value = data.name
+    document.getElementById("edit_p_type").value = data.maintype_name
     document.getElementById("edit_p_size").value = data.size
     document.getElementById("edit_p_price").value = data.price
     document.getElementById("edit_p_description").value = data.description
@@ -334,7 +335,7 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
             "data" : "name"
             
         },{
-            "data" : "size"
+            "data" : "maintype_name"
             
         },  {
             "data" : "price"

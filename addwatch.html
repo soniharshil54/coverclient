@@ -449,16 +449,27 @@
                       <!-- text input -->
                       <div class="form-group">
                        
-                        <input id="p_name" type="text" class="form-control" placeholder="Enter ...">
+                        <input id="w_name" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div><div class="col-sm-6"></div>
+
                     <div class="col-sm-3"><label>Watch Type</label></div>
                                     <div class="col-sm-2">
                       <div class="form-group">
                         
-                          <select onchange="changewatchinputs()" id="p_type" class="form-control custom-select">
-                  <option value="CustomWatch">Custom Watch</option>
-                  <option value="RegularWatch">Regular Watch</option>
+                          <select id="w_type" class="form-control custom-select">
+                  
+                </select>
+                      </div>
+                    </div> <div class="col-sm-7"></div>
+
+                    <div class="col-sm-3"><label>Watch Subtype</label></div>
+                                    <div class="col-sm-2">
+                      <div class="form-group">
+                        
+                          <select onchange="changewatchinputs()" id="w_subtype" class="form-control custom-select">
+                  <option value="5e2e76e27d507f1a376667dd">Custom Watch</option>
+                  <option value="5e2e77187d507f1a376667de">Regular Watch</option>
                   
                 </select>
                       </div>
@@ -470,7 +481,7 @@
                       <!-- text input -->
                       <div class="form-group">
                         
-                        <input id="p_size" type="text" class="form-control" placeholder="Enter ...">
+                        <input id="w_size" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>  <div class="col-sm-7"></div>
                   
@@ -484,7 +495,7 @@
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                            
-                        <input id="p_price" type="number" class="form-control" placeholder="Enter ...">
+                        <input id="w_price" type="number" class="form-control" placeholder="Enter ...">
                         </div>
                         </div>
                       </div><div class="col-sm-7"></div>
@@ -496,7 +507,7 @@
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             
-                        <textarea id="p_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        <textarea id="w_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                         </div>
                         </div>
                       </div>
@@ -510,7 +521,7 @@
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             
-                        <input id="p_pick_image_size" type="text" class="form-control" placeholder="Enter ...">
+                        <input id="w_pick_image_size" type="text" class="form-control" placeholder="Enter ...">
                         </div>
                         </div>
                       </div><div class="col-sm-7"></div>
@@ -525,13 +536,13 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <form name="watchImages" id="watchImages" enctype="multipart/form-data">
-                        <input name="hImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
+                        <input name="hImage" id="bannerImage" type="file" class="custom-file-input" id="exampleInputFile">
                         
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
                   </div>
-                    </div><div class="col-sm-7"></div>
+                    </div><div class="col-sm-7"><span id="wval_bannerimage_err" style="font-weight: bold; color: red"></span></div>
 
                                           <div class="col-sm-3">
                         <label for="exampleInputFile">Shadow image</label>
@@ -541,13 +552,13 @@
                    
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="shadowImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
+                        <input name="shadowImage" id="innerImage" type="file" class="custom-file-input" id="exampleInputFile">
                         
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
                   </div>
-                    </div><div class="col-sm-7"></div>
+                    </div><div class="col-sm-7"><span id="wval_innerimage_err" style="font-weight: bold; color: red"></span></div>
                     <div id="type_d_overlay" class="col-sm-12">
                       <div class="row">
                         <div class="col-sm-3">
@@ -740,7 +751,7 @@
 
 
 
-<script src="js/addwatchjs"></script>
+<script src="js/addwatch.js"></script>
 
 <script type="text/javascript">
 

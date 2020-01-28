@@ -54,7 +54,7 @@ document.getElementById("w_price").value = ""
 //     $(this).hide()
 //     document.getElementById("k_categories_inc").disabled = false
 // });
-
+//random comments
  function validatewatch(){
       let watch_name = document.getElementById("w_name").value
    let watch_size = document.getElementById("w_size").value

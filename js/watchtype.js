@@ -38,6 +38,8 @@
         });
 })
 
+ //random comments
+
 
       function activewtype(activebtn){
     let wtyperef = activebtn.getAttribute("data-key")
@@ -203,7 +205,7 @@ fetch(`http://${hosturl}:5600/api/watch/wtaddimage/${wtid}`, {
 
   }
 
-
+//random comments
     function uploadFileEdit(wtid){
     console.log("uploads file")
     //var input = document.querySelector('input[type="file"]')

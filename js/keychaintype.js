@@ -312,7 +312,7 @@ fetch(`http://${hosturl}:5600/api/keychain/ktaddimage/${ktid}`, {
 
     getktypesdatatable()
 
-          
+        //random comments  
     
 
         function checkLogin(){

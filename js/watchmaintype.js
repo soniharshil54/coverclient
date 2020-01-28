@@ -181,7 +181,7 @@ function openimagemodal(imgpath){
           .catch(function(res){ console.log(res) })
     }
 
-
+//random comments
   function uploadFile(wmtid){
     console.log("uploads file")
     //var input = document.querySelector('input[type="file"]')
@@ -251,7 +251,7 @@ fetch(`http://${hosturl}:5600/api/watch/wmtaddimage/${wmtid}`, {
       }
     }
   }
-
+//random comments
         function getwmtypesdatatable(){
           let userTable = $('#example1').DataTable({
             destroy: true,

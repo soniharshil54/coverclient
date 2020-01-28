@@ -1,16 +1,16 @@
  $(document).ready(function(){
-  $('#add_keychain_type').click(function(e) {
-    console.log("add_keychain_type")
+  $('#add_watch_type').click(function(e) {
+    console.log("add_watch_type")
     //let addpropara = globalProduct
-    let kt_name = document.getElementById("kt_name").value
+    let wmt_name = document.getElementById("wmt_name").value
 
-    //let categories = ["phonecase", "keychain"]
+    //let categories = ["phonecase", "watch"]
   
     let keydata = {
-      kt_name
+      wmt_name
     }
     console.log(keydata)
-    fetch(`http://${hosturl}:5600/api/keychain/addtype`,
+    fetch(`http://${hosturl}:5600/api/watch/addtype`,
 {
     headers: {
       'Accept': 'application/json',
@@ -24,14 +24,14 @@
   })
 .then(function(result){
   console.log(result)
-  let ktid = result._id
+  let wmtid = result._id
   console.log(result._id)
   //getordersdatatable()
-    document.getElementById("kt_name").value = ""
+    document.getElementById("wmt_name").value = ""
     // document.getElementById("offer_success_id").innerHTML = "Offer Created Successfully"
       
    
-   uploadFile(ktid)
+   uploadFile(wmtid)
   
 })
 .catch(function(res){ console.log(res) })
@@ -117,7 +117,7 @@
   }
 
 
-    function editkeychaintypemodal(test){
+    function editwatchtypemodal(test){
      // console.log(test)
 
      // console.log( $('#modal_categories_inc').val() )
@@ -127,16 +127,16 @@
       //console.log(okchains[arrayn].name)
       //document.getElementById("modal_offer_id").value = arrayn
 
-      fetch(`http://${hosturl}:5600/api/keychain/getktbyidadmin/${arrayn}`)
+      fetch(`http://${hosturl}:5600/api/watch/getwmtbyidadmin/${arrayn}`)
       .then(response => {
      // console.log(response)
      return response.json()})
       .then(data => {
         console.log(data)
-      document.getElementById("edit_kt_id").value = data._id
-      document.getElementById("edit_kt_name").value = data.name
+      document.getElementById("edit_wmt_id").value = data._id
+      document.getElementById("edit_wmt_name").value = data.name
       let sliderimage = data.slider_image
-      document.getElementById("edit_kt_slider_image").src = `http://${hosturl}:5600/admin/uploads/${sliderimage}`
+      document.getElementById("edit_wmt_slider_image").src = `http://${hosturl}:5600/admin/uploads/${sliderimage}`
     
        $("#myModal").modal('show')
 
@@ -153,27 +153,27 @@ function openimagemodal(imgpath){
 }
 
 
-    function editkeychaintype(){
-      let kt_id = document.getElementById("edit_kt_id").value
-    let kt_name = document.getElementById("edit_kt_name").value
-     let ktdata = {
-      name : kt_name
+    function editwatchtype(){
+      let wmt_id = document.getElementById("edit_wmt_id").value
+    let wmt_name = document.getElementById("edit_wmt_name").value
+     let wmtdata = {
+      name : wmt_name
     }
       // console.log(keyid)
       console.log("k edit data")
       // console.log(keditdata)
 
-          fetch(`http://${hosturl}:5600/api/keychain/editkeychaintype/${kt_id}`,
+          fetch(`http://${hosturl}:5600/api/watch/editwatchmaintype/${wmt_id}`,
           {
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
             method: "PUT",
-            body: JSON.stringify(ktdata)
+            body: JSON.stringify(wmtdata)
           })
           .then(function(res){ 
-            uploadFileEdit(kt_id)
+            uploadFileEdit(wmt_id)
             //getoffers()
             $("#myModal").modal("hide");
  
@@ -182,19 +182,19 @@ function openimagemodal(imgpath){
     }
 
 
-  function uploadFile(ktid){
+  function uploadFile(wmtid){
     console.log("uploads file")
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("keychainTypeImage");
+    var form = document.getElementById("watchTypeImage");
     var formData = new FormData(form);
     console.log(formData)
 
-fetch(`http://${hosturl}:5600/api/keychain/ktaddimage/${ktid}`, {
+fetch(`http://${hosturl}:5600/api/watch/wmtaddimage/${wmtid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
   console.log(res)
-  getktypesdatatable()
+  getwmtypesdatatable()
   //document.getElementById("successAdded").innerHTML = "Offer successfully added !!!"
  // window.location = "offerlist.html"
  // getoffers()
@@ -203,19 +203,19 @@ fetch(`http://${hosturl}:5600/api/keychain/ktaddimage/${ktid}`, {
   }
 
 
-    function uploadFileEdit(ktid){
+    function uploadFileEdit(wmtid){
     console.log("uploads file")
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("ktImageEdit");
+    var form = document.getElementById("wmtImageEdit");
     var formData = new FormData(form);
     console.log(formData)
 
-fetch(`http://${hosturl}:5600/api/keychain/ktaddimage/${ktid}`, {
+fetch(`http://${hosturl}:5600/api/watch/wmtaddimage/${wmtid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
   console.log(res)
-  getktypesdatatable()
+  getwmtypesdatatable()
   //document.getElementById("successAdded").innerHTML = "Offer successfully added !!!"
  // window.location = "offerlist.html"
  // getoffers()
@@ -302,7 +302,7 @@ fetch(`http://${hosturl}:5600/api/keychain/ktaddimage/${ktid}`, {
              statuslink = `<a data-key=${data._id} onclick="activewmtype(this)"  class="dropdown-item">Active</a>`
              }
 
-              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editkeychaintypemodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
+              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editwatchtypemodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
             }
         }
         // , {

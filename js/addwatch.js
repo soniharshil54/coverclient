@@ -64,11 +64,11 @@ document.getElementById("w_price").value = ""
     let inner_image = $("#innerImage").val();
     let pick_image_size = document.getElementById("w_pick_image_size").value
     if(watch_name == "" || watch_size == "" || price == "" || description == "" || pick_image_size == "" ){
-      if (mug_name == "") {
+      if (watch_name == "") {
        // document.getElementById("mval_name_err").innerHTML = "Name is required"
         document.getElementById("w_name").style.border = "1px solid red"
       }
-       if (mug_volume == "") {
+       if (watch_size == "") {
         //document.getElementById("mval_volume_err").innerHTML = "Volume is required"
         document.getElementById("w_size").style.border = "1px solid red"
       }

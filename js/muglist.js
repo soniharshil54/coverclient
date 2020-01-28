@@ -439,6 +439,9 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
             "data" : "name"
             
         },{
+            "data" : "type"
+            
+        },{
             "data" : "volume"
             
         },  {

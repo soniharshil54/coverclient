@@ -334,7 +334,7 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
             "data" : "name"
             
         },{
-            "data" : "size"
+            "data" : "popholder_type"
             
         },  {
             "data" : "price"

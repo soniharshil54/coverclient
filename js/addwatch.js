@@ -178,7 +178,7 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
   body: formData
 }).then(res => {
   console.log(res)
-  //window.location  =  "watchlist.html"
+  window.location  =  "watchlist.html"
   //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))

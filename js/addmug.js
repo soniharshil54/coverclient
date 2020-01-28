@@ -3,6 +3,7 @@
     //console.log("add_offer")
     //let addpropara = globalProduct
     let mug_name = document.getElementById("m_name").value
+    let mug_type = document.getElementById("m_type").value
     let mug_volume = document.getElementById("m_volume").value
     let price = document.getElementById("m_price").value
     let description = document.getElementById("m_description").value
@@ -16,7 +17,7 @@
     //let categories = ["phonecase", "keychain"]
   
     let mugdata = {
-      mug_name, mug_volume, price,description , pick_image_size
+      mug_name, mug_type, mug_volume, price, description , pick_image_size
     }
    // console.log(keydata)
     fetch(`http://${hosturl}:5600/api/mug/addmug`,
@@ -80,7 +81,7 @@ function changemuginputs(){
     let pick_image_size = document.getElementById("m_pick_image_size").value
     let banner_image = $("#bannerImage").val();
     let inner_image = $("#innerImage").val();
-    if(mug_name == "" || mug_volume == "" || price == "" || description == "" || pick_image_size == "" || banner_image == "" || inner_image ){
+    if(mug_name == "" || mug_volume == "" || price == "" || description == "" || pick_image_size == "" || banner_image == "" || inner_image == "" ){
       if (mug_name == "") {
        // document.getElementById("mval_name_err").innerHTML = "Name is required"
         document.getElementById("m_name").style.border = "1px solid red"
@@ -113,7 +114,7 @@ function changemuginputs(){
         document.getElementById("innerImage").style.border = "1px solid red"
       }
       else{
-        document.getElementById("mval_innerimage_err").innerHTML = "Name is required"
+        document.getElementById("mval_innerimage_err").innerHTML = ""
       }
       return false
     }

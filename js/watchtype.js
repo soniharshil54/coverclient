@@ -40,6 +40,47 @@
 
  //random comments
 
+   function checkAll()
+ {
+     var tablek = document.getElementById ('example1');
+     var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
+     var val = checkboxes[0].checked;
+     for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
+ }
+
+  function printChecked(){
+    var items=document.getElementsByName('todelete');
+    var selectedItems=[];
+    for(var i=0; i<items.length; i++){
+      if(items[i].type=='checkbox' && items[i].checked==true)
+        selectedItems.push(items[i].value);
+    }
+    // console.log(selectedItems);
+    return selectedItems
+  }  
+  function deletewatchtypes(){
+    console.log("delete")
+   // let deleteprotoget = globalProduct
+    let todeleteids = printChecked()
+    let deleteArray = {
+      todeleteids
+    }
+              fetch(`http://${hosturl}:5600/api/watch/deletewatchtypes`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "DELETE",
+            body: JSON.stringify(deleteArray)
+          })
+          .then(function(res){ 
+            getoffersdatatable()
+            //getoffers() 
+          })
+          .catch(function(res){ console.log(res) })
+  }
+
 
       function activewtype(activebtn){
     let wtyperef = activebtn.getAttribute("data-key")
@@ -302,13 +343,13 @@ fetch(`http://${hosturl}:5600/api/watch/wtaddimage/${wtid}`, {
               return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editwatchtypemodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
             }
         }
-        // , {
-        //   "data": "_id",
-        //     "mRender": function(data, type) {
+        , {
+          "data": "_id",
+            "mRender": function(data, type) {
              
-        //       return `<input name="todelete" value=${data} type="checkbox">`;
-        //     }
-        // }
+              return `<input name="todelete" value=${data} type="checkbox">`;
+            }
+        }
         ]
       });
     }

@@ -62,6 +62,7 @@
       return false
     }
     else{
+       document.getElementById("watchtypeval_banner").innerHTML = "Banner image is required"
       return true
     }
  }

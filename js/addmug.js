@@ -1,5 +1,6 @@
  $(document).ready(function(){
-  $('#add_mug').click(function(e) {
+  $('#imageModalUploading').click(function(e) {
+     $('#myModal').modal('show')
     //console.log("add_offer")
     //let addpropara = globalProduct
     let mug_name = document.getElementById("m_name").value

@@ -11,7 +11,7 @@
 
     let validatemform = validateaddmugform()
     if(!validatemform){
-      document.getElementById("mug_success_id").innerHTML = ""
+      //document.getElementById("mug_success_id").innerHTML = ""
       return false
     }
     //let categories = ["phonecase", "keychain"]

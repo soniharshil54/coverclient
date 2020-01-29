@@ -494,13 +494,17 @@
                     <div class="input-group">
                       <div class="custom-file">
                          
-                        <input name="sliderImage" type="file" class="custom-file-input" id="productImage">
+                        <input name="sliderImage" type="file" class="custom-file-input" id="bannerImage">
                       
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
                     </form> 
                   </div>   
+                   <div class="col-sm-4">
+                    <span style="color: red; font-weight: bold;display: block;"> &nbsp;  &nbsp; </span>
+                   <span style="color: red; font-weight: bold;display: block;" id="watchtypeval_banner"></span>
+                  </div>  
 
                   <div style="margin-top: 10px" class="col-sm-8">
                    <button id="add_watch_type" class="btn btn-success">Add Watch Type</button>
@@ -552,7 +556,7 @@
                   <!-- <th>Date</th>
                   <th>User Info</th>
                   <th>Status</th> -->
-                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="deletewatchtypes()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
                 </tr>
                 </thead>
                 <tbody>
@@ -614,6 +618,42 @@
         </div>
         
         <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+       <div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div style="margin-bottom: 30px" class="col-sm-12">
+              <span style="color: red; font-weight: bold;">Are you sure you want to delete selected records ??  If you delete these records, then all the subtypes and products of these types will be deleted permanently.</span>
+            </div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="form-group">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="deletewatchtypes()" type="button" value="Confirm" class="btn btn-success float-right">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
+             </div>
+
+           </div> 
+         </div>
+       </div>
+
+       <!-- Modal footer -->
         <!-- <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div> -->

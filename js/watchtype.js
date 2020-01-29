@@ -3,7 +3,11 @@
     console.log("add_watch_type")
     //let addpropara = globalProduct
     let wt_name = document.getElementById("wt_name").value
-
+    let validatemform = validateaddwatchtypeform()
+    if(!validatemform){
+      //document.getElementById("mug_success_id").innerHTML = ""
+      return false
+    }
     //let categories = ["phonecase", "watch"]
   
     let keydata = {
@@ -37,6 +41,42 @@
 .catch(function(res){ console.log(res) })
         });
 })
+
+
+  function validateaddwatchtypeform(){
+    let type_name = document.getElementById("wt_name").value
+    let banner_image = $("#bannerImage").val();
+    if(type_name == "" || banner_image == "" ){
+      console.log("in validateaddwatchtypeform")
+      if (type_name == "") {
+       // document.getElementById("mval_name_err").innerHTML = "Name is required"
+        document.getElementById("wt_name").style.border = "1px solid red"
+      }
+       if (banner_image == "") {
+        document.getElementById("watchtypeval_banner").innerHTML = "Banner image is required"
+        //document.getElementById("bannerImage").style.border = "1px solid red"
+      }
+      else{
+        document.getElementById("watchtypeval_banner").innerHTML = ""
+      }
+      return false
+    }
+    else{
+      return true
+    }
+ }
+
+  $('input').focus(function(){
+    $(this).css('border-color','#80bdff');
+});
+$('input').blur(function(){
+  if (this.value == "") {
+    $(this).css('border','1px solid red');
+  }
+  else{    
+    $(this).css('border-color','#ced4da');
+  }
+});
 
  //random comments
 
@@ -75,10 +115,19 @@
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
-            getoffersdatatable()
+            getwtypesdatatable()
+            $("#deleteModal").modal("hide");
             //getoffers() 
           })
           .catch(function(res){ console.log(res) })
+  }
+
+     function canceldelete(){
+    $("#deleteModal").modal("hide");
+  }
+
+    function opendeletemodal(){
+    $("#deleteModal").modal("show");
   }
 
 

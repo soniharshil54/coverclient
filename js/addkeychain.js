@@ -55,8 +55,46 @@ document.getElementById("k_price").value = ""
    let keychain_type = document.getElementById("k_type").value
     let price = document.getElementById("k_price").value
     let description = document.getElementById("k_description").value
+    let banner_image = $("#bannerImage").val();
+    let inner_image = $("#innerImage").val();
+     let banner_image = $("#bannerImage").val();
+    let inner_image = $("#innerImage").val();
     let pick_image_size = document.getElementById("k_pick_image_size").value
     if(keychain_name == "" || keychain_type == "" || price == "" || description == "" || pick_image_size == "" ){
+       if (keychain_name == "") {
+       // document.getElementById("mval_name_err").innerHTML = "Name is required"
+        document.getElementById("m_name").style.border = "1px solid red"
+      }
+      //  if (mug_volume == "") {
+      //   //document.getElementById("mval_volume_err").innerHTML = "Volume is required"
+      //   document.getElementById("m_volume").style.border = "1px solid red"
+      // }
+       if (price == "") {
+       // document.getElementById("mval_price_err").innerHTML = "Price is required"
+        document.getElementById("m_price").style.border = "1px solid red"
+      }
+       if (description == "") {
+       // document.getElementById("mval_description_err").innerHTML = "Description is required"
+        document.getElementById("m_description").style.border = "1px solid red"
+      }
+       if (pick_image_size == "") {
+       // document.getElementById("mval_pis_err").innerHTML = "Pick Image Size is required"
+        document.getElementById("m_pick_image_size").style.border = "1px solid red"
+      }
+       if (banner_image == "") {
+        document.getElementById("kval_bannerimage_err").innerHTML = "Banner image is required"
+        document.getElementById("bannerImage").style.border = "1px solid red"
+      }
+      else{
+        document.getElementById("kval_bannerimage_err").innerHTML = ""
+      }
+         if (inner_image == "") {
+        document.getElementById("kval_innerimage_err").innerHTML = "Inner image is required"
+        document.getElementById("innerImage").style.border = "1px solid red"
+      }
+      else{
+        document.getElementById("kval_innerimage_err").innerHTML = ""
+      }
       return false
     }
     else{

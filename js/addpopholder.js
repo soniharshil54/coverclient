@@ -100,6 +100,7 @@ document.getElementById("p_price").value = ""
       return false
     }
     else{
+      $('#imageModalUploading').modal('show')
       return true
     }
  }

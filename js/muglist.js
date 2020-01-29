@@ -423,7 +423,7 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
-        "aaSorting": [[ 4, "desc" ]],
+        "aaSorting": [[ 5, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
                $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);

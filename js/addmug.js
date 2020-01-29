@@ -1,6 +1,6 @@
  $(document).ready(function(){
-  $('#imageModalUploading').click(function(e) {
-     $('#myModal').modal('show')
+  $('#add_mug').click(function(e) {
+
     //console.log("add_offer")
     //let addpropara = globalProduct
     let mug_name = document.getElementById("m_name").value
@@ -120,6 +120,7 @@ function changemuginputs(){
       return false
     }
     else{
+      $('#imageModalUploading').modal('show')
       return true
     }
  }

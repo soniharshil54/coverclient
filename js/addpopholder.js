@@ -62,7 +62,7 @@ document.getElementById("p_price").value = ""
     let pick_image_size = document.getElementById("p_pick_image_size").value
         let banner_image = $("#bannerImage").val();
     let inner_image = $("#innerImage").val();
-    if(popholder_name == "" || popholder_size == "" || price == "" || description == "" || pick_image_size == "" || banner_image == "" || inner_image == ""  ){
+    if(popholder_name == "" || popholder_size == "" || price == "" || description == "" || pick_image_size == "" || banner_image == "" || inner_image == "" || overlay_image == "" || mask_image == ""  ){
        if (popholder_name == "") {
        // document.getElementById("mval_name_err").innerHTML = "Name is required"
         document.getElementById("p_name").style.border = "1px solid red"
@@ -136,7 +136,7 @@ $('textarea').blur(function(){
  // let ex_cat = $('#k_categories_ex').val();
   //console.log(inc_cat)
   //console.log(ex_cat)
-  if(popholder_type === "RegularPopholder"){
+  if(popholder_type === "Regular Popholder"){
     document.getElementById("type_d_overlay").style.display = "none"
      document.getElementById("type_d_mask").style.display = "none"
   }

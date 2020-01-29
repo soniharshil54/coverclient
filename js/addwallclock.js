@@ -59,10 +59,14 @@ document.getElementById("w_price").value = ""
     let price = document.getElementById("w_price").value
     let description = document.getElementById("w_description").value
     let pick_image_size = document.getElementById("w_pick_image_size").value
+       let banner_image = $("#bannerImage").val();
+    let inner_image = $("#innerImage").val();
+       let overlay_image = $("#overlayImage").val();
+    let mask_image = $("#maskImage").val();
     if(wallclock_name == "" || wallclock_size == "" || price == "" || description == "" || pick_image_size == "" ){
        if (wallclock_name == "") {
        // document.getElementById("mval_name_err").innerHTML = "Name is required"
-        document.getElementById("k_name").style.border = "1px solid red"
+        document.getElementById("w_name").style.border = "1px solid red"
       }
       //  if (mug_volume == "") {
       //   //document.getElementById("mval_volume_err").innerHTML = "Volume is required"
@@ -70,29 +74,43 @@ document.getElementById("w_price").value = ""
       // }
        if (price == "") {
        // document.getElementById("mval_price_err").innerHTML = "Price is required"
-        document.getElementById("k_price").style.border = "1px solid red"
+        document.getElementById("w_price").style.border = "1px solid red"
       }
        if (description == "") {
        // document.getElementById("mval_description_err").innerHTML = "Description is required"
-        document.getElementById("k_description").style.border = "1px solid red"
+        document.getElementById("w_description").style.border = "1px solid red"
       }
        if (pick_image_size == "") {
        // document.getElementById("mval_pis_err").innerHTML = "Pick Image Size is required"
-        document.getElementById("k_pick_image_size").style.border = "1px solid red"
+        document.getElementById("w_pick_image_size").style.border = "1px solid red"
       }
        if (banner_image == "") {
-        document.getElementById("kval_bannerimage_err").innerHTML = "Banner image is required"
-        document.getElementById("bannerImage").style.border = "1px solid red"
+        document.getElementById("wval_bannerimage_err").innerHTML = "Banner image is required"
+        
       }
       else{
-        document.getElementById("kval_bannerimage_err").innerHTML = ""
+        document.getElementById("wval_bannerimage_err").innerHTML = ""
       }
          if (inner_image == "") {
-        document.getElementById("kval_innerimage_err").innerHTML = "Inner image is required"
-        document.getElementById("innerImage").style.border = "1px solid red"
+        document.getElementById("wval_innerimage_err").innerHTML = "Inner image is required"
+       
       }
       else{
-        document.getElementById("kval_innerimage_err").innerHTML = ""
+        document.getElementById("wval_innerimage_err").innerHTML = ""
+      }
+        if (overlay_image == "") {
+        document.getElementById("wval_overlayimage_err").innerHTML = "Overlay image is required"
+        
+      }
+      else{
+        document.getElementById("wval_overlayimage_err").innerHTML = ""
+      }
+         if (mask_image == "") {
+        document.getElementById("wval_maskimage_err").innerHTML = "Mask image is required"
+       
+      }
+      else{
+        document.getElementById("wval_maskimage_err").innerHTML = ""
       }
       return false
     }

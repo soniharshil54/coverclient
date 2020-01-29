@@ -62,7 +62,7 @@ document.getElementById("p_price").value = ""
     let pick_image_size = document.getElementById("p_pick_image_size").value
         let banner_image = $("#bannerImage").val();
     let inner_image = $("#innerImage").val();
-    if(popholder_name == "" || popholder_size == "" || price == "" || description == "" || pick_image_size == "" || banner_image == "" || inner_image == "" || overlay_image == "" || mask_image == ""  ){
+    if(popholder_name == "" || popholder_size == "" || price == "" || description == "" || pick_image_size == "" || banner_image == "" || inner_image == ""  ){
        if (popholder_name == "") {
        // document.getElementById("mval_name_err").innerHTML = "Name is required"
         document.getElementById("p_name").style.border = "1px solid red"

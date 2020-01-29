@@ -68,10 +68,10 @@ document.getElementById("w_price").value = ""
        // document.getElementById("mval_name_err").innerHTML = "Name is required"
         document.getElementById("w_name").style.border = "1px solid red"
       }
-      //  if (mug_volume == "") {
-      //   //document.getElementById("mval_volume_err").innerHTML = "Volume is required"
-      //   document.getElementById("m_volume").style.border = "1px solid red"
-      // }
+       if (wallclock_size == "") {
+        //document.getElementById("mval_volume_err").innerHTML = "Volume is required"
+        document.getElementById("w_size").style.border = "1px solid red"
+      }
        if (price == "") {
        // document.getElementById("mval_price_err").innerHTML = "Price is required"
         document.getElementById("w_price").style.border = "1px solid red"
@@ -92,7 +92,7 @@ document.getElementById("w_price").value = ""
         document.getElementById("wval_bannerimage_err").innerHTML = ""
       }
          if (inner_image == "") {
-        document.getElementById("wval_innerimage_err").innerHTML = "Inner image is required"
+        document.getElementById("wval_innerimage_err").innerHTML = "Shadow image is required"
        
       }
       else{
@@ -119,6 +119,30 @@ document.getElementById("w_price").value = ""
       return true
     }
  }
+
+   $('input').focus(function(){
+    $(this).css('border-color','#80bdff');
+});
+$('input').blur(function(){
+  if (this.value == "") {
+    $(this).css('border','1px solid red');
+  }
+  else{    
+    $(this).css('border-color','#ced4da');
+  }
+});
+
+ $('textarea').focus(function(){
+    $(this).css('border-color','#80bdff');
+});
+$('textarea').blur(function(){
+  if (this.value == "") {
+    $(this).css('border','1px solid red');
+  }
+  else{    
+    $(this).css('border-color','#ced4da');
+  }
+});
 
   function logOutUser(){
     localStorage.clear();

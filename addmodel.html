@@ -956,7 +956,7 @@
                         </div>
                       </div>
                       <div class="col-sm-4">
-                        <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>  
+                        <h3 class="card-title" style="float: right"><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></h3>  
                       </div>
                     </div>
 
@@ -988,6 +988,66 @@
       <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
+
+      <div class="modal" id="imageModalUploading">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+      
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <img style="max-width: 500px" id="imgModal" style="" src="images/uploading.gif">
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+       <div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div style="margin-bottom: 30px" class="col-sm-12">
+              <span>Are you sure you want to delete selected Phonecases ??</span>
+            </div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="form-group">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="deletekeychains()" type="button" value="Confirm" class="btn btn-success float-right">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
+             </div>
+
+           </div> 
+         </div>
+       </div>
+
+       <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
 
     <footer class="main-footer">
       <strong>Call us:  <a href="#">+91 8866220223</a>.</strong> 
@@ -1386,30 +1446,57 @@ $(document).ready(function(){
       let description_2d = document.getElementById("k_description_2d").value
       let description_3d = document.getElementById("k_description_3d").value
       let description_4d = document.getElementById("k_description_4d").value
+      let available_2d = 1
+      let available_3d = 1
+      let available_4d = 1
+
+      let validatebasicform = validatebasic()
+      if (!validatebasicform) {
+        console.log("basic validating")
+        // document.getElementById("formvalerr").innerHTML = "Fill all the 2d fields or not at all"
+        return false
+      }
 
       let validate2dform = validate2d()
       if (!validate2dform) {
+        console.log("2d validating")
         document.getElementById("formvalerr").innerHTML = "Fill all the 2d fields or not at all"
         return false
       }
-      let validate3dform = validate2d()
+      let validate3dform = validate3d()
       if (!validate3dform) {
+        console.log("3d validating")
         document.getElementById("formvalerr").innerHTML = "Fill all the 3d fields or not at all"
         return false
       }
-      let validate4dform = validate2d()
+      let validate4dform = validate4d()
       if (!validate4dform) {
+        console.log("4d validating")
         document.getElementById("formvalerr").innerHTML = "Fill all the 4d fields or not at all"
         return false
+      }
+      console.log(validate4dform, validate3dform, validate2dform)
+      if( size_2d === "" && price_2d === ""){
+        console.log("2d here avail")
+        available_2d = 0
+      }
+      if( size_3d === "" && price_3d === ""){
+        console.log("3d here avail")
+        available_3d = 0
+      }
+      if( size_4d === "" && price_4d === ""){
+        console.log("4d here avail")
+        available_4d = 0
       }
     // let avail_status = document.getElementById("is_avail").checked
     //  let available_status = avail_status ? 1 : 0
     //let inputfile = document.getElementById("productImage").files[0]
+    console.log(available_2d, available_3d, available_4d)
     let keydata = {
       name, company, size_2d, size_3d, size_4d, price_2d, price_3d, price_4d,description_2d, description_3d, 
-      description_4d
+      description_4d, available_2d, available_3d, available_4d
     }
-    //console.log(keydata)
+    console.log(keydata)
     fetch(`http://${hosturl}:5600/api/phonecase/addphonecase`,
     {
       headers: {
@@ -1440,6 +1527,7 @@ $(document).ready(function(){
       console.log(result)
       let productId = result.product._id
       console.log(productId)
+      $('#imageModalUploading').modal('show')
       uploadFile(productId)
   //getproducts()
   
@@ -1448,7 +1536,18 @@ $(document).ready(function(){
   }
 
 
+function validatebasic(){
+  let name = document.getElementById("k_name").value
+  let company = document.getElementById("new_comp_option").value
+  if(name === "" || company === "Select Company"){
+    document.getElementById("modelname_err").innerHTML = "model name and company name are required"
+    return false
+  }
+  return true
+}
+
 function validate2d(){
+  console.log("validate 2d form")
    let size_2d =  document.getElementById("k_size_2d").value
     let price_2d = document.getElementById("k_price_2d").value
     let description_2d = document.getElementById("k_description_2d").value
@@ -1464,10 +1563,11 @@ function validate2d(){
 }
 
 function validate3d(){
+  console.log("validate 3d form")
    let size_3d =  document.getElementById("k_size_3d").value
     let price_3d = document.getElementById("k_price_3d").value
     let description_3d = document.getElementById("k_description_3d").value
-       let sliderimage_2d = $("#image_3d_slider").val();
+       let sliderimage_3d = $("#image_3d_slider").val();
     let innerimage_3d = $("#image_3d_inner").val();
     let maskimage_3d = $("#image_3d_mask").val();
     if((size_3d === "" && price_3d === "" && description_3d === ""  && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "") || (size_3d !== "" && price_3d !== "" && description_3d !== ""  && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")){
@@ -1479,6 +1579,7 @@ function validate3d(){
 }
 
 function validate4d(){
+  console.log("validate 4d form")
     let size_4d =  document.getElementById("k_size_4d").value
     let price_4d = document.getElementById("k_price_4d").value
     let description_4d = document.getElementById("k_description_4d").value
@@ -1649,6 +1750,14 @@ function add_company(){
   });
 }
 
+   function canceldelete(){
+    $("#deleteModal").modal("hide");
+  }
+
+    function opendeletemodal(){
+    $("#deleteModal").modal("show");
+  }
+
 </script>
 <script type="text/javascript">
 
@@ -1732,7 +1841,7 @@ function add_company(){
       body: JSON.stringify(deleteArray)
     })
     .then(function(res){ 
-
+      $("#deleteModal").modal("hide");
       getproducts() 
     })
     .catch(function(res){ console.log(res) })
@@ -1948,7 +2057,7 @@ function add_company(){
       body: formData
     }).then(res => {
       console.log(res)
-      window.location = "modellist.html"
+      //window.location = "modellist.html"
       //getproducts()
     }).catch(err => console.log(err))
 

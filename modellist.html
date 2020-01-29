@@ -82,7 +82,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+               <!--  <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle"> -->
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Brad Diesel
@@ -98,7 +98,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <!-- <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3"> -->
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     John Pierce
@@ -114,7 +114,7 @@
             <a href="#" class="dropdown-item">
               <!-- Message Start -->
               <div class="media">
-                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+               <!--  <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3"> -->
                 <div class="media-body">
                   <h3 class="dropdown-item-title">
                     Nora Silvester
@@ -743,7 +743,7 @@
                         </div>
                       </div>
                       <div class="col-sm-4">
-                        <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>  
+                        <h3 class="card-title" style="float: right"><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></h3>  
                       </div>
                     </div>
 
@@ -1049,6 +1049,42 @@
 </div>
 
 <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+       <div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div style="margin-bottom: 30px" class="col-sm-12">
+              <span>Are you sure you want to delete selected Phonecases ??</span>
+            </div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="form-group">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="deletekeychains()" type="button" value="Confirm" class="btn btn-success float-right">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
+             </div>
+
+           </div> 
+         </div>
+       </div>
+
+       <!-- Modal footer -->
         <!-- <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
         </div> -->
@@ -1438,9 +1474,9 @@ function filterbycompany(){
   else {
     let testcomp = okchains.map(a => ({...a}));
     let result = testcomp.filter(i => {
-      console.log(i)
+      //console.log(i)
       return i.company === filcompany}) ; 
-    console.log(result)
+   // console.log(result)
     CreateTableFromJSON(result)
     return result
   }
@@ -1454,7 +1490,7 @@ function printChecked(){
     if(items[i].type=='checkbox' && items[i].checked==true)
       selectedItems.push(items[i].value);
   }
-  console.log(selectedItems);
+  //console.log(selectedItems);
   return selectedItems
 }  
 
@@ -1465,13 +1501,13 @@ function printCheckedCompanies(){
     if(items[i].type=='checkbox' && items[i].checked==true)
       selectedItems.push(items[i].value);
   }
-  console.log(selectedItems);
+ // console.log(selectedItems);
   return selectedItems
 }  
 
 function getcompopt(){
   let res = document.getElementById("comp_option").value
-  console.log(res)
+  //console.log(res)
 }
 function populateoption(options){
 
@@ -1492,7 +1528,7 @@ function populateoption(options){
  $("#modal_option").html(optionsd);
 }
 function add_company(){
-  console.log("func")
+  //console.log("func")
   let companyname = document.getElementById("company_name").value
   let comp_data = {
     "company_name" : companyname
@@ -1506,7 +1542,7 @@ function add_company(){
   }).then(function(response) {
     return response.json();
   }).then(function(data) {
-    console.log(data.company.name)
+   // console.log(data.company.name)
     document.getElementById("company_notif").innerHTML = `Company "${data.company.name}" Added Successfully!!!`
     document.getElementById("company_name").value = ""
     getcompanies()
@@ -1545,11 +1581,11 @@ function add_company(){
      // console.log(response)
      return response.json()})
     .then(data => {
-      console.log(data)
+     // console.log(data)
       let globalcompaniesold = data.map(a => ({...a}));
       globalcompanies = globalcompaniesold.reverse()
       const companies = data.map(comp => comp.name);
-      console.log(companies)
+     // console.log(companies)
       //companylist(companies)
       populateoption(companies)
       CreateTableFromJSONcompany(data)
@@ -1604,7 +1640,7 @@ function add_company(){
       body: JSON.stringify(deleteArray)
     })
     .then(function(res){ 
-
+  $("#deleteModal").modal("hide");
       getproducts() 
     })
     .catch(function(res){ console.log(res) })
@@ -1623,7 +1659,7 @@ function add_company(){
 
 
     function details2d(btn2d){
-    console.log(btn2d)
+    //console.log(btn2d)
     let model_id_2d = btn2d.getAttribute('data-key') 
     console.log(model_id_2d)
 
@@ -2139,16 +2175,16 @@ function add_company(){
 
             activatebtn.style.padding = "1px 5px";
             let atd = document.createElement("td");
-            console.log("active status below")
-            console.log(okchains[i].available_status)
+           // console.log("active status below")
+            //console.log(okchains[i].available_status)
             if(myBookso[i].available_status === 1){
-              console.log("its in if")
+              //console.log("its in if")
               activatebtn.setAttribute("onclick","deactivephonecase(this)")
               activatebtn.setAttribute("class", "btn btn-success");
               activatebtn.innerHTML = "Activated";
             }
             else{
-              console.log("its in else")
+              //console.log("its in else")
               activatebtn.setAttribute("onclick","activephonecase(this)")
               activatebtn.setAttribute("class", "btn btn-danger");
               activatebtn.innerHTML = "Deactivated";
@@ -2164,9 +2200,9 @@ function add_company(){
             deleteCheck.setAttribute("type","checkbox")
             deleteCheck.setAttribute("name","todelete")
             deleteCheck.setAttribute("value",myBookso[i]._id)
-            console.log("deactivate id", i)
-            console.log("deactivate id", okchains[i]._id)
-            console.log("deactivate id", myBookso[i]._id)
+           // console.log("deactivate id", i)
+          //  console.log("deactivate id", okchains[i]._id)
+          //  console.log("deactivate id", myBookso[i]._id)
 
             // console.log(deleteCheck)
             std.appendChild(deleteCheck)

@@ -2,11 +2,11 @@
   $('#add_wallclock').click(function(e) {
     //console.log("add_offer")
     //let addpropara = globalProduct
-    let wallclock_name = document.getElementById("p_name").value
-    let wallclock_size = document.getElementById("p_size").value
-    let price = document.getElementById("p_price").value
-    let description = document.getElementById("p_description").value
-    let pick_image_size = document.getElementById("p_pick_image_size").value
+    let wallclock_name = document.getElementById("w_name").value
+    let wallclock_size = document.getElementById("w_size").value
+    let price = document.getElementById("w_price").value
+    let description = document.getElementById("w_description").value
+    let pick_image_size = document.getElementById("w_pick_image_size").value
     let validatemform = validatewallclock()
     if(!validatemform){
       document.getElementById("wallclock_success_id").innerHTML = "All the fields are mandatory"
@@ -34,11 +34,11 @@
 .then(function(result){
   console.log(result)
   let wallclockid = result._id
- document.getElementById("p_name").value = ""
-document.getElementById("p_size").value = ""
-document.getElementById("p_price").value = ""
- document.getElementById("p_description").value = ""
-  document.getElementById("p_pick_image_size").value = ""
+ document.getElementById("w_name").value = ""
+document.getElementById("w_size").value = ""
+document.getElementById("w_price").value = ""
+ document.getElementById("w_description").value = ""
+  document.getElementById("w_pick_image_size").value = ""
   // document.getElementById("wallclock_success_id").innerHTML = "Popholder Added Successfully !!!"
   
    uploadFile(wallclockid)
@@ -54,12 +54,46 @@ document.getElementById("p_price").value = ""
 // });
 
  function validatewallclock(){
-      let wallclock_name = document.getElementById("p_name").value
-   let wallclock_size = document.getElementById("p_size").value
-    let price = document.getElementById("p_price").value
-    let description = document.getElementById("p_description").value
-    let pick_image_size = document.getElementById("p_pick_image_size").value
+      let wallclock_name = document.getElementById("w_name").value
+   let wallclock_size = document.getElementById("w_size").value
+    let price = document.getElementById("w_price").value
+    let description = document.getElementById("w_description").value
+    let pick_image_size = document.getElementById("w_pick_image_size").value
     if(wallclock_name == "" || wallclock_size == "" || price == "" || description == "" || pick_image_size == "" ){
+       if (wallclock_name == "") {
+       // document.getElementById("mval_name_err").innerHTML = "Name is required"
+        document.getElementById("k_name").style.border = "1px solid red"
+      }
+      //  if (mug_volume == "") {
+      //   //document.getElementById("mval_volume_err").innerHTML = "Volume is required"
+      //   document.getElementById("m_volume").style.border = "1px solid red"
+      // }
+       if (price == "") {
+       // document.getElementById("mval_price_err").innerHTML = "Price is required"
+        document.getElementById("k_price").style.border = "1px solid red"
+      }
+       if (description == "") {
+       // document.getElementById("mval_description_err").innerHTML = "Description is required"
+        document.getElementById("k_description").style.border = "1px solid red"
+      }
+       if (pick_image_size == "") {
+       // document.getElementById("mval_pis_err").innerHTML = "Pick Image Size is required"
+        document.getElementById("k_pick_image_size").style.border = "1px solid red"
+      }
+       if (banner_image == "") {
+        document.getElementById("kval_bannerimage_err").innerHTML = "Banner image is required"
+        document.getElementById("bannerImage").style.border = "1px solid red"
+      }
+      else{
+        document.getElementById("kval_bannerimage_err").innerHTML = ""
+      }
+         if (inner_image == "") {
+        document.getElementById("kval_innerimage_err").innerHTML = "Inner image is required"
+        document.getElementById("innerImage").style.border = "1px solid red"
+      }
+      else{
+        document.getElementById("kval_innerimage_err").innerHTML = ""
+      }
       return false
     }
     else{

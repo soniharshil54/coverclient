@@ -36,6 +36,10 @@
     }
     }
 
+    #couple_shadow, #couple_overlay, #couple_mask{
+      display: none;
+    }
+
     #inexcategories{
       display: none;
     }
@@ -517,7 +521,7 @@
                                     <div class="col-sm-2">
                       <div class="form-group">
                         
-                          <select id="w_type" class="form-control custom-select">
+                          <select onchange="changewatchinputsbytype()" id="w_type" class="form-control custom-select">
                   
                 </select>
                       </div>
@@ -651,6 +655,69 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <input name="maskImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
+                      <!-- </form> -->
+                        
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                    </div>
+                  </div>
+                    </div><div class="col-sm-7"></div>
+                      </div>
+                    </div>
+
+                       <div id="couple_shadow" class="col-sm-12">
+                      <div class="row">
+                         <div class="col-sm-3">
+                        <label for="exampleInputFile">Shadow image 2</label>
+                    </div>
+                       <div class="col-sm-2">
+                      <div class="form-group">
+                   
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="shadowImage2" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
+                      <!-- </form> -->
+                        
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                    </div>
+                  </div>
+                    </div><div class="col-sm-7"></div>
+                      </div>
+                    </div>
+
+                       <div id="couple_overlay" class="col-sm-12">
+                      <div class="row">
+                         <div class="col-sm-3">
+                        <label for="exampleInputFile">Overlay image 2</label>
+                    </div>
+                       <div class="col-sm-2">
+                      <div class="form-group">
+                   
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="overlayImage2" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
+                      <!-- </form> -->
+                        
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                    </div>
+                  </div>
+                    </div><div class="col-sm-7"></div>
+                      </div>
+                    </div>
+
+                       <div id="couple_mask" class="col-sm-12">
+                      <div class="row">
+                         <div class="col-sm-3">
+                        <label for="exampleInputFile">Mask image 2</label>
+                    </div>
+                       <div class="col-sm-2">
+                      <div class="form-group">
+                   
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="maskImage2" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
                       </form>
                         
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>

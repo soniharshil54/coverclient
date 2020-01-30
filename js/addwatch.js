@@ -162,6 +162,27 @@ document.getElementById("w_price").value = ""
   }
 }
 
+ function changewatchinputsbytype(){
+  console.log("it sdsds")
+  let watch_type = document.getElementById("w_type").value
+  let watch_subtype = document.getElementById("w_subtype").value
+  console.log("it sdsds", watch_type)
+  //let inc_cat = $('#k_categories_inc').val();
+ // let ex_cat = $('#k_categories_ex').val();
+  //console.log(inc_cat)
+  //console.log(ex_cat)
+  if(watch_type === "5e300399f16db81e325b69c7"){
+    document.getElementById("couple_shadow").style.display = "block"
+     document.getElementById("couple_overlay").style.display = "block"
+     document.getElementById("couple_mask").style.display = "block"
+  }
+  else{
+      document.getElementById("couple_shadow").style.display = "none"
+     document.getElementById("couple_overlay").style.display = "none"
+     document.getElementById("couple_mask").style.display = "none"
+  }
+}
+
   function logOutUser(){
     localStorage.clear();
     window.location  =  "login.html";

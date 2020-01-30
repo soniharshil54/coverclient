@@ -176,31 +176,33 @@ function reportlogics(duration){
     let reportref = okreport.map(a => ({...a}))
     let totalsales = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
-              return dateref === d
+              console.log(dateref.getDate())
+              console.log(d.getDate())
+              return dateref.getDate() === d.getDate()
             }).map(a => a.amount).reduce((a,b) => a + b, 0  )
     let refundedamount = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
-              return dateref === d && a.order_status === "Refunded"
+              return dateref.getDate() === d.getDate() && a.order_status === "Refunded"
             }).map(a => a.amount).reduce((a,b) => a + b, 0  )
     let pendingamount = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
-              return dateref === d && a.order_status === "Pending Payment"
+              return dateref.getDate() === d.getDate() && a.order_status === "Pending Payment"
             }).map(a => a.amount).reduce((a,b) => a + b, 0  )
     let shippingcharge = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
-              return dateref === d
+              return dateref.getDate() === d.getDate()
             }).map(a => a.shipping).reduce((a,b) => a + b, 0  )
     let ordersplaced = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
-              return dateref === d
+              return dateref.getDate() === d.getDate()
             }).length
     let itemspurchased = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
-              return dateref === d
+              return dateref.getDate() === d.getDate()
             }).map(a =>  a.products.length).reduce((a,b) => a + b, 0)
     let couponamount = reportref.filter(a => {
          let dateref = new Date(a.date_ordered);
-         return dateref === d
+         return dateref.getDate() === d.getDate()
        }).map(a => {
         let amountconsole = a.coupon_amount ? a.coupon_amount : 0
         console.log("amount coupon", amountconsole)

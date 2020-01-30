@@ -76,6 +76,130 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
 
   }
 
+       function getwatchtypes(){
+    fetch(`http://${hosturl}:5600/api/watch/getallwatchtypes`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      let watchtypes = data.map(a => ({...a}));
+     // globalcompanies = globalcompaniesold.reverse()
+      // const watchtypes = data.map(type => type.name);
+      console.log(watchtypes)
+      //companylist(companies)
+      populateoption(watchtypes)
+     // CreateTableFromJSONcompany(data)
+    })
+    .catch(err => console.log(err))
+  }
+
+  getwatchtypes()
+
+     function populateoption(options){
+
+  var optionsd = ""
+  var optionsdx = ""
+  optionsd += '<option value="All"> All </option>'
+  for (var i = 0; i < options.length; i++) {
+   optionsd += '<option value="' + options[i]._id+ '">' + options[i].name + '</option>';
+
+ }
+ // optionsdx += '<option value="all">all</option>';
+ // for (var i = 0; i < options.length; i++) {
+ //   optionsdx += '<option value="' + options[i]+ '">' + options[i] + '</option>';
+
+ // }
+ $("#w_type_filter").html(optionsd);
+ // $("#sel_comp").html(optionsdx);
+ // $("#modal_option").html(optionsd);
+}
+
+    function filterwatchmaintypes(){
+    let filtertype = document.getElementById("w_type_filter").value
+
+    let filtersubtype = document.getElementById("w_subtype_filter").value
+    //let teststatus = okchains.map(a => ({...a}));
+    console.log("filtertype", filtertype)
+    console.log("filtersubtype", filtersubtype)
+
+    if(filtertype === "All" && filtersubtype === "All"){
+      getwatchsdatatable()
+    }
+    else{
+          if (filtertype === "All") {
+      filterbysubtype(filtersubtype)
+    }
+    else if(filtersubtype === "All") {
+      filterbytype(filtertype)
+    }
+    else {
+         filterbytypesubtype(filtertype, filtersubtype)
+    }
+    }
+
+
+
+  }
+
+  function filterbytype(filtertyperef){
+      fetch(`http://${hosturl}:5600/api/watch/getallwatchs`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+          let wmtypes = data.map(a => ({...a}));
+      //console.log(okchains)
+  let result = wmtypes.filter(i => {
+    console.log(i.type_id)
+    console.log(filtertyperef)
+    return i.type_id === filtertyperef}) ; 
+  console.log(result)
+  let nresult = JSON.stringify(result)
+  console.log(result)
+  getfilteredwatchsdatatable(result)
+    })
+    .catch(err => console.log(err))
+  }
+
+    function filterbysubtype(filtersubtyperef){
+      fetch(`http://${hosturl}:5600/api/watch/getallwatchs`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+          let wmtypes = data.map(a => ({...a}));
+      //console.log(okchains)
+  let result = wmtypes.filter(i => {
+    console.log(i)
+    return i.subtype_id === filtersubtyperef}) ; 
+  console.log(result)
+  let nresult = JSON.stringify(result)
+  console.log(result)
+  getfilteredwatchsdatatable(result)
+    })
+    .catch(err => console.log(err))
+  }
+
+      function filterbytypesubtype(filtertyperef ,filtersubtyperef){
+      fetch(`http://${hosturl}:5600/api/watch/getallwatchs`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+          let wmtypes = data.map(a => ({...a}));
+      //console.log(okchains)
+  let result = wmtypes.filter(i => {
+    console.log(i)
+    return i.type_id === filtertyperef && i.subtype_id === filtersubtyperef}) ; 
+  console.log(result)
+  let nresult = JSON.stringify(result)
+  console.log(result)
+  getfilteredwatchsdatatable(result)
+    })
+    .catch(err => console.log(err))
+  }
+
 
       function detailswatch(btnwatch){
     console.log(btnwatch)
@@ -329,6 +453,64 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
             "url" : `http://${hosturl}:5600/api/watch/getallwatchs`,
             dataSrc : ''
         },
+        "columns" : [ {
+            "data" : null
+        }, {
+            "data" : "name"
+            
+        },{
+            "data" : "maintype_name"
+            
+        },  {
+            "data" : "price"
+        },{
+            "data" : "create_date",
+            "visible":false
+        },{
+          "data": "_id",
+            "mRender": function(data, type) {
+             //return data
+              return `<button onclick="detailswatch(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailswatch" data-key="${data}">view</button>`;
+            }
+        },  {
+          "data": null,
+            "mRender": function(data, type) {
+             //return data
+             let outerbutton = ""
+             let statuslink = ""
+             if(data.available_status === 1){
+
+            outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            statuslink = `<a data-key=${data._id} onclick="deactivewatch(this)" class="dropdown-item">Inactive</a>`
+             }
+              else {
+             outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             statuslink = `<a data-key=${data._id} onclick="activewatch(this)"  class="dropdown-item">Active</a>`
+             }
+
+              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editwatchmodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
+            }
+        }, {
+          "data": "_id",
+            "mRender": function(data, type) {
+             
+              return `<input name="todelete" value=${data} type="checkbox">`;
+            }
+        }]
+      });
+    }
+
+          function getfilteredwatchsdatatable(newData){
+          let userTable = $('#example1').DataTable({
+            destroy: true,
+        "processing" : true,
+        "aaSorting": [[ 4, "desc" ]],
+          "rowCallback": function (nRow, aData, iDisplayIndex) {
+               var oSettings = this.fnSettings ();
+               $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+               return nRow;
+          },
+        "aaData" : newData,
         "columns" : [ {
             "data" : null
         }, {

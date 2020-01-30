@@ -497,7 +497,7 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <form name="images_4d" id="images_4d" enctype="multipart/form-data">
-                        <input name="slider_image" type="file" class="custom-file-input" id="productImage">
+                        <input name="slider_image" type="file" class="custom-file-input" id="sliderImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -555,11 +555,11 @@
                     </div>
                   </div> 
 
-                  <div style="margin-top: 10px" class="col-sm-8">
+                  <div style="margin-top: 10px" class="col-sm-6">
                    <button id="add_4d_phonecase" class="btn btn-success">Add 4D Model</button>
                  </div>
                  <div class="col-sm-4">
-
+                  <span style="color: red; font-weight: bold;" id="phonecase4d_val_err"></span>
                  </div> 
                  
                </div>
@@ -843,6 +843,13 @@
       let model_name = document.getElementById("k_4d_modelname").value
       // let company = document.getElementById("modal_4d_company").value
       let company = document.getElementById("k_4d_companyname").value
+      let validate4d = validate4dphonecase()
+      if(!validate4d){
+        console.log("in vaildate 4d")
+       document.getElementById("phonecase4d_val_err").innerHTML = "All the fields are required"
+        return false
+      }
+      console.log("validate4d", validate4d)
     //let inputfile = document.getElementById("productImage").files[0]
     let keydata = {
       model_name: model_name,
@@ -873,6 +880,20 @@
     .catch(function(res){ console.log(res) })
   });
   })
+
+  function validate4dphonecase(){
+      let slider_image = $("#bannerImage").val();
+    let cover_image = $("#innerImage").val();
+      let png_image = $("#bannerImage").val();
+    let inner_image = $("#innerImage").val();
+    let mask_image = $("#innerImage").val();
+    if (slider_image === "" || cover_image === "" || png_image === "" || inner_image === "" || mask_image === "" ) {
+      return false
+    }
+    else{
+      return true
+    }
+  }
 
       function uploadFile4d(productid){
         console.log("images 4d from browser")

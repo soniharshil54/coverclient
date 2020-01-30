@@ -13,48 +13,37 @@ function addmug(){
   window.location = "addmug.html";
 }
 
-function modalofferinputs(offer_type){
-  //let offer_type = document.getElementById("modal_offer_type").value
-  switch(offer_type) {
-  case 'flatdis':
-    document.getElementById("modal_flat_discount_div").style.display = "block"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("modal_free_shipping_div").style.display = "none"
-    document.getElementById("modal_first_time_div").style.display = "none"
-    document.getElementById("modal_buy_div").style.display = "none"
-    document.getElementById("modal_get_div").style.display = "none"
-    // code block
-    break;
-  case 'bogo':
-    document.getElementById("modal_flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = false
-    document.getElementById("modal_free_shipping_div").style.display = "none"
-    document.getElementById("modal_first_time_div").style.display = "none"
-    // document.getElementById("modal_buy_div").style.display = "block"
-    // document.getElementById("modal_get_div").style.display = "block"
-    // code block
-    break;
-  case 'freeshipping':
-    document.getElementById("modal_flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("modal_free_shipping_div").style.display = "block"
-    document.getElementById("modal_first_time_div").style.display = "none"
-    document.getElementById("modal_buy_div").style.display = "none"
-    document.getElementById("modal_get_div").style.display = "none"
-    // code block
-    break;
-  case 'firsttime':
-    document.getElementById("modal_flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("modal_free_shipping_div").style.display = "none"
-    document.getElementById("modal_first_time_div").style.display = "block"
-    document.getElementById("modal_buy_div").style.display = "none"
-    document.getElementById("modal_get_div").style.display = "none"
-    // code block
-    break;  
-  default:
-    // code block
-}
+        function filterbytype(){
+  console.log("filtering")
+  let filtype = document.getElementById("m_type_filter").value
+  //let teststatussta = okchains.map(a => ({...a}));
+  if(filtype === "All"){
+    //console.log(okchains)
+    getkeychainsdatatable()
+  }
+  else {
+
+
+      fetch(`http://${hosturl}:5600/api/mug/getallmugs`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+          let allmugs = data.map(a => ({...a}));
+      //console.log(okchains)
+  let result = allmugs.filter(i => {
+    console.log(i)
+    return i.type === filtype}) ; 
+  console.log(result)
+  let nresult = JSON.stringify(result)
+  console.log(result)
+  getfilteredmugsdatatable(result)
+    })
+    .catch(err => console.log(err))
+
+  
+  }
+
 }
 
 
@@ -433,6 +422,67 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
             "url" : `http://${hosturl}:5600/api/mug/getallmugs`,
             dataSrc : ''
         },
+        "columns" : [ {
+            "data" : null
+        }, {
+            "data" : "name"
+            
+        },{
+            "data" : "type"
+            
+        },{
+            "data" : "volume"
+            
+        },  {
+            "data" : "price"
+        },{
+            "data" : "create_date",
+            "visible":false
+        },{
+          "data": "_id",
+            "mRender": function(data, type) {
+             //return data
+              return `<button onclick="detailsmug(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailsmug" data-key="${data}">view</button>`;
+            }
+        },  {
+          "data": null,
+            "mRender": function(data, type) {
+             //return data
+             let outerbutton = ""
+             let statuslink = ""
+             if(data.available_status === 1){
+
+            outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            statuslink = `<a data-key=${data._id} onclick="deactivemug(this)" class="dropdown-item">Inactive</a>`
+             }
+              else {
+             outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             statuslink = `<a data-key=${data._id} onclick="activemug(this)"  class="dropdown-item">Active</a>`
+             }
+
+              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editmugmodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
+            }
+        }, {
+          "data": "_id",
+            "mRender": function(data, type) {
+             
+              return `<input name="todelete" value=${data} type="checkbox">`;
+            }
+        }]
+      });
+    }
+
+          function getfilteredmugsdatatable(newData){
+          let userTable = $('#example1').DataTable({
+            destroy: true,
+        "processing" : true,
+        "aaSorting": [[ 5, "desc" ]],
+          "rowCallback": function (nRow, aData, iDisplayIndex) {
+               var oSettings = this.fnSettings ();
+               $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+               return nRow;
+          },
+        "aaData" : newData,
         "columns" : [ {
             "data" : null
         }, {

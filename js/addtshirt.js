@@ -279,7 +279,7 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
   body: formData
 }).then(res => {
   console.log(res)
-  //window.location  =  "tshirtlist.html"
+  window.location  =  "tshirtlist.html"
   //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))

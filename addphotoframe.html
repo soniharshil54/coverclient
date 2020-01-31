@@ -25,6 +25,10 @@
       color: red
     }
 
+    /* #type_d_overlay, #type_d_mask {
+      display: none;
+     }*/
+
     @media (min-width: 576px){
     .modal-dialog {
       max-width: 550px;
@@ -36,10 +40,6 @@
       display: none;
     }
 
-/*    #type_d_overlay, #type_d_mask {
-      display: 
-    } 
-*/
      #free_shipping_div, #get_buy_div, #first_time_div {
       display: none;
     }
@@ -244,8 +244,7 @@
               </li>
             </ul>
           </li>
-
-             <li class="nav-item has-treeview menu-open">
+             <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-circle-notch"></i>
               <p>
@@ -269,7 +268,7 @@
               </li>
             </ul>
           </li>
-                             <li class="nav-item has-treeview">
+                     <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-mug-hot"></i>
               <p>
@@ -395,7 +394,7 @@
               </p>
             </a>
           </li>
-           <li class="nav-item has-treeview">
+           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-photo-video"></i>
               <p>
@@ -547,7 +546,7 @@
         <div class="col-md-12">
           <div class="card card-secondary">
             <div class="card-header">
-              <h3 id="productAddHeading" class="card-title">Add Keychain</h3>
+              <h3 id="productAddHeading" class="card-title">Add Photoframe</h3>
 
              <!--  <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -558,32 +557,35 @@
                 
                                 <div class="row"> 
                     <div class="col-sm-3">
-                       <label>Keychain Name</label>
+                       <label>Photoframe Name</label>
                     </div>
                     <div class="col-sm-3">
                       <!-- text input -->
                       <div class="form-group">
                        
-                        <input id="k_name" type="text" class="form-control" placeholder="Enter ...">
+                        <input id="p_name" type="text" class="form-control" placeholder="Enter ...">
                       </div>
                     </div><div class="col-sm-6"></div>
-
-                       <div class="col-sm-3"><label>Keychain Type</label></div>
+                    <div class="col-sm-3"><label>Photoframe Type</label></div>
                                     <div class="col-sm-2">
                       <div class="form-group">
                         
-                          <select onchange="changekeychaininputs()" id="k_type" class="form-control custom-select">
-                           <!--  <option value="CustomKeychain">Custom Keychain</option> -->
-                  <option value="RegularKeychain">Regular Keychain</option>
-                  <option value="EngravedKeychain">Engraved Keychain</option>
-                  <option value="LetterKeychain">Letter Keychain</option>
-                 <!--  <option value="EngravedKeychain">Engraved Keychain</option>
-                  <option value="LetterKeychain">Acrylic Letter Keychain</option> -->
+                          <select id="p_type" class="form-control custom-select">
+          
                   
                 </select>
                       </div>
                     </div> <div class="col-sm-7"></div>
-                     
+                      <div class="col-sm-3">
+                       <label>Photoframe Size</label>
+                    </div>
+                      <div class="col-sm-2">
+                      <!-- text input -->
+                      <div class="form-group">
+                        
+                        <input id="p_size" type="text" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div>  <div class="col-sm-7"></div>
                   
                 
                      
@@ -595,7 +597,7 @@
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                            
-                        <input id="k_price" type="number" class="form-control" placeholder="Enter ...">
+                        <input id="p_price" type="number" class="form-control" placeholder="Enter ...">
                         </div>
                         </div>
                       </div><div class="col-sm-7"></div>
@@ -607,7 +609,7 @@
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             
-                        <textarea id="k_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                        <textarea id="p_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
                         </div>
                         </div>
                       </div>
@@ -621,13 +623,13 @@
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             
-                        <input id="k_pick_image_size" type="text" class="form-control" placeholder="Enter ...">
+                        <input id="p_pick_image_size" type="text" class="form-control" placeholder="Enter ...">
                         </div>
                         </div>
                       </div><div class="col-sm-7"></div>
-                      <div class="col-sm-12">
-                        <div class="row">
-                           <div class="col-sm-3">
+
+
+                      <div class="col-sm-3">
                         <label for="exampleInputFile">Banner image</label>
                     </div>
                        <div class="col-sm-2">
@@ -635,37 +637,33 @@
                    
                     <div class="input-group">
                       <div class="custom-file">
-                        <form name="keychainImages" id="keychainImages" enctype="multipart/form-data">
+                        <form name="photoframeImages" id="photoframeImages" enctype="multipart/form-data">
                         <input name="hImage" id="bannerImage" type="file" class="custom-file-input" id="exampleInputFile">
                         
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
                   </div>
-                    </div><div class="col-sm-7"><span id="kval_bannerimage_err" style="font-weight: bold; color: red"></span></div>
-                        </div>
-                      </div>
+                    </div><div class="col-sm-7"><span id="pval_bannerimage_err" style="font-weight: bold; color: red"></span></div>
 
-                     
-
-                  <div class="col-sm-3">
-                        <label for="exampleInputFile">Inner image</label>
+                                          <div class="col-sm-3">
+                        <label for="exampleInputFile">Shadow image</label>
                     </div>
                        <div class="col-sm-2">
                       <div class="form-group">
                    
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="inImage" id="innerImage" type="file" class="custom-file-input" id="exampleInputFile">
+                        <input name="shadowImage" id="innerImage" type="file" class="custom-file-input" id="exampleInputFile">
                         
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                     </div>
                   </div>
-                    </div><div class="col-sm-7"><span id="kval_innerimage_err" style="font-weight: bold; color: red"></span></div>
+                    </div><div class="col-sm-7"><span id="pval_innerimage_err" style="font-weight: bold; color: red"></span></div>
                     <div id="type_d_overlay" class="col-sm-12">
                       <div class="row">
-                          <div class="col-sm-3">
+                        <div class="col-sm-3">
                         <label for="exampleInputFile">Overlay image</label>
                     </div>
                        <div class="col-sm-2">
@@ -683,7 +681,6 @@
                     </div><div class="col-sm-7"></div>
                       </div>
                     </div>
-                  
 
                     <div id="type_d_mask" class="col-sm-12">
                       <div class="row">
@@ -696,7 +693,7 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <input name="maskImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
-                      
+                      </form>
                         
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
@@ -704,7 +701,8 @@
                   </div>
                     </div><div class="col-sm-7"></div>
                       </div>
-                    </div></form>
+                    </div>
+                    
 
                                          
 
@@ -724,11 +722,11 @@
                    
                      <div class="col-sm-2"></div>
                     <div  class="col-sm-2">
-                       <input type="button" id="add_keychain" value="Add Keychain" class="btn btn-success float-right">
+                       <input type="button" id="add_photoframe" value="Add Photoframe" class="btn btn-success float-right">
                     
                     </div>    
                     <div class="col-sm-11">
-                        <span id="keychain_success_id" style="color: red; font-weight: bold;"></span>
+                        <span id="photoframe_success_id" style="color: red; font-weight: bold;"></span>
                     </div>   
                   </div>
                                        
@@ -879,7 +877,7 @@
 
 
 
-<script src="js/addkeychain.js?v=2"></script>
+<script src="js/addphotoframe.js?v=2"></script>
 
 <script type="text/javascript">
 

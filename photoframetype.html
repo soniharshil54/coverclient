@@ -15,12 +15,20 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <link rel="stylesheet" href="plugins/select2/css/select2.min.css">
 <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
   <link rel="stylesheet" href="dist/css/tagstyle.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <style type="text/css">
+
+
+
+    label {
+
+    }
+
     #testtr{
       color: red
     }
@@ -32,15 +40,7 @@
     }
     }
 
-    #inexcategories{
-      display: none;
-    }
-
-/*    #type_d_overlay, #type_d_mask {
-      display: 
-    } 
-*/
-     #free_shipping_div, #get_buy_div, #first_time_div {
+     #free_shipping_div, #buy_div, #get_div, #first_time_div {
       display: none;
     }
 
@@ -214,7 +214,7 @@
               </p>
             </a>
           </li>
-                     <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-mobile-alt"></i>
               <p>
@@ -244,8 +244,7 @@
               </li>
             </ul>
           </li>
-
-             <li class="nav-item has-treeview menu-open">
+             <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-circle-notch"></i>
               <p>
@@ -269,7 +268,7 @@
               </li>
             </ul>
           </li>
-                             <li class="nav-item has-treeview">
+                 <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-mug-hot"></i>
               <p>
@@ -346,7 +345,7 @@
                 </a>
               </li>
             </ul>
-          </li>
+          </li>   
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-tshirt"></i>
@@ -376,8 +375,7 @@
                 </a>
               </li>
             </ul>
-          </li>
-           <li class="nav-item has-treeview">
+          </li>        <li class="nav-item has-treeview">
             <a href="sipperbottlelist.html" class="nav-link">
               <i class="nav-icon fas fa-wine-bottle"></i>
               <p>
@@ -395,7 +393,7 @@
               </p>
             </a>
           </li>
-           <li class="nav-item has-treeview">
+           <li class="nav-item has-treeview menu-open">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-photo-video"></i>
               <p>
@@ -406,7 +404,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="photoframetype.html" class="nav-link">
+                <a href="photoframetype.html" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Photoframe Type List</p>
                 </a>
@@ -419,7 +417,7 @@
               </li>
             </ul>
           </li>
-               <li class="nav-item has-treeview">
+          <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-copy"></i>
               <p>
@@ -524,250 +522,126 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-<!--     <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Keychain</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Keychain</li>
-            </ol>
-          </div>
-        </div>
+    <div class="row">
+      <div class="col-md-12">
+              <div class="card card-secondary">
+          <div class="card-header">
+            <h3 class="card-title">Add Photoframe Type</h3>
+
+              </div>
+              <div class="card-body">
+               
+                <div class="row">
+                  
+                  <div class="col-sm-4">
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input id="pt_name" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+
+
+                  <div class="col-sm-4">
+                    <form name="photoframeTypeImage" id="photoframeTypeImage" enctype="multipart/form-data">
+                    <label for="exampleInputFile">Slider Image</label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                         
+                        <input name="sliderImage" type="file" class="custom-file-input" id="bannerImage">
+                      
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                    </div>
+                    </form> 
+                  </div>  
+
+                  <div class="col-sm-4">
+                      <span style="color: red; font-weight: bold;display: block;"> &nbsp;  &nbsp; </span>
+                   <span style="color: red; font-weight: bold;display: block;" id="photoframetypeval_banner"></span>
+                  </div> 
+
+                  <div style="margin-top: 10px" class="col-sm-8">
+                   <button id="add_photoframe_type" class="btn btn-success">Add Photoframe Type</button>
+                 </div>
+                 <div class="col-sm-4">
+                  
+                 </div> 
+                 
+               </div>
+             
+
+             </div>
       </div>
-    </section> -->
+    </div></div>
 
     <!-- Main content -->
-    <section style="margin-top: 120px" class="content">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card card-secondary">
-            <div class="card-header">
-              <h3 id="productAddHeading" class="card-title">Add Keychain</h3>
-
-             <!--  <div class="card-tools">
-                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                  <i class="fas fa-plus"></i></button>
-              </div> -->
-            </div>
-            <div class="card-body">
-                
-                                <div class="row"> 
-                    <div class="col-sm-3">
-                       <label>Keychain Name</label>
-                    </div>
-                    <div class="col-sm-3">
-                      <!-- text input -->
-                      <div class="form-group">
-                       
-                        <input id="k_name" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                    </div><div class="col-sm-6"></div>
-
-                       <div class="col-sm-3"><label>Keychain Type</label></div>
-                                    <div class="col-sm-2">
-                      <div class="form-group">
-                        
-                          <select onchange="changekeychaininputs()" id="k_type" class="form-control custom-select">
-                           <!--  <option value="CustomKeychain">Custom Keychain</option> -->
-                  <option value="RegularKeychain">Regular Keychain</option>
-                  <option value="EngravedKeychain">Engraved Keychain</option>
-                  <option value="LetterKeychain">Letter Keychain</option>
-                 <!--  <option value="EngravedKeychain">Engraved Keychain</option>
-                  <option value="LetterKeychain">Acrylic Letter Keychain</option> -->
-                  
-                </select>
-                      </div>
-                    </div> <div class="col-sm-7"></div>
-                     
-                  
-                
-                     
-                    
-                 <div class="col-sm-3">
-                        <label>Price</label>
-                    </div>
-                     <div class="col-sm-2">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                           
-                        <input id="k_price" type="number" class="form-control" placeholder="Enter ...">
-                        </div>
-                        </div>
-                      </div><div class="col-sm-7"></div>
-
-                                          <div class="col-sm-3">
-                       <label>Description</label>
-                    </div>
-                    <div class="col-sm-9">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            
-                        <textarea id="k_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
-                        </div>
-                        </div>
-                      </div>
-
-
-
-                      <div class="col-sm-3">
-                        <label>Pick Image Size</label>
-                    </div>
-                       <div class="col-sm-2">
-                   <div class="form-group">
-                        <div style="padding-left: 0" class="custom-control custom-checkbox">
-                            
-                        <input id="k_pick_image_size" type="text" class="form-control" placeholder="Enter ...">
-                        </div>
-                        </div>
-                      </div><div class="col-sm-7"></div>
-                      <div class="col-sm-12">
-                        <div class="row">
-                           <div class="col-sm-3">
-                        <label for="exampleInputFile">Banner image</label>
-                    </div>
-                       <div class="col-sm-2">
-                      <div class="form-group">
-                   
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <form name="keychainImages" id="keychainImages" enctype="multipart/form-data">
-                        <input name="hImage" id="bannerImage" type="file" class="custom-file-input" id="exampleInputFile">
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
-                  </div>
-                    </div><div class="col-sm-7"><span id="kval_bannerimage_err" style="font-weight: bold; color: red"></span></div>
-                        </div>
-                      </div>
-
-                     
-
+    <section style="margin-top: 10px" class="content">
+     
+      
+              <!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
                   <div class="col-sm-3">
-                        <label for="exampleInputFile">Inner image</label>
-                    </div>
-                       <div class="col-sm-2">
-                      <div class="form-group">
-                   
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input name="inImage" id="innerImage" type="file" class="custom-file-input" id="exampleInputFile">
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
+                     <h3 id="productShowHeading" class="card-title">Photoframe Type List</h3>
                   </div>
-                    </div><div class="col-sm-7"><span id="kval_innerimage_err" style="font-weight: bold; color: red"></span></div>
-                    <div id="type_d_overlay" class="col-sm-12">
-                      <div class="row">
-                          <div class="col-sm-3">
-                        <label for="exampleInputFile">Overlay image</label>
-                    </div>
-                       <div class="col-sm-2">
-                      <div class="form-group">
-                   
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input name="overlayImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
-                      
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
+                  <div class="col-sm-5"></div>
+                  <div class="col-sm-4">
                   </div>
-                    </div><div class="col-sm-7"></div>
-                      </div>
-                    </div>
+                </div>
+               
+ 
+                <div class="card-tools">
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Photoframe Type Name</th>
+                  <th>Photoframe Slider</th>
+                  <th style="display: none;">datetimehidden</th>
+                  <th>Action</th>  
                   
+                  <!-- <th>Date</th>
+                  <th>User Info</th>
+                  <th>Status</th> -->
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>No.</th>
+                  <th>Photoframe Type Name</th>
+                  <th>Photoframe Slider</th>
+                  <th style="display: none;">datetimehidden</th>
+                  <th>Action</th>    <!-- 
+                  <th>Date</th>
+                  <th>User Info</th>
+                  <th>Status</th> -->
+                  <!-- <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox3' value='option1'><label for='customCheckbox3' class='custom-control-label'></label></div></div></th> -->
+                </tr>
+                </tfoot>
+              </table>
+                
+              </div>
 
-                    <div id="type_d_mask" class="col-sm-12">
-                      <div class="row">
-                         <div class="col-sm-3">
-                        <label for="exampleInputFile">Mask image</label>
-                    </div>
-                       <div class="col-sm-2">
-                      <div class="form-group">
-                   
-                    <div class="input-group">
-                      <div class="custom-file">
-                        <input name="maskImage" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
-                      
-                        
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                    </div>
-                  </div>
-                    </div><div class="col-sm-7"></div>
-                      </div>
-                    </div></form>
-
-                                         
-
-          
-                    
-                  
-                     <!--  <div class="col-sm-4">
-                        <div class="form-group">
-                        <label>Size</label>
-                        <input id="k_size" type="text" class="form-control" placeholder="Enter ...">
-                      </div>
-                      </div> -->
-                  </div>
-                  
-                  
-                  <div class="row">
-                   
-                     <div class="col-sm-2"></div>
-                    <div  class="col-sm-2">
-                       <input type="button" id="add_keychain" value="Add Keychain" class="btn btn-success float-right">
-                    
-                    </div>    
-                    <div class="col-sm-11">
-                        <span id="keychain_success_id" style="color: red; font-weight: bold;"></span>
-                    </div>   
-                  </div>
-                                       
+              <!-- /.card-body -->
             </div>
-            <!-- /.card-body -->
+            <!-- /.card -->
           </div>
-          <!-- /.card -->
         </div>
-      </div>
-
-              <div class="modal" id="imageModalUploading">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: transparent;border: none">
-      
-        <!-- Modal Header -->
-        <!-- <div class="modal-header" style="">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-        </div> -->
-        
-        <!-- Modal body -->
-        <div class="modal-body" style="text-align: center;">
-          <!-- <h1>ello</h1> -->
-          <img style="max-width: 500px" id="imgModal" style="" src="images/uploading.gif">
-        </div>
-        
-        <!-- Modal footer -->
-        <!-- <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-        </div> -->
-        
-      </div>
-    </div>
-  </div>
-      
-          
+        <!-- /.row -->
         
     </section>
     <!-- /.content -->
-  </div>
+  
   <!-- /.content-wrapper -->
 
 <footer class="main-footer">
@@ -781,6 +655,156 @@
   <!-- /.control-sidebar -->
 </div>
 
+  <!-- The Modal -->
+  <div class="modal" id="imageModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="background-color: transparent;border: none">
+      
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <img style="max-width: 500px" id="imgModal" style="" src="images/3dloader.gif">
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+         <div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div style="margin-bottom: 30px" class="col-sm-12">
+              <span style="color: red; font-weight: bold;">Are you sure you want to delete selected records ??  If you delete these records, then all the subtypes and products of these types will be deleted permanently.</span>
+            </div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="form-group">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="deletephotoframetypes()" type="button" value="Confirm" class="btn btn-success float-right">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
+             </div>
+
+           </div> 
+         </div>
+       </div>
+
+       <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- ./wrapper -->
+ <!-- <h2>Modal Example</h2> -->
+  <!-- Button to Open the Modal -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button> -->
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog" style="max-width: 1050px">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header" style="">
+          <h4 id="productEditHeading" class="modal-title">Edit Photoframe Type</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="row">
+        <div class="col-md-12">
+          <div class="card card-secondary collapsed-card">
+            <!-- <div class="card-header">
+              <h3 class="card-title">Add Key chain</h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                  <i class="fas fa-plus"></i></button>
+              </div>
+            </div> -->
+            <div class="card-body" style="display: block">
+                
+                                <div class="row"> 
+                    <div class="col-sm-4">
+                      <!-- text input -->
+                       <input type="hidden" id="edit_pt_id" name="pt_edit_id" value="">
+                      <div class="form-group">
+                        <label>Photoframe Type Name</label>
+                        <input disabled type="text" id="edit_pt_name" class="form-control" placeholder="Enter ...">
+                      </div>
+                    </div> 
+                       <div class="col-sm-4">
+                        <form name="ptImageEdit" id="ptImageEdit" enctype="multipart/form-data">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">Slider image</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="edit_pt_slider_image" src="">
+                      <div class="custom-file">
+                        
+                        <input name="sliderImage" type="file" class="custom-file-input" id="exampleInputFile">
+                     
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                     <!--  <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div></form>
+                    </div> 
+                      <div class="col-sm-4">
+                      <input id="productEditBtn" onclick="editphotoframetype()" type="button" value="Edit Photoframe Type" class="btn btn-success float-right">
+                    </div> 
+                                  
+                   
+                        
+                  </div>
+                  
+               
+                    
+              
+                                       
+            </div>
+            <!-- /.card-body -->
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
 
   
 </div>
@@ -877,9 +901,7 @@
 
 
 
-
-
-<script src="js/addkeychain.js?v=2"></script>
+<script src="js/photoframetype.js?v=2"></script>
 
 <script type="text/javascript">
 

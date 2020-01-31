@@ -376,6 +376,38 @@ fetch(`http://${hosturl}:5600/api/tshirt/tmtaddimage/${tmtid}`, {
  // $("#sel_comp").html(optionsdx);
  // $("#modal_option").html(optionsd);
 }
+
+       function gettshirtsubtypes(){
+    fetch(`http://${hosturl}:5600/api/tshirt/getalltshirtsubtypes`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      let tshirtsubtypes = data.map(a => ({...a}));
+     // globalcompanies = globalcompaniesold.reverse()
+      // const tshirttypes = data.map(type => type.name);
+      console.log(tshirtsubtypes)
+      //companylist(companies)
+      populateoptionsub(tshirtsubtypes)
+     // CreateTableFromJSONcompany(data)
+    })
+    .catch(err => console.log(err))
+  }
+
+  gettshirtsubtypes()
+
+     function populateoptionsub(options){
+
+  var optionsd = ""
+  var optionsdx = ""
+  optionsd += '<option value="All"> All </option>'
+  for (var i = 0; i < options.length; i++) {
+   optionsd += '<option value="' + options[i]._id+ '">' + options[i].name + '</option>';
+
+ }
+ $("#w_subtype_filter").html(optionsd);
+}
 //random comments
         function gettmtypesdatatable(){
           let userTable = $('#example1').DataTable({

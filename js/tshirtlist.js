@@ -105,15 +105,41 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
    optionsd += '<option value="' + options[i]._id+ '">' + options[i].name + '</option>';
 
  }
- // optionsdx += '<option value="all">all</option>';
- // for (var i = 0; i < options.length; i++) {
- //   optionsdx += '<option value="' + options[i]+ '">' + options[i] + '</option>';
-
- // }
  $("#w_type_filter").html(optionsd);
- // $("#sel_comp").html(optionsdx);
- // $("#modal_option").html(optionsd);
 }
+
+       function gettshirtsubtypes(){
+    fetch(`http://${hosturl}:5600/api/tshirt/getalltshirtsubtypes`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      let tshirtsubtypes = data.map(a => ({...a}));
+     // globalcompanies = globalcompaniesold.reverse()
+      // const tshirttypes = data.map(type => type.name);
+      console.log(tshirtsubtypes)
+      //companylist(companies)
+      populateoptionsub(tshirtsubtypes)
+     // CreateTableFromJSONcompany(data)
+    })
+    .catch(err => console.log(err))
+  }
+
+  gettshirtsubtypes()
+
+     function populateoptionsub(options){
+
+  var optionsd = ""
+  var optionsdx = ""
+  optionsd += '<option value="All"> All </option>'
+  for (var i = 0; i < options.length; i++) {
+   optionsd += '<option value="' + options[i]._id+ '">' + options[i].name + '</option>';
+
+ }
+ $("#w_subtype_filter").html(optionsd);
+}
+
 
     function filtertshirtmaintypes(){
     let filtertype = document.getElementById("w_type_filter").value

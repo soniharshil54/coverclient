@@ -216,7 +216,7 @@
  // let ex_cat = $('#k_categories_ex').val();
   //console.log(inc_cat)
   //console.log(ex_cat)
-  if(tshirt_type === "5e33bf3a9d85110d0a44b964"){
+  if(tshirt_type === "5e33edbfabdd2f537529c7f1"){
     console.log("couple")
     document.getElementById("couple_tshirt_size").style.display = "block"
     document.getElementById("tshirtImages").style.display = "block"

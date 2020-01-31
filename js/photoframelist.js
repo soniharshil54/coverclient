@@ -334,7 +334,7 @@ fetch(`http://${hosturl}:5600/api/photoframe/addimage/${photoframeid}`, {
             "data" : "name"
             
         },{
-            "data" : "photoframe_type"
+            "data" : "photoframe_type_name"
             
         },  {
             "data" : "price"

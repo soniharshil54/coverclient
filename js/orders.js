@@ -38,12 +38,51 @@ $('#cart_p_c_image').on('click', function () {
     });
 });
 
+$('#cart_p_image_2').on('click', function () {
+    $.ajax({
+        url: `http://${hosturl}:5600/admin/uploads/${productGimagefull_2}`,
+        method: 'GET',
+        xhrFields: {
+            responseType: 'blob'
+        },
+        success: function (data) {
+            var a = document.createElement('a');
+            var url = window.URL.createObjectURL(data);
+            a.href = url;
+            a.download = productGimagefull_2;
+            document.body.append(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        }
+    });
+});
+
+$('#cart_p_c_image_2').on('click', function () {
+    $.ajax({
+        url: `http://${hosturl}:5600/admin/uploads/${productGimagecropped_2}`,
+        method: 'GET',
+        xhrFields: {
+            responseType: 'blob'
+        },
+        success: function (data) {
+            var a = document.createElement('a');
+            var url = window.URL.createObjectURL(data);
+            a.href = url;
+            a.download = productGimagecropped_2;
+            document.body.append(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        }
+    });
+});
+
 $('#cartProductModal').on('hidden.bs.modal', function () {
   console.log("it worked")
    document.getElementById("cart_p_image").src = `images/3dloader.gif`
         document.getElementById("cart_p_c_image").src = `images/3dloader.gif`
 
-    // do something…
 });
 
 
@@ -423,10 +462,19 @@ async function download() {
         document.getElementById("cart_p_size").innerHTML = result.size ? result.size : "N.A."
         document.getElementById("cart_p_quantity").innerHTML = result.quantity ? result.quantity : "N.A."
         document.getElementById("cart_p_covertype").innerHTML = result.cover_type ? result.cover_type : "N.A."
-        productGimagefull = result.image ? result.image : "noimage.png" 
-        productGimagecropped = result.cropped_image ? result.cropped_image : "noimage.png" 
-        document.getElementById("cart_p_image").src = `http://${hosturl}:5600/admin/uploads/${result.image}`
+        productGimagefull = result.image && result.image !== "na" && result.image !== "noimage.png" ? result.image : "noimg22.png" 
+        productGimagecropped = result.cropped_image && result.cropped_image !== "na" && result.cropped_image !== "noimage.png" ? result.cropped_image : "noimg22.png" 
+        productGimagefull_2 = result.image_2 && result.image_2 !== "noimage.png" ? result.image_2 : "noimg22.png" 
+        productGimagecropped_2 = result.cropped_image_2 && result.cropped_image_2 !== "noimage.png" ? result.cropped_image_2 : "noimg22.png" 
+        document.getElementById("cart_p_image").src = `http://${hosturl}:5600/admin/uploads/${productGimagefull}`
         document.getElementById("cart_p_c_image").src = `http://${hosturl}:5600/admin/uploads/${productGimagecropped}`
+        document.getElementById("cart_p_image_2").src = `http://${hosturl}:5600/admin/uploads/${productGimagefull_2}`
+        document.getElementById("cart_p_c_image_2").src = `http://${hosturl}:5600/admin/uploads/${productGimagecropped_2}`
+        //   document.getElementById("cart_p_image").src = `images/noimg22.png`
+        // document.getElementById("cart_p_c_image").src = `images/noimg22.png`
+        // document.getElementById("cart_p_image_2").src = `images/noimg22.png`
+        // document.getElementById("cart_p_c_image_2").src = `images/noimg22.png`
+
         // document.getElementById("cart_p_d_image").href = `http://${hosturl}:5600/admin/uploads/${result.image}`
         // document.getElementById("cart_p_d_image").download= `http://${hosturl}:5600/admin/uploads/${result.image}`
         $('#cartProductModal').modal('show');

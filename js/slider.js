@@ -110,6 +110,26 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
 
   }
 
+//   $('.imgDownload').on('click', function () {
+//     $.ajax({
+//         url: this.src,
+//         method: 'GET',
+//         xhrFields: {
+//             responseType: 'blob'
+//         },
+//         success: function (data) {
+//             var a = document.createElement('a');
+//             var url = window.URL.createObjectURL(data);
+//             a.href = url;
+//             a.download = this.getAttribute("data-download");
+//             document.body.append(a);
+//             a.click();
+//             a.remove();
+//             window.URL.revokeObjectURL(url);
+//         }
+//     });
+// });
+
 
   function activeslider(activebtn){
     let sliderref = activebtn.getAttribute("data-key")

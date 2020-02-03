@@ -26,6 +26,15 @@
       document.getElementById("modal_s_name").value = secondarychains[arrayn].product_name
       document.getElementById("modal_s_product_name").value = secondarychains[arrayn].product_name
       document.getElementById("modal_s_id").value = secondarychains[arrayn]._id
+      if (secondarychains[arrayn].slider_name === "mainbanner") {
+        document.getElementById("image_size_suggest").innerHTML = "Size : 720x380"
+      }
+      else if (secondarychains[arrayn].slider_name === "mainofferbanner") {
+        document.getElementById("image_size_suggest").innerHTML = "Size : 720x270"
+      }
+      else {
+        document.getElementById("image_size_suggest").innerHTML = "Size : 720x324"
+      }
       //console.log(document.getElementById("modal_id").value)
       let slider_image = secondarychains[arrayn].slider_image
       document.getElementById("modal_s_slider_image").src = `http://${hosturl}:5600/admin/uploads/${slider_image}`

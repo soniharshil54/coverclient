@@ -40,6 +40,10 @@
     }
     }
 
+      #shadow_image_edit_2, #mask_image_edit_2, #overlay_image_edit_2 {
+      display: none;
+    }
+
      #free_shipping_div, #buy_div, #get_div, #first_time_div {
       display: none;
     }
@@ -660,7 +664,7 @@
 
   <!-- The Modal -->
   <div class="modal" id="imageModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="">
       <div class="modal-content" style="background-color: transparent;border: none">
       
         <!-- Modal Header -->
@@ -693,7 +697,7 @@
   </button> -->
   <!-- The Modal -->
   <div class="modal" id="myModal">
-    <div class="modal-dialog">
+    <div class="modal-dialog" style="max-width: 850px">
       <div class="modal-content">
       
         <!-- Modal Header -->
@@ -721,7 +725,7 @@
                                   <div class="col-sm-12">
                                     <h3><input disabled="" type="text" id="edit_p_type" class="form-control" placeholder="Enter ..."></h3>
                                   </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                       <!-- text input -->
                        <input type="hidden" id="edit_p_id" name="modal_id" value="">
                       <div class="form-group">
@@ -729,7 +733,7 @@
                         <input type="text" id="edit_p_name" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                       <div class="col-sm-4">
+                       <div class="col-sm-3">
                       <!-- text input -->
                        <input type="hidden" id="modal_id" name="modal_id" value="">
                       <div class="form-group">
@@ -737,18 +741,18 @@
                         <input type="text" id="edit_p_size" class="form-control" placeholder="Enter ...">
                       </div>
                     </div>
-                    <div class="col-sm-4">
+                    <div class="col-sm-3">
                       <div class="form-group">
                         <label>Price</label>
                         <input type="number" id="edit_p_price" class="form-control" placeholder="Enter ...">
                       </div>
-                    </div>                    <div class="col-sm-6">
+                    </div>                    <div class="col-sm-3">
                                         <div class="form-group">
                     <label for="exampleInputFile">Banner image</label>
                     <div class="input-group">
                       <img width="38px" height="38px" id="edit_p_h_image" src="">
                       <div class="custom-file">
-                         <form name="watchImagesEdit" id="watchImagesEdit" enctype="multipart/form-data">
+                         <!-- <form name="watchImagesEdit" id="watchImagesEdit" enctype="multipart/form-data"> -->
                         <input name="hImage" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
@@ -758,7 +762,8 @@
                     </div>
                   </div>
                     </div>
-                    <div class="col-sm-6">
+
+                    <div class="col-sm-4">
                                         <div class="form-group">
                     <label for="exampleInputFile">shadow image</label>
                     <div class="input-group">
@@ -775,7 +780,7 @@
                   </div>
 
                     </div>
-                     <div class="col-sm-6">
+                     <div class="col-sm-4">
                                         <div class="form-group">
                     <label for="exampleInputFile">overlay image</label>
                     <div class="input-group">
@@ -792,14 +797,14 @@
                   </div>
                   
                     </div>
-                          <div class="col-sm-6">
+                          <div class="col-sm-4">
                                         <div class="form-group">
                     <label for="exampleInputFile">mask image</label>
                     <div class="input-group">
                       <img width="38px" height="38px" id="edit_p_mask_image" src="">
                       <div class="custom-file">
                         <input name="maskImage" type="file" class="custom-file-input" id="exampleInputFile">
-                     </form>
+                     
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                      <!--  <div class="input-group-append">
@@ -809,13 +814,65 @@
                   </div>
                   
                     </div>
+                        <div id="shadow_image_edit_2" class="col-sm-4">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">shadow image 2</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="edit_p_shadow_image" src="">
+                      <div class="custom-file">
+                        <input name="shadowImage2" type="file" class="custom-file-input" id="exampleInputFile">
+                     
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                     <!--  <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+
+                    </div>
+                     <div id="overlay_image_edit_2" class="col-sm-4">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">overlay image 2</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="edit_p_overlay_image" src="">
+                      <div class="custom-file">
+                        <input name="overlayImage2" type="file" class="custom-file-input" id="exampleInputFile">
+                     
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                     <!--  <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                  
+                    </div>
+                          <div id="mask_image_edit_2" class="col-sm-4">
+                                        <div class="form-group">
+                    <label for="exampleInputFile">mask image 2</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="edit_p_mask_image" src="">
+                      <div class="custom-file">
+                        <input name="maskImage2" type="file" class="custom-file-input" id="exampleInputFile">
+                     
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                     <!--  <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>
+                  
+                    </div>
+                    <!-- <div></div> -->
                   </div>
                   <div class="row">
                     <div class="col-sm-8">
                    <div class="form-group">
                         <div style="padding-left: 0" class="custom-control custom-checkbox">
                             <label>Description</label>
-                         <textarea id="edit_p_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> 
+                         <textarea id="edit_p_description" type="textarea" class="form-control" placeholder="Enter ..."></textarea> <!-- </form> -->
                         </div>
                         </div>
                       </div>

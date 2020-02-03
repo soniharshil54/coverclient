@@ -899,8 +899,8 @@
       let company = document.getElementById("k_4d_companyname").value
       let validate4d = validate4dphonecase()
       if(!validate4d){
-        console.log("in vaildate 4d")
-       document.getElementById("phonecase4d_val_err").innerHTML = "All the fields are required"
+        // console.log("in vaildate 4d")
+       // document.getElementById("phonecase4d_val_err").innerHTML = "All the fields are required"
         return false
       }
       console.log("validate4d", validate4d)
@@ -936,12 +936,14 @@
   })
 
   function validate4dphonecase(){
+    console.log("validating 4d")
       let slider_image = $("#bannerImage").val();
     let cover_image = $("#innerImage").val();
       let png_image = $("#bannerImage").val();
     let inner_image = $("#innerImage").val();
     let mask_image = $("#innerImage").val();
     if (slider_image === "" || cover_image === "" || png_image === "" || inner_image === "" || mask_image === "" ) {
+      console.log("should reaturn false")
       return false
     }
     else{

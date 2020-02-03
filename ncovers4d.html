@@ -568,7 +568,7 @@
                     <label for="exampleInputFile">4d image cover <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="header_image" type="file" class="custom-file-input" id="productImage">
+                        <input name="header_image" type="file" class="custom-file-input" id="coverImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -580,7 +580,7 @@
                     <label for="exampleInputFile">4d image png <span style="color: #ed2939; font-weight: bold;">(Size : 249x140)</span></label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="png_image" type="file" class="custom-file-input">
+                        <input name="png_image" type="file" class="custom-file-input" id="pngImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -592,7 +592,7 @@
                     <label for="exampleInputFile">4d image inner <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="inner_image" type="file" class="custom-file-input">
+                        <input name="inner_image" type="file" class="custom-file-input" id="innerImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
@@ -604,7 +604,7 @@
                     <label for="exampleInputFile">4d image mask <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <input name="mask_image" type="file" class="custom-file-input">
+                        <input name="mask_image" type="file" class="custom-file-input" id="maskImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                         </form>
                       </div>
@@ -614,10 +614,11 @@
                     </div>
                   </div> 
 
-                  <div style="margin-top: 10px" class="col-sm-6">
+                  <div style="margin-top: 10px" class="col-sm-2">
                    <button id="add_4d_phonecase" class="btn btn-success">Add 4D Model</button>
                  </div>
-                 <div class="col-sm-4">
+                 <div class="col-sm-10">
+                  <p>&nbsp;</p>
                   <span style="color: red; font-weight: bold;" id="phonecase4d_val_err"></span>
                  </div> 
                  
@@ -904,9 +905,13 @@
       let company = document.getElementById("k_4d_companyname").value
       let validate4d = validate4dphonecase()
       if(!validate4d){
-        // console.log("in vaildate 4d")
-       // document.getElementById("phonecase4d_val_err").innerHTML = "All the fields are required"
+        console.log("in vaildate 4d")
+       document.getElementById("phonecase4d_val_err").innerHTML = "All the images are required"
         return false
+      }
+      else{
+        console.log("in vaildate 4d else")
+          document.getElementById("phonecase4d_val_err").innerHTML = ""
       }
       console.log("validate4d", validate4d)
     //let inputfile = document.getElementById("productImage").files[0]
@@ -943,10 +948,10 @@
   function validate4dphonecase(){
     console.log("validating 4d")
       let slider_image = $("#bannerImage").val();
-    let cover_image = $("#innerImage").val();
-      let png_image = $("#bannerImage").val();
+    let cover_image = $("#coverImage").val();
+      let png_image = $("#pngImage").val();
     let inner_image = $("#innerImage").val();
-    let mask_image = $("#innerImage").val();
+    let mask_image = $("#maskImage").val();
     if (slider_image === "" || cover_image === "" || png_image === "" || inner_image === "" || mask_image === "" ) {
       console.log("should reaturn false")
       return false

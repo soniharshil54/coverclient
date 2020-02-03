@@ -228,6 +228,25 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
     document.getElementById("image_details_shadow").src = shadowimagewatchsrc
     document.getElementById("image_details_overlay").src = overlayimagesrc
     document.getElementById("image_details_mask").src = maskimagesrc
+         
+
+      if(data.maintype_id === "5e300399f16db81e325b69c8"){
+         let shadowimagewatch2 = data.shadow_image_2
+    let shadowimagewatchsrc2 = `http://${hosturl}:5600/admin/uploads/${shadowimagewatch2}`
+    let overlayimagewatch2 = data.overlay_image_2
+    let overlayimagesrc2 = `http://${hosturl}:5600/admin/uploads/${overlayimagewatch2}`
+    let maskimagewatch2 = data.mask_image_2
+    let maskimagesrc2 = `http://${hosturl}:5600/admin/uploads/${maskimagewatch2}`
+        document.getElementById("image_details_shadow_2").src = shadowimagewatchsrc2
+        document.getElementById("image_details_overlay_2").src = overlayimagesrc2
+        document.getElementById("image_details_mask_2").src = maskimagesrc2
+        document.getElementById("watch_details_couple_lady").style.display = "table-row"
+       }
+       else {
+        document.getElementById("watch_details_couple_lady").style.display = "none"
+       }
+
+
 
       })
       .catch(err => console.log(err))
@@ -289,6 +308,24 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
       document.getElementById("edit_p_overlay_image").src = `http://${hosturl}:5600/admin/uploads/${overlayimage}`
       let maskimage = data.mask_image
       document.getElementById("edit_p_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
+
+       let shadowimage2 = data.shadow_image_2
+      document.getElementById("edit_p_shadow_image_2").src = `http://${hosturl}:5600/admin/uploads/${shadowimage2}`
+       let overlayimage2 = data.overlay_image_2
+      document.getElementById("edit_p_overlay_image_2").src = `http://${hosturl}:5600/admin/uploads/${overlayimage2}`
+      let maskimage2 = data.mask_image_2
+      document.getElementById("edit_p_mask_image_2").src = `http://${hosturl}:5600/admin/uploads/${maskimage2}`
+       if(data.maintype_id === "5e300399f16db81e325b69c8"){
+        document.getElementById("shadow_image_edit_2").style.display = "block"
+        document.getElementById("overlay_image_edit_2").style.display = "block"
+        document.getElementById("mask_image_edit_2").style.display = "block"
+       }
+       else {
+        document.getElementById("shadow_image_edit_2").style.display = "none"
+        document.getElementById("overlay_image_edit_2").style.display = "none"
+        document.getElementById("mask_image_edit_2").style.display = "none"
+       }
+
        $("#myModal").modal('show')
 
       })

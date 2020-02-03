@@ -393,13 +393,13 @@ fetch(`http://${hosturl}:5600/api/watch/wtaddimage/${wtid}`, {
               return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editwatchtypemodal(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
             }
         }
-        , {
-          "data": "_id",
-            "mRender": function(data, type) {
+        // , {
+        //   "data": "_id",
+        //     "mRender": function(data, type) {
              
-              return `<input name="todelete" value=${data} type="checkbox">`;
-            }
-        }
+        //       return `<input name="todelete" value=${data} type="checkbox">`;
+        //     }
+        // }
         ]
       });
     }

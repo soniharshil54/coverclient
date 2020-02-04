@@ -38,7 +38,15 @@ function addphotoframe(){
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+       let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("photoframe_list_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("photoframe_list_notif").style.color = "red"
+        document.getElementById("photoframe_list_notif").innerHTML = "Select atleast one photoframe !!!"
+      }
   } 
 
 
@@ -69,6 +77,8 @@ fetch(`http://${hosturl}:5600/api/photoframe/addimage/${photoframeid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+  document.getElementById("photoframe_list_notif").style.color = "green"
+        document.getElementById("photoframe_list_notif").innerHTML = "photoframe edited successfully !!!"
   getphotoframesdatatable()
   //document.getElementById("photoframesuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
@@ -128,6 +138,8 @@ fetch(`http://${hosturl}:5600/api/photoframe/addimage/${photoframeid}`, {
           })
           .then(function(res){ 
             $("#deleteModal").modal("hide");
+              document.getElementById("photoframe_list_notif").style.color = "red"
+            document.getElementById("photoframe_list_notif").innerHTML = "Selected photoframes deleted successfully !!!"
             getphotoframesdatatable()
             //getoffers() 
           })

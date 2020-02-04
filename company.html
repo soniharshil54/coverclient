@@ -538,7 +538,7 @@
               </div>
               <div class="card-body">
                 <div class="row">
-                 <div class="col-sm-6">
+                 <div class="col-sm-4">
                   <div style="width: 300px;margin-bottom: 20px; height: 30px" class="input-group input-group-sm">
                     <input id = "company_name" type="text" class="form-control">
                     <span class="input-group-append">
@@ -546,8 +546,11 @@
                     </span>
                   </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                   <span id="company_notif" style="color: green; font-weight: bold"></span>
+                </div>
+                <div class="col-sm-4">
+                 
                 </div>
               <!--  <div class="col-sm-6">
                   <button style="float: right;" onclick='deletecompanies()' class='btn btn-danger'>Delete Selected</button>
@@ -870,6 +873,9 @@
              </div>
 
            </div> 
+           <div class="col-sm-12">
+             <span id="edit_company_error" style="color: red; font-weight: bold;"></span>
+           </div>
          </div>
        </div>
 
@@ -1492,6 +1498,13 @@ function populateoption(options){
 function add_company(){
   console.log("func")
   let companyname = document.getElementById("company_name").value
+  let companyexists = validatecompany(companyname)
+  if(companyexists){
+    console.log("validated false", companyexists)
+    document.getElementById("company_notif").style.color = 'red'
+    document.getElementById("company_notif").innerHTML = `"${companyname}" company already exists !!!`
+    return false
+  }
   let comp_data = {
     "company_name" : companyname
   }
@@ -1505,10 +1518,21 @@ function add_company(){
     return response.json();
   }).then(function(data) {
     console.log(data.company.name)
+    document.getElementById("company_notif").style.color = 'green'
     document.getElementById("company_notif").innerHTML = `Company "${data.company.name}" Added Successfully!!!`
     document.getElementById("company_name").value = ""
     getcompanies()
   });
+}
+
+
+function validatecompany(compname){
+  console.log("validating function")
+  let companyarray = globalcompanies.map(company => company.name)
+ let compexists = companyarray.indexOf(compname) > -1
+ console.log("comparray", companyarray)
+ console.log("compexists", compexists)
+  return compexists
 }
 
 </script>
@@ -1541,7 +1565,16 @@ function add_company(){
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+       let todeleteidsref = printCheckedCompanies()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("company_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("company_notif").style.color = "red"
+        document.getElementById("company_notif").innerHTML = "Select atleast one company !!!"
+      }
+    
   }
   
 
@@ -1555,6 +1588,7 @@ function add_company(){
       let globalcompaniesold = data.map(a => ({...a}));
       globalcompanies = globalcompaniesold.reverse()
       const companies = data.map(comp => comp.name);
+      globalcompaniesarray = companies
       console.log(companies)
       //companylist(companies)
       populateoption(companies)
@@ -1581,7 +1615,8 @@ function add_company(){
     })
     .then(function(res){ 
       $("#deleteModal").modal("hide");
-      document.getElementById("company_notif")
+       document.getElementById("company_notif").style.color = 'red'
+    document.getElementById("company_notif").innerHTML = `selected companies deleted Successfully !!!`
       getcompanies() 
     })
     .catch(function(res){ console.log(res) })
@@ -1768,6 +1803,12 @@ function add_company(){
     let name = document.getElementById("c_name").value
     let keyid = document.getElementById("c_id").value
     let oldname = document.getElementById("c_old_name").value
+let companyexists = validatecompany(name)
+     if(companyexists){
+    console.log("validated false", companyexists)
+    document.getElementById("edit_company_error").innerHTML = `"${name}" company already exists !!!`
+    return false
+  }
     //console.log("avail status", avail_status)
     //let available_status = avail_status ? 1 : 0
     let keditdata = {
@@ -1788,6 +1829,7 @@ function add_company(){
     })
     .then(function(res){ 
             //uploadFileEdit(keyid)
+             document.getElementById("edit_company_error").innerHTML = ""
             getcompanies()
             getproducts()
             $("#compModal").modal("hide");

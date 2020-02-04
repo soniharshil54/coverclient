@@ -38,7 +38,15 @@ function addwatch(){
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+     let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("watch_list_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("watch_list_notif").style.color = "red"
+        document.getElementById("watch_list_notif").innerHTML = "Select atleast one watch !!!"
+      }
   } 
 
 
@@ -271,6 +279,8 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
           })
           .then(function(res){ 
             $("#deleteModal").modal("hide");
+              document.getElementById("watch_list_notif").style.color = "red"
+            document.getElementById("watch_list_notif").innerHTML = "Selected watches deleted successfully !!!"
             getwatchsdatatable()
             //getoffers() 
           })

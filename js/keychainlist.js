@@ -54,7 +54,15 @@ function modalkctypeinputs(offer_type){
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+        let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("keychain_list_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("keychain_list_notif").style.color = "red"
+        document.getElementById("keychain_list_notif").innerHTML = "Select atleast one keychain !!!"
+      }
   } 
 
 
@@ -85,6 +93,8 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+  document.getElementById("keychain_list_notif").style.color = "green"
+        document.getElementById("keychain_list_notif").innerHTML = "Keychain edited successfully !!!"
   getkeychainsdatatable()
   //document.getElementById("keychainsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
@@ -238,6 +248,8 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
           })
           .then(function(res){ 
             $("#deleteModal").modal("hide");
+            document.getElementById("keychain_list_notif").style.color = "red"
+            document.getElementById("keychain_list_notif").innerHTML = "Selected keychains deleted successfully !!!"
             getkeychainsdatatable()
             //getoffers() 
           })

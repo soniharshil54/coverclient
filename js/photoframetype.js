@@ -3,6 +3,19 @@
     console.log("add_photoframe_type")
     //let addpropara = globalProduct
     let pt_name = document.getElementById("pt_name").value
+
+     let photoframeexists = validateaddphotoframetypeexists(pt_name)
+  if(photoframeexists){
+    console.log("validated false", photoframeexists)
+    document.getElementById("photoframetype_notif").style.color = 'red'
+    document.getElementById("photoframetype_notif").innerHTML = `"${pt_name}" photoframe type already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("photoframetype_notif").innerHTML = ""
+  }
+
       let validatemform = validateaddphotoframetypeform()
     if(!validatemform){
       //document.getElementById("mug_success_id").innerHTML = ""
@@ -41,6 +54,16 @@
 .catch(function(res){ console.log(res) })
         });
 })
+
+
+ function validateaddphotoframetypeexists(pptypename){
+  console.log("validating function")
+  let photoframetypearray = globalphotoframetypes.map(photoframetype => photoframetype.name)
+ let pptypeexists = photoframetypearray.indexOf(pptypename) > -1
+ console.log("photoframearray", photoframetypearray)
+ console.log("photoframeexists", pptypeexists)
+  return pptypeexists
+}
 
    function validateaddphotoframetypeform(){
     let type_name = document.getElementById("pt_name").value
@@ -126,7 +149,15 @@ $('input').blur(function(){
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+       let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("photoframetype_list_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("photoframetype_list_notif").style.color = "red"
+        document.getElementById("photoframetype_list_notif").innerHTML = "Select atleast one photoframe type !!!"
+      }
   }
 
 
@@ -146,16 +177,7 @@ $('input').blur(function(){
             body: JSON.stringify(ceditdata)
           })
           .then(function(res){ 
-            //let btnstatus = activebtn.previousSibling
-             //let btnstatus2 = activebtn.previousSibling
-            //let btnstatus = $(activebtn[0]).parent().find('button')
-           // let btnstatus = $(activebtn[0]).closest('button')
-            //console.log(btnstatus)
-           // setTimeout(timeout(activebtn), 5000)
-          //  btnstatus.html("Active")
-            // console.log(res)
-           // uploadFileEdit(keyid)
-           // getoffers()
+
            getptypesdatatable()
            // $("#myModal").modal("hide");
  
@@ -206,6 +228,26 @@ $('input').blur(function(){
     localStorage.clear();
     window.location  =  "login.html";
   }
+
+
+    function getphotoframetypes(){
+    fetch(`http://${hosturl}:5600/api/photoframe/getallphotoframetypes`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      let globalphotoframetypesold = data.map(a => ({...a}));
+      globalphotoframetypes = globalphotoframetypesold.reverse()
+      const photoframetypes = data.map(comp => comp.name);
+      globalphotoframetypesarray = photoframetypes
+      console.log(photoframetypes)
+      //companylist(companies)
+    })
+    .catch(err => console.log(err))
+  }
+
+  getphotoframetypes()
 
 
     function editphotoframetypemodal(test){

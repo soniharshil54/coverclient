@@ -554,10 +554,13 @@
             <div class="card">
               <div class="card-header">
                 <div class="row">
-                  <div class="col-sm-3">
+                  <div class="col-sm-2">
                      <h3 id="productShowHeading" class="card-title">Watch List</h3>
                   </div>
-                  <div class="col-sm-3">
+                  <div class="col-sm-4">
+                    <span id="watch_list_notif" style="font-weight: bold;"></span>
+                  </div>  
+                  <div class="col-sm-2">
                     <div class="form-group">
                         
                           <select onchange="filterwatchmaintypes()" id="w_type_filter" class="form-control custom-select">
@@ -565,7 +568,7 @@
                 </select>
                       </div>
                   </div>
-                  <div class="col-sm-3">
+                  <div class="col-sm-2">
                      <div class="form-group">
                         
                           <select onchange="filterwatchmaintypes()" id="w_subtype_filter" class="form-control custom-select">
@@ -579,15 +582,8 @@
                 </select>
                       </div>
                   </div>
-                  <!-- <div class="col-sm-5">
-                       <ul style="" class="list-group list-group-horizontal">
-                  <li style="padding: 5px 10px " onclick="paginatortest(1,2)" class="list-group-item">1</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(2,2)" class="list-group-item">2</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(3,2)" class="list-group-item">3</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(4,2)" class="list-group-item">4</li>
-                </ul>
-                  </div> -->
-                  <div class="col-sm-3">
+                
+                  <div class="col-sm-2">
                      <h3 class="card-title" style="float: right"><button onclick="addwatch()" class="btn btn-success">Add Watch</button></h3>
                   </div>
                 </div>

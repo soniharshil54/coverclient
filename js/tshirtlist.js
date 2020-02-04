@@ -38,7 +38,15 @@ function addtshirt(){
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+     let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("tshirt_list_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("tshirt_list_notif").style.color = "red"
+        document.getElementById("tshirt_list_notif").innerHTML = "Select atleast one tshirt !!!"
+      }
   } 
 
 
@@ -69,6 +77,8 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+    document.getElementById("tshirt_list_notif").style.color = "green"
+        document.getElementById("tshirt_list_notif").innerHTML = "tshirt edited successfully !!!"
   gettshirtsdatatable()
   //document.getElementById("tshirtsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
@@ -278,6 +288,8 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
           })
           .then(function(res){ 
             $("#deleteModal").modal("hide");
+              document.getElementById("tshirt_list_notif").style.color = "red"
+            document.getElementById("tshirt_list_notif").innerHTML = "Selected tshirts deleted successfully !!!"
             gettshirtsdatatable()
             //getoffers() 
           })

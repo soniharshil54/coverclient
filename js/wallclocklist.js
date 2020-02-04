@@ -38,7 +38,15 @@ function addwallclock(){
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+      let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("wallclock_list_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("wallclock_list_notif").style.color = "red"
+        document.getElementById("wallclock_list_notif").innerHTML = "Select atleast one wallclock !!!"
+      }
   } 
 
 
@@ -69,6 +77,8 @@ fetch(`http://${hosturl}:5600/api/wallclock/addimage/${wallclockid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+   document.getElementById("wallclock_list_notif").style.color = "green"
+        document.getElementById("wallclock_list_notif").innerHTML = "wallclock edited successfully !!!"
   getwallclocksdatatable()
   //document.getElementById("wallclocksuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
@@ -128,6 +138,8 @@ fetch(`http://${hosturl}:5600/api/wallclock/addimage/${wallclockid}`, {
           })
           .then(function(res){ 
             $("#deleteModal").modal("hide");
+              document.getElementById("wallclock_list_notif").style.color = "red"
+            document.getElementById("wallclock_list_notif").innerHTML = "Selected wallclocks deleted successfully !!!"
             getwallclocksdatatable()
             //getoffers() 
           })

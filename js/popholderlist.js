@@ -38,7 +38,16 @@ function addpopholder(){
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+        let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("popholder_list_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("popholder_list_notif").style.color = "red"
+        document.getElementById("popholder_list_notif").innerHTML = "Select atleast one popholder !!!"
+      }
+   
   } 
 
 
@@ -69,6 +78,8 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+   document.getElementById("popholder_list_notif").style.color = "green"
+        document.getElementById("popholder_list_notif").innerHTML = "popholder edited successfully !!!"
   getpopholdersdatatable()
   //document.getElementById("popholdersuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
@@ -128,6 +139,8 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
           })
           .then(function(res){ 
             $("#deleteModal").modal("hide");
+              document.getElementById("popholder_list_notif").style.color = "red"
+            document.getElementById("popholder_list_notif").innerHTML = "Selected popholders deleted successfully !!!"
             getpopholdersdatatable()
             //getoffers() 
           })

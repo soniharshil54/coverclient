@@ -82,7 +82,15 @@ function modalofferinputs(offer_type){
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+      let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("sipperbottle_list_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("sipperbottle_list_notif").style.color = "red"
+        document.getElementById("sipperbottle_list_notif").innerHTML = "Select atleast one sipperbottle !!!"
+      }
   } 
 
 
@@ -113,6 +121,8 @@ fetch(`http://${hosturl}:5600/api/sipperbottle/addimage/${sipperbottleid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+   document.getElementById("sipperbottle_list_notif").style.color = "green"
+        document.getElementById("sipperbottle_list_notif").innerHTML = "sipperbottle edited successfully !!!"
   getsipperbottlesdatatable()
   //document.getElementById("sipperbottlesuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
@@ -233,6 +243,8 @@ fetch(`http://${hosturl}:5600/api/sipperbottle/addimage/${sipperbottleid}`, {
           })
           .then(function(res){ 
             $("#deleteModal").modal("hide");
+              document.getElementById("sipperbottle_list_notif").style.color = "red"
+            document.getElementById("sipperbottle_list_notif").innerHTML = "Selected sipperbottles deleted successfully !!!"
             getsipperbottlesdatatable()
             //getoffers() 
           })

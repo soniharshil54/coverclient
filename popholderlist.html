@@ -550,19 +550,26 @@
             <div class="card">
               <div class="card-header">
                 <div class="row">
-                  <div class="col-sm-3">
+                  <div class="col-sm-2">
                      <h3 id="productShowHeading" class="card-title">Popholder List</h3>
                   </div>
-                  <div class="col-sm-5"></div>
-                  <!-- <div class="col-sm-5">
-                       <ul style="" class="list-group list-group-horizontal">
-                  <li style="padding: 5px 10px " onclick="paginatortest(1,2)" class="list-group-item">1</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(2,2)" class="list-group-item">2</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(3,2)" class="list-group-item">3</li>
-                  <li style="padding: 5px 10px " onclick="paginatortest(4,2)" class="list-group-item">4</li>
-                </ul>
-                  </div> -->
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
+                     <span id="popholder_list_notif" style="font-weight: bold;"></span>
+                  </div>
+
+               
+                    <div class="col-sm-2">
+                    <div class="form-group">
+                        
+                          <select onchange="filterbytype()" id="m_type_filter" class="form-control custom-select">
+                           <option value="All">All</option>
+                  <option value="Regular Mug">Regular Mug</option>
+                  <option value="Custom Mug">Custom Mug</option>                
+                  
+                </select>
+                      </div>
+                  </div>
+                  <div class="col-sm-2">
                      <h3 class="card-title" style="float: right"><button onclick="addpopholder()" class="btn btn-success">Add Popholder</button></h3>
                   </div>
                 </div>

@@ -71,7 +71,15 @@ function addmug(){
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+        let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("mug_list_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("mug_list_notif").style.color = "red"
+        document.getElementById("mug_list_notif").innerHTML = "Select atleast one mug !!!"
+      }
   } 
 
 
@@ -102,6 +110,8 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+  document.getElementById("mug_list_notif").style.color = "green"
+        document.getElementById("mug_list_notif").innerHTML = "mug edited successfully !!!"
   getmugsdatatable()
   //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
@@ -222,6 +232,8 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
           })
           .then(function(res){ 
             getmugsdatatable()
+              document.getElementById("mug_list_notif").style.color = "red"
+            document.getElementById("mug_list_notif").innerHTML = "Selected mugs deleted successfully !!!"
             $("#deleteModal").modal("hide");
             //getoffers() 
           })

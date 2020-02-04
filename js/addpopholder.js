@@ -11,13 +11,13 @@
           let popholdernameexists = validatepopholdernames(popholder_name)
   if(popholdernameexists){
     console.log("validated false", popholdernameexists)
-    document.getElementById("mval_name_err").style.color = 'red'
-    document.getElementById("mval_name_err").innerHTML = `"${popholder_name}" popholder already exists !!!`
+    document.getElementById("popholder_name_exists").style.color = 'red'
+    document.getElementById("popholder_name_exists").innerHTML = `"${popholder_name}" popholder already exists !!!`
     return false
   }
 
   else {
-    document.getElementById("mval_name_err").innerHTML = ""
+    document.getElementById("popholder_name_exists").innerHTML = ""
   }
 
     let validatemform = validatepopholder()
@@ -86,7 +86,9 @@ getpopholdernames()
 
 function validatepopholdernames(popholdername){
   console.log("validating function")
- let popholdernameexists = globalpopholdernamesarray.indexOf(popholdername) > -1
+    let lowerpopholderarray = globalpopholdernamesarray.map(popholder => popholder.toLowerCase()) 
+  let lowerpopholder = popholdername.toLowerCase()
+ let popholdernameexists = lowerpopholderarray.indexOf(lowerpopholder) > -1
  console.log("popholderarray", globalpopholdernamesarray)
  console.log("popholderexists", popholdernameexists)
   return popholdernameexists

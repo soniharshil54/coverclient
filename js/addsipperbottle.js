@@ -12,13 +12,13 @@
           let sipperbottlenameexists = validatesipperbottlenames(sipperbottle_name)
   if(sipperbottlenameexists){
     console.log("validated false", sipperbottlenameexists)
-    document.getElementById("mval_name_err").style.color = 'red'
-    document.getElementById("mval_name_err").innerHTML = `"${sipperbottle_name}" sipperbottle already exists !!!`
+    document.getElementById("sipperbottle_name_exists").style.color = 'red'
+    document.getElementById("sipperbottle_name_exists").innerHTML = `"${sipperbottle_name}" sipperbottle already exists !!!`
     return false
   }
 
   else {
-    document.getElementById("mval_name_err").innerHTML = ""
+    document.getElementById("sipperbottle_name_exists").innerHTML = ""
   }
 
     if(!validatemform){
@@ -88,7 +88,9 @@ getsipperbottlenames()
 
 function validatesipperbottlenames(sipperbottlename){
   console.log("validating function")
- let sipperbottlenameexists = globalsipperbottlenamesarray.indexOf(sipperbottlename) > -1
+    let lowersipperbottlearray = globalsipperbottlenamesarray.map(sipperbottle => sipperbottle.toLowerCase()) 
+  let lowersipperbottle = sipperbottlename.toLowerCase()
+ let sipperbottlenameexists = lowersipperbottlearray.indexOf(lowersipperbottle) > -1
  console.log("sipperbottlearray", globalsipperbottlenamesarray)
  console.log("sipperbottleexists", sipperbottlenameexists)
   return sipperbottlenameexists

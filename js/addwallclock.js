@@ -11,13 +11,13 @@
           let wallclocknameexists = validatewallclocknames(wallclock_name)
   if(wallclocknameexists){
     console.log("validated false", wallclocknameexists)
-    document.getElementById("mval_name_err").style.color = 'red'
-    document.getElementById("mval_name_err").innerHTML = `"${wallclock_name}" wallclock already exists !!!`
+    document.getElementById("wallclock_name_exists").style.color = 'red'
+    document.getElementById("wallclock_name_exists").innerHTML = `"${wallclock_name}" wallclock already exists !!!`
     return false
   }
 
   else {
-    document.getElementById("mval_name_err").innerHTML = ""
+    document.getElementById("wallclock_name_exists").innerHTML = ""
   }
 
     let validatemform = validatewallclock()
@@ -86,7 +86,9 @@ getwallclocknames()
 
 function validatewallclocknames(wallclockname){
   console.log("validating function")
- let wallclocknameexists = globalwallclocknamesarray.indexOf(wallclockname) > -1
+    let lowerwallclockarray = globalwallclocknamesarray.map(wallclock => wallclock.toLowerCase()) 
+  let lowerwallclock = wallclockname.toLowerCase()
+ let wallclocknameexists = lowerwallclockarray.indexOf(lowerwallclock) > -1
  console.log("wallclockarray", globalwallclocknamesarray)
  console.log("wallclockexists", wallclocknameexists)
   return wallclocknameexists

@@ -18,13 +18,13 @@
           let tshirtnameexists = validatetshirtnames(tshirt_name)
   if(tshirtnameexists){
     console.log("validated false", tshirtnameexists)
-    document.getElementById("mval_name_err").style.color = 'red'
-    document.getElementById("mval_name_err").innerHTML = `"${tshirt_name}" tshirt already exists !!!`
+    document.getElementById("tshirt_name_exists").style.color = 'red'
+    document.getElementById("tshirt_name_exists").innerHTML = `"${tshirt_name}" tshirt already exists !!!`
     return false
   }
 
   else {
-    document.getElementById("mval_name_err").innerHTML = ""
+    document.getElementById("tshirt_name_exists").innerHTML = ""
   }
 
     // let validatemform = validatetshirt()
@@ -119,7 +119,9 @@ gettshirtnames()
 
 function validatetshirtnames(tshirtname){
   console.log("validating function")
- let tshirtnameexists = globaltshirtnamesarray.indexOf(tshirtname) > -1
+    let lowertshirtarray = globaltshirtnamesarray.map(tshirt => tshirt.toLowerCase()) 
+  let lowertshirt = tshirtname.toLowerCase()
+ let tshirtnameexists = lowertshirtarray.indexOf(lowertshirt) > -1
  console.log("tshirtarray", globaltshirtnamesarray)
  console.log("tshirtexists", tshirtnameexists)
   return tshirtnameexists

@@ -11,13 +11,13 @@
           let photoframenameexists = validatephotoframenames(photoframe_name)
   if(photoframenameexists){
     console.log("validated false", photoframenameexists)
-    document.getElementById("mval_name_err").style.color = 'red'
-    document.getElementById("mval_name_err").innerHTML = `"${photoframe_name}" photoframe already exists !!!`
+    document.getElementById("photoframe_name_exists").style.color = 'red'
+    document.getElementById("photoframe_name_exists").innerHTML = `"${photoframe_name}" photoframe already exists !!!`
     return false
   }
 
   else {
-    document.getElementById("mval_name_err").innerHTML = ""
+    document.getElementById("photoframe_name_exists").innerHTML = ""
   }
 
     let validatemform = validatephotoframe()

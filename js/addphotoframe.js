@@ -8,6 +8,18 @@
     let price = document.getElementById("p_price").value
     let description = document.getElementById("p_description").value
     let pick_image_size = document.getElementById("p_pick_image_size").value
+          let photoframenameexists = validatephotoframenames(photoframe_name)
+  if(photoframenameexists){
+    console.log("validated false", photoframenameexists)
+    document.getElementById("mval_name_err").style.color = 'red'
+    document.getElementById("mval_name_err").innerHTML = `"${photoframe_name}" photoframe already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("mval_name_err").innerHTML = ""
+  }
+
     let validatemform = validatephotoframe()
     if(!validatemform){
       document.getElementById("photoframe_success_id").innerHTML = "All the fields are mandatory"
@@ -53,6 +65,32 @@ document.getElementById("p_price").value = ""
 //     $(this).hide()
 //     document.getElementById("k_categories_inc").disabled = false
 // });
+
+function getphotoframenames(){
+    fetch(`http://${hosturl}:5600/api/photoframe/getallphotoframenames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const photoframenames = data.map(photoframe => photoframe.name);
+      globalphotoframenamesarray = photoframenames
+      console.log(globalphotoframenamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getphotoframenames()
+
+
+function validatephotoframenames(photoframename){
+  console.log("validating function")
+ let photoframenameexists = globalphotoframenamesarray.indexOf(photoframename) > -1
+ console.log("photoframearray", globalphotoframenamesarray)
+ console.log("photoframeexists", photoframenameexists)
+  return photoframenameexists
+}
 
  function validatephotoframe(){
       let photoframe_name = document.getElementById("p_name").value
@@ -203,7 +241,7 @@ fetch(`http://${hosturl}:5600/api/photoframe/addimage/${photoframeid}`, {
 }).then(res => {
   console.log(res)
   window.location  =  "photoframelist.html"
-  //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
+  //document.getElementById("photoframesuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))
 

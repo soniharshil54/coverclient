@@ -9,6 +9,18 @@
     let pick_image_size = document.getElementById("m_pick_image_size").value
 
     let validatemform = validateaddsipperbottleform()
+          let sipperbottlenameexists = validatesipperbottlenames(sipperbottle_name)
+  if(sipperbottlenameexists){
+    console.log("validated false", sipperbottlenameexists)
+    document.getElementById("mval_name_err").style.color = 'red'
+    document.getElementById("mval_name_err").innerHTML = `"${sipperbottle_name}" sipperbottle already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("mval_name_err").innerHTML = ""
+  }
+
     if(!validatemform){
       document.getElementById("sipperbottle_success_id").innerHTML = "All the fields are mandatory"
       return false
@@ -54,6 +66,32 @@ document.getElementById("m_price").value = ""
 // });
   function removeFromArray(original, remove) {
   return original.filter(value => !remove.includes(value));
+}
+
+function getsipperbottlenames(){
+    fetch(`http://${hosturl}:5600/api/sipperbottle/getallsipperbottlenames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const sipperbottlenames = data.map(sipperbottle => sipperbottle.name);
+      globalsipperbottlenamesarray = sipperbottlenames
+      console.log(globalsipperbottlenamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getsipperbottlenames()
+
+
+function validatesipperbottlenames(sipperbottlename){
+  console.log("validating function")
+ let sipperbottlenameexists = globalsipperbottlenamesarray.indexOf(sipperbottlename) > -1
+ console.log("sipperbottlearray", globalsipperbottlenamesarray)
+ console.log("sipperbottleexists", sipperbottlenameexists)
+  return sipperbottlenameexists
 }
 
  function validateaddsipperbottleform(){

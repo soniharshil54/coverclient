@@ -10,6 +10,18 @@
     let description = document.getElementById("m_description").value
     let pick_image_size = document.getElementById("m_pick_image_size").value
 
+      let mugnameexists = validatemugnames(mug_name)
+  if(mugnameexists){
+    console.log("validated false", mugnameexists)
+    document.getElementById("mval_name_err").style.color = 'red'
+    document.getElementById("mval_name_err").innerHTML = `"${mug_name}" mug already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("mval_name_err").innerHTML = ""
+  }
+
     let validatemform = validateaddmugform()
     if(!validatemform){
       //document.getElementById("mug_success_id").innerHTML = ""
@@ -56,6 +68,33 @@ document.getElementById("m_price").value = ""
 // });
   function removeFromArray(original, remove) {
   return original.filter(value => !remove.includes(value));
+}
+
+
+function getmugnames(){
+    fetch(`http://${hosturl}:5600/api/mug/getallmugnames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const mugnames = data.map(mug => mug.name);
+      globalmugnamesarray = mugnames
+      console.log(globalmugnamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getmugnames()
+
+
+function validatemugnames(mugname){
+  console.log("validating function")
+ let mugnameexists = globalmugnamesarray.indexOf(mugname) > -1
+ console.log("mugarray", globalmugnamesarray)
+ console.log("mugexists", mugnameexists)
+  return mugnameexists
 }
 
 function changemuginputs(){

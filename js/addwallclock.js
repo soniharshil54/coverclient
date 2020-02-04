@@ -7,6 +7,19 @@
     let price = document.getElementById("w_price").value
     let description = document.getElementById("w_description").value
     let pick_image_size = document.getElementById("w_pick_image_size").value
+
+          let wallclocknameexists = validatewallclocknames(wallclock_name)
+  if(wallclocknameexists){
+    console.log("validated false", wallclocknameexists)
+    document.getElementById("mval_name_err").style.color = 'red'
+    document.getElementById("mval_name_err").innerHTML = `"${wallclock_name}" wallclock already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("mval_name_err").innerHTML = ""
+  }
+
     let validatemform = validatewallclock()
     if(!validatemform){
       document.getElementById("wallclock_success_id").innerHTML = "All the fields are mandatory"
@@ -52,6 +65,34 @@ document.getElementById("w_price").value = ""
 //     $(this).hide()
 //     document.getElementById("k_categories_inc").disabled = false
 // });
+
+function getwallclocknames(){
+    fetch(`http://${hosturl}:5600/api/wallclock/getallwallclocknames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const wallclocknames = data.map(wallclock => wallclock.name);
+      globalwallclocknamesarray = wallclocknames
+      console.log(globalwallclocknamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getwallclocknames()
+
+
+function validatewallclocknames(wallclockname){
+  console.log("validating function")
+ let wallclocknameexists = globalwallclocknamesarray.indexOf(wallclockname) > -1
+ console.log("wallclockarray", globalwallclocknamesarray)
+ console.log("wallclockexists", wallclocknameexists)
+  return wallclocknameexists
+}
+
+
 
  function validatewallclock(){
       let wallclock_name = document.getElementById("w_name").value
@@ -164,7 +205,7 @@ fetch(`http://${hosturl}:5600/api/wallclock/addimage/${wallclockid}`, {
 }).then(res => {
   console.log(res)
   window.location  =  "wallclocklist.html"
-  //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
+  //document.getElementById("wallclocksuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))
 

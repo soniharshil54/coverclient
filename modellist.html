@@ -766,10 +766,13 @@
               <div class="card">
                 <div class="card-header">
                   <div class="row">
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                       <h3 class="card-title">Models</h3>
                     </div>
-                    <div class="col-sm-5">
+                     <div class="col-sm-5">
+                      <span id="phonemodel_notif" style="color: red; font-weight: bold;"></span>
+                    </div>
+                    <div class="col-sm-3">
                       <div class="card-tools">
                         <div class="input-group input-group-sm" style="width: 270px;">
                           <label style="margin-right: 20px" for="inputStatus">Company Name</label>
@@ -781,7 +784,7 @@
                           </select>                 </div>
                         </div>
                       </div>
-                      <div class="col-sm-4">
+                      <div class="col-sm-2">
                         <h3 class="card-title" style="float: right"><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></h3>  
                       </div>
                     </div>
@@ -1637,7 +1640,16 @@ function add_company(){
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+
+       let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("phonemodel_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("phonemodel_notif").style.color = "red"
+        document.getElementById("phonemodel_notif").innerHTML = "Select atleast one model !!!"
+      }
   }
 
   getcompanies()
@@ -1680,6 +1692,7 @@ function add_company(){
     })
     .then(function(res){ 
   $("#deleteModal").modal("hide");
+  document.getElementById("phonemodel_notif").innerHTML = "Selected models deleted Successfully !!!"
       getproducts() 
     })
     .catch(function(res){ console.log(res) })

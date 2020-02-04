@@ -8,6 +8,18 @@
     let price = document.getElementById("p_price").value
     let description = document.getElementById("p_description").value
     let pick_image_size = document.getElementById("p_pick_image_size").value
+          let popholdernameexists = validatepopholdernames(popholder_name)
+  if(popholdernameexists){
+    console.log("validated false", popholdernameexists)
+    document.getElementById("mval_name_err").style.color = 'red'
+    document.getElementById("mval_name_err").innerHTML = `"${popholder_name}" popholder already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("mval_name_err").innerHTML = ""
+  }
+
     let validatemform = validatepopholder()
     if(!validatemform){
       document.getElementById("popholder_success_id").innerHTML = "All the fields are mandatory"
@@ -53,6 +65,32 @@ document.getElementById("p_price").value = ""
 //     $(this).hide()
 //     document.getElementById("k_categories_inc").disabled = false
 // });
+
+function getpopholdernames(){
+    fetch(`http://${hosturl}:5600/api/popholder/getallpopholdernames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const popholdernames = data.map(popholder => popholder.name);
+      globalpopholdernamesarray = popholdernames
+      console.log(globalpopholdernamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getpopholdernames()
+
+
+function validatepopholdernames(popholdername){
+  console.log("validating function")
+ let popholdernameexists = globalpopholdernamesarray.indexOf(popholdername) > -1
+ console.log("popholderarray", globalpopholdernamesarray)
+ console.log("popholderexists", popholdernameexists)
+  return popholdernameexists
+}
 
  function validatepopholder(){
       let popholder_name = document.getElementById("p_name").value
@@ -164,7 +202,7 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
 }).then(res => {
   console.log(res)
   window.location  =  "popholderlist.html"
-  //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
+  //document.getElementById("popholdersuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))
 

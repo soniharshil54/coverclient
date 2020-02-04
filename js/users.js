@@ -50,7 +50,15 @@
   }
 
     function opendeletemodal(){
-    $("#deleteModal").modal("show");
+      let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("confirmDelete").innerHTML = ""
+      }
+      else {
+        document.getElementById("confirmDelete").style.color = "red"
+        document.getElementById("confirmDelete").innerHTML = "Select atleast one user !!!"
+      }
   }
 
     function checkAll()

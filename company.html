@@ -1514,7 +1514,9 @@ function add_company(){
 function validatecompany(compname){
   console.log("validating function")
   let companyarray = globalcompanies.map(company => company.name)
- let compexists = companyarray.indexOf(compname) > -1
+  let lowercomparray = companyarray.map(company => company.toLowerCase()) 
+  let lowercomp = compname.toLowerCase()
+ let compexists = lowercomparray.indexOf(lowercomp) > -1
  console.log("comparray", companyarray)
  console.log("compexists", compexists)
   return compexists

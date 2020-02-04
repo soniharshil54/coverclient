@@ -9,6 +9,18 @@
     let price = document.getElementById("w_price").value
     let description = document.getElementById("w_description").value
     let pick_image_size = document.getElementById("w_pick_image_size").value
+          let watchnameexists = validatewatchnames(watch_name)
+  if(watchnameexists){
+    console.log("validated false", watchnameexists)
+    document.getElementById("mval_name_err").style.color = 'red'
+    document.getElementById("mval_name_err").innerHTML = `"${watch_name}" watch already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("mval_name_err").innerHTML = ""
+  }
+
     let validatemform = validatewatch()
     if(!validatemform){
       document.getElementById("watch_success_id").innerHTML = "All the fields are mandatory"
@@ -49,6 +61,33 @@ document.getElementById("w_price").value = ""
 .catch(function(res){ console.log(res) })
         });
 })
+
+
+ function getwatchnames(){
+    fetch(`http://${hosturl}:5600/api/watch/getallwatchnames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const watchnames = data.map(watch => watch.name);
+      globalwatchnamesarray = watchnames
+      console.log(globalwatchnamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getwatchnames()
+
+
+function validatewatchnames(watchname){
+  console.log("validating function")
+ let watchnameexists = globalwatchnamesarray.indexOf(watchname) > -1
+ console.log("watcharray", globalwatchnamesarray)
+ console.log("watchexists", watchnameexists)
+  return watchnameexists
+}
 
 //   $("#incdisdiv").click(function (evt) {
 //     $(this).hide()
@@ -201,7 +240,7 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
 }).then(res => {
   console.log(res)
   window.location  =  "watchlist.html"
-  //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
+  //document.getElementById("watchsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))
 

@@ -14,6 +14,19 @@
     let size_2_ref = $('#t_size_2').val();
     let tshirt_size = size_ref
     let tshirt_size_2 = size_2_ref
+
+          let tshirtnameexists = validatetshirtnames(tshirt_name)
+  if(tshirtnameexists){
+    console.log("validated false", tshirtnameexists)
+    document.getElementById("mval_name_err").style.color = 'red'
+    document.getElementById("mval_name_err").innerHTML = `"${tshirt_name}" tshirt already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("mval_name_err").innerHTML = ""
+  }
+
     // let validatemform = validatetshirt()
     // if(!validatemform){
     //   document.getElementById("tshirt_success_id").innerHTML = "All the fields are mandatory"
@@ -83,6 +96,34 @@
         imagesPreview(this, 'div.gallery');
     });
 });
+
+
+
+ function gettshirtnames(){
+    fetch(`http://${hosturl}:5600/api/tshirt/getalltshirtnames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const tshirtnames = data.map(tshirt => tshirt.name);
+      globaltshirtnamesarray = tshirtnames
+      console.log(globaltshirtnamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+gettshirtnames()
+
+
+function validatetshirtnames(tshirtname){
+  console.log("validating function")
+ let tshirtnameexists = globaltshirtnamesarray.indexOf(tshirtname) > -1
+ console.log("tshirtarray", globaltshirtnamesarray)
+ console.log("tshirtexists", tshirtnameexists)
+  return tshirtnameexists
+}
 
 //   $("#incdisdiv").click(function (evt) {
 //     $(this).hide()
@@ -305,7 +346,7 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
 }).then(res => {
   console.log(res)
   window.location  =  "tshirtlist.html"
-  //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
+  //document.getElementById("tshirtsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))
 
@@ -323,7 +364,7 @@ fetch(`http://${hosturl}:5600/api/tshirt/tmtaddtshirtimages/${tshirtid}`, {
 }).then(res => {
   console.log(res)
   //window.location  =  "tshirtlist.html"
-  //document.getElementById("mugsuccessAdded").innerHTML = "Offer successfully added !!!"
+  //document.getElementById("tshirtsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
 }).catch(err => console.log(err))
 

@@ -36,14 +36,24 @@
 .then(function(result){
   console.log(result)
   let keychainid = result._id
- document.getElementById("k_name").value = ""
-//document.getElementById("k_volume").value = ""
-document.getElementById("k_price").value = ""
- document.getElementById("k_description").value = ""
-  document.getElementById("k_pick_image_size").value = ""
+
+  console.log("result status", result.status)
+
+  if(result.status == 0){
+    document.getElementById("keychain_exists_err").innerHTML = "Keychain with this name already exists !!!"
+    console.log("keychain name already exists !!!")
+    return false
+  }
+
+  else {
+    $('#imageModalUploading').modal('show')
+    console.log("keychain name already exists !!!  ---  else")
+
   // document.getElementById("keychain_success_id").innerHTML = "keychain Added Successfully !!!"
     
    uploadFile(keychainid)
+  }
+
   
 })
 .catch(function(res){ console.log(res) })
@@ -96,7 +106,7 @@ document.getElementById("k_price").value = ""
       return false
     }
     else{
-      $('#imageModalUploading').modal('show')
+      
       return true
     }
  }
@@ -167,6 +177,7 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
   body: formData
 }).then(res => {
   console.log(res)
+  console.log("uploadfile call finished")
   //document.getElementById("keychainsuccessAdded").innerHTML = "Offer successfully added !!!"
  // getoffers()
  window.location  =  "keychainlist.html"

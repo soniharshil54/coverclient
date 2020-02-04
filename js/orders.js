@@ -741,6 +741,7 @@ function download(){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+          "lengthMenu": [[50, 100, 500, -1], [50, 100, 500, "All"]],
         "aaSorting": [[ 5, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
@@ -855,6 +856,7 @@ function download(){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+          "lengthMenu": [[50, 100, 500, -1], [50, 100, 500, "All"]],
         "aaSorting": [[ 5, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
@@ -907,7 +909,7 @@ function download(){
           "data": "user_id",
             "mRender": function(data, type) {
              
-              return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data._id}">view</button>`;
+              return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-pid="${data._id}">view</button>`;
             }
         },{
           "data":null,

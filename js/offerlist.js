@@ -76,6 +76,11 @@ function modalofferinputs(offer_type){
   }     
 
 
+  function addoffer(){
+  window.location = "addoffer.html";
+}
+
+
     function uploadFileEdit(productid){
     //var input = document.querySelector('input[type="file"]')
     var form = document.getElementById("ohEditImages");

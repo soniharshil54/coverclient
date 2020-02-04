@@ -219,7 +219,7 @@ function download(){
       });
   });
 
-  var fileTitle = 'users'; // or 'my-unique-title'
+  var fileTitle = 'User list'; // or 'my-unique-title'
 
   exportCSVFile(headers, itemsFormatted, fileTitle); 
 }

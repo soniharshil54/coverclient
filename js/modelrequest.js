@@ -243,7 +243,7 @@ function download(){
       });
   });
 
-  var fileTitle = 'users'; // or 'my-unique-title'
+  var fileTitle = 'New Model'; // or 'my-unique-title'
 
   exportCSVFile(headers, itemsFormatted, fileTitle); 
 }

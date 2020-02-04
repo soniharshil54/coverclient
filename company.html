@@ -784,7 +784,7 @@
                         </div>
                       </div>
                       <div class="col-sm-4">
-                        <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>  
+                        <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger btn-sm">Delete All</button></h3>  
                       </div>
                     </div>
 
@@ -2220,7 +2220,7 @@ let companyexists = validatecompany(name)
               var ths = document.createElement("th")
               var thd = document.createElement("th")
               thd.innerHTML="<button onclick='deletecompanies()' class='btn btn-danger'>Delete Selected</button>"
-              ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAllCompanies() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label><button style='margin-left:10px' onclick='opendeletemodal()' class='btn btn-danger'>Delete All</button></div></div> "
+              ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAllCompanies() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label><button style='margin-left:10px' onclick='opendeletemodal()' class='btn btn-danger btn-sm'>Delete All</button></div></div> "
               tr.appendChild(ths);
         //tr.appendChild(thd);
 

@@ -312,10 +312,12 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
      return response.json()})
       .then(data => {
         console.log(data)
+          let categories = data.categories
+      $('#modal_categories_inc').val(categories).trigger('change')
         document.getElementById("edit_p_id").value = data._id
     document.getElementById("edit_p_name").value = data.name
     document.getElementById("edit_p_type").value = data.maintype_name
-    document.getElementById("edit_p_size").value = data.size
+    //document.getElementById("edit_p_size").value = data.size
     document.getElementById("edit_p_price").value = data.price
     document.getElementById("edit_p_description").value = data.description
     document.getElementById("edit_p_pick_image_size").value = data.pick_image_size

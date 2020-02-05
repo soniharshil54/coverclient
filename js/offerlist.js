@@ -159,6 +159,22 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
       })
     }
 
+   function canceldelete(){
+    $("#deleteModal").modal("hide");
+  }
+
+    function opendeletemodal(){
+     let todeleteidsref = printChecked()
+      if(todeleteidsref.length > 0){
+        $("#deleteModal").modal("show");
+        document.getElementById("offer_list_notif").innerHTML = ""
+      }
+      else {
+        document.getElementById("offer_list_notif").style.color = "red"
+        document.getElementById("offer_list_notif").innerHTML = "Select atleast one offer !!!"
+      }
+  } 
+
 
   function deleteoffers(){
     console.log("delete")
@@ -177,6 +193,8 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
+                document.getElementById("offer_list_notif").style.color = "red"
+        document.getElementById("offer_list_notif").innerHTML = "Selected offers deleted !!!"
             getoffersdatatable()
             //getoffers() 
           })

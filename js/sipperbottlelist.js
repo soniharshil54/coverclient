@@ -13,50 +13,6 @@ function addsipperbottle(){
   window.location = "addsipperbottle.html";
 }
 
-function modalofferinputs(offer_type){
-  //let offer_type = document.getElementById("modal_offer_type").value
-  switch(offer_type) {
-  case 'flatdis':
-    document.getElementById("modal_flat_discount_div").style.display = "block"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("modal_free_shipping_div").style.display = "none"
-    document.getElementById("modal_first_time_div").style.display = "none"
-    document.getElementById("modal_buy_div").style.display = "none"
-    document.getElementById("modal_get_div").style.display = "none"
-    // code block
-    break;
-  case 'bogo':
-    document.getElementById("modal_flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = false
-    document.getElementById("modal_free_shipping_div").style.display = "none"
-    document.getElementById("modal_first_time_div").style.display = "none"
-    // document.getElementById("modal_buy_div").style.display = "block"
-    // document.getElementById("modal_get_div").style.display = "block"
-    // code block
-    break;
-  case 'freeshipping':
-    document.getElementById("modal_flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("modal_free_shipping_div").style.display = "block"
-    document.getElementById("modal_first_time_div").style.display = "none"
-    document.getElementById("modal_buy_div").style.display = "none"
-    document.getElementById("modal_get_div").style.display = "none"
-    // code block
-    break;
-  case 'firsttime':
-    document.getElementById("modal_flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = true
-    document.getElementById("modal_free_shipping_div").style.display = "none"
-    document.getElementById("modal_first_time_div").style.display = "block"
-    document.getElementById("modal_buy_div").style.display = "none"
-    document.getElementById("modal_get_div").style.display = "none"
-    // code block
-    break;  
-  default:
-    // code block
-}
-}
-
 
   function checkAll()
  {
@@ -283,6 +239,8 @@ fetch(`http://${hosturl}:5600/api/sipperbottle/addimage/${sipperbottleid}`, {
       document.getElementById("edit_m_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
        $("#myModal").modal('show')
 
+       globalsipperbottlenamesarray = globalsipperbottlenamesarray.filter(name => name !== data.name)
+
       })
      
       .catch(err => console.log(err))
@@ -297,6 +255,18 @@ fetch(`http://${hosturl}:5600/api/sipperbottle/addimage/${sipperbottleid}`, {
     let price = document.getElementById("edit_m_price").value
     let description = document.getElementById("edit_m_description").value
     let pick_image_size = document.getElementById("edit_m_pick_image_size").value
+               let sipperbottlenameexists = validatesipperbottlenames(sipperbottle_name)
+  if(sipperbottlenameexists){
+    console.log("validated false", sipperbottlenameexists)
+    document.getElementById("edit_sipperbottle_name_exists").style.color = 'red'
+    document.getElementById("edit_sipperbottle_name_exists").innerHTML = `"${sipperbottle_name}" sipperbottle already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("edit_sipperbottle_name_exists").innerHTML = ""
+  }
+
      let sipperbottledata = {
       name : sipperbottle_name,
       volume : sipperbottle_volume,
@@ -323,6 +293,34 @@ fetch(`http://${hosturl}:5600/api/sipperbottle/addimage/${sipperbottleid}`, {
           })
           .catch(function(res){ console.log(res) })
     }
+
+    function getsipperbottlenames(){
+    fetch(`http://${hosturl}:5600/api/sipperbottle/getallsipperbottlenames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const sipperbottlenames = data.map(sipperbottle => sipperbottle.name);
+      globalsipperbottlenamesarray = sipperbottlenames
+      console.log(globalsipperbottlenamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getsipperbottlenames()
+
+
+function validatesipperbottlenames(sipperbottlename){
+  console.log("validating function")
+    let lowersipperbottlearray = globalsipperbottlenamesarray.map(sipperbottle => sipperbottle.toLowerCase()) 
+  let lowersipperbottle = sipperbottlename.toLowerCase()
+ let sipperbottlenameexists = lowersipperbottlearray.indexOf(lowersipperbottle) > -1
+ console.log("sipperbottlearray", globalsipperbottlenamesarray)
+ console.log("sipperbottleexists", sipperbottlenameexists)
+  return sipperbottlenameexists
+}
 
     function imageModal(imgname){
       let source = `http://${hosturl}:5600/admin/uploads/${imgname}`

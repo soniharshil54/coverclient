@@ -241,6 +241,9 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
   }
 
     function editmugmodal(test){
+
+
+
      // console.log(test)
 
      // console.log( $('#modal_categories_inc').val() )
@@ -272,6 +275,8 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
       document.getElementById("edit_m_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
        $("#myModal").modal('show')
 
+       globalmugnamesarray = globalmugnamesarray.filter(name => name !== data.name)
+
       })
      
       .catch(err => console.log(err))
@@ -286,6 +291,18 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
     let price = document.getElementById("edit_m_price").value
     let description = document.getElementById("edit_m_description").value
     let pick_image_size = document.getElementById("edit_m_pick_image_size").value
+
+        let mugnameexists = validatemugnames(mug_name)
+  if(mugnameexists){
+    console.log("validated false", mugnameexists)
+    document.getElementById("edit_mug_name_exists").style.color = 'red'
+    document.getElementById("edit_mug_name_exists").innerHTML = `"${mug_name}" mug already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("edit_mug_name_exists").innerHTML = ""
+  }
      let mugdata = {
       name : mug_name,
       volume : mug_volume,
@@ -312,6 +329,32 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
           })
           .catch(function(res){ console.log(res) })
     }
+
+    function getmugnames(){
+    fetch(`http://${hosturl}:5600/api/mug/getallmugnames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const mugnames = data.map(mug => mug.name);
+      globalmugnamesarray = mugnames
+      console.log(globalmugnamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getmugnames()
+
+
+function validatemugnames(mugname){
+  console.log("validating function")
+ let mugnameexists = globalmugnamesarray.indexOf(mugname) > -1
+ console.log("mugarray", globalmugnamesarray)
+ console.log("mugexists", mugnameexists)
+  return mugnameexists
+}
 
     function imageModal(imgname){
       let source = `http://${hosturl}:5600/admin/uploads/${imgname}`

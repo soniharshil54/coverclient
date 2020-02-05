@@ -12,13 +12,13 @@
           let watchnameexists = validatewatchnames(watch_name)
   if(watchnameexists){
     console.log("validated false", watchnameexists)
-    document.getElementById("mval_name_err").style.color = 'red'
-    document.getElementById("mval_name_err").innerHTML = `"${watch_name}" watch already exists !!!`
+    document.getElementById("watch_name_exists").style.color = 'red'
+    document.getElementById("watch_name_exists").innerHTML = `"${watch_name}" watch already exists !!!`
     return false
   }
 
   else {
-    document.getElementById("mval_name_err").innerHTML = ""
+    document.getElementById("watch_name_exists").innerHTML = ""
   }
 
     let validatemform = validatewatch()

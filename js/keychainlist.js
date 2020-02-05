@@ -289,6 +289,8 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
       modalkctypeinputs()
        $("#myModal").modal('show')
 
+       globalkeychainnamesarray = globalkeychainnamesarray.filter(name => name !== data.name)
+
       })
      
       .catch(err => console.log(err))
@@ -303,6 +305,17 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
     let price = document.getElementById("edit_k_price").value
     let description = document.getElementById("edit_k_description").value
     let pick_image_size = document.getElementById("edit_k_pick_image_size").value
+                let keychainnameexists = validatekeychainnames(keychain_name)
+  if(keychainnameexists){
+    console.log("validated false", keychainnameexists)
+    document.getElementById("edit_keychain_name_exists").style.color = 'red'
+    document.getElementById("edit_keychain_name_exists").innerHTML = `"${keychain_name}" keychain already exists !!!`
+    return false
+  }
+
+    else {
+    document.getElementById("edit_keychain_name_exists").innerHTML = ""
+  }
      let keychaindata = {
       name : keychain_name,
      price,description , pick_image_size
@@ -328,6 +341,32 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
           })
           .catch(function(res){ console.log(res) })
     }
+
+        function getkeychainnames(){
+    fetch(`http://${hosturl}:5600/api/keychain/getallkeychainnames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const keychainnames = data.map(keychain => keychain.name);
+      globalkeychainnamesarray = keychainnames
+      console.log(globalkeychainnamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getkeychainnames()
+
+
+function validatekeychainnames(keychainname){
+  console.log("validating function")
+ let keychainnameexists = globalkeychainnamesarray.indexOf(keychainname) > -1
+ console.log("keychainarray", globalkeychainnamesarray)
+ console.log("keychainexists", keychainnameexists)
+  return keychainnameexists
+}
 
     function imageModal(imgname){
       let source = `http://${hosturl}:5600/admin/uploads/${imgname}`

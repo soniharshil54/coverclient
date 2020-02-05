@@ -179,6 +179,8 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
       document.getElementById("edit_p_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
        $("#myModal").modal('show')
 
+       globalpopholdernamesarray = globalpopholdernamesarray.filter(name => name !== data.name)
+
       })
      
       .catch(err => console.log(err))
@@ -193,6 +195,18 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
     let price = document.getElementById("edit_p_price").value
     let description = document.getElementById("edit_p_description").value
     let pick_image_size = document.getElementById("edit_p_pick_image_size").value
+   
+              let popholdernameexists = validatepopholdernames(popholder_name)
+  if(popholdernameexists){
+    console.log("validated false", popholdernameexists)
+    document.getElementById("edit_popholder_name_exists").style.color = 'red'
+    document.getElementById("edit_popholder_name_exists").innerHTML = `"${popholder_name}" popholder already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("edit_popholder_name_exists").innerHTML = ""
+  }
      let popholderdata = {
       name : popholder_name,
       size : popholder_size,
@@ -219,6 +233,37 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
           })
           .catch(function(res){ console.log(res) })
     }
+
+
+    function getpopholdernames(){
+    fetch(`http://${hosturl}:5600/api/popholder/getallpopholdernames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const popholdernames = data.map(popholder => popholder.name);
+      globalpopholdernamesarray = popholdernames
+      console.log(globalpopholdernamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getpopholdernames()
+
+
+function validatepopholdernames(popholdername){
+  console.log("validating function")
+    let lowerpopholderarray = globalpopholdernamesarray.map(popholder => popholder.toLowerCase()) 
+  let lowerpopholder = popholdername.toLowerCase()
+ let popholdernameexists = lowerpopholderarray.indexOf(lowerpopholder) > -1
+ console.log("popholderarray", globalpopholdernamesarray)
+ console.log("popholderexists", popholdernameexists)
+  return popholdernameexists
+}
+
+
 
     function imageModal(imgname){
       let source = `http://${hosturl}:5600/admin/uploads/${imgname}`

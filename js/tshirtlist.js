@@ -329,6 +329,8 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
       document.getElementById("edit_p_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
        $("#myModal").modal('show')
 
+       globaltshirtnamesarray = globaltshirtnamesarray.filter(name => name !== data.name)
+
       })
      
       .catch(err => console.log(err))
@@ -343,6 +345,18 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
     let price = document.getElementById("edit_p_price").value
     let description = document.getElementById("edit_p_description").value
     let pick_image_size = document.getElementById("edit_p_pick_image_size").value
+             let tshirtnameexists = validatetshirtnames(tshirt_name)
+  if(tshirtnameexists){
+    console.log("validated false", tshirtnameexists)
+    document.getElementById("edit_tshirt_name_exists").style.color = 'red'
+    document.getElementById("edit_tshirt_name_exists").innerHTML = `name already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("edit_tshirt_name_exists").innerHTML = ""
+  }
+
      let tshirtdata = {
       name : tshirt_name,
       size : tshirt_size,
@@ -369,6 +383,34 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
           })
           .catch(function(res){ console.log(res) })
     }
+
+     function gettshirtnames(){
+    fetch(`http://${hosturl}:5600/api/tshirt/getalltshirtnames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const tshirtnames = data.map(tshirt => tshirt.name);
+      globaltshirtnamesarray = tshirtnames
+      console.log(globaltshirtnamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+gettshirtnames()
+
+
+function validatetshirtnames(tshirtname){
+  console.log("validating function")
+    let lowertshirtarray = globaltshirtnamesarray.map(tshirt => tshirt.toLowerCase()) 
+  let lowertshirt = tshirtname.toLowerCase()
+ let tshirtnameexists = lowertshirtarray.indexOf(lowertshirt) > -1
+ console.log("tshirtarray", globaltshirtnamesarray)
+ console.log("tshirtexists", tshirtnameexists)
+  return tshirtnameexists
+}
 
     function imageModal(imgname){
       let source = `http://${hosturl}:5600/admin/uploads/${imgname}`

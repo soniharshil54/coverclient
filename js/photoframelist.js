@@ -178,6 +178,8 @@ fetch(`http://${hosturl}:5600/api/photoframe/addimage/${photoframeid}`, {
       document.getElementById("edit_p_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
        $("#myModal").modal('show')
 
+       globalphotoframenamesarray = globalphotoframenamesarray.filter(name => name !== data.name)
+
       })
      
       .catch(err => console.log(err))
@@ -191,6 +193,19 @@ fetch(`http://${hosturl}:5600/api/photoframe/addimage/${photoframeid}`, {
     let photoframe_size = document.getElementById("edit_p_size").value
     let price = document.getElementById("edit_p_price").value
     let description = document.getElementById("edit_p_description").value
+    
+              let photoframenameexists = validatephotoframenames(photoframe_name)
+  if(photoframenameexists){
+    console.log("validated false", photoframenameexists)
+    document.getElementById("edit_photoframe_name_exists").style.color = 'red'
+    document.getElementById("edit_photoframe_name_exists").innerHTML = `"${photoframe_name}" photoframe already exists !!!`
+    return false
+  }
+
+    else {
+    document.getElementById("edit_photoframe_name_exists").innerHTML = ""
+  }
+
     let pick_image_size = document.getElementById("edit_p_pick_image_size").value
      let photoframedata = {
       name : photoframe_name,
@@ -218,6 +233,32 @@ fetch(`http://${hosturl}:5600/api/photoframe/addimage/${photoframeid}`, {
           })
           .catch(function(res){ console.log(res) })
     }
+
+    function getphotoframenames(){
+    fetch(`http://${hosturl}:5600/api/photoframe/getallphotoframenames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const photoframenames = data.map(photoframe => photoframe.name);
+      globalphotoframenamesarray = photoframenames
+      console.log(globalphotoframenamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getphotoframenames()
+
+
+function validatephotoframenames(photoframename){
+  console.log("validating function")
+ let photoframenameexists = globalphotoframenamesarray.indexOf(photoframename) > -1
+ console.log("photoframearray", globalphotoframenamesarray)
+ console.log("photoframeexists", photoframenameexists)
+  return photoframenameexists
+}
 
     function imageModal(imgname){
       let source = `http://${hosturl}:5600/admin/uploads/${imgname}`

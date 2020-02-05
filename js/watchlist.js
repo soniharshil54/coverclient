@@ -338,6 +338,8 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
 
        $("#myModal").modal('show')
 
+       globalwatchnamesarray = globalwatchnamesarray.filter(name => name !== data.name)
+
       })
      
       .catch(err => console.log(err))
@@ -352,6 +354,19 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
     let price = document.getElementById("edit_p_price").value
     let description = document.getElementById("edit_p_description").value
     let pick_image_size = document.getElementById("edit_p_pick_image_size").value
+              let watchnameexists = validatewatchnames(watch_name)
+  if(watchnameexists){
+    console.log("validated false", watchnameexists)
+    document.getElementById("edit_watch_name_exists").style.color = 'red'
+    document.getElementById("edit_watch_name_exists").innerHTML = `name already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("edit_watch_name_exists").innerHTML = ""
+  }
+
+
      let watchdata = {
       name : watch_name,
       size : watch_size,
@@ -378,6 +393,34 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
           })
           .catch(function(res){ console.log(res) })
     }
+
+     function getwatchnames(){
+    fetch(`http://${hosturl}:5600/api/watch/getallwatchnames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const watchnames = data.map(watch => watch.name);
+      globalwatchnamesarray = watchnames
+      console.log(globalwatchnamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getwatchnames()
+
+
+function validatewatchnames(watchname){
+  console.log("validating function")
+    let lowerwatcharray = globalwatchnamesarray.map(watch => watch.toLowerCase()) 
+  let lowerwatch = watchname.toLowerCase()
+ let watchnameexists = lowerwatcharray.indexOf(lowerwatch) > -1
+ console.log("watcharray", globalwatchnamesarray)
+ console.log("watchexists", watchnameexists)
+  return watchnameexists
+}
 
     function imageModal(imgname){
       let source = `http://${hosturl}:5600/admin/uploads/${imgname}`

@@ -178,6 +178,8 @@ fetch(`http://${hosturl}:5600/api/wallclock/addimage/${wallclockid}`, {
       document.getElementById("edit_p_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
        $("#myModal").modal('show')
 
+       globalwallclocknamesarray = globalwallclocknamesarray.filter(name => name !== data.name)
+
       })
      
       .catch(err => console.log(err))
@@ -192,6 +194,18 @@ fetch(`http://${hosturl}:5600/api/wallclock/addimage/${wallclockid}`, {
     let price = document.getElementById("edit_p_price").value
     let description = document.getElementById("edit_p_description").value
     let pick_image_size = document.getElementById("edit_p_pick_image_size").value
+    
+              let wallclocknameexists = validatewallclocknames(wallclock_name)
+  if(wallclocknameexists){
+    console.log("validated false", wallclocknameexists)
+    document.getElementById("edit_wallclock_name_exists").style.color = 'red'
+    document.getElementById("edit_wallclock_name_exists").innerHTML = `"${wallclock_name}" wallclock already exists !!!`
+    return false
+  }
+
+  else {
+    document.getElementById("edit_wallclock_name_exists").innerHTML = ""
+  }
      let wallclockdata = {
       name : wallclock_name,
       size : wallclock_size,
@@ -218,6 +232,34 @@ fetch(`http://${hosturl}:5600/api/wallclock/addimage/${wallclockid}`, {
           })
           .catch(function(res){ console.log(res) })
     }
+
+    function getwallclocknames(){
+    fetch(`http://${hosturl}:5600/api/wallclock/getallwallclocknames`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      const wallclocknames = data.map(wallclock => wallclock.name);
+      globalwallclocknamesarray = wallclocknames
+      console.log(globalwallclocknamesarray)
+     
+    })
+    .catch(err => console.log(err))
+  }
+
+getwallclocknames()
+
+
+function validatewallclocknames(wallclockname){
+  console.log("validating function")
+    let lowerwallclockarray = globalwallclocknamesarray.map(wallclock => wallclock.toLowerCase()) 
+  let lowerwallclock = wallclockname.toLowerCase()
+ let wallclocknameexists = lowerwallclockarray.indexOf(lowerwallclock) > -1
+ console.log("wallclockarray", globalwallclocknamesarray)
+ console.log("wallclockexists", wallclocknameexists)
+  return wallclocknameexists
+}
 
     function imageModal(imgname){
       let source = `http://${hosturl}:5600/admin/uploads/${imgname}`

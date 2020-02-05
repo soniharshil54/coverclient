@@ -404,8 +404,8 @@ gettshirtnames()
 
 function validatetshirtnames(tshirtname){
   console.log("validating function")
-    let lowertshirtarray = globaltshirtnamesarray.map(tshirt => tshirt.toLowerCase()) 
-  let lowertshirt = tshirtname.toLowerCase()
+    let lowertshirtarray = globaltshirtnamesarray.map(tshirt => tshirt.toLowerCase().trim()) 
+  let lowertshirt = tshirtname.toLowerCase().trim()
  let tshirtnameexists = lowertshirtarray.indexOf(lowertshirt) > -1
  console.log("tshirtarray", globaltshirtnamesarray)
  console.log("tshirtexists", tshirtnameexists)
@@ -550,7 +550,7 @@ function validatetshirtnames(tshirtname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailstshirt(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailstshirt" data-key="${data}">view</button>`;
+              return `<button onclick="detailstshirt(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailstshirt" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,
@@ -608,7 +608,7 @@ function validatetshirtnames(tshirtname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailstshirt(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailstshirt" data-key="${data}">view</button>`;
+              return `<button onclick="detailstshirt(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailstshirt" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,

@@ -414,8 +414,8 @@ getwatchnames()
 
 function validatewatchnames(watchname){
   console.log("validating function")
-    let lowerwatcharray = globalwatchnamesarray.map(watch => watch.toLowerCase()) 
-  let lowerwatch = watchname.toLowerCase()
+    let lowerwatcharray = globalwatchnamesarray.map(watch => watch.toLowerCase().trim()) 
+  let lowerwatch = watchname.toLowerCase().trim()
  let watchnameexists = lowerwatcharray.indexOf(lowerwatch) > -1
  console.log("watcharray", globalwatchnamesarray)
  console.log("watchexists", watchnameexists)
@@ -560,7 +560,7 @@ function validatewatchnames(watchname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailswatch(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailswatch" data-key="${data}">view</button>`;
+              return `<button onclick="detailswatch(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailswatch" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,

@@ -446,7 +446,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="offerdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data}">view</button>`;
+              return `<button onclick="offerdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-pid="${data}">view</button>`;
             }
         },  {
           "data": null,

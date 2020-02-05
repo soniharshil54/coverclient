@@ -86,8 +86,8 @@ getwallclocknames()
 
 function validatewallclocknames(wallclockname){
   console.log("validating function")
-    let lowerwallclockarray = globalwallclocknamesarray.map(wallclock => wallclock.toLowerCase()) 
-  let lowerwallclock = wallclockname.toLowerCase()
+    let lowerwallclockarray = globalwallclocknamesarray.map(wallclock => wallclock.toLowerCase().trim()) 
+  let lowerwallclock = wallclockname.toLowerCase().trim()
  let wallclocknameexists = lowerwallclockarray.indexOf(lowerwallclock) > -1
  console.log("wallclockarray", globalwallclocknamesarray)
  console.log("wallclockexists", wallclocknameexists)

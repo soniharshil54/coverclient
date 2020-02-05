@@ -406,7 +406,7 @@ fetch(`http://${hosturl}:5600/api/watch/wmtaddimage/${wmtid}`, {
             "data" : "slider_image",
                "mRender": function(data, type) {
              //return data
-              return `<button onclick="openimagemodal('${data}')" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-pid="${data}">view</button>`;
+              return `<button onclick="openimagemodal('${data}')" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-pid="${data}">view</button>`;
             }
         },{
             "data" : "create_date",

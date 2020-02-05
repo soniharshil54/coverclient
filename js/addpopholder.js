@@ -86,8 +86,8 @@ getpopholdernames()
 
 function validatepopholdernames(popholdername){
   console.log("validating function")
-    let lowerpopholderarray = globalpopholdernamesarray.map(popholder => popholder.toLowerCase()) 
-  let lowerpopholder = popholdername.toLowerCase()
+    let lowerpopholderarray = globalpopholdernamesarray.map(popholder => popholder.toLowerCase().trim()) 
+  let lowerpopholder = popholdername.toLowerCase().trim()
  let popholdernameexists = lowerpopholderarray.indexOf(lowerpopholder) > -1
  console.log("popholderarray", globalpopholdernamesarray)
  console.log("popholderexists", popholdernameexists)

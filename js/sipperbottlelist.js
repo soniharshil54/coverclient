@@ -259,7 +259,7 @@ fetch(`http://${hosturl}:5600/api/sipperbottle/addimage/${sipperbottleid}`, {
   if(sipperbottlenameexists){
     console.log("validated false", sipperbottlenameexists)
     document.getElementById("edit_sipperbottle_name_exists").style.color = 'red'
-    document.getElementById("edit_sipperbottle_name_exists").innerHTML = `"${sipperbottle_name}" sipperbottle already exists !!!`
+    document.getElementById("edit_sipperbottle_name_exists").innerHTML = `name already exists !!!`
     return false
   }
 
@@ -314,8 +314,8 @@ getsipperbottlenames()
 
 function validatesipperbottlenames(sipperbottlename){
   console.log("validating function")
-    let lowersipperbottlearray = globalsipperbottlenamesarray.map(sipperbottle => sipperbottle.toLowerCase()) 
-  let lowersipperbottle = sipperbottlename.toLowerCase()
+    let lowersipperbottlearray = globalsipperbottlenamesarray.map(sipperbottle => sipperbottle.toLowerCase().trim()) 
+  let lowersipperbottle = sipperbottlename.toLowerCase().trim()
  let sipperbottlenameexists = lowersipperbottlearray.indexOf(lowersipperbottle) > -1
  console.log("sipperbottlearray", globalsipperbottlenamesarray)
  console.log("sipperbottleexists", sipperbottlenameexists)
@@ -460,7 +460,7 @@ function validatesipperbottlenames(sipperbottlename){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailssipperbottle(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailssipperbottle" data-key="${data}">view</button>`;
+              return `<button onclick="detailssipperbottle(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailssipperbottle" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,

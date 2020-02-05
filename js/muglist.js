@@ -296,7 +296,7 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
   if(mugnameexists){
     console.log("validated false", mugnameexists)
     document.getElementById("edit_mug_name_exists").style.color = 'red'
-    document.getElementById("edit_mug_name_exists").innerHTML = `"${mug_name}" mug already exists !!!`
+    document.getElementById("edit_mug_name_exists").innerHTML = `name already exists !!!`
     return false
   }
 
@@ -350,7 +350,9 @@ getmugnames()
 
 function validatemugnames(mugname){
   console.log("validating function")
- let mugnameexists = globalmugnamesarray.indexOf(mugname) > -1
+    let lowermugarray = globalmugnamesarray.map(mug => mug.toLowerCase().trim()) 
+  let lowermug = mugname.toLowerCase().trim()
+ let mugnameexists = lowermugarray.indexOf(lowermug) > -1
  console.log("mugarray", globalmugnamesarray)
  console.log("mugexists", mugnameexists)
   return mugnameexists
@@ -497,7 +499,7 @@ function validatemugnames(mugname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailsmug(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailsmug" data-key="${data}">view</button>`;
+              return `<button onclick="detailsmug(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailsmug" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,
@@ -558,7 +560,7 @@ function validatemugnames(mugname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailsmug(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailsmug" data-key="${data}">view</button>`;
+              return `<button onclick="detailsmug(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailsmug" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,

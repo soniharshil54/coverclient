@@ -199,7 +199,7 @@ fetch(`http://${hosturl}:5600/api/wallclock/addimage/${wallclockid}`, {
   if(wallclocknameexists){
     console.log("validated false", wallclocknameexists)
     document.getElementById("edit_wallclock_name_exists").style.color = 'red'
-    document.getElementById("edit_wallclock_name_exists").innerHTML = `"${wallclock_name}" wallclock already exists !!!`
+    document.getElementById("edit_wallclock_name_exists").innerHTML = `name already exists !!!`
     return false
   }
 
@@ -253,8 +253,8 @@ getwallclocknames()
 
 function validatewallclocknames(wallclockname){
   console.log("validating function")
-    let lowerwallclockarray = globalwallclocknamesarray.map(wallclock => wallclock.toLowerCase()) 
-  let lowerwallclock = wallclockname.toLowerCase()
+    let lowerwallclockarray = globalwallclocknamesarray.map(wallclock => wallclock.toLowerCase().trim()) 
+  let lowerwallclock = wallclockname.toLowerCase().trim()
  let wallclocknameexists = lowerwallclockarray.indexOf(lowerwallclock) > -1
  console.log("wallclockarray", globalwallclocknamesarray)
  console.log("wallclockexists", wallclocknameexists)
@@ -399,7 +399,7 @@ function validatewallclocknames(wallclockname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailswallclock(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailswallclock" data-key="${data}">view</button>`;
+              return `<button onclick="detailswallclock(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailswallclock" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,

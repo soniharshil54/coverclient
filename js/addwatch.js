@@ -83,8 +83,8 @@ getwatchnames()
 
 function validatewatchnames(watchname){
   console.log("validating function")
-    let lowerwatcharray = globalwatchnamesarray.map(watch => watch.toLowerCase()) 
-  let lowerwatch = watchname.toLowerCase()
+    let lowerwatcharray = globalwatchnamesarray.map(watch => watch.toLowerCase().trim()) 
+  let lowerwatch = watchname.toLowerCase().trim()
  let watchnameexists = lowerwatcharray.indexOf(lowerwatch) > -1
  console.log("watcharray", globalwatchnamesarray)
  console.log("watchexists", watchnameexists)

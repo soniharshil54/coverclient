@@ -200,7 +200,7 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
   if(popholdernameexists){
     console.log("validated false", popholdernameexists)
     document.getElementById("edit_popholder_name_exists").style.color = 'red'
-    document.getElementById("edit_popholder_name_exists").innerHTML = `"${popholder_name}" popholder already exists !!!`
+    document.getElementById("edit_popholder_name_exists").innerHTML = `name already exists !!!`
     return false
   }
 
@@ -255,8 +255,8 @@ getpopholdernames()
 
 function validatepopholdernames(popholdername){
   console.log("validating function")
-    let lowerpopholderarray = globalpopholdernamesarray.map(popholder => popholder.toLowerCase()) 
-  let lowerpopholder = popholdername.toLowerCase()
+    let lowerpopholderarray = globalpopholdernamesarray.map(popholder => popholder.toLowerCase().trim()) 
+  let lowerpopholder = popholdername.toLowerCase().trim()
  let popholdernameexists = lowerpopholderarray.indexOf(lowerpopholder) > -1
  console.log("popholderarray", globalpopholdernamesarray)
  console.log("popholderexists", popholdernameexists)
@@ -403,7 +403,7 @@ function validatepopholdernames(popholdername){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailspopholder(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailspopholder" data-key="${data}">view</button>`;
+              return `<button onclick="detailspopholder(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailspopholder" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,

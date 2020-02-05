@@ -119,8 +119,8 @@ gettshirtnames()
 
 function validatetshirtnames(tshirtname){
   console.log("validating function")
-    let lowertshirtarray = globaltshirtnamesarray.map(tshirt => tshirt.toLowerCase()) 
-  let lowertshirt = tshirtname.toLowerCase()
+    let lowertshirtarray = globaltshirtnamesarray.map(tshirt => tshirt.toLowerCase().trim()) 
+  let lowertshirt = tshirtname.toLowerCase().trim()
  let tshirtnameexists = lowertshirtarray.indexOf(lowertshirt) > -1
  console.log("tshirtarray", globaltshirtnamesarray)
  console.log("tshirtexists", tshirtnameexists)

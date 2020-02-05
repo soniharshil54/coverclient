@@ -309,7 +309,7 @@ fetch(`http://${hosturl}:5600/api/keychain/addimage/${keychainid}`, {
   if(keychainnameexists){
     console.log("validated false", keychainnameexists)
     document.getElementById("edit_keychain_name_exists").style.color = 'red'
-    document.getElementById("edit_keychain_name_exists").innerHTML = `"${keychain_name}" keychain already exists !!!`
+    document.getElementById("edit_keychain_name_exists").innerHTML = `name already exists !!!`
     return false
   }
 
@@ -362,7 +362,9 @@ getkeychainnames()
 
 function validatekeychainnames(keychainname){
   console.log("validating function")
- let keychainnameexists = globalkeychainnamesarray.indexOf(keychainname) > -1
+    let lowerkeychainarray = globalkeychainnamesarray.map(keychain => keychain.toLowerCase().trim()) 
+  let lowerkeychain = keychainname.toLowerCase().trim()
+ let keychainnameexists = lowerkeychainarray.indexOf(lowerkeychain) > -1
  console.log("keychainarray", globalkeychainnamesarray)
  console.log("keychainexists", keychainnameexists)
   return keychainnameexists
@@ -503,7 +505,7 @@ function validatekeychainnames(keychainname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailskeychain(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailskeychain" data-key="${data}">view</button>`;
+              return `<button onclick="detailskeychain(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailskeychain" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,
@@ -565,7 +567,7 @@ function validatekeychainnames(keychainname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailskeychain(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailskeychain" data-key="${data}">view</button>`;
+              return `<button onclick="detailskeychain(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailskeychain" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,

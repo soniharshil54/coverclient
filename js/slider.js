@@ -308,7 +308,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
               }
               else if(j===1){
                 let image = '"'+myBooks[i][col[j]]+'"'
-                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
+                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info btn-sm'>view</button>`
                 console.log(myBooks[i][col[j]])
               }
               else{
@@ -391,7 +391,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
               }
               else if(j===2){
                 let image = '"'+myBooks[i][col[j]]+'"'
-                tabCell.innerHTML = `<button onclick='imageModalSec(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
+                tabCell.innerHTML = `<button onclick='imageModalSec(${image})' style='padding:1px 4px'  class='btn btn-info btn-sm'>view</button>`
                 console.log(myBooks[i][col[j]])
               }
               else{

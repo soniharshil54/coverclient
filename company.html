@@ -21,6 +21,9 @@
       color: red
     }
 
+.table td, .table th {
+    padding: 5px;
+}
 
     @media (min-width: 576px){
       .modal-dialog {
@@ -1514,8 +1517,8 @@ function add_company(){
 function validatecompany(compname){
   console.log("validating function")
   let companyarray = globalcompanies.map(company => company.name)
-  let lowercomparray = companyarray.map(company => company.toLowerCase()) 
-  let lowercomp = compname.toLowerCase()
+  let lowercomparray = companyarray.map(company => company.toLowerCase().trim()) 
+  let lowercomp = compname.toLowerCase().trim()
  let compexists = lowercomparray.indexOf(lowercomp) > -1
  console.log("comparray", companyarray)
  console.log("compexists", compexists)
@@ -2249,7 +2252,7 @@ let companyexists = validatecompany(name)
              // delbtn.innerHTML = "Delete"
              // delbtn.style.margin = "5px";
              let editbtn = document.createElement("button")
-             editbtn.setAttribute("class", "btn btn-primary");
+             editbtn.setAttribute("class", "btn btn-primary btn-sm");
              editbtn.style.marginRight = "2px";
              editbtn.setAttribute("onclick", "editcompany(this)");
              editbtn.setAttribute("data-toggle", "modal");
@@ -2270,12 +2273,12 @@ let companyexists = validatecompany(name)
             let atd = document.createElement("td");
             if(globalcompanies[i].active_status === 1){
               activatebtn.setAttribute("onclick","deactiveproduct(this)")
-              activatebtn.setAttribute("class", "btn btn-success");
+              activatebtn.setAttribute("class", "btn btn-success btn-sm");
               activatebtn.innerHTML = "Activated";
             }
             else{
               activatebtn.setAttribute("onclick","activeproduct(this)")
-              activatebtn.setAttribute("class", "btn btn-danger");
+              activatebtn.setAttribute("class", "btn btn-danger btn-sm");
               activatebtn.innerHTML = "Deactivated";
             }
            // activatebtn.setAttribute("onclick","productstatustoggle(this)")

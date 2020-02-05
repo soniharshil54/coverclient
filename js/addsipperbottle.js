@@ -88,8 +88,8 @@ getsipperbottlenames()
 
 function validatesipperbottlenames(sipperbottlename){
   console.log("validating function")
-    let lowersipperbottlearray = globalsipperbottlenamesarray.map(sipperbottle => sipperbottle.toLowerCase()) 
-  let lowersipperbottle = sipperbottlename.toLowerCase()
+    let lowersipperbottlearray = globalsipperbottlenamesarray.map(sipperbottle => sipperbottle.toLowerCase().trim()) 
+  let lowersipperbottle = sipperbottlename.toLowerCase().trim()
  let sipperbottlenameexists = lowersipperbottlearray.indexOf(lowersipperbottle) > -1
  console.log("sipperbottlearray", globalsipperbottlenamesarray)
  console.log("sipperbottleexists", sipperbottlenameexists)

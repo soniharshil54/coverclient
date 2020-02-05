@@ -91,7 +91,9 @@ getmugnames()
 
 function validatemugnames(mugname){
   console.log("validating function")
- let mugnameexists = globalmugnamesarray.indexOf(mugname) > -1
+    let lowermugarray = globalmugnamesarray.map(mug => mug.toLowerCase().trim()) 
+  let lowermug = mugname.toLowerCase().trim()
+ let mugnameexists = lowermugarray.indexOf(lowermug) > -1
  console.log("mugarray", globalmugnamesarray)
  console.log("mugexists", mugnameexists)
   return mugnameexists

@@ -52,7 +52,7 @@ document.getElementById("p_size").value = ""
 document.getElementById("p_price").value = ""
  document.getElementById("p_description").value = ""
   document.getElementById("p_pick_image_size").value = ""
-  // document.getElementById("photoframe_success_id").innerHTML = "Popholder Added Successfully !!!"
+  // document.getElementById("photoframe_success_id").innerHTML = "photoframe Added Successfully !!!"
   
    uploadFile(photoframeid)
   
@@ -86,7 +86,9 @@ getphotoframenames()
 
 function validatephotoframenames(photoframename){
   console.log("validating function")
- let photoframenameexists = globalphotoframenamesarray.indexOf(photoframename) > -1
+    let lowerphotoframearray = globalphotoframenamesarray.map(photoframe => photoframe.toLowerCase().trim()) 
+  let lowerphotoframe = photoframename.toLowerCase().trim()
+ let photoframenameexists = lowerphotoframearray.indexOf(lowerphotoframe) > -1
  console.log("photoframearray", globalphotoframenamesarray)
  console.log("photoframeexists", photoframenameexists)
   return photoframenameexists
@@ -213,7 +215,7 @@ $('textarea').blur(function(){
  // let ex_cat = $('#k_categories_ex').val();
   //console.log(inc_cat)
   //console.log(ex_cat)
-  if(photoframe_type === "Regular Popholder"){
+  if(photoframe_type === "Regular photoframe"){
     document.getElementById("type_d_overlay").style.display = "none"
      document.getElementById("type_d_mask").style.display = "none"
   }

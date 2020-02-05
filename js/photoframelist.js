@@ -198,7 +198,7 @@ fetch(`http://${hosturl}:5600/api/photoframe/addimage/${photoframeid}`, {
   if(photoframenameexists){
     console.log("validated false", photoframenameexists)
     document.getElementById("edit_photoframe_name_exists").style.color = 'red'
-    document.getElementById("edit_photoframe_name_exists").innerHTML = `"${photoframe_name}" photoframe already exists !!!`
+    document.getElementById("edit_photoframe_name_exists").innerHTML = `name already exists !!!`
     return false
   }
 
@@ -254,7 +254,9 @@ getphotoframenames()
 
 function validatephotoframenames(photoframename){
   console.log("validating function")
- let photoframenameexists = globalphotoframenamesarray.indexOf(photoframename) > -1
+    let lowerphotoframearray = globalphotoframenamesarray.map(photoframe => photoframe.toLowerCase().trim()) 
+  let lowerphotoframe = photoframename.toLowerCase().trim()
+ let photoframenameexists = lowerphotoframearray.indexOf(lowerphotoframe) > -1
  console.log("photoframearray", globalphotoframenamesarray)
  console.log("photoframeexists", photoframenameexists)
   return photoframenameexists
@@ -398,7 +400,7 @@ function validatephotoframenames(photoframename){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailsphotoframe(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info" data-toggle= "modal" data-target="#detailsphotoframe" data-key="${data}">view</button>`;
+              return `<button onclick="detailsphotoframe(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailsphotoframe" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,

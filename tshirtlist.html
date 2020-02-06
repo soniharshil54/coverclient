@@ -29,6 +29,14 @@
     padding: 5px;
 }
 
+#tshirt_size_2_couple{
+  display: none;
+}
+
+#tshirt_custom_only_shadow, #tshirt_custom_only_overlay, #tshirt_custom_only_mask,{
+  display: none;
+}
+
     #testtr{
       color: red
     }
@@ -735,7 +743,7 @@
                     </div>
                   </div>
                     </div>                  
-                    <div class="col-sm-4">
+                    <div id="tshirt_custom_only_shadow" class="col-sm-4">
                                         <div class="form-group">
                     <label for="exampleInputFile">shadow image <span style="color: #ed2939; font-weight: bold;">(Size : 667x1000)</span></label>
                     <div class="input-group">
@@ -752,7 +760,7 @@
                   </div>
 
                     </div>
-                     <div class="col-sm-4">
+                     <div id="tshirt_custom_only_overlay" class="col-sm-4">
                                         <div class="form-group">
                     <label for="exampleInputFile">overlay image <span style="color: #ed2939; font-weight: bold;">(Size : 667x1000)</span></label>
                     <div class="input-group">
@@ -769,7 +777,7 @@
                   </div>
                   
                     </div>
-                          <div class="col-sm-4">
+                          <div id="tshirt_custom_only_mask" class="col-sm-4">
                                         <div class="form-group">
                     <label for="exampleInputFile">mask image <span style="color: #ed2939; font-weight: bold;">(Size : 667x1000)</span></label>
                     <div class="input-group">
@@ -832,7 +840,7 @@
                         </div>
                       </div>
 
-                        <div class="col-sm-12">
+                        <div id="tshirt_size_2_couple" class="col-sm-12">
                         <div class="row">
                             <div class="col-sm-5">
                        <label>Available Tshirt Sizes ( Woman )</label>
@@ -841,8 +849,8 @@
                       <!-- text input -->
                        <div class="form-group">
                   
-                  <div class="select2-green">
-                    <select id="t_size_2" class="select2" multiple="multiple" data-placeholder="Select Available Sizes" data-dropdown-css-class="select2-green" style="width: 100%;">
+                  <div class="select2-pink">
+                    <select id="t_size_2" class="select2" multiple="multiple" data-placeholder="Select Available Sizes ( Woman )" data-dropdown-css-class="select2-pink" style="width: 100%;">
                       <option value="S">S</option>
                       <option value="M">M</option>
                       <option value="L">L</option>

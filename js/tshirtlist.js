@@ -312,8 +312,37 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
      return response.json()})
       .then(data => {
         console.log(data)
-          let categories = data.categories
-      $('#modal_categories_inc').val(categories).trigger('change')
+          let size_available_1 = data.sizes_available
+          if(data.type_id == "5e33edbfabdd2f537529c7f1"){
+            let size_available_2 = data.sizes_available_2
+            document.getElementById("tshirt_size_2_couple").style.display = "block"
+
+            $('#t_size_2').val(size_available_2).trigger('change')
+          }
+          else {
+            document.getElementById("tshirt_size_2_couple").style.display = "none"
+          }
+
+             if(data.subtype_id == "5e32cd728719bf459bfa93c7"){
+              document.getElementById("tshirt_custom_only_shadow").style.display = "block"
+              document.getElementById("tshirt_custom_only_overlay").style.display = "block"
+              document.getElementById("tshirt_custom_only_mask").style.display = "block"
+              document.getElementById("type_d_tshirtimages").style.display = "none"
+             let shadowimage = data.shadow_image
+      document.getElementById("edit_p_shadow_image").src = `http://${hosturl}:5600/admin/uploads/${shadowimage}`
+       let overlayimage = data.overlay_image
+      document.getElementById("edit_p_overlay_image").src = `http://${hosturl}:5600/admin/uploads/${overlayimage}`
+      let maskimage = data.mask_image
+      document.getElementById("edit_p_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
+           
+          }
+          else {
+            document.getElementById("tshirt_custom_only_shadow").style.display = "none"
+              document.getElementById("tshirt_custom_only_overlay").style.display = "none"
+              document.getElementById("tshirt_custom_only_mask").style.display = "none"
+              document.getElementById("type_d_tshirtimages").style.display = "block"
+          }
+      $('#t_size').val(size_available_1).trigger('change')
         document.getElementById("edit_p_id").value = data._id
     document.getElementById("edit_p_name").value = data.name
     document.getElementById("edit_p_type").value = data.maintype_name
@@ -323,12 +352,7 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
     document.getElementById("edit_p_pick_image_size").value = data.pick_image_size
       let headerimage = data.h_image
       document.getElementById("edit_p_h_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
-      let shadowimage = data.shadow_image
-      document.getElementById("edit_p_shadow_image").src = `http://${hosturl}:5600/admin/uploads/${shadowimage}`
-       let overlayimage = data.overlay_image
-      document.getElementById("edit_p_overlay_image").src = `http://${hosturl}:5600/admin/uploads/${overlayimage}`
-      let maskimage = data.mask_image
-      document.getElementById("edit_p_mask_image").src = `http://${hosturl}:5600/admin/uploads/${maskimage}`
+     
        $("#myModal").modal('show')
 
        globaltshirtnamesarray = globaltshirtnamesarray.filter(name => name !== data.name)
@@ -343,7 +367,8 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
     function edittshirt(){
       let tshirt_id = document.getElementById("edit_p_id").value
     let tshirt_name = document.getElementById("edit_p_name").value
-    let tshirt_size = document.getElementById("edit_p_size").value
+    let sizes_available = $('#t_size').val();
+    
     let price = document.getElementById("edit_p_price").value
     let description = document.getElementById("edit_p_description").value
     let pick_image_size = document.getElementById("edit_p_pick_image_size").value
@@ -361,7 +386,7 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
 
      let tshirtdata = {
       name : tshirt_name,
-      size : tshirt_size,
+      sizes_available,
      price,description , pick_image_size
     }
       // console.log(keyid)

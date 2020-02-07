@@ -375,6 +375,7 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
         document.getElementById("edit_p_id").value = data._id
     document.getElementById("edit_p_name").value = data.name
     document.getElementById("edit_p_type").value = data.maintype_name
+     document.getElementById("edit_p_type_id").value = data.type_id
     document.getElementById("edit_p_subtype_id").value = data.subtype_id
     //document.getElementById("edit_p_size").value = data.size
     document.getElementById("edit_p_price").value = data.price
@@ -398,6 +399,7 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
       let tshirt_id = document.getElementById("edit_p_id").value
     let tshirt_name = document.getElementById("edit_p_name").value
     let sizes_available = $('#t_size').val();
+    let tshirt_type = document.getElementById("edit_p_type_id").value
     let tshirt_subtype = document.getElementById("edit_p_subtype_id").value
     let price = document.getElementById("edit_p_price").value
     let description = document.getElementById("edit_p_description").value
@@ -418,6 +420,10 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
       name : tshirt_name,
       sizes_available,
      price,description , pick_image_size
+    }
+
+    if(tshirt_type === "5e33edbfabdd2f537529c7f1"){
+      tshirtdata.sizes_available_2 = $('#t_size_2').val();
     }
       // console.log(keyid)
       console.log("k edit data")

@@ -17,6 +17,8 @@
 <link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
 <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
 <link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link type="text/css" rel="stylesheet" href="plugins/jquery-multi-image/dist/image-uploader.min.css">
   <link rel="stylesheet" href="dist/css/tagstyle.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <!-- Google Font: Source Sans Pro -->
@@ -714,6 +716,7 @@
                     <div class="col-sm-4">
                       <!-- text input -->
                        <input type="hidden" id="edit_p_id" name="modal_id" value="">
+                       <input type="hidden" id="edit_p_subtype_id" name="modal_subtype_id" value="">
                       <div class="form-group">
                         <label>Name</label>
                         <input type="text" id="edit_p_name" class="form-control" placeholder="Enter ...">
@@ -733,7 +736,7 @@
                     <div class="input-group">
                       <img width="38px" height="38px" id="edit_p_h_image" src="">
                       <div class="custom-file">
-                         
+                         <form name="headerImageEdit" id="tshirtImagesCommonEdit" enctype="multipart/form-data">
                         <input name="hImage" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
@@ -791,28 +794,31 @@
                         <span class="input-group-text" id="">Upload</span>
                       </div> -->
                     </div>
-                  </div>
+                  </div></form>
                   
                     </div>
                       <div id="type_d_tshirtimages" class="col-sm-12">
                         <div class="row">
-                           <div class="col-sm-5">
+                                <div class="col-sm-5">
                         <label for="exampleInputFile">Tshirt images <span style="color: #ed2939; font-weight: bold;">(Size : 720x324 each)</span></label>
                     </div>
                     <div class="col-sm-7">
                         <div class="form-group">
                   
                     <div class="input-group">
-                      <div class="custom-file">                        <input name="tshirtImages" multiple="true" type="file" class="custom-file-input" id="tshirtImages">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
-                      </div>
-                      <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div>
+                      <form style="width: 100%" name="tshirtImagesFormEdit" id="tshirtImagesFormEdit" enctype="multipart/form-data">
+                        
+        <div class="input-images-2" style="padding-top: .5rem;"></div>
+                        
+                      </form>
+                     
                     </div>
                   </div>
 
                     </div>
+                  
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-9"></div>
                    
                            
                         </div>
@@ -1024,11 +1030,19 @@
 <script src="plugins/daterangepicker/daterangepicker.js"></script>
 <script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script type="text/javascript" src="plugins/jquery-multi-image/dist/image-uploader.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
 <script src="js/hosturln.js"></script>
+
+<!-- <script type="text/javascript">
+    $('.input-images-1').imageUploader({
+   
+    imagesInputName: 'tshirtImages'
+});
+</script> -->
 
 <script>
   $(function () {

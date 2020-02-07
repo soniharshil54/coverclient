@@ -61,7 +61,7 @@
 //  document.getElementById("t_description").value = ""
 //   document.getElementById("t_pick_image_size").value = ""
   // document.getElementById("tshirt_success_id").innerHTML = "tshirt Added Successfully !!!"
-  if(tshirt_type !== "5e32cd728719bf459bfa93c7"){
+  if(tshirt_subtype !== "5e32cd728719bf459bfa93c7"){
     uploadtshirtimages(tshirtid)
   }
   

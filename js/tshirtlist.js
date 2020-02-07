@@ -13,6 +13,10 @@ function addtshirt(){
   window.location = "addtshirt.html";
 }
 
+$('#myModal').on('hidden.bs.modal', function () {
+  document.getElementsByClassName("input-images-2")[0].innerHTML = ""
+});
+
 
   function checkAll()
  {
@@ -69,7 +73,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
     function uploadFileEdit(tshirtid){
     console.log("uploads file")
     //var input = document.querySelector('input[type="file"]')
-    var form = document.getElementById("tshirtImagesEdit");
+    var form = document.getElementById("tshirtImagesCommonEdit");
     var formData = new FormData(form);
 
 fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
@@ -337,15 +341,41 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
            
           }
           else {
+           
             document.getElementById("tshirt_custom_only_shadow").style.display = "none"
               document.getElementById("tshirt_custom_only_overlay").style.display = "none"
               document.getElementById("tshirt_custom_only_mask").style.display = "none"
               document.getElementById("type_d_tshirtimages").style.display = "block"
+              let regular_images = data.regular_images
+              let imagesgot = []
+              let preloaded = regular_images.map((img, index) =>{
+                let tempobj = {}
+                tempobj.id = `${index}-p`
+                tempobj.src = `http://${hosturl}:5600/admin/uploads/${img}`
+                console.log(img)
+                console.log(tempobj)
+                return tempobj
+              })
+    //           console.log(preloaded)
+
+    //           let preloaded = [
+    //                {id: 1, src: 'https://picsum.photos/500/500?random=1'},
+    // {id: 2, src: 'https://picsum.photos/500/500?random=2'},
+    // {id: 3, src: 'https://picsum.photos/500/500?random=3'}
+                 
+    //           ];
+
+              $('.input-images-2').imageUploader({
+                  preloaded: preloaded,
+                  imagesInputName: 'tshirtImages',
+                  preloadedInputName: 'old'
+              });
           }
       $('#t_size').val(size_available_1).trigger('change')
         document.getElementById("edit_p_id").value = data._id
     document.getElementById("edit_p_name").value = data.name
     document.getElementById("edit_p_type").value = data.maintype_name
+    document.getElementById("edit_p_subtype_id").value = data.subtype_id
     //document.getElementById("edit_p_size").value = data.size
     document.getElementById("edit_p_price").value = data.price
     document.getElementById("edit_p_description").value = data.description
@@ -368,7 +398,7 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
       let tshirt_id = document.getElementById("edit_p_id").value
     let tshirt_name = document.getElementById("edit_p_name").value
     let sizes_available = $('#t_size').val();
-    
+    let tshirt_subtype = document.getElementById("edit_p_subtype_id").value
     let price = document.getElementById("edit_p_price").value
     let description = document.getElementById("edit_p_description").value
     let pick_image_size = document.getElementById("edit_p_pick_image_size").value
@@ -403,6 +433,11 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
             body: JSON.stringify(tshirtdata)
           })
           .then(function(res){ 
+
+            if(tshirt_subtype !== "5e32cd728719bf459bfa93c7"){
+              console.log(document.getElementsByName("old[]")[0].value)
+    uploadtshirtimages(tshirt_id)
+  }
             uploadFileEdit(tshirt_id)
             //getoffers()
             $("#myModal").modal("hide");
@@ -410,6 +445,24 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
           })
           .catch(function(res){ console.log(res) })
     }
+
+        function uploadtshirtimages(tshirtid){
+    console.log("uploads file")
+    //var input = document.querySelector('input[type="file"]')
+    var form = document.getElementById("tshirtImagesFormEdit");
+    var formData = new FormData(form);
+
+fetch(`http://${hosturl}:5600/api/tshirt/tmtedittshirtimages/${tshirtid}`, {
+  method: 'PUT',
+  body: formData
+}).then(res => {
+  console.log(res)
+  //window.location  =  "tshirtlist.html"
+  //document.getElementById("tshirtsuccessAdded").innerHTML = "Offer successfully added !!!"
+ // getoffers()
+}).catch(err => console.log(err))
+
+  }
 
      function gettshirtnames(){
     fetch(`http://${hosturl}:5600/api/tshirt/getalltshirtnames`)

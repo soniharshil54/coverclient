@@ -352,18 +352,14 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
             body: JSON.stringify(ceditdata)
           })
           .then(function(res){ 
-            //let btnstatus = activebtn.previousSibling
-             //let btnstatus2 = activebtn.previousSibling
-            //let btnstatus = $(activebtn[0]).parent().find('button')
-           // let btnstatus = $(activebtn[0]).closest('button')
-            //console.log(btnstatus)
-           // setTimeout(timeout(activebtn), 5000)
-          //  btnstatus.html("Active")
-            // console.log(res)
-           // uploadFileEdit(keyid)
-           // getoffers()
-           getoffersdatatable()
-           // $("#myModal").modal("hide");
+            $(activebtn).html("Inactive");
+             $(activebtn).attr("onclick","deactiveoffer(this)");
+             let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Active")
+             buttonUpdate.attr("class","btn btn-success btn-sm dropdown-toggle");
+
+           // getoffersdatatable()
+         
  
           })
           .catch(function(res){ console.log(res) })
@@ -388,7 +384,12 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
           .then(function(res){ 
              // console.log(res)
             //getoffers()
-            getoffersdatatable()
+            $(activebtn).html("Active");
+            $(activebtn).attr("onclick","activeoffer(this)");
+            let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Deactivated")
+             buttonUpdate.attr("class","btn btn-danger btn-sm dropdown-toggle");
+           // getoffersdatatable()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");
@@ -427,7 +428,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   //getoffers()
 
       function getoffersdatatable(){
-          let userTable = $('#example1').DataTable({
+          userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
         "aaSorting": [[ 4, "desc" ]],

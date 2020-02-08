@@ -55,17 +55,12 @@
             body: JSON.stringify(ceditdata)
           })
           .then(function(res){ 
-            //let btnstatus = activebtn.previousSibling
-             //let btnstatus2 = activebtn.previousSibling
-            //let btnstatus = $(activebtn[0]).parent().find('button')
-           // let btnstatus = $(activebtn[0]).closest('button')
-            //console.log(btnstatus)
-           // setTimeout(timeout(activebtn), 5000)
-          //  btnstatus.html("Active")
-            // console.log(res)
-           // uploadFileEdit(keyid)
-           // getoffers()
-           getwmtypesdatatable()
+            $(activebtn).html("Inactive");
+             $(activebtn).attr("onclick","deactivewmtype(this)");
+             let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Active")
+             buttonUpdate.attr("class","btn btn-success btn-sm dropdown-toggle");
+           //getwmtypesdatatable()
            // $("#myModal").modal("hide");
  
           })
@@ -89,9 +84,12 @@
             body: JSON.stringify(ceditdata)
           })
           .then(function(res){ 
-             // console.log(res)
-            //getoffers()
-            getwmtypesdatatable()
+               $(activebtn).html("Active");
+            $(activebtn).attr("onclick","activewmtype(this)");
+            let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Deactivated")
+             buttonUpdate.attr("class","btn btn-danger btn-sm dropdown-toggle");
+           // getwmtypesdatatable()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");

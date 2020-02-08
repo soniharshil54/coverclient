@@ -177,8 +177,12 @@ $('input').blur(function(){
             body: JSON.stringify(ceditdata)
           })
           .then(function(res){ 
-
-           getptypesdatatable()
+ $(activebtn).html("Inactive");
+             $(activebtn).attr("onclick","deactiveptype(this)");
+             let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Active")
+             buttonUpdate.attr("class","btn btn-success btn-sm dropdown-toggle");
+          // getptypesdatatable()
            // $("#myModal").modal("hide");
  
           })
@@ -202,9 +206,12 @@ $('input').blur(function(){
             body: JSON.stringify(ceditdata)
           })
           .then(function(res){ 
-             // console.log(res)
-            //getoffers()
-            getptypesdatatable()
+           $(activebtn).html("Active");
+            $(activebtn).attr("onclick","activeptype(this)");
+            let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Deactivated")
+             buttonUpdate.attr("class","btn btn-danger btn-sm dropdown-toggle");
+          //  getptypesdatatable()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");

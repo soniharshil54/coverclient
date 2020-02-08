@@ -355,17 +355,12 @@ function validatesipperbottlenames(sipperbottlename){
             body: JSON.stringify(ceditdata)
           })
           .then(function(res){ 
-            //let btnstatus = activebtn.previousSibling
-             //let btnstatus2 = activebtn.previousSibling
-            //let btnstatus = $(activebtn[0]).parent().find('button')
-           // let btnstatus = $(activebtn[0]).closest('button')
-            //console.log(btnstatus)
-           // setTimeout(timeout(activebtn), 5000)
-          //  btnstatus.html("Active")
-            // console.log(res)
-           // uploadFileEdit(keyid)
-           // getoffers()
-           getsipperbottlesdatatable()
+              $(activebtn).html("Inactive");
+             $(activebtn).attr("onclick","deactivesipperbottle(this)");
+             let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Active")
+             buttonUpdate.attr("class","btn btn-success btn-sm dropdown-toggle");
+           //getsipperbottlesdatatable()
            // $("#myModal").modal("hide");
  
           })
@@ -389,9 +384,12 @@ function validatesipperbottlenames(sipperbottlename){
             body: JSON.stringify(ceditdata)
           })
           .then(function(res){ 
-             // console.log(res)
-            //getoffers()
-            getsipperbottlesdatatable()
+           $(activebtn).html("Active");
+            $(activebtn).attr("onclick","activeoffer(this)");
+            let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Deactivated")
+             buttonUpdate.attr("class","btn btn-danger btn-sm dropdown-toggle");
+          //  getsipperbottlesdatatable()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");

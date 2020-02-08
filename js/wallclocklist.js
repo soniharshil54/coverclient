@@ -294,17 +294,12 @@ function validatewallclocknames(wallclockname){
             body: JSON.stringify(ceditdata)
           })
           .then(function(res){ 
-            //let btnstatus = activebtn.previousSibling
-             //let btnstatus2 = activebtn.previousSibling
-            //let btnstatus = $(activebtn[0]).parent().find('button')
-           // let btnstatus = $(activebtn[0]).closest('button')
-            //console.log(btnstatus)
-           // setTimeout(timeout(activebtn), 5000)
-          //  btnstatus.html("Active")
-            // console.log(res)
-           // uploadFileEdit(keyid)
-           // getoffers()
-           getwallclocksdatatable()
+            $(activebtn).html("Inactive");
+             $(activebtn).attr("onclick","deactivewallclock(this)");
+             let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Active")
+             buttonUpdate.attr("class","btn btn-success btn-sm dropdown-toggle");
+          // getwallclocksdatatable()
            // $("#myModal").modal("hide");
  
           })
@@ -328,9 +323,12 @@ function validatewallclocknames(wallclockname){
             body: JSON.stringify(ceditdata)
           })
           .then(function(res){ 
-             // console.log(res)
-            //getoffers()
-            getwallclocksdatatable()
+              $(activebtn).html("Active");
+            $(activebtn).attr("onclick","activewallclock(this)");
+            let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Deactivated")
+             buttonUpdate.attr("class","btn btn-danger btn-sm dropdown-toggle");
+           // getwallclocksdatatable()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");

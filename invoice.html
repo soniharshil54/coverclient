@@ -179,7 +179,7 @@ tr:first-child
    <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="index.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">phone case</span>
@@ -565,7 +565,7 @@ tr:first-child
                 <div class="col-sm-4 invoice-col">
                   To
                   <address>
-                    <strong id="user_name">John Doe</strong><br>
+                    <strong id="user_name"></strong><br>
                     <span id="user_address"></span><br>
                     <span id="user_city_pincode"></span> <br>
                     <span id="user_state"></span> <br>
@@ -577,7 +577,7 @@ tr:first-child
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                  <b>Invoice #007612</b><br>
+                  <b>Invoice <span id="newInvoiceId"></span></b><br>
                   <br>
                   <b>Order ID:</b><span id="order_id"></span><br>
                   <!-- <b>Payment Due:</b> 2/22/2014<br>
@@ -608,7 +608,7 @@ tr:first-child
                     <table class="table">
                       <tr>
                         <th style="width:50%">Subtotal:</th>
-                        <td id="sub_total">$250.30</td>
+                        <td id="sub_total"></td>
                       </tr>
                      <!--  <tr>
                         <th>Tax (18%)</th>
@@ -616,11 +616,11 @@ tr:first-child
                       </tr> -->
                       <tr>
                         <th>Shipping:</th>
-                        <td id="shipping">$5.80</td>
+                        <td id="shipping"></td>
                       </tr>
                       <tr>
                         <th>Total:</th>
-                        <td id="total_amount">$265.24</td>
+                        <td id="total_amount"></td>
                       </tr>
                     </table>
                   </div>
@@ -834,6 +834,7 @@ document.getElementById('invoicedate').innerHTML = today;
       document.getElementById('user_contact').innerHTML = data.user_id.contact
       document.getElementById('user_email').innerHTML = data.user_id.email_id
       document.getElementById('order_id').innerHTML = data.order_id
+      document.getElementById('newInvoiceId').innerHTML = data.order_id
       document.getElementById("sub_total").innerHTML = data.sub_total ? data.sub_total + " ₹ " : "N.A." 
      // document.getElementById("gst_tax").innerHTML = data.gst_tax ? data.gst_tax + " ₹ " : "N.A." 
       document.getElementById("shipping").innerHTML = data.shipping ? data.shipping + " ₹ " : "N.A."

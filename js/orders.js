@@ -848,7 +848,7 @@ function download(){
               console.log(data.order_status)
                  let forid = `order_status_ind_${orderreftable}`
                  let status_id = `span_status_${orderreftable}`
-                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select  custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option id="Failed" value="Failed">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select  custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option value="Failed">Failed</option><option value="Delivered">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
           
               let spantag = ""
                  if(data.order_status === "Pending Payment"){
@@ -859,6 +859,9 @@ function download(){
                  }
                  else if(data.order_status === "Failed"){
                   spantag = `<span id="${status_id}" class="badge badge-danger">Failed</span>`
+                 }
+                  else if(data.order_status === "Delivered"){
+                  spantag = `<span id="${status_id}" class="badge badge-success">Delivered</span>`
                  }
                   else if(data.order_status === "On Hold"){
                   spantag = `<span id="${status_id}" class="badge badge-info">On Hold</span>`
@@ -921,7 +924,7 @@ function download(){
                 for(let i=0; i < productsref.length; i++){
                   // console.log()
 
-                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px;color:green" class="btn" data-oid=${order_id} data-pid="${productsref[i]._id}">${productsref[i].product_name}</button>`
+                    let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select  custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option value="Failed">Failed</option><option value="Delivered">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
                   products_name += `${btntag} </br> `
                 }
               return products_name

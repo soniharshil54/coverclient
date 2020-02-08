@@ -893,7 +893,119 @@ function download(){
     });
     }
 
-    function getfilteredordersdatatable(newdata){
+        function getfilteredordersdatatable(newdata){
+          let userTable = $('#example1').DataTable({
+            destroy: true,
+        "processing" : true,
+          "lengthMenu": [[50, 100, 500, -1], [50, 100, 500, "All"]],
+        "aaSorting": [[ 5, "desc" ]],
+          "rowCallback": function (nRow, aData, iDisplayIndex) {
+               var oSettings = this.fnSettings ();
+               $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+               return nRow;
+          },
+         "aaData" : newdata,
+        "columns" : [ {
+            "data" : null
+        }, {
+            "data" : null,
+            "mRender": function(data, type){
+              let orderid = data._id
+              let atag = `<a href='invoice.html#${orderid}'>${data.order_id}</a>`
+              return atag
+            }
+        }, {
+            "data" : null,
+            "mRender" : function(data, type){
+                let products_name = ''
+                let productsref = data.products
+                let order_id = data.order_id
+                for(let i=0; i < productsref.length; i++){
+                  // console.log()
+
+                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px;color:green" class="btn" data-oid=${order_id} data-pid="${productsref[i]._id}">${productsref[i].product_name}</button>`
+                  products_name += `${btntag} </br> `
+                }
+              return products_name
+            }
+        },{
+            "data" : "amount",
+              "mRender" : function(data, type){
+              let amou = `${data} ₹`
+              return amou
+            }
+        }, {
+            "data" : "payment_type"
+        },{
+          "data":"date_ordered",
+          "visible":false
+        }
+        ,{
+            "data" : "date_ordered",
+            "mRender" : function(data, type){
+              let date = data.split("T")[0].split('-').reverse().join('-')
+              return date
+            }
+        }, {
+          "data": "user_id",
+            "mRender": function(data, type) {
+             
+              return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-pid="${data._id}">view</button>`;
+            }
+        },{
+          "data":null,
+             "mRender": function(data,type){
+              let orderreftable = data._id
+              console.log(orderreftable)
+              console.log(data.order_status)
+                 let forid = `order_status_ind_${orderreftable}`
+                 let status_id = `span_status_${orderreftable}`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select  custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option value="Failed">Failed</option><option value="Delivered">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
+          
+              let spantag = ""
+                 if(data.order_status === "Pending Payment"){
+                  spantag = `<span id="${status_id}" class="badge badge-warning">Pending Payment</span>`
+                 }
+                   else if(data.order_status === "Processing"){
+                  spantag = `<span id="${status_id}" class="badge badge-success">Processing</span>`
+                 }
+                 else if(data.order_status === "Failed"){
+                  spantag = `<span id="${status_id}" class="badge badge-danger">Failed</span>`
+                 }
+                  else if(data.order_status === "Delivered"){
+                  spantag = `<span id="${status_id}" class="badge badge-success">Delivered</span>`
+                 }
+                  else if(data.order_status === "On Hold"){
+                  spantag = `<span id="${status_id}" class="badge badge-info">On Hold</span>`
+                 }
+                  else if(data.order_status === "Refunded"){
+                  spantag = `<span id="${status_id}" class="badge badge-warning">Refunded</span>`
+                 }
+                   else if(data.order_status === "Trash"){
+                  spantag = `<span id="${status_id}" class="badge badge-danger">Trash</span>`
+                 }
+                     else if(data.order_status === "Completed"){
+                  spantag = `<span id="${status_id}" class="badge badge-success">Completed</span>`
+                 }
+
+                 else{
+                  console.log(data.order_status)
+                  spantag = `<span id="${status_id}" class="badge badge-info">old</span>`
+                 }
+                 spantag += btntag3
+                 return spantag
+            }
+        }, {
+          "data": "_id",
+            "mRender": function(data, type) {
+             
+              return `<input name="todelete" value=${data} type="checkbox">`;
+            }
+        }]
+    });
+    }
+
+    function getfilteredordersdatatableold(newdata){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
@@ -943,7 +1055,7 @@ function download(){
         },{
             "data" : "date_ordered",
             "mRender" : function(data, type){
-              let date = data.split("T")[0]
+              let date = data.split("T")[0].split('-').reverse().join('-')
               return date
             }
         },  {

@@ -352,13 +352,13 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
             body: JSON.stringify(ceditdata)
           })
           .then(function(res){ 
-            $(activebtn).html("Inactive");
-             $(activebtn).attr("onclick","deactiveoffer(this)");
-             let buttonUpdate = $(activebtn).parent().siblings(".btn")
-             buttonUpdate.html("Active")
-             buttonUpdate.attr("class","btn btn-success btn-sm dropdown-toggle");
+            // $(activebtn).html("Inactive");
+            //  $(activebtn).attr("onclick","deactiveoffer(this)");
+            //  let buttonUpdate = $(activebtn).parent().siblings(".btn")
+            //  buttonUpdate.html("Active")
+            //  buttonUpdate.attr("class","btn btn-success btn-sm dropdown-toggle");
 
-           // getoffersdatatable()
+           getoffersdatatable()
          
  
           })
@@ -384,12 +384,12 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
           .then(function(res){ 
              // console.log(res)
             //getoffers()
-            $(activebtn).html("Active");
-            $(activebtn).attr("onclick","activeoffer(this)");
-            let buttonUpdate = $(activebtn).parent().siblings(".btn")
-             buttonUpdate.html("Deactivated")
-             buttonUpdate.attr("class","btn btn-danger btn-sm dropdown-toggle");
-           // getoffersdatatable()
+            // $(activebtn).html("Active");
+            // $(activebtn).attr("onclick","activeoffer(this)");
+            // let buttonUpdate = $(activebtn).parent().siblings(".btn")
+            //  buttonUpdate.html("Deactivated")
+            //  buttonUpdate.attr("class","btn btn-danger btn-sm dropdown-toggle");
+           getoffersdatatable()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");

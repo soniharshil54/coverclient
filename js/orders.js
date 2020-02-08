@@ -520,6 +520,7 @@ async function download() {
 
 
     function changeorderstatus(selop){
+      console.log(selop)
       let orderid = selop.getAttribute('data-oid')
       let orderid_user = selop.getAttribute('data-orid')
       let user_name = selop.getAttribute('data-user')
@@ -537,6 +538,8 @@ async function download() {
       let smsbody = {
         mobilenumber, orderid_user,user_name
       }
+      console.log("smsbody")
+      console.log(smsbody)
       fetch(`http://${hosturl}:5600/api/notification/postorderconfirm`,
     {
       headers: {
@@ -846,9 +849,12 @@ function download(){
               let orderreftable = data._id
               console.log(orderreftable)
               console.log(data.order_status)
+              let mobilenumber = data.user_id.contact
+              let username = `${data.user_id.first_name} ${data.user_id.last_name}`
+              let orederrefid = data.order_id
                  let forid = `order_status_ind_${orderreftable}`
                  let status_id = `span_status_${orderreftable}`
-                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select  custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option value="Failed">Failed</option><option value="Delivered">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
+                let btntag3 =  `<select data-oid=${orderreftable} data-user=${username} data-contact=${mobilenumber} data-orid=${orederrefid} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select  custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option value="Failed">Failed</option><option value="Delivered">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
           
               let spantag = ""
                  if(data.order_status === "Pending Payment"){

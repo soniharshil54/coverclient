@@ -578,8 +578,49 @@ async function download() {
   // console.log(result)
   //let productId = result.product._id
  // console.log(productId)
+ let spanstatusid = `#span_status_${orderid}`
   document.getElementById(foridf).value = ""
-  getordersdatatable()
+     if(newstatus === "Pending Payment"){
+      $(spanstatusid).html("Pending Payment");
+             $(spanstatusid).attr("class","badge badge-warning");
+                  spantag = `<span id="span_status" class="badge badge-warning">Pending Payment</span>`
+                 }
+                   else if(newstatus === "Processing"){
+                      $(spanstatusid).html("Processing");
+             $(spanstatusid).attr("class","badge badge-success");
+                 }
+                 else if(newstatus === "Failed"){
+                    $(spanstatusid).html("Failed");
+             $(spanstatusid).attr("class","badge badge-danger");
+                 }
+                  else if(newstatus === "Delivered"){
+                    $(spanstatusid).html("Delivered");
+             $(spanstatusid).attr("class","badge badge-success");
+                 }
+                  else if(newstatus === "On Hold"){
+                      $(spanstatusid).html("On Hold");
+             $(spanstatusid).attr("class","badge badge-info");
+                 
+                 }
+                  else if(newstatus === "Refunded"){
+                      $(spanstatusid).html("Refunded");
+             $(spanstatusid).attr("class","badge badge-warning");
+                 
+                 }
+                   else if(newstatus === "Trash"){
+                      $(spanstatusid).html("Trash");
+             $(spanstatusid).attr("class","badge badge-danger");
+               
+                 }
+                   else if(newstatus === "Completed"){
+                      $(spanstatusid).html("Completed");
+             $(spanstatusid).attr("class","badge badge-success");
+                  
+                 }
+                 else{
+                  console.log("something wrong")
+                 }
+  //getordersdatatable()
   //uploadFile(productId)
   //getord
   
@@ -801,43 +842,40 @@ function download(){
             }
         },{
           "data":null,
-            "mRender": function(data,type){
+             "mRender": function(data,type){
               let orderreftable = data._id
-              let username = data.user_id.first_name + " " + data.user_id.last_name 
-              let usercontact = data.user_id.contact
-              let orderid = data.order_id
               console.log(orderreftable)
               console.log(data.order_status)
                  let forid = `order_status_ind_${orderreftable}`
-                let btntag3 =  `<select data-contact=${usercontact} data-user=${username} data-orid=${orderid} data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option value="Failed">Failed</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
+                 let status_id = `span_status_${orderreftable}`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select  custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option id="Failed" value="Failed">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
           
               let spantag = ""
                  if(data.order_status === "Pending Payment"){
-                  spantag = `<span id="span_status" class="badge badge-warning">Pending Payment</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-warning">Pending Payment</span>`
                  }
                    else if(data.order_status === "Processing"){
-                  spantag = `<span id="span_status" class="badge badge-success">Processing</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-success">Processing</span>`
                  }
                  else if(data.order_status === "Failed"){
-                  spantag = `<span id="span_status" class="badge badge-danger">Failed</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-danger">Failed</span>`
                  }
                   else if(data.order_status === "On Hold"){
-                  spantag = `<span id="span_status" class="badge badge-info">On Hold</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-info">On Hold</span>`
                  }
                   else if(data.order_status === "Refunded"){
-                  spantag = `<span id="span_status" class="badge badge-warning">Refunded</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-warning">Refunded</span>`
                  }
                    else if(data.order_status === "Trash"){
-                  spantag = `<span id="span_status" class="badge badge-danger">Trash</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-danger">Trash</span>`
                  }
-                   else if(data.order_status === "Completed"){
-                  spantag = `<span id="span_status" class="badge badge-success">Completed</span>`
+                     else if(data.order_status === "Completed"){
+                  spantag = `<span id="${status_id}" class="badge badge-success">Completed</span>`
                  }
-
 
                  else{
                   console.log(data.order_status)
-                  spantag = `<span id="span_status" class="badge badge-info">old</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-info">old</span>`
                  }
                  spantag += btntag3
                  return spantag
@@ -918,34 +956,38 @@ function download(){
               console.log(orderreftable)
               console.log(data.order_status)
                  let forid = `order_status_ind_${orderreftable}`
-                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="Delivered" id="${forid}" class="form-control custom-select  custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option id="Failed" value="Failed">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
+                 let status_id = `span_status_${orderreftable}`
+                let btntag3 =  `<select data-oid=${orderreftable} onchange="changeorderstatus(this)" style="width:15%" value="" id="${forid}" class="form-control custom-select  custom-select-nn"><option value=""></option><option value="Pending Payment">Pending Payment</option><option id="Failed" value="Failed">Failed</option><option id="Failed" value="Delivered">Delivered</option><option value="On Hold">On Hold</option><option value="Processing">Processing</option><option value="Refunded">Refunded</option><option value="Trash">Trash</option><option value="Completed">Completed</option></select>`
           
               let spantag = ""
                  if(data.order_status === "Pending Payment"){
-                  spantag = `<span id="span_status" class="badge badge-warning">Pending Payment</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-warning">Pending Payment</span>`
                  }
                    else if(data.order_status === "Processing"){
-                  spantag = `<span id="span_status" class="badge badge-success">Processing</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-success">Processing</span>`
                  }
                  else if(data.order_status === "Failed"){
-                  spantag = `<span id="span_status" class="badge badge-danger">Failed</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-danger">Failed</span>`
+                 }
+                  else if(data.order_status === "Delivered"){
+                  spantag = `<span id="${status_id}" class="badge badge-success">Delivered</span>`
                  }
                   else if(data.order_status === "On Hold"){
-                  spantag = `<span id="span_status" class="badge badge-info">On Hold</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-info">On Hold</span>`
                  }
                   else if(data.order_status === "Refunded"){
-                  spantag = `<span id="span_status" class="badge badge-warning">Refunded</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-warning">Refunded</span>`
                  }
                    else if(data.order_status === "Trash"){
-                  spantag = `<span id="span_status" class="badge badge-danger">Trash</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-danger">Trash</span>`
                  }
                      else if(data.order_status === "Completed"){
-                  spantag = `<span id="span_status" class="badge badge-success">Completed</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-success">Completed</span>`
                  }
 
                  else{
                   console.log(data.order_status)
-                  spantag = `<span id="span_status" class="badge badge-info">old</span>`
+                  spantag = `<span id="${status_id}" class="badge badge-info">old</span>`
                  }
                  spantag += btntag3
                  return spantag

@@ -30,7 +30,8 @@
           "data": "_id",
             "mRender": function(data, type) {
               console.log(data)
-              return `<input name="todelete" value=${data} type="checkbox">`;
+              let checkid = `check_${data}`
+              return `<input id='${checkid}' name="todelete" value=${data} type="checkbox">`;
             }
         }]
     });
@@ -76,9 +77,16 @@
       if(items[i].type=='checkbox' && items[i].checked==true)
         selectedItems.push(items[i].value);
     }
-    // console.log(selectedItems);
+      // console.log(selectedItems);
     return selectedItems
   } 
+
+  function removeusersfromdatatable(selectedItems){
+    for(var i=0; i<selectedItems.length; i++){
+      let selid = `#check_${selectedItems[i]}`
+      $(selid).closest('tr').remove();
+    }
+  }
 
     function deleteusers(){
       console.log("delete users running")
@@ -98,12 +106,9 @@
             body: JSON.stringify(deleteArray)
           })
           .then(function(res){ 
-        //         table
-        // .row( $(this).parents('tr') )
-        // .remove()
-        // .draw();
          $("#deleteModal").modal("hide");
-            getusersdatatable()
+         removeusersfromdatatable(todeactiveids)
+           // getusersdatatable()
             document.getElementById("confirmDelete").innerHTML = "Seleted users deleted successfully!!!"
             console.log(res)
           })

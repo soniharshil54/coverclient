@@ -860,7 +860,7 @@
                       </div> -->
                     </div>
                   </div><div class="col-sm-6"></div>
-                  <div class="col-sm-3"><label for="exampleInputFile">3d image cover <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label></div>
+                <!--   <div class="col-sm-3"><label for="exampleInputFile">3d image cover <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label></div>
                   <div class="col-sm-3">
                     
                     <div class="form-group">
@@ -868,12 +868,9 @@
                         <input id="image_3d_mask" name="image_3d_mask" type="file" class="custom-file-input">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
                     </div>
-                  </div> <div class="col-sm-6"></div>
-                  <div class="col-sm-3"><label for="exampleInputFile">3d image mask <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label></div>  
+                  </div> <div class="col-sm-6"></div> -->
+                <!--   <div class="col-sm-3"><label for="exampleInputFile">3d image mask <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label></div>  
                   <div class="col-sm-3">
                     
                     <div class="form-group">
@@ -881,11 +878,8 @@
                         <input id="image_3d_inner" name="image_3d_inner" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
                     </div>
-                  </div> <div class="col-sm-6"></div>
+                  </div> <div class="col-sm-6"></div> -->
                   <div class="col-sm-3"><label>3d-Size</label></div>
                   <div class="col-sm-3">
                     <!-- text input -->
@@ -1209,8 +1203,8 @@ $(document).ready(function(){
     let innerimage_2d = $("#image_2d_inner").val();
     let maskimage_2d = $("#image_2d_mask").val();
     let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
+    // let innerimage_3d = $("#image_3d_inner").val();
+    // let maskimage_3d = $("#image_3d_mask").val();
     let sliderimage_4d = $("#image_4d_slider").val();
 
 
@@ -1228,10 +1222,10 @@ $(document).ready(function(){
       }
 
       else if($('#3d_info_tab').hasClass('active')){
-        if(size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === ""){
+        if(size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === ""){
           $(this).tab('show');
         }
-        else if(size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== ""){
+        else if(size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== ""){
         $(this).tab('show');}
         else {
           document.getElementById("3d_err").innerHTML = "fill 3d completely or not at all"
@@ -1280,13 +1274,13 @@ $(document).ready(function(){
     let innerimage_2d = $("#image_2d_inner").val();
     let maskimage_2d = $("#image_2d_mask").val();
     let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
+    // let innerimage_3d = $("#image_3d_inner").val();
+    // let maskimage_3d = $("#image_3d_mask").val();
     let sliderimage_4d = $("#image_4d_slider").val();
 
 
 
-    if( ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "")  && ( size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d === "")  && ( size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")) || ((size_3d !== "" && price_3d === "" && description_3d === "")  && ( size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")  && ( size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === ""))   ){
+    if( ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "")  && ( size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "")  && ( size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")) || ((size_3d !== "" && price_3d === "" && description_3d === "")  && ( size_4d !== "" && price_4d !== "" && description_4d !== "" && sliderimage_4d !== "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "")  && ( size_4d === "" && price_4d === "" && description_4d === "" && sliderimage_4d === ""))   ){
  
       if(model_name === "" || company_name === "Select Company"){
         document.getElementById("modelname_err").innerHTML = "model name and company name are required"
@@ -1314,10 +1308,10 @@ $(document).ready(function(){
       }
 
       else if($('#3d_info_tab').hasClass('active')){
-        if(size_3d === "" && price_3d === "" && description_3d === ""  && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === ""){
+        if(size_3d === "" && price_3d === "" && description_3d === ""  && sliderimage_3d === ""){
           console.log("3d all empty")
         }
-        else if(size_3d !== "" && price_3d !== "" && description_3d !== ""  && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== ""){
+        else if(size_3d !== "" && price_3d !== "" && description_3d !== ""  && sliderimage_3d !== ""){
         console.log("3d all filled")}
         else {
          document.getElementById("3d_err").innerHTML = "fill 3d completely or not at all"
@@ -1352,8 +1346,8 @@ $(document).ready(function(){
     let innerimage_2d = $("#image_2d_inner").val();
     let maskimage_2d = $("#image_2d_mask").val();
     let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
+    // let innerimage_3d = $("#image_3d_inner").val();
+    // let maskimage_3d = $("#image_3d_mask").val();
     let sliderimage_4d = $("#image_4d_slider").val();
 
 
@@ -1421,13 +1415,13 @@ $(document).ready(function(){
     let innerimage_2d = $("#image_2d_inner").val();
     let maskimage_2d = $("#image_2d_mask").val();
     let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
+    // let innerimage_3d = $("#image_3d_inner").val();
+    // let maskimage_3d = $("#image_3d_mask").val();
     let sliderimage_4d = $("#image_4d_slider").val();
 
 
 
-    if( ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === ""))   ){
+    if( ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_3d === "" && price_3d === "" && description_3d === "" && sliderimage_3d === "")  && ( size_2d !== "" && price_2d !== "" && description_2d !== "" && sliderimage_2d !== "" && maskimage_2d !== "" && innerimage_2d !== "")) || ((size_3d !== "" && price_3d !== "" && description_3d !== "" && sliderimage_3d !== "")  && ( size_2d === "" && price_2d === "" && description_2d === "" && sliderimage_2d === "" && maskimage_2d === "" && innerimage_2d === ""))   ){
 
       if(model_name === "" || company_name === "Select Company"){
        document.getElementById("modelname_err").innerHTML = "model name and company name are required"
@@ -1458,11 +1452,11 @@ $(document).ready(function(){
       }
 
       else if($('#3d_info_tab').hasClass('active')){
-        if(size_3d === "" && price_3d === "" && description_3d === ""  && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === ""){
+        if(size_3d === "" && price_3d === "" && description_3d === ""  && sliderimage_3d === ""){
            $(this).tab('show');
           console.log("3d all empty")
         }
-        else if(size_3d !== "" && price_3d !== "" && description_3d !== ""  && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== ""){
+        else if(size_3d !== "" && price_3d !== "" && description_3d !== ""  && sliderimage_3d !== ""){
            $(this).tab('show');
         console.log("3d all filled")}
         else {
@@ -1617,9 +1611,9 @@ function validate3d(){
     let price_3d = document.getElementById("k_price_3d").value
     let description_3d = document.getElementById("k_description_3d").value
        let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
-    if((size_3d === "" && price_3d === "" && description_3d === ""  && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "") || (size_3d !== "" && price_3d !== "" && description_3d !== ""  && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")){
+    // let innerimage_3d = $("#image_3d_inner").val();
+    // let maskimage_3d = $("#image_3d_mask").val();
+    if((size_3d === "" && price_3d === "" && description_3d === ""  && sliderimage_3d === "") || (size_3d !== "" && price_3d !== "" && description_3d !== ""  && sliderimage_3d !== "")){
       return true
     }
     else{

@@ -741,9 +741,9 @@
                   <li class="nav-item">
                     <a id="3d_info_tab" class="nav-link" id="custom-tabs-two-messages-tab" href="#custom-tabs-two-messages" role="tab" aria-controls="custom-tabs-two-messages" aria-selected="false">3D</a>
                   </li>
-                  <li class="nav-item">
+                 <!--  <li class="nav-item">
                     <a id="4d_info_tab" class="nav-link" id="custom-tabs-two-settings-tab" href="#custom-tabs-two-settings" role="tab" aria-controls="custom-tabs-two-settings" aria-selected="false">4D</a>
-                  </li>
+                  </li> -->
                 </ul>
               </div>
               <div class="card-body">
@@ -855,37 +855,28 @@
                           <input id="image_3d_slider" name="image_3d_slider" type="file" class="custom-file-input" id="productImage">
                           <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                         </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
                     </div>
                   </div><div class="col-sm-6"></div>
                   <div class="col-sm-3"><label for="exampleInputFile">3d image cover <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label></div>
-                  <div class="col-sm-3">
+                  <!-- <div class="col-sm-3">
                     
                     <div class="form-group">
                       <div class="custom-file">
                         <input id="image_3d_mask" name="image_3d_mask" type="file" class="custom-file-input">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
                     </div>
                   </div> <div class="col-sm-6"></div>
-                  <div class="col-sm-3"><label for="exampleInputFile">3d image mask <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label></div>  
-                  <div class="col-sm-3">
+                  <div class="col-sm-3"><label for="exampleInputFile">3d image mask <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label></div>   -->
+                  <!-- <div class="col-sm-3">
                     
                     <div class="form-group">
                       <div class="custom-file">
                         <input id="image_3d_inner" name="image_3d_inner" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
                     </div>
-                  </div> <div class="col-sm-6"></div>
+                  </div> <div class="col-sm-6"></div> -->
                   <div class="col-sm-3"><label>3d-Size</label></div>
                   <div class="col-sm-3">
                     <!-- text input -->
@@ -1209,8 +1200,8 @@ $(document).ready(function(){
     let innerimage_2d = $("#image_2d_inner").val();
     let maskimage_2d = $("#image_2d_mask").val();
     let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
+   let innerimage_3d = "na"
+    let maskimage_3d = "na"
     let sliderimage_4d = $("#image_4d_slider").val();
 
 
@@ -1280,8 +1271,8 @@ $(document).ready(function(){
     let innerimage_2d = $("#image_2d_inner").val();
     let maskimage_2d = $("#image_2d_mask").val();
     let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
+    let innerimage_3d = "na"
+    let maskimage_3d = "na"
     let sliderimage_4d = $("#image_4d_slider").val();
 
 
@@ -1352,8 +1343,8 @@ $(document).ready(function(){
     let innerimage_2d = $("#image_2d_inner").val();
     let maskimage_2d = $("#image_2d_mask").val();
     let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
+   let innerimage_3d = "na"
+    let maskimage_3d = "na"
     let sliderimage_4d = $("#image_4d_slider").val();
 
 
@@ -1421,8 +1412,8 @@ $(document).ready(function(){
     let innerimage_2d = $("#image_2d_inner").val();
     let maskimage_2d = $("#image_2d_mask").val();
     let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
+    let innerimage_3d = "na"
+    let maskimage_3d = "na"
     let sliderimage_4d = $("#image_4d_slider").val();
 
 
@@ -1497,7 +1488,7 @@ $(document).ready(function(){
       let description_4d = document.getElementById("k_description_4d").value
       let available_2d = 1
       let available_3d = 1
-      let available_4d = 1
+      let available_4d = 0
 
       let validatebasicform = validatebasic()
       if (!validatebasicform) {
@@ -1518,13 +1509,13 @@ $(document).ready(function(){
         document.getElementById("formvalerr").innerHTML = "Fill all the 3d fields or not at all"
         return false
       }
-      let validate4dform = validate4d()
-      if (!validate4dform) {
-        console.log("4d validating")
-        document.getElementById("formvalerr").innerHTML = "Fill all the 4d fields or not at all"
-        return false
-      }
-      console.log(validate4dform, validate3dform, validate2dform)
+      // let validate4dform = validate4d()
+      // if (!validate4dform) {
+      //   console.log("4d validating")
+      //   document.getElementById("formvalerr").innerHTML = "Fill all the 4d fields or not at all"
+      //   return false
+      // }
+      console.log(validate3dform, validate2dform)
       if( size_2d === "" && price_2d === ""){
         console.log("2d here avail")
         available_2d = 0
@@ -1533,10 +1524,10 @@ $(document).ready(function(){
         console.log("3d here avail")
         available_3d = 0
       }
-      if( size_4d === "" && price_4d === ""){
-        console.log("4d here avail")
-        available_4d = 0
-      }
+      // if( size_4d === "" && price_4d === ""){
+      //   console.log("4d here avail")
+      //   available_4d = 0
+      // }
     // let avail_status = document.getElementById("is_avail").checked
     //  let available_status = avail_status ? 1 : 0
     //let inputfile = document.getElementById("productImage").files[0]
@@ -1617,8 +1608,8 @@ function validate3d(){
     let price_3d = document.getElementById("k_price_3d").value
     let description_3d = document.getElementById("k_description_3d").value
        let sliderimage_3d = $("#image_3d_slider").val();
-    let innerimage_3d = $("#image_3d_inner").val();
-    let maskimage_3d = $("#image_3d_mask").val();
+    let innerimage_3d = "na"
+    let maskimage_3d = "na"
     if((size_3d === "" && price_3d === "" && description_3d === ""  && sliderimage_3d === "" && maskimage_3d === "" && innerimage_3d === "") || (size_3d !== "" && price_3d !== "" && description_3d !== ""  && sliderimage_3d !== "" && maskimage_3d !== "" && innerimage_3d !== "")){
       return true
     }

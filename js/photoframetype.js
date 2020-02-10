@@ -369,7 +369,7 @@ fetch(`http://${hosturl}:5600/api/photoframe/ptaddimage/${ptid}`, {
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
-        "aaSorting": [[ 4, "desc" ]],
+        "aaSorting": [[ 3, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
                $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);

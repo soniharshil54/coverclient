@@ -1,0 +1,1363 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>phone case</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="plugins/datatables-bs4/css/dataTables.bootstrap4.css">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="dist/css/tagstyle.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style type="text/css">
+    #testtr{
+      color: red
+    }
+
+
+    @media (min-width: 576px){
+      .modal-dialog {
+        max-width: 550px;
+        margin: 1.75rem auto;
+      }
+    }
+
+    @media (min-width: 576px){
+      .modal-content {
+        box-shadow: none;
+      }
+    }
+
+    body
+    {
+      counter-reset: Serial;           /* Set the Serial counter to 0 */
+    }
+
+    .auto-index td:first-child:before
+    {
+      counter-increment: Serial;      /* Increment the Serial counter */
+      content: counter(Serial); /* Display the counter */
+    }
+    tr:first-child
+    {
+      counter-reset: Serial;           /* Set the Serial counter to 0 */
+    }
+  </style>
+</head>
+<body class="hold-transition sidebar-mini">
+  <!-- Site wrapper -->
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
+        </li>
+      </ul>
+
+
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item dropdown">
+
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    Brad Diesel
+                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">Call me whenever you can...</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    John Pierce
+                    <span class="float-right text-sm text-muted"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">I got your message bro</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    Nora Silvester
+                    <span class="float-right text-sm text-warning"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">The subject goes here</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+          </div>
+        </li>
+        <!-- Notifications Dropdown Menu -->
+        <li class="nav-item dropdown">
+       <!--  <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="far fa-bell"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a> -->
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">15 Notifications</span>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-envelope mr-2"></i> 4 new messages
+            <span class="float-right text-muted text-sm">3 mins</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-users mr-2"></i> 8 friend requests
+            <span class="float-right text-muted text-sm">12 hours</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <i class="fas fa-file mr-2"></i> 3 new reports
+            <span class="float-right text-muted text-sm">2 days</span>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index.html" class="brand-link">
+      <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">phone case</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+          <!-- Add icons to the links using the .nav-icon class
+               with font-awesome or any other icon font library -->
+          <li class="nav-item has-treeview menu-open">
+            <a href="index.html" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Dashboard
+                <!-- <i class="right fas fa-angle-left"></i> -->
+              </p>
+            </a>
+          </li>
+                    <li class="nav-item has-treeview menu-open">
+            <a href="slider.html" class="nav-link">
+              <i class="nav-icon fas fa-sliders-h"></i>
+              <p>
+                Main Categories
+                <!-- <i class="right fas fa-angle-left"></i> -->
+              </p>
+            </a>
+          </li>
+                     <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-mobile-alt"></i>
+              <p>
+                Phonecase
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="company.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Phone Company List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="addmodel.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Model</p>
+                </a>
+              </li>
+                <li class="nav-item">
+                <a href="modellist.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Model List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+             <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-circle-notch"></i>
+              <p>
+                Keychain
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="keychaintype.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Keychain Type List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="keychainlist.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Keychain List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+                 <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-mug-hot"></i>
+              <p>
+                Mug
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="mugtype.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mug Type List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="muglist.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Mug List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-circle-notch"></i>
+              <p>
+                Popholder
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="popholdertype.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Popholder Type List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="popholderlist.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Popholder List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-circle-notch"></i>
+              <p>
+                Watch
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="watchtype.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Watch Type List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="watchmaintype.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Watch Subtype List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="watchlist.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Watch List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-tshirt"></i>
+              <p>
+                T-Shirt
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="tshirttype.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>T-Shirt Type List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tshirtmaintype.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>T-Shirt Subtype List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="tshirtlist.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>T-Shirt List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+           <li class="nav-item has-treeview">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-photo-video"></i>
+              <p>
+                Photoframe
+                <i class="fas fa-angle-left right"></i>
+                <!-- <span class="badge badge-info right">6</span> -->
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="photoframetype.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Photoframe Type List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="photoframelist.html" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Photoframe List</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+           <li class="nav-item has-treeview">
+            <a href="sipperbottlelist.html" class="nav-link">
+              <i class="nav-icon fas fa-wine-bottle"></i>
+              <p>
+                Sipper Bottle
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+            <li class="nav-item has-treeview">
+            <a href="wallclocklist.html" class="nav-link">
+              <i class="nav-icon fas fa-clock"></i>
+              <p>
+                Wall-clock
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+        
+          <li class="nav-item has-treeview">
+            <a href="offerlist.html" class="nav-link">
+              <i class="nav-icon fas fa-percent"></i>
+              <p>
+                Offer
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+           <li class="nav-item has-treeview">
+            <a href="pincodelist.html" class="nav-link">
+              <i class="nav-icon fas fa-city"></i>
+              <p>
+                Pincode List
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+             <li class="nav-item has-treeview">
+            <a href="modelrequest.html" class="nav-link">
+              <i class="nav-icon fas fa-mobile"></i>
+              <p>
+                New Model Requests
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="notification.html" class="nav-link">
+              <i class="nav-icon fas fa-bell"></i>
+              <p>
+                Notifications
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="sms.html" class="nav-link">
+              <i class="nav-icon fas fa-sms"></i>
+              <p>
+                SMS
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="users.html" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                User List
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="orders.html" class="nav-link">
+              <i class="nav-icon fas fa-shopping-cart"></i>
+              <p>
+                Order List
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="cpassword.html" class="nav-link">
+              <i class="nav-icon fas fa-key"></i>
+              <p>
+                Change Password
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="javascript:void(0);" onclick="logOutUser()" style="width: 100%" class="nav-link">     
+            <i class="nav-icon fas fa-sign-out-alt"></i>         
+              <p>
+                Logout
+                <!-- <i class="fas fa-angle-left right"></i> -->
+              </p>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+         
+          <div class="col-sm-5">
+            <h1>3d Covers</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">3d Covers</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- /.row -->
+      <div class="row">
+       <div class="col-md-12">
+        <div class="card card-secondary">
+          <div class="card-header">
+          
+            
+            <h3 class="card-title">Add 3d cover</h3>
+
+              <div class="card-tools">
+
+                <button class="btn btn-info"  value="Back" onclick="window.history.back()" ><i class="fas fa-backward" style="padding-right: 5px"></i>Back</button>
+                  
+                </div>
+              </div>
+              <div class="card-body">
+                
+                <div class="row">
+                  
+                  <div class="col-sm-4">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input id="k_3d_companyname" type="hidden" class="form-control" placeholder="Enter ...">
+                      <input id="k_3d_modelid" type="hidden" class="form-control" placeholder="Enter ...">
+                      <input disabled id="k_3d_modelname" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+
+
+                  <div class="col-sm-4">
+                    <label for="exampleInputFile">3d image slider <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <form name="images_3d" id="images_3d" enctype="multipart/form-data">
+                        <input name="slider_image" type="file" class="custom-file-input" id="sliderImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div>  
+                  <div class="col-sm-4">
+                    <label for="exampleInputFile">3d image cover <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label>
+                    <div class="input-group">
+                      <div class="custom-file">
+                        <input name="header_image" type="file" class="custom-file-input" id="coverImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                         </form>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div>
+                  </div> 
+
+                  <div style="margin-top: 10px" class="col-sm-2">
+                   <button id="add_3d_phonecase" class="btn btn-success">Add 3d Model</button>
+                 </div>
+                 <div class="col-sm-10">
+                  <p>&nbsp;</p>
+                  <span style="color: red; font-weight: bold;" id="phonecase3d_val_err"></span>
+                 </div> 
+                 
+               </div>
+             
+
+             </div>
+             <!-- /.card-body -->
+           </div>
+           <!-- /.card -->
+         </div>
+         <div class="col-12">
+
+          <div style="margin-bottom: 40px" class="card card-primary">
+            <button style="padding: 0px" type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+              <div class="card-header">
+               <h3 id="productAddHeading" class="card-title">3d Covers</h3>
+
+             <!--  <div class="card-tools">
+                
+                  <i class="fas fa-plus"></i>
+                </div> -->
+                <!-- /.card-header -->
+
+                <!-- /.card-body -->
+              </div>
+            </button>
+                <div class="card-body">
+              
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Sr No.</th>
+                  <th>slider</th>
+                  <th>header</th>
+                  <th>action</th>
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>            
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Sr No.</th>
+                  <th>slider</th>
+                  <th>header</th>
+                  <th>action</th>
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <footer class="main-footer">
+    <strong>Call us:  <a href="#">+91 8866220223</a>.</strong> 
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- The Modal -->
+<div class="modal" id="imageModal">
+  <div class="modal-dialog">
+    <div class="modal-content" style="background-color: transparent;border: none">
+
+      <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <img style="max-width: 500px" id="imgModal" style="" src="images/3dloader.gif">
+        </div>
+        
+        <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- ./wrapper -->
+  <!-- <h2>Modal Example</h2> -->
+  <!-- Button to Open the Modal -->
+  <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+    Open modal
+  </button> -->
+  <!-- The Modal -->
+  <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header" style="">
+          <h4 id="productEditHeading" class="modal-title">Change slider</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+        
+          <div class="row">
+                  <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Name</label>
+                      <input id="modal_3d_id" type="hidden" class="form-control" placeholder="Enter ...">
+                      <input disabled="true" id="modal_3d_modelname" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+
+
+                  <div class="col-sm-6">
+                    <label for="exampleInputFile">3d image slider</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_slider_image" src="">
+                      <div class="custom-file">
+                          <form name="images_3d_edit" id="images_3d_edit" enctype="multipart/form-data">
+                        <input name="slider_image" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div><span style="color: #ed2939; font-weight: bold;">(Size : 281x449)</span>
+                  </div>  
+                  <div class="col-sm-6">
+                    <label for="exampleInputFile">3d image header</label>
+                    <div class="input-group">
+                      <img width="38px" height="38px" id="modal_header_image" src="">
+                      <div class="custom-file">
+                        <input name="header_image" type="file" class="custom-file-input" id="productImage">
+                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                         </form>
+                      </div>
+                      <!-- <div class="input-group-append">
+                        <span class="input-group-text" id="">Upload</span>
+                      </div> -->
+                    </div><span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span>
+                  </div> 
+
+                  <div style="margin-top: 10px" class="col-sm-6">
+                     <label style="margin-bottom: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                   <button style="float: right;" onclick="uploadFile3dEdit()" class="btn btn-success">Edit 3d Model</button>
+                 </div>
+               <!--   <div class="col-sm-4">
+
+                 </div>   -->
+               </div>
+             
+          </div>
+
+          <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+
+
+  </div>
+  
+</div>
+
+       <div class="modal" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div style="margin-bottom: 30px" class="col-sm-12">
+              <span>Are you sure you want to delete selected records ??</span>
+            </div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="form-group">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="deletekeychains()" type="button" value="Confirm" class="btn btn-success float-right">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
+             </div>
+
+           </div> 
+         </div>
+       </div>
+
+       <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
+
+
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="plugins/datatables/jquery.dataTables.js"></script>
+<script src="plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+<script src="js/hosturln.js"></script>
+
+<script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function () {
+  bsCustomFileInput.init();
+});
+</script>
+<script type="text/javascript">
+
+
+
+  $(document).ready(function(){
+    $('#add_3d_phonecase').click(function(e) {
+      console.log("3d add")
+      let model_id = document.getElementById("k_3d_modelid").value
+      let model_name = document.getElementById("k_3d_modelname").value
+      // let company = document.getElementById("modal_3d_company").value
+      let company = document.getElementById("k_3d_companyname").value
+      let validate3d = validate3dphonecase()
+      if(!validate3d){
+        console.log("in vaildate 3d")
+       document.getElementById("phonecase3d_val_err").innerHTML = "All the images are required"
+        return false
+      }
+      else{
+        console.log("in vaildate 3d else")
+          document.getElementById("phonecase3d_val_err").innerHTML = ""
+      }
+      console.log("validate3d", validate3d)
+    //let inputfile = document.getElementById("productImage").files[0]
+    let keydata = {
+      model_name: model_name,
+      company:company,
+      model_id: model_id
+    }
+    //console.log(keydata)
+    fetch(`http://${hosturl}:5600/api/phonecase/add3dphonecase/${model_id}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(keydata)
+    })
+    .then(function(res){ 
+      return res.json()
+    })
+    .then(function(resultdata){
+     // console.log(result)
+      let productId = resultdata.result._id
+      console.log(productId)
+      uploadFile3d(productId)
+  //getproducts()
+  
+})
+    .catch(function(res){ console.log(res) })
+  });
+  })
+
+  function validate3dphonecase(){
+    console.log("validating 3d")
+      let slider_image = $("#bannerImage").val();
+    let cover_image = $("#coverImage").val();
+    if (slider_image === "" || cover_image === "") {
+      console.log("should reaturn false")
+      return false
+    }
+    else{
+      return true
+    }
+  }
+
+      function uploadFile3d(productid){
+        console.log("images 3d from browser")
+    //var input = document.querySelector('input[type="file"]')
+    var form = document.getElementById("images_3d");
+    var formData = new FormData(form);
+
+    fetch(`http://${hosturl}:5600/api/phonecase/add3dphonecaseimages/${productid}`, {
+      method: 'PUT',
+      body: formData
+    }).then(res => {
+      console.log(res)
+      get3dcoversdatatable(globalmodelid)
+      console.log("upload file 3d fineished then")
+      //getproducts()
+    }).catch(err => console.log(err))
+
+  }
+
+        function uploadFile3dEdit(){
+          let productid = document.getElementById("modal_3d_id").value
+        console.log("images 3d from browser")
+    //var input = document.querySelector('input[type="file"]')
+    var form = document.getElementById("images_3d_edit");
+    var formData = new FormData(form);
+
+    fetch(`http://${hosturl}:5600/api/phonecase/add3dphonecaseimages/${productid}`, {
+      method: 'PUT',
+      body: formData
+    }).then(res => {
+      console.log(res)
+      console.log("upload file 3d fineished then")
+      get3dcoversdatatable(globalmodelid)
+      $('#myModal').modal('hide')
+      //getproducts()
+    }).catch(err => console.log(err))
+
+  }
+
+
+
+  function logOutUser(){
+    localStorage.clear();
+    location.href =  "login.html";
+  }
+
+
+  function checkAll()
+  {
+   var tablek = document.getElementById ('example1');
+   var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
+   var val = checkboxes[0].checked;
+   for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
+ }
+
+function printChecked(){
+  var items=document.getElementsByName('todelete');
+  var selectedItems=[];
+  for(var i=0; i<items.length; i++){
+    if(items[i].type=='checkbox' && items[i].checked==true)
+      selectedItems.push(items[i].value);
+  }
+  console.log(selectedItems);
+  return selectedItems
+}  
+
+function add_company(){
+  console.log("func")
+  let companyname = document.getElementById("company_name").value
+  let comp_data = {
+    "company_name" : companyname
+  }
+  fetch(`http://${hosturl}:5600/api/phonecase/addcompany`, {
+    method: 'post',
+    body: JSON.stringify(comp_data),
+    headers: {
+      "Content-Type": "application/json"
+    }
+  }).then(function(response) {
+    return response.json();
+  }).then(function(data) {
+    console.log(data)
+    getcompanies()
+  });
+}
+
+</script>
+<script type="text/javascript">
+  
+
+ function deletekeychains(){
+  let todeleteids = printChecked()
+  let deleteArray = {
+    todeleteids
+  }
+  fetch(`http://${hosturl}:5600/api/phonecase/delete3dphonecase`,
+  {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "DELETE",
+    body: JSON.stringify(deleteArray)
+  })
+  .then(function(res){ 
+    $("#deleteModal").modal("hide");
+    get3dcoversdatatable(globalmodelid)
+  })
+  .catch(function(res){ console.log(res) })
+}
+
+ function canceldelete(){
+    $("#deleteModal").modal("hide");
+  }
+
+    function opendeletemodal(){
+    $("#deleteModal").modal("show");
+  }
+
+
+function editproduct(test){
+     // console.log(test)
+     let arrayn = test.getAttribute("data-key")
+     console.log(okchains[arrayn])
+      //console.log(okchains[arrayn].name)
+      document.getElementById("modal_name").value = okchains[arrayn].product_name
+      document.getElementById("modal_id").value = okchains[arrayn]._id
+      //console.log(document.getElementById("modal_id").value)
+      let slider_image = okchains[arrayn].slider_image
+      document.getElementById("modal_slider_image").src = `http://${hosturl}:5600/admin/uploads/${slider_image}`
+      $('#myModal').modal('show')
+    }
+    function edit3dcover(test){
+     // console.log(test)
+
+     // console.log( $('#modal_categories_inc').val() )
+     let coverid3d = test.getAttribute("data-key")
+     // console.log("arrayn",arrayn)
+      //console.log(okchains[arrayn])
+      //console.log(okchains[arrayn].name)
+    //  document.getElementById("modal_offer_id").value = coverid3d
+
+      fetch(`http://${hosturl}:5600/api/phonecase/get3dphonecasebyid/${coverid3d}`)
+      .then(response => {
+     // console.log(response)
+     return response.json()})
+      .then(data => {
+        console.log(data)
+
+      document.getElementById("modal_3d_id").value = data._id
+
+      //document.getElementById("modal_offer_type").value = data.offer_type
+      document.getElementById("modal_3d_modelname").value = data.model_name
+      let sliderimage = data.slider_image
+      let headerimage = data.header_image
+      let innerimage = data.inner_image
+      let pngimage = data.png_image
+      let maskimage = data.mask_image
+      document.getElementById("modal_slider_image").src = `http://${hosturl}:5600/admin/uploads/${sliderimage}`
+      document.getElementById("modal_header_image").src = `http://${hosturl}:5600/admin/uploads/${headerimage}`
+       $("#myModal").modal('show')
+
+      })
+     
+      .catch(err => console.log(err))
+
+
+
+
+      //console.log(document.getElementById("modal_id").value)
+
+    }
+
+    function editkeychain(){
+      console.log("edit ran")
+      let name = document.getElementById("modal_name").value
+      let keyid = document.getElementById("modal_id").value
+      console.log(keyid)
+      console.log("k edit data")
+      // console.log(keditdata)
+      uploadFile3dEdit(keyid)
+      $("#myModal").modal("hide");
+    }
+
+
+    function imageModal(imgname){
+      let source = `http://${hosturl}:5600/admin/uploads/${imgname}`
+      document.getElementById("imgModal").src=source;
+
+      setTimeout(function () { 
+        $('#imageModal').modal('show');
+      }, 50);
+      console.log(imgname)
+      
+    }
+
+    function uploadFile(productid){
+    //var input = document.querySelector('input[type="file"]')
+    var form = document.getElementById("put_images");
+    var formData = new FormData(form);
+
+    fetch(`http://${hosturl}:5600/api/phonecase/addimage/${productid}`, {
+      method: 'PUT',
+      body: formData
+    }).then(res => {
+      console.log(res)
+      getproducts()
+    }).catch(err => console.log(err))
+
+  }
+
+  function uploadFileEdit(productid){
+    console.log("productId is",productid)
+    //var input = document.querySelector('input[type="file"]')
+    var form = document.getElementById("slider_images");
+    var formData = new FormData(form);
+
+    fetch(`http://${hosturl}:5600/api/product/addslider/${productid}`, {
+      method: 'PUT',
+      body: formData
+    }).then(res => {
+      console.log(res)
+      getproducts()
+    }).catch(err => console.log(err))
+
+  }
+
+  function active3dphonecase(activebtn){
+    let phonecaseref = activebtn.getAttribute("data-key")
+    let phonecaseid = phonecaseref
+    let ceditdata = {
+      active_status : 1
+    }
+    fetch(`http://${hosturl}:5600/api/phonecase/edit3dphonecasestatus/${phonecaseid}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "PUT",
+      body: JSON.stringify(ceditdata)
+    })
+    .then(function(res){ 
+      console.log(res)
+           // uploadFileEdit(keyid)
+          // getproducts()
+           // $("#myModal").modal("hide");
+get3dcoversdatatable(globalmodelid)
+         })
+    .catch(function(res){ console.log(res) })
+    console.log(phonecaseid)
+  }
+
+  function deactive3dphonecase(activebtn){
+    let phonecaseref = activebtn.getAttribute("data-key")
+    let phonecaseid = phonecaseref
+    let ceditdata = {
+      active_status : 0
+    }
+    fetch(`http://${hosturl}:5600/api/phonecase/edit3dphonecasestatus/${phonecaseid}`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "PUT",
+      body: JSON.stringify(ceditdata)
+    })
+    .then(function(res){ 
+     console.log(res)
+get3dcoversdatatable(globalmodelid)
+     //getproducts()
+           // uploadFileEdit(keyid)
+           // getproducts()
+            //$("#myModal").modal("hide");
+
+          })
+    .catch(function(res){ console.log(res) })
+    console.log(phonecaseid)
+  }
+
+
+
+  function getkeychains(oldkeychains){
+    let tokeyc = oldkeychains
+    console.log(oldkeychains)
+    let newkeychains = oldkeychains.map(keychain => {
+      delete keychain._id
+      delete keychain.__v
+      delete keychain.available_status
+      return keychain
+    })
+    //console.log(newkeychains)
+    return newkeychains
+  }
+  function CreateTableFromJSON(myBookso) {
+    let myBookson = getkeychains(myBookso)
+    var myBooks = JSON.parse(JSON.stringify( myBookson, ["slider_image","inner_image"]));
+    var thsliders = ["Slider image", "Inner image"] 
+
+    var col = [];
+    for (var i = 0; i < myBooks.length; i++) {
+      for (var key in myBooks[i]) {
+        if (col.indexOf(key) === -1) {
+          col.push(key);
+        }
+      }
+    }
+    var table = document.createElement("table");
+    table.setAttribute("class", "table auto-index");
+    table.setAttribute("id","keychaintable")
+
+    var tr = table.insertRow(-1);  
+    for (var i = -1; i < col.length; i++) {
+      var th = document.createElement("th");  
+                // TABLE HEADER.
+                if(i === -1){
+                  th.innerHTML = "No."
+                }
+                else {
+                  th.innerHTML = thsliders[i];
+                }
+
+                tr.appendChild(th);
+
+              }
+              var thn =  document.createElement("th"); 
+              thn.innerHTML = "Edit";
+            //tr.appendChild(thn);
+            var tha =  document.createElement("th"); 
+            tha.innerHTML = "Action";
+            tr.appendChild(tha);
+            var ths = document.createElement("th")
+            ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
+            for (var i = 0; i < myBooks.length; i++) {
+
+              tr = table.insertRow(-1); 
+              for (var j = -1; j < col.length; j++) {
+                var tabCell = tr.insertCell(-1);
+                if(j === -1){
+                  tabCell.innerHTML = ""
+                }
+                else {
+                  let imgsrcref = myBooks[i][col[j]];
+                  let imgsrc = `http://${hosturl}:5600/admin/uploads/${imgsrcref}`
+                  let imgff = `<img width="100px" src="${imgsrc}"></img>`
+                  tabCell.innerHTML = imgff
+                }
+                
+
+
+                
+                
+                //console.log(i, j)
+              }
+              let outerbutton = ""
+              let statuslink = ""
+              if(okchains[i].active_status === 1 ){
+                outerbutton =  `<button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+                statuslink = `<a data-key=${i} onclick="deactiveslider(this)" class="dropdown-item">Inactive</a>`
+              }
+              else {
+               outerbutton = `<button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+               statuslink = `<a data-key=${i} onclick="activeslider(this)"  class="dropdown-item">Active</a>`
+             }
+
+
+             let finalbtn = `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editproduct(this)" data-key="${i}" class="dropdown-item">Edit</a></div></div>`
+
+             let ntd = document.createElement("td")
+             ntd.innerHTML = finalbtn
+             tr.appendChild(ntd)
+           }
+           var divContainer = document.getElementById("samplejson");
+           divContainer.innerHTML = "";
+           divContainer.appendChild(table);
+         }
+
+    //CreateTableFromJSON() 
+
+    function get3dmodelsdetails(modelid){
+
+      fetch(`http://${hosturl}:5600/api/phonecase/getphonecasebyidadmin/${modelid}`)
+      .then(function(response) { 
+        return response.json()
+      })
+      .then(function(data) {   
+                    // do stuff with `data`, call second `fetch`
+                    let modelname = data.name
+                    let companyname = data.company
+                    document.getElementById("k_3d_modelname").value = modelname
+                    document.getElementById("k_3d_companyname").value = modelname
+                    return fetch(`http://${hosturl}:5600/api/phonecase/get3dcoversbymodel/${modelid}`)
+                  })
+      .then(function(response) { 
+        return response.json(); 
+      })
+      .then(function(data) {
+        okchains = data.map(a => ({...a}));
+
+        console.log(okchains)
+        document.getElementById("k_3d_modelid").value = modelid
+       // CreateTableFromJSON(data)
+      })
+      .catch(function(error) { 
+        console.log('Requestfailed', error) 
+      });
+    }
+
+    
+
+
+       function get3dcoversdatatable(modelid){
+        get3dmodelsdetails(modelid)
+
+          let userTable = $('#example1').DataTable({
+            destroy: true,
+        "processing" : true,
+        "aaSorting": [[ 4, "desc" ]],
+        "rowCallback": function (nRow, aData, iDisplayIndex) {
+     var oSettings = this.fnSettings ();
+     $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+     return nRow;
+},
+                
+        "ajax" : {
+            "url" : `http://${hosturl}:5600/api/phonecase/get3dcoversbymodel/${modelid}`,
+            dataSrc : ''
+        },
+        "columns" : [{
+            "data" : null
+        },{
+            "data" : "slider_image",
+            mRender : function(data, type){
+              //console.log(data)
+               let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
+              return `<img width="70px" src="${imgsrc}"></img>`;
+            }
+        }, {
+            "data" : "header_image",
+            mRender : function(data, type){
+              //console.log(data)
+               let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
+              return `<img width="70px" src="${imgsrc}"></img>`;
+            }
+        }, {
+          "data": null,
+            "mRender": function(data, type) {
+             //return data
+             let outerbutton = ""
+             let statuslink = ""
+             if(data.active_status === 1){
+
+            outerbutton = `<button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            statuslink = `<a data-key=${data._id} onclick="deactive3dphonecase(this)" class="dropdown-item">Inactive</a>`
+             }
+              else {
+             outerbutton = `<button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             statuslink = `<a data-key=${data._id} onclick="active3dphonecase(this)"  class="dropdown-item">Active</a>`
+             }
+
+              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="edit3dcover(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
+            }
+        },{
+          "data": "_id",
+            "mRender": function(data, type) {
+              //console.log(data)
+              return `<input name="todelete" value=${data} type="checkbox">`;
+            }
+        }]
+    });
+
+
+
+    }
+
+       if(window.location.hash) {
+      var hash = window.location.hash.substring(1); 
+      console.log(hash)
+      globalmodelid = hash
+
+      get3dcoversdatatable(hash)
+    } else {
+      get3dcoversdatatable("5e004179e266f2246c6b1ed1")
+      globalmodelid = "5e004179e266f2246c6b1ed1"
+   }
+
+</script>
+</body>
+</html>

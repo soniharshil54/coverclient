@@ -17,12 +17,17 @@
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <style type="text/css">
+    #afterverifyotpotpdiv{
+      display: none;
+    }
+  </style>
 </head>
 <body class="hold-transition login-page">
 <div style="width: 560px" class="login-box">
-  <div class="login-logo">
+  <!-- <div class="login-logo">
     <a href=""><b>We have sent you a mail on your registered mail account containing an OTP to reset your password.</b></a>
-  </div>
+  </div> -->
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
@@ -50,7 +55,13 @@
             <button type="button" id="verify_otp" class="btn btn-primary btn-block">Verify OTP</button>
           </div>
            <div id="afterverifyotpotpdiv" class="col-4">
-            <button type="button" id="verify_otp_after" class="btn btn-primary btn-block">Verify OTP</button>
+            <button type="button" id="verify_otp_after" class="btn btn-primary btn-block">Reset Password</button>
+          </div>
+          <!-- /.col -->
+        </div>
+            <div class="row">
+          <div class="col-12">
+            <span style="color: red" id="otp_doesnt_match_err"></span>
           </div>
           <!-- /.col -->
         </div>
@@ -73,7 +84,9 @@
 
    $('#verify_otp').click(function(e) {
       var otpwritten = document.getElementById("verifyotpotp").value
+      let nhash = hash
       var forgetdata = {
+        nhash,
         otpwritten
       }
       fetch(`http://${hosturl}:5600/api/admin/forgetpasswordotpverify`,
@@ -83,7 +96,7 @@
             'Content-Type': 'application/json'
           },
           method: "POST",
-          body: JSON.stringify(logindata)
+          body: JSON.stringify(forgetdata)
       })
       .then(function(res){         
         return res.json()
@@ -112,7 +125,18 @@
         </div>`
        }
        else{
+        if(result.status === 0){
+          document.getElementById("otp_doesnt_match_err").innerHTML = "otp doesnt match"
         console.log("otp not verified")
+        }
+        else if(result.status === 2){
+          document.getElementById("otp_doesnt_match_err").innerHTML = "otp has been expired"
+        console.log("otp expired")
+        }
+        else{
+          console.log("errors")
+        }
+        
        }
        
 
@@ -124,12 +148,15 @@
 
        })
 
-   }
+   })
 
       $('#verify_otp_after').click(function(e) {
-      var newpassword = document.getElementById("afterverifyotpotp").value
+      var newpassword = document.getElementById("nverifyotpotp").value
+      //let validatebothpass = validatebothpasswords()
+      let nhash = hash
       var newpassworddata = {
-        newpassword
+        newpassword,
+        nhash
       }
       fetch(`http://${hosturl}:5600/api/admin/verifymailotp`,
       {
@@ -138,7 +165,7 @@
             'Content-Type': 'application/json'
           },
           method: "POST",
-          body: JSON.stringify(logindata)
+          body: JSON.stringify(newpassworddata)
       })
       .then(function(res){         
         return res.json()
@@ -162,7 +189,7 @@
 
        })
 
-   }
+   })
 
   function verifyOTP(){
             var lemail = $('#logMail').val()
@@ -297,28 +324,46 @@ function loginAdmin(){
 
 </script>
 <script type="text/javascript">
-        // $.post('http://localhost:5600/api/admin/login',
-      // {
-      //   email: lemail,
-      //   password: lpass
-      // },
-      // function(data){
-      //   const loggeduser = data.admin[0]
-      //   console.log(loggeduser)
-      //   const token = data.token
+          if(window.location.hash) {
+      hash = window.location.hash.substring(1); 
+      let lbody = {
+        forgetid : hash
+      }
+      console.log(lbody)
+      fetch(`http://${hosturl}:5600/api/admin/checkforgetpassurl`,
+      {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(lbody)
+      })
+      .then(function(res){         
+      return res.json()
+      })
+      .then(function(result){
+        if(result.status == 1){
+          console.log("link not expired")
+          console.log(result)
+        }
+        else{
+          window.location = "expired.html"
+           console.log("link expired")
+          console.log(result)
+        }
+       
         
-      //   localStorage.setItem('luser',JSON.stringify(loggeduser))
-      //   var userlogged = JSON.parse(localStorage.getItem('luser'))
-      //   localStorage.setItem('authorization',token)
-      //   $('#log_error').text("")
-      //    $("#logIn").modal("hide");
-      //   loggedIn()
-      // }
-      // ).fail(function(err){
-      //   var errorjson = err.responseJSON
-      //   console.log(errorjson)
-      //   $('#log_error').text(errorjson.message)
-      // })
+      }
+        )
+      .catch(function(err){ 
+         console.log(err)
+
+      })
+      
+    } else {
+      window.location = "login.html"
+   }
 </script>
 
 </body>

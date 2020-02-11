@@ -208,7 +208,9 @@ function reportlogics(duration){
             }).map(a => a.shipping).reduce((a,b) => a + b, 0  )
     let ordersplaced = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
-              return dateref.getDate() === d.getDate()
+              let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
+               let newdateref = new Date(ndateref);
+              return newdateref.getDate() === d.getDate()
             }).length
     let itemspurchased = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);

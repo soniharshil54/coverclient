@@ -171,62 +171,74 @@ function filtercustomrange(){
 function reportlogics(duration){
     if(duration === "today"){
     document.getElementById("customdate-filter").style.display = "none"
+   // var dot = new Date();
     var d = new Date();
+    d.setHours(0,0,0,0);
     var curyear = d.getFullYear();
     let reportref = okreport.map(a => ({...a}))
     let totalsales = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
               let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
+
               let newdateref = new Date(ndateref);
-              console.log(dateref.getDate())
-              console.log(d.getDate())
-              return newdateref.getDate() === d.getDate()
+              newdateref.setHours(0,0,0,0)
+              console.log(newdateref)
+              console.log(d)
+              return newdateref === d
             }).map(a => a.amount).reduce((a,b) => a + b, 0  )
     let refundedamount = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
               let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
               let newdateref = new Date(ndateref);
-              console.log(dateref.getDate())
-              console.log(d.getDate())
-              return newdateref.getDate() === d.getDate() && a.order_status === "Refunded"
+               newdateref.setHours(0,0,0,0)
+              console.log(newdateref)
+              console.log(d)
+              return newdateref === d && a.order_status === "Refunded"
             }).map(a => a.amount).reduce((a,b) => a + b, 0  )
     let pendingamount = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
              let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
               let newdateref = new Date(ndateref);
-              console.log(dateref.getDate())
-              console.log(d.getDate())
-              return newdateref.getDate() === d.getDate() && a.order_status === "Pending Payment"
+               newdateref.setHours(0,0,0,0)
+              console.log(newdateref)
+              console.log(d)
+              return newdateref === d && a.order_status === "Pending Payment"
             }).map(a => a.amount).reduce((a,b) => a + b, 0  )
     let shippingcharge = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
               let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
               let newdateref = new Date(ndateref);
-              console.log(dateref.getDate())
-              console.log(d.getDate())
-              return newdateref.getDate() === d.getDate()
+               newdateref.setHours(0,0,0,0)
+              console.log(newdateref)
+              console.log(d)
+              return newdateref === d
             }).map(a => a.shipping).reduce((a,b) => a + b, 0  )
     let ordersplaced = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
               let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
                let newdateref = new Date(ndateref);
-              return newdateref.getDate() === d.getDate()
+               newdateref.setHours(0,0,0,0)
+              console.log(newdateref)
+              console.log(d)
+              return newdateref === d
             }).length
     let itemspurchased = reportref.filter(a => {
               let dateref = new Date(a.date_ordered);
               let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
               let newdateref = new Date(ndateref);
-              console.log(dateref.getDate())
-              console.log(d.getDate())
-              return newdateref.getDate() === d.getDate()
+               newdateref.setHours(0,0,0,0)
+              console.log(newdateref)
+              console.log(d)
+              return newdateref === d
             }).map(a =>  a.products.length).reduce((a,b) => a + b, 0)
     let couponamount = reportref.filter(a => {
          let dateref = new Date(a.date_ordered);
          let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
               let newdateref = new Date(ndateref);
-              console.log(dateref.getDate())
-              console.log(d.getDate())
-              return newdateref.getDate() === d.getDate()
+              newdateref.setHours(0,0,0,0)
+              console.log(newdateref)
+              console.log(d)
+              return newdateref === d
        }).map(a => {
         let amountconsole = a.coupon_amount ? a.coupon_amount : 0
         console.log("amount coupon", amountconsole)

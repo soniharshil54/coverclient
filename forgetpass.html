@@ -152,6 +152,11 @@
 
       $('#verify_otp_after').click(function(e) {
       var newpassword = document.getElementById("nverifyotpotp").value
+    let confirmpassword = document.getElementById("ncverifyotpotp").value
+    if(newpassword !== confirmpassword){
+       document.getElementById("otp_doesnt_match_err").innerHTML = "Passwords doesn't match"
+       return false
+    }
       //let validatebothpass = validatebothpasswords()
       let nhash = hash
       var newpassworddata = {

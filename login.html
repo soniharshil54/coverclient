@@ -54,6 +54,12 @@
           <div class="col-4">
             <button onclick="loginAdmin()" type="button" id="log_in" class="btn btn-primary btn-block">Sign In</button>
           </div>
+           <div class="col-8">
+            <button style="float: right;" onclick="resetpassword()" type="button" id="log_in" class="btn btn-primary btn-block">Reset password</button>
+          </div>
+          <div class="col-12">
+            <span id="checkmail" style="color: green"></span>
+          </div>
           <!-- /.col -->
         </div>
       </form>
@@ -92,6 +98,35 @@
       console.log(username)
       location.href =  "index.html";
     }
+  }
+
+  function resetpassword(){
+              fetch(`http://${hosturl}:5600/api/admin/sendmailforgetpassword`,
+{
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    method: "POST",
+    body: JSON.stringify(logindata)
+})
+.then(function(res){         
+  return res.json()
+
+      //loggedIn()
+    
+
+ })
+.then(function(result){
+  console.log("password sent to mail")
+  document.getElementById("checkmail").innerHTML = "Check your mail to reset password"
+  
+}
+  )
+.catch(function(res){ 
+         console.log(res)
+
+ })
   }
 
 function loginAdmin(){

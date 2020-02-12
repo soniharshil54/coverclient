@@ -166,6 +166,76 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
     console.log(sliderid)
   }
 
+  function updatesortorder(sortinput){
+    let newsortvalue = sortinput.value
+    let sliderid = sortinput.getAttribute("data-sid")
+    if(newsortvalue === ""){
+      console.log("hgj")
+      sortinput.style.border = "1px solid red"
+      return false
+    }
+     else {
+      sortinput.style.border = "1px solid #80bdff"
+     
+    }
+    let sortorderdata = {
+      sort_order : newsortvalue
+    }
+                  fetch(`http://${hosturl}:5600/api/product/editslidersortorder/${sliderid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(sortorderdata)
+          })
+          .then(function(res){ 
+            console.log(res)
+           // uploadFileEdit(keyid)
+            //getproducts()
+           // $("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+
+  }
+
+    function updatesecsortorder(sortinput){
+    let newsortvalue = sortinput.value
+    let sliderid = sortinput.getAttribute("data-sid")
+    if(newsortvalue === ""){
+      console.log("hgj")
+      sortinput.style.border = "1px solid red"
+      return false
+    }
+     else {
+      sortinput.style.border = "1px solid #80bdff"
+     
+    }
+    let sortorderdata = {
+      sort_order : newsortvalue
+    }
+                  fetch(`http://${hosturl}:5600/api/product/editsecslidersortorder/${sliderid}`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "PUT",
+            body: JSON.stringify(sortorderdata)
+          })
+          .then(function(res){ 
+            console.log(res)
+           // uploadFileEdit(keyid)
+            //getproducts()
+           // $("#myModal").modal("hide");
+ 
+          })
+          .catch(function(res){ console.log(res) })
+
+  }
+
   function deactiveslider(activebtn){
     let sliderref = activebtn.getAttribute("data-key")
     let sliderid = okchains[sliderref]._id
@@ -251,7 +321,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
     let tokeyc = oldkeychains
     console.log(oldkeychains)
     let newkeychains = oldkeychains.map(keychain => {
-      delete keychain._id
+      // delete keychain._id
       delete keychain.__v
       delete keychain.available_status
       return keychain
@@ -261,8 +331,8 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
   }
     function CreateTableFromJSON(myBookso) {
       let myBookson = getkeychains(myBookso)
-      var myBooks = JSON.parse(JSON.stringify( myBookson, ["product_display_name","slider_image"]));
-      var thsliders = ["Category Name", "Image", "Active"] 
+      var myBooks = JSON.parse(JSON.stringify( myBookson, ["product_display_name","slider_image","sort_order"]));
+      var thsliders = ["Category Name", "Image", "Sort","Active"] 
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
@@ -311,6 +381,14 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
                 tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info btn-sm'>view</button>`
                 console.log(myBooks[i][col[j]])
               }
+                else if(j===2){
+                let sort_order = myBooks[i][col[j]]
+                  console.log("sort order", sort_order)
+                let slider_sort_id = myBookson[i]._id
+                console.log("slider id", myBookson[i]._id)
+                tabCell.innerHTML = ` <input data-sid='${slider_sort_id}' style="width:60px" onkeyup="updatesortorder(this)" onchange="updatesortorder(this)" value="${sort_order}" id = "company_name" type="number" class="form-control">`
+                console.log(myBooks[i][col[j]])
+              }
               else{
                 tabCell.innerHTML = myBooks[i][col[j]];
               }
@@ -344,8 +422,8 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
 
         function CreateSecondaryJSON(myBookso) {
       let myBookson = getkeychains(myBookso)
-      var myBooks = JSON.parse(JSON.stringify( myBookson, ["slider_display_name","product_name","slider_image",]));
-      var thsliders = ["Slider Name", "Category Name","Image", "Active"] 
+      var myBooks = JSON.parse(JSON.stringify( myBookson, ["slider_display_name","product_name","slider_image","sort_order"]));
+      var thsliders = ["Slider Name", "Category Name","Image", "Sort", "Active"] 
 
         var col = [];
         for (var i = 0; i < myBooks.length; i++) {
@@ -394,6 +472,15 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
                 tabCell.innerHTML = `<button onclick='imageModalSec(${image})' style='padding:1px 4px'  class='btn btn-info btn-sm'>view</button>`
                 console.log(myBooks[i][col[j]])
               }
+                 else if(j===3){
+                let sort_order = myBooks[i][col[j]]
+                  console.log("sort order", sort_order)
+                let slider_sort_id = myBookson[i]._id
+                console.log("slider id", myBookson[i]._id)
+                tabCell.innerHTML = ` <input data-sid='${slider_sort_id}' style="width:60px" onkeyup="updatesecsortorder(this)" onchange="updatesortorder(this)" value="${sort_order}" id = "company_name" type="number" class="form-control">`
+                console.log(myBooks[i][col[j]])
+              }
+
               else{
                 tabCell.innerHTML = myBooks[i][col[j]];
               }

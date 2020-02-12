@@ -386,7 +386,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
                   console.log("sort order", sort_order)
                 let slider_sort_id = myBookson[i]._id
                 console.log("slider id", myBookson[i]._id)
-                tabCell.innerHTML = ` <input data-sid='${slider_sort_id}' style="width:60px;height:27px" max="999" onkeypress="if (this.value.length > 2) return false;" onkeyup="updatesortorder(this)" onchange="updatesortorder(this)" value="${sort_order}" id = "company_name" type="number" class="form-control">`
+                tabCell.innerHTML = ` <input data-sid='${slider_sort_id}' style="width:60px;height:27px" max="99" onkeypress="if (this.value.length > 1) return false;" onkeyup="updatesortorder(this)" onchange="updatesortorder(this)" value="${sort_order}" id = "company_name" type="number" class="form-control">`
                 console.log(myBooks[i][col[j]])
               }
               else{

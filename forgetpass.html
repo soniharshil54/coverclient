@@ -106,6 +106,7 @@
        console.log(result)
        if(result.status === 1){
         document.getElementById("verifyotpotpdiv").style.display = "none"
+         document.getElementById("otp_doesnt_match_err").innerHTML = ""
         document.getElementById("afterverifyotpotpdiv").style.display = "block"
         let divformele = document.getElementById("forgetpass_form")
         divformele.innerHTML = `<div class="input-group mb-3">
@@ -157,6 +158,11 @@
        document.getElementById("otp_doesnt_match_err").innerHTML = "Passwords doesn't match"
        return false
     }
+      if(newpassword == ""){
+       document.getElementById("otp_doesnt_match_err").innerHTML = "Enter new password"
+       return false
+    }
+    
       //let validatebothpass = validatebothpasswords()
       let nhash = hash
       var newpassworddata = {
@@ -180,6 +186,7 @@
        console.log(result)
        if(result.status === 1){
        console.log("password reset")
+         window.location = "login.html";
        }
        else{
             console.log("password did not reset")

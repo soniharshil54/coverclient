@@ -181,7 +181,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
       if (newsortvalue < 1) {
       newsortvalue = 1
     }
-     if (newsortvalue > 1) {
+     if (newsortvalue > 9) {
       newsortvalue = 9
     }
     let sortorderdata = {
@@ -222,7 +222,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
     if (newsortvalue < 1) {
       newsortvalue = 1
     }
-     if (newsortvalue > 1) {
+     if (newsortvalue > 9) {
       newsortvalue = 9
     }
     

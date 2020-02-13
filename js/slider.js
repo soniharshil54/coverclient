@@ -178,6 +178,12 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
       sortinput.style.border = "1px solid #80bdff"
      
     }
+      if (newsortvalue < 1) {
+      newsortvalue = 1
+    }
+     if (newsortvalue > 1) {
+      newsortvalue = 9
+    }
     let sortorderdata = {
       sort_order : newsortvalue
     }
@@ -213,6 +219,13 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
       sortinput.style.border = "1px solid #80bdff"
      
     }
+    if (newsortvalue < 1) {
+      newsortvalue = 1
+    }
+     if (newsortvalue > 1) {
+      newsortvalue = 9
+    }
+    
     let sortorderdata = {
       sort_order : newsortvalue
     }

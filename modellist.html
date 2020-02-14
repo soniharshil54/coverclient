@@ -1272,6 +1272,7 @@
                     <img width="38px" height="38px" id="modal_3d_h_image" src="">
                     <div class="custom-file">
                       <input name="image_3d_slider" type="file" class="custom-file-input" id="productImage">
+                      </form>
                       <label class="custom-file-label" for="exampleInputFile">Choose</label>
                     </div>
                       <!-- <div class="input-group-append">
@@ -1279,7 +1280,7 @@
                       </div> -->
                     </div> <span style="color: #ed2939; font-weight: bold;">(Size : 720x320)</span>
                   </div> 
-                  <div class="col-sm-2">
+                <!--   <div class="col-sm-2">
                     <label for="exampleInputFile">3d image cover</label>
                     <div class="input-group">
                       <img width="38px" height="38px" id="modal_3d_i_image" src="">
@@ -1287,9 +1288,6 @@
                         <input name="image_3d_inner" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose</label>
                       </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
                     </div> <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span>
                   </div>  
                   <div class="col-sm-2">
@@ -1300,12 +1298,9 @@
                         <input name="image_3d_mask" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose</label>
                       </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
                     </div> <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span>
-                  </div> 
-                  <div class="col-sm-1">
+                  </div>  -->
+                  <div class="col-sm-2">
                     <!-- text input -->
                     <input type="hidden" id="modal_id" name="modal_id" value="">
                     <div class="form-group">
@@ -1313,7 +1308,7 @@
                       <input type="text" id="modal_3d_size" class="form-control" placeholder="Enter ...">
                     </div>
                   </div>
-                  <div class="col-sm-1">
+                  <div class="col-sm-2">
                     <!-- text input -->
                     <input type="hidden" id="modal_id" name="modal_id" value="">
                     <div class="form-group">
@@ -1321,7 +1316,7 @@
                       <input type="text" id="modal_3d_price" class="form-control" placeholder="Enter ...">
                     </div>
                   </div> 
-                  <div class="col-sm-3">
+                  <div class="col-sm-5">
                    <div class="form-group">
                     <div style="padding-left: 0" class="custom-control custom-checkbox">
                       <label>3d-Description</label>
@@ -1337,18 +1332,15 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-sm-2">
+          <!--       <div class="col-sm-2">
                   <label for="exampleInputFile">4d image slider</label>
                   <div class="input-group">
                     <img width="38px" height="38px" id="modal_4d_h_image" src="">
                     <div class="custom-file">
                       <input name="image_4d_slider" type="file" class="custom-file-input" id="productImage">
                       <label class="custom-file-label" for="exampleInputFile">Choose</label>
-                    </form>
+                    
                   </div>
-                      <!-- <div class="input-group-append">
-                        <span class="input-group-text" id="">Upload</span>
-                      </div> -->
                     </div> <span style="color: #ed2939; font-weight: bold;">(Size : 720x320)</span>
                   </div>   
                   <div class="col-sm-2">
@@ -1380,7 +1372,7 @@
                       <input type="checkbox" id="is_4d_available" name="">
                     </div>
                   </div>
-                </div>
+                </div> -->
 
           </div>
 
@@ -1439,66 +1431,10 @@ $(document).ready(function () {
 </script>
 <script type="text/javascript">
 
-  $(document).ready(function(){
-    $('#add_phonecase').click(function(e) {
-      let name = document.getElementById("k_name").value
-      let company = document.getElementById("comp_option").value
-      let size_2d = document.getElementById("k_size_2d").value
-      let size_3d = document.getElementById("k_size_3d").value
-      let size_4d = document.getElementById("k_size_4d").value
-      let price_2d = document.getElementById("k_price_2d").value
-      let price_3d = document.getElementById("k_price_3d").value
-      let price_4d = document.getElementById("k_price_4d").value
-      let description_2d = document.getElementById("k_description_2d").value
-      let description_3d = document.getElementById("k_description_3d").value
-      let description_4d = document.getElementById("k_description_4d").value
-    // let avail_status = document.getElementById("is_avail").checked
-    //  let available_status = avail_status ? 1 : 0
-    //let inputfile = document.getElementById("productImage").files[0]
-    let keydata = {
-      name, company, size_2d, size_3d, size_4d, price_2d, price_3d, price_4d,description_2d, description_3d, 
-      description_4d
-    }
-    //console.log(keydata)
-    fetch(`http://${hosturl}:5600/api/phonecase/addphonecase`,
-    {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "POST",
-      body: JSON.stringify(keydata)
-    })
-    .then(function(res){ 
-      return res.json()
-    })
-    .then(function(result){
-      let name = document.getElementById("k_name").value = ""
-      document.getElementById("comp_option").value = ""
-      document.getElementById("k_size_2d").value = ""
-      document.getElementById("k_size_3d").value = ""
-      document.getElementById("k_size_4d").value = ""
-      document.getElementById("k_price_2d").value = ""
-      document.getElementById("k_price_3d").value = ""
-      document.getElementById("k_price_4d").value = ""
-      document.getElementById("k_description_2d").value = ""
-      document.getElementById("k_description_3d").value = ""
-      document.getElementById("k_description_4d").value = ""
-      document.getElementById("phonecase_notif").innerHTML = `${name} added Successfully!!`
-      console.log(result)
-      let productId = result.product._id
-      console.log(productId)
-      uploadFile(productId)
-  //getproducts()
-  
-})
-    .catch(function(res){ console.log(res) })
-  });
-  })
 
   function logOutUser(){
     localStorage.clear();
-    location.href =  "file:///home/phoenix/Downloads/archives/admintemp/pages/examples/login.html";
+    location.href =  "login.html";
   }
 
 
@@ -1580,27 +1516,7 @@ function populateoption(options){
  $("#sel_comp").html(optionsdx);
  $("#modal_option").html(optionsd);
 }
-function add_company(){
-  //console.log("func")
-  let companyname = document.getElementById("company_name").value
-  let comp_data = {
-    "company_name" : companyname
-  }
-  fetch(`http://${hosturl}:5600/api/phonecase/addcompany`, {
-    method: 'post',
-    body: JSON.stringify(comp_data),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  }).then(function(response) {
-    return response.json();
-  }).then(function(data) {
-   // console.log(data.company.name)
-    document.getElementById("company_notif").innerHTML = `Company "${data.company.name}" Added Successfully!!!`
-    document.getElementById("company_name").value = ""
-    getcompanies()
-  });
-}
+
 
 </script>
 <script type="text/javascript">
@@ -1665,26 +1581,7 @@ function add_company(){
 
   getcompanies()
 
-  function deletecompanies(){
-    let todeleteids = printCheckedCompanies()
-    let deleteArray = {
-      todeleteids
-    }
-    fetch(`http://${hosturl}:5600/api/phonecase/deletecompany`,
-    {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "DELETE",
-      body: JSON.stringify(deleteArray)
-    })
-    .then(function(res){ 
-      document.getElementById("company_notif")
-      getcompanies() 
-    })
-    .catch(function(res){ console.log(res) })
-  }
+
 
 
   function deletekeychains(){
@@ -1814,33 +1711,33 @@ function add_company(){
         document.getElementById("modal_option").value = data.company
         document.getElementById("modal_2d_price").value = data.price_2d
         document.getElementById("modal_3d_price").value = data.price_3d
-        document.getElementById("modal_4d_price").value = data.price_4d
+        //document.getElementById("modal_4d_price").value = data.price_4d
         document.getElementById("modal_2d_description").value = data.description_2d
         document.getElementById("modal_3d_description").value = data.description_3d
-        document.getElementById("modal_4d_description").value = data.description_4d
+       // document.getElementById("modal_4d_description").value = data.description_4d
         document.getElementById("modal_2d_size").value = data.size_2d
         document.getElementById("modal_3d_size").value = data.size_3d
-        document.getElementById("modal_4d_size").value = data.size_4d
+       // document.getElementById("modal_4d_size").value = data.size_4d
         let available_2d = data.available_2d === 1 ? true : false
         let available_3d = data.available_3d === 1 ? true : false
-        let available_4d = data.available_4d === 1 ? true : false
+       // let available_4d = data.available_4d === 1 ? true : false
         document.getElementById("is_2d_available").checked = available_2d
         document.getElementById("is_3d_available").checked = available_3d
-        document.getElementById("is_4d_available").checked = available_4d
+       // document.getElementById("is_4d_available").checked = available_4d
         let image_i_2d = data.image_inner_2d
         let image_m_2d = data.image_mask_2d
         let image_i_3d = data.image_inner_3d
         let image_m_3d = data.image_mask_3d
         let image_h_2d = data.image_header_2d
         let image_h_3d = data.image_header_3d
-        let image_h_4d = data.image_header_4d
+       // let image_h_4d = data.image_header_4d
         document.getElementById("modal_2d_i_image").src = `http://${hosturl}:5600/admin/uploads/${image_i_2d}`
         document.getElementById("modal_2d_m_image").src = `http://${hosturl}:5600/admin/uploads/${image_m_2d}`
-        document.getElementById("modal_3d_i_image").src = `http://${hosturl}:5600/admin/uploads/${image_i_3d}`
-        document.getElementById("modal_3d_m_image").src = `http://${hosturl}:5600/admin/uploads/${image_m_3d}`
+        //document.getElementById("modal_3d_i_image").src = `http://${hosturl}:5600/admin/uploads/${image_i_3d}`
+        //document.getElementById("modal_3d_m_image").src = `http://${hosturl}:5600/admin/uploads/${image_m_3d}`
         document.getElementById("modal_2d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_2d}`
         document.getElementById("modal_3d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_3d}`
-        document.getElementById("modal_4d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_4d}`
+      //  document.getElementById("modal_4d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_4d}`
 
       })
       .catch(err => console.log(err))
@@ -1858,25 +1755,25 @@ function add_company(){
       let company = document.getElementById("modal_option").value
       let size_2d = document.getElementById("modal_2d_size").value
       let size_3d = document.getElementById("modal_3d_size").value
-      let size_4d = document.getElementById("modal_4d_size").value
+      //let size_4d = document.getElementById("modal_4d_size").value
       let price_2d = document.getElementById("modal_2d_price").value
       let price_3d = document.getElementById("modal_3d_price").value
-      let price_4d = document.getElementById("modal_4d_price").value
+   //   let price_4d = document.getElementById("modal_4d_price").value
       let description_2d = document.getElementById("modal_2d_description").value
       let description_3d = document.getElementById("modal_3d_description").value
-      let description_4d = document.getElementById("modal_4d_description").value
+    //  let description_4d = document.getElementById("modal_4d_description").value
       let keyid = document.getElementById("modal_id").value
       let available_2d_ref = document.getElementById("is_2d_available").checked
       let available_3d_ref = document.getElementById("is_3d_available").checked
-      let available_4d_ref = document.getElementById("is_4d_available").checked
+     // let available_4d_ref = document.getElementById("is_4d_available").checked
       let available_2d = available_2d_ref ? 1 : 0
        let available_3d = available_3d_ref ? 1 : 0
-       let available_4d = available_4d_ref ? 1 : 0
+    //   let available_4d = available_4d_ref ? 1 : 0
     //let avail_status = document.getElementById("modal_avail_status").checked
     //console.log("avail status", avail_status)
     //let available_status = avail_status ? 1 : 0
     let keditdata = {
-      name, company, size_2d, price_2d, description_2d, size_3d, price_3d, description_3d, size_4d, price_4d, description_4d, available_2d, available_3d, available_4d
+      name, company, size_2d, price_2d, description_2d, size_3d, price_3d, description_3d, available_2d, available_3d
     }
     console.log(keyid)
     console.log("k edit data")

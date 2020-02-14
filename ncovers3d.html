@@ -529,7 +529,7 @@
                 
                 <div class="row">
                   
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <!-- text input -->
                     <div class="form-group">
                       <label>Model Name</label>
@@ -538,7 +538,7 @@
                       <input disabled id="k_3d_modelname" type="text" class="form-control" placeholder="Enter ...">
                     </div>
                   </div>
-                   <div class="col-sm-4">
+                   <div class="col-sm-3">
                     <!-- text input -->
                     <div class="form-group">
                       <label>Cover Name</label>
@@ -548,7 +548,7 @@
                   </div>
 
 
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <label for="exampleInputFile">3d image slider <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label>
                     <div class="input-group">
                       <div class="custom-file">
@@ -561,7 +561,7 @@
                       </div> -->
                     </div>
                   </div>  
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <label for="exampleInputFile">3d image cover <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label>
                     <div class="input-group">
                       <div class="custom-file">
@@ -693,7 +693,7 @@
 
         <!-- Modal Header -->
         <div class="modal-header" style="">
-          <h4 id="productEditHeading" class="modal-title">Change slider</h4>
+          <h4 id="productEditHeading" class="modal-title">Edit 3d Cover</h4>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         
@@ -704,9 +704,18 @@
                   <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                      <label>Name</label>
+                      <label>Model Name</label>
                       <input id="modal_3d_id" type="hidden" class="form-control" placeholder="Enter ...">
                       <input disabled="true" id="modal_3d_modelname" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+
+                      <div class="col-sm-6">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Cover Name</label>
+                            <form name="images_3d_edit" id="images_3d_edit" enctype="multipart/form-data">
+                      <input name="cover_name" id="modal_3d_covername_edit" type="text" class="form-control" placeholder="Enter ...">
                     </div>
                   </div>
 
@@ -716,7 +725,7 @@
                     <div class="input-group">
                       <img width="38px" height="38px" id="modal_slider_image" src="">
                       <div class="custom-file">
-                          <form name="images_3d_edit" id="images_3d_edit" enctype="multipart/form-data">
+                    
                         <input name="slider_image" type="file" class="custom-file-input" id="productImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
@@ -740,9 +749,9 @@
                     </div><span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span>
                   </div> 
 
-                  <div style="margin-top: 10px" class="col-sm-6">
+                  <div style="margin-top: 10px" class="col-sm-12">
                      <label style="margin-bottom: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-                   <button style="float: right;" onclick="uploadFile3dEdit()" class="btn btn-success">Edit 3d Model</button>
+                   <button style="float: right;" onclick="uploadFile3dEdit()" class="btn btn-success">Edit 3d Cover</button>
                  </div>
                <!--   <div class="col-sm-4">
 
@@ -878,7 +887,7 @@ $(document).ready(function () {
       let slider_image = $("#bannerImage").val();
     let cover_image = $("#coverImage").val();
     let cover_name = document.getElementById("k_3d_covername").value
-    if (slider_image === "" || cover_image === "" || cover_name = "") {
+    if (slider_image === "" || cover_image === "" || cover_name === "") {
       console.log("should return false")
       return false
     }
@@ -1012,12 +1021,14 @@ function editproduct(test){
      console.log(okchains[arrayn])
       //console.log(okchains[arrayn].name)
       document.getElementById("modal_name").value = okchains[arrayn].product_name
+       document.getElementById("modal_name").value = okchains[arrayn].product_name
       document.getElementById("modal_id").value = okchains[arrayn]._id
       //console.log(document.getElementById("modal_id").value)
       let slider_image = okchains[arrayn].slider_image
       document.getElementById("modal_slider_image").src = `http://${hosturl}:5600/admin/uploads/${slider_image}`
       $('#myModal').modal('show')
     }
+
     function edit3dcover(test){
      // console.log(test)
 
@@ -1039,6 +1050,7 @@ function editproduct(test){
 
       //document.getElementById("modal_offer_type").value = data.offer_type
       document.getElementById("modal_3d_modelname").value = data.model_name
+      document.getElementById("modal_3d_covername_edit").value = data.name
       let sliderimage = data.slider_image
       let headerimage = data.header_image
       let innerimage = data.inner_image
@@ -1180,89 +1192,7 @@ get3dcoversdatatable(globalmodelid)
     })
     //console.log(newkeychains)
     return newkeychains
-  }
-  function CreateTableFromJSON(myBookso) {
-    let myBookson = getkeychains(myBookso)
-    var myBooks = JSON.parse(JSON.stringify( myBookson, ["slider_image","inner_image"]));
-    var thsliders = ["Slider image", "Inner image"] 
-
-    var col = [];
-    for (var i = 0; i < myBooks.length; i++) {
-      for (var key in myBooks[i]) {
-        if (col.indexOf(key) === -1) {
-          col.push(key);
-        }
-      }
-    }
-    var table = document.createElement("table");
-    table.setAttribute("class", "table auto-index");
-    table.setAttribute("id","keychaintable")
-
-    var tr = table.insertRow(-1);  
-    for (var i = -1; i < col.length; i++) {
-      var th = document.createElement("th");  
-                // TABLE HEADER.
-                if(i === -1){
-                  th.innerHTML = "No."
-                }
-                else {
-                  th.innerHTML = thsliders[i];
-                }
-
-                tr.appendChild(th);
-
-              }
-              var thn =  document.createElement("th"); 
-              thn.innerHTML = "Edit";
-            //tr.appendChild(thn);
-            var tha =  document.createElement("th"); 
-            tha.innerHTML = "Action";
-            tr.appendChild(tha);
-            var ths = document.createElement("th")
-            ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
-            for (var i = 0; i < myBooks.length; i++) {
-
-              tr = table.insertRow(-1); 
-              for (var j = -1; j < col.length; j++) {
-                var tabCell = tr.insertCell(-1);
-                if(j === -1){
-                  tabCell.innerHTML = ""
-                }
-                else {
-                  let imgsrcref = myBooks[i][col[j]];
-                  let imgsrc = `http://${hosturl}:5600/admin/uploads/${imgsrcref}`
-                  let imgff = `<img width="100px" src="${imgsrc}"></img>`
-                  tabCell.innerHTML = imgff
-                }
-                
-
-
-                
-                
-                //console.log(i, j)
-              }
-              let outerbutton = ""
-              let statuslink = ""
-              if(okchains[i].active_status === 1 ){
-                outerbutton =  `<button type="button" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
-                statuslink = `<a data-key=${i} onclick="deactiveslider(this)" class="dropdown-item">Inactive</a>`
-              }
-              else {
-               outerbutton = `<button type="button" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
-               statuslink = `<a data-key=${i} onclick="activeslider(this)"  class="dropdown-item">Active</a>`
-             }
-
-
-             let finalbtn = `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editproduct(this)" data-key="${i}" class="dropdown-item">Edit</a></div></div>`
-
-             let ntd = document.createElement("td")
-             ntd.innerHTML = finalbtn
-             tr.appendChild(ntd)
-           }
-           var divContainer = document.getElementById("samplejson");
-           divContainer.innerHTML = "";
-           divContainer.appendChild(table);
-         }
+}
 
     //CreateTableFromJSON() 
 
@@ -1318,6 +1248,8 @@ get3dcoversdatatable(globalmodelid)
         "columns" : [{
             "data" : null
         },{
+            "data" : "name"
+        }, {
             "data" : "slider_image",
             mRender : function(data, type){
               //console.log(data)

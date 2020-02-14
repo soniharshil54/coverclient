@@ -702,7 +702,7 @@ $(document).ready(function () {
 
   function resetform(){
     document.getElementById("n_title").value= ""
-    document.getElementById("s_text").value = ""
+    document.getElementById("n_message").value = ""
   }
 
 
@@ -726,8 +726,9 @@ $(document).ready(function () {
     method: 'POST',
     body: formData
     }).then(res => {
-      console.log(res)
-      console.log("uploadfile call finished")
+      resetform()
+     // console.log(res)
+     // console.log("uploadfile call finished")
       //document.getElementById("keychainsuccessAdded").innerHTML = "Offer successfully added !!!"
      // getoffers()
      //window.location  =  "keychainlist.html"

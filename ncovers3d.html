@@ -22,6 +22,10 @@
       color: red
     }
 
+       .table td, .table th {
+    padding: 5px;
+}
+
 
     @media (min-width: 576px){
       .modal-dialog {
@@ -528,10 +532,18 @@
                   <div class="col-sm-4">
                     <!-- text input -->
                     <div class="form-group">
-                      <label>Name</label>
+                      <label>Model Name</label>
                       <input id="k_3d_companyname" type="hidden" class="form-control" placeholder="Enter ...">
                       <input id="k_3d_modelid" type="hidden" class="form-control" placeholder="Enter ...">
                       <input disabled id="k_3d_modelname" type="text" class="form-control" placeholder="Enter ...">
+                    </div>
+                  </div>
+                   <div class="col-sm-4">
+                    <!-- text input -->
+                    <div class="form-group">
+                      <label>Cover Name</label>
+                         <form name="images_3d" id="images_3d" enctype="multipart/form-data">
+                      <input name="cover_name" id="k_3d_covername" type="text" class="form-control" placeholder="Enter ...">
                     </div>
                   </div>
 
@@ -540,7 +552,7 @@
                     <label for="exampleInputFile">3d image slider <span style="color: #ed2939; font-weight: bold;">(Size : 700x1323)</span></label>
                     <div class="input-group">
                       <div class="custom-file">
-                        <form name="images_3d" id="images_3d" enctype="multipart/form-data">
+                     
                         <input name="slider_image" type="file" class="custom-file-input" id="sliderImage">
                         <label class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
@@ -601,10 +613,11 @@
                 <thead>
                 <tr>
                   <th>Sr No.</th>
-                  <th>slider</th>
-                  <th>header</th>
-                  <th>action</th>
-                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>            
+                  <th>Name</th>
+                  <th>Slider</th>
+                  <th>Header</th>
+                  <th>Action</th>
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
                 </tr>
                 </thead>
                 <tbody>
@@ -612,10 +625,11 @@
                 <tfoot>
                 <tr>
                   <th>Sr No.</th>
-                  <th>slider</th>
-                  <th>header</th>
-                  <th>action</th>
-                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></label></div></div></th>
+                  <th>Name</th>
+                  <th>Slider</th>
+                  <th>Header</th>
+                  <th>Action</th>
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>
                 </tr>
                 </tfoot>
               </table>
@@ -820,7 +834,7 @@ $(document).ready(function () {
       let validate3d = validate3dphonecase()
       if(!validate3d){
         console.log("in vaildate 3d")
-       document.getElementById("phonecase3d_val_err").innerHTML = "All the images are required"
+       document.getElementById("phonecase3d_val_err").innerHTML = "All the images and name are required"
         return false
       }
       else{
@@ -863,8 +877,9 @@ $(document).ready(function () {
     console.log("validating 3d")
       let slider_image = $("#bannerImage").val();
     let cover_image = $("#coverImage").val();
-    if (slider_image === "" || cover_image === "") {
-      console.log("should reaturn false")
+    let cover_name = document.getElementById("k_3d_covername").value
+    if (slider_image === "" || cover_image === "" || cover_name = "") {
+      console.log("should return false")
       return false
     }
     else{

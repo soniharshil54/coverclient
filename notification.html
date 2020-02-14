@@ -518,7 +518,7 @@
     <!-- Main content -->
     <section style="" class="content">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
           <div class="card card-secondary">
             <div class="card-header">
               <h3 id="productAddHeading" class="card-title">Notification</h3>
@@ -584,12 +584,17 @@
           </div>
           <!-- /.card -->
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6"></div>
+    
+      </div>
+
+      <div class="row">
+            <div class="col-md-12">
         <!--   <div id="notificationjson"></div> -->
                       <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Sr No.</th>
+                  <th>No.</th>
                   <th>Title</th>
                   <th>Message</th>
                   <th>Image</th>
@@ -601,7 +606,7 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                   <th>Sr No.</th>
+                   <th>No.</th>
                   <th>Title</th>
                   <th>Message</th>
                   <th>Image</th>
@@ -754,7 +759,8 @@ $(document).ready(function () {
         }, {
             "data" : "image",
             "mRender": function(data, type) {
-              return `<img width="100px" src="${image}">`;
+              let imgdata = data ? data : `http://${hosturl}:5600/admin/uploads/noimage.png`
+              return `<img width="100px" src="${imgdata}">`;
             }
         }
         // ,{

@@ -469,6 +469,11 @@ function validatewatchnames(watchname){
   }
 
   function deactivewatch(activebtn){
+     $(activebtn).html("Active");
+            $(activebtn).attr("onclick","activewatch(this)");
+            let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Deactivated")
+             buttonUpdate.attr("class","btn btn-danger btn-sm dropdown-toggle");
     let watchref = activebtn.getAttribute("data-key")
     let watchid = watchref
      let ceditdata = {

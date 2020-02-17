@@ -817,6 +817,10 @@ function sendnotification(){
   }).catch(err => console.log(err))
 }
 
+function validatenotificationform(){
+  let notification_title = document.getElementById("n_title").value
+}
+
 function sendoldnotification(sendbtn){
   let notification_id = sendbtn.getAttribute("data-id")
   let notifbody = {

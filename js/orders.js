@@ -789,7 +789,7 @@ function download(){
             destroy: true,
         "processing" : true,
           "lengthMenu": [[50, 100, 500, -1], [50, 100, 500, "All"]],
-        "aaSorting": [[ 5, "desc" ]],
+        "aaSorting": [[ 4, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
                $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
@@ -905,7 +905,7 @@ function download(){
             destroy: true,
         "processing" : true,
           "lengthMenu": [[50, 100, 500, -1], [50, 100, 500, "All"]],
-        "aaSorting": [[ 5, "desc" ]],
+        "aaSorting": [[ 4, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
                $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);

@@ -407,11 +407,11 @@ function validatewallclocknames(wallclockname){
              let statuslink = ""
              if(data.available_status === 1){
 
-            outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            outerbutton = `<button type="button" style="padding: 1px 5px;" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
             statuslink = `<a data-key=${data._id} onclick="deactivewallclock(this)" class="dropdown-item">Inactive</a>`
              }
               else {
-             outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             outerbutton = `<button type="button" style="padding: 1px 5px;"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
              statuslink = `<a data-key=${data._id} onclick="activewallclock(this)"  class="dropdown-item">Active</a>`
              }
 

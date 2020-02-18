@@ -634,7 +634,7 @@ function validatetshirtnames(tshirtname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailstshirt(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailstshirt" data-key="${data}">view</button>`;
+              return `<button onclick="detailstshirt(this)" style="padding: 1px 5px;" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailstshirt" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,
@@ -644,11 +644,11 @@ function validatetshirtnames(tshirtname){
              let statuslink = ""
              if(data.available_status === 1){
 
-            outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            outerbutton = `<button type="button" style="padding: 1px 5px;" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
             statuslink = `<a data-key=${data._id} onclick="deactivetshirt(this)" class="dropdown-item">Inactive</a>`
              }
               else {
-             outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             outerbutton = `<button type="button" style="padding: 1px 5px;"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
              statuslink = `<a data-key=${data._id} onclick="activetshirt(this)"  class="dropdown-item">Active</a>`
              }
 
@@ -692,7 +692,7 @@ function validatetshirtnames(tshirtname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailstshirt(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailstshirt" data-key="${data}">view</button>`;
+              return `<button onclick="detailstshirt(this)" style="padding: 1px 5px;" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailstshirt" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,
@@ -702,11 +702,11 @@ function validatetshirtnames(tshirtname){
              let statuslink = ""
              if(data.available_status === 1){
 
-            outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            outerbutton = `<button type="button" style="padding: 1px 5px;" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
             statuslink = `<a data-key=${data._id} onclick="deactivetshirt(this)" class="dropdown-item">Inactive</a>`
              }
               else {
-             outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             outerbutton = `<button type="button" style="padding: 1px 5px;" class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
              statuslink = `<a data-key=${data._id} onclick="activetshirt(this)"  class="dropdown-item">Active</a>`
              }
 

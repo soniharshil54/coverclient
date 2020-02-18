@@ -497,7 +497,7 @@ function validatemugnames(mugname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailsmug(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailsmug" data-key="${data}">view</button>`;
+              return `<button onclick="detailsmug(this)" style="padding: 1px 5px;" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailsmug" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,
@@ -507,11 +507,11 @@ function validatemugnames(mugname){
              let statuslink = ""
              if(data.available_status === 1){
 
-            outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            outerbutton = `<button type="button" style="padding: 1px 5px;" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
             statuslink = `<a data-key=${data._id} onclick="deactivemug(this)" class="dropdown-item">Inactive</a>`
              }
               else {
-             outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             outerbutton = `<button type="button" style="padding: 1px 5px;"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
              statuslink = `<a data-key=${data._id} onclick="activemug(this)"  class="dropdown-item">Active</a>`
              }
 
@@ -558,7 +558,7 @@ function validatemugnames(mugname){
           "data": "_id",
             "mRender": function(data, type) {
              //return data
-              return `<button onclick="detailsmug(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailsmug" data-key="${data}">view</button>`;
+              return `<button onclick="detailsmug(this)" style="padding: 1px 5px;" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#detailsmug" data-key="${data}">view</button>`;
             }
         },  {
           "data": null,
@@ -568,11 +568,11 @@ function validatemugnames(mugname){
              let statuslink = ""
              if(data.available_status === 1){
 
-            outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            outerbutton = `<button type="button" style="padding: 1px 5px;" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
             statuslink = `<a data-key=${data._id} onclick="deactivemug(this)" class="dropdown-item">Inactive</a>`
              }
               else {
-             outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             outerbutton = `<button type="button" style="padding: 1px 5px;"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
              statuslink = `<a data-key=${data._id} onclick="activemug(this)"  class="dropdown-item">Active</a>`
              }
 

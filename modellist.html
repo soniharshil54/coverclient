@@ -2285,6 +2285,7 @@ function populateoption(options){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+         "lengthMenu": [[30, 100, 500, -1], [30, 100, 500, "All"]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
                $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
@@ -2321,11 +2322,11 @@ function populateoption(options){
              let statuslink = ""
              if(data.available_status === 1){
 
-            outerbutton = `<button type="button" style="margin:5px" class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            outerbutton = `<button type="button" style="padding: 1px 5px"  class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
             statuslink = `<a data-key=${data._id} onclick="deactivephonecase(this)" class="dropdown-item">Inactive</a>`
              }
               else {
-             outerbutton = `<button type="button" style="margin:5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             outerbutton = `<button type="button" style="padding: 1px 5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
              statuslink = `<a data-key=${data._id} onclick="activephonecase(this)"  class="dropdown-item">Active</a>`
              }
 

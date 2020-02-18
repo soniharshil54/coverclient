@@ -772,7 +772,7 @@
                     <div class="col-sm-2">
                       <h3 class="card-title">Models</h3>
                     </div>
-                     <div class="col-sm-5">
+                     <div class="col-sm-7">
                       <span id="phonemodel_notif" style="color: red; font-weight: bold;"></span>
                     </div>
                     <div class="col-sm-3">
@@ -787,9 +787,9 @@
                           </select>                 </div>
                         </div>
                       </div>
-                      <div class="col-sm-2">
+                     <!--  <div class="col-sm-2">
                         <h3 class="card-title" style="float: right"><button onclick="opendeletemodal()" class="btn btn-danger">Delete All</button></h3>  
-                      </div>
+                      </div> -->
                     </div>
 
 
@@ -840,7 +840,7 @@
                         <h3 class="card-title" style="float: right"><button onclick="deletekeychains()" class="btn btn-danger">Delete All</button></h3>  
                       </div>
                     </div> -->
-                    <div style="display: none;" class="row">
+                    <div style="" class="row">
                       <div class="col-12">
                                         <table id="example1" class="table table-bordered table-striped">
                 <thead>
@@ -850,13 +850,12 @@
                   <th>Company Name</th>
                   <th>2d Details</th>
                   <th>3d Details</th>
-                  <th>4d Details</th>
                   <th>Action</th>  
                   
                   <!-- <th>Date</th>
                   <th>User Info</th>
                   <th>Status</th> -->
-                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="deleteoffers()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
+                  <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick="checkAll()" class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
                 </tr>
                 </thead>
                 <tbody>
@@ -868,7 +867,6 @@
                   <th>Company Name</th>
                   <th>2d Details</th>
                   <th>3d Details</th>
-                  <th>4d Details</th>
                   <th>Action</th>  
                   
                   <!-- <th>Date</th>
@@ -1440,7 +1438,7 @@ $(document).ready(function () {
 
   function checkAll()
   {
-   var tablek = document.getElementById('keychaintable');
+   var tablek = document.getElementById('example1');
    var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
    var val = checkboxes[0].checked;
    for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
@@ -1454,20 +1452,52 @@ function checkAllCompanies()
  for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
 }
 
+// function filterbycompany(){
+//   console.log("filtering")
+//   let filcompany = document.getElementById("sel_comp").value
+//   if(filcompany === "all"){
+//     CreateTableFromJSON(okchains)
+//   }
+//   else {
+//     let testcomp = okchains.map(a => ({...a}));
+//     let result = testcomp.filter(i => {
+//       //console.log(i)
+//       return i.company === filcompany}) ; 
+//    // console.log(result)
+//     CreateTableFromJSON(result)
+//     return result
+//   }
+// }
+
 function filterbycompany(){
   console.log("filtering")
   let filcompany = document.getElementById("sel_comp").value
+  //let teststatussta = okchains.map(a => ({...a}));
   if(filcompany === "all"){
-    CreateTableFromJSON(okchains)
+    //console.log(okchains)
+    getphonecasedatatable()
   }
   else {
-    let testcomp = okchains.map(a => ({...a}));
-    let result = testcomp.filter(i => {
-      //console.log(i)
-      return i.company === filcompany}) ; 
-   // console.log(result)
-    CreateTableFromJSON(result)
-    return result
+
+
+      fetch(`http://${hosturl}:5600/api/phonecase/getallphonecases`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+          let allphonecases = data.map(a => ({...a}));
+      //console.log(okchains)
+  let result = allphonecases.filter(i => {
+    console.log(i)
+    return i.company === filcompany}) ; 
+  console.log(result)
+  let nresult = JSON.stringify(result)
+  console.log(result)
+  getfilteredphonecasesdatatable(result)
+    })
+    .catch(err => console.log(err))
+
+  
   }
 
 }
@@ -1557,7 +1587,7 @@ function populateoption(options){
      // console.log(companies)
       //companylist(companies)
       populateoption(companies)
-      CreateTableFromJSONcompany(data)
+      //CreateTableFromJSONcompany(data)
     })
     .catch(err => console.log(err))
   }
@@ -1679,14 +1709,14 @@ function populateoption(options){
 
 
 
-      function detalis4d(btn4d){
+      function details4d(btn4d){
         let model_id = btn4d.getAttribute('data-key') 
         //let model
     console.log(btn4d)
     window.location = `ncovers4d.html#${model_id}`
   }
 
-      function detalis3dn(btn3d){
+      function details3dn(btn3d){
         let model_id = btn3d.getAttribute('data-key') 
         //let model
     console.log(btn3d)
@@ -1738,6 +1768,7 @@ function populateoption(options){
         document.getElementById("modal_2d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_2d}`
         document.getElementById("modal_3d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_3d}`
       //  document.getElementById("modal_4d_h_image").src = `http://${hosturl}:5600/admin/uploads/${image_h_4d}`
+      $("#myModal").modal('show')
 
       })
       .catch(err => console.log(err))
@@ -1868,63 +1899,10 @@ function populateoption(options){
       body: formData
     }).then(res => {
       console.log(res)
-      getproducts()
+      filterbycompany()
+     // getproducts()
     }).catch(err => console.log(err))
 
-  }
-
-
-  function activeproduct(activebtn){
-    let companyref = activebtn.getAttribute("data-key")
-    let companyid = globalcompanies[companyref]._id
-    let ceditdata = {
-      active_status : 1
-    }
-    fetch(`http://${hosturl}:5600/api/phonecase/editcompany/${companyid}`,
-    {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "PUT",
-      body: JSON.stringify(ceditdata)
-    })
-    .then(function(res){ 
-      console.log(res)
-           // uploadFileEdit(keyid)
-           getcompanies()
-           // $("#myModal").modal("hide");
-
-         })
-    .catch(function(res){ console.log(res) })
-    console.log(companyid)
-  }
-
-  function deactiveproduct(activebtn){
-    let companyref = activebtn.getAttribute("data-key")
-    let companyid = globalcompanies[companyref]._id
-    let ceditdata = {
-      active_status : 0
-    }
-    fetch(`http://${hosturl}:5600/api/phonecase/editcompany/${companyid}`,
-    {
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      method: "PUT",
-      body: JSON.stringify(ceditdata)
-    })
-    .then(function(res){ 
-     console.log(res)
-     getcompanies()
-           // uploadFileEdit(keyid)
-           // getproducts()
-            //$("#myModal").modal("hide");
-
-          })
-    .catch(function(res){ console.log(res) })
-    console.log(companyid)
   }
 
 
@@ -1972,8 +1950,13 @@ function populateoption(options){
     })
     .then(function(res){ 
       console.log(res)
+                    $(activebtn).html("Inactive");
+             $(activebtn).attr("onclick","deactivephonecase(this)");
+             let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Active")
+             buttonUpdate.attr("class","btn btn-success btn-sm dropdown-toggle");
            // uploadFileEdit(keyid)
-           getproducts()
+           //getproducts()
            // $("#myModal").modal("hide");
 
          })
@@ -1997,8 +1980,13 @@ function populateoption(options){
       body: JSON.stringify(ceditdata)
     })
     .then(function(res){ 
+              $(activebtn).html("Active");
+            $(activebtn).attr("onclick","activephonecase(this)");
+            let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Deactivated")
+             buttonUpdate.attr("class","btn btn-danger btn-sm dropdown-toggle");
      console.log(res)
-     getproducts()
+    // getproducts()
            // uploadFileEdit(keyid)
            // getproducts()
             //$("#myModal").modal("hide");
@@ -2114,7 +2102,7 @@ function populateoption(options){
                let btn3dn = document.createElement("button")
             btn3dn.setAttribute("class", "btn btn-info btn-sm");
             btn3dn.style.marginRight = "2px";
-            btn3dn.setAttribute("onclick", "detalis3dn(this)");
+            btn3dn.setAttribute("onclick", "details3dn(this)");
             btn3dn.setAttribute("data-key",myBookso[i]._id)
             btn3dn.style.padding = "1px 5px";
             // delbtn.style.padding = "1px 5px";
@@ -2123,7 +2111,7 @@ function populateoption(options){
              let btn4d = document.createElement("button")
             btn4d.setAttribute("class", "btn btn-info btn-sm");
             btn4d.style.marginRight = "2px";
-            btn4d.setAttribute("onclick", "detalis4d(this)");
+            btn4d.setAttribute("onclick", "details4d(this)");
             btn4d.setAttribute("data-key",myBookso[i]._id)
             btn4d.style.padding = "1px 5px";
             // delbtn.style.padding = "1px 5px";
@@ -2204,316 +2192,6 @@ function populateoption(options){
       }
     //CreateTableFromJSON() 
 
-    function CreateTableFromJSONcompany(myBookso) {
-      let myBookson = getkeychainscomp(myBookso)
-
-      let myBooks = JSON.parse(JSON.stringify( myBookson, ["name"]));
-
-
-      var col = [];
-      for (var i = 0; i < myBooks.length; i++) {
-        for (var key in myBooks[i]) {
-          if (col.indexOf(key) === -1) {
-            col.push(key);
-          }
-        }
-      }
-
-        // CREATE DYNAMIC TABLE.
-        var table = document.createElement("table");
-        table.setAttribute("class", "table table-striped auto-index");
-        table.setAttribute("id","companytable")
-        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
-
-        var tr = table.insertRow(-1);  
-        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
-
-        for (var i = -1; i < col.length; i++) {
-          var th = document.createElement("th");  
-                // TABLE HEADER.
-                if(i === -1){
-                  th.innerHTML = "No";
-                }
-                else {
-                  th.innerHTML = col[i];
-                }
-
-                tr.appendChild(th);
-
-              }
-              var thn =  document.createElement("th"); 
-              thn.innerHTML = "Edit";
-              tr.appendChild(thn);
-              var tha =  document.createElement("th"); 
-              tha.innerHTML = "Action";
-              tr.appendChild(tha);
-              var ths = document.createElement("th")
-              var thd = document.createElement("th")
-              thd.innerHTML="<button onclick='deletecompanies()' class='btn btn-danger'>Delete Selected</button>"
-              ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAllCompanies() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label><button style='margin-left:10px' onclick='deletecompanies()' class='btn btn-danger'>Delete All</button></div></div> "
-              tr.appendChild(ths);
-        //tr.appendChild(thd);
-
-        // ADD JSON DATA TO THE TABLE AS ROWS.
-        for (var i = 0; i < myBooks.length; i++) {
-
-          tr = table.insertRow(-1);
-            //tr.setAttribute("contenteditable", "true"); 
-            for (var j = -1; j < col.length; j++) {
-              var tabCell = tr.insertCell(-1)
-              if(j === -1){
-                tabCell.innerHTML = ""
-              }
-              else {
-                tabCell.innerHTML = myBooks[i][col[j]];
-              }
-
-              
-
-
-                //console.log(i, j)
-              }
-          //  console.log(myBooks[i])
-             // let delbtn = document.createElement("button")
-             // delbtn.setAttribute("class", "btn btn-danger");
-             // delbtn.innerHTML = "Delete"
-             // delbtn.style.margin = "5px";
-             let editbtn = document.createElement("button")
-             editbtn.setAttribute("class", "btn btn-primary");
-             editbtn.style.marginRight = "2px";
-             editbtn.setAttribute("onclick", "editcompany(this)");
-             editbtn.setAttribute("data-toggle", "modal");
-             editbtn.setAttribute("data-target", "#compModal");
-             editbtn.setAttribute("data-key",i)
-             editbtn.innerHTML = "Edit"
-            // delbtn.setAttribute("data-key",i)
-            // delbtn.setAttribute("onclick", "deleteproduct(this)")
-            editbtn.style.padding = "1px 5px";
-            let activatebtn = document.createElement("button")
-            activatebtn.style.marginRight = "2px"
-
-            activatebtn.style.padding = "1px 5px";
-            
-            let td = document.createElement("td");
-            td.style.padding = "5px";
-            let std = document.createElement("td");
-            let atd = document.createElement("td");
-            if(globalcompanies[i].active_status === 1){
-              activatebtn.setAttribute("onclick","deactiveproduct(this)")
-              activatebtn.setAttribute("class", "btn btn-success");
-              activatebtn.innerHTML = "Activated";
-            }
-            else{
-              activatebtn.setAttribute("onclick","activeproduct(this)")
-              activatebtn.setAttribute("class", "btn btn-danger");
-              activatebtn.innerHTML = "Deactivated";
-            }
-           // activatebtn.setAttribute("onclick","productstatustoggle(this)")
-            //activatebtn.setAttribute("class", "btn btn-success");
-           // activatebtn.innerHTML = "Activated";
-           activatebtn.setAttribute("data-key",i)
-            //std.style.padding = "5px";
-            atd.style.padding = "5px";
-            let deleteCheck = document.createElement("input")
-            deleteCheck.setAttribute("type","checkbox")
-            deleteCheck.setAttribute("name","todeletecomp")
-            deleteCheck.setAttribute("value",globalcompanies[i]._id)
-
-            // console.log(deleteCheck)
-            std.appendChild(deleteCheck)
-            td.appendChild(editbtn)
-            atd.appendChild(activatebtn)
-            // td.appendChild(delbtn)
-            tr.appendChild(td)
-            tr.appendChild(atd)
-            tr.appendChild(std)
-          }
-
-        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-        var divContainer = document.getElementById("companyjson");
-        divContainer.innerHTML = "";
-        divContainer.appendChild(table);
-      }
-
-
-        // function CreateTableFromJSON(myBookso) {
-      // let myBookson = getkeychains(myBookso)
-      // var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","size_2d","price_2d","description_2d","image_header_2d","image_inner_2d","size_3d","price_3d","description_3d","image_header_3d","image_inner_3d","available_status"]));
-
-
-        // var col = [];
-        // for (var i = 0; i < myBooks.length; i++) {
-        //     for (var key in myBooks[i]) {
-        //         if (col.indexOf(key) === -1) {
-        //             col.push(key);
-        //         }
-        //     }
-        // }
-
-        
-        // var table = document.createElement("table");
-        // table.setAttribute("class", "table");
-        // table.setAttribute("id","keychaintable")
-
-
-        // var tr = table.insertRow(-1);  
-
-
-        // for (var i = 0; i < col.length; i++) {
-        //     var th = document.createElement("th");  
-        //         // TABLE HEADER.
-        //     th.innerHTML = col[i];
-        //     tr.appendChild(th);
-
-        // }
-        // var thn =  document.createElement("th"); 
-        // thn.innerHTML = "Edit";
-        //     tr.appendChild(thn);
-        // var ths = document.createElement("th")
-        // ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
-        // tr.appendChild(ths);
-
-
-        // for (var i = 0; i < myBooks.length; i++) {
-
-        //     tr = table.insertRow(-1);
-
-        //     for (var j = 0; j < col.length; j++) {
-        //       var tabCell = tr.insertCell(-1);
-        //       if(j===5 || j===6 || j===10 || j===11){
-        //         let image = '"'+myBooks[i][col[j]]+'"'
-        //         tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
-        //         console.log(myBooks[i][col[j]])
-        //       }
-        //       else{
-        //         tabCell.innerHTML = myBooks[i][col[j]];
-        //       }
-
-        //     }
-        //     let editbtn = document.createElement("button")
-        //     editbtn.setAttribute("class", "btn btn-primary");
-        //     editbtn.style.marginRight = "2px";
-        //     editbtn.setAttribute("onclick", "editproduct(this)");
-        //     editbtn.setAttribute("data-toggle", "modal");
-        //     editbtn.setAttribute("data-target", "#myModal");
-        //     editbtn.setAttribute("data-key",i)
-        //     editbtn.style.padding = "1px 5px";
-        //     editbtn.innerHTML = "Edit"
-        //     let td = document.createElement("td");
-        //     td.style.padding = "5px";
-        //     let std = document.createElement("td");
-        //     let deleteCheck = document.createElement("input")
-        //     deleteCheck.setAttribute("type","checkbox")
-        //     deleteCheck.setAttribute("name","todelete")
-        //     deleteCheck.setAttribute("value",okchains[i]._id)
-
-        //     std.appendChild(deleteCheck)
-        //     td.appendChild(editbtn)
-        //     tr.appendChild(td)
-        //     tr.appendChild(std)
-        // }
-
-    //     var divContainer = document.getElementById("samplejson");
-    //     divContainer.innerHTML = "";
-    //     divContainer.appendChild(table);
-    // }
-
-
-    function CreateTableFromJSON4d(myBookso) {
-      let myBookson = getkeychains(myBookso)
-      var myBooks = JSON.parse(JSON.stringify( myBookson, ["name","company","size_2d","price_2d","description_2d","image_header_2d","image_inner_2d","size_3d","price_3d","description_3d","image_header_3d","image_inner_3d","available_status"]));
-
-
-      var col = [];
-      for (var i = 0; i < myBooks.length; i++) {
-        for (var key in myBooks[i]) {
-          if (col.indexOf(key) === -1) {
-            col.push(key);
-          }
-        }
-      }
-
-        // CREATE DYNAMIC TABLE.
-        var table = document.createElement("table");
-        table.setAttribute("class", "table");
-        table.setAttribute("id","keychaintable")
-        // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
-
-        var tr = table.insertRow(-1);  
-        //tr.setAttribute("contenteditable", "true");                 // TABLE ROW.
-
-        for (var i = 0; i < col.length; i++) {
-          var th = document.createElement("th");  
-                // TABLE HEADER.
-                th.innerHTML = col[i];
-                tr.appendChild(th);
-
-              }
-              var thn =  document.createElement("th"); 
-              thn.innerHTML = "Edit";
-              tr.appendChild(thn);
-              var ths = document.createElement("th")
-              ths.innerHTML = "<div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'>Select All</label></div></div>"
-              tr.appendChild(ths);
-
-        // ADD JSON DATA TO THE TABLE AS ROWS.
-        for (var i = 0; i < myBooks.length; i++) {
-
-          tr = table.insertRow(-1);
-            //tr.setAttribute("contenteditable", "true"); 
-            for (var j = 0; j < col.length; j++) {
-              var tabCell = tr.insertCell(-1);
-              if(j===5 || j===6 || j===10 || j===11){
-                let image = '"'+myBooks[i][col[j]]+'"'
-                tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info'>view</button>`
-                console.log(myBooks[i][col[j]])
-              }
-              else{
-                tabCell.innerHTML = myBooks[i][col[j]];
-              }
-
-
-                //console.log(i, j)
-              }
-          //  console.log(myBooks[i])
-             // let delbtn = document.createElement("button")
-             // delbtn.setAttribute("class", "btn btn-danger");
-             // delbtn.innerHTML = "Delete"
-             // delbtn.style.margin = "5px";
-             let editbtn = document.createElement("button")
-             editbtn.setAttribute("class", "btn btn-primary");
-             editbtn.style.marginRight = "2px";
-             editbtn.setAttribute("onclick", "editproduct(this)");
-             editbtn.setAttribute("data-toggle", "modal");
-             editbtn.setAttribute("data-target", "#myModal");
-             editbtn.setAttribute("data-key",i)
-            // delbtn.setAttribute("data-key",i)
-            // delbtn.setAttribute("onclick", "deleteproduct(this)")
-            editbtn.style.padding = "1px 5px";
-            // delbtn.style.padding = "1px 5px";
-            editbtn.innerHTML = "Edit"
-            let td = document.createElement("td");
-            td.style.padding = "5px";
-            let std = document.createElement("td");
-            let deleteCheck = document.createElement("input")
-            deleteCheck.setAttribute("type","checkbox")
-            deleteCheck.setAttribute("name","todelete")
-            deleteCheck.setAttribute("value",okchains[i]._id)
-
-            // console.log(deleteCheck)
-            std.appendChild(deleteCheck)
-            td.appendChild(editbtn)
-            // td.appendChild(delbtn)
-            tr.appendChild(td)
-            tr.appendChild(std)
-          }
-
-        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-        var divContainer = document.getElementById("samplejson4dcovers");
-        divContainer.innerHTML = "";
-        divContainer.appendChild(table);
-      }
-
 
       function getproducts(){
         fetch(`http://${hosturl}:5600/api/phonecase/getallphonecases`)
@@ -2543,6 +2221,7 @@ function populateoption(options){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+          "lengthMenu": [[30, 100, 500, -1], [30, 100, 500, "All"]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
                $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
@@ -2563,7 +2242,7 @@ function populateoption(options){
             "mRender" : function(data, type){
                 let model_id = data._id
 
-                  let btntag =  `<button onclick="details2d(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info" data-toggle= "modal" data-target="#details2d">View 2d</button>`
+                  let btntag =  `<button onclick="details2d(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#details_2d">View 2d</button>`
                   return btntag
                 }
         }, {
@@ -2571,18 +2250,70 @@ function populateoption(options){
             "mRender" : function(data, type){
                 let model_id = data._id
 
-                  let btntag =  `<button onclick="details3d(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info" data-toggle= "modal" data-target="#details3d">View 3d</button>`
+                  let btntag =  `<button onclick="details3dn(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#details3d">View 3d</button>`
                   return btntag
                 }
         },{
+          "data": null,
+            "mRender": function(data, type) {
+             //return data
+             let outerbutton = ""
+             let statuslink = ""
+             if(data.available_status === 1){
+
+            outerbutton = `<button type="button" style="padding: 1px 5px"  class="btn btn-success btn-sm dropdown-toggle" data-toggle="dropdown">Active</button>`
+            statuslink = `<a data-key=${data._id} onclick="deactivephonecase(this)" class="dropdown-item">Inactive</a>`
+             }
+              else {
+             outerbutton = `<button type="button" style="padding: 1px 5px"  class="btn btn-danger btn-sm dropdown-toggle" data-toggle="dropdown">Deactivated</button>`
+             statuslink = `<a data-key=${data._id} onclick="activephonecase(this)"  class="dropdown-item">Active</a>`
+             }
+
+              return `<div class="dropdown">${outerbutton}<div class="dropdown-menu">${statuslink}<a onclick="editproduct(this)" data-key="${data._id}" class="dropdown-item">Edit</a></div></div>`;
+            }
+        }, {
+          "data": "_id",
+            "mRender": function(data, type) {
+             
+              return `<input name="todelete" value=${data} type="checkbox">`;
+            }
+        }]
+    });
+    }
+
+    function getfilteredphonecasesdatatable(newData){
+          let userTable = $('#example1').DataTable({
+            destroy: true,
+        "processing" : true,
+          "rowCallback": function (nRow, aData, iDisplayIndex) {
+               var oSettings = this.fnSettings ();
+               $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);
+               return nRow;
+          },
+        "aaData" : newData,
+        "columns" : [ {
+            "data" : null
+        }, {
+            "data" : 'name'
+        }, {
+            "data" : 'company'
+        }, {
             "data" : null,
             "mRender" : function(data, type){
                 let model_id = data._id
 
-                  let btntag =  `<button onclick="details4d(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info">View 4d</button>`
+                  let btntag =  `<button onclick="details2d(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info" data-toggle= "modal" data-target="#details_2d">View 2d</button>`
                   return btntag
                 }
         }, {
+            "data" : null,
+            "mRender" : function(data, type){
+                let model_id = data._id
+
+                  let btntag =  `<button onclick="details3dn(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info" data-toggle= "modal" data-target="#details3d">View 3d</button>`
+                  return btntag
+                }
+        },{
           "data": null,
             "mRender": function(data, type) {
              //return data
@@ -2610,7 +2341,7 @@ function populateoption(options){
     });
     }
 
-    //getphonecasedatatable()
+    // getphonecasedatatable()
 
 
 
@@ -2630,7 +2361,8 @@ function populateoption(options){
       //var username = loguser.name;
 
       var authtokend = localStorage.getItem('authorization')
-      getproducts()
+         getphonecasedatatable()
+     // getproducts()
       console.log(authtokend)
       
       //console.log(username)   

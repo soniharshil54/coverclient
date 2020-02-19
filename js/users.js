@@ -1,5 +1,6 @@
 
     function getusersdatatable(){
+        var authtokend = localStorage.getItem('authorization')
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
@@ -12,8 +13,13 @@
 },
                 
         "ajax" : {
-            "url" : `http://${hosturl}:5600/api/user/activeusers`,
-            dataSrc : ''
+         "url": `http://${hosturl}:5600/api/user/activeusers`,
+         dataSrc : '',
+         "type": "GET",
+         "beforeSend": function(xhr){
+            xhr.setRequestHeader("Authorization",
+               authtokend)
+         }
         },
         "columns" : [{
             "data" : null
@@ -38,7 +44,8 @@
 
                
    
-
+// "url" : `http://${hosturl}:5600/api/user/activeusers`,
+//             dataSrc : ''
 
 
     }
@@ -130,20 +137,11 @@
     .then(data => {
       okoffers = data.map(a => ({...a}));
       globalusers = okoffers
-      //let okchains = Object.assign({}, data);
-      // console.log(okoffers)
-  // okchains = Object.assign({}, data);
-   //console.log(okchains)
-   //let testkey = Object.assign({}, data);
-      //okchains = data
-      //let newkeychains = getkeychains(data)
-      
-     // CreateTableFromJSON(data)
    })
     .catch(err => console.log(err))
   }
 
-  getusers()
+  //getusers()
 
           function checkLogin(){
     

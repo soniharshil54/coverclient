@@ -8,6 +8,7 @@
     let price = document.getElementById("p_price").value
     let description = document.getElementById("p_description").value
     let pick_image_size = document.getElementById("p_pick_image_size").value
+    var authtokend = localStorage.getItem('authorization')
           let photoframenameexists = validatephotoframenames(photoframe_name)
   if(photoframenameexists){
     console.log("validated false", photoframenameexists)
@@ -36,7 +37,8 @@
 {
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': authtokend
     },
     method: "POST",
     body: JSON.stringify(photoframedata)

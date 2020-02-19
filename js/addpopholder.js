@@ -9,6 +9,7 @@
     let description = document.getElementById("p_description").value
     let pick_image_size = document.getElementById("p_pick_image_size").value
           let popholdernameexists = validatepopholdernames(popholder_name)
+          var authtokend = localStorage.getItem('authorization')
   if(popholdernameexists){
     console.log("validated false", popholdernameexists)
     document.getElementById("popholder_name_exists").style.color = 'red'
@@ -36,7 +37,8 @@
 {
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': authtokend
     },
     method: "POST",
     body: JSON.stringify(popholderdata)

@@ -22,6 +22,8 @@
       color: red
     }
 
+
+
 .table td, .table th {
     padding: 5px;
 }
@@ -2306,7 +2308,7 @@ function populateoption(options){
             "mRender" : function(data, type){
                 let model_id = data._id
 
-                  let btntag =  `<button onclick="details2d(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info" data-toggle= "modal" data-target="#details_2d">View 2d</button>`
+                  let btntag =  `<button onclick="details2d(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#details_2d">View 2d</button>`
                   return btntag
                 }
         }, {
@@ -2314,7 +2316,7 @@ function populateoption(options){
             "mRender" : function(data, type){
                 let model_id = data._id
 
-                  let btntag =  `<button onclick="details3dn(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info" data-toggle= "modal" data-target="#details3d">View 3d</button>`
+                  let btntag =  `<button onclick="details3dn(this)" data-key=${model_id} style="padding: 1px 5px" class="btn btn-info btn-sm" data-toggle= "modal" data-target="#details3d">View 3d</button>`
                   return btntag
                 }
         },{

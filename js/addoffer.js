@@ -2,6 +2,7 @@
   $('#add_offer').click(function(e) {
     console.log("add_offer")
     //let addpropara = globalProduct
+    var authtokend = localStorage.getItem('authorization')
     let offer_name = document.getElementById("k_offer").value
     let offer_type = document.getElementById("k_offer_type").value
     let code = document.getElementById("k_code").value
@@ -52,7 +53,8 @@
 {
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': authtokend
     },
     method: "POST",
     body: JSON.stringify(keydata)

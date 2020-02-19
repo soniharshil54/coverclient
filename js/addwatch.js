@@ -9,6 +9,7 @@
     let price = document.getElementById("w_price").value
     let description = document.getElementById("w_description").value
     let pick_image_size = document.getElementById("w_pick_image_size").value
+    var authtokend = localStorage.getItem('authorization')
           let watchnameexists = validatewatchnames(watch_name)
   if(watchnameexists){
     console.log("validated false", watchnameexists)
@@ -37,7 +38,8 @@
 {
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': authtokend
     },
     method: "POST",
     body: JSON.stringify(watchdata)

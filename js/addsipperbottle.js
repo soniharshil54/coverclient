@@ -7,6 +7,7 @@
     let price = document.getElementById("m_price").value
     let description = document.getElementById("m_description").value
     let pick_image_size = document.getElementById("m_pick_image_size").value
+    var authtokend = localStorage.getItem('authorization')
 
     let validatemform = validateaddsipperbottleform()
           let sipperbottlenameexists = validatesipperbottlenames(sipperbottle_name)
@@ -35,7 +36,8 @@
 {
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': authtokend
     },
     method: "POST",
     body: JSON.stringify(sipperbottledata)

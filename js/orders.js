@@ -637,6 +637,7 @@ async function download() {
     }
 
       function getproducts(){
+        var authtokend = localStorage.getItem('authorization')
         //globalProduct = proname
         // document.getElementById("productAddHeading").innerHTML = "Add "+globalProduct
         // document.getElementById("productEditHeading").innerHTML = "Edit "+globalProduct
@@ -645,7 +646,10 @@ async function download() {
         // document.getElementById("productEditBtn").value = "Add "+globalProduct
         // let producttoget = proname
         // let getpropara = producttoget + "s"
-    fetch(`http://${hosturl}:5600/api/order/getorderswithdata`)
+    fetch(`http://${hosturl}:5600/api/order/getorderswithdata`,
+          {headers: {
+      'Authorization': authtokend
+    }})
     .then(response => {
      // console.log(response)
       return response.json()})
@@ -779,12 +783,16 @@ function download(){
 
   exportCSVFile(headers, itemsNotFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
 
-
+  // "ajax" : {
+  //           "url" : `http://${hosturl}:5600/api/order/getorderswithdata`,
+  //           dataSrc : ''
+  //       },
 
 }
 
 
     function getordersdatatable(){
+       var authtokend = localStorage.getItem('authorization')
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
@@ -796,8 +804,13 @@ function download(){
                return nRow;
           },
         "ajax" : {
-            "url" : `http://${hosturl}:5600/api/order/getorderswithdata`,
-            dataSrc : ''
+               "url": `http://${hosturl}:5600/api/order/getorderswithdata`,
+         dataSrc : '',
+         "type": "GET",
+         "beforeSend": function(xhr){
+            xhr.setRequestHeader("Authorization",
+               authtokend)
+         }
         },
         "columns" : [ {
             "data" : null

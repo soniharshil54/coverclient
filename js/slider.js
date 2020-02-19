@@ -526,7 +526,11 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
     //CreateTableFromJSON() 
 
           function getproducts(){
-    fetch(`http://${hosturl}:5600/api/product/allsliders`)
+            var authtokend = localStorage.getItem('authorization')
+    fetch(`http://${hosturl}:5600/api/product/allsliders`,
+          {headers: {
+      'Authorization': authtokend
+    }})
     .then(response => {
      // console.log(response)
       return response.json()})
@@ -541,7 +545,11 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
 getproducts()
 
           function getsecondary(){
-    fetch(`http://${hosturl}:5600/api/product/allsecondarysliders`)
+            var authtokend = localStorage.getItem('authorization')
+    fetch(`http://${hosturl}:5600/api/product/allsecondarysliders`,
+          {headers: {
+      'Authorization': authtokend
+    }})
     .then(response => {
      // console.log(response)
       return response.json()})

@@ -7,6 +7,7 @@
     let price = document.getElementById("k_price").value
     let description = document.getElementById("k_description").value
     let pick_image_size = document.getElementById("k_pick_image_size").value
+    var authtokend = localStorage.getItem('authorization')
 
     let validatekform = validateaddkeychainform()
     if(!validatekform){
@@ -25,7 +26,8 @@
 {
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': authtokend
     },
     method: "POST",
     body: JSON.stringify(keychaindata)

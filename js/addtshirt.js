@@ -14,6 +14,7 @@
     let size_2_ref = $('#t_size_2').val();
     let tshirt_size = size_ref
     let tshirt_size_2 = size_2_ref
+    var authtokend = localStorage.getItem('authorization')
 
           let tshirtnameexists = validatetshirtnames(tshirt_name)
   if(tshirtnameexists){
@@ -44,7 +45,8 @@
 {
     headers: {
       'Accept': 'application/json',
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': authtokend
     },
     method: "POST",
     body: JSON.stringify(tshirtdata)

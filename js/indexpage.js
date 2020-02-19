@@ -45,6 +45,26 @@ function downloaddbzip(){
     });
 }
 
+function jsondownloaddbzip(){
+      $.ajax({
+        url: `http://${hosturl}:5600/admin/dbbackup/dbjson.zip`,
+        method: 'GET',
+        xhrFields: {
+            responseType: 'blob'
+        },
+        success: function (data) {
+            var a = document.createElement('a');
+            var url = window.URL.createObjectURL(data);
+            a.href = url;
+            a.download = 'dbjson.zip';
+            document.body.append(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+        }
+    });
+}
+
           function downloaddatabase(){
           var authtokend = localStorage.getItem('authorization')
   fetch(`http://${hosturl}:5600/api/zipdatabase/zipdatabase`,
@@ -57,6 +77,25 @@ function downloaddbzip(){
   .then(data => {
     console.log(data)
     downloaddbzip()
+    //console.log(data)
+    
+  
+ })
+  .catch(err => console.log(err))
+}
+
+          function jsondownloaddatabase(){
+          var authtokend = localStorage.getItem('authorization')
+  fetch(`http://${hosturl}:5600/api/zipdatabase/jsonzipdatabase`,
+        {headers: {
+    'Authorization': authtokend
+  }})
+  .then(response => {
+   // console.log(response)
+    return response.json()})
+  .then(data => {
+    console.log(data)
+    jsondownloaddbzip()
     //console.log(data)
     
   

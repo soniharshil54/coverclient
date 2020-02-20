@@ -13,6 +13,40 @@ function addpopholder(){
   window.location = "addpopholder.html";
 }
 
+function filterbytype(){
+  console.log("filtering")
+  let filtype = document.getElementById("p_type_filter").value
+  //let teststatussta = okchains.map(a => ({...a}));
+  if(filtype === "All"){
+    //console.log(okchains)
+    getpopholdersdatatable()
+  }
+  else {
+
+popholderTable.columns(2).search(filtype, true, false).draw();
+
+  //     fetch(`http://${hosturl}:5600/api/phonecase/getallphonecases`)
+  //   .then(response => {
+  //    // console.log(response)
+  //    return response.json()})
+  //   .then(data => {
+  //         let allphonecases = data.map(a => ({...a}));
+  //     //console.log(okchains)
+  // let result = allphonecases.filter(i => {
+  //   console.log(i)
+  //   return i.company === filcompany}) ; 
+  // console.log(result)
+  // let nresult = JSON.stringify(result)
+  // console.log(result)
+  // getfilteredphonecasesdatatable(result)
+  //   })
+  //   .catch(err => console.log(err))
+
+  
+  }
+
+}
+
 
   function checkAll()
  {
@@ -371,7 +405,7 @@ function validatepopholdernames(popholdername){
   //getoffers()
 
       function getpopholdersdatatable(){
-          let userTable = $('#example1').DataTable({
+          popholderTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
         "aaSorting": [[ 4, "desc" ]],

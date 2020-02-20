@@ -19,7 +19,7 @@ function addmug(){
   //let teststatussta = okchains.map(a => ({...a}));
   if(filtype === "All"){
     //console.log(okchains)
-    getkeychainsdatatable()
+    getmugsdatatable()
   }
   else {
 

@@ -13,6 +13,106 @@ function addphotoframe(){
   window.location = "addphotoframe.html";
 }
 
+function filterbytype(){
+  console.log("filtering")
+  let filtype = document.getElementById("p_type_filter").value
+  //let teststatussta = okchains.map(a => ({...a}));
+  if(filtype === "All"){
+    //console.log(okchains)
+    getphotoframesdatatable()
+  }
+  else {
+
+photoframeTable.columns(2).search(filtype, true, false).draw();
+
+  //     fetch(`http://${hosturl}:5600/api/phonecase/getallphonecases`)
+  //   .then(response => {
+  //    // console.log(response)
+  //    return response.json()})
+  //   .then(data => {
+  //         let allphonecases = data.map(a => ({...a}));
+  //     //console.log(okchains)
+  // let result = allphonecases.filter(i => {
+  //   console.log(i)
+  //   return i.company === filcompany}) ; 
+  // console.log(result)
+  // let nresult = JSON.stringify(result)
+  // console.log(result)
+  // getfilteredphonecasesdatatable(result)
+  //   })
+  //   .catch(err => console.log(err))
+
+  
+  }
+
+}
+
+       function getphotoframetypes(){
+    fetch(`http://${hosturl}:5600/api/photoframe/getallphotoframetypes`)
+    .then(response => {
+     // console.log(response)
+     return response.json()})
+    .then(data => {
+      console.log(data)
+      let photoframetypes = data.map(a => ({...a}));
+     // globalcompanies = globalcompaniesold.reverse()
+      // const photoframetypes = data.map(type => type.name);
+      console.log(photoframetypes)
+      //companylist(companies)
+      populateoption(photoframetypes)
+     // CreateTableFromJSONcompany(data)
+    })
+    .catch(err => console.log(err))
+  }
+
+  getphotoframetypes()
+
+     function populateoption(options){
+
+  var optionsd = ""
+  var optionsdx = ""
+  optionsd += '<option value="All"> All </option>'
+  for (var i = 0; i < options.length; i++) {
+   optionsd += '<option value="' + options[i].name+ '">' + options[i].name + '</option>';
+
+ }
+ $("#p_type_filter").html(optionsd);
+}
+
+
+function filterbytype(){
+  console.log("filtering")
+  let filtype = document.getElementById("p_type_filter").value
+  //let teststatussta = okchains.map(a => ({...a}));
+  if(filtype === "All"){
+    //console.log(okchains)
+    getphotoframesdatatable()
+  }
+  else {
+
+photoframeTable.columns(2).search(filtype, true, false).draw();
+
+  //     fetch(`http://${hosturl}:5600/api/phonecase/getallphonecases`)
+  //   .then(response => {
+  //    // console.log(response)
+  //    return response.json()})
+  //   .then(data => {
+  //         let allphonecases = data.map(a => ({...a}));
+  //     //console.log(okchains)
+  // let result = allphonecases.filter(i => {
+  //   console.log(i)
+  //   return i.company === filcompany}) ; 
+  // console.log(result)
+  // let nresult = JSON.stringify(result)
+  // console.log(result)
+  // getfilteredphonecasesdatatable(result)
+  //   })
+  //   .catch(err => console.log(err))
+
+  
+  }
+
+}
 
   function checkAll()
  {
@@ -368,7 +468,7 @@ function validatephotoframenames(photoframename){
   //getoffers()
 
       function getphotoframesdatatable(){
-          let userTable = $('#example1').DataTable({
+          photoframeTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
         "aaSorting": [[ 4, "desc" ]],

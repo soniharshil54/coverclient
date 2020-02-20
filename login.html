@@ -19,6 +19,10 @@
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
   <style type="text/css">
+    #reset_r:hover{
+      cursor: pointer;
+      color: green
+    }
     .container-login100 {
     width: 100%;
     min-height: 100vh;
@@ -94,7 +98,7 @@
             <button onclick="loginAdmin()" type="button" id="log_in" class="btn btn-primary btn-block">Sign In</button>
           </div>
            <div class="col-8">
-            <button style="float: right;" onclick="resetpassword()" type="button" id="log_in" class="btn btn-info btn-sm">Reset password</button>
+            <span style="float: right;color: blue" onclick="resetpassword()" id="reset_r">Reset password</button>
           </div>
           <div class="col-12">
             <span id="checkmail" style="color: green"></span>

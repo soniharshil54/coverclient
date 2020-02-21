@@ -263,68 +263,68 @@ function reportlogics(duration){
             newdateref.setHours(0,0,0,0)
             console.log(newdateref)
             console.log(d)
-            return newdateref === d
+            return newdateref.getTime() === d.getTime()
           }).map(a => a.amount).reduce((a,b) => a + b, 0  )
   let refundedamount = reportref.filter(a => {
             let dateref = new Date(a.date_ordered);
             let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
             let newdateref = new Date(ndateref);
              newdateref.setHours(0,0,0,0)
-            console.log(newdateref)
-            console.log(d)
-            return newdateref === d && a.order_status === "Refunded"
+           // console.log(newdateref)
+            //console.log(d)
+            return newdateref.getTime() === d.getTime() && a.order_status === "Refunded"
           }).map(a => a.amount).reduce((a,b) => a + b, 0  )
   let pendingamount = reportref.filter(a => {
             let dateref = new Date(a.date_ordered);
            let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
             let newdateref = new Date(ndateref);
              newdateref.setHours(0,0,0,0)
-            console.log(newdateref)
-            console.log(d)
-            return newdateref === d && a.order_status === "Pending Payment"
+           // console.log(newdateref)
+            //console.log(d)
+            return newdateref.getTime() === d.getTime() && a.order_status === "Pending Payment"
           }).map(a => a.amount).reduce((a,b) => a + b, 0  )
   let shippingcharge = reportref.filter(a => {
             let dateref = new Date(a.date_ordered);
             let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
             let newdateref = new Date(ndateref);
              newdateref.setHours(0,0,0,0)
-            console.log(newdateref)
-            console.log(d)
-            return newdateref === d
+            //console.log(newdateref)
+            //console.log(d)
+            return newdateref.getTime() === d.getTime()
           }).map(a => a.shipping).reduce((a,b) => a + b, 0  )
   let ordersplaced = reportref.filter(a => {
             let dateref = new Date(a.date_ordered);
             let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
              let newdateref = new Date(ndateref);
              newdateref.setHours(0,0,0,0)
-            console.log(newdateref)
-            console.log(d)
-            return newdateref === d
+            //console.log(newdateref)
+            //console.log(d)
+            return newdateref.getTime() === d.getTime()
           }).length
   let itemspurchased = reportref.filter(a => {
             let dateref = new Date(a.date_ordered);
             let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
             let newdateref = new Date(ndateref);
              newdateref.setHours(0,0,0,0)
-            console.log(newdateref)
-            console.log(d)
-            return newdateref === d
+            //console.log(newdateref)
+           // console.log(d)
+            return newdateref.getTime() === d.getTime()
           }).map(a =>  a.products.length).reduce((a,b) => a + b, 0)
   let couponamount = reportref.filter(a => {
        let dateref = new Date(a.date_ordered);
        let ndateref = dateref.getTime() + ( 5.5 * 60 * 60 * 1000 )
             let newdateref = new Date(ndateref);
             newdateref.setHours(0,0,0,0)
-            console.log(newdateref)
-            console.log(d)
-            return newdateref === d
+           // console.log(newdateref)
+           // console.log(d)
+            return newdateref.getTime() === d.getTime()
      }).map(a => {
       let amountconsole = a.coupon_amount ? a.coupon_amount : 0
       console.log("amount coupon", amountconsole)
       return amountconsole}).reduce((a,b) => a + b, 0  )
   //let totalsalesred = totalsales.reduce((a,b) => a + b )
   //console.log(totalsalesred)
-   document.getElementById('totalsales_r').innerHTML =  `₹ ${totalsales}`
+  document.getElementById('totalsales_r').innerHTML =  `₹ ${totalsales}`
   document.getElementById('couponamount_r').innerHTML =  `₹ ${couponamount}`
   document.getElementById('refunded_r').innerHTML =  `₹ ${refundedamount}`
   document.getElementById('pendingamount_r').innerHTML =  `₹ ${pendingamount}`

@@ -591,6 +591,9 @@ content: counter(Serial); /* Display the counter */
     </div>
 
     <div class="row">
+     <!--  <div class="col-md-12">
+        <span>select nofkjdfj</span>
+      </div> -->
           <div class="col-md-12">
       <!--   <div id="notificationjson"></div> -->
                     <table id="example1" class="table table-bordered table-striped">
@@ -601,8 +604,8 @@ content: counter(Serial); /* Display the counter */
                 <th style="width: 500px">Message</th>
                 <th>Image</th>
                  <th>Send</th>
-              <!--   <th>Date</th>  
-                <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th> -->            
+                <!-- <th>Date</th>   -->
+                <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>            
               </tr>
               </thead>
               <tbody>
@@ -614,8 +617,8 @@ content: counter(Serial); /* Display the counter */
                 <th>Message</th>
                 <th>Image</th>
                 <th>Send</th>
-              <!--   <th>Date</th>
-                <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th> -->
+                <!-- <th>Date</th> -->
+                <th><div class='form-group'><div class='custom-control custom-checkbox'><input onclick=checkAll() class='custom-control-input' type='checkbox' id='customCheckbox2' value='option1'><label for='customCheckbox2' class='custom-control-label'><button onclick="opendeletemodal()" class="btn btn-danger btn-sm">Delete All</button></label></div></div></th>
               </tr>
               </tfoot>
             </table>
@@ -689,6 +692,43 @@ content: counter(Serial); /* Display the counter */
 </div>
 </div>
 <!-- /.content-wrapper -->
+
+
+       <div class="modal fade" id="deleteModal">
+    <div class="modal-dialog">
+      <div class="modal-content" style="border: none">
+
+        <!-- Modal Header -->
+        <!-- <div class="modal-header" style="">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div> -->
+        
+        <!-- Modal body -->
+        <div class="modal-body" style="text-align: center;">
+          <!-- <h1>ello</h1> -->
+          <div class="row">
+            <div style="margin-bottom: 30px" class="col-sm-12">
+              <span>Are you sure you want to delete selected records ??</span>
+            </div>
+            <div class="col-sm-6"></div>
+            <div class="col-sm-6">
+              <div class="form-group">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="deletenotifications()" type="button" value="Confirm" class="btn btn-success float-right">
+               <input style="margin-right: 20px" id="productEditBtn" onclick="canceldelete()" type="button" value="Cancel" class="btn btn-danger float-right">
+             </div>
+
+           </div> 
+         </div>
+       </div>
+
+       <!-- Modal footer -->
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+        </div> -->
+        
+      </div>
+    </div>
+  </div>
 
 <footer class="main-footer">
 <strong>Call us:  <a href="#">+91 8866220223</a>.</strong> 
@@ -769,7 +809,7 @@ function tonotif(){
 
 function resetform(){
   document.getElementById("n_title").value= ""
-  document.getElementById("n_message").value = ""
+  document.getElementById("s_text").value = ""
 }
 
 
@@ -816,12 +856,77 @@ function sendnotification(){
   }).then(res => {
     document.getElementById("notif_sent_notif").innerHTML = "Notification sent successfully!!!"
     resetform()
+    getnotificationsdatatable()
   }).catch(err => console.log(err))
 }
 
 function validatenotificationform(){
   let notification_title = document.getElementById("n_title").value
 }
+
+  function checkAll()
+ {
+     var tablek = document.getElementById ('example1');
+     var checkboxes = tablek.querySelectorAll ('input[type=checkbox]');
+     var val = checkboxes[0].checked;
+     for (var i = 0; i < checkboxes.length; i++) checkboxes[i].checked = val;
+ }
+
+  function printChecked(){
+    var items=document.getElementsByName('todelete');
+    var selectedItems=[];
+    for(var i=0; i<items.length; i++){
+      if(items[i].type=='checkbox' && items[i].checked==true)
+        selectedItems.push(items[i].value);
+    }
+    // console.log(selectedItems);
+    return selectedItems
+  }   
+
+     function canceldelete(){
+    $("#deleteModal").modal("hide");
+  }
+
+    function opendeletemodal(){
+     let todeleteidsref = printChecked()
+     $("#deleteModal").modal("show");
+      // if(todeleteidsref.length > 0){
+      //   $("#deleteModal").modal("show");
+      //   document.getElementById("notification_list_notif").innerHTML = ""
+      // }
+      // else {
+      //   document.getElementById("notification_list_notif").style.color = "red"
+      //   document.getElementById("notification_list_notif").innerHTML = "Select atleast one notification !!!"
+      // }
+  } 
+
+
+  function deletenotifications(){
+    console.log("delete")
+   // let deleteprotoget = globalProduct
+    let todeleteids = printChecked()
+    let deleteArray = {
+      todeleteids
+    }
+              fetch(`http://${hosturl}:5600/api/notification/deletenotification`,
+          {
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            method: "DELETE",
+            body: JSON.stringify(deleteArray)
+          })
+          .then(function(res){ 
+
+        //        document.getElementById("notification_list_notif").style.color = "red"
+       // document.getElementById("notification_list_notif").innerHTML = "Selected notifications deleted !!!"
+            getnotificationsdatatable()
+             $("#deleteModal").modal("hide");
+            //getnotifications() 
+          })
+          .catch(function(res){ console.log(res) })
+  }
 
 function sendoldnotification(sendbtn){
   let notification_id = sendbtn.getAttribute("data-id")
@@ -880,14 +985,14 @@ function sendoldnotification(sendbtn){
             return `<button onclick="sendoldnotification(this)" class="btn btn-success btn-sm" data-id='${n_id}'>Send</button>`;
           }
       }
-      // ,{
-      //   "data": "_id",
-      //     "mRender": function(data, type) {
-      //       console.log(data)
-      //       let checkid = `check_${data}`
-      //       return `<input id='${checkid}' name="todelete" value=${data} type="checkbox">`;
-      //     }
-      // }
+      ,{
+        "data": "_id",
+          "mRender": function(data, type) {
+            console.log(data)
+            let checkid = `check_${data}`
+            return `<input id='${checkid}' name="todelete" value=${data} type="checkbox">`;
+          }
+      }
       ]
   });
 

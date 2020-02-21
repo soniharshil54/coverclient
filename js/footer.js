@@ -1,0 +1,1 @@
+document.getElementById("footer_contact").innerHTML = "+91 8866220223"

@@ -196,6 +196,7 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
                 document.getElementById("offer_list_notif").style.color = "red"
         document.getElementById("offer_list_notif").innerHTML = "Selected offers deleted !!!"
             getoffersdatatable()
+             $("#deleteModal").modal("hide");
             //getoffers() 
           })
           .catch(function(res){ console.log(res) })

@@ -9,7 +9,8 @@
     // let tshirt_size_2 = document.getElementById("t_size_2").value ? document.getElementById("t_size_2").value : []
     let price = document.getElementById("t_price").value
     let description = document.getElementById("t_description").value
-    let pick_image_size = document.getElementById("t_pick_image_size").value
+    let pick_image_size_ref = document.getElementById("t_pick_image_size").value
+    var pick_image_size = pick_image_size_ref.replace("*", "x")
     let size_ref = $('#t_size').val();
     let size_2_ref = $('#t_size_2').val();
     let tshirt_size = size_ref

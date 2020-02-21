@@ -6,7 +6,8 @@
    let keychain_type = document.getElementById("k_type").value
     let price = document.getElementById("k_price").value
     let description = document.getElementById("k_description").value
-    let pick_image_size = document.getElementById("k_pick_image_size").value
+    let pick_image_size_ref = document.getElementById("k_pick_image_size").value
+    var pick_image_size = pick_image_size_ref.replace("*", "x")
     var authtokend = localStorage.getItem('authorization')
 
     let validatekform = validateaddkeychainform()
@@ -21,6 +22,7 @@
     let keychaindata = {
       keychain_name, keychain_type ,price,description , pick_image_size
     }
+    console.log(keychaindata)
    // console.log(keydata)
     fetch(`http://${hosturl}:5600/api/keychain/addkeychain`,
 {

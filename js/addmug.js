@@ -8,7 +8,8 @@
     let mug_volume = document.getElementById("m_volume").value
     let price = document.getElementById("m_price").value
     let description = document.getElementById("m_description").value
-    let pick_image_size = document.getElementById("m_pick_image_size").value
+    let pick_image_size_ref = document.getElementById("m_pick_image_size").value
+    var pick_image_size = pick_image_size_ref.replace("*", "x")
     var authtokend = localStorage.getItem('authorization')
 
       let mugnameexists = validatemugnames(mug_name)

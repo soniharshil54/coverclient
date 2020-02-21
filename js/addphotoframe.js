@@ -7,7 +7,8 @@
     let photoframe_size = document.getElementById("p_size").value
     let price = document.getElementById("p_price").value
     let description = document.getElementById("p_description").value
-    let pick_image_size = document.getElementById("p_pick_image_size").value
+    let pick_image_size_ref = document.getElementById("p_pick_image_size").value
+    var pick_image_size = pick_image_size_ref.replace("*", "x")
     var authtokend = localStorage.getItem('authorization')
           let photoframenameexists = validatephotoframenames(photoframe_name)
   if(photoframenameexists){

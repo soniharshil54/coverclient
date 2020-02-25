@@ -4,6 +4,10 @@
     color: #fff;
 }
 
+[class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link.active, [class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link.active:focus, [class*=sidebar-dark-] .nav-treeview>.nav-item>.nav-link.active:hover {
+    background-image: linear-gradient(to right, #c0c0aa 0%, #1cefff 1%, #c0c0aa 100%);
+    color: #343a40;
+}
 
     /* Customize website's scrollbar like Mac OS
 Not supports in Firefox and IE */

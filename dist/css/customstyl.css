@@ -14,10 +14,13 @@
   color: black
 }
 .btn-danger {
-  background-image: linear-gradient(to right, #EB3349 0%, #F45C43 1%, #EB3349 100%);
+  background-image: linear-gradient(to right, #EB3349 0%, #F45C43 0%, #EB3349 100%);
   color: black
 }
-
+.btn-primary {
+    background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA 1%, #77A1D3 100%);
+    color: black
+}
 .btn-success:hover{
   border: 1.2px solid #006400;
   color: #006400;
@@ -28,6 +31,10 @@
   color: #990000 
 }
 .btn-info:hover{
+  border: 1.2px solid #283747;
+  color: #283747
+}
+.btn-primary:hover{
   border: 1.2px solid #283747;
   color: #283747
 }

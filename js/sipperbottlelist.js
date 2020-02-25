@@ -431,6 +431,7 @@ function validatesipperbottlenames(sipperbottlename){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+         "lengthMenu": [[30, 100, 500, -1], [30, 100, 500, "All"]],
         "aaSorting": [[ 4, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();

@@ -60,7 +60,7 @@
     }
   </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed scrollbar">
   <!-- Site wrapper -->
   <div class="wrapper">
     <!-- Navbar -->
@@ -1147,10 +1147,15 @@ function editproduct(test){
     })
     .then(function(res){ 
       console.log(res)
+          $(activebtn).html("Inactive");
+             $(activebtn).attr("onclick","deactive3dphonecase(this)");
+             let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Active")
+             buttonUpdate.attr("class","btn btn-success btn-sm dropdown-toggle");
            // uploadFileEdit(keyid)
           // getproducts()
            // $("#myModal").modal("hide");
-get3dcoversdatatable(globalmodelid)
+//get3dcoversdatatable(globalmodelid)
          })
     .catch(function(res){ console.log(res) })
     console.log(phonecaseid)
@@ -1173,7 +1178,12 @@ get3dcoversdatatable(globalmodelid)
     })
     .then(function(res){ 
      console.log(res)
-get3dcoversdatatable(globalmodelid)
+        $(activebtn).html("Active");
+            $(activebtn).attr("onclick","active3dphonecase(this)");
+            let buttonUpdate = $(activebtn).parent().siblings(".btn")
+             buttonUpdate.html("Deactivated")
+             buttonUpdate.attr("class","btn btn-danger btn-sm dropdown-toggle");
+//get3dcoversdatatable(globalmodelid)
      //getproducts()
            // uploadFileEdit(keyid)
            // getproducts()

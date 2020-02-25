@@ -85,7 +85,7 @@
           })
           .then(function(res){ 
                $(activebtn).html("Active");
-            $(activebtn).attr("onclick","activeoffer(this)");
+            $(activebtn).attr("onclick","activeptype(this)");
             let buttonUpdate = $(activebtn).parent().siblings(".btn")
              buttonUpdate.html("Deactivated")
              buttonUpdate.attr("class","btn btn-danger btn-sm dropdown-toggle");
@@ -227,7 +227,6 @@ fetch(`http://${hosturl}:5600/api/popholder/ptaddimage/${ptid}`, {
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
-        "aaSorting": [[ 4, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
                $("td:first", nRow).html(oSettings._iDisplayStart+iDisplayIndex +1);

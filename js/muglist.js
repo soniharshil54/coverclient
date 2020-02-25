@@ -467,6 +467,7 @@ function validatemugnames(mugname){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+         "lengthMenu": [[30, 100, 500, -1], [30, 100, 500, "All"]],
         "aaSorting": [[ 5, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();
@@ -531,6 +532,7 @@ function validatemugnames(mugname){
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
+         "lengthMenu": [[30, 100, 500, -1], [30, 100, 500, "All"]],
         "aaSorting": [[ 5, "desc" ]],
           "rowCallback": function (nRow, aData, iDisplayIndex) {
                var oSettings = this.fnSettings ();

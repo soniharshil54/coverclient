@@ -8,11 +8,12 @@
   <title>Mobile Cover Maker</title>
 
   <!-- Font Awesome Icons -->
+   <link rel="stylesheet" href="dist/css/customstyl.css?v=3">
   <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Theme style -->
-     <link rel="stylesheet" href="dist/css/customstyl.css?v=1">
+    
   <link rel="stylesheet" href="dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -33,6 +34,34 @@
 
     .btn-grad {background-image: linear-gradient(to right, #ECE9E6 0%, #FFFFFF 0%, #ECE9E6 100%)}
 .btn-grad:hover { background-position: right center; }
+
+.btn-success{
+  background-image: linear-gradient(to right, #1D976C 0%, #93F9B9 1%, #1D976C 100%);
+  color: black
+}
+.btn-danger {
+  background-image: linear-gradient(to right, #EB3349 0%, #F45C43 1%, #EB3349 100%);
+  color: black
+}
+
+.btn-success:hover{
+  border: 1.2px solid #006400;
+  color: #006400;
+}
+
+.btn-danger:hover{
+  border: 1.2px solid #990000;
+  color: #990000 
+}
+.btn-info:hover{
+  border: 1.2px solid #283747;
+  color: #283747
+}
+.btn-info
+ {
+  background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA 1%, #1FA2FF 100%);
+  color: black
+}
 
     #customdate-filter{
       display: none;
@@ -179,10 +208,10 @@
         </div>
       </li>
       <li>
-        <button style="margin-right: 10px" onclick="jsondownloaddatabase()" class="btn btn-success btn-sm">Download Database ( JSON )</button>
+        <button style="margin-right: 5px" onclick="jsondownloaddatabase()" class="btn btn-success btn-sm">Download Database ( JSON )</button>
       </li>
       <li>
-        <button onclick="downloaddatabase()" class="btn btn-info btn-sm">Download Database ( Backup )</button>
+        <button style="margin-right: 5px"  onclick="downloaddatabase()" class="btn btn-info btn-sm">Download Database ( Backup )</button>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i

@@ -291,7 +291,7 @@ function validatetshirtnames(tshirtname){
     console.log("couple")
     document.getElementById("couple_tshirt_size").style.display = "block"
     document.getElementById("tshirtImages").style.display = "block"
-    document.getElementById("type_d_inner").style.display = "none"
+  //  document.getElementById("type_d_inner").style.display = "none"
      document.getElementById("type_d_overlay").style.display = "none"
      document.getElementById("type_d_mask").style.display = "none"
      populatesubtypecustom()
@@ -318,7 +318,7 @@ function validatetshirtnames(tshirtname){
     console.log("custom")
     //document.getElementById("couple_tshirt_size").style.display = "block"
     document.getElementById("type_d_tshirtimages").style.display = "none"
-    document.getElementById("type_d_inner").style.display = "block"
+   // document.getElementById("type_d_inner").style.display = "block"
      document.getElementById("type_d_overlay").style.display = "block"
      document.getElementById("type_d_mask").style.display = "block"
     // populatesubtypecustom()
@@ -326,7 +326,7 @@ function validatetshirtnames(tshirtname){
   else{
     console.log("not custom")
       document.getElementById("type_d_tshirtimages").style.display = "block"
-    document.getElementById("type_d_inner").style.display = "none"
+   // document.getElementById("type_d_inner").style.display = "none"
      document.getElementById("type_d_overlay").style.display = "none"
      document.getElementById("type_d_mask").style.display = "none"
     // populatesubtypeall()

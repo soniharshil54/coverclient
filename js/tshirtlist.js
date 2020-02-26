@@ -254,12 +254,12 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
         console.log(data)
             document.getElementById("name_details_p").innerHTML = data.name
     document.getElementById("price_details_p").innerHTML = data.price
-    document.getElementById("size_details_p").innerHTML = data.size
+   // document.getElementById("size_details_p").innerHTML = data.size
     document.getElementById("description_details_p").innerHTML = data.description
     let headerimagetshirt = data.h_image
     let headerimagetshirtsrc = `http://${hosturl}:5600/admin/uploads/${headerimagetshirt}`
-    let shadowimagetshirt = data.shadow_image
-    let shadowimagetshirtsrc = `http://${hosturl}:5600/admin/uploads/${shadowimagetshirt}`
+   // let shadowimagetshirt = data.shadow_image
+   // let shadowimagetshirtsrc = `http://${hosturl}:5600/admin/uploads/${shadowimagetshirt}`
     let overlayimagetshirt = data.overlay_image
     let overlayimagesrc = `http://${hosturl}:5600/admin/uploads/${overlayimagetshirt}`
     let maskimagetshirt = data.mask_image
@@ -328,12 +328,12 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
           }
 
              if(data.subtype_id == "5e32cd728719bf459bfa93c7"){
-              document.getElementById("tshirt_custom_only_shadow").style.display = "block"
+             // document.getElementById("tshirt_custom_only_shadow").style.display = "block"
               document.getElementById("tshirt_custom_only_overlay").style.display = "block"
               document.getElementById("tshirt_custom_only_mask").style.display = "block"
               document.getElementById("type_d_tshirtimages").style.display = "none"
-             let shadowimage = data.shadow_image
-      document.getElementById("edit_p_shadow_image").src = `http://${hosturl}:5600/admin/uploads/${shadowimage}`
+          //   let shadowimage = data.shadow_image
+      //document.getElementById("edit_p_shadow_image").src = `http://${hosturl}:5600/admin/uploads/${shadowimage}`
        let overlayimage = data.overlay_image
       document.getElementById("edit_p_overlay_image").src = `http://${hosturl}:5600/admin/uploads/${overlayimage}`
       let maskimage = data.mask_image
@@ -342,7 +342,7 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
           }
           else {
            
-            document.getElementById("tshirt_custom_only_shadow").style.display = "none"
+           // document.getElementById("tshirt_custom_only_shadow").style.display = "none"
               document.getElementById("tshirt_custom_only_overlay").style.display = "none"
               document.getElementById("tshirt_custom_only_mask").style.display = "none"
               document.getElementById("type_d_tshirtimages").style.display = "block"

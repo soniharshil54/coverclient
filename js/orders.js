@@ -646,7 +646,7 @@ async function download() {
         // document.getElementById("productEditBtn").value = "Add "+globalProduct
         // let producttoget = proname
         // let getpropara = producttoget + "s"
-    fetch(`http://${hosturl}:5600/api/order/getorderswithdata`,
+    fetch(`http://${hosturl}:5600/api/order/getorderswithdataopt`,
           {headers: {
       'Authorization': authtokend
     }})
@@ -804,7 +804,7 @@ function download(){
                return nRow;
           },
         "ajax" : {
-               "url": `http://${hosturl}:5600/api/order/getorderswithdata`,
+               "url": `http://${hosturl}:5600/api/order/getorderswithdataopt`,
          dataSrc : '',
          "type": "GET",
          "beforeSend": function(xhr){

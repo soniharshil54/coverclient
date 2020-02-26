@@ -265,7 +265,7 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
     let maskimagetshirt = data.mask_image
     let maskimagesrc = `http://${hosturl}:5600/admin/uploads/${maskimagetshirt}`
     document.getElementById("image_details_h").src = headerimagetshirtsrc
-    document.getElementById("image_details_shadow").src = shadowimagetshirtsrc
+    //document.getElementById("image_details_shadow").src = shadowimagetshirtsrc
     document.getElementById("image_details_overlay").src = overlayimagesrc
     document.getElementById("image_details_mask").src = maskimagesrc
 

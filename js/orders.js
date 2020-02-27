@@ -428,7 +428,7 @@ async function download() {
     let deleteArray = {
       todeleteids
     }
-              fetch(`http://${hosturl}:5600/api/order/deleteorder`,
+              fetch(`http://${hosturl}:5600/api/order/deactivateorder`,
           {
             headers: {
               'Accept': 'application/json',
@@ -804,7 +804,7 @@ function download(){
                return nRow;
           },
         "ajax" : {
-               "url": `http://${hosturl}:5600/api/order/getorderswithdataopt`,
+               "url": `http://${hosturl}:5600/api/order/getactiveorderswithdataopt`,
          dataSrc : '',
          "type": "GET",
          "beforeSend": function(xhr){

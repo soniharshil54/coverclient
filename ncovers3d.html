@@ -494,7 +494,7 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
-    <section class="content-header">
+<!--     <section class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
          
@@ -508,8 +508,8 @@
             </ol>
           </div>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
+      </div>
+    </section> -->
 
     <!-- Main content -->
     <section class="content">
@@ -1269,14 +1269,14 @@ function editproduct(test){
             mRender : function(data, type){
               //console.log(data)
                let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
-              return `<img width="70px" src="${imgsrc}"></img>`;
+              return `<img height="70px" src="${imgsrc}"></img>`;
             }
         }, {
             "data" : "header_image",
             mRender : function(data, type){
               //console.log(data)
                let imgsrc = `http://${hosturl}:5600/admin/uploads/${data}`
-              return `<img width="70px" src="${imgsrc}"></img>`;
+              return `<img height="70px" src="${imgsrc}"></img>`;
             }
         }, {
           "data": null,

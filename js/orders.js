@@ -842,11 +842,16 @@ var authtokend = localStorage.getItem('authorization')
                 let products_name = ''
                 let productsref = data.products
                 let order_id = data.order_id
+                let colorproducts = ["green","blue","green","blue","green","blue","green","blue","green","blue","green","blue","green","blue","green","blue","green","blue","green","blue",]
                 for(let i=0; i < productsref.length; i++){
                   // console.log()
-
-                  let btntag =  `<button onclick="productdetailsmodal(this)" style="padding: 1px 1px; margin-top:3px;font-size:14px;color:green" class="btn" data-oid=${order_id} data-pid="${productsref[i]._id}">${productsref[i].product_name}</button>`
-                  products_name += `${btntag} </br> `
+                   if(i != 0){
+                    products_name += `<hr style="padding:0; margin:0"> `
+                  }
+                  let colorsfpro = "green"
+                  let btntag =  `<span onclick="productdetailsmodal(this)" style="font-size:14px;font-weight:bold;color:${colorsfpro}" data-oid=${order_id} data-pid="${productsref[i]._id}">${productsref[i].product_name}</span>`
+                  products_name += `${btntag} `
+                 
                 }
               return products_name
             }

@@ -550,7 +550,7 @@ content: counter(Serial); /* Display the counter */
                       
                       <input name="notification_image" id="hImage" type="file" class="custom-file-input" id="exampleInputFile">
                       
-                      <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                      <label id="notif_img_label" class="custom-file-label" for="exampleInputFile">Choose file</label>
                     </div>
                   </div>
                 </div>
@@ -698,7 +698,7 @@ content: counter(Serial); /* Display the counter */
 
        <div class="modal fade" id="deleteModal">
     <div class="modal-dialog">
-      <div class="modal-content" style="border: none; background-color: #dc3545!important; background-image: none;color: white;font-weight: bold;">
+      <div class="modal-content" style="border: none; background-image: none;color: red;font-weight: bold;">
 
         <!-- Modal Header -->
         <!-- <div class="modal-header" style="">
@@ -813,6 +813,7 @@ function tonotif(){
 function resetform(){
   document.getElementById("n_title").value= ""
   document.getElementById("s_text").value = ""
+  document.getElementById("notif_img_label").innerHTML = "Choose file"
 }
 
 

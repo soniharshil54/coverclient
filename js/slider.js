@@ -222,8 +222,8 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
     if (newsortvalue < 1) {
       newsortvalue = 1
     }
-     if (newsortvalue > 9) {
-      newsortvalue = 9
+     if (newsortvalue > 11) {
+      newsortvalue = 11
     }
     
     let sortorderdata = {
@@ -490,7 +490,7 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
                 //  console.log("sort order", sort_order)
                 let slider_sort_id = myBookson[i]._id
                //console.log("slider id", myBookson[i]._id)
-                tabCell.innerHTML = ` <input data-sid='${slider_sort_id}' style="width:60px;height:27px" onkeyup="updatesecsortorder(this)" onchange="updatesortorder(this)" value="${sort_order}" id = "company_name" type="number" class="form-control">`
+                tabCell.innerHTML = ` <input data-sid='${slider_sort_id}' style="width:60px;height:27px" onkeyup="updatesecsortorder(this)" onchange="updatesecsortorder(this)" value="${sort_order}" id = "company_name" type="number" class="form-control">`
                 //console.log(myBooks[i][col[j]])
               }
 

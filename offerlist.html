@@ -37,12 +37,7 @@
       color: red
     }
 
-    @media (min-width: 576px){
-    .modal-dialog {
-      max-width: 550px;
-      margin: 1.75rem auto;
-    }
-    }
+ 
 
      #free_shipping_div, #buy_div, #get_div, #first_time_div {
       display: none;
@@ -891,10 +886,10 @@
   </div>
 
     <div class="modal fade" id="OfferDetailModal">
-    <div class="modal-dialog">
-      <div class="modal-content" style="background-color: transparent;border: none">
+    <div class="modal-dialog" style="max-width: 750px">
+      <div class="modal-content" style="background-image: linear-gradient(to right, #314755 0%, #26a0da 0%, #314755 100%);color: white;border: none">
         <div class="modal-body" style="text-align: left;">
-         <table class="table table-dark" style="width:100%">
+         <table class="table" style="width:100%">
             <tr>
               <th>Offer Name:</th>
               <td><span id="offer_modal_name"></span></td>

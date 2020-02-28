@@ -467,9 +467,12 @@ async function download() {
         productGimagefull_2 = result.image_2 && result.image_2 !== "noimage.png" ? result.image_2 : "noimg22.png" 
         productGimagecropped_2 = result.cropped_image_2 && result.cropped_image_2 !== "noimage.png" ? result.cropped_image_2 : "noimg22.png" 
         let pdfimgurl = `http://${hosturl}:5600/admin/uploads/${productGimagecropped}`
+        let pdfimgurl2 = `http://${hosturl}:5600/admin/uploads/${productGimagecropped_2}`
+
         document.getElementById("cart_p_image").src = `http://${hosturl}:5600/admin/uploads/${productGimagefull}`
         document.getElementById("cart_p_c_image").src = `http://${hosturl}:5600/admin/uploads/${productGimagecropped}`
         document.getElementById("pdf_cart_p_c_image").setAttribute("data-imgurl", pdfimgurl);
+        document.getElementById("pdf_cart_p_c_image_2").setAttribute("data-imgurl", pdfimgurl2);
 
         document.getElementById("cart_p_image_2").src = `http://${hosturl}:5600/admin/uploads/${productGimagefull_2}`
         document.getElementById("cart_p_c_image_2").src = `http://${hosturl}:5600/admin/uploads/${productGimagecropped_2}`

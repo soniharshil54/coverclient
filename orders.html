@@ -781,7 +781,7 @@
             </tr>
              <tr>
 
-              <th>Image ( Lady ):</th>
+              <th><span style="display: block;">Image (Lady):</span>  <button id="pdf_cart_p_c_image_2" data-imgurl="" onclick="downloadcroppedpdfl(this)" class="btn btn-success btn-sm">Download pdf</button></th>
               <td>
       <img id="cart_p_image_2" src="images/3dloader.gif" alt="noimage" style="max-height: 200px; max-width: 200px">
       <img id="cart_p_c_image_2" src="images/3dloader.gif" alt="noimage" style="max-height: 200px; max-width: 200px">
@@ -916,6 +916,12 @@ var createPDF = function(imgData) {
 
 
 function downloadcroppedpdf(pdfbtn){
+  console.log("download cropped image")
+  let imageserverurl = pdfbtn.getAttribute("data-imgurl")
+  getImageFromUrl(imageserverurl, createPDF);
+}
+
+function downloadcroppedpdfl(pdfbtn){
   console.log("download cropped image")
   let imageserverurl = pdfbtn.getAttribute("data-imgurl")
   getImageFromUrl(imageserverurl, createPDF);

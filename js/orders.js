@@ -355,8 +355,8 @@ async function download() {
       delete oldorderref[i].is_paid
       delete oldorderref[i].is_delivered
       for(j =0; j < products.length; j++){
-        console.log(products[j].product_name)
-        console.log(products[j])
+     //   console.log(products[j].product_name)
+     //   console.log(products[j])
         oldorderref[i].product_name = products[j].product_name
         oldorderref[i].quantity = products[j].quantity
         oldorderref[i].size = products[j].size
@@ -767,8 +767,18 @@ function download(){
       quantity : "Quantity",
       subamount : "Subamount"
   };
-
-  itemsNotFormatted = getordercsvdatanew(okchains)
+var authtokend = localStorage.getItem('authorization')
+      fetch(`http://${hosturl}:5600/api/order/getactiveorderswithdata`,
+          {headers: {
+      'Authorization': authtokend
+    }})
+    .then(response => {
+     // console.log(response)
+      return response.json()})
+    .then(data => {
+       let okchainsold = data.map(a => ({...a}));
+       okchains = okchainsold.reverse()
+         itemsNotFormatted = getordercsvdatanew(okchains)
 
   var itemsFormatted = [];
 
@@ -785,11 +795,13 @@ function download(){
   var fileTitle = 'orders'; // or 'my-unique-title'
 
   exportCSVFile(headers, itemsNotFormatted, fileTitle); // call the exportCSVFile() function to process the JSON and trigger the download
+     // filterorders()
+      //CreateTableFromJSON(data)
+   })
+    .catch(err => console.log(err))
 
-  // "ajax" : {
-  //           "url" : `http://${hosturl}:5600/api/order/getorderswithdata`,
-  //           dataSrc : ''
-  //       },
+
+
 
 }
 
@@ -864,8 +876,8 @@ function download(){
           "data":null,
              "mRender": function(data,type){
               let orderreftable = data._id
-              console.log(orderreftable)
-              console.log(data.order_status)
+           //   console.log(orderreftable)
+           //   console.log(data.order_status)
               let mobilenumber = data.user_id.contact
               let username = `${data.user_id.first_name} ${data.user_id.last_name}`
               let orederrefid = data.order_id

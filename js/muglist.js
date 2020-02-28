@@ -336,10 +336,10 @@ fetch(`http://${hosturl}:5600/api/mug/addimage/${mugid}`, {
      // console.log(response)
      return response.json()})
     .then(data => {
-      console.log(data)
+     // console.log(data)
       const mugnames = data.map(mug => mug.name);
       globalmugnamesarray = mugnames
-      console.log(globalmugnamesarray)
+      //console.log(globalmugnamesarray)
      
     })
     .catch(err => console.log(err))

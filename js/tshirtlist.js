@@ -476,10 +476,10 @@ fetch(`http://${hosturl}:5600/api/tshirt/tmtedittshirtimages/${tshirtid}`, {
      // console.log(response)
      return response.json()})
     .then(data => {
-      console.log(data)
+   //   console.log(data)
       const tshirtnames = data.map(tshirt => tshirt.name);
       globaltshirtnamesarray = tshirtnames
-      console.log(globaltshirtnamesarray)
+   //   console.log(globaltshirtnamesarray)
      
     })
     .catch(err => console.log(err))

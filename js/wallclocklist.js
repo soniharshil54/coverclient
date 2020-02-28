@@ -239,10 +239,10 @@ fetch(`http://${hosturl}:5600/api/wallclock/addimage/${wallclockid}`, {
      // console.log(response)
      return response.json()})
     .then(data => {
-      console.log(data)
+   //   console.log(data)
       const wallclocknames = data.map(wallclock => wallclock.name);
       globalwallclocknamesarray = wallclocknames
-      console.log(globalwallclocknamesarray)
+   //   console.log(globalwallclocknamesarray)
      
     })
     .catch(err => console.log(err))

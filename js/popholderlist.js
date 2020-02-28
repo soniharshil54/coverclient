@@ -275,10 +275,10 @@ fetch(`http://${hosturl}:5600/api/popholder/addimage/${popholderid}`, {
      // console.log(response)
      return response.json()})
     .then(data => {
-      console.log(data)
+     // console.log(data)
       const popholdernames = data.map(popholder => popholder.name);
       globalpopholdernamesarray = popholdernames
-      console.log(globalpopholdernamesarray)
+     // console.log(globalpopholdernamesarray)
      
     })
     .catch(err => console.log(err))

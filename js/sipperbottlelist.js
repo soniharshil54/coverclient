@@ -300,10 +300,10 @@ fetch(`http://${hosturl}:5600/api/sipperbottle/addimage/${sipperbottleid}`, {
      // console.log(response)
      return response.json()})
     .then(data => {
-      console.log(data)
+  //    console.log(data)
       const sipperbottlenames = data.map(sipperbottle => sipperbottle.name);
       globalsipperbottlenamesarray = sipperbottlenames
-      console.log(globalsipperbottlenamesarray)
+  //    console.log(globalsipperbottlenamesarray)
      
     })
     .catch(err => console.log(err))

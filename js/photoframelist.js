@@ -340,10 +340,10 @@ fetch(`http://${hosturl}:5600/api/photoframe/addimage/${photoframeid}`, {
      // console.log(response)
      return response.json()})
     .then(data => {
-      console.log(data)
+   //   console.log(data)
       const photoframenames = data.map(photoframe => photoframe.name);
       globalphotoframenamesarray = photoframenames
-      console.log(globalphotoframenamesarray)
+    //  console.log(globalphotoframenamesarray)
      
     })
     .catch(err => console.log(err))

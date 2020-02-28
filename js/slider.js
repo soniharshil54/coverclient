@@ -392,15 +392,15 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
               else if(j===1){
                 let image = '"'+myBooks[i][col[j]]+'"'
                 tabCell.innerHTML = `<button onclick='imageModal(${image})' style='padding:1px 4px'  class='btn btn-info btn-sm'>view</button>`
-                console.log(myBooks[i][col[j]])
+             //   console.log(myBooks[i][col[j]])
               }
                 else if(j===2){
                 let sort_order = myBooks[i][col[j]]
-                  console.log("sort order", sort_order)
+              //    console.log("sort order", sort_order)
                 let slider_sort_id = myBookson[i]._id
-                console.log("slider id", myBookson[i]._id)
+              //  console.log("slider id", myBookson[i]._id)
                 tabCell.innerHTML = ` <input data-sid='${slider_sort_id}' style="width:60px;height:27px" max="99" onkeypress="if (this.value.length > 1) return false;" onkeyup="updatesortorder(this)" onchange="updatesortorder(this)" value="${sort_order}" id = "company_name" type="number" class="form-control">`
-                console.log(myBooks[i][col[j]])
+              //  console.log(myBooks[i][col[j]])
               }
               else{
                 tabCell.innerHTML = myBooks[i][col[j]];
@@ -483,15 +483,15 @@ fetch(`http://${hosturl}:5600/api/product/addsecondaryslider/${productid}`, {
               else if(j===2){
                 let image = '"'+myBooks[i][col[j]]+'"'
                 tabCell.innerHTML = `<button onclick='imageModalSec(${image})' style='padding:1px 4px'  class='btn btn-info btn-sm'>view</button>`
-                console.log(myBooks[i][col[j]])
+          //      console.log(myBooks[i][col[j]])
               }
                  else if(j===3){
                 let sort_order = myBooks[i][col[j]]
-                  console.log("sort order", sort_order)
+                //  console.log("sort order", sort_order)
                 let slider_sort_id = myBookson[i]._id
-                console.log("slider id", myBookson[i]._id)
+               //console.log("slider id", myBookson[i]._id)
                 tabCell.innerHTML = ` <input data-sid='${slider_sort_id}' style="width:60px;height:27px" onkeyup="updatesecsortorder(this)" onchange="updatesortorder(this)" value="${sort_order}" id = "company_name" type="number" class="form-control">`
-                console.log(myBooks[i][col[j]])
+                //console.log(myBooks[i][col[j]])
               }
 
               else{

@@ -261,8 +261,8 @@ function reportlogics(duration){
 
             let newdateref = new Date(ndateref);
             newdateref.setHours(0,0,0,0)
-            console.log(newdateref)
-            console.log(d)
+         //   console.log(newdateref)
+         //   console.log(d)
             return newdateref.getTime() === d.getTime()
           }).map(a => a.amount).reduce((a,b) => a + b, 0  )
   let refundedamount = reportref.filter(a => {
@@ -347,7 +347,7 @@ else if(duration === "year"){
             let dateref = new Date(a.date_ordered);
             return dateref.getFullYear() === curyear
           }).map(a => a.amount).reduce((a,b) => a + b, 0  )
-  let refundedamount = reportref.filter(a => {
+  let refundedamount = reportref.filter(a => {sliderImageLabel
             let dateref = new Date(a.date_ordered);
             return dateref.getFullYear() === curyear && a.order_status === "Refunded"
           }).map(a => a.amount).reduce((a,b) => a + b, 0  )

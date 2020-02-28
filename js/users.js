@@ -35,7 +35,7 @@
         },{
           "data": "_id",
             "mRender": function(data, type) {
-              console.log(data)
+      //        console.log(data)
               let checkid = `check_${data}`
               return `<input id='${checkid}' name="todelete" value=${data} type="checkbox">`;
             }
@@ -130,7 +130,11 @@
 
 
   function getusers(){
-        fetch(`http://${hosturl}:5600/api/user/activeusers`)
+        var authtokend = localStorage.getItem('authorization')
+        fetch(`http://${hosturl}:5600/api/user/activeusers`,
+          {headers: {
+      'Authorization': authtokend
+    }})
     .then(response => {
      // console.log(response)
       return response.json()})
@@ -141,7 +145,7 @@
     .catch(err => console.log(err))
   }
 
-  //getusers()
+  getusers()
 
           function checkLogin(){
     

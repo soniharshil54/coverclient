@@ -404,10 +404,10 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
      // console.log(response)
      return response.json()})
     .then(data => {
-      console.log(data)
+     // console.log(data)
       const watchnames = data.map(watch => watch.name);
       globalwatchnamesarray = watchnames
-      console.log(globalwatchnamesarray)
+     // console.log(globalwatchnamesarray)
      
     })
     .catch(err => console.log(err))

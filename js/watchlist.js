@@ -151,7 +151,11 @@ fetch(`http://${hosturl}:5600/api/watch/addimage/${watchid}`, {
   }
 
   function filterbytype(filtertyperef){
-      fetch(`http://${hosturl}:5600/api/watch/getallwatchs`)
+      var authtokend = localStorage.getItem('authorization')
+      fetch(`http://${hosturl}:5600/api/watch/getallwatchs`,
+          {headers: {
+      'Authorization': authtokend
+    }})
     .then(response => {
      // console.log(response)
      return response.json()})
@@ -533,6 +537,7 @@ function validatewatchnames(watchname){
   //getoffers()
 
       function getwatchsdatatable(){
+         var authtokend = localStorage.getItem('authorization')
           let userTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
@@ -544,8 +549,13 @@ function validatewatchnames(watchname){
                return nRow;
           },
         "ajax" : {
-            "url" : `http://${hosturl}:5600/api/watch/getallwatchs`,
-            dataSrc : ''
+           "url": `http://${hosturl}:5600/api/watch/getallwatchs`,
+         dataSrc : '',
+         "type": "GET",
+         "beforeSend": function(xhr){
+            xhr.setRequestHeader("Authorization",
+               authtokend)
+         }
         },
         "columns" : [ {
             "data" : null

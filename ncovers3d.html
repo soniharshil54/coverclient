@@ -558,7 +558,7 @@
                       <div class="custom-file">
                      
                         <input name="slider_image" type="file" class="custom-file-input" id="sliderImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <label id="sliderImageLabel" class="custom-file-label" for="exampleInputFile">Choose file</label>
                       </div>
                       <!-- <div class="input-group-append">
                         <span class="input-group-text" id="">Upload</span>
@@ -570,7 +570,7 @@
                     <div class="input-group">
                       <div class="custom-file">
                         <input name="header_image" type="file" class="custom-file-input" id="coverImage">
-                        <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        <label id="coverImageLabel" class="custom-file-label" for="exampleInputFile">Choose file</label>
                          </form>
                       </div>
                       <!-- <div class="input-group-append">
@@ -887,6 +887,14 @@ $(document).ready(function () {
   });
   })
 
+  function reset3dform(){
+    document.getElementById("k_3d_covername").value = ""
+    document.getElementById("sliderImageLabel").innerHTML = "Choose file"
+    document.getElementById("coverImageLabel").innerHTML = "Choose file"
+    $("#sliderImage").val('');
+    $("#coverImage").val('');
+  }
+
   function validate3dphonecase(){
     console.log("validating 3d")
       let slider_image = $("#bannerImage").val();
@@ -912,6 +920,7 @@ $(document).ready(function () {
       body: formData
     }).then(res => {
       console.log(res)
+      reset3dform()
       get3dcoversdatatable(globalmodelid)
       console.log("upload file 3d fineished then")
       //getproducts()

@@ -649,7 +649,7 @@ async function download() {
         // document.getElementById("productEditBtn").value = "Add "+globalProduct
         // let producttoget = proname
         // let getpropara = producttoget + "s"
-    fetch(`http://${hosturl}:5600/api/order/getorderswithdataopt`,
+    fetch(`http://${hosturl}:5600/api/order/getactiveorderswithdataopt`,
           {headers: {
       'Authorization': authtokend
     }})

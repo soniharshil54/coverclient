@@ -780,57 +780,31 @@
     }
 
     else{
-      var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "http://api.msg91.com/api/v2/sendsms",
-  "method": "POST",
-  "headers": {
-    "authkey": "$authentication_key",
-    "content-type": "application/json"
-  },
-  "processData": false,
-  "data": "{ \"sender\": \"SOCKET\", \"route\": \"4\", \"country\": \"91\", \"sms\": [ { \"message\": \"TestBulk\", \"to\": [ \"8686865852\", \"9426823617\" ] } ] }"
-}
-
-$.ajax(settings).done(function (response) {
-  console.log(response);
-});
-      // let mobilenumberarray = ['8686865852',"9426823617"]
-      // let smscontent = document.getElementById("s_text").value
-      // let smsarray = [{
-      //       message : "test bulk 5",
-      //       to : ['8686865852','9426823617']
-      //     }
-      //   ]
-      // let keydata = {
-      //   sender: "SOCKET",
-      //   route: "4",
-      //   country: "91",
-      //   sms: smsarray
-      // }
-      //   fetch(`https://api.msg91.com/api/v2/sendsms`,
-      //     {
-      //       "async": true,
-      //       "crossDomain": true,
-      //       mode: 'no-cors',
-      //         headers: {
-      //           'authkey': '156882AhFEUQ93mZpo5948a188',
-      //           'Content-Type': 'application/json'
-      //         },
-      //         method: "POST",
-      //         body: JSON.stringify(keydata)
-      //     })
-      //     .then(function(res){ 
-      //       return res.json()
-      //       })
-      //     .then(function(result){
-      //       console.log(result)
-      //     })
-      //     .catch(function(error){
-      //       console.log(error)
-      //     })
-        }
+        let smscontent = document.getElementById("s_text").value
+      let smsbody = {
+        smscontent
+      }
+             fetch(`http://${hosturl}:5600/api/notification/postallsmsdata`,
+    {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: "POST",
+      body: JSON.stringify(smsbody)
+    })
+    .then(function(res){ 
+      return res.json()
+    })
+    .then(function(result){
+      console.log(result)
+      //document.getElementById("s_mobilenumber").value = ""
+      document.getElementById("s_text").value = ""
+      document.getElementById("sendsmsconfirm").innerHTML = "sms sent successfully !!!" 
+  //getproducts()
+  
+    })
+    }
   }
 
       function logOutUser(){

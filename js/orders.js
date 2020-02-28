@@ -849,7 +849,7 @@ var authtokend = localStorage.getItem('authorization')
                     products_name += `<hr style="padding:0; margin:0"> `
                   }
                   let colorsfpro = "green"
-                  let btntag =  `<span onclick="productdetailsmodal(this)" style="font-size:14px;font-weight:bold;color:${colorsfpro}" data-oid=${order_id} data-pid="${productsref[i]._id}">${productsref[i].product_name}</span>`
+                  let btntag =  `<span id="product_name_dis" onclick="productdetailsmodal(this)" style="" data-oid=${order_id} data-pid="${productsref[i]._id}">${productsref[i].product_name}</span>`
                   products_name += `${btntag} `
                  
                 }

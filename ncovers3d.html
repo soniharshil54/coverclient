@@ -1231,7 +1231,7 @@ function editproduct(test){
                     let modelname = data.name
                     let companyname = data.company
                     document.getElementById("k_3d_modelname").value = modelname
-                    document.getElementById("k_3d_companyname").value = modelname
+                    document.getElementById("k_3d_companyname").value = companyname
                     return fetch(`http://${hosturl}:5600/api/phonecase/get3dcoversbymodel/${modelid}`)
                   })
       .then(function(response) { 

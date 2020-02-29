@@ -347,7 +347,7 @@ else if(duration === "year"){
             let dateref = new Date(a.date_ordered);
             return dateref.getFullYear() === curyear
           }).map(a => a.amount).reduce((a,b) => a + b, 0  )
-  let refundedamount = reportref.filter(a => {sliderImageLabel
+  let refundedamount = reportref.filter(a => {
             let dateref = new Date(a.date_ordered);
             return dateref.getFullYear() === curyear && a.order_status === "Refunded"
           }).map(a => a.amount).reduce((a,b) => a + b, 0  )

@@ -25,6 +25,12 @@
     let online_payment = online_payment_ref ? 1 : 0
     only_online = online_payment
 
+        let validatemform = validateaddofferform()
+    if(!validatemform){
+      //document.getElementById("mug_success_id").innerHTML = ""
+      return false
+    }
+
     let categories = []
     if(offer_type === "BOGO"){
           if(!include_products.disabled){
@@ -91,6 +97,74 @@
   function removeFromArray(original, remove) {
   return original.filter(value => !remove.includes(value));
 }
+
+function validateaddofferform(){
+  let offer_name = document.getElementById("k_offer").value
+  let offer_code = document.getElementById("k_code").value
+  let offer_expirydate = document.getElementById("k_expirydate").value
+  let offer_min_spend = document.getElementById("k_min_spend").value
+  let offer_max_spend = document.getElementById("k_max_spend").value
+  let banner_image = $("#hImage").val();
+  //let inner_image = $("#innerImage").val();
+  if(offer_name == "" || offer_code == "" || offer_expirydate == "" || offer_min_spend == "" || offer_max_spend == "" || banner_image == ""){
+    if (offer_name == "") {
+       // document.getElementById("mval_name_err").innerHTML = "Name is required"
+       document.getElementById("k_offer").style.border = "1px solid red"
+     }
+     if (offer_code == "") {
+        //document.getElementById("mval_volume_err").innerHTML = "Volume is required"
+        document.getElementById("k_code").style.border = "1px solid red"
+      }
+      if (offer_expirydate == "") {
+       // document.getElementById("mval_price_err").innerHTML = "Price is required"
+       document.getElementById("k_expirydate").style.border = "1px solid red"
+     }
+     if (offer_min_spend == "") {
+       // document.getElementById("mval_description_err").innerHTML = "Description is required"
+       document.getElementById("k_min_spend").style.border = "1px solid red"
+     }
+     if (offer_max_spend == "") {
+       // document.getElementById("mval_pis_err").innerHTML = "Pick Image Size is required"
+       document.getElementById("k_max_spend").style.border = "1px solid red"
+     }
+     if (banner_image == "") {
+      document.getElementById("offer_bannerimage_err").innerHTML = "Banner image is required"
+     // document.getElementById("bannerImage").style.border = "1px solid red"
+    }
+    else{
+      document.getElementById("offer_bannerimage_err").innerHTML = ""
+    }
+    return false
+  }
+  else{
+    $('#imageModalUploading').modal('show')
+    return true
+  }
+}
+
+$('input').focus(function(){
+  $(this).css('border-color','#80bdff');
+});
+$('input').blur(function(){
+  if (this.value == "") {
+    $(this).css('border','1px solid red');
+  }
+  else{    
+    $(this).css('border-color','#ced4da');
+  }
+});
+
+$('textarea').focus(function(){
+  $(this).css('border-color','#80bdff');
+});
+$('textarea').blur(function(){
+  if (this.value == "") {
+    $(this).css('border','1px solid red');
+  }
+  else{    
+    $(this).css('border-color','#ced4da');
+  }
+});
 
 
   function logOutUser(){

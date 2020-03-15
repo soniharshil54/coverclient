@@ -163,12 +163,13 @@ fetch(`http://${hosturl}:5600/api/offer/addimage/${productid}`, {
   method: 'PUT',
   body: formData
 }).then(res => {
+  console.log("file uploaded")
   console.log(res)
-  document.getElementById("successAdded").innerHTML = "Offer successfully added !!!"
+ // document.getElementById("successAdded").innerHTML = "Offer successfully added !!!"
   window.location = "offerlist.html"
  // getoffers()
 }).catch(err => console.log(err))
-
+  
   }
 
 

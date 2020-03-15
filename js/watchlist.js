@@ -38,12 +38,15 @@ function addwatch(){
   }
 
     function opendeletemodal(){
+      console.log("opendeletemodal")
      let todeleteidsref = printChecked()
       if(todeleteidsref.length > 0){
+        console.log("opendeletemodal if")
         $("#deleteModal").modal("show");
         document.getElementById("watch_list_notif").innerHTML = ""
       }
       else {
+        console.log("opendeletemodal else")
         document.getElementById("watch_list_notif").style.color = "red"
         document.getElementById("watch_list_notif").innerHTML = "Select atleast one watch !!!"
       }

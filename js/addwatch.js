@@ -64,6 +64,12 @@ document.getElementById("w_price").value = ""
         });
 })
 
+  $('input[Type="Number"]').keypress(function (e) {
+    if ('0123456789'.indexOf(e.key) == -1) {
+        e.preventDefault();
+    }
+});
+
 
  function getwatchnames(){
     fetch(`http://${hosturl}:5600/api/watch/getallwatchnames`)

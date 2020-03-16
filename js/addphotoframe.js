@@ -69,6 +69,12 @@ document.getElementById("p_price").value = ""
 //     document.getElementById("k_categories_inc").disabled = false
 // });
 
+ $('input[Type="Number"]').keypress(function (e) {
+    if ('0123456789'.indexOf(e.key) == -1) {
+        e.preventDefault();
+    }
+});
+
 function getphotoframenames(){
     fetch(`http://${hosturl}:5600/api/photoframe/getallphotoframenames`)
     .then(response => {

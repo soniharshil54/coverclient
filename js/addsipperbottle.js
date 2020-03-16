@@ -71,6 +71,12 @@ document.getElementById("m_price").value = ""
   return original.filter(value => !remove.includes(value));
 }
 
+ $('input[Type="Number"]').keypress(function (e) {
+    if ('0123456789'.indexOf(e.key) == -1) {
+        e.preventDefault();
+    }
+});
+
 function getsipperbottlenames(){
     fetch(`http://${hosturl}:5600/api/sipperbottle/getallsipperbottlenames`)
     .then(response => {

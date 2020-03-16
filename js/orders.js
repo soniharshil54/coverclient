@@ -98,6 +98,89 @@ $('#cartProductModal').on('hidden.bs.modal', function () {
     }
   }
 
+  function filtercustomrange(){
+let start_date_ref = document.getElementById("report_start").value
+let end_date_ref = document.getElementById("report_end").value
+let start_date = new Date(start_date_ref)
+let end_date = new Date(end_date_ref)
+end_date.setDate(end_date.getDate() + 1); 
+    let reportref = okreport.map(a => ({...a}))
+  let totalsales = reportref.filter(a => {
+            let dateref = new Date(a.date_ordered);
+            return dateref >= start_date && dateref <= end_date
+          }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+  let refundedamount = reportref.filter(a => {
+            let dateref = new Date(a.date_ordered);
+            return dateref >= start_date && dateref <= end_date && a.order_status === "Refunded"
+          }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+  let pendingamount = reportref.filter(a => {
+            let dateref = new Date(a.date_ordered);
+            return dateref >= start_date && dateref <= end_date && a.order_status === "Pending Payment"
+          }).map(a => a.amount).reduce((a,b) => a + b, 0  )
+  let shippingcharge = reportref.filter(a => {
+            let dateref = new Date(a.date_ordered);
+            return dateref >= start_date && dateref <= end_date
+          }).map(a => a.shipping).reduce((a,b) => a + b, 0  )
+  let ordersplaced = reportref.filter(a => {
+            let dateref = new Date(a.date_ordered);
+            return dateref >= start_date && dateref <= end_date
+          }).length
+  let itemspurchased = reportref.filter(a => {
+            let dateref = new Date(a.date_ordered);
+            return dateref >= start_date && dateref <= end_date
+          }).map(a =>  a.products.length).reduce((a,b) => a + b, 0)
+      let couponamount = reportref.filter(a => {
+       let dateref = new Date(a.date_ordered);
+       return dateref >= start_date && dateref <= end_date
+     }).map(a => {
+      let amountconsole = a.coupon_amount ? a.coupon_amount : 0
+      console.log("amount coupon", amountconsole)
+      return amountconsole}).reduce((a,b) => a + b, 0  )
+  //let totalsalesred = totalsales.reduce((a,b) => a + b )
+  //console.log(totalsalesred)
+  document.getElementById('totalsales_r').innerHTML =  `₹ ${totalsales}`
+  document.getElementById('couponamount_r').innerHTML =  `₹ ${couponamount}`
+  document.getElementById('refunded_r').innerHTML =  `₹ ${refundedamount}`
+  document.getElementById('pendingamount_r').innerHTML =  `₹ ${pendingamount}`
+  document.getElementById('shippingcharges_r').innerHTML =  `₹ ${shippingcharge}`
+  document.getElementById('ordersplaced_r').innerHTML = ordersplaced
+  document.getElementById('itemspurchased_r').innerHTML = itemspurchased
+  console.log(totalsales)
+  console.log(refundedamount)
+  console.log(pendingamount)
+  console.log(shippingcharge)
+}
+
+function showcustomrange(){
+document.getElementById("customdate-filter").style.display = "inline"
+}
+
+
+function reportlogics(duration){
+  globalfiltertype = duration
+ let filtertype = duration
+ getordersdatatable(filtertype)
+}
+
+function filterbystatus(){
+  console.log("filtering")
+  let filstatus = document.getElementById("sel_status").value
+  //let teststatussta = okchains.map(a => ({...a}));
+  if(filstatus === "All"){
+    //console.log(okchains)
+    orderTable.columns(7).search('', true, false).draw();
+  }
+  else {
+
+console.log("its in else", filstatus)
+
+orderTable.columns(7).search(filstatus, true, false).draw();
+
+  
+  }
+
+}
+
 
 
   function filterorders(){
@@ -167,7 +250,7 @@ $('#cartProductModal').on('hidden.bs.modal', function () {
     $("#deleteModal").modal("show");
   }
 
-      function filterbystatus(){
+      function filterbystatusold(){
   console.log("filtering")
   let filstatus = document.getElementById("sel_status").value
   //let teststatussta = okchains.map(a => ({...a}));
@@ -264,14 +347,14 @@ ddate.setFullYear(ddate.getFullYear() - 5);
 }
 
 
-async function download() {
-        const a = document.createElement("a");
-        a.href = await toDataURL("https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png");
-        a.download = "myImage.png";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-}
+// async function download() {
+//         const a = document.createElement("a");
+//         a.href = await toDataURL("https://cdn1.iconfinder.com/data/icons/ninja-things-1/1772/ninja-simple-512.png");
+//         a.download = "myImage.png";
+//         document.body.appendChild(a);
+//         a.click();
+//         document.body.removeChild(a);
+// }
 
   function getQueryStringValue (key) {  
   return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
@@ -467,12 +550,15 @@ async function download() {
         productGimagefull_2 = result.image_2 && result.image_2 !== "noimage.png" ? result.image_2 : "noimg22.png" 
         productGimagecropped_2 = result.cropped_image_2 && result.cropped_image_2 !== "noimage.png" ? result.cropped_image_2 : "noimg22.png" 
         let pdfimgurl = `http://${hosturl}:5600/admin/uploads/${productGimagecropped}`
+        let pdfimgurlfull = `http://${hosturl}:5600/admin/uploads/${productGimagefull}`
         let pdfimgurl2 = `http://${hosturl}:5600/admin/uploads/${productGimagecropped_2}`
-
+        let pdfimgurl2full = `http://${hosturl}:5600/admin/uploads/${productGimagefull_2}`
         document.getElementById("cart_p_image").src = `http://${hosturl}:5600/admin/uploads/${productGimagefull}`
         document.getElementById("cart_p_c_image").src = `http://${hosturl}:5600/admin/uploads/${productGimagecropped}`
         document.getElementById("pdf_cart_p_c_image").setAttribute("data-imgurl", pdfimgurl);
+        document.getElementById("pdf_cart_p_c_image").setAttribute("data-imgurlfull", pdfimgurlfull);
         document.getElementById("pdf_cart_p_c_image_2").setAttribute("data-imgurl", pdfimgurl2);
+        document.getElementById("pdf_cart_p_c_image_2").setAttribute("data-imgurlfull", pdfimgurl2full);
 
         document.getElementById("cart_p_image_2").src = `http://${hosturl}:5600/admin/uploads/${productGimagefull_2}`
         document.getElementById("cart_p_c_image_2").src = `http://${hosturl}:5600/admin/uploads/${productGimagecropped_2}`
@@ -768,7 +854,7 @@ function download(){
       subamount : "Subamount"
   };
 var authtokend = localStorage.getItem('authorization')
-      fetch(`http://${hosturl}:5600/api/order/getactiveorderswithdata`,
+      fetch(`http://${hosturl}:5600/api/order/getactiveorderswithdatafilt/${globalfiltertype}/none`,
           {headers: {
       'Authorization': authtokend
     }})
@@ -777,6 +863,11 @@ var authtokend = localStorage.getItem('authorization')
       return response.json()})
     .then(data => {
        let okchainsold = data.map(a => ({...a}));
+       let filterstatuswise = document.getElementById('sel_status').value
+       if(filterstatuswise != "All"){
+         okchainsold = okchainsold.filter(a => a.order_status == filterstatuswise)
+       }
+      
        okchains = okchainsold.reverse()
          itemsNotFormatted = getordercsvdatanew(okchains)
 
@@ -806,9 +897,9 @@ var authtokend = localStorage.getItem('authorization')
 }
 
 
-    function getordersdatatable(){
+    function getordersdatatable(filtertype){
        var authtokend = localStorage.getItem('authorization')
-          let userTable = $('#example1').DataTable({
+      orderTable = $('#example1').DataTable({
             destroy: true,
         "processing" : true,
           "lengthMenu": [[50, 100, 500, -1], [50, 100, 500, "All"]],
@@ -819,7 +910,7 @@ var authtokend = localStorage.getItem('authorization')
                return nRow;
           },
         "ajax" : {
-               "url": `http://${hosturl}:5600/api/order/getactiveorderswithdataopt`,
+               "url": `http://${hosturl}:5600/api/order/getactiveorderswithdataoptfilt/${filtertype}/none`,
          dataSrc : '',
          "type": "GET",
          "beforeSend": function(xhr){
@@ -878,6 +969,11 @@ var authtokend = localStorage.getItem('authorization')
               return `<button onclick="userdetailsmodal(this)" style="padding: 1px 1px; margin:5px" class="btn btn-info btn-sm" data-pid="${data._id}">view</button>`;
             }
         },{
+          "data":"order_status",
+          "visible":false
+        }
+
+        ,{
           "data":null,
              "mRender": function(data,type){
               let orderreftable = data._id
@@ -1050,4 +1146,5 @@ var authtokend = localStorage.getItem('authorization')
 
    
 
-getordersdatatable()
+getordersdatatable('week')
+globalfiltertype = 'week'

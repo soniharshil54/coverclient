@@ -142,6 +142,12 @@ function validateaddofferform(){
   }
 }
 
+ $('input[Type="Number"]').keypress(function (e) {
+    if ('0123456789'.indexOf(e.key) == -1) {
+        e.preventDefault();
+    }
+});
+
 $('input').focus(function(){
   $(this).css('border-color','#80bdff');
 });

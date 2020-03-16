@@ -25,6 +25,12 @@ function getsummary(){
 
 }
 
+ $('input[Type="Number"]').keypress(function (e) {
+    if ('0123456789'.indexOf(e.key) == -1) {
+        e.preventDefault();
+    }
+});
+
 function downloaddbzip(){
       $.ajax({
         url: `http://${hosturl}:5600/admin/dbbackup/dump.zip`,

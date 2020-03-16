@@ -73,6 +73,12 @@ function removeFromArray(original, remove) {
   return original.filter(value => !remove.includes(value));
 }
 
+ $('input[Type="Number"]').keypress(function (e) {
+    if ('0123456789'.indexOf(e.key) == -1) {
+        e.preventDefault();
+    }
+});
+
 
 function getmugnames(){
   fetch(`http://${hosturl}:5600/api/mug/getallmugnames`)

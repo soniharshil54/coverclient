@@ -64,6 +64,12 @@ document.getElementById("p_price").value = ""
         });
 })
 
+  $('input[Type="Number"]').keypress(function (e) {
+    if ('0123456789'.indexOf(e.key) == -1) {
+        e.preventDefault();
+    }
+});
+
 //   $("#incdisdiv").click(function (evt) {
 //     $(this).hide()
 //     document.getElementById("k_categories_inc").disabled = false

@@ -67,6 +67,11 @@ document.getElementById("w_price").value = ""
 //     $(this).hide()
 //     document.getElementById("k_categories_inc").disabled = false
 // });
+ $('input[Type="Number"]').keypress(function (e) {
+    if ('0123456789'.indexOf(e.key) == -1) {
+        e.preventDefault();
+    }
+});
 
 function getwallclocknames(){
     fetch(`http://${hosturl}:5600/api/wallclock/getallwallclocknames`)

@@ -13,13 +13,19 @@ function addkeychain(){
   window.location = "addkeychain.html";
 }
 
+ $('input[Type="Number"]').keypress(function (e) {
+    if ('0123456789'.indexOf(e.key) == -1) {
+        e.preventDefault();
+    }
+});
+ 
 function modalkctypeinputs(offer_type){
   let keychain_type = document.getElementById("edit_k_type").value
   //let inc_cat = $('#k_categories_inc').val();
  // let ex_cat = $('#k_categories_ex').val();
   //console.log(inc_cat)
   //console.log(ex_cat)
-  if(keychain_type === "RegularKeychain"){
+  if(keychain_type === "CustomKeychain"){
     document.getElementById("edit_k_d_overlay").style.display = "block"
      document.getElementById("edit_k_d_mask").style.display = "block"
   }

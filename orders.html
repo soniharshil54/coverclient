@@ -932,18 +932,7 @@
     var image = new Image();
   // image.setAttribute('crossorigin', 'anonymous');
   image.crossOrigin = " ";
-     var image2 = new Image();
-  // image.setAttribute('crossorigin', 'anonymous');
-  image2.crossOrigin = " ";
-  var image1url = geturlreturn(image)
-  var image2url = geturlreturn(image2)
-  callback(image1url,image2url)
-       
-    image.src = url;
-    image2.src = url;
-}
-
-function geturlreturn() {
+                image.onload = function () {
                 //  image.crossorigin="anonymous"
         var canvas = document.createElement('canvas');
         canvas.width = this.naturalWidth ; // or 'width' if you want a special/scaled size
@@ -955,17 +944,18 @@ function geturlreturn() {
       //  callback(canvas.toDataURL('image/jpeg').replace(/^data:image\/(png|jpg);base64,/, ''));
 
         // ... or get as Data URI
-        return canvas.toDataURL('image/jpeg')
-    }
+        callback(canvas.toDataURL('image/jpeg'));
+    };
+    image.src = url;
+}
+
 
 var createPDF = function(imgData) {
     var doc = new jsPDF();
 
 
 
-    doc.addImage(imgData, 'JPEG', 10, 10, 150, 0, 'monkey');
-    doc.addPage();
-    doc.addImage(imgData, 'JPEG', 10, 10, 150, 0, 'monkey');
+    doc.addImage(imgData, 'JPEG', 10, 10, 80, 0, 'monkey');
    // doc.addImage('monkey', 70, 10, 100, 120); // use the cached 'monkey' image, JPEG is optional regardless
 
 

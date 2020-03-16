@@ -1030,6 +1030,11 @@ var authtokend = localStorage.getItem('authorization')
             }
         }]
     });
+   let filterstatuswise = document.getElementById('sel_status').value
+       if(filterstatuswise != "All"){
+        console.log("it happened")
+         orderTable.columns(7).search(filterstatuswise, true, false).draw();
+       }
     }
 
         function getfilteredordersdatatable(newdata){

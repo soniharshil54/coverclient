@@ -900,6 +900,9 @@ var authtokend = localStorage.getItem('authorization')
     function getordersdatatable(filtertype){
        var authtokend = localStorage.getItem('authorization')
       orderTable = $('#example1').DataTable({
+            "language": {
+              "emptyTable": "No Orders available in given duration and status filter"
+            },
             destroy: true,
         "processing" : true,
           "lengthMenu": [[50, 100, 500, -1], [50, 100, 500, "All"]],

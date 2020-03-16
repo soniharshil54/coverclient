@@ -901,7 +901,7 @@ var authtokend = localStorage.getItem('authorization')
        var authtokend = localStorage.getItem('authorization')
       orderTable = $('#example1').DataTable({
             "language": {
-              "emptyTable": "No Orders available in given duration and status filter"
+              "emptyTable": `No Orders available in ${globalfiltertype}`
             },
             destroy: true,
         "processing" : true,
@@ -1153,6 +1153,5 @@ var authtokend = localStorage.getItem('authorization')
     }
 
    
-
-getordersdatatable('week')
 globalfiltertype = 'week'
+getordersdatatable('week')

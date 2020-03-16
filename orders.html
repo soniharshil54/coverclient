@@ -950,12 +950,46 @@
 }
 
 
-var createPDF = function(imgData) {
+function convertURIToImageData(URI) {
+  return new Promise(function(resolve, reject) {
+    if (URI == null) return reject();
+    var canvas = document.createElement('canvas'),
+        context = canvas.getContext('2d'),
+        image = new Image();
+          image.crossOrigin = " ";
+    image.addEventListener('load', function() {
+      canvas.width = image.width;
+      canvas.height = image.height;
+      context.drawImage(image, 0, 0, canvas.width, canvas.height);
+      resolve(canvas.toDataURL('image/jpeg'));
+    }, false);
+    image.src = URI;
+  });
+}
+
+
+var createPDF = function(imgData,imgData2) {
     var doc = new jsPDF();
 
 
 
-    doc.addImage(imgData, 'JPEG', 10, 10, 80, 0, 'monkey');
+    doc.addImage(imgData, 'JPEG', 10, 10, 90, 0);
+    doc.addPage()
+    doc.addImage(imgData2, 'JPEG', 10, 10, 90, 0);
+   // doc.addImage('monkey', 70, 10, 100, 120); // use the cached 'monkey' image, JPEG is optional regardless
+
+
+
+   // doc.output('datauri');
+   doc.save('croppedimagepdf')
+}
+
+var createPDFdual = function(imgData) {
+    var doc = new jsPDF();
+
+
+
+    doc.addImage(imgData, 'JPEG', 10, 10, 150, 0, 'monkey');
    // doc.addImage('monkey', 70, 10, 100, 120); // use the cached 'monkey' image, JPEG is optional regardless
 
 
@@ -965,17 +999,27 @@ var createPDF = function(imgData) {
 }
 
 
-
-function downloadcroppedpdf(pdfbtn){
-  console.log("download cropped image")
+async function downloadcroppedpdf(pdfbtn){
+  console.log("download cropped image main")
   let imageserverurl = pdfbtn.getAttribute("data-imgurl")
-  getImageFromUrl(imageserverurl, createPDF);
+  let imageserverurl2 = pdfbtn.getAttribute("data-imgurlfull")
+    let imageurl = await convertURIToImageData(imageserverurl);
+    let imageurl2 = await convertURIToImageData(imageserverurl2);
+  try{
+    console.log(imageserverurl)
+    console.log(imageserverurl2)
+  await createPDF(imageurl,imageurl2)
+  }
+  catch(err){
+    console.log(err)
+  }
+  
 }
 
 function downloadcroppedpdfl(pdfbtn){
   console.log("download cropped image")
   let imageserverurl = pdfbtn.getAttribute("data-imgurl")
-  getImageFromUrl(imageserverurl, createPDF);
+  getImageFromUrl(imageserverurl, createPDFdual);
 }
 
 </script>

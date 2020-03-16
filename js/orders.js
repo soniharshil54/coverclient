@@ -751,7 +751,7 @@ ddate.setFullYear(ddate.getFullYear() - 5);
     .catch(err => console.log(err))
 }
 
-getproducts()
+//getproducts()
       // let filters = ["name", "size", "price"]
       // let ndata = JSON.parse(unfiltered).map(function(currObj) {
       // var temp = {};

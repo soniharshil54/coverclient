@@ -32,7 +32,7 @@
     }
 
     let categories = []
-    if(offer_type === "BOGO"){
+    if(offer_type === "bogo" || offer_type === "flatdis" || offer_type === "freeshipping" || offer_type === "firsttime"){
           if(!include_products.disabled){
             let products_ref = $('#k_categories_inc').val();
             categories = products_ref
@@ -189,7 +189,7 @@ function changeofferinputs(){
   switch(offer_type) {
   case 'flatdis':
     document.getElementById("flat_discount_div").style.display = "flex"
-    document.getElementById("inexcategories").style.display = "none"
+    document.getElementById("inexcategories").style.display = "flex"
     document.getElementById('allow_freeshipping_check').style.display = "flex"
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "none"
@@ -209,7 +209,7 @@ function changeofferinputs(){
     break;
   case 'freeshipping':
     document.getElementById("flat_discount_div").style.display = "none"
-    document.getElementById("inexcategories").style.display = "none"
+    document.getElementById("inexcategories").style.display = "flex"
     document.getElementById('allow_freeshipping_check').style.display = "none"
     document.getElementById("free_shipping_div").style.display = "flex"
     document.getElementById("first_time_div").style.display = "none"
@@ -219,7 +219,7 @@ function changeofferinputs(){
     break;
   case 'firsttime':
     document.getElementById("flat_discount_div").style.display = "none"
-    document.getElementById("inexcategories").style.display = "none"
+    document.getElementById("inexcategories").style.display = "flex"
     document.getElementById('allow_freeshipping_check').style.display = "flex"
     document.getElementById("free_shipping_div").style.display = "none"
     document.getElementById("first_time_div").style.display = "flex"

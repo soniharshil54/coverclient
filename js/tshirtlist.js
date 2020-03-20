@@ -441,7 +441,7 @@ fetch(`http://${hosturl}:5600/api/tshirt/addimage/${tshirtid}`, {
           .then(function(res){ 
 
             if(tshirt_subtype !== "5e32cd728719bf459bfa93c7"){
-              console.log(document.getElementsByName("old[]")[0].value)
+              //console.log(document.getElementsByName("old[]")[0].value)
     uploadtshirtimages(tshirt_id)
   }
             uploadFileEdit(tshirt_id)

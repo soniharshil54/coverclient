@@ -16,7 +16,7 @@ function modalofferinputs(offer_type){
   switch(offer_type) {
   case 'flatdis':
     document.getElementById("modal_flat_discount_div").style.display = "block"
-    document.getElementById("modal_categories_inc").disabled = true
+    document.getElementById("modal_categories_inc").disabled = false
     document.getElementById("modal_free_shipping_div").style.display = "none"
     document.getElementById("modal_first_time_div").style.display = "none"
     document.getElementById("modal_buy_div").style.display = "none"
@@ -34,7 +34,7 @@ function modalofferinputs(offer_type){
     break;
   case 'freeshipping':
     document.getElementById("modal_flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = true
+    document.getElementById("modal_categories_inc").disabled = false
     document.getElementById("modal_free_shipping_div").style.display = "block"
     document.getElementById("modal_first_time_div").style.display = "none"
     document.getElementById("modal_buy_div").style.display = "none"
@@ -43,7 +43,7 @@ function modalofferinputs(offer_type){
     break;
   case 'firsttime':
     document.getElementById("modal_flat_discount_div").style.display = "none"
-    document.getElementById("modal_categories_inc").disabled = true
+    document.getElementById("modal_categories_inc").disabled = false
     document.getElementById("modal_free_shipping_div").style.display = "none"
     document.getElementById("modal_first_time_div").style.display = "block"
     document.getElementById("modal_buy_div").style.display = "none"

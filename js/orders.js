@@ -522,7 +522,7 @@ ddate.setFullYear(ddate.getFullYear() - 5);
           })
           .then(function(res){ 
             $("#deleteModal").modal("hide");
-            getordersdatatable()
+            getordersdatatable(globalfiltertype)
           })
           .catch(function(res){ console.log(res) })
   }

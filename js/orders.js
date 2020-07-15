@@ -950,6 +950,12 @@ var authtokend = localStorage.getItem('authorization')
               return products_name
             }
         },{
+          "data" : "user_id",
+          "mRender" : function(data, type){
+              
+            return `${data.first_name} ${data.last_name}`
+          }
+      },{
             "data" : "amount",
               "mRender" : function(data, type){
               let amou = `${data} ₹`
